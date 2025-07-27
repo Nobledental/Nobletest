@@ -651,7 +651,7 @@ header ul a:hover{
 .social-box {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 15px;
 }
 
 .social-box a{
