@@ -63,7 +63,7 @@ header ul{
     width: 60%;
     padding: 15px 15px;
     border-radius: 50px;
-    background-color: rgba(0, 0, 69, 0.326);
+    background-color: rgba(255, 255, 255, 0.326);
     backdrop-filter: blur(10px);
     box-shadow: 0 0 10px #72a1de63;
 }
