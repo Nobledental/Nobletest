@@ -86,7 +86,7 @@ header ul a:hover{
 
 .box-icons{
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
 
 .box-icons p{
