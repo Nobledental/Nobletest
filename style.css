@@ -16,7 +16,7 @@ html{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
+    gap: 100px;
     background-color: #001f7c38;
 }
 
@@ -126,7 +126,7 @@ header ul a:hover{
 .hero{
     position: relative;
     display: flex;
-    width: 150%;
+    width: 100%;
     height: 100vh;
     align-items: center;
     justify-content: space-between;
@@ -142,14 +142,14 @@ header ul a:hover{
     padding: 8px 5px;
     border-radius: 50px;
     border: 1px solid #72a1de94;
-    width: 290px;
+    width: 240px;
     background-color: #2200493d;
     box-shadow: 0 0 5px #72a1de84;
 }
 
 .hero-info h1{
     font-size: 60px;
-    max-width: 700px;
+    max-width: 600px;
     font-weight: 700;
     line-height: 70px;
     margin-top: 40px;
