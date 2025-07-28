@@ -126,7 +126,7 @@ header ul a:hover{
 .hero{
     position: relative;
     display: flex;
-    width: 100%;
+    width: 150%;
     height: 100vh;
     align-items: center;
     justify-content: space-between;
@@ -142,14 +142,14 @@ header ul a:hover{
     padding: 8px 5px;
     border-radius: 50px;
     border: 1px solid #72a1de94;
-    width: 240px;
+    width: 290px;
     background-color: #2200493d;
     box-shadow: 0 0 5px #72a1de84;
 }
 
 .hero-info h1{
     font-size: 60px;
-    max-width: 600px;
+    max-width: 700px;
     font-weight: 700;
     line-height: 70px;
     margin-top: 40px;
