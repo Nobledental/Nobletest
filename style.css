@@ -163,15 +163,39 @@ header ul a:hover{
     font-size: 20px;
 }
 
-.hero-info button{
-    color: white;
-    padding: 15px 35px;
-    border-radius: 10px;
-    border: 1px solid #72a1de81;
-    background-color: #2200493d;
-    box-shadow: 0 0 5px #72a1de81;
-    cursor: pointer;
-    transition: 0.3s;
+/*  Added Contact Section Styles */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /*  Adjusted gap */
+  flex-wrap: wrap;
+  padding: 10px; /* Adjusted padding */
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  width: 150px; /*  Adjusted width */
+  padding: 10px; /*  Adjusted padding */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* added background-color and color transitions */
+  margin-bottom: 10px; /* Added margin for spacing */
+}
+
+/* Adjust other styles as needed to match your theme */
+
+/* Example color adjustments */
+.icon-container {
+  font-size: 2em;
+  color: #72a1de; /*  Use your theme color */
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.btn {
+  background-color: #72a1de; /* Use your theme color */
 }
 
 .hero-info button:hover{
