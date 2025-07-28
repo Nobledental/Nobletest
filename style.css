@@ -163,6 +163,17 @@ header ul a:hover{
     font-size: 20px;
 }
 
+.hero-info button{
+    color: white;
+    padding: 15px 35px;
+    border-radius: 10px;
+    border: 1px solid #72a1de81;
+    background-color: #2200493d;
+    box-shadow: 0 0 5px #72a1de81;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 /*  Added Contact Section Styles */
 .container {
   display: flex;
