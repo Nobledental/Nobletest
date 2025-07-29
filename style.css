@@ -1252,9 +1252,10 @@ header ul a:hover{
         gap: 10px;
     }
 
-/* Styles for the Treatments section */
+/* --- BEGIN: Global and desktop styles for the treatments section --- */
+
 .dental-treatments {
-  margin-top: 40px; /* optional spacing from above content */
+  margin-top: 40px;
 }
 
 /* Title styles */
@@ -1284,8 +1285,8 @@ header ul a:hover{
 
 /* Card styles: transparent background, blue text */
 .dental-treatments .service-card {
-  background-color: transparent; /* transparent background */
-  border: 1px solid #ddd; /* optional border */
+  background-color: transparent;
+  border: 1px solid #ddd;
   border-radius: 10px;
   padding: 10px;
   height: 200px;
@@ -1297,19 +1298,16 @@ header ul a:hover{
   margin-bottom: 10px;
 }
 
-/* Hover effect for card (optional) */
 .dental-treatments .service-card:hover {
-  background-color: rgba(0, 0, 255, 0.1); /* light blue overlay on hover */
+  background-color: rgba(0, 0, 255, 0.1);
 }
 
-/* Text section inside card */
 .dental-treatments .text-section {
   flex: 1;
   padding: 10px;
-  color: blue; /* make text blue */
+  color: blue;
 }
 
-/* Card header styles */
 .dental-treatments .service-card h3 {
   color: blue;
   font-size: 1.2rem;
@@ -1317,7 +1315,6 @@ header ul a:hover{
   margin-bottom: 5px;
 }
 
-/* Paragraph text inside card */
 .dental-treatments .service-card p {
   font-size: 0.85rem;
   color: blue;
@@ -1325,7 +1322,6 @@ header ul a:hover{
   margin: 0 0 8px 0;
 }
 
-/* Image styling */
 .dental-treatments .service-card img {
   width: 40%;
   height: auto;
@@ -1334,7 +1330,6 @@ header ul a:hover{
   margin-left: 10px;
 }
 
-/* Style for the Read More button */
 .dental-treatments .read-more-button {
   background-color: #3498db;
   color: #fff;
@@ -1351,4 +1346,25 @@ header ul a:hover{
 .dental-treatments .read-more-button:hover {
   background-color: #2980b9;
 }
+
+/* --- END: Global styles for desktop and large screens --- */
+
+
+
+/* --- BEGIN: Mobile-specific styles --- */
+@media screen and (max-width: 480px) {
+  /* Keep your existing media query styles here */
+
+  /* Your existing mobile styles (already in your code)... */
+
+  /* Additional small screen adjustments for treatments section if needed */
+  /* For example, stacking cards vertically if desired: */
+  .dental-treatments .services-grid {
+    grid-template-columns: 1fr; /* Make a single column for small screens */
+  }
+
+  /* Optional: Adjust button sizes or font sizes for smaller screens */
+  .dental-treatments h1 {
+    font-size: 1.8rem; /* Slightly smaller on small screens */
+  }
 }
