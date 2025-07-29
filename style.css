@@ -234,7 +234,7 @@ header ul a:hover{
 
 .skills-video-box{
     position: absolute;
-    right: 3%;
+    right: -30%;
 }
 
 .skills-video{
@@ -292,8 +292,6 @@ header ul a:hover{
       opacity: 0;
     }
   }
-
-
 
 
 .info-section{
@@ -414,7 +412,6 @@ header ul a:hover{
 .card:nth-child(4) h1{
     bottom: 35%;
 }
-
 
 
 .my-project{
@@ -544,7 +541,6 @@ header ul a:hover{
     transform: translateX(80%, 80%) rotate(20deg);
   }
 }
-
 
 
 
@@ -918,9 +914,6 @@ header ul a:hover{
         border-bottom-left-radius: 50%;
     }
 }
-
-
-
 
 
 
