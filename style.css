@@ -1,1222 +1,246 @@
-body{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: lightgray;
-}
-
-html{
-    scroll-behavior: smooth;
-}
-
-.container{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 100px;
-    background-color: #001f7c38;
-}
-
-
-.back-vid{
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    mix-blend-mode:overlay;
-}
-
-
-header{
-    display: flex;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 30px;
-    height: 70px;
-    background-color: rgba(255, 255, 255, 0.121);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 0 15px #72a1dea2;
-    z-index: 999;
-}
-
-.left{
-    display: flex;
-    align-items: center;
-}
-
-.left img{
-    width: 70px;
-    margin: 0 15px;
-}
-
-
-header ul{
-    display: flex;
-    justify-content: space-between;
-    width: 60%;
-    padding: 15px 15px;
-    border-radius: 50px;
-    background-color: rgba(255, 255, 255, 0.326);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 10px #72a1de63;
-}
-
-header ul li{
-    list-style: none;
-}
-
-header ul a{
-    text-decoration: none;
-    color: white;
-    font-weight: 700;
-    transition: 0.3s;
-    margin: 0 10px;
-}
-
-header ul a:hover{
-    text-shadow: 0 0 15px black;
-}
-
-.box-icons{
-    display: flex;
-    gap: 40px;
-}
-
-.box-icons p{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #72a1de;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.box-icons p:hover{
-    background-color: #72a1de;
-    color: black;
-    box-shadow: 0 0 15px #72a1de;
-}
-
-.blackhole-box{
-    position: absolute;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    z-index: -1;
-    mix-blend-mode: lighten;
-  }
-  
-.blackhole-box video{
-    width: 100%;
-    margin-top: -23.5%;
-}
-
-.hero{
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.hero-info{
-    position: absolute;
-    left: 5%;
-}
-
-.hero-info .hero-info-title{
-    color: #40bdd7;
-    padding: 8px 5px;
-    border-radius: 50px;
-    border: 1px solid #72a1de94;
-    width: 240px;
-    background-color: #2200493d;
-    box-shadow: 0 0 5px #72a1de84;
-}
-
-.hero-info h1{
-    font-size: 60px;
-    max-width: 600px;
-    font-weight: 700;
-    line-height: 70px;
-    margin-top: 40px;
-    margin-bottom: 30px;
-}
-
-.hero-info p{
-    max-width: 550px;
-    line-height: 25px;
-    margin-bottom: 40px;
-    font-size: 20px;
-}
-
-.hero-info button{
-    color: #02021a;
-    padding: 15px 35px;
-    border-radius: 10px;
-    border: 1px solid #72a1de81;
-    background-color: #f5f3f6ad;
-    box-shadow: 0 0 5px #72a1de81;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.hero-info button:hover{
-    box-shadow: 0 0 15px #72a1de81;
-}
-
-/* Gradient Animation */
-.gradient{
-    background: linear-gradient(to right,#00aaa7, #7e42a7, #6600c5, #6070fd,#2a46ff, #0099ff, #008ead);
-    background-size: 200%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: animate-gradient 2.5s linear infinite;
-}
-@keyframes animate-gradient {
-    to{
-        background-position: 200%;
-    }
-}
-
-.skills-video-box{
-    position: absolute;
-    right: 3%;
-}
-
-.skills-video{
-    height: 900px;
-    mix-blend-mode:lighten;
-}
-
-
-.scroll-down {
-    height: 50px;
-    width: 30px;
-    border: 2px solid lightgray;
-    position: absolute;
-    left: 49%;
-    bottom: 8%;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.626);
-  }
-  .scroll-down::before,
-  .scroll-down::after {
-    content: "";
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    height: 10px;
-    width: 10px;
-    transform: translate(-50%, -100%) rotate(45deg);
-    border: 2px solid lightgray;
-    border-top: transparent;
-    border-left: transparent;
-    animation: scroll-down 2s ease-in-out infinite;
-  }
-  .scroll-down::before {
-    top: 30%;
-    animation-delay: 0.5s;
-    /* animation: scroll-down 1s ease-in-out infinite; */
-  }
-  
-  @keyframes scroll-down {
-    0% {
-      /* top:20%; */
-      opacity: 0;
-    }
-    30% {
-      opacity: 1;
-    }
-    60% {
-      opacity: 1;
-    }
-    100% {
-      top: 90%;
-      opacity: 0;
-    }
-  }
-
-
-
-
-.info-section{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 80%;
-    margin-top: 100px;
-}
-
-.section-title{
-    font-size: 40px;
-    font-weight: 700;
-}
-
-.info-cards{
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 20px;
-    width: 100%;
-    height: 100%;
-    margin-top: 30px;
-}
-
-.card{
-    display: flex;
-    align-items:flex-start;
-    justify-content: center;
-    position: relative;
-    width: auto;
-    height: 40vh;
-    overflow: hidden;
-    border: 1px solid gray;
-    background-color: #080020b7;
-    border-radius: 20px;
-    transition: 0.5s;
-}
-
-.card h1{
-    position: absolute;
-    margin: 0;
-    bottom: 40%;
-    left: 5%;
-    font-size: 25px;
-    z-index: 1;
-    color: lightgray;
-}
-
-.card p{
-    position: absolute;
-    bottom: 3%;
-    left: 5%;
-    z-index: 1;
-    max-width: 300px;
-    color: gray;
-    font-size: 13px;
-    line-height: 20px;
-}
-
-.card img{
-    width: 80%;
-    height: 50%;
-    object-fit: cover;
-}
-
-.card video{
-    margin-top: 10%;
-    width: 70%;
-    height: 50%;
-    object-fit: cover;
-    mix-blend-mode: lighten;
-}
-
-.card button{
-    position: absolute;
-    bottom: 5%;
-    left: 5%;
-    padding: 10px 25px;
-    border: 1px solid gray;
-    background-color: #0f1217;
-    color: gray;
-    border-radius: 20px;
-    box-shadow: 0 0 5px lightgray;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.card button:hover{
-    box-shadow: 0 0 15px lightgray;
-    opacity: 0.7;
-}
-
-.card:hover{
-    box-shadow: 0 0 15px rgb(211, 211, 211);
-}
-
-.card:nth-child(3){
-    grid-row: span 2;
-    height: 83vh;
-}
-
-.card:nth-child(3) p{
-    bottom: 12%;
-}
-
-.card:nth-child(3) h1{
-    bottom: 21%;
-}
-
-.card:nth-child(4){
-    grid-column: span 2;
-}
-
-.card:nth-child(4) p{
-    max-width: 650px;
-}
-
-.card:nth-child(4) h1{
-    bottom: 35%;
-}
-
-
-
-.my-project{
-    display: flex;
-    flex-direction: column;
-    gap: 10%;
-    align-items: center;
-    position: relative;
-    width: 80%;
-    height: 100vh;
-    margin-top: 200px;
-    margin-bottom: 700px;
-}
-
-.project-card {
-    display: flex;
-    width: 100%;
-    height: 40%;
-    align-items: center;
-    gap: 10%;
-    justify-content: center;
-}
-
-.project-vidbox{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    mix-blend-mode:exclusion;
-    position: relative;
-    cursor: pointer;
-    transition: 0.5s;
-    min-width: 400px;
-
-}
-
-.project-vidbox video{
-    object-fit: cover;
-    width: 100%;
-    box-shadow: 0 0 10px lightgray;
-    border-radius: 20px;
-    transition: 0.5s;
-}
-
-.project-card video:hover{
-    box-shadow: 0 0 25px rgb(255, 255, 255);
-}
-
-.project-info{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    width: 50%;
-    padding-left: 10%;
-}
-
-.project-info h1{
-    width: 90%;
-    font-size: 25px;
-    font-weight: bold;
-    text-wrap: nowrap;
-    margin-top: 0;
-    margin-bottom: 10px;
-    max-width: 450px;
-}
-
-.project-info p{
-    width: 90%;
-    max-width: 400px;
-    min-width: 300px;
-    margin-bottom: 50px;
-    margin-top: 0;
-}
-
-.project-info button{
-    color: white;
-    padding: 15px 35px;
-    border-radius: 10px;
-    border: 1px solid #72a1de81;
-    background-color: #2200493d;
-    box-shadow: 0 0 5px #72a1de81;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.project-info button:hover{
-    opacity: 0.8;
-    box-shadow: 0 0 15px #72a1de81;
-}
-
-.project-vidbox .hover-sign{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30%;
-    height: 100px;
-}
-
-.hover-sign::before,
-.hover-sign::after {
-    content: "👆";
-    text-align: center;
-    position: absolute;
-    font-size: 50px;
-    top: 20%;
-    left: 40%;
-    border-radius: 40px;
-    animation: hover-animation 4s ease-in-out infinite;
-
-}
-
-.hover-sign.active{
-    display: none;
-}
-
-@keyframes hover-animation {
-  0% {
-    /* top:20%; */
-    box-shadow: 0 0 5px rgb(255, 255, 255);
-    transform: translate(100%, 50%) rotate(30deg);
-  }
-
-  100% {
-    box-shadow: 0 0 5px rgb(255, 255, 255);
-    transform: translateX(80%, 80%) rotate(20deg);
-  }
-}
-
-
-
-
-/* Skills section */
-.skills-section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-.skills-box{
-    width: 100%;
-    height: 90vh;
-    position: relative;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    mix-blend-mode:lighten;
-    opacity: 0.7;
-}
-
-.skills-image{
-    width: 70%;
-    mix-blend-mode:difference;
-}
-
-.Designer{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    top: 25%;
-    left: 5%;
-    max-width: 300px;
-}
-
-.Designer h1{
-    font-size: 50px;
-    display: flex;
-    align-items: center;
-}
-
-.Designer p{
-    line-height: 23px;
-}
-
-
-.coder{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    top: 25%;
-    right: 5%;
-    max-width: 300px;
-}
-
-.coder h1{
-    font-size: 50px;
-    display: flex;
-    align-items: center;
-}
-
-.coder p{
-    line-height: 23px;
-}
-
-
-
-.coder-text{
-
-    font-size: 50px;
-}
-
-/* SLIDER  */
-
-.slider{
-    position: absolute;
-    bottom: 5%;
-    right: 20%;
-    width: 60%;
-    height: var(--height);
-    overflow: hidden;
-    mask-image: linear-gradient(
-        to right,
-        transparent,
-        #000 10% 90%,
-        transparent
-    );
-    mix-blend-mode:difference;
-    opacity: 0.7;
-}
-.slider .list{
-    display: flex;
-    width: 100%;
-    min-width: calc(var(--width) * var(--quantity));
-    position: relative;
-}
-.slider .list .item{
-    width: var(--width);
-    height: var(--height);
-    position: absolute;
-    left: 100%;
-    animation: autoRun 10s linear infinite;
-    transition: filter 0.5s;
-    animation-delay: calc( (10s / var(--quantity)) * (var(--position) - 1) - 10s)!important;
-}
-.slider .list .item img{
-    width: 100%;
-}
-@keyframes autoRun{
-    from{
-        left: 100%;
-    }to{
-        left: calc(var(--width) * -1);
-    }
-}
-.slider:hover .item{
-    animation-play-state: paused!important;
-    filter: grayscale(1);
-}
-.slider .item:hover{
-    filter: grayscale(0);
-}
-
-
-  /* CONTACT SECTION */
-.contact-section{
-    width: 80%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    gap: 10%;
-    align-items: center;
-    position: relative;
-}
-
-.contact-section h1{
-    position: absolute;
-    top: 10%;
-    left: 40%;
-}
-
-.social-box {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.social-box a{
-    color: lightgray;
-    text-decoration: none;
-    font-size: 20px;
-    text-wrap: nowrap;
-}
-
-.social-box i{
-    color: #7668ff;
-    font-size: 30px;
-    margin-right: 10px;
-}
-
-.social-icons a i{
-    color: white;
-    margin-top: 40px;
-}
-
-.contact-box p{
-    max-width: 400px;
-    margin-top: 30px;
-    margin-bottom: 5px;
-} 
-
-.contact-box input{
-    padding: 7.5px 30px;
-    background-color: rgb(243 242 238);
-    width: 80%;
-    height: 25px;
-    border: none;
-    outline : none;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.contact-box button{
-    margin-top: 30px;
-    color: white;
-    padding: 15px 35px;
-    border-radius: 10px;
-    border: 1px solid #72a1de81;
-    background-color: #2200493d;
-    box-shadow: 0 0 5px #72a1de81;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.contact-box button:hover{
-    opacity: 0.8;
-    box-shadow: 0 0 15px #72a1de81;
-}
-
-.footer{
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    height: 70px;
-    background-color: rgba(255, 255, 255, 0.121);
-    z-index: 999;
-    padding: 0 3rem;
-}
-
-
-/* BLUR EFFECT ANIMAION */
-
-.autoBlur{
-    animation: autoBlurAnimation linear both;
-    animation-timeline: view();
-
-}
-@keyframes autoBlurAnimation{
-    0%{
-        filter: blur(40px);
-    }
-    35%,65%{
-        filter: blur(0);
-        opacity: 1;
-    }
-    100%{
-        filter: blur(40px);
-        opacity: 0;
-    }
-}
-
-
-/* AUTO DISPLAY ANIMAION */
-.autoDisplay{
-    animation: autoDisplayAnimation both;
-    animation-timeline: view();
-
-}
-
-@keyframes autoDisplayAnimation{
-    from{
-        filter: blur(10px);
-        transform: translateY(-200px) scale(0);
-    } 50%{
-        opacity: 1;
-        filter: blur(0px);
-        transform: translateX(0) scale(1);
-    }
-}
-
-
-/* FADEIN_LEFT */
-
-.fadein-left{
-    animation: fadeInLeftAnimation both;
-    animation-timeline: view();
-}
-
-@keyframes fadeInLeftAnimation{
-    0%{
-        opacity: 0;
-        transform: translateX(-500px) scale(0.2);
-        filter: blur(10px);
-    } 35%,65%{
-        opacity: 1;
-        transform: translateX(0) scale(1);
-        filter: blur(0px);
-    }100%{
-        filter: blur(10px);
-    }
-}
-
-/* Sidebar */
-
-.menu-icon{
-    font-size: 35px;
-    cursor: pointer;
-    display: none;
-}
-
-
-.sidebar{
-    position: fixed;
-    right: 0;
-    top: 0;
-    bottom: 70%;
-    width: 0%;
-    background-color: #000000b8;
-    z-index: 999;
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.479);
-    backdrop-filter: blur(10px);
-    opacity: 0;
-    border-bottom-left-radius: 100%;
-    
-}
-
-.close-icon{
-    font-size: 50px;
-    color: lightgray;
-    padding-left: 10px;
-    cursor: pointer;
-}
-
-.sidebar ul{
-    padding-left: 20px;
-}
-
-.sidebar ul li{
-    list-style: none;
-    margin-bottom: 30px;
-}
-
-.sidebar ul li a{
-    text-decoration: none;
-    color: lightgray;
-    font-size: 30px;
-    font-weight: 900;
-    text-shadow:0 0 15px #4c4c4c;
-}
-
-.social-sidebar{
-    padding-left: 20px;
-    margin-top: 60px;
-    text-wrap: nowrap;
-}
-
-.social-sidebar a{
-    font-size: 35px;
-    padding: 5px 5px;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-/* Sidebar Open ANimation */
-.sidebar.open-sidebar{
-    animation: openSideBarAnimation 1.5s forwards;
-}
-
-@keyframes openSideBarAnimation {
-    to{
-        width: 80%;
-        opacity: 1;
-        bottom: 0;
-        border-radius: 0;
-    }
-}
-
-/* Sidebar close ANimation */
-
-.sidebar.close-sidebar{
-    animation: closeSideBarAnimation 1.5s forwards;
-}
-
-@keyframes closeSideBarAnimation {
-    from{
-        width: 80%;
-        opacity: 1;
-        bottom: 0;
-        border-radius: 0;
-    }
-    to{
-        width: 0;
-        opacity: 0;
-        bottom: 70%;
-        border-bottom-left-radius: 50%;
-    }
-}
-
-
-
-
-
-
-@media (max-aspect-ratio: 16/9){
-    .back-vid{
-        width: auto;
-        height: 100%;
-    }
-}
-
-@media (min-aspect-ratio: 16/9){
-    .back-vid{
-        width: 100%;
-        height: auto;
-    }
-}
-
-
-@media screen and (max-width: 1200px){
-    .blackhole-box video{
-        margin-top: -20%;
-    }
-
-    .hero-info h1{
-        font-size: 40px;
-        max-width: 400px;
-        line-height: 40px;
-    }
-
-    .hero-info P{
-        max-width: 300px;
-    }
-
-    .skills-video-box{
-        right: 0%;
-    }
-
-    .skills-video-box video{
-        height: 500px;
-    }
-
-    .info-cards{
-        grid-template-columns: auto;
-    }
-
-    .card:nth-child(3){
-        grid-column: span 2;
-        height: 70vh;
-    }
-
-    .info-cards .card h1{
-        font-size: 20px;
-    }
-
-    .info-cards .card:nth-child(3) h1{
-        bottom: 25%;
-    }
-
-    .card video{
-        height: 60%;
-
-        margin-top: 5%;
-    }
-
-    .my-project{
-        margin-bottom: 200px;
-        scale: 0.8;
-    }
-
-    .contact-section .section-title {
-        left: 30%;
-    }
-}
-
-@media screen and (max-width: 700px){
-    header {
-        position: fixed;
-        height: 50px;
-    }
-
-    header ul{
-        display: none;
-    }
-
-    header .box-icons{
-        display: none;
-    }
-
-    .menu-icon{
-        display: inline;
-    }
-
-    .blackhole-box video {
-        width: 100%;
-        margin-top: -15%;
-    }
-
-    .autoBlur{
-        animation: none;
-    }
-    
-    .hero{
-        flex-direction: column;
-        top:0;
-        bottom: 0;
-        left: 0;
-        right:0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NobleDentalCare-Nallagandla</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <div class="container">
+        <video class="back-vid" autoplay loop muted plays-inline src="videos/galaxy.mp4"></video>
+
+
+
+        <header data-aos="fade-down" data-aos-duration="2000">
+            <div class="left">
+                <img src="images/dentalcare.nallagandla.png" alt="Noble Dental Clinic - Nallagandla logo">
+                <h2><span style="color: #4c26f8a2;">Noble</span>Dental</h2>
+            </div>
+
+    <nav>  <!-- Use <nav> for the navigation -->            
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">Treatment Specialities</a></li>
+                <li><a href="#">Selfcare</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Patient Login</a></li>
+                <li><a href="#">Know More</a></li>    
+            </ul>
+    </nav>
+
+            <div class="box-icons">
+                <p><i class='bx bxl-youtube'></i></a>
+                <p><i class='bx bxl-github'></i></a>
+                <p><i class='bx bxl-linkedin-square'></i></a>
+            </div>
+
+            <div class="menu-icon">
+                <i class='bx bx-menu'></i>
+            </div>            
+        </header>
+        <div class="sidebar">
+            <div class="close-icon">
+                <i class='bx bx-x'></i>
+            </div>
+            
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">Treatment Specialities</a></li>
+                <li><a href="#">Selfcare</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Patient Login</a></li>
+                <li><a href="#">Know More</a></li>                     
+            </ul>
+
+            <div class="social-sidebar">
+                <a><i class='bx bxl-youtube'></i></a>
+                <a><i class='bx bxl-github'></i></a>
+                <a><i class='bx bxl-linkedin-square'></i></a>
+            </div>
+        </div>
+
+        <div class="blackhole-box" data-aos="fade-down" data-aos-duration="2000">
+            <video autoplay loop muted plays-inline src="videos/blackhole.mp4"></video>
+        </div>
+
+        <section class="hero ">
+            <div class="hero-info autoBlur" data-aos="fade-right" data-aos-duration="1000">
+                <div class="hero-info-title" >
+                    <i class='bx bxl-sketch'></i>
+                    HealthFlo Hospitals & Clinic
+                </div>
+
+                <h1 data-aos="fade-right" data-aos-duration="3000">Providing <span class="gradient">the best</span> Dental Care<span class="gradient">Experience</span></h1>
+
+                <p>Meet our team of expertise with advancements and treatment standards</p>
+
+                <button><i class='bx bx-send' ></i> Contact me</button>
+            </div>
         
-    }
-    .hero-info{
-        bottom: 5%;
-    }
+            <div class="scroll-down"></div>
+        </section>
 
-    .scroll-down{
-        bottom: 5%;
-    }
+        <section class="info-section">
+            <h1 class="section-title autoDisplay">Hello,There👋</h1>
+            <div class="info-cards">
+                <div class="card ">
+                    <h1>Hi there, I'm Milad</h1>
+                    <p>With 4 years of experience, I have honed my skills in both frontend and backend dev, creating dynamic and responsive websites.</p>
+                
+                    <img src="images/grid1.png" alt="">
+                </div>
 
-    .hero .skills-video-box{
-        height: 200px;
-        top: 5%;
-    }
+                <div class="card">
+                    <h1>Tech Stack</h1>
+                    <p>I specialize in a variety of languages, frameworks, and tools that allow me to build robust and scalable applications.</p>
+                
+                    <img src="images/grid2.png" alt="">
+                </div>
 
+                <div class="card">
+                    <h1>I’m very flexible with time zone communications & locations</h1>
+                    <p>I'm based in Italy, Bari and open to remote work worldwide.</p>
+                
+                    <video src="videos/glob.mp4" autoplay loop muted plays-inline></video>
 
+                    <button><i class='bx bx-send'></i> Contact Me</button>
+                </div>
 
-    .info-cards{
-        grid-template-columns: auto;
-    }
+                <div class="card">
+                    <h1>My Passion for Coding</h1>
+                    <p>I love solving problems and building things through code. Programming isn't just my profession—it's my passion. I enjoy exploring new technologies, and enhancing my skills.</p>
+                
+                    <img src="images/grid4.png" alt="">
+                </div>
+            </div>
+        </seaction>
 
-    .card:nth-child(3){
-        grid-column: span 2;
-        height: 70vh;
-    }
+        <section class="my-project">
+            <h1 class="section-title autoDisplay">My Projects 👨‍💻</h1>
+            <div class="project-card">
+                <div class="project-vidbox autoBlur" >
+                    <video loop id="projectVideo1" src="videos/project1.mp4"></video>
+                    <div class="hover-sign"></div>
+                </div>
+                <div class="project-info fadein-left">
+                    <h1>Animated <span class="gradient">Gaming</span> Website</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta ipsam excepturi ex in corrupti similique dolor nam, suscipit, odio soluta at recusandae nulla, id fugiat!</p>
+                    <button><i class='bx bx-link-external' ></i> Website</button>
+            </div>
+            </div>
 
-    .card video{
-        width: 100%;
-    }
-    
-    .container{
-        height: 100%;
-    }
+            <div class="project-card">
+                <div class="project-vidbox autoBlur">
+                    <video loop id="projectVideo2" src="videos/project2.mp4"></video>
+                </div>
+                <div class="project-info fadein-left">
+                    <h1> Modern <span class="gradient">Portfolio</span> Website </h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam modi voluptates assumenda omnis impedit ipsa veritatis soluta earum minima consequatur.</p>
+                    <button><i class='bx bx-link-external' ></i> Website</button>
+                </div>
+            </div>
 
-    .project-vidbox video{
-        width: 250px;
-        margin-left: -100px;
-    }
+            <div class="project-card">
+                <div class="project-vidbox autoBlur">
+                    <video loop id="projectVideo3" src="videos/project3.mp4"></video>
+                </div>
+                
+                <div class="project-info fadein-left">
+                    <h1>Movie <span class="gradient">Landing</span>  Page</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores numquam saepe itaque sapiente odit neque necessitatibus explicabo hic laudantium ipsam nesciunt ducimus, cumque ratione esse.</p>
+                    <button><i class='bx bx-link-external' ></i> Website</button>
+                </div>
+            </div>
+        </section>
 
-    .project-info{
-        overflow: hidden;
-        padding-left: 0;
-        margin-left: -50px;
-    }
-
-    .project-info h1{
-        font-size: 20px;
-        max-width: 200px;
-        text-wrap: wrap;
-    }
-
-    .project-info p{
-        font-size: 10px;
-        text-wrap: wrap;
-        max-width: 200px;
-        min-width: 0;
-    }
-
-    .project-info button{
-        padding: 5px 10px;
-    }
-
-    .my-project{
-        margin-bottom: 600px;
-    }
-
-    .project-card{
-        flex-direction: column;
-        margin-left: 25%;
-        gap: 30px;
-    }
-    
-    .project-vidbox{
-        min-width: 200px;
-    }
-
-    .project-info{
-        width: 85%;
-    }
-
-    .project-info h1{
-        text-wrap: nowrap;
-    }
-
-    .project-info p{
-        max-width: 300px;
-    }
-
-    .Designer{
-        top: 15%;
-        left: 18%;
-    }
-
-    .Designer h1{
-        margin-bottom: 0;
-        margin-top: 70px;
-    }
-
-    .coder{
-        top: 50%;
-        left: 18%;
-    }
-
-    .coder h1{
-        margin-bottom: 0;
-    }
-
-    .slider .list .item img{
-        width: 70%;
-    }
-
-    .contact-section{
-        flex-direction: column;
-        margin-top: 100px;
-        margin-bottom: 50px;
-    }
-
-    .footer{
-        font-size: 10px;
-    }
-
-    .social-box{
-        margin-left: -90px;
-    }
-}
-
-
-@media screen and (max-width: 480px) {
-
-    .hero .skills-video-box {
-        display: none;
         
-    }
+        <section class="skills-section">
+            <h1 class="section-title autoDisplay">
+                My Skills 💪
+            </h1>
+            <div class="skills-box autoDisplay">
+                <img class="skills-image" src="images/digital brain (2).png" alt="">
+                <div class="Designer">
+                    <h1 class="gradient">Designer <i class='bx bx-laptop'></i></h1>
+                    <p>I have expertise in HTML, CSS, JavaScript, and design tools like Figma and Adobe XD. My strength lies in blending aesthetics with functionality to create seamless user experiences.</p>    
+                </div>
+                
+                <div class="coder">
+                    <h1 class="gradient">Coder <i class='bx bx-code-block' ></i></h1>
+                    <p>I’m skilled in HTML, CSS, JavaScript, and frameworks like React and Node.js. I also have experience with database management using MongoDB and MySQL.</p>
+                </div>
 
-    .blackhole-box {
-        overflow: hidden;
-    }
+                <div class="slider" reverse="true" style="
+                --width: 100px;
+                --height: 100px;
+                --quantity: 9;
+                ">
+                    <div class="list">
+                        <div class="item" style="--position: 1"><img src="images/1.png" alt=""></div>
+                        <div class="item" style="--position: 2"><img src="images/2.png" alt=""></div>
+                        <div class="item" style="--position: 3"><img src="images/3.webp" alt=""></div>
+                        <div class="item" style="--position: 4"><img src="images/4.webp" alt=""></div>
+                        <div class="item" style="--position: 5"><img src="images/5.png" alt=""></div>
+                        <div class="item" style="--position: 6"><img src="images/6.png" alt=""></div>
+                        <div class="item" style="--position: 7"><img src="images/7.png" alt=""></div>
+                        <div class="item" style="--position: 8"><img src="images/8.png" alt=""></div>
+                        <div class="item" style="--position: 9"><img src="images/9.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    .blackhole-box video {
-        width: 140%;
-        margin-top: -27%;
+        <section class="contact-section ">
+            <h1 class="section-title autoDisplay">Let's talk😊</h1>
 
-    }
+            <div class="social-box autoBlur">
+                <a href="#"><i class='bx bxs-phone'></i> +39 111 222 444</a>
+                <a href="#"><i class='bx bxl-telegram' ></i> Contact Example.com</a>
+                <a href="#"><i class='bx bxl-linkedin-square' ></i> Contact Example.com</a>
+                <div class="social-icons">
+                    <a href="#"><i class='bx bxl-youtube' ></i></a>
+                    <a href="#"><i class='bx bxl-twitter' ></i></a>
+                    <a href="#"><i class='bx bxl-facebook-circle' ></i></a>
+                </div>
+            </div>
 
-    .left {
-        scale: 0.9;
-        margin-left: -30px;
-    }
+            <div class="contact-box autoBlur">
+                <p>improve your oral health, bring a unique.</p>
+            
+    <label for="fullname">Full Name</label>
+    <input type="text" id="fullname" name="fullname" placeholder="Your Full name">
 
-    .left h2 {
-        font-size: 20px;
-    }
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" placeholder="Your Email">
 
-    .hero {
-        scale: 0.9;
-    }
+    <label for="message">Your Message</label>
+    <textarea id="message" name="message" class="input-message" placeholder="Share your thoughts..."></textarea>
 
-    .hero-info{
-        bottom: 15%;
-    }
+    <button type="submit">Send Message <i class='bx bx-mail-send'></i></button>
+</div>
+        
+        </section> 
 
-    .hero-info h1{
-        font-size: 35px;
-    }
+        <section class="footer">
+            <h1>©️2025, Created by Dr Dhivakaran, C Akhila</h1>
+            <div class="box-icons">
+                <p><i class='bx bxl-youtube'></i></p>
+                <p><i class='bx bxl-github'></i></p>
+                <p><i class='bx bxl-linkedin-square'></i></p>
+            </div>
+        </section>
 
-    .scroll-down{
-        bottom: 15%;
-        left: 60%;
-    }
-
-    .section-title {
-        font-size: 25px;
-    }
-
-    .info-cards{
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card {
-        min-height: 20rem;
-    }
-
-    .card h1{
-        bottom: 30%;
-        font-size: 5px;
-    }
-
-    .project-card {
-        height: 50%;
-    }
-
-    .project-info p{
-        margin-bottom: 15px;
-    }
-
-    .project-info{
-        margin-left: -80px;
-    }
-
-    .skills-box{
-        height: 120vh;
-        margin-right: 30px;
-    }
-
-    .slider{
-        bottom: 0%;
-    }
-
-    .contact-section{
-        scale: 0.9;
-        height: 120vh;
-    }
-
-    .contact-section .section-title {
-        top: -30px;
-        left: 25%;
-    }
-
-    .footer{
-        padding: 15px;
-    }
-
-    .footer h1{
-        max-width: 150px;
-    }
-
-    .footer .box-icons{
-        gap: 10px;
-    }
-
-
-}
+        
+    </div>
+    <script src="app.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script >
+      AOS.init();
+    </script>
+</body>
+</html>
