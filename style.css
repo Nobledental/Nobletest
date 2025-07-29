@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: Poppins, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     color: lightgray;
     padding-top: 0px; 
 }
@@ -415,95 +415,7 @@ header ul a:hover{
     bottom: 35%;
 }
 
-    .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
 
-        h1 {
-            color: #1c1f21;
-            font-size: 2.2rem; /* Reduced font size */
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        #complaintInput {
-            width: 100%;
-            padding: 8px; /* Reduced padding */
-            margin-bottom: 15px; /* Reduced margin */
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 0.9rem; /* Reduced font size */
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(300px, 1fr)); /* Adjusted minmax value */
-            gap: 15px; /* Reduced gap */
-        }
-
-        .service-card {
-            background-color: #fff; /* White background */
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            padding: 0;            /* Remove default padding */
-            text-align: left;
-            transition: background-color 0.3s ease;
-            cursor: pointer;
-            height: 200px; /* Reduced height */
-            display: flex;
-            overflow: hidden;       /* Hide overflow for rounded corners */
-        }
-
-        .service-card:hover {
-            background-color: #d0e9ff; /* Light blue on hover */
-        }
-
-        .text-section {
-            flex: 1;                 /* Take 60% of the card width */
-            padding: 10px; /* Reduced padding */
-        }
-
-        .service-card h3 {
-            color: #13191c;
-            font-size: 1.2rem; /* Reduced font size */
-            margin-top: 0;
-            margin-bottom: 3px; /* Reduced margin */
-        }
-
-        .service-card p {
-            font-size: 0.85rem; /* Reduced font size */
-            color: #555;
-            line-height: 1.3;
-            margin: 0;
-            margin-bottom: 8px; /* Reduced margin */
-        }
-
-        .service-card img {
-            width: 40%;               /* occupy 40% of the card size  */
-            height: 100%;              /* Occupy the full height of the card */
-            object-fit: cover;          /* Cover the area */
-            border-radius: 0;       /* Remove rounded corners from image */
-            order: 2;                 /* Ensure it's on the right */
-        }
-
-        .read-more-button {
-            background-color: #3498db; /* Blue color */
-            color: #fff;
-            border: none;
-            padding: 6px 10px; /* Reduced padding */
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.8rem; /* Reduced font size */
-            transition: background-color 0.3s ease;
-            text-decoration: none;    /* Remove underline */
-            display: inline-block;   /* Allows margin and padding */
-        }
-
-        .read-more-button:hover {
-            background-color: #2980b9; /* Darker blue on hover */
-        }
-        
 
 .my-project{
     display: flex;
@@ -658,9 +570,6 @@ header ul a:hover{
 .skills-image{
     width: 70%;
     mix-blend-mode:difference;
-    transform: scale(0.5);    /* Start smaller */
-    opacity: 0;
-    animation: scaleIn 2s forwards; /* Apply the animation */
 }
 
 .Designer{
