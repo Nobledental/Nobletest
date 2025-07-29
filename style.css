@@ -238,9 +238,9 @@ header ul a:hover{
 }
 
 .skills-video{
-    height: 900px;
+    height: 450px;
     mix-blend-mode:lighten;
-    width: 100%;        /* Ensure the image fills the container width */
+    width: 50%;        /* Ensure the image fills the container width */
     height: auto;       /* Maintain aspect ratio */
     object-fit: contain;   /* Experiment with cover or contain */
 }
