@@ -234,13 +234,13 @@ header ul a:hover{
 
 .skills-video-box{
     position: absolute;
-    right: 3%;
+    right: -30%;
 }
 
 .skills-video{
-    height: 450px;
+    height: 360px;
     mix-blend-mode:lighten;
-    width: 50%;        /* Ensure the image fills the container width */
+    width: 40%;        /* Ensure the image fills the container width */
     height: auto;       /* Maintain aspect ratio */
     object-fit: contain;   /* Experiment with cover or contain */
 }
