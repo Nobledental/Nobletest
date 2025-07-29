@@ -3,7 +3,7 @@ body{
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: lightgray;
-    padding-top: 70px; 
+    padding-top: 0px; 
 }
 
 html{
@@ -43,7 +43,7 @@ header{
     height: 70px;
     background-color: rgba(255, 255, 255, 0.121);
     backdrop-filter: blur(5px);
-    box-shadow: 0 0 15px #72a1dea2;
+    box-shadow: 0 0 15px #d6d9dea2;
     z-index: 999;
 }
 
@@ -61,7 +61,7 @@ header{
 header ul{
     display: flex;
     justify-content: space-between;
-    width: 60%;
+    width: 100%;
     padding: 15px 15px;
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.326);
@@ -111,21 +111,17 @@ header ul a:hover{
 
 .blackhole-box {
     position: absolute;
-    top: 0;             /* Keep top: 0 */
-    left: 0;
+    top: 0;
     width: 100%;
-    height: 100vh; /* Or a fixed height if you prefer */
     display: flex;
     justify-content: center;
-    align-items: center; /* Vertically center the video */
     z-index: -1;
     mix-blend-mode: lighten;
     overflow: hidden;   /* Prevent overflow if the video is larger */
-}
+  }
   
 .blackhole-box video {
     width: 100%;        /* Make the video take up the full width */
-    width: 100%;
     margin-top: -23.5%;
 }
 
