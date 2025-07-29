@@ -1255,7 +1255,7 @@ header ul a:hover{
 /* --- BEGIN: Global and desktop styles for the treatments section --- */
 
 .dental-treatments {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 /* Title styles */
@@ -1263,14 +1263,14 @@ header ul a:hover{
   color: #1c1f21; 
   font-size: 2.2rem;
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* Input styles */
 .dental-treatments #complaintInput {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
+  width: 50%;
+  padding: 4px;
+  margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 0.9rem;
