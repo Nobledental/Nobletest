@@ -1252,5 +1252,102 @@ header ul a:hover{
         gap: 10px;
     }
 
+/* Styles for the Treatments section */
+.dental-treatments {
+  margin-top: 40px; /* optional spacing from above content */
+}
 
+/* Title styles */
+.dental-treatments h1 {
+  color: #1c1f21; 
+  font-size: 2.2rem;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+/* Input styles */
+.dental-treatments #complaintInput {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+/* Grid layout for service cards */
+.dental-treatments .services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+/* Card styles: transparent background, blue text */
+.dental-treatments .service-card {
+  background-color: transparent; /* transparent background */
+  border: 1px solid #ddd; /* optional border */
+  border-radius: 10px;
+  padding: 10px;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}
+
+/* Hover effect for card (optional) */
+.dental-treatments .service-card:hover {
+  background-color: rgba(0, 0, 255, 0.1); /* light blue overlay on hover */
+}
+
+/* Text section inside card */
+.dental-treatments .text-section {
+  flex: 1;
+  padding: 10px;
+  color: blue; /* make text blue */
+}
+
+/* Card header styles */
+.dental-treatments .service-card h3 {
+  color: blue;
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+/* Paragraph text inside card */
+.dental-treatments .service-card p {
+  font-size: 0.85rem;
+  color: blue;
+  line-height: 1.3;
+  margin: 0 0 8px 0;
+}
+
+/* Image styling */
+.dental-treatments .service-card img {
+  width: 40%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0;
+  margin-left: 10px;
+}
+
+/* Style for the Read More button */
+.dental-treatments .read-more-button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.dental-treatments .read-more-button:hover {
+  background-color: #2980b9;
 }
