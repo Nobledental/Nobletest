@@ -18,7 +18,7 @@ html{
     flex-direction: column;
     align-items: center;
     gap: 100px;
-    background-color: #001f7c38;
+    background-color: #0524882e;
 }
 
 
@@ -41,7 +41,7 @@ header{
     justify-content: space-between;
     padding: 0 30px;
     height: 70px;
-    background-color: rgba(255, 255, 255, 0.121);
+    background-color: rgba(22 26 30 / 58%);
     backdrop-filter: blur(5px);
     box-shadow: 0 0 15px #d6d9dea2;
     z-index: 999;
@@ -53,8 +53,8 @@ header{
 }
 
 .left img{
-    width: 70px;
-    margin: 0 15px;
+    width: 100px;
+    margin: 0 5px;
 }
 
 
@@ -64,9 +64,9 @@ header ul{
     width: 100%;
     padding: 15px 15px;
     border-radius: 50px;
-    background-color: rgba(255, 255, 255, 0.326);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 10px #72a1de63;
+    background-color: rgba(18 10 10 / 59%);
+    backdrop-filter: blur(100px);
+    box-shadow: 0 0 10px #eceef17a;
 }
 
 header ul li{
@@ -76,13 +76,13 @@ header ul li{
 header ul a{
     text-decoration: none;
     color: white;
-    font-weight: 700;
+    font-weight: 600;
     transition: 0.3s;
     margin: 0 10px;
 }
 
 header ul a:hover{
-    text-shadow: 0 0 15px black;
+    text-shadow: 0 0 15px #dde4e1;
 }
 
 .box-icons{
@@ -104,9 +104,9 @@ header ul a:hover{
 }
 
 .box-icons p:hover{
-    background-color: #72a1de;
+    background-color: #e9e9de;
     color: black;
-    box-shadow: 0 0 15px #72a1de;
+    box-shadow: 0 0 15px #dee1e6;
 }
 
 .blackhole-box {
@@ -140,12 +140,12 @@ header ul a:hover{
 }
 
 .hero-info .hero-info-title {
-    color: #40bdd7;
+    color: #b5bbbc;
     padding: 8px 5px;
     border-radius: 50px;
     border: 1px solid #72a1de94;
     width: 240px;
-    background-color: #2200493d;
+    background-color: #462dbf00;
     box-shadow: 0 0 5px #72a1de84;
 }
 
