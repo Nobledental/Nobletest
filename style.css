@@ -2,7 +2,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    color: lightgray;
+    color: #ffffff;
     padding-top: 0px; 
 }
 
@@ -192,10 +192,10 @@ header ul a:hover{
     justify-content: center; /* Center content horizontally */
     color: #02021a;
     padding: 15px 35px;
-    border-radius: 10px;
-    border: 1px solid #72a1de81;
-    background-color: #f5f3f6ad;
-    box-shadow: 0 0 5px #72a1de81;
+    border-radius: 50px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px #3e454ff5;
     cursor: pointer;
     transition: 0.3s;
     text-decoration: none; /* Remove underline from links */
@@ -203,8 +203,9 @@ header ul a:hover{
 }
 
 .hero-button:hover {
-    background-color: white; /* White background on hover */
-    color: black;            /* Black text on hover */
+    background-color: #151313; /* White background on hover */
+    color: #eceef1;            /* Black text on hover */
+    border: 1px solid #080101;
     box-shadow: 0 0 15px #72a1de81;
 }
 
