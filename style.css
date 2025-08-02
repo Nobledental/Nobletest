@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -14,23 +15,28 @@ body {
 
 /* Header & Navigation */
 header {
-  background-color: #003147;
+  background: linear-gradient(to right, #003147, #005072);
   color: #fff;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav a {
   color: #fff;
   text-decoration: none;
   margin: 0 1rem;
-  font-weight: 500;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
-  color: #00aaff;
+  color: #00ccff;
 }
 
 /* Hero Section with Video */
@@ -38,6 +44,7 @@ nav a:hover {
   background-color: #fff;
   position: relative;
   overflow: hidden;
+  padding-bottom: 4rem;
 }
 
 .hero-video {
@@ -46,6 +53,8 @@ nav a:hover {
   display: block;
   z-index: 1;
   mix-blend-mode: lighten;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .hero-overlay {
@@ -65,17 +74,21 @@ nav a:hover {
 .hero-content {
   text-align: center;
   z-index: 3;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .hero-content h1 {
   font-size: 3rem;
   color: #003147;
   margin-bottom: 1rem;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-content p {
   font-size: 1.3rem;
-  color: #333;
+  color: #444;
   margin-bottom: 2rem;
 }
 
@@ -88,18 +101,19 @@ nav a:hover {
 }
 
 .hero-button {
-  background-color: #00aaff;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
   color: #fff;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: background 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .hero-button:hover {
-  background-color: #0077aa;
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+  transform: scale(1.05);
 }
 
 /* Treatment Section */
@@ -110,9 +124,10 @@ nav a:hover {
 }
 
 .treatments h2 {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   color: #003147;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .treatment-cards {
@@ -124,39 +139,41 @@ nav a:hover {
 
 .treatment-card {
   background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   width: 280px;
   padding: 1.5rem;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #eee;
 }
 
 .treatment-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
 }
 
 .treatment-card img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 1rem;
 }
 
 .treatment-card h3 {
   color: #003147;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-bottom: 0.5rem;
 }
 
 /* Testimonials */
 .testimonials {
-  background-color: #fefefe;
+  background-color: #ffffff;
   padding: 4rem 2rem;
   text-align: center;
 }
 
 .testimonials h2 {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   margin-bottom: 2rem;
   color: #003147;
 }
@@ -180,9 +197,9 @@ nav a:hover {
   width: 100%;
   padding: 2rem;
   box-sizing: border-box;
-  background: #f9f9f9;
+  background: #f8f9fa;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .testimonial-slide.active {
@@ -228,6 +245,23 @@ footer a {
   color: #fff;
   margin: 0 0.5rem;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #00c6ff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Mobile Styles */
@@ -251,5 +285,10 @@ footer a {
 
   .testimonial-carousel {
     height: auto;
+  }
+
+  .treatment-card {
+    width: 100%;
+    max-width: 90%;
   }
 }
