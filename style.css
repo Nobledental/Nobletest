@@ -341,6 +341,71 @@ header ul a:hover {
   height: 400px;
 }
 
+/* Testimonial Section Styles */
+.testimonials {
+  background-color: #fefefe;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #003147;
+}
+
+.testimonial-carousel {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 260px;
+}
+
+.testimonial-slide {
+  flex: 0 0 100%;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.8s ease;
+  position: absolute;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.testimonial-slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-slide.prev {
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 1;
+}
+
+.testimonial-slide.next {
+  transform: translateX(100%);
+  opacity: 0;
+  z-index: 1;
+}
+
+.testimonial-slide p {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.testimonial-slide .author {
+  font-weight: bold;
+  margin-top: 1rem;
+  color: #006994;
+}
+
 /* ========== RESPONSIVE TWEAKS ========== */
 @media (max-width: 768px) {
   .doctor-card {
@@ -353,5 +418,6 @@ header ul a:hover {
     flex: 0 0 90%;
   }
 }
+
 
 
