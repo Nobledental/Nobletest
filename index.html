@@ -1,218 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dental Clinic - Best Dental Care in Hyderabad</title>
-  <meta name="description" content="Best dental clinic in Hyderabad offering advanced dental treatments with expert dentists. Book your appointment today.">
-  <meta name="keywords" content="Dental clinic Hyderabad, Best dentist Hyderabad, Root canal, Teeth whitening, Braces, Dental implants, Smile makeover">
-  <meta name="author" content="Noble Dental Nallagandla">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Dental Clinic - Best Dental Care in Hyderabad">
-  <meta property="og:description" content="Get treated by top dentists in Hyderabad. Book a consultation now.">
-  <meta property="og:image" content="https://dummyimage.com/600x400/ccc/fff&text=Dental+Clinic">
-  <meta property="og:url" content="https://nobledentalnallagandla.in">
-  <meta property="og:type" content="website">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-  <!-- ✅ Dentist structured data (keep this small one in <head>) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Dentist",
-    "name": "Noble Dental Nallagandla",
-    "image": "https://nobledentalnallagandla.in/images/logo.png",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Nallagandla, Hyderabad",
-      "addressLocality": "Hyderabad",
-      "addressRegion": "TS",
-      "postalCode": "500019",
-      "addressCountry": "IN"
-    },
-    "telephone": "+91-XXXXXXXXXX",
-    "url": "https://nobledentalnallagandla.in/",
-    "priceRange": "INR 500 - INR 25000",
-    "openingHours": ["Mo-Sa 09:00-21:00"]
-  }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NobleDentalCare-Nallagandla</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
-  
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">Noble Dental</div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Treatments</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+    <div class="container">
+        <video class="back-vid" autoplay loop muted plays-inline src="videos/galaxy.mp4"></video>
+
+
+
+        <header data-aos="fade-down" data-aos-duration="2000">
+            <div class="left">
+                <img src="images/dentalcare.nallagandla.png" alt="Noble Dental Clinic - Nallagandla logo">
+                <h2><span style="color: #444249a2;">Noble </span>Dental Care</h2>
+            </div>
+
+    <nav>  <!-- Use <nav> for the navigation -->            
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">Specialities</a></li>
+                <li><a href="#">Selfcare</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Patient Login</a></li>
+                <li><a href="#">Know More</a></li>    
+            </ul>
     </nav>
-    <div class="hero-section" id="home">
-      <video autoplay muted loop class="hero-video">
-        <source src="videos/blackhole.mp4blackhole.mp4" type="video/mp4" />
-      </video>
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1>Transforming Smiles at Noble Dental</h1>
-        <p>Advanced Dental Treatments with Care & Precision</p>
-        <a href="#services" class="btn-primary">Explore Treatments</a>
-      </div>
-    </div>
-  </header>
 
-  <section> class="animated-intro">
-    <h2>Why Choose Us?</h2>
-    <div class="intro-cards">
-      <div class="intro-card">🦷 Experienced Dentists</div>
-      <div class="intro-card">💎 Modern Technology</div>
-      <div class="intro-card">🦼️ Hygienic Environment</div>
-      <div class="intro-card">📍 Prime Location in Hyderabad</div>
-    </div>
-  </section>
-
-  <section class="services" id="servicesGrid">
-    <h2 class="section-title">Treatments We Offer</h2>
-    <div class="services-grid">
-      <div class="service-card" data-keywords="root canal" data-url="services.html#root-canal">
-        <img src="images/treatment1.jpg" alt="Root Canal Treatment in Hyderabad by Noble Dental" />
-        <h3>Root Canal</h3>
-        <p>Relieve pain with expert root canal therapy.</p>
-        <a class="read-more-button">Read More</a>
-      </div>
-      <div class="service-card" data-keywords="teeth whitening" data-url="services.html#teeth-whitening">
-        <img src="images/treatment2.jpg" alt="Teeth Whitening" />
-        <h3>Teeth Whitening</h3>
-        <p>Brighten your smile with safe whitening procedures.</p>
-        <a class="read-more-button">Read More</a>
-      </div>
-      <div class="service-card" data-keywords="braces" data-url="services.html#braces">
-        <img src="images/treatment3.jpg" alt="Braces" />
-        <h3>Braces</h3>
-        <p>Align your teeth for the perfect smile.</p>
-        <a class="read-more-button">Read More</a>
-      </div>
-      <div class="service-card" data-keywords="implants" data-url="services.html#implants">
-        <img src="images/treatment4.jpg" alt="Implants" />
-        <h3>Dental Implants</h3>
-        <p>Permanent tooth replacement solutions.</p>
-        <a class="read-more-button">Read More</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonial Carousel Section -->
-  <section id="testimonials" class="testimonial-carousel-section" role="region" aria-label="Patient Testimonials">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-[#1e293b] mb-4">Patient Testimonials</h2>
-      <p class="text-gray-600 mb-12">Smiles we’ve transformed across Hyderabad.</p>
-
-      <div class="relative overflow-hidden">
-        <div class="carousel flex transition-transform duration-700 ease-in-out w-[300%]" role="group" aria-roledescription="carousel">
-          <!-- Slide 1 -->
-          <div class="w-full px-4 flex-shrink-0">
-            <div class="bg-white p-6 rounded-2xl shadow-lg">
-              <p class="text-gray-700">"Excellent dental care and friendly staff. My smile has never looked better!"</p>
-              <div class="mt-4 flex items-center gap-4 justify-center">
-                <img src="https://via.placeholder.com/50" alt="Testimonial from Ritika M." class="w-12 h-12 rounded-full">
-                <div>
-                  <p class="font-semibold text-[#1e293b]">Ritika M.</p>
-                  <div class="text-yellow-500 text-sm">★★★★★</div>
-                </div>
-              </div>
+            <div class="box-icons">
+                <p><i class='bx bxl-youtube'></i></a>
+                <p><i class='bx bxl-github'></i></a>
+                <p><i class='bx bxl-linkedin-square'></i></a>
             </div>
-          </div>
-          <!-- Slide 2 -->
-          <div class="w-full px-4 flex-shrink-0">
-            <div class="bg-white p-6 rounded-2xl shadow-lg">
-              <p class="text-gray-700">"Professional doctors and great atmosphere. Highly recommend Noble Dental!"</p>
-              <div class="mt-4 flex items-center gap-4 justify-center">
-                <img src="https://via.placeholder.com/50" alt="Testimonial from Sandeep K." class="w-12 h-12 rounded-full">
-                <div>
-                  <p class="font-semibold text-[#1e293b]">Sandeep K.</p>
-                  <div class="text-yellow-500 text-sm">★★★★★</div>
-                </div>
-              </div>
+
+            <div class="menu-icon">
+                <i class='bx bx-menu'></i>
+            </div>            
+        </header>
+        <div class="sidebar">
+            <div class="close-icon">
+                <i class='bx bx-x'></i>
             </div>
-          </div>
-          <!-- Slide 3 -->
-          <div class="w-full px-4 flex-shrink-0">
-            <div class="bg-white p-6 rounded-2xl shadow-lg">
-              <p class="text-gray-700">"I came for teeth cleaning and stayed for the service. Superb experience!"</p>
-              <div class="mt-4 flex items-center gap-4 justify-center">
-                <img src="https://via.placeholder.com/50" alt="Testimonial from Divya N." class="w-12 h-12 rounded-full">
-                <div>
-                  <p class="font-semibold text-[#1e293b]">Divya N.</p>
-                  <div class="text-yellow-500 text-sm">★★★★★</div>
-                </div>
-              </div>
+            
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">Treatment Specialities</a></li>
+                <li><a href="#">Selfcare</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Patient Login</a></li>
+                <li><a href="#">Know More</a></li>                     
+            </ul>
+
+            <div class="social-sidebar">
+                <a><i class='bx bxl-youtube'></i></a>
+                <a><i class='bx bxl-github'></i></a>
+                <a><i class='bx bxl-linkedin-square'></i></a>
             </div>
-          </div>
         </div>
-      </div>
+
+        <div class="blackhole-box" data-aos="fade-down" data-aos-duration="2000">
+            <video autoplay loop muted plays-inline src="videos/blackhole.mp4"></video>
+        </div>
+
+        <section class="hero ">
+            <div class="hero-info autoBlur" data-aos="fade-right" data-aos-duration="1000">
+                <div class="hero-info-title" >
+                    <i class='bx bxl-sketch'></i>
+                    HealthFlo Hospitals & Clinic
+                </div>
+
+                <h1 data-aos="fade-right" data-aos-duration="3000">Providing <span class="gradient">the best</span> Dental Care<span class="gradient">Experience</span></h1>
+
+    <p>Meet our team of expertise with advancements and treatment standards</p>
+
+    <div class="hero-buttons">  <!-- Container for the buttons -->
+        <a href="https://wa.me/918610425342" target="_blank" class="hero-button whatsapp">
+            <i class='bx bxl-whatsapp'></i> WhatsApp
+        </a>
+
+        <a href="tel:+918610425342" class="hero-button call">
+            <i class='bx bxs-phone'></i> Call
+        </a>
+
+        <a href="mailto:nobledental.org@gmail.com" class="hero-button mail">
+            <i class='bx bx-envelope'></i> Mail
+        </a>
+
+        <a href="https://g.co/kgs/Lebjyvw" target="_blank" class="hero-button location">
+            <i class='bx bx-map'></i> Location
+        </a>
     </div>
-  </section>
+</div>
 
-  <!-- Google Map Embed -->
-  <section class="map-section">
-    <h2>Visit Us</h2>
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18...YOUR_PLACE_ID..." 
-              width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
-      </iframe>
+<div class="skills-video-box">
+    <img class="skills-video autoBlur" src="images/BEST DENTAL CLINIC IN NALLAGANDLA ICON.png
+" alt="BEST DENTAL CLINIC IN NALLAGANDLA ICON">
+</div>
+        
+            <div class="scroll-down"></div>
+        </section>
+
+<section class="info-section">
+    <div class="container">
+        <h1 class="section-title autoDisplay">Treatments We Offer</h1>
+
+        <input type="text" id="complaintInput" placeholder="Enter your dental concerns..." oninput="shuffleCards(this.value)">
+
+        <section class="services-grid" id="servicesGrid">
+            <!-- Service Card 1: Teeth Whitening -->
+                    <article class="service-card" data-keywords="teeth whitening, brighten, smile, radiant look, discoloration" data-url="https://www.example.com/teeth-whitening">
+                        <div class="text-section">
+                            <h3>Teeth Whitening</h3>
+                            <p>Brighten your smile with professional whitening for a radiant look. Say goodbye to discoloration!</p>
+                            <a href="https://www.example.com/teeth-whitening" class="read-more-button">Read More</a>
+                        </div>
+                        <img src="https://www.casadental.com.sg/wp-content/uploads/2024/02/White-Teeth-1.png" alt="Teeth Whitening">
+                    </article>
+
+                    <!-- Service Card 2: Invisalign -->
+                    <article class="service-card" data-keywords="invisalign, aligners, straighten, discreet, comfortable" data-url="https://www.example.com/invisalign">
+                        <div class="text-section">
+                            <h3>Invisalign</h3>
+                            <p>Discreet clear aligners for straightening teeth. Get a comfortable, nearly invisible alternative to braces.</p>
+                            <a href="https://www.example.com/invisalign" class="read-more-button">Read More</a>
+                        </div>
+                        <img src="https://supersmilesfl.com/wp-content/uploads/2021/02/GettyImages-1210031986-scaled.jpg" alt="Invisalign Clear Aligners">
+                    </article>
+
+                    <!-- Service Card 3: Dental Implants -->
+                    <article class="service-card" data-keywords="dental implants, tooth loss, replacement, secure, natural-looking" data-url="https://www.example.com/dental-implants">
+                        <div class="text-section">
+                            <h3>Dental Implants</h3>
+                            <p>Secure, natural tooth replacements. Restore your smile & confidence with our durable implants.</p>
+                            <a href="https://www.example.com/dental-implants" class="read-more-button">Read More</a>
+                        </div>
+                        <img src="https://d3b3by4navws1f.cloudfront.net/herol.png" alt="Dental Implants">
+                    </article>
+
+                    <!-- Service Card 4: Root Canal -->
+                    <article class="service-card" data-keywords="root canal, infection, pain, save tooth" data-url="https://www.example.com/root-canal">
+                        <div class="text-section">
+                            <h3>Root Canal</h3>
+                            <p>Save infected teeth with effective care. Our root canal relieves pain and restores your tooth’s health.</p>
+                            <a href="https://www.example.com/root-canal" class="read-more-button">Read More</a>
+                        </div>
+                        <img src="https://dentistauburnca.com/wp-content/uploads/2022/04/root-canal.png" alt="Root Canal Treatment">
+                    </article>
+
+                    <!-- Service Card 5: Braces & Aligners -->
+                    <article class="service-card" data-keywords="braces, aligners, crooked teeth, perfect smile, orthodontic" data-url="https://www.example.com/braces">
+                        <div class="text-section">
+                            <h3>Braces & Aligners</h3>
+                            <p>Orthodontic options for a perfect smile. Correct teeth and improve your bite!</p>
+                            <a href="https://www.example.com/braces" class="read-more-button">Read More</a>
+                        </div>
+                        <img src="https://www.jindaldentalclinic.com/wp-content/uploads/2018/03/speed-braces.png" alt="Braces and Aligners">
+                    </article>
+
+                    <!-- Service Card 6: Wisdom Teeth Removal -->
+                    <article class="service-card" data-keywords="wisdom teeth, removal, extraction, safe, prevent discomfort" data-url="https://www.example.com/wisdom-teeth-removal">
+                        <div class="text-section">
+                            <h3>Wisdom Teeth Removal</h3>
+                            <p>Safe extraction of wisdom teeth to prevent discomfort and infection. Smooth procedure.</p>
+                            <a href="https://www.example.com/wisdom-teeth-removal" class="read-more-button">Read More</a>
+                        </div>
+                        <img src="https://queensboroplazadental.com/wp-content/uploads/2024/02/GettyImages-1406686372.jpg.webp" alt="Wisdom Teeth Removal">
+                    </article>
+
+                    <!-- Service Card 7: Veneers & Smile Makeovers -->
+                    <article class="service-card" data-keywords="veneers, smile, makeover, custom, aesthetic improvements" data-url="https://www.example.com/veneers">
+                        <div class="text-section">
+                            <h3>Veneers & Smile Makeovers</h3>
+                            <p>Transform your smile with custom veneers and aesthetic improvements. Beautiful smiles guaranteed.</p>
+                            <a href="https://www.example.com/veneers" class="read-more-button">Read More</a>
+                        </div>
+                        <img src="https://www.dakabindental.com/wp-content/uploads/2020/08/veneers.png" alt="Veneers and Smile Makeovers">
+                    </article>
+
+                    <!-- Service Card 8: Crowns & Bridges -->
+                    <article class="service-card" data-keywords="crowns, bridges, restoration, natural look, tooth function" data-url="https://www.example.com/crowns-bridges">
+                        <div class="text-section">
+                            <h3>Crowns & Bridges</h3>
+                            <p>Restore your teeth's function & create a natural look with crowns & bridges.</p>
+                            <a href="https://www.example.com/crowns-bridges" class="read-more-button">Read More</a>
+                        </div>
+                        <img src="https://marigolddentaluae.com/wp-content/uploads/2024/12/Crowns-Bridges.png" alt="Crowns and Bridges">
+                    </article>
+                </section>
+            </div>
+        </section>
+
+        <section class="doctors-section">
+            <h1 class="section-title autoDisplay">Our Expert Doctors</h1>
+            <div class="doctor-cards">
+                <div class="doctor-card">
+                    <img src="images/doctor1.jpg" alt="Dr. A">
+                    <h3>Dr. A. Srikanth</h3>
+                    <p>Specialist in Orthodontics</p>
+                </div>
+                <div class="doctor-card">
+                    <img src="images/doctor2.jpg" alt="Dr. B">
+                    <h3>Dr. B. Priya</h3>
+                    <p>Prosthodontist & Implantologist</p>
+                </div>
+                <div class="doctor-card">
+                    <img src="images/doctor3.jpg" alt="Dr. C">
+                    <h3>Dr. C. Dhivakaran</h3>
+                    <p>Endodontist</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <h1 class="section-title autoDisplay">Clinic Gallery 🏥</h1>
+            <div class="gallery">
+                <img src="images/gallery1.jpg" alt="Clinic View 1">
+                <img src="images/gallery2.jpg" alt="Clinic View 2">
+                <img src="images/gallery3.jpg" alt="Clinic View 3">
+                <img src="images/gallery4.jpg" alt="Clinic View 4">
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <h1 class="section-title autoDisplay">What Our Patients Say 💬</h1>
+            <div class="testimonial-carousel">
+                <div class="testimonial">
+                    <p>"Absolutely amazing service! I felt no pain and the team was incredibly professional."</p>
+                    <h4>- Sandeep R.</h4>
+                </div>
+                <div class="testimonial">
+                    <p>"Clean, friendly environment. The doctors explained everything clearly. Highly recommend!"</p>
+                    <h4>- Lakshmi T.</h4>
+                </div>
+                <div class="testimonial">
+                    <p>"Best dental care experience ever! They even followed up after my procedure."</p>
+                    <h4>- Meena K.</h4>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <h1 class="section-title autoDisplay">Find Us 📍</h1>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!..." width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <section class="footer">
+            <h1>©️2025, Created by Dr Dhivakaran, C Akhila</h1>
+            <div class="box-icons">
+                <p><i class='bx bxl-youtube'></i></p>
+                <p><i class='bx bxl-github'></i></p>
+                <p><i class='bx bxl-linkedin-square'></i></p>
+            </div>
+        </section>
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2025 Noble Dental Nallagandla. All rights reserved.</p>
-    <div class="social-icons">
-      <a href="#"><img src="facebook.svg" alt="Facebook" /></a>
-      <a href="#"><img src="instagram.svg" alt="Instagram" /></a>
-      <a href="#"><img src="linkedin.svg" alt="LinkedIn" /></a>
-    </div>
-  </footer>
-
-  <!-- Optional JavaScript -->
-  <script src="main.js"></script>
-
-    <!-- JSON-LD for SEO: Testimonials -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Dentist",
-    "name": "Noble Dental Nallagandla",
-    "image": "https://nobledentalnallagandla.in/clinic-image.jpg",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Nallagandla Road",
-      "addressLocality": "Hyderabad",
-      "addressRegion": "Telangana",
-      "postalCode": "500019",
-      "addressCountry": "IN"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-        "author": { "@type": "Person", "name": "Asha K." },
-        "reviewBody": "Professional service and gentle care! Highly recommend."
-      },
-      {
-        "@type": "Review",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-        "author": { "@type": "Person", "name": "Pradeep M." },
-        "reviewBody": "The best dental clinic in Hyderabad. Clean and modern facilities!"
-      }
-    ],
-    "url": "https://nobledentalnallagandla.in/",
-    "telephone": "+91-XXXXXXXXXX"
-  }
-  </script>
+    <script src="app.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>AOS.init();</script>
 </body>
 </html>
-
-
-
