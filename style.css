@@ -23,29 +23,14 @@ html{
 }
 
 
-.back-vid {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -3;
+.back-vid{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    mix-blend-mode:overlay;
 }
 
-.blackhole-box {
-  position: absolute;
-  top: 10vh;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  z-index: 0;
-}
-
-.blackhole-box video {
-  width: 100%;
-  opacity: 0.9;
-}
 
 header {
     display: flex;
@@ -63,6 +48,10 @@ header {
     box-shadow: 0 0 15px #d6d9dea2;
     z-index: 999;
 
+    /* Moving animation */
+    animation: moveBackgroundBlack -1s linear infinite;
+}
+
 @keyframes moveBackgroundBlack {
     0% {
         background-position: 0% 50%;
@@ -72,16 +61,16 @@ header {
     }
 }
 
-header .left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.left{
+    display: flex;
+    align-items: center;
 }
 
-header .left img {
-  height: 60px;
-  border-radius: 10px;
+.left img{
+    width: 100px;
+    margin: 0 5px;
 }
+
 
 header ul {
     display: flex;
@@ -194,6 +183,7 @@ header ul a:hover {
     margin-bottom: 40px;
     font-size: 20px;
 }
+
 
 /* NEW STYLES FOR BUTTONS */
 .hero-buttons {
