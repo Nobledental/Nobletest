@@ -6,50 +6,64 @@
   <title>Dental Clinic - Best Dental Care in Hyderabad</title>
   <meta name="description" content="Best dental clinic in Hyderabad offering advanced dental treatments with expert dentists. Book your appointment today.">
   <meta name="keywords" content="Dental clinic Hyderabad, Best dentist Hyderabad, Root canal, Teeth whitening, Braces, Dental implants, Smile makeover">
-  <meta name="author" content="Your Clinic Name">
+  <meta name="author" content="Noble Dental Nallagandla">
   <meta name="robots" content="index, follow">
-  
-  <!-- Open Graph for social sharing -->
   <meta property="og:title" content="Dental Clinic - Best Dental Care in Hyderabad">
   <meta property="og:description" content="Get treated by top dentists in Hyderabad. Book a consultation now.">
   <meta property="og:image" content="https://dummyimage.com/600x400/ccc/fff&text=Dental+Clinic">
-  <meta property="og:url" content="https://yourwebsite.com">
+  <meta property="og:url" content="https://nobledentalnallagandla.in">
   <meta property="og:type" content="website">
-
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  
+
+  <!-- ✅ Dentist structured data (keep this small one in <head>) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Noble Dental Nallagandla",
+    "image": "https://nobledentalnallagandla.in/images/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nallagandla, Hyderabad",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "TS",
+      "postalCode": "500019",
+      "addressCountry": "IN"
+    },
+    "telephone": "+91-XXXXXXXXXX",
+    "url": "https://nobledentalnallagandla.in/",
+    "priceRange": "INR 500 - INR 25000",
+    "openingHours": ["Mo-Sa 09:00-21:00"]
+  }
+  </script>
 </head>
+  
 <body>
-  <header class="header">
+  <header>
     <nav class="navbar">
-      <div class="logo">🦷 SmileCare Dental</div>
+      <div class="logo">Noble Dental</div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">Our Doctors</a></li>
-        <li><a href="services.html">Treatments</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Treatments</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="menu-icon">&#9776;</div>
     </nav>
+    <div class="hero-section" id="home">
+      <video autoplay muted loop class="hero-video">
+        <source src="blackhole.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Transforming Smiles at Noble Dental</h1>
+        <p>Advanced Dental Treatments with Care & Precision</p>
+        <a href="#services" class="btn-primary">Explore Treatments</a>
+      </div>
+    </div>
   </header>
 
-  <!-- Hero Section with Video and White Background -->
-  <section class="hero-overlay">
-    <div class="hero-video">
-      <video autoplay muted loop playsinline>
-        <source src="your-video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="hero-content">
-      <h1>Smile Brighter with Noble Dental</h1>
-      <p>World-class Dental Care in Nallagandla, Hyderabad</p>
-      <a href="contact.html" class="hero-button">Book Appointment</a>
-    </div>
-  </section>
-
-  <section class="animated-intro">
+  <section> class="animated-intro">
     <h2>Why Choose Us?</h2>
     <div class="intro-cards">
       <div class="intro-card">🦷 Experienced Dentists</div>
@@ -63,7 +77,7 @@
     <h2 class="section-title">Treatments We Offer</h2>
     <div class="services-grid">
       <div class="service-card" data-keywords="root canal" data-url="services.html#root-canal">
-        <img src="images/treatment1.jpg" alt="Root Canal" />
+        <img src="images/treatment1.jpg" alt="Root Canal Treatment in Hyderabad by Noble Dental" />
         <h3>Root Canal</h3>
         <p>Relieve pain with expert root canal therapy.</p>
         <a class="read-more-button">Read More</a>
@@ -161,7 +175,10 @@
     </div>
   </footer>
 
-  <!-- JSON-LD for SEO: Testimonials -->
+  <!-- Optional JavaScript -->
+  <script src="main.js"></script>
+
+    <!-- JSON-LD for SEO: Testimonials -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -194,8 +211,6 @@
     "telephone": "+91-XXXXXXXXXX"
   }
   </script>
-
-  <!-- Optional JavaScript -->
-  <script src="main.js"></script>
 </body>
 </html>
+
