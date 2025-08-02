@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact & Booking - SmileCare Clinic</title>
+  <meta name="description" content="Book your appointment at SmileCare Dental Clinic in Hyderabad. Find contact details, testimonials, and location map.">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo">🦷 SmileCare Dental</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">Our Doctors</a></li>
+        <li><a href="services.html">Treatments</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="menu-icon">&#9776;</div>
+    </nav>
+  </header>
+
+  <section class="contact-section">
+    <h2 class="section-title">Book an Appointment</h2>
+    <form class="booking-form" action="https://formspree.io/f/your-form-id" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="tel" name="phone" placeholder="Your Phone Number" required />
+      <textarea name="message" placeholder="Your Message / Symptoms" required></textarea>
+      <button type="submit">Submit Booking</button>
+    </form>
+  </section>
+
+  <section class="testimonial-section">
+    <h2 class="section-title">What Our Patients Say</h2>
+    <div class="testimonials">
+      <div class="testimonial-card">
+        <p>"Dr. Diwakaran and team are amazing! The treatment was painless and the staff was so kind."</p>
+        <h4>– Ramesh, Hyderabad</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>"Best dental clinic in Hyderabad! I got my smile back after years thanks to their expert care."</p>
+        <h4>– Swathi, Jubilee Hills</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>"Very hygienic and modern clinic. My kids love visiting for check-ups!"</p>
+        <h4>– Imran, Banjara Hills</h4>
+      </div>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <h2 class="section-title">Visit Us</h2>
+    <!-- Replace src with your real Google Map embed link once available -->
+    <div class="map-container">
+      <iframe
+        src="https://maps.google.com/maps?q=Hyderabad%20Dental%20Clinic&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 SmileCare Dental, Hyderabad. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
