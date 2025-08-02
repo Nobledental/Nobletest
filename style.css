@@ -1,24 +1,27 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    padding-top: 0px; 
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #ffffff;
-  color: #1d1d1d;
-  overflow-x: hidden;
+
+html{
+    scroll-behavior: smooth;
 }
 
-.container {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  overflow: hidden;
+.container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    background-color: #0002082e;
 }
+
 
 .back-vid {
   position: fixed;
@@ -45,15 +48,28 @@ body {
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    height: 70px;
+    background: linear-gradient(135deg, #ebecf3, #0d0138, #28014a);
+    background-size: 300% 300%;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 15px #d6d9dea2;
+    z-index: 999;
+
+@keyframes moveBackgroundBlack {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
 }
 
 header .left {
@@ -67,21 +83,36 @@ header .left img {
   border-radius: 10px;
 }
 
-header nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
+header ul {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 50px;
+    background-color: rgb(2 7 22 / 41%);
+    backdrop-filter: blur(100px);
+    box-shadow: 0 0 10px #020a167a;
 }
 
-header nav ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  transition: color 0.3s ease;
+header ul li {
+    list-style: none;
 }
 
-header nav ul li a:hover {
-  color: #0077b6;
+header ul a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    margin: 0 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.4s ease; /* Smooth transition for all properties */
+}
+
+/* Hover effect with smooth animation */
+header ul a:hover {
+    text-shadow: 0 0 15px #dde4e1;
+    background-color: rgba(255, 255, 255, 0.1); /* add subtle background for hover */
+    transform: translateY(-3px); /* slight lift effect */
 }
 
 .box-icons i {
