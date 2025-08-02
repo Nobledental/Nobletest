@@ -1,7 +1,32 @@
-// main.js
+ocument.addEventListener("DOMContentLoaded", () => {
+  // ========= TESTIMONIAL SLIDES =========
+  const slides = document.querySelectorAll(".testimonial-slide");
+  let currentIndex = 0;
 
-// ========= NAVIGATION TOGGLE =========
-document.addEventListener("DOMContentLoaded", () => {
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active", "prev", "next");
+      if (i === index) {
+        slide.classList.add("active");
+      } else if (i === (index + 1) % slides.length) {
+        slide.classList.add("next");
+      } else if (i === (index - 1 + slides.length) % slides.length) {
+        slide.classList.add("prev");
+      }
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  if (slides.length > 0) {
+    showSlide(currentIndex);
+    setInterval(nextSlide, 5000); // every 5 seconds
+  }
+
+  // ========= NAVIGATION TOGGLE =========
   const menuIcon = document.querySelector(".menu-icon");
   const navLinks = document.querySelector(".nav-links");
   const closeIcon = document.querySelector(".close-icon");
@@ -27,11 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       cards.forEach((card) => {
         const keywords = card.dataset.keywords.toLowerCase();
-        if (keywords.includes(query)) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
+        card.style.display = keywords.includes(query) ? "block" : "none";
       });
     });
   }
@@ -45,9 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     },
-    {
-      threshold: 0.1,
-    }
+    { threshold: 0.1 }
   );
 
   const animatedElements = document.querySelectorAll(".animate-on-scroll");
@@ -75,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ========= DISABLE RIGHT CLICK / COPY (optional) =========
+  // ========= DISABLE RIGHT CLICK / COPY (Optional) =========
   document.addEventListener("contextmenu", (e) => e.preventDefault());
 
   document.addEventListener("keydown", (e) => {
