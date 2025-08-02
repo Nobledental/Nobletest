@@ -130,7 +130,7 @@ header ul a:hover {
 .blackhole-box {
     position: absolute;
     top: 0;
-    width: 140%;
+    width: 100%;
     display: flex;
     justify-content: center;
     z-index: -1;
@@ -413,3 +413,4 @@ header ul a:hover {
   background-color: #fff;
   color: #003147;
 }
+
