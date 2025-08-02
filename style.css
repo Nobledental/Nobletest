@@ -1,6 +1,241 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    padding-top: 0px; 
+}
 
-/* ========== YOUR ORIGINAL STYLES REMAIN HERE ========== */
-/* ... All styles and animations before "Treatment We Offer" ... */
+html{
+    scroll-behavior: smooth;
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    background-color: #0002082e;
+}
+
+
+.back-vid{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    mix-blend-mode:overlay;
+}
+
+
+header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    height: 70px;
+    background: linear-gradient(135deg, #ebecf3, #0d0138, #28014a);
+    background-size: 300% 300%;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 15px #d6d9dea2;
+    z-index: 999;
+
+    /* Moving animation */
+    animation: moveBackgroundBlack -1s linear infinite;
+}
+
+@keyframes moveBackgroundBlack {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.left{
+    display: flex;
+    align-items: center;
+}
+
+.left img{
+    width: 100px;
+    margin: 0 5px;
+}
+
+
+header ul {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 50px;
+    background-color: rgb(2 7 22 / 41%);
+    backdrop-filter: blur(100px);
+    box-shadow: 0 0 10px #020a167a;
+}
+
+header ul li {
+    list-style: none;
+}
+
+header ul a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    margin: 0 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.4s ease; /* Smooth transition for all properties */
+}
+
+/* Hover effect with smooth animation */
+header ul a:hover {
+    text-shadow: 0 0 15px #dde4e1;
+    background-color: rgba(255, 255, 255, 0.1); /* add subtle background for hover */
+    transform: translateY(-3px); /* slight lift effect */
+}
+
+.box-icons{
+    display: flex;
+    gap: 20px;
+}
+
+.box-icons p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #f5f7fa;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.box-icons p:hover{
+    background-color: #e9e9de;
+    color: black;
+    box-shadow: 0 0 15px #dee1e6;
+}
+
+.blackhole-box {
+    position: absolute;
+    top: 0;
+    width: 140%;
+    display: flex;
+    justify-content: center;
+    z-index: -1;
+    mix-blend-mode: lighten;
+    overflow: hidden;   /* Prevent overflow if the video is larger */
+  }
+  
+.blackhole-box video {
+    width: 100%;        /* Make the video take up the full width */
+    margin-top: -25.7%;
+}
+
+.hero{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-info {
+    position: absolute;
+    left: 5%;
+}
+
+.hero-info .hero-info-title {
+    color: #b5bbbc;
+    padding: 8px 5px;
+    border-radius: 50px;
+    border: 1px solid #72a1de94;
+    width: 240px;
+    background-color: #462dbf00;
+    box-shadow: 0 0 5px #72a1de84;
+}
+
+.hero-info h1 {
+    font-size: 60px;
+    max-width: 600px;
+    font-weight: 700;
+    line-height: 70px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.hero-info p {
+    max-width: 550px;
+    line-height: 25px;
+    margin-bottom: 40px;
+    font-size: 20px;
+}
+
+
+/* NEW STYLES FOR BUTTONS */
+.hero-buttons {
+    display: flex;         /* Arrange buttons horizontally */
+    gap: 20px;            /* Space between buttons */
+    margin-top: 20px;      /* Space between the paragraph and buttons */
+}
+
+.hero-button {
+    display: inline-flex;  /* Display as inline flex containers */
+    align-items: center;  /* Vertically align icon and text */
+    justify-content: center; /* Center content horizontally */
+    color: #02021a;
+    padding: 15px 35px;
+    border-radius: 50px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px #3e454ff5;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none; /* Remove underline from links */
+    font-weight: bold;      /* Make the text bold */
+}
+
+.hero-button:hover {
+    background-color: #151313; /* White background on hover */
+    color: #eceef1;            /* Black text on hover */
+    border: 1px solid #080101;
+    box-shadow: 0 0 15px #72a1de81;
+}
+
+.hero-button i {
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 1.2em;   /* Adjust icon size as needed */
+}
+
+/* Optional: Style specific buttons differently */
+.hero-button.whatsapp {
+    /* Add WhatsApp-specific styles if needed */
+}
+
+.hero-button.call {
+    /* Add Call-specific styles if needed */
+}
+
+.hero-button.mail {
+    /* Add Mail-specific styles if needed */
+}
+
+.hero-button.location {
+    /* Add Location-specific styles if needed */
+}
+
 
 /* ========== DOCTOR PROFILE CARDS ========== */
 .doctor-card {
@@ -102,3 +337,4 @@
     flex: 0 0 90%;
   }
 }
+
