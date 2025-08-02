@@ -1,341 +1,154 @@
-body{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #ffffff;
-    padding-top: 0px; 
+/* Reset and base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html{
-    scroll-behavior: smooth;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
 }
 
-.container{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 100px;
-    background-color: #0002082e;
-}
-
-
-.back-vid{
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    mix-blend-mode:overlay;
-}
-
-
+/* Header & Navigation */
 header {
-    display: flex;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 30px;
-    height: 70px;
-    background: linear-gradient(135deg, #ebecf3, #0d0138, #28014a);
-    background-size: 300% 300%;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 0 15px #d6d9dea2;
-    z-index: 999;
-
-    /* Moving animation */
-    animation: moveBackgroundBlack 10s linear infinite;
+  background-color: #003147;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-@keyframes moveBackgroundBlack {
-    0% {
-        background-position: 0% 50%;
-    }
-    100% {
-        background-position: 100% 50%;
-    }
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: 500;
 }
 
-.left{
-    display: flex;
-    align-items: center;
+nav a:hover {
+  color: #00aaff;
 }
 
-.left img{
-    width: 100px;
-    margin: 0 5px;
-}
-
-
-header ul {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 10px 10px;
-    border-radius: 50px;
-    background-color: rgb(2 7 22 / 41%);
-    backdrop-filter: blur(100px);
-    box-shadow: 0 0 10px #020a167a;
-}
-
-header ul li {
-    list-style: none;
-}
-
-header ul a {
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    margin: 0 10px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: all 0.4s ease; /* Smooth transition for all properties */
-}
-
-/* Hover effect with smooth animation */
-header ul a:hover {
-    text-shadow: 0 0 15px #dde4e1;
-    background-color: rgba(255, 255, 255, 0.1); /* add subtle background for hover */
-    transform: translateY(-3px); /* slight lift effect */
-}
-
-.box-icons{
-    display: flex;
-    gap: 20px;
-}
-
-.box-icons p{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #f5f7fa;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.box-icons p:hover{
-    background-color: #e9e9de;
-    color: black;
-    box-shadow: 0 0 15px #dee1e6;
-}
-
-.blackhole-box {
-    position: absolute;
-    top: 0;
-    width: 140%;
-    display: flex;
-    justify-content: center;
-    z-index: -1;
-    mix-blend-mode: lighten;
-    overflow: hidden;   /* Prevent overflow if the video is larger */
-  }
-  
-.blackhole-box video {
-    width: 100%;        /* Make the video take up the full width */
-    margin-top: -25.7%;
-}
-
+/* Hero Section with Video */
 .hero-section.white-background {
+  background-color: #fff;
   position: relative;
-  height: 100vh;
-  background-color: white;
   overflow: hidden;
 }
 
 .hero-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  z-index: 1;
+  mix-blend-mode: lighten;
+}
+
+.hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  z-index: 1;
-  mix-blend-mode: screen; /* Makes the dark parts transparent over white */
-}
-
-.hero-overlay {
-  position: relative;
+  background: rgba(255,255,255,0.75);
   z-index: 2;
-  background-color: rgba(255, 255, 255, 0.8); /* Light overlay for readability */
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 4rem 2rem;
+}
+
+.hero-content {
   text-align: center;
+  z-index: 3;
 }
 
-.hero-content h1,
+.hero-content h1 {
+  font-size: 3rem;
+  color: #003147;
+  margin-bottom: 1rem;
+}
+
 .hero-content p {
-  color: #1e293b;
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 2rem;
 }
 
-.hero-content .btn {
-  background-color: #0077b6;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  margin-top: 1rem;
-  display: inline-block;
-}
-
-
-/* NEW STYLES FOR BUTTONS */
+/* Hero Buttons */
 .hero-buttons {
-    display: flex;         /* Arrange buttons horizontally */
-    gap: 20px;            /* Space between buttons */
-    margin-top: 20px;      /* Space between the paragraph and buttons */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .hero-button {
-    display: inline-flex;  /* Display as inline flex containers */
-    align-items: center;  /* Vertically align icon and text */
-    justify-content: center; /* Center content horizontally */
-    color: #02021a;
-    padding: 15px 35px;
-    border-radius: 50px;
-    border: 1px solid #ffffff;
-    background-color: #ffffff;
-    box-shadow: 0 0 5px #3e454ff5;
-    cursor: pointer;
-    transition: 0.3s;
-    text-decoration: none; /* Remove underline from links */
-    font-weight: bold;      /* Make the text bold */
+  background-color: #00aaff;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
 }
 
 .hero-button:hover {
-    background-color: #151313; /* White background on hover */
-    color: #eceef1;            /* Black text on hover */
-    border: 1px solid #080101;
-    box-shadow: 0 0 15px #72a1de81;
+  background-color: #0077aa;
 }
 
-.hero-button i {
-    margin-right: 8px; /* Space between icon and text */
-    font-size: 1.2em;   /* Adjust icon size as needed */
+/* Treatment Section */
+.treatments {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  text-align: center;
 }
 
-/* Optional: Style specific buttons differently */
-.hero-button.whatsapp {
-    /* Add WhatsApp-specific styles if needed */
+.treatments h2 {
+  font-size: 2.2rem;
+  color: #003147;
+  margin-bottom: 2rem;
 }
 
-.hero-button.call {
-    /* Add Call-specific styles if needed */
+.treatment-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
 }
 
-.hero-button.mail {
-    /* Add Mail-specific styles if needed */
-}
-
-.hero-button.location {
-    /* Add Location-specific styles if needed */
-}
-
-@media (max-width: 768px) {
-  .hero-video,
-  .blackhole-box video,
-  .back-vid {
-    display: none;
-  }
-
-  .hero-overlay {
-    background-color: #ffffff; /* fallback if video hidden */
-  }
-}
-
-/* ========== DOCTOR PROFILE CARDS ========== */
-.doctor-card {
-  background: #f9f9f9;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  padding: 2rem;
+.treatment-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  width: 280px;
+  padding: 1.5rem;
   text-align: center;
   transition: transform 0.3s ease;
 }
-.doctor-card:hover {
-  transform: translateY(-10px);
+
+.treatment-card:hover {
+  transform: translateY(-5px);
 }
-.doctor-image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
+
+.treatment-card img {
+  width: 100%;
+  border-radius: 8px;
   margin-bottom: 1rem;
 }
-.doctor-name {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #333;
-}
-.doctor-speciality {
-  font-size: 0.95rem;
-  color: #777;
-}
-.doctor-bio {
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-  color: #666;
-}
-.doctor-socials {
-  margin-top: 1rem;
-}
-.doctor-socials a {
-  margin: 0 0.4rem;
-  color: #666;
-  transition: color 0.3s;
-}
-.doctor-socials a:hover {
-  color: #0bb0a7;
+
+.treatment-card h3 {
+  color: #003147;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
-/* ========== TESTIMONIAL CAROUSEL ========== */
-.testimonial-section {
-  background: #fff;
-  padding: 4rem 1rem;
-}
-
-.testimonial-card {
-  scroll-snap-align: center;
-  flex: 0 0 300px;
-  background: #f0f4f8;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-}
-.testimonial-content {
-  font-style: italic;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-.testimonial-author {
-  font-weight: 600;
-  color: #444;
-  text-align: right;
-}
-
-/* ========== GOOGLE MAP SECTION ========== */
-.map-section {
-  margin: 4rem 0;
-  padding: 0 1rem;
-}
-.map-container {
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  height: 400px;
-}
-
-/* Testimonial Section Styles */
+/* Testimonials */
 .testimonials {
   background-color: #fefefe;
   padding: 4rem 2rem;
@@ -367,6 +180,9 @@ header ul a:hover {
   width: 100%;
   padding: 2rem;
   box-sizing: border-box;
+  background: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .testimonial-slide.active {
@@ -400,19 +216,40 @@ header ul a:hover {
   color: #006994;
 }
 
-/* ========== RESPONSIVE TWEAKS ========== */
-@media (max-width: 768px) {
-  .doctor-card {
-    padding: 1.5rem;
-  }
-  .testimonial-carousel {
-    gap: 1rem;
-  }
-  .testimonial-card {
-    flex: 0 0 90%;
-  }
+/* Footer */
+footer {
+  background-color: #003147;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
 }
 
+footer a {
+  color: #fff;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
 
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
 
+  .hero-content p {
+    font-size: 1rem;
+  }
 
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .treatment-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonial-carousel {
+    height: auto;
+  }
+}
