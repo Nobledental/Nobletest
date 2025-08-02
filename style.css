@@ -303,13 +303,7 @@ header ul a:hover {
   background: #fff;
   padding: 4rem 1rem;
 }
-.testimonial-carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 2rem;
-  padding: 1rem 0;
-}
+
 .testimonial-card {
   scroll-snap-align: center;
   flex: 0 0 300px;
@@ -418,6 +412,7 @@ header ul a:hover {
     flex: 0 0 90%;
   }
 }
+
 
 
 
