@@ -428,16 +428,22 @@ header ul a:hover {
   margin-top: 2rem;
 }
 
-.footer .box-icons p {
+.footer .box-icons a {
   margin: 0 0.5rem;
   color: #fff;
   border: 1px solid #fff;
-  background-color: transparent;
+  padding: 8px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
-.footer .box-icons p:hover {
+.footer .box-icons a:hover {
   background-color: #fff;
   color: #003147;
 }
+
 
 
