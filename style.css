@@ -2,7 +2,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    color: #ffffff;
+    color: #050335;
     padding-top: 0px; 
     overflow-x: hidden;
 }
@@ -26,9 +26,9 @@ html{
   width: 100%;
   min-height: 100vh;
   position: relative;
-  background: linear-gradient(-45deg, #00f0ff, #ff00ff, #00ff95, #ffa500);
+  background: linear-gradient(-150deg, #06e1f9, #8d39ff, #822d58, #6e1eaa);
   background-size: 600% 600%;
-  animation: gradientShift 12s ease infinite;
+  animation: gradientShift 7s ease infinite;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,10 +67,10 @@ header {
     justify-content: space-between;
     padding: 0 30px;
     height: 70px;
-    background: linear-gradient(135deg, #ebecf3, #0d0138, #28014a);
+    background: linear-gradient(135deg, #fbfbfba6, #f1f1f3f2, #eaeeef);
     background-size: 300% 300%;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 0 15px #d6d9dea2;
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 25px #0d0a9aa2;
     z-index: 999;
 
     /* Moving animation */
@@ -101,11 +101,11 @@ header ul {
     display: flex;
     justify-content: center;
     width: 100%;
-    padding: 10px;
-    border-radius: 50px;
-    background-color: rgb(2, 7, 22, / 41%);
-    backdrop-filter: blur(100px);
-    box-shadow: 0 0 10px #020a167a;
+    padding: 7px;
+    border-radius: 80px;
+    background: linear, #828587d1, #617aaae8, #51585c05);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 10px #2d292978;
 }
 
 header ul li {
@@ -113,20 +113,21 @@ header ul li {
 }
 
 header ul a {
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    margin: 0 10px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: all 0.4s ease; /* Smooth transition for all properties */
+  text-decoration: none;
+  color: #09090a;
+  font-weight: 500;
+  margin: 0 20px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
-/* Hover effect with smooth animation */
 header ul a:hover {
-  text-shadow: 0 0 15px #dde4e1;
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-3px);
+  background-color: rgb(255 255 255 / 82%);
+  transform: scale(1.15);
+  color: #131d30;
+  text-shadow: 0 0 15px #f4f7f7;
 }
 
 .box-icons{
@@ -162,17 +163,17 @@ header ul a:hover {
   height: 100%;
   overflow: hidden;
   z-index: 0;
-  pointer-events: none;
-  mix-blend-mode: screen; /* or try lighten / overlay */
-  opacity: 0.4; /* Adjust to blend nicely */
+  pointer-events: inone;
+  mix-blend-mode: lighten; /* or try lighten / overlay */
+  opacity: 2; /* Adjust to blend nicely */
 }
   
 .blackhole-box video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: translateY(-25%); /* similar to margin-top */
-  filter: brightness(1.2) contrast(1.1) saturate(1.5); /* Enhance blend */
+  transform: translateY(-42.5%); /* similar to margin-top */
+  filter: brightness(1.1) contrast(1) saturate(1.4); /* Enhance blend */
 }
 
 .hero{
@@ -450,7 +451,3 @@ header ul a:hover {
   background-color: #fff;
   color: #003147;
 }
-
-
-
-
