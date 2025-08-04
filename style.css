@@ -24,11 +24,11 @@ html{
 
 .hero-background {
   width: 100%;
-  min-height: 100vh;
+  min-height: 70vh;
   position: relative;
-  background: linear-gradient(-45deg, #181722, #652965, #187989, #174b92);
+  background: linear-gradient(-45deg, #140a74, #681868, #893417, #3e286d);
   background-size: 600% 600%;
-  animation: gradientShift 12s ease infinite;
+  animation: gradientShift 4s ease infinite;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,7 +105,7 @@ header ul {
     border-radius: 50px;
     background-color: #848080bd;
     backdrop-filter: blur(100px);
-    box-shadow: 0 0 10px #eceff37a;
+    box-shadow: 0 0 10px #3134377a;
 }
 
 header ul li {
@@ -118,16 +118,16 @@ header ul a {
   font-weight: 500;
   margin: 0 12px;
   padding: 5px 10px;
-  border-radius: 8px;
+  border-radius: 4px;
   transition: all 0.3s ease;
   display: inline-block;
 }
 
 header ul a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgb(229 232 239 / 84%);
   transform: scale(1.15);
-  color: #ffffff;
-  text-shadow: 0 0 15px #2c62c9;
+  color: #080808;
+  text-shadow: 0 0 15px #91919fcc;
 }
 
 .box-icons{
@@ -142,17 +142,18 @@ header ul a:hover {
   font-size: 20px;
   width: 30px;
   height: 30px;
-  border: 2px solid #f5f7fa;
+  border: 2px solid #781802;
   border-radius: 50%;
   cursor: pointer;
   transition: 0.5s;
- color: white; /* or your preferred icon color */
+ color: #1d1f25; /* or your preferred icon color */
   text-decoration: none;
 }
 .box-icons a:hover {
-  background-color: #e9e9de;
-  color: black;
-  box-shadow: 0 0 15px #dee1e6;
+  background-color: #1b1b19;
+  color: #f7efef;
+  box-shadow: 0 0 15px #ebedf1;
+  border: 2px solid #650f50;
 }
 
 .blackhole-box {
@@ -170,10 +171,10 @@ header ul a:hover {
   
 .blackhole-box video {
   width: 100%;
-  height: 100%;
+  height: 130%;
   object-fit: cover;
   transform: translateY(-43%); /* similar to margin-top */
-  filter: brightness(0.8) contrast(1.7) saturate(2.3); /* Enhance blend */
+  filter: brightness(0.8) contrast(1.8) saturate(0.4); /* Enhance blend */
 }
 
 .hero{
@@ -191,7 +192,7 @@ header ul a:hover {
 }
 
 .hero-info .hero-info-title {
-    color: #b5bbbc;
+    color: #849da1;
     padding: 8px 5px;
     border-radius: 50px;
     border: 1px solid #72a1de94;
@@ -221,19 +222,19 @@ header ul a:hover {
 .hero-buttons {
     display: flex;         /* Arrange buttons horizontally */
     gap: 20px;            /* Space between buttons */
-    margin-top: 20px;      /* Space between the paragraph and buttons */
+    margin-top: 40px;      /* Space between the paragraph and buttons */
 }
 
 .hero-button {
     display: inline-flex;  /* Display as inline flex containers */
     align-items: center;  /* Vertically align icon and text */
     justify-content: center; /* Center content horizontally */
-    color: #02021a;
-    padding: 15px 35px;
+    color: #e9e9ee;
+    padding: 5px 20px;
     border-radius: 50px;
-    border: 1px solid #ffffff;
-    background-color: #ffffff;
-    box-shadow: 0 0 5px #3e454ff5;
+    border: 1px solid #ebe6e6;
+    background-color: #574d4d;
+    box-shadow: 0 0 5px #5f6267f5;
     cursor: pointer;
     transition: 0.3s;
     text-decoration: none; /* Remove underline from links */
@@ -241,9 +242,9 @@ header ul a:hover {
 }
 
 .hero-button:hover {
-    background-color: #151313; /* White background on hover */
-    color: #eceef1;            /* Black text on hover */
-    border: 1px solid #080101;
+    background-color: #f3e9e9; /* White background on hover */
+    color: #0b121b;            /* Black text on hover */
+    border: 1px solid #f1ecec;
     box-shadow: 0 0 15px #72a1de81;
 }
 
