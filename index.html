@@ -11,7 +11,9 @@
   <meta name="author" content="Noble Dental Nallagandla" />
   <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  
   
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Noble Dental Nallagandla - Best Dental Clinic in Hyderabad" />
@@ -236,26 +238,71 @@
             </div>
         </section>
 
-        <section class="doctors-section">
-            <h1 class="section-title autoDisplay">Our Expert Doctors</h1>
-            <div class="doctor-cards">
-                <div class="doctor-card">
-                    <img src="images/doctor1.jpg" alt="Dr. A">
-                    <h3>Dr. A. Srikanth</h3>
-                    <p>Specialist in Orthodontics</p>
-                </div>
-                <div class="doctor-card">
-                    <img src="images/doctor2.jpg" alt="Dr. B">
-                    <h3>Dr. B. Priya</h3>
-                    <p>Prosthodontist & Implantologist</p>
-                </div>
-                <div class="doctor-card">
-                    <img src="images/doctor3.jpg" alt="Dr. C">
-                    <h3>Dr. C. Dhivakaran</h3>
-                    <p>Endodontist</p>
-                </div>
-            </div>
-        </section>
+<section class="doctors-section" id="expert-doctors">
+  <div class="wrapper">
+    <header class="title">
+      <h2>Our Expert Dentists in Hyderabad</h2>
+      <p>Meet our team of top dental specialists dedicated to your smile and oral health.</p>
+    </header>
+
+    <div class="card_Container">
+      <!-- Doctor 1 -->
+      <article class="card" itemscope itemtype="https://schema.org/Person">
+        <div class="imbBx">
+          <img src="images/doctor1.jpg" alt="Dr. A. Srikanth - Orthodontist in Hyderabad" loading="lazy" itemprop="image">
+        </div>
+        <div class="content">
+          <div class="contentBx">
+            <h3 itemprop="name">Dr. A. Srikanth<br><span itemprop="jobTitle">Orthodontist</span></h3>
+          </div>
+          <meta itemprop="worksFor" content="Noble Dental Nallagandla">
+          <ul class="sci">
+            <li style="--i:1"><a href="#"><i class="fab fa-facebook-f" aria-label="Facebook"></i></a></li>
+            <li style="--i:2"><a href="#"><i class="fab fa-twitter" aria-label="Twitter"></i></a></li>
+            <li style="--i:3"><a href="#"><i class="fab fa-linkedin-in" aria-label="LinkedIn"></i></a></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Doctor 2 -->
+      <article class="card" itemscope itemtype="https://schema.org/Person">
+        <div class="imbBx">
+          <img src="images/doctor2.jpg" alt="Dr. B. Priya - Prosthodontist & Implantologist in Hyderabad" loading="lazy" itemprop="image">
+        </div>
+        <div class="content">
+          <div class="contentBx">
+            <h3 itemprop="name">Dr. B. Priya<br><span itemprop="jobTitle">Prosthodontist & Implantologist</span></h3>
+          </div>
+          <meta itemprop="worksFor" content="Noble Dental Nallagandla">
+          <ul class="sci">
+            <li style="--i:1"><a href="#"><i class="fab fa-facebook-f" aria-label="Facebook"></i></a></li>
+            <li style="--i:2"><a href="#"><i class="fab fa-twitter" aria-label="Twitter"></i></a></li>
+            <li style="--i:3"><a href="#"><i class="fab fa-linkedin-in" aria-label="LinkedIn"></i></a></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Doctor 3 -->
+      <article class="card" itemscope itemtype="https://schema.org/Person">
+        <div class="imbBx">
+          <img src="images/doctor3.jpg" alt="Dr. C. Dhivakaran - Endodontist in Hyderabad" loading="lazy" itemprop="image">
+        </div>
+        <div class="content">
+          <div class="contentBx">
+            <h3 itemprop="name">Dr. C. Dhivakaran<br><span itemprop="jobTitle">Endodontist</span></h3>
+          </div>
+          <meta itemprop="worksFor" content="Noble Dental Nallagandla">
+          <ul class="sci">
+            <li style="--i:1"><a href="#"><i class="fab fa-facebook-f" aria-label="Facebook"></i></a></li>
+            <li style="--i:2"><a href="#"><i class="fab fa-twitter" aria-label="Twitter"></i></a></li>
+            <li style="--i:3"><a href="#"><i class="fab fa-linkedin-in" aria-label="LinkedIn"></i></a></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 
         <section class="gallery-section">
             <h1 class="section-title autoDisplay">Clinic Gallery 🏥</h1>
@@ -306,6 +353,7 @@
     <script>AOS.init();</script>
 </body>
 </html>
+
 
 
 
