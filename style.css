@@ -452,3 +452,32 @@ header ul a:hover {
   background-color: #fff;
   color: #003147;
 } 
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  header ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .hero-info {
+    position: static;
+    text-align: center;
+  }
+
+  .skills-video-box {
+    width: 100%;
+  }
+
+  .doctor-cards, .gallery, .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
