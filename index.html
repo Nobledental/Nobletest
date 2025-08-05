@@ -240,7 +240,7 @@
 
 <!-- Doctor List Section -->
 <section class="doctor-section">
-  <div class="top-bar">
+  <div class="doctor-list">
     <h2>OUR, <span>TEAM</span></h2>
     <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar" />
   </div>
@@ -315,22 +315,32 @@
       </div>
       <span class="rating">★ 5.0</span>
 
-  <div class="doctor-detail" id="doctorDetail">
-  <div class="detail-content">
-    <button class="close-detail" onclick="closeDoctorDetail()">✖</button>
-    <img id="detailImage" src="https://via.placeholder.com/120" alt="Doctor Image" />
-    <h3 id="detailName">Dr. Name</h3>
-    <p><strong>Experience:</strong> <span id="detailExperience">--</span></p>
-    <p><strong>Patients:</strong> <span id="detailPatients">--</span></p>
-    <p><strong>Rating:</strong> <span id="detailRating">--</span></p>
-    <p><strong>Specialities:</strong> <span id="detailSpecialities">--</span></p>
-    <p><strong>Summary:</strong> <span id="detailSummary">--</span></p>
-    <p><strong>Contributions:</strong> <span id="detailContributions">--</span></p>
-    <a class="call-button" href="tel:8074512305">📞 Call Doctor</a>
+  <div class="doctor-detail-glass" id="doctorDetailCard" style="display:none">
+  <button class="close-glass-btn" id="closeDetailBtn">&times;</button>
+  <div class="profile-photo">
+    <img id="docImage" src="" alt="Doctor Photo" />
+  </div>
+  <h2 id="docName">Dr. Name</h2>
+  <div class="doc-role" id="docRole"></div>
+  <div class="rating-glass" id="docRating"></div>
+  <div class="stats-row">
+    <div>
+      <div class="stat-val" id="docPatients"></div>
+      <div class="stat-label">Patients</div>
+    </div>
+    <div>
+      <div class="stat-val" id="docExp"></div>
+      <div class="stat-label">Years Exp</div>
+    </div>
+    <div>
+      <div class="stat-val" id="docAchiev">🏅</div>
+      <div class="stat-label">Achievements</div>
     </div>
   </div>
+  <div class="doc-desc" id="docSummary"></div>
+  <a class="glass-button" id="docCallBtn" href="#" target="_blank">Book Appointment</a>
+</div>
 </section>
-
   
         <section class="gallery-section">
             <h1 class="section-title autoDisplay">Clinic Gallery 🏥</h1>
@@ -512,6 +522,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 </body>
 </html>
+
 
 
 
