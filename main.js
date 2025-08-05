@@ -1,135 +1,58 @@
 document.addEventListener("DOMContentLoaded", () => {
-// ========== DOCTOR DETAIL TOGGLE ==========
-const doctorCards = document.querySelectorAll(".doctor-card");
-const doctorDetail = document.getElementById("doctorDetail");
-const closeDetail = document.getElementById("closeDetail");
+  const doctorCards = document.querySelectorAll(".doctor-card");
+  const overlay = document.createElement("div");
+  overlay.classList.add("doctor-overlay");
+  document.body.appendChild(overlay);
 
-const doctorData = {
-  "Dr Dhivakaran R": {
-    name: "Dr Dhivakaran R",
-    role: "Chief Medical Director of Noble Dental Care",
-    experience: "10 years",
-    rating: "4.9",
-    specialties: "Director of Healthflo (AI driven Health system)",
-    patients: "5,000+",
-    summary: "Leading innovator in digital dental health systems across India.",
-    contributions: "AI-driven healthcare system integration in 350+ hospitals.",
-    phone: "8074512305",
-    image: "images/doctors/dhivakaran.jpg"
-  },
-  "Dr Thik Vijay": {
-    name: "Dr Thik Vijay",
-    role: "Aesthetics & Cosmetologist",
-    experience: "11 years",
-    rating: "4.8",
-    specialties: "Skin, Hair & Dental",
-    patients: "3,200+",
-    summary: "Expert in non-invasive cosmetic treatments and smile design.",
-    contributions: "Advanced aesthetic treatments using laser & PRP.",
-    phone: "8074512305",
-    image: "images/doctors/thikvijay.jpg"
-  },
-  "Dr Roger Ronaldo": {
-    name: "Dr Roger Ronaldo",
-    role: "Oral & Maxillofacial Surgeon",
-    experience: "13 years",
-    rating: "4.9",
-    specialties: "Implantology, Facial Reconstruction",
-    patients: "4,500+",
-    summary: "Specializes in facial trauma, dental implants, and bone grafts.",
-    contributions: "Known for high success rate in complex reconstructions.",
-    phone: "8074512305",
-    image: "images/doctors/roger.jpg"
-  },
-  "Dr Deepak": {
-    name: "Dr Deepak",
-    role: "Orthodontist",
-    experience: "10 years",
-    rating: "4.7",
-    specialties: "Invisalign, Clear Aligners",
-    patients: "2,800+",
-    summary: "Assistant Professor with focus on digital orthodontics.",
-    contributions: "Developer of in-house clear aligner systems.",
-    phone: "8074512305",
-    image: "images/doctors/deepak.jpg"
-  },
-  "Dr Manoj Reddy": {
-    name: "Dr Manoj Reddy",
-    role: "Oral & Maxillofacial Surgeon",
-    experience: "13 years",
-    rating: "4.8",
-    specialties: "Implantologist",
-    patients: "3,900+",
-    summary: "Performs complex oral surgeries and rehabilitation cases.",
-    contributions: "Known for precise implantology and surgical protocols.",
-    phone: "8074512305",
-    image: "images/doctors/manoj.jpg"
-  },
-  "Dr Idhaya": {
-    name: "Dr Idhaya",
-    role: "Director of Healthflo",
-    experience: "7 years",
-    rating: "4.6",
-    specialties: "Health Insurance & AI-Driven Healthcare",
-    patients: "4,000+",
-    summary: "Streamlining hospital care with advanced AI systems.",
-    contributions: "Health insurance system across 350+ hospitals.",
-    phone: "8074512305",
-    image: "images/doctors/idhaya.jpg"
-  }
-};
+  const detailCard = document.createElement("div");
+  detailCard.classList.add("doctor-detail-card");
+  detailCard.innerHTML = 
+    <button class="close-btn">&times;</button>
+    <img src="" alt="Doctor Image" id="docImage">
+    <h3 id="docName" class="detail-item"></h3>
+    <p id="docPatients" class="detail-item"></p>
+    <p id="docExperience" class="detail-item"></p>
+    <p id="docRating" class="detail-item"></p>
+    <p id="docSpecialities" class="detail-item"></p>
+    <p id="docSummary" class="detail-item"></p>
+    <p id="docContributions" class="detail-item"></p>
+    <a href="tel:8074512305" class="call-button detail-item">📞 Call Doctor</a>
+  ;
+  document.body.appendChild(detailCard);
 
-doctorCards.forEach((card) => {
-  card.addEventListener("click", () => {
-    const name = card.querySelector("h4").textContent.trim();
-    const data = doctorData[name];
+  const closeBtn = detailCard.querySelector(".close-btn");
 
-    if (!data) return;
+  // Open detail card
+  doctorCards.forEach(card => {
+    card.addEventListener("click", () => {
+      const name = card.querySelector("h4").textContent.trim();
+      const data = doctorData[name];
+      if (!data) return;
 
-    // Inject data
-    doctorDetail.querySelector(".doctor-name").textContent = data.name;
-    doctorDetail.querySelector(".doctor-role").textContent = data.role;
-    doctorDetail.querySelector(".doctor-experience").textContent = `Experience: ${data.experience}`;
-    doctorDetail.querySelector(".doctor-rating").textContent = `Rating: ${data.rating}`;
-    doctorDetail.querySelector(".doctor-patients").textContent = `Patients Treated: ${data.patients}`;
-    doctorDetail.querySelector(".doctor-specialties").textContent = `Specialties: ${data.specialties}`;
-    doctorDetail.querySelector(".doctor-summary").textContent = data.summary;
-    doctorDetail.querySelector(".doctor-contributions").textContent = data.contributions;
-    doctorDetail.querySelector("img").src = data.image;
-    doctorDetail.querySelector(".call-button").href = `tel:${data.phone}`;
+      // Populate
+      detailCard.querySelector("#docImage").src = data.image;
+      detailCard.querySelector("#docName").textContent = data.name;
+      detailCard.querySelector("#docPatients").textContent = Patients Treated: ${data.patients};
+      detailCard.querySelector("#docExperience").textContent = Experience: ${data.experience};
+      detailCard.querySelector("#docRating").textContent = Rating: ${data.rating} ⭐;
+      detailCard.querySelector("#docSpecialities").textContent = Specialities: ${data.specialties};
+      detailCard.querySelector("#docSummary").textContent = Summary: ${data.summary};
+      detailCard.querySelector("#docContributions").textContent = Contributions: ${data.contributions};
 
-    // Show panel
-    doctorDetail.classList.add("active");
+      // Show
+      overlay.classList.add("active");
+      detailCard.classList.add("active");
+    });
   });
-});
 
-closeDetail.addEventListener("click", () => {
-  doctorDetail.classList.remove("active");
-});
-
-  // ========== DOCTOR SEARCH ==========
-  const searchInput = document.querySelector("#doctorSearch");
-  if (searchInput) {
-    searchInput.addEventListener("input", () => {
-      const searchTerm = searchInput.value.toLowerCase();
-      doctorCards.forEach((card) => {
-        const name = card.querySelector("h4").textContent.toLowerCase();
-        card.style.display = name.includes(searchTerm) ? "flex" : "none";
-      });
-    });
+  // Close actions
+  function closeCard() {
+    overlay.classList.remove("active");
+    detailCard.classList.remove("active");
   }
 
-  // ========== SEE MORE BUTTON ==========
-  const seeMoreBtn = document.querySelector(".see-more");
-  if (seeMoreBtn) {
-    seeMoreBtn.addEventListener("click", () => {
-      const hiddenCards = document.querySelectorAll(".doctor-card.hidden");
-      hiddenCards.forEach((card) => {
-        card.classList.remove("hidden");
-      });
-      seeMoreBtn.style.display = "none"; // Hide the button after showing all
-    });
-  }
+  closeBtn.addEventListener("click", closeCard);
+  overlay.addEventListener("click", closeCard);
 });
 
   // ========= TESTIMONIAL SLIDES =========
