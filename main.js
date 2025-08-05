@@ -1,4 +1,57 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ========== DOCTOR DETAIL TOGGLE ==========
+  const doctorCards = document.querySelectorAll(".doctor-card");
+  const doctorDetail = document.querySelector(".doctor-detail");
+  const closeDetail = document.querySelector(".close-detail");
+
+  doctorCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const name = card.querySelector("h4").textContent;
+      const role = card.querySelector("p").textContent;
+      const image = card.querySelector("img").src;
+      const rating = card.querySelector(".rating").textContent;
+
+      // Populate detail box
+      doctorDetail.querySelector("img").src = image;
+      doctorDetail.querySelector("h3").textContent = name;
+      doctorDetail.querySelector("p").textContent = role;
+      doctorDetail.querySelector(".rating").textContent = rating;
+
+      // Show detail panel
+      doctorDetail.classList.add("show");
+    });
+  });
+
+  // Close panel
+  closeDetail.addEventListener("click", () => {
+    doctorDetail.classList.remove("show");
+  });
+
+  // ========== DOCTOR SEARCH ==========
+  const searchInput = document.querySelector("#doctorSearch");
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      doctorCards.forEach((card) => {
+        const name = card.querySelector("h4").textContent.toLowerCase();
+        card.style.display = name.includes(searchTerm) ? "flex" : "none";
+      });
+    });
+  }
+
+  // ========== SEE MORE BUTTON ==========
+  const seeMoreBtn = document.querySelector(".see-more");
+  if (seeMoreBtn) {
+    seeMoreBtn.addEventListener("click", () => {
+      const hiddenCards = document.querySelectorAll(".doctor-card.hidden");
+      hiddenCards.forEach((card) => {
+        card.classList.remove("hidden");
+      });
+      seeMoreBtn.style.display = "none"; // Hide the button after showing all
+    });
+  }
+});
+
   // ========= TESTIMONIAL SLIDES =========
   const slides = document.querySelectorAll(".testimonial-slide");
   let currentIndex = 0;
