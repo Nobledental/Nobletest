@@ -4,7 +4,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     color: #4a3c3c;
     padding-top: 0px; 
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 
 
@@ -355,13 +355,11 @@ header ul a:hover {
   padding: 1.5rem;
   font-family: 'Segoe UI', sans-serif;
   border-radius: 20px;
-  max-width: 1000px;
-  margin: 2rem auto;
-  display: flex;
-  gap: 1rem;
-  position: relative;
+  max-width: 480px;
+  margin: auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
+
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -475,57 +473,59 @@ header ul a:hover {
 .doctor-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
   position: relative;
 }
 
 .doctor-list {
   flex: 1;
-  min-width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 100%;
 }
 
-#doctor-detail {
-  flex: 1;
-  min-width: 320px;
-  background: linear-gradient(to bottom right, #e0f7fa, #e0f2f1);
-  border-left: 4px solid teal;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  transform: translateX(100%);
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  opacity: 0;
-  position: relative;
+.doctor-detail {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 400px;
+  background: #e0f7fa;
+  box-shadow: -3px 0 8px rgba(0,0,0,0.2);
+  padding: 1rem;
+  transition: right 0.4s ease-in-out;
+  z-index: 100;
 }
 
-#doctor-detail.active {
-  transform: translateX(0);
-  opacity: 1;
+.doctor-detail.show {
+  right: 0;
 }
 
-#doctor-detail h3 {
-  color: #006064;
-  margin-bottom: 1rem;
+.detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
-#doctor-detail ul {
-  padding-left: 1.2rem;
+.detail-content img {
+  width: 100px;
+  border-radius: 12px;
+  margin: 0 auto;
 }
 
-#doctor-detail .call-button {
-  margin-top: 1.5rem;
+.call-button {
   background: teal;
   color: white;
-  padding: 0.7rem 1.2rem;
-  border-radius: 10px;
+  text-align: center;
+  padding: 0.8rem;
+  border-radius: 8px;
+  text-decoration: none;
   font-weight: bold;
-  border: none;
-  cursor: pointer;
   transition: background 0.3s ease;
 }
 
-#doctor-detail .call-button:hover {
-  background: #004d40;
+.call-button:hover {
+  background: #00796b;
 }
 
 .close-detail {
@@ -653,373 +653,3 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
-
-@media (max-width: 768px) {
-  .doctor-section {
-    flex-direction: column;
-    position: relative; /* make sure it's retained */
-  }
-
-  .doctor-detail {
-    position: absolute;
-    width: 100%;
-    max-width: 100%;
-    right: -100%;
-    opacity: 0;
-    margin-top: 0;
-  }
-
-  .doctor-detail.show {
-    right: 0;
-    opacity: 1;
-  }
-}
-
-/* Doctor Detail Panel */
-.doctor-details-panel {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 100%;
-  max-width: 400px;
-  height: 100%;
-  background-color: #e6f7ff; /* Light teal background */
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
-  transition: right 0.4s ease;
-  z-index: 1000;
-  padding: 2rem;
-  color: #003147;
-}
-
-.doctor-details-panel.open {
-  right: 0;
-}
-
-.doctor-details-panel h3 {
-  margin-top: 0;
-  font-size: 1.8rem;
-  color: #007b8f;
-}
-
-.doctor-detail {
-  margin-top: 1rem;
-  display: none;
-}
-
-.doctor-detail:not(.hidden) {
-  display: block;
-}
-
-.doctor-detail-card {
-  padding: 1rem;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  max-width: 600px;
-  margin: 1rem auto;
-}
-
-.hidden {
-  display: none;
-}
-
-.close-btn {
-  float: right;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.call-button {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: teal;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 1rem;
-}
-
-.call-button:hover {
-  background-color: #005c6b;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
-  .doctor-details-panel {
-    width: 100%;
-  }
-
-  .call-button {
-    width: 100%;
-  }
-}
-
-/* Container to hold doctor cards and detail panel side by side */
-.doctor-section {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-  padding: 2rem;
-}
-
-/* Detail Panel Style */
-.doctor-detail-panel {
-  flex: 1;
-  max-width: 400px;
-  background-color: #f0f9ff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  transition: all 0.5s ease-in-out;
-  transform: translateX(100%);
-  opacity: 0;
-  position: relative;
-}
-
-/* When active, show the panel */
-.doctor-detail-panel.active {
-  transform: translateX(0%);
-  opacity: 1;
-}
-
-/* Doctor Info fields */
-.doctor-detail-panel h3 {
-  color: #006d77;
-  margin-bottom: 0.5rem;
-}
-
-.doctor-detail-panel p {
-  margin-bottom: 0.75rem;
-  font-size: 0.95rem;
-  color: #333;
-}
-
-.doctor-detail-panel .call-button {
-  display: block;
-  width: 100%;
-  background: #0077b6;
-  color: white;
-  padding: 0.75rem;
-  text-align: center;
-  border-radius: 8px;
-  margin-top: 1rem;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-.doctor-detail-panel .call-button:hover {
-  background: #0096c7;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .doctor-section {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .doctor-detail-panel {
-    max-width: 90%;
-    margin-top: 1.5rem;
-    transform: translateY(20px);
-  }
-
-  .doctor-detail-panel.active {
-    transform: translateY(0);
-  }
-}
-
-.doctor-detail {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 600px;
-  background: white;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  display: none;
-}
-
-.doctor-detail.visible {
-  display: block;
-}
-
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 1.5rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.doctor-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
-.call-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.25rem;
-  background-color: teal;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-}
-
-.call-btn:hover {
-  background-color: #006666;
-}
-
-.doctor-detail {
-  display: none;
-  position: fixed;
-  top: 10%;
-  left: 10%;
-  width: 80%;
-  background: #fff;
-  border-radius: 10px;
-  padding: 2rem;
-  z-index: 9999;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-}
-.doctor-detail:not(.hidden) {
-  display: block;
-}
-.hidden {
-  display: none;
-}
-.call-button {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background-color: teal;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-}
-.close-btn {
-  float: right;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translate(-50%, -20px); }
-  to { opacity: 1; transform: translate(-50%, 0); }
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-  }
-
-  .service-box, .testimonial {
-    width: 100%;
-    margin: 1rem 0;
-  }
-
-  .video-container {
-    padding: 1rem;
-  }
-
-  .footer-social {
-    flex-direction: column;
-  }
-}
-
-.team-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.doctor-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  width: 250px;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.doctor-card:hover {
-  transform: scale(1.05);
-}
-
-.doctor-card img {
-  width: 100%;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-}
-
-.doctor-detail {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.75);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.doctor-detail-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 1rem;
-  width: 90%;
-  max-width: 600px;
-  position: relative;
-}
-
-.close-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #666;
-}
-
-.call-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background: teal;
-  color: white;
-  text-decoration: none;
-  border-radius: 0.5rem;
-  font-weight: bold;
-}
-
-.hidden {
-  display: none;
-}
-
-
