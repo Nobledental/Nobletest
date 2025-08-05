@@ -337,20 +337,36 @@
       </div>
     </section>
 
-<!-- Doctor Detail Panel -->
-<div class="doctor-detail" id="doctorDetail">
-  <button class="close-detail" onclick="closeDoctorDetail()">&times;</button>
-  <div class="detail-content">
-    <img id="detailImage" src="" alt="Doctor" />
-    <h3 id="detailName">Doctor Name</h3>
-    <p><strong>Experience:</strong> <span id="detailExperience"></span></p>
-    <p><strong>Patients Treated:</strong> <span id="detailPatients"></span></p>
-    <p><strong>Rating:</strong> <span id="detailRating"></span></p>
-    <p><strong>Specialities:</strong> <span id="detailSpecialities"></span></p>
-    <p><strong>Summary:</strong> <span id="detailSummary"></span></p>
-    <p><strong>Contributions:</strong> <span id="detailContributions"></span></p>
-    <a href="tel:+918888888888" class="call-button">📞 Call Now</a>
+<!-- Doctor Details Panel -->
+<div id="doctor-details" class="doctor-details hidden">
+  <div class="doctor-details-card">
+    <img id="doc-image" src="https://via.placeholder.com/150" alt="Doctor Image" />
+    <div class="doctor-info">
+      <h2 id="doc-name">Dr. Name</h2>
+      <p><strong>Experience:</strong> <span id="doc-experience">10 yrs</span></p>
+      <p><strong>Rating:</strong> <span id="doc-rating">5.0</span></p>
+      <p><strong>Specialities:</strong> <span id="doc-specialities">Cosmetic Dentistry</span></p>
+      <p><strong>Patients Treated:</strong> <span id="doc-patients">1500+</span></p>
+      <p><strong>Summary:</strong></p>
+      <p id="doc-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p><strong>Contributions:</strong></p>
+      <p id="doc-contributions">Published 10+ research papers and led dental workshops.</p>
+      <a href="tel:8074512305" class="call-button">📞 Call: 8074512305</a>
+    </div>
   </div>
+</div>
+
+    <div id="doctorDetailPanel" class="doctor-detail hidden">
+  <button id="closeDetail" class="close-btn">✖</button>
+  <img id="docImage" src="" alt="Doctor Image" class="doctor-img">
+  <h2 id="docName"></h2>
+  <p><strong>Experience:</strong> <span id="docExp"></span></p>
+  <p><strong>Rating:</strong> <span id="docRating"></span></p>
+  <p><strong>Patients:</strong> <span id="docPatients"></span></p>
+  <p><strong>Specialities:</strong> <span id="docSpecialities"></span></p>
+  <p><strong>Summary:</strong> <span id="docSummary"></span></p>
+  <p><strong>Contributions:</strong> <span id="docContributions"></span></p>
+  <a href="tel:8074512305" class="call-button">📞 Call Now</a>
 </div>
 
 <div class="overlay" id="overlay" onclick="closeDoctorDetail()"></div>
@@ -405,6 +421,7 @@
 </script>
 </body>
 </html>
+
 
 
 
