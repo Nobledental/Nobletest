@@ -242,3 +242,13 @@ closeDetail.addEventListener("click", () => {
 
   document.addEventListener("copy", (e) => e.preventDefault());
 });
+
+<script>
+  function showDoctorDetail(id) {
+    document.getElementById(id).classList.remove('hidden');
+  }
+
+  function hideDoctorDetail(id) {
+    document.getElementById(id).classList.add('hidden');
+  }
+</script>
