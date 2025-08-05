@@ -394,54 +394,124 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>AOS.init();</script>
 
-      <script>
-  const doctors = [
-    {
-      name: "Dr. Dhivakaran R",
-      image: "https://via.placeholder.com/120",
-      experience: "10 years",
-      patients: "3000+",
-      rating: "5.0",
-      specialities: "General Dentistry",
-      summary: "Expert in diagnostics and patient care.",
-      contributions: "500+ successful treatments"
-    },
-    {
-      name: "Dr. Thik Vijay",
-      image: "https://via.placeholder.com/120",
-      experience: "11 years",
-      patients: "3200+",
-      rating: "5.0",
-      specialities: "Cosmetology",
-      summary: "Focused on aesthetic facial enhancements.",
-      contributions: "400+ aesthetic treatments"
-    },
-    // Add more doctors similarly
-  ];
+<script>
+// Doctor detail data
+const doctors = [
+  {
+    name: "Dr. Dhivakaran R",
+    image: "images/doctors/dhivakaran.jpg",
+    experience: "10 years",
+    patients: "5000+",
+    rating: "4.9",
+    specialities: "General Dentistry, Diagnostics, Digital Health",
+    summary: "Expert in diagnostics, digital dental care and patient management.",
+    contributions: "Founder, 500+ successful treatments"
+  },
+  {
+    name: "Dr. Thik Vijay",
+    image: "images/doctors/thikvijay.jpg",
+    experience: "11 years",
+    patients: "3200+",
+    rating: "4.8",
+    specialities: "Cosmetology, Smile Design",
+    summary: "Focused on facial aesthetics and smile makeovers.",
+    contributions: "400+ aesthetic treatments"
+  },
+  {
+    name: "Dr. Roger Ronaldo",
+    image: "images/doctors/roger.jpg",
+    experience: "13 years",
+    patients: "4500+",
+    rating: "4.9",
+    specialities: "Maxillofacial Surgery, Implants",
+    summary: "Specialist in facial trauma & implants.",
+    contributions: "350+ successful reconstructions"
+  },
+  {
+    name: "Dr. Deepak",
+    image: "images/doctors/deepak.jpg",
+    experience: "10 years",
+    patients: "2800+",
+    rating: "4.7",
+    specialities: "Orthodontics, Aligners",
+    summary: "Digital orthodontics expert.",
+    contributions: "Developed in-house aligner system"
+  },
+  {
+    name: "Dr. Manoj Reddy",
+    image: "images/doctors/manoj.jpg",
+    experience: "13 years",
+    patients: "3900+",
+    rating: "4.8",
+    specialities: "Implantology, Surgery",
+    summary: "Complex rehabilitation and implants.",
+    contributions: "Precise implant protocols"
+  },
+  {
+    name: "Dr. Idhaya",
+    image: "images/doctors/idhaya.jpg",
+    experience: "7 years",
+    patients: "4000+",
+    rating: "4.6",
+    specialities: "Insurance, AI Healthcare",
+    summary: "Hospital care with AI health insurance.",
+    contributions: "Health insurance in 350+ hospitals"
+  }
+];
 
-  document.querySelectorAll('.doctor-card').forEach((card, index) => {
-    card.addEventListener('click', () => showDoctorDetail(index));
+document.addEventListener("DOMContentLoaded", function() {
+  // Overlay/modal creation (single instance for all doctors)
+  const overlay = document.createElement("div");
+  overlay.className = "doctor-overlay";
+  document.body.appendChild(overlay);
+
+  const modal = document.createElement("div");
+  modal.className = "doctor-modal";
+  modal.innerHTML = `
+    <button class="close-modal">&times;</button>
+    <img src="" alt="Doctor Image" class="modal-image">
+    <h3 class="modal-name"></h3>
+    <p class="modal-role"></p>
+    <p><strong>Experience:</strong> <span class="modal-exp"></span></p>
+    <p><strong>Patients:</strong> <span class="modal-patients"></span></p>
+    <p><strong>Rating:</strong> <span class="modal-rating"></span></p>
+    <p><strong>Specialities:</strong> <span class="modal-spec"></span></p>
+    <p><strong>Summary:</strong> <span class="modal-summary"></span></p>
+    <p><strong>Contributions:</strong> <span class="modal-contrib"></span></p>
+    <a class="call-button" href="#" target="_blank">📞 Call Doctor</a>
+  `;
+  document.body.appendChild(modal);
+
+  // Click handler for doctor cards
+  document.querySelectorAll('.doctor-card').forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      const doc = doctors[idx];
+      modal.querySelector(".modal-image").src = doc.image;
+      modal.querySelector(".modal-name").textContent = doc.name;
+      modal.querySelector(".modal-role").textContent = card.querySelector("p").textContent;
+      modal.querySelector(".modal-exp").textContent = doc.experience;
+      modal.querySelector(".modal-patients").textContent = doc.patients;
+      modal.querySelector(".modal-rating").textContent = doc.rating;
+      modal.querySelector(".modal-spec").textContent = doc.specialities;
+      modal.querySelector(".modal-summary").textContent = doc.summary;
+      modal.querySelector(".modal-contrib").textContent = doc.contributions;
+      modal.querySelector(".call-button").href = "tel:8074512305";
+      overlay.classList.add("active");
+      modal.classList.add("active");
+    });
   });
 
-  function showDoctorDetail(index) {
-    const doctor = doctors[index];
-    document.getElementById("detailName").textContent = doctor.name;
-    document.getElementById("detailImage").src = doctor.image;
-    document.getElementById("detailExperience").textContent = doctor.experience;
-    document.getElementById("detailPatients").textContent = doctor.patients;
-    document.getElementById("detailRating").textContent = doctor.rating;
-    document.getElementById("detailSpecialities").textContent = doctor.specialities;
-    document.getElementById("detailSummary").textContent = doctor.summary;
-    document.getElementById("detailContributions").textContent = doctor.contributions;
-
-    document.getElementById("doctorDetail").classList.add("show");
+  // Close modal
+  function closeModal() {
+    overlay.classList.remove("active");
+    modal.classList.remove("active");
   }
-
-  function closeDoctorDetail() {
-    document.getElementById("doctorDetail").classList.remove("show");
-  }
+  overlay.addEventListener('click', closeModal);
+  modal.querySelector('.close-modal').addEventListener('click', closeModal);
+});
 </script>
 </body>
 </html>
+
 
 
