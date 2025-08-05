@@ -1,4 +1,4 @@
-ocument.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   // ========= TESTIMONIAL SLIDES =========
   const slides = document.querySelectorAll(".testimonial-slide");
   let currentIndex = 0;
@@ -51,7 +51,7 @@ ocument.addEventListener("DOMContentLoaded", () => {
       const cards = document.querySelectorAll(".service-card");
 
       cards.forEach((card) => {
-        const keywords = card.dataset.keywords.toLowerCase();
+        const keywords = card.dataset.keywords?.toLowerCase() || "";
         card.style.display = keywords.includes(query) ? "block" : "none";
       });
     });
@@ -63,6 +63,7 @@ ocument.addEventListener("DOMContentLoaded", () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
+          observer.unobserve(entry.target); // animate only once
         }
       });
     },
@@ -78,7 +79,7 @@ ocument.addEventListener("DOMContentLoaded", () => {
     const button = card.querySelector(".read-more-button");
     const url = card.dataset.url;
     if (button && url) {
-      button.href = url;
+      button.setAttribute("href", url);
     }
   });
 
@@ -86,15 +87,15 @@ ocument.addEventListener("DOMContentLoaded", () => {
   const scrollLinks = document.querySelectorAll('a[href^="#"]');
   scrollLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
-      e.preventDefault();
       const target = document.querySelector(link.getAttribute("href"));
       if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
   });
 
-  // ========= DISABLE RIGHT CLICK / COPY (Optional) =========
+  // ========= DISABLE RIGHT CLICK / COPY =========
   document.addEventListener("contextmenu", (e) => e.preventDefault());
 
   document.addEventListener("keydown", (e) => {
