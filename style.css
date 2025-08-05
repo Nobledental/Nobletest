@@ -359,6 +359,9 @@ header ul a:hover {
   text-align: center;
   color: #003147;
   margin-bottom: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .doctor-cards {
@@ -369,15 +372,16 @@ header ul a:hover {
 
 .doctor-card {
   background: #ffffff;
-  border-radius: 2xl;
+  border-radius: 1.5rem;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s ease;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
 }
 
 .doctor-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
 }
 
 .card-top-ripple {
@@ -424,6 +428,7 @@ header ul a:hover {
   transform: translateX(-50%);
   border: 6px solid #fff;
   z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .doctor-info {
@@ -435,6 +440,7 @@ header ul a:hover {
   margin: 1rem 0 0.5rem;
   font-size: 1.3rem;
   color: #003147;
+  font-weight: 600;
 }
 
 .doctor-info h3 span {
@@ -459,30 +465,34 @@ header ul a:hover {
 }
 
 .call-button {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.2rem;
   background: #0072ff;
   color: #fff;
-  border-radius: 1rem;
+  border-radius: 2rem;
   text-decoration: none;
-  transition: background 0.3s ease;
+  font-size: 0.9rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 114, 255, 0.2);
 }
 
 .call-button:hover {
   background: #005ccc;
+  transform: scale(1.05);
 }
 
 .social-icons a {
   color: #0072ff;
   font-size: 1.1rem;
   margin: 0 0.3rem;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-icons a:hover {
   color: #005ccc;
+  transform: scale(1.2);
 }
 
-/* Responsive */
+/* Mobile Responsive */
 @media (max-width: 600px) {
   .doctor-photo {
     width: 100px;
@@ -492,6 +502,15 @@ header ul a:hover {
 
   .doctor-info {
     padding-top: 4rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .call-button {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
   }
 }
 
@@ -602,6 +621,7 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
