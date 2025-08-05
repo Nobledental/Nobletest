@@ -407,35 +407,136 @@
             </div>
         </section>
 
-<!-- OUR TEAM SECTION -->
-<section id="team" class="info-section" style="background-color:#f8f9fa;">
-  <h2 class="section-title">Our Team</h2>
-  <div class="team-grid">
-    <!-- Doctor Card -->
-    <div class="doctor-card" onclick="showDoctorDetail('dr1')">
-      <img src="https://via.placeholder.com/150" alt="Doctor 1">
-      <h3>Dr. Priya Sharma</h3>
-      <p>Orthodontist</p>
-    </div>
-
-    <!-- Add more doctor cards below using same structure -->
+<!-- Doctor Card Grid -->
+<div class="doctor-grid">
+  <div class="doctor-card" onclick="showDoctorDetail('dr-dhi')">
+    <img src="https://via.placeholder.com/150" alt="Dr. Dhivakaran R">
+    <h4>Dr. Dhivakaran R</h4>
+    <p>Chief Medical Director</p>
   </div>
 
-  <!-- Doctor Detail Modal -->
-  <div id="dr1" class="doctor-detail hidden">
-    <div class="doctor-detail-content">
-      <span class="close-btn" onclick="hideDoctorDetail('dr1')">&times;</span>
-      <h3>Dr. Priya Sharma</h3>
-      <p><strong>Total Patients:</strong> 2,500+</p>
-      <p><strong>Experience:</strong> 10+ years</p>
-      <p><strong>Rating:</strong> ★★★★★ (4.9/5)</p>
-      <p><strong>Specialities:</strong> Braces, Smile Design, Clear Aligners</p>
-      <p><strong>Summary:</strong> Dr. Priya has transformed smiles for over a decade with expertise in modern orthodontic techniques.</p>
-      <p><strong>Contributions:</strong> Speaker at national conferences, Published articles in Indian Dental Journal.</p>
-      <a href="tel:8074512305" class="call-btn">📞 Call Now</a>
-    </div>
+  <div class="doctor-card" onclick="showDoctorDetail('dr-thik')">
+    <img src="https://via.placeholder.com/150" alt="Dr. Thik Vijay">
+    <h4>Dr. Thik Vijay</h4>
+    <p>Aesthetics & Cosmetologist</p>
   </div>
-</section>
+
+  <div class="doctor-card" onclick="showDoctorDetail('dr-roger')">
+    <img src="https://via.placeholder.com/150" alt="Dr. Roger Ronaldo">
+    <h4>Dr. Roger Ronaldo</h4>
+    <p>Oral & Maxillofacial Surgeon</p>
+  </div>
+
+  <div class="doctor-card" onclick="showDoctorDetail('dr-deepak')">
+    <img src="https://via.placeholder.com/150" alt="Dr. Deepak">
+    <h4>Dr. Deepak</h4>
+    <p>Orthodontist</p>
+  </div>
+
+  <div class="doctor-card" onclick="showDoctorDetail('dr-manoj')">
+    <img src="https://via.placeholder.com/150" alt="Dr. Manoj Reddy">
+    <h4>Dr. Manoj Reddy</h4>
+    <p>Oral & Maxillofacial Surgeon</p>
+  </div>
+
+  <div class="doctor-card" onclick="showDoctorDetail('dr-idhaya')">
+    <img src="https://via.placeholder.com/150" alt="Dr. Idhaya">
+    <h4>Dr. Idhaya</h4>
+    <p>Director - Healthflo</p>
+  </div>
+
+  <div class="doctor-card">
+    <img src="https://via.placeholder.com/150" alt="Internal Consultants">
+    <h4>Internal Consultants</h4>
+    <p>Dr. Ashok, Dr. Rakesh Kumar, Dr. Gana Praksh</p>
+  </div>
+</div>
+
+<!-- Doctor Detail Cards (Initially Hidden) -->
+<div id="dr-dhi" class="doctor-detail hidden">
+  <div class="doctor-detail-card">
+    <button class="close-btn" onclick="hideDoctorDetail('dr-dhi')">&times;</button>
+    <h3>Dr. Dhivakaran R</h3>
+    <p><strong>Total Patients:</strong> 3000+</p>
+    <p><strong>Experience:</strong> 10 years</p>
+    <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (5.0)</p>
+    <p><strong>Specialities:</strong> General Dentistry, Healthcare Management</p>
+    <p><strong>Summary:</strong> Chief Medical Director of Noble Dental Care. Director of Healthflo, a pioneering AI-based health system.</p>
+    <p><strong>Contributions:</strong> Architect of Healthflo, contributed to streamlining digital healthcare in India.</p>
+    <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+  </div>
+</div>
+
+<div id="dr-thik" class="doctor-detail hidden">
+  <div class="doctor-detail-card">
+    <button class="close-btn" onclick="hideDoctorDetail('dr-thik')">&times;</button>
+    <h3>Dr. Thik Vijay</h3>
+    <p><strong>Total Patients:</strong> 1500+</p>
+    <p><strong>Experience:</strong> 11 years</p>
+    <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.6)</p>
+    <p><strong>Specialities:</strong> Aesthetics, Skin, Hair, Dental Cosmetology</p>
+    <p><strong>Summary:</strong> Known for aesthetic precision, offering skin and smile makeovers.</p>
+    <p><strong>Contributions:</strong> Advanced treatment protocols in non-surgical facial enhancement.</p>
+    <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+  </div>
+</div>
+
+<div id="dr-roger" class="doctor-detail hidden">
+  <div class="doctor-detail-card">
+    <button class="close-btn" onclick="hideDoctorDetail('dr-roger')">&times;</button>
+    <h3>Dr. Roger Ronaldo</h3>
+    <p><strong>Total Patients:</strong> 1800+</p>
+    <p><strong>Experience:</strong> 13 years</p>
+    <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.9)</p>
+    <p><strong>Specialities:</strong> Maxillofacial Surgery, Implants, Facial Reconstruction</p>
+    <p><strong>Summary:</strong> Skilled in handling complex facial and dental surgeries.</p>
+    <p><strong>Contributions:</strong> Performed 500+ implant surgeries, expert in facial trauma reconstruction.</p>
+    <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+  </div>
+</div>
+
+<div id="dr-deepak" class="doctor-detail hidden">
+  <div class="doctor-detail-card">
+    <button class="close-btn" onclick="hideDoctorDetail('dr-deepak')">&times;</button>
+    <h3>Dr. Deepak</h3>
+    <p><strong>Total Patients:</strong> 1400+</p>
+    <p><strong>Experience:</strong> 10 years</p>
+    <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.7)</p>
+    <p><strong>Specialities:</strong> Orthodontics, Invisalign, Inhouse Clear Aligners</p>
+    <p><strong>Summary:</strong> Assistant Professor and practicing orthodontist, passionate about alignment tech.</p>
+    <p><strong>Contributions:</strong> Developed aligner workflows tailored for Indian demographics.</p>
+    <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+  </div>
+</div>
+
+<div id="dr-manoj" class="doctor-detail hidden">
+  <div class="doctor-detail-card">
+    <button class="close-btn" onclick="hideDoctorDetail('dr-manoj')">&times;</button>
+    <h3>Dr. Manoj Reddy</h3>
+    <p><strong>Total Patients:</strong> 1700+</p>
+    <p><strong>Experience:</strong> 13 years</p>
+    <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.8)</p>
+    <p><strong>Specialities:</strong> Implants, Maxillofacial Surgeries</p>
+    <p><strong>Summary:</strong> Noted for surgical expertise and fast recovery methods.</p>
+    <p><strong>Contributions:</strong> Performed over 300 implant surgeries with success rate above 98%.</p>
+    <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+  </div>
+</div>
+
+<div id="dr-idhaya" class="doctor-detail hidden">
+  <div class="doctor-detail-card">
+    <button class="close-btn" onclick="hideDoctorDetail('dr-idhaya')">&times;</button>
+    <h3>Dr. Idhaya</h3>
+    <p><strong>Total Patients:</strong> 2000+</p>
+    <p><strong>Experience:</strong> 7 years</p>
+    <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.4)</p>
+    <p><strong>Specialities:</strong> Health Insurance, Healthcare Technology</p>
+    <p><strong>Summary:</strong> Director of Healthflo with a focus on tech-driven health coverage solutions.</p>
+    <p><strong>Contributions:</strong> Built a network of 350+ hospitals across India for Healthflo.</p>
+    <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+  </div>
+</div>
+
 
   
         <section class="footer">
@@ -453,5 +554,6 @@
 </script>
 </body>
 </html>
+
 
 
