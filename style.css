@@ -930,3 +930,22 @@ header ul a:hover {
   from { opacity: 0; transform: translate(-50%, -20px); }
   to { opacity: 1; transform: translate(-50%, 0); }
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .service-box, .testimonial {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .video-container {
+    padding: 1rem;
+  }
+
+  .footer-social {
+    flex-direction: column;
+  }
+}
