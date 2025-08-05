@@ -4,7 +4,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     color: #4a3c3c;
     padding-top: 0px; 
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 
 
@@ -677,6 +677,7 @@ header ul a:hover {
     opacity: 1;
   }
 }
+
 
 
 
