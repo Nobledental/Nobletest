@@ -6,8 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Noble Dental Nallagandla | Top Dental Clinic in Hyderabad</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <script src="https://kit.fontawesome.com/a2e0e6a89b.js" crossorigin="anonymous"></script>
-  <link rel="canonical" href="https://nobledentalnallagandla.in/">
   <meta name="description" content="Noble Dental Nallagandla offers expert dental services including implants, whitening, root canal, and emergency care in Hyderabad." />
   <meta name="keywords" content="Dental Clinic Hyderabad, Best Dentist Nallagandla, Teeth Whitening, Root Canal, Dental Implants, Emergency Dental Care" />
   <meta name="author" content="Noble Dental Nallagandla" />
@@ -15,7 +13,6 @@
 
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Noble Dental Nallagandla - Best Dental Clinic in Hyderabad" />
@@ -78,54 +75,6 @@
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
   gtag('config', 'G-XXXXXXX');
-
-    const doctors = [
-    {
-      name: "Dr. Dhivakaran R",
-      image: "https://via.placeholder.com/120",
-      experience: "10 years",
-      patients: "3000+",
-      rating: "5.0",
-      specialities: "General Dentistry",
-      summary: "Expert in diagnostics and patient care.",
-      contributions: "500+ successful treatments"
-    },
-    {
-      name: "Dr. Thik Vijay",
-      image: "https://via.placeholder.com/120",
-      experience: "11 years",
-      patients: "3200+",
-      rating: "5.0",
-      specialities: "Cosmetology",
-      summary: "Focused on aesthetic facial enhancements.",
-      contributions: "400+ aesthetic treatments"
-    },
-    // Add more doctor objects...
-  ];
-
-  document.querySelectorAll('.doctor-card').forEach((card, index) => {
-    card.addEventListener('click', () => showDoctorDetail(index));
-  });
-
-  function showDoctorDetail(index) {
-    const doctor = doctors[index];
-    document.getElementById("detailName").textContent = doctor.name;
-    document.getElementById("detailImage").src = doctor.image;
-    document.getElementById("detailExperience").textContent = doctor.experience;
-    document.getElementById("detailPatients").textContent = doctor.patients;
-    document.getElementById("detailRating").textContent = doctor.rating;
-    document.getElementById("detailSpecialities").textContent = doctor.specialities;
-    document.getElementById("detailSummary").textContent = doctor.summary;
-    document.getElementById("detailContributions").textContent = doctor.contributions;
-
-    document.getElementById("doctorDetail").classList.add("show");
-    document.getElementById("overlay").classList.add("show");
-  }
-
-  function closeDoctorDetail() {
-    document.getElementById("doctorDetail").classList.remove("show");
-    document.getElementById("overlay").classList.remove("show");
-  }
 </script>
 </head>
 <body>
@@ -163,7 +112,7 @@
 <!-- Gradient Background Hero Section -->
 <section class="hero-background">
   <div class="blackhole-box">
-    <video autoplay muted loop playsinline src="videos/blackhole.mp4">  Your browser does not support the video tag.</video>
+    <video autoplay muted loop playsinline src="videos/blackhole.mp4"></video>
   </div>
     <div class="hero-info-title">
       <i class='bx bxl-sketch'></i>
@@ -289,90 +238,98 @@
         </section>
 
 <!-- Doctor List Section -->
-  <main class="container">
-    <section class="doctor-section">
-      <div class="top-bar">
-        <h2>OUR, <span>TEAM</span></h2>
-        <button class="see-more">See More →</button>
+<section class="doctor-section">
+  <div class="top-bar">
+    <h2>OUR, <span>TEAM</span></h2>
+    <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar" />
+  </div>
+
+  <div class="search-container">
+    <input type="text" placeholder="Search Doctor..." />
+    <button class="see-more">See More →</button>
+  </div>
+
+  <h3 class="section-title">Top Doctors</h3>
+
+  <div class="doctor-list">
+    <div class="doctor-card">
+      <img src="https://via.placeholder.com/60" alt="Dr Dhivakaran" />
+      <div class="doc-info">
+        <h4>Dr. Dhivakaran R</h4>
+        <p>Chief Medical Director, 10 yrs exp.</p>
       </div>
+      <span class="rating">★ 5.0</span>
+    </div>
 
-      <div class="search-container">
-        <input type="text" placeholder="Search Doctor..." id="doctorSearch" />
+    <div class="doctor-card">
+      <img src="https://via.placeholder.com/60" alt="Dr Vijay" />
+      <div class="doc-info">
+        <h4>Dr. Thik Vijay</h4>
+        <p>Aesthetic Cosmetologist, 11 yrs exp.</p>
       </div>
+      <span class="rating">★ 5.0</span>
+    </div>
 
-      <div class="doctor-list">
-        <div class="doctor-card">
-          <img src="doctor1.jpg" alt="Dr Dhivakaran" />
-          <div class="doc-info">
-            <h4>Dr. Dhivakaran R</h4>
-            <p>Chief Medical Director, 10 yrs exp.</p>
-          </div>
-          <span class="rating">★ 5.0</span>
-        </div>
-
-        <div class="doctor-card">
-          <img src="doctor2.jpg" alt="Dr Thik Vijay" />
-          <div class="doc-info">
-            <h4>Dr. Thik Vijay</h4>
-            <p>Aesthetic Cosmetologist, 11 yrs exp.</p>
-          </div>
-          <span class="rating">★ 5.0</span>
-        </div>
-
-        <div class="doctor-card">
-          <img src="doctor3.jpg" alt="Dr Roger Ronaldo" />
-          <div class="doc-info">
-            <h4>Dr. Roger Ronaldo</h4>
-            <p>Maxillofacial Surgeon, 13 yrs exp.</p>
-          </div>
-          <span class="rating">★ 5.0</span>
-        </div>
-
-        <div class="doctor-card">
-          <img src="doctor4.jpg" alt="Dr Deepak" />
-          <div class="doc-info">
-            <h4>Dr. Deepak</h4>
-            <p>Endodontist, 9 yrs exp.</p>
-          </div>
-          <span class="rating">★ 5.0</span>
-        </div>
+    <div class="doctor-card">
+      <img src="https://via.placeholder.com/60" alt="Dr Roger" />
+      <div class="doc-info">
+        <h4>Dr. Roger Ronaldo</h4>
+        <p>Maxillofacial Surgeon, 13 yrs exp.</p>
       </div>
-    </section>
+      <span class="rating">★ 5.0</span>
+    </div>
 
-<!-- Doctor Details Panel -->
-<div id="doctor-details" class="doctor-details hidden">
-  <div class="doctor-details-card">
-    <img id="doc-image" src="https://via.placeholder.com/150" alt="Doctor Image" />
-    <div class="doctor-info">
-      <h2 id="doc-name">Dr. Name</h2>
-      <p><strong>Experience:</strong> <span id="doc-experience">10 yrs</span></p>
-      <p><strong>Rating:</strong> <span id="doc-rating">5.0</span></p>
-      <p><strong>Specialities:</strong> <span id="doc-specialities">Cosmetic Dentistry</span></p>
-      <p><strong>Patients Treated:</strong> <span id="doc-patients">1500+</span></p>
-      <p><strong>Summary:</strong></p>
-      <p id="doc-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <p><strong>Contributions:</strong></p>
-      <p id="doc-contributions">Published 10+ research papers and led dental workshops.</p>
-      <a href="tel:8074512305" class="call-button">📞 Call: 8074512305</a>
+    <div class="doctor-card">
+      <img src="https://via.placeholder.com/60" alt="Dr Deepak" />
+      <div class="doc-info">
+        <h4>Dr. Deepak</h4>
+        <p>Orthodontist, 10 yrs exp.</p>
+      </div>
+      <span class="rating">★ 5.0</span>
+    </div>
+
+    <div class="doctor-card">
+      <img src="https://via.placeholder.com/60" alt="Dr Manoj" />
+      <div class="doc-info">
+        <h4>Dr. Manoj Reddy</h4>
+        <p>Implantologist, 13 yrs exp.</p>
+      </div>
+      <span class="rating">★ 5.0</span>
+    </div>
+
+    <div class="doctor-card">
+      <img src="https://via.placeholder.com/60" alt="Dr Idhaya" />
+      <div class="doc-info">
+        <h4>Dr. Idhaya</h4>
+        <p>Health Insurance Expert, 7 yrs exp.</p>
+      </div>
+      <span class="rating">★ 5.0</span>
+    </div>
+
+    <div class="doctor-card">
+      <img src="https://via.placeholder.com/60" alt="Internal Consultants" />
+      <div class="doc-info">
+        <h4>Internal Consultants</h4>
+        <p>Dr Ashok, Dr Rakesh, Dr Gana</p>
+      </div>
+      <span class="rating">★ 5.0</span>
+
+  <div class="doctor-detail" id="doctorDetail">
+  <div class="detail-content">
+    <button class="close-detail" onclick="closeDoctorDetail()">✖</button>
+    <img id="detailImage" src="https://via.placeholder.com/120" alt="Doctor Image" />
+    <h3 id="detailName">Dr. Name</h3>
+    <p><strong>Experience:</strong> <span id="detailExperience">--</span></p>
+    <p><strong>Patients:</strong> <span id="detailPatients">--</span></p>
+    <p><strong>Rating:</strong> <span id="detailRating">--</span></p>
+    <p><strong>Specialities:</strong> <span id="detailSpecialities">--</span></p>
+    <p><strong>Summary:</strong> <span id="detailSummary">--</span></p>
+    <p><strong>Contributions:</strong> <span id="detailContributions">--</span></p>
+    <a class="call-button" href="tel:8074512305">📞 Call Doctor</a>
     </div>
   </div>
-</div>
+</section>
 
-    <div id="doctorDetailPanel" class="doctor-detail hidden">
-  <button id="closeDetail" class="close-btn">✖</button>
-  <img id="docImage" src="" alt="Doctor Image" class="doctor-img">
-  <h2 id="docName"></h2>
-  <p><strong>Experience:</strong> <span id="docExp"></span></p>
-  <p><strong>Rating:</strong> <span id="docRating"></span></p>
-  <p><strong>Patients:</strong> <span id="docPatients"></span></p>
-  <p><strong>Specialities:</strong> <span id="docSpecialities"></span></p>
-  <p><strong>Summary:</strong> <span id="docSummary"></span></p>
-  <p><strong>Contributions:</strong> <span id="docContributions"></span></p>
-  <a href="tel:8074512305" class="call-button">📞 Call Now</a>
-</div>
-
-<div class="overlay" id="overlay" onclick="closeDoctorDetail()"></div>
-</main>
   
         <section class="gallery-section">
             <h1 class="section-title autoDisplay">Clinic Gallery 🏥</h1>
@@ -399,7 +356,22 @@
                     <p>"Best dental care experience ever! They even followed up after my procedure."</p>
                     <h4>- Meena K.</h4>
                 </div>
-              </section>
+
+  <div class="doctor-body">
+    <h4>Specialities</h4>
+    <p id="doctor-specialities">Specialities here...</p>
+
+    <h4>Brief Summary</h4>
+    <p id="doctor-summary">Doctor's background summary...</p>
+
+    <h4>Contributions</h4>
+    <p id="doctor-contributions">Published papers, awards, etc.</p>
+  </div>
+
+  <a href="tel:8074512305" class="call-button">📞 Call Now</a>
+</div>
+</div>
+</section>
 
         <section class="map-section">
             <h1 class="section-title autoDisplay">Find Us 📍</h1>
@@ -408,215 +380,66 @@
             </div>
         </section>
 
-<!-- Doctor Card Grid -->
-<div class="doctor-grid">
-  <div class="doctor-card" onclick="showDoctorDetail('dr-dhi')">
-    <img src="https://via.placeholder.com/150" alt="Dr. Dhivakaran R">
-    <h4>Dr. Dhivakaran R</h4>
-    <p>Chief Medical Director</p>
-  </div>
-
-  <div class="doctor-card" onclick="showDoctorDetail('dr-thik')">
-    <img src="https://via.placeholder.com/150" alt="Dr. Thik Vijay">
-    <h4>Dr. Thik Vijay</h4>
-    <p>Aesthetics & Cosmetologist</p>
-  </div>
-
-  <div class="doctor-card" onclick="showDoctorDetail('dr-roger')">
-    <img src="https://via.placeholder.com/150" alt="Dr. Roger Ronaldo">
-    <h4>Dr. Roger Ronaldo</h4>
-    <p>Oral & Maxillofacial Surgeon</p>
-  </div>
-
-  <div class="doctor-card" onclick="showDoctorDetail('dr-deepak')">
-    <img src="https://via.placeholder.com/150" alt="Dr. Deepak">
-    <h4>Dr. Deepak</h4>
-    <p>Orthodontist</p>
-  </div>
-
-  <div class="doctor-card" onclick="showDoctorDetail('dr-manoj')">
-    <img src="https://via.placeholder.com/150" alt="Dr. Manoj Reddy">
-    <h4>Dr. Manoj Reddy</h4>
-    <p>Oral & Maxillofacial Surgeon</p>
-  </div>
-
-  <div class="doctor-card" onclick="showDoctorDetail('dr-idhaya')">
-    <img src="https://via.placeholder.com/150" alt="Dr. Idhaya">
-    <h4>Dr. Idhaya</h4>
-    <p>Director - Healthflo</p>
-  </div>
-
-  <div class="doctor-card">
-    <img src="https://via.placeholder.com/150" alt="Internal Consultants">
-    <h4>Internal Consultants</h4>
-    <p>Dr. Ashok, Dr. Rakesh Kumar, Dr. Gana Praksh</p>
-  </div>
-</div>
-
-<!-- Doctor Grid -->
-<div class="doctor-grid">
-
-  <!-- Dr. Dhivakaran R -->
-  <div class="doctor-card" onclick="showDoctorDetail('dr-dhi')">
-    <img src="https://via.placeholder.com/150" alt="Dr. Dhivakaran">
-    <h4>Dr. Dhivakaran R</h4>
-    <p>Chief Medical Director</p>
-  </div>
-  <div id="dr-dhi" class="doctor-detail hidden">
-    <div class="doctor-detail-card">
-      <button class="close-btn" onclick="hideDoctorDetail('dr-dhi')">&times;</button>
-      <h3>Dr. Dhivakaran R</h3>
-      <p><strong>Total Patients:</strong> 1500+</p>
-      <p><strong>Experience:</strong> 10 years</p>
-      <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.8)</p>
-      <p><strong>Specialities:</strong> Dental Surgery, AI-driven Diagnostics</p>
-      <p><strong>Summary:</strong> Founder and visionary behind Noble Dental and Healthflo.</p>
-      <p><strong>Contributions:</strong> Built India's first AI-integrated health system.</p>
-      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
-    </div>
-  </div>
-
-  <!-- Dr. Thik Vijay -->
-  <div class="doctor-card" onclick="showDoctorDetail('dr-vijay')">
-    <img src="https://via.placeholder.com/150" alt="Dr. Thik Vijay">
-    <h4>Dr. Thik Vijay</h4>
-    <p>Aesthetic Cosmetologist</p>
-  </div>
-  <div id="dr-vijay" class="doctor-detail hidden">
-    <div class="doctor-detail-card">
-      <button class="close-btn" onclick="hideDoctorDetail('dr-vijay')">&times;</button>
-      <h3>Dr. Thik Vijay</h3>
-      <p><strong>Total Patients:</strong> 1800+</p>
-      <p><strong>Experience:</strong> 11 years</p>
-      <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.6)</p>
-      <p><strong>Specialities:</strong> Skin, Hair & Dental Aesthetics</p>
-      <p><strong>Summary:</strong> Expert in non-invasive facial and dental rejuvenation.</p>
-      <p><strong>Contributions:</strong> Led over 100 cosmetic smile makeovers.</p>
-      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
-    </div>
-  </div>
-
-  <!-- Dr. Roger Ronaldo -->
-  <div class="doctor-card" onclick="showDoctorDetail('dr-roger')">
-    <img src="https://via.placeholder.com/150" alt="Dr. Roger Ronaldo">
-    <h4>Dr. Roger Ronaldo</h4>
-    <p>Maxillofacial Surgeon</p>
-  </div>
-  <div id="dr-roger" class="doctor-detail hidden">
-    <div class="doctor-detail-card">
-      <button class="close-btn" onclick="hideDoctorDetail('dr-roger')">&times;</button>
-      <h3>Dr. Roger Ronaldo</h3>
-      <p><strong>Total Patients:</strong> 2200+</p>
-      <p><strong>Experience:</strong> 13 years</p>
-      <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.9)</p>
-      <p><strong>Specialities:</strong> Implants, Facial Reconstruction</p>
-      <p><strong>Summary:</strong> Senior oral surgeon handling critical trauma and reconstruction.</p>
-      <p><strong>Contributions:</strong> Performed 300+ successful maxillofacial surgeries.</p>
-      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
-    </div>
-  </div>
-
-  <!-- Dr. Deepak -->
-  <div class="doctor-card" onclick="showDoctorDetail('dr-deepak')">
-    <img src="https://via.placeholder.com/150" alt="Dr. Deepak">
-    <h4>Dr. Deepak</h4>
-    <p>Orthodontist</p>
-  </div>
-  <div id="dr-deepak" class="doctor-detail hidden">
-    <div class="doctor-detail-card">
-      <button class="close-btn" onclick="hideDoctorDetail('dr-deepak')">&times;</button>
-      <h3>Dr. Deepak</h3>
-      <p><strong>Total Patients:</strong> 1600+</p>
-      <p><strong>Experience:</strong> 10 years</p>
-      <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.7)</p>
-      <p><strong>Specialities:</strong> Invisalign, Inhouse Aligners</p>
-      <p><strong>Summary:</strong> Assistant Professor and experienced orthodontist.</p>
-      <p><strong>Contributions:</strong> Designed 200+ in-house clear aligners.</p>
-      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
-    </div>
-  </div>
-
-  <!-- Dr. Manoj Reddy -->
-  <div class="doctor-card" onclick="showDoctorDetail('dr-manoj')">
-    <img src="https://via.placeholder.com/150" alt="Dr. Manoj Reddy">
-    <h4>Dr. Manoj Reddy</h4>
-    <p>Implantologist</p>
-  </div>
-  <div id="dr-manoj" class="doctor-detail hidden">
-    <div class="doctor-detail-card">
-      <button class="close-btn" onclick="hideDoctorDetail('dr-manoj')">&times;</button>
-      <h3>Dr. Manoj Reddy</h3>
-      <p><strong>Total Patients:</strong> 2300+</p>
-      <p><strong>Experience:</strong> 13 years</p>
-      <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.9)</p>
-      <p><strong>Specialities:</strong> Oral & Maxillofacial Surgery</p>
-      <p><strong>Summary:</strong> Renowned for implantology and facial restoration.</p>
-      <p><strong>Contributions:</strong> Placed over 800+ successful implants.</p>
-      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
-    </div>
-  </div>
-
-  <!-- Dr. Idhaya -->
-  <div class="doctor-card" onclick="showDoctorDetail('dr-idhaya')">
-    <img src="https://via.placeholder.com/150" alt="Dr. Idhaya">
-    <h4>Dr. Idhaya</h4>
-    <p>Director of Healthflo</p>
-  </div>
-  <div id="dr-idhaya" class="doctor-detail hidden">
-    <div class="doctor-detail-card">
-      <button class="close-btn" onclick="hideDoctorDetail('dr-idhaya')">&times;</button>
-      <h3>Dr. Idhaya</h3>
-      <p><strong>Total Patients:</strong> 1400+</p>
-      <p><strong>Experience:</strong> 7 years</p>
-      <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.5)</p>
-      <p><strong>Specialities:</strong> Health Insurance, Pan-India Healthcare</p>
-      <p><strong>Summary:</strong> Driving force behind Healthflo with 350+ hospital tie-ups.</p>
-      <p><strong>Contributions:</strong> Helped thousands access affordable healthcare.</p>
-      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
-    </div>
-  </div>
-
-  <!-- Internal Consultants -->
-  <div class="doctor-card" onclick="showDoctorDetail('internal-consultants')">
-    <img src="https://via.placeholder.com/150" alt="Internal Consultants">
-    <h4>Internal Consultants</h4>
-    <p>Multi-specialty Panel</p>
-  </div>
-  <div id="internal-consultants" class="doctor-detail hidden">
-    <div class="doctor-detail-card">
-      <button class="close-btn" onclick="hideDoctorDetail('internal-consultants')">&times;</button>
-      <h3>Internal Consultants</h3>
-      <p><strong>Total Patients:</strong> 3000+</p>
-      <p><strong>Experience:</strong> Avg 10+ years each</p>
-      <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.7)</p>
-      <p><strong>Specialities:</strong> Cardiology, Internal Medicine, General Medicine</p>
-      <p><strong>Summary:</strong> Includes Dr. Ashok (Cardiologist), Dr. Rakesh Kumar (MBBS), Dr. Gana Prakash (MBBS)</p>
-      <p><strong>Contributions:</strong> Provide critical in-patient and outpatient support services.</p>
-      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
-    </div>
-  </div>
-
-</div>
-
-
-  
         <section class="footer">
             <h1>©️2025, Created by Dr Dhivakaran, C Akhila</h1>
             <div class="box-icons">
-                <a href="#"><i class='bx bxl-youtube'></i></a>
-                <a href="#"><i class='bx bxl-facebook'></i></a>
-                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <p><i class='bx bxl-youtube'></i></a>
+                <p><i class='bx bxl-github'></i></a>
+                <p><i class='bx bxl-linkedin-square'></i></a>
             </div>
         </section>
     
     <script src="app.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>AOS.init();
+    <script>AOS.init();</script>
+
+      <script>
+  const doctors = [
+    {
+      name: "Dr. Dhivakaran R",
+      image: "https://via.placeholder.com/120",
+      experience: "10 years",
+      patients: "3000+",
+      rating: "5.0",
+      specialities: "General Dentistry",
+      summary: "Expert in diagnostics and patient care.",
+      contributions: "500+ successful treatments"
+    },
+    {
+      name: "Dr. Thik Vijay",
+      image: "https://via.placeholder.com/120",
+      experience: "11 years",
+      patients: "3200+",
+      rating: "5.0",
+      specialities: "Cosmetology",
+      summary: "Focused on aesthetic facial enhancements.",
+      contributions: "400+ aesthetic treatments"
+    },
+    // Add more doctors similarly
+  ];
+
+  document.querySelectorAll('.doctor-card').forEach((card, index) => {
+    card.addEventListener('click', () => showDoctorDetail(index));
+  });
+
+  function showDoctorDetail(index) {
+    const doctor = doctors[index];
+    document.getElementById("detailName").textContent = doctor.name;
+    document.getElementById("detailImage").src = doctor.image;
+    document.getElementById("detailExperience").textContent = doctor.experience;
+    document.getElementById("detailPatients").textContent = doctor.patients;
+    document.getElementById("detailRating").textContent = doctor.rating;
+    document.getElementById("detailSpecialities").textContent = doctor.specialities;
+    document.getElementById("detailSummary").textContent = doctor.summary;
+    document.getElementById("detailContributions").textContent = doctor.contributions;
+
+    document.getElementById("doctorDetail").classList.add("show");
+  }
+
+  function closeDoctorDetail() {
+    document.getElementById("doctorDetail").classList.remove("show");
+  }
 </script>
 </body>
 </html>
-
-
-
-
 
