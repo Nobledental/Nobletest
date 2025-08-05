@@ -484,66 +484,135 @@ header ul a:hover {
   max-width: 100%;
 }
 
-.doctor-detail {
-  position: absolute;
-  top: 0;
-  right: -100%;
-  width: 100%;
-  max-width: 400px;
-  background: #e0f7fa;
-  box-shadow: -3px 0 8px rgba(0,0,0,0.2);
-  padding: 1rem;
-  transition: right 0.4s ease-in-out;
-  z-index: 100;
+/* ===== Overlay ===== */
+.doctor-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 998;
 }
 
-.doctor-detail.show {
-  right: 0;
+.doctor-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
-.detail-content {
+/* ===== Doctor Detail Card ===== */
+.doctor-detail-card {
+  position: fixed;
+  top: 0; right: -100%;
+  width: 380px;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(15px);
+  border-left: 1px solid rgba(255,255,255,0.2);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+  border-radius: 16px 0 0 16px;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 1rem;
+  z-index: 999;
+  transition: right 0.5s cubic-bezier(0.25, 1.3, 0.5, 1);
 }
 
-.detail-content img {
-  width: 100px;
-  border-radius: 12px;
-  margin: 0 auto;
+.doctor-detail-card.active {
+  right: 0;
+  animation: bounceIn 0.6s ease;
 }
 
-.call-button {
-  background: teal;
-  color: white;
-  text-align: center;
-  padding: 0.8rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
+@keyframes bounceIn {
+  0% { transform: translateX(100%); }
+  70% { transform: translateX(-15px); }
+  100% { transform: translateX(0); }
+}
+
+/* ===== Close Button ===== */
+.doctor-detail-card .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 50%;
+  width: 35px; height: 35px;
+  cursor: pointer;
   transition: background 0.3s ease;
 }
 
+.doctor-detail-card .close-btn:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+/* ===== Doctor Image ===== */
+.doctor-detail-card img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* ===== Doctor Info ===== */
+.doctor-detail-card h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+
+.doctor-detail-card p {
+  color: #f1f1f1;
+  margin: 0.2rem 0;
+  font-size: 0.95rem;
+}
+
+.doctor-detail-card .rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1rem;
+  color: gold;
+}
+
+/* ===== Call Button ===== */
+.call-button {
+  background: #1abc9c;
+  color: white;
+  text-align: center;
+  padding: 0.8rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: auto;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
 .call-button:hover {
-  background: #00796b;
+  background: #16a085;
+  transform: scale(1.05);
 }
 
-.close-detail {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  align-self: flex-end;
-  cursor: pointer;
-  color: #00796b;
-}
-
-.doctor-detail {
-  transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out;
+/* ===== Staggered Fade-In ===== */
+.doctor-detail-card .detail-item {
   opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.4s forwards;
 }
 
-.doctor-detail.show {
-  opacity: 1;
+.doctor-detail-card.active .detail-item:nth-child(1) { animation-delay: 0.1s; }
+.doctor-detail-card.active .detail-item:nth-child(2) { animation-delay: 0.2s; }
+.doctor-detail-card.active .detail-item:nth-child(3) { animation-delay: 0.3s; }
+.doctor-detail-card.active .detail-item:nth-child(4) { animation-delay: 0.4s; }
+.doctor-detail-card.active .detail-item:nth-child(5) { animation-delay: 0.5s; }
+.doctor-detail-card.active .detail-item:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Gallery Section */
@@ -653,3 +722,4 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
+
