@@ -475,60 +475,57 @@ header ul a:hover {
 .doctor-section {
   display: flex;
   flex-wrap: wrap;
+  gap: 2rem;
   position: relative;
 }
 
 .doctor-list {
-  flex: 1 1 60%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex: 1;
+  min-width: 300px;
 }
 
-.doctor-detail {
-  position: absolute;
-  top: 0;
-  right: -400px; /* match max-width */
-  width: 100%;
-  max-width: 400px;
-  background: #e0f7fa;
-  box-shadow: -3px 0 8px rgba(0,0,0,0.2);
-  padding: 1rem;
-  transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out;
+#doctor-detail {
+  flex: 1;
+  min-width: 320px;
+  background: linear-gradient(to bottom right, #e0f7fa, #e0f2f1);
+  border-left: 4px solid teal;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
   opacity: 0;
-  z-index: 100;
+  position: relative;
 }
 
-.doctor-detail.show {
-  right: 0;
+#doctor-detail.active {
+  transform: translateX(0);
   opacity: 1;
 }
 
-.detail-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+#doctor-detail h3 {
+  color: #006064;
+  margin-bottom: 1rem;
 }
 
-.detail-content img {
-  width: 100px;
-  border-radius: 12px;
-  margin: 0 auto;
+#doctor-detail ul {
+  padding-left: 1.2rem;
 }
 
-.call-button {
+#doctor-detail .call-button {
+  margin-top: 1.5rem;
   background: teal;
   color: white;
-  text-align: center;
-  padding: 0.8rem;
-  border-radius: 8px;
-  text-decoration: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
   font-weight: bold;
+  border: none;
+  cursor: pointer;
   transition: background 0.3s ease;
 }
 
-.call-button:hover {
-  background: #00796b;
+#doctor-detail .call-button:hover {
+  background: #004d40;
 }
 
 .close-detail {
@@ -821,4 +818,5 @@ header ul a:hover {
     transform: translateY(0);
   }
 }
+
 
