@@ -313,9 +313,23 @@
         <p>Dr Ashok, Dr Rakesh, Dr Gana</p>
       </div>
       <span class="rating">★ 5.0</span>
+
+  <div class="doctor-detail" id="doctorDetail">
+  <div class="detail-content">
+    <button class="close-detail" onclick="closeDoctorDetail()">✖</button>
+    <img id="detailImage" src="https://via.placeholder.com/120" alt="Doctor Image" />
+    <h3 id="detailName">Dr. Name</h3>
+    <p><strong>Experience:</strong> <span id="detailExperience">--</span></p>
+    <p><strong>Patients:</strong> <span id="detailPatients">--</span></p>
+    <p><strong>Rating:</strong> <span id="detailRating">--</span></p>
+    <p><strong>Specialities:</strong> <span id="detailSpecialities">--</span></p>
+    <p><strong>Summary:</strong> <span id="detailSummary">--</span></p>
+    <p><strong>Contributions:</strong> <span id="detailContributions">--</span></p>
+    <a class="call-button" href="tel:8074512305">📞 Call Doctor</a>
     </div>
   </div>
 </section>
+
   
         <section class="gallery-section">
             <h1 class="section-title autoDisplay">Clinic Gallery 🏥</h1>
@@ -342,19 +356,6 @@
                     <p>"Best dental care experience ever! They even followed up after my procedure."</p>
                     <h4>- Meena K.</h4>
                 </div>
-            </div>
-          <!-- Doctor Detail Panel -->
-<div id="doctor-detail-panel" class="doctor-detail hidden">
-  <button class="close-btn">×</button>
-  <div class="doctor-header">
-    <img id="doctor-image" src="https://via.placeholder.com/100" alt="Doctor Image" />
-    <div class="header-info">
-      <h2 id="doctor-name">Dr. Name</h2>
-      <p id="doctor-experience">10 Years Experience</p>
-      <p id="doctor-patients">Patients Treated: 500+</p>
-      <p id="doctor-rating">Rating: ★ 5.0</p>
-    </div>
-  </div>
 
   <div class="doctor-body">
     <h4>Specialities</h4>
@@ -369,7 +370,8 @@
 
   <a href="tel:8074512305" class="call-button">📞 Call Now</a>
 </div>
-        </section>
+</div>
+</section>
 
         <section class="map-section">
             <h1 class="section-title autoDisplay">Find Us 📍</h1>
@@ -390,8 +392,57 @@
     <script src="app.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>AOS.init();</script>
+
+      <script>
+  const doctors = [
+    {
+      name: "Dr. Dhivakaran R",
+      image: "https://via.placeholder.com/120",
+      experience: "10 years",
+      patients: "3000+",
+      rating: "5.0",
+      specialities: "General Dentistry",
+      summary: "Expert in diagnostics and patient care.",
+      contributions: "500+ successful treatments"
+    },
+    {
+      name: "Dr. Thik Vijay",
+      image: "https://via.placeholder.com/120",
+      experience: "11 years",
+      patients: "3200+",
+      rating: "5.0",
+      specialities: "Cosmetology",
+      summary: "Focused on aesthetic facial enhancements.",
+      contributions: "400+ aesthetic treatments"
+    },
+    // Add more doctors similarly
+  ];
+
+  document.querySelectorAll('.doctor-card').forEach((card, index) => {
+    card.addEventListener('click', () => showDoctorDetail(index));
+  });
+
+  function showDoctorDetail(index) {
+    const doctor = doctors[index];
+    document.getElementById("detailName").textContent = doctor.name;
+    document.getElementById("detailImage").src = doctor.image;
+    document.getElementById("detailExperience").textContent = doctor.experience;
+    document.getElementById("detailPatients").textContent = doctor.patients;
+    document.getElementById("detailRating").textContent = doctor.rating;
+    document.getElementById("detailSpecialities").textContent = doctor.specialities;
+    document.getElementById("detailSummary").textContent = doctor.summary;
+    document.getElementById("detailContributions").textContent = doctor.contributions;
+
+    document.getElementById("doctorDetail").classList.add("show");
+  }
+
+  function closeDoctorDetail() {
+    document.getElementById("doctorDetail").classList.remove("show");
+  }
+</script>
 </body>
 </html>
+
 
 
 
