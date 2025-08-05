@@ -678,6 +678,147 @@ header ul a:hover {
   }
 }
 
+/* Doctor Detail Panel */
+.doctor-details-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  background-color: #e6f7ff; /* Light teal background */
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  transition: right 0.4s ease;
+  z-index: 1000;
+  padding: 2rem;
+  color: #003147;
+}
 
+.doctor-details-panel.open {
+  right: 0;
+}
 
+.doctor-details-panel h3 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: #007b8f;
+}
+
+.doctor-detail {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.doctor-detail strong {
+  color: #005c6b;
+}
+
+.call-button {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.8rem 1.5rem;
+  background-color: #007b8f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+}
+
+.call-button:hover {
+  background-color: #005c6b;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .doctor-details-panel {
+    width: 100%;
+  }
+
+  .call-button {
+    width: 100%;
+  }
+}
+
+/* Container to hold doctor cards and detail panel side by side */
+.doctor-section {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  padding: 2rem;
+}
+
+/* Detail Panel Style */
+.doctor-detail-panel {
+  flex: 1;
+  max-width: 400px;
+  background-color: #f0f9ff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  transition: all 0.5s ease-in-out;
+  transform: translateX(100%);
+  opacity: 0;
+  position: relative;
+}
+
+/* When active, show the panel */
+.doctor-detail-panel.active {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+/* Doctor Info fields */
+.doctor-detail-panel h3 {
+  color: #006d77;
+  margin-bottom: 0.5rem;
+}
+
+.doctor-detail-panel p {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.doctor-detail-panel .call-button {
+  display: block;
+  width: 100%;
+  background: #0077b6;
+  color: white;
+  padding: 0.75rem;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 1rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.doctor-detail-panel .call-button:hover {
+  background: #0096c7;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .doctor-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .doctor-detail-panel {
+    max-width: 90%;
+    margin-top: 1.5rem;
+    transform: translateY(20px);
+  }
+
+  .doctor-detail-panel.active {
+    transform: translateY(0);
+  }
+}
 
