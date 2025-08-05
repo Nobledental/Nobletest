@@ -349,106 +349,29 @@ header ul a:hover {
 }
 
 /* Doctors Section */
-.doctors-section {
-  padding: 60px 20px;
-  background: #f7f9fc;
+.doctor-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
   text-align: center;
+  color: #000;
 }
 
-.doctors-section .title h2 {
-  font-size: 2.5rem;
-  color: #003147;
-  margin-bottom: 10px;
-}
-
-.doctors-section .title p {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 40px;
-}
-
-.card_Container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.card {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  width: 280px;
-  overflow: hidden;
+.doctor-card {
+  background: #f0f0f0;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
-  position: relative;
 }
 
-.card:hover {
-  transform: translateY(-10px);
+.doctor-card:hover {
+  transform: translateY(-5px);
 }
 
-.imbBx {
+.doctor-card img {
   width: 100%;
-  height: 320px;
-  overflow: hidden;
-}
-
-.imbBx img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: 0.3s ease-in-out;
-}
-
-.card:hover .imbBx img {
-  transform: scale(1.05);
-}
-
-.content {
-  padding: 20px;
-  position: relative;
-}
-
-.content h3 {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #003147;
-}
-
-.content h3 span {
-  display: block;
-  font-size: 0.95rem;
-  font-weight: normal;
-  color: #777;
-  margin-top: 4px;
-}
-
-.sci {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-  gap: 15px;
-}
-
-.sci li a {
-  color: #003147;
-  font-size: 1rem;
-  transition: color 0.3s;
-}
-
-.sci li a:hover {
-  color: #00bcd4;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .card_Container {
-    flex-direction: column;
-    align-items: center;
-  }
+  border-radius: 50%;
 }
 
 /* Gallery Section */
@@ -558,5 +481,3 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
-
-
