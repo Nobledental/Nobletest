@@ -1,31 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
   // ========== DOCTOR DETAIL TOGGLE ==========
-  const doctorCards = document.querySelectorAll(".doctor-card");
-  const doctorDetail = document.querySelector(".doctor-detail");
-  const closeDetail = document.querySelector(".close-detail");
+const doctorCards = document.querySelectorAll(".doctor-card");
+const doctorDetail = document.getElementById("doctorDetail");
+const closeDetail = document.getElementById("closeDetail");
 
-  doctorCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const name = card.querySelector("h4").textContent;
-      const role = card.querySelector("p").textContent;
-      const image = card.querySelector("img").src;
-      const rating = card.querySelector(".rating").textContent;
+doctorCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    const name = card.querySelector("h4").textContent;
+    const role = card.querySelector("p").textContent;
+    const image = card.querySelector("img").src;
+    const rating = card.querySelector(".rating").textContent;
 
-      // Populate detail box
-      doctorDetail.querySelector("img").src = image;
-      doctorDetail.querySelector("h3").textContent = name;
-      doctorDetail.querySelector("p").textContent = role;
-      doctorDetail.querySelector(".rating").textContent = rating;
+    doctorDetail.querySelector("img").src = image;
+    doctorDetail.querySelector("h3").textContent = name;
+    doctorDetail.querySelector("p").textContent = role;
+    doctorDetail.querySelector(".rating").textContent = rating;
 
-      // Show detail panel
-      doctorDetail.classList.add("show");
-    });
+    doctorDetail.classList.add("show");
+    document.body.classList.add("no-scroll");
   });
+});
 
-  // Close panel
-  closeDetail.addEventListener("click", () => {
-    doctorDetail.classList.remove("show");
-  });
+closeDetail.addEventListener("click", () => {
+  doctorDetail.classList.remove("show");
+  document.body.classList.remove("no-scroll");
+});
 
   // ========== DOCTOR SEARCH ==========
   const searchInput = document.querySelector("#doctorSearch");
