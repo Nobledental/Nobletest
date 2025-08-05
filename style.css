@@ -871,59 +871,39 @@ header ul a:hover {
   background-color: #006666;
 }
 
-.doctor-details {
+.doctor-detail {
+  display: none;
   position: fixed;
   top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 600px;
-  background: white;
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-  z-index: 1000;
-  display: none;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.doctor-details.show {
-  display: flex;
-  animation: fadeIn 0.4s ease;
-}
-
-.doctor-img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin: 0 auto;
-}
-
-.call-btn {
-  display: inline-block;
-  background: #00b894;
-  color: white;
-  padding: 0.75rem 1.5rem;
+  left: 10%;
+  width: 80%;
+  background: #fff;
   border-radius: 10px;
-  text-align: center;
-  font-weight: bold;
-  text-decoration: none;
+  padding: 2rem;
+  z-index: 9999;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  border: none;
-  background: none;
-  cursor: pointer;
+.doctor-detail:not(.hidden) {
+  display: block;
 }
-
 .hidden {
-  display: none !important;
+  display: none;
+}
+.call-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: teal;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.close-btn {
+  float: right;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 @keyframes fadeIn {
@@ -1024,3 +1004,4 @@ header ul a:hover {
 .hidden {
   display: none;
 }
+
