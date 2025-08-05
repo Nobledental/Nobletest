@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Noble Dental Nallagandla | Top Dental Clinic in Hyderabad</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="canonical" href="https://nobledentalnallagandla.in/">
   <meta name="description" content="Noble Dental Nallagandla offers expert dental services including implants, whitening, root canal, and emergency care in Hyderabad." />
   <meta name="keywords" content="Dental Clinic Hyderabad, Best Dentist Nallagandla, Teeth Whitening, Root Canal, Dental Implants, Emergency Dental Care" />
   <meta name="author" content="Noble Dental Nallagandla" />
@@ -75,6 +76,54 @@
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
   gtag('config', 'G-XXXXXXX');
+
+    const doctors = [
+    {
+      name: "Dr. Dhivakaran R",
+      image: "https://via.placeholder.com/120",
+      experience: "10 years",
+      patients: "3000+",
+      rating: "5.0",
+      specialities: "General Dentistry",
+      summary: "Expert in diagnostics and patient care.",
+      contributions: "500+ successful treatments"
+    },
+    {
+      name: "Dr. Thik Vijay",
+      image: "https://via.placeholder.com/120",
+      experience: "11 years",
+      patients: "3200+",
+      rating: "5.0",
+      specialities: "Cosmetology",
+      summary: "Focused on aesthetic facial enhancements.",
+      contributions: "400+ aesthetic treatments"
+    },
+    // Add more doctor objects...
+  ];
+
+  document.querySelectorAll('.doctor-card').forEach((card, index) => {
+    card.addEventListener('click', () => showDoctorDetail(index));
+  });
+
+  function showDoctorDetail(index) {
+    const doctor = doctors[index];
+    document.getElementById("detailName").textContent = doctor.name;
+    document.getElementById("detailImage").src = doctor.image;
+    document.getElementById("detailExperience").textContent = doctor.experience;
+    document.getElementById("detailPatients").textContent = doctor.patients;
+    document.getElementById("detailRating").textContent = doctor.rating;
+    document.getElementById("detailSpecialities").textContent = doctor.specialities;
+    document.getElementById("detailSummary").textContent = doctor.summary;
+    document.getElementById("detailContributions").textContent = doctor.contributions;
+
+    document.getElementById("doctorDetail").classList.add("show");
+    document.getElementById("overlay").classList.add("show");
+  }
+
+  function closeDoctorDetail() {
+    document.getElementById("doctorDetail").classList.remove("show");
+    document.getElementById("overlay").classList.remove("show");
+  }
 </script>
 </head>
 <body>
@@ -112,7 +161,7 @@
 <!-- Gradient Background Hero Section -->
 <section class="hero-background">
   <div class="blackhole-box">
-    <video autoplay muted loop playsinline src="videos/blackhole.mp4"></video>
+    <video autoplay muted loop playsinline src="videos/blackhole.mp4">  Your browser does not support the video tag.</video>
   </div>
     <div class="hero-info-title">
       <i class='bx bxl-sketch'></i>
@@ -288,21 +337,24 @@
       </div>
     </section>
 
-    <!-- Doctor Detail Panel -->
-    <div class="doctor-detail">
-      <button class="close-detail">&times;</button>
-      <div class="detail-content">
-        <img src="doctor1.jpg" alt="Doctor Detail" />
-        <h3>Dr. Dhivakaran R</h3>
-        <p>Chief Medical Director with over 10 years of experience in delivering advanced dental care. Specializes in prosthodontics and implantology.</p>
-        <a class="call-button" href="tel:+918888888888">Call Now</a>
-      </div>
-    </div>
+<!-- Doctor Detail Panel -->
+<div class="doctor-detail" id="doctorDetail">
+  <button class="close-detail" onclick="closeDoctorDetail()">&times;</button>
+  <div class="detail-content">
+    <img id="detailImage" src="" alt="Doctor" />
+    <h3 id="detailName">Doctor Name</h3>
+    <p><strong>Experience:</strong> <span id="detailExperience"></span></p>
+    <p><strong>Patients Treated:</strong> <span id="detailPatients"></span></p>
+    <p><strong>Rating:</strong> <span id="detailRating"></span></p>
+    <p><strong>Specialities:</strong> <span id="detailSpecialities"></span></p>
+    <p><strong>Summary:</strong> <span id="detailSummary"></span></p>
+    <p><strong>Contributions:</strong> <span id="detailContributions"></span></p>
+    <a href="tel:+918888888888" class="call-button">📞 Call Now</a>
+  </div>
+</div>
 
-    <!-- Background Overlay -->
-    <div class="overlay"></div>
-  </main>
-
+<div class="overlay" id="overlay" onclick="closeDoctorDetail()"></div>
+</main>
   
         <section class="gallery-section">
             <h1 class="section-title autoDisplay">Clinic Gallery 🏥</h1>
@@ -329,22 +381,7 @@
                     <p>"Best dental care experience ever! They even followed up after my procedure."</p>
                     <h4>- Meena K.</h4>
                 </div>
-
-  <div class="doctor-body">
-    <h4>Specialities</h4>
-    <p id="doctor-specialities">Specialities here...</p>
-
-    <h4>Brief Summary</h4>
-    <p id="doctor-summary">Doctor's background summary...</p>
-
-    <h4>Contributions</h4>
-    <p id="doctor-contributions">Published papers, awards, etc.</p>
-  </div>
-
-  <a href="tel:8074512305" class="call-button">📞 Call Now</a>
-</div>
-</div>
-</section>
+              </section>
 
         <section class="map-section">
             <h1 class="section-title autoDisplay">Find Us 📍</h1>
@@ -356,65 +393,19 @@
         <section class="footer">
             <h1>©️2025, Created by Dr Dhivakaran, C Akhila</h1>
             <div class="box-icons">
-                <p><i class='bx bxl-youtube'></i></a>
-                <p><i class='bx bxl-github'></i></a>
-                <p><i class='bx bxl-linkedin-square'></i></a>
+                <a href="#"><i class='bx bxl-youtube'></i></a>
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
             </div>
         </section>
     
     <script src="app.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>AOS.init();</script>
-
-      <script>
-  const doctors = [
-    {
-      name: "Dr. Dhivakaran R",
-      image: "https://via.placeholder.com/120",
-      experience: "10 years",
-      patients: "3000+",
-      rating: "5.0",
-      specialities: "General Dentistry",
-      summary: "Expert in diagnostics and patient care.",
-      contributions: "500+ successful treatments"
-    },
-    {
-      name: "Dr. Thik Vijay",
-      image: "https://via.placeholder.com/120",
-      experience: "11 years",
-      patients: "3200+",
-      rating: "5.0",
-      specialities: "Cosmetology",
-      summary: "Focused on aesthetic facial enhancements.",
-      contributions: "400+ aesthetic treatments"
-    },
-    // Add more doctors similarly
-  ];
-
-  document.querySelectorAll('.doctor-card').forEach((card, index) => {
-    card.addEventListener('click', () => showDoctorDetail(index));
-  });
-
-  function showDoctorDetail(index) {
-    const doctor = doctors[index];
-    document.getElementById("detailName").textContent = doctor.name;
-    document.getElementById("detailImage").src = doctor.image;
-    document.getElementById("detailExperience").textContent = doctor.experience;
-    document.getElementById("detailPatients").textContent = doctor.patients;
-    document.getElementById("detailRating").textContent = doctor.rating;
-    document.getElementById("detailSpecialities").textContent = doctor.specialities;
-    document.getElementById("detailSummary").textContent = doctor.summary;
-    document.getElementById("detailContributions").textContent = doctor.contributions;
-
-    document.getElementById("doctorDetail").classList.add("show");
-  }
-
-  function closeDoctorDetail() {
-    document.getElementById("doctorDetail").classList.remove("show");
-  }
+    <script>AOS.init();
 </script>
 </body>
 </html>
+
 
 
 
