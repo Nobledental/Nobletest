@@ -452,89 +452,149 @@
   </div>
 </div>
 
-<!-- Doctor Detail Cards (Initially Hidden) -->
-<div id="dr-dhi" class="doctor-detail hidden">
-  <div class="doctor-detail-card">
-    <button class="close-btn" onclick="hideDoctorDetail('dr-dhi')">&times;</button>
-    <h3>Dr. Dhivakaran R</h3>
-    <p><strong>Total Patients:</strong> 3000+</p>
-    <p><strong>Experience:</strong> 10 years</p>
-    <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (5.0)</p>
-    <p><strong>Specialities:</strong> General Dentistry, Healthcare Management</p>
-    <p><strong>Summary:</strong> Chief Medical Director of Noble Dental Care. Director of Healthflo, a pioneering AI-based health system.</p>
-    <p><strong>Contributions:</strong> Architect of Healthflo, contributed to streamlining digital healthcare in India.</p>
-    <a class="call-button" href="tel:8074512305">📞 Call Now</a>
-  </div>
-</div>
+<!-- Doctor Grid -->
+<div class="doctor-grid">
 
-<div id="dr-thik" class="doctor-detail hidden">
-  <div class="doctor-detail-card">
-    <button class="close-btn" onclick="hideDoctorDetail('dr-thik')">&times;</button>
-    <h3>Dr. Thik Vijay</h3>
-    <p><strong>Total Patients:</strong> 1500+</p>
-    <p><strong>Experience:</strong> 11 years</p>
-    <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.6)</p>
-    <p><strong>Specialities:</strong> Aesthetics, Skin, Hair, Dental Cosmetology</p>
-    <p><strong>Summary:</strong> Known for aesthetic precision, offering skin and smile makeovers.</p>
-    <p><strong>Contributions:</strong> Advanced treatment protocols in non-surgical facial enhancement.</p>
-    <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+  <!-- Dr. Dhivakaran R -->
+  <div class="doctor-card" onclick="showDoctorDetail('dr-dhi')">
+    <img src="https://via.placeholder.com/150" alt="Dr. Dhivakaran">
+    <h4>Dr. Dhivakaran R</h4>
+    <p>Chief Medical Director</p>
   </div>
-</div>
+  <div id="dr-dhi" class="doctor-detail hidden">
+    <div class="doctor-detail-card">
+      <button class="close-btn" onclick="hideDoctorDetail('dr-dhi')">&times;</button>
+      <h3>Dr. Dhivakaran R</h3>
+      <p><strong>Total Patients:</strong> 1500+</p>
+      <p><strong>Experience:</strong> 10 years</p>
+      <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.8)</p>
+      <p><strong>Specialities:</strong> Dental Surgery, AI-driven Diagnostics</p>
+      <p><strong>Summary:</strong> Founder and visionary behind Noble Dental and Healthflo.</p>
+      <p><strong>Contributions:</strong> Built India's first AI-integrated health system.</p>
+      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+    </div>
+  </div>
 
-<div id="dr-roger" class="doctor-detail hidden">
-  <div class="doctor-detail-card">
-    <button class="close-btn" onclick="hideDoctorDetail('dr-roger')">&times;</button>
-    <h3>Dr. Roger Ronaldo</h3>
-    <p><strong>Total Patients:</strong> 1800+</p>
-    <p><strong>Experience:</strong> 13 years</p>
-    <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.9)</p>
-    <p><strong>Specialities:</strong> Maxillofacial Surgery, Implants, Facial Reconstruction</p>
-    <p><strong>Summary:</strong> Skilled in handling complex facial and dental surgeries.</p>
-    <p><strong>Contributions:</strong> Performed 500+ implant surgeries, expert in facial trauma reconstruction.</p>
-    <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+  <!-- Dr. Thik Vijay -->
+  <div class="doctor-card" onclick="showDoctorDetail('dr-vijay')">
+    <img src="https://via.placeholder.com/150" alt="Dr. Thik Vijay">
+    <h4>Dr. Thik Vijay</h4>
+    <p>Aesthetic Cosmetologist</p>
   </div>
-</div>
+  <div id="dr-vijay" class="doctor-detail hidden">
+    <div class="doctor-detail-card">
+      <button class="close-btn" onclick="hideDoctorDetail('dr-vijay')">&times;</button>
+      <h3>Dr. Thik Vijay</h3>
+      <p><strong>Total Patients:</strong> 1800+</p>
+      <p><strong>Experience:</strong> 11 years</p>
+      <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.6)</p>
+      <p><strong>Specialities:</strong> Skin, Hair & Dental Aesthetics</p>
+      <p><strong>Summary:</strong> Expert in non-invasive facial and dental rejuvenation.</p>
+      <p><strong>Contributions:</strong> Led over 100 cosmetic smile makeovers.</p>
+      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+    </div>
+  </div>
 
-<div id="dr-deepak" class="doctor-detail hidden">
-  <div class="doctor-detail-card">
-    <button class="close-btn" onclick="hideDoctorDetail('dr-deepak')">&times;</button>
-    <h3>Dr. Deepak</h3>
-    <p><strong>Total Patients:</strong> 1400+</p>
-    <p><strong>Experience:</strong> 10 years</p>
-    <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.7)</p>
-    <p><strong>Specialities:</strong> Orthodontics, Invisalign, Inhouse Clear Aligners</p>
-    <p><strong>Summary:</strong> Assistant Professor and practicing orthodontist, passionate about alignment tech.</p>
-    <p><strong>Contributions:</strong> Developed aligner workflows tailored for Indian demographics.</p>
-    <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+  <!-- Dr. Roger Ronaldo -->
+  <div class="doctor-card" onclick="showDoctorDetail('dr-roger')">
+    <img src="https://via.placeholder.com/150" alt="Dr. Roger Ronaldo">
+    <h4>Dr. Roger Ronaldo</h4>
+    <p>Maxillofacial Surgeon</p>
   </div>
-</div>
+  <div id="dr-roger" class="doctor-detail hidden">
+    <div class="doctor-detail-card">
+      <button class="close-btn" onclick="hideDoctorDetail('dr-roger')">&times;</button>
+      <h3>Dr. Roger Ronaldo</h3>
+      <p><strong>Total Patients:</strong> 2200+</p>
+      <p><strong>Experience:</strong> 13 years</p>
+      <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.9)</p>
+      <p><strong>Specialities:</strong> Implants, Facial Reconstruction</p>
+      <p><strong>Summary:</strong> Senior oral surgeon handling critical trauma and reconstruction.</p>
+      <p><strong>Contributions:</strong> Performed 300+ successful maxillofacial surgeries.</p>
+      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+    </div>
+  </div>
 
-<div id="dr-manoj" class="doctor-detail hidden">
-  <div class="doctor-detail-card">
-    <button class="close-btn" onclick="hideDoctorDetail('dr-manoj')">&times;</button>
-    <h3>Dr. Manoj Reddy</h3>
-    <p><strong>Total Patients:</strong> 1700+</p>
-    <p><strong>Experience:</strong> 13 years</p>
-    <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.8)</p>
-    <p><strong>Specialities:</strong> Implants, Maxillofacial Surgeries</p>
-    <p><strong>Summary:</strong> Noted for surgical expertise and fast recovery methods.</p>
-    <p><strong>Contributions:</strong> Performed over 300 implant surgeries with success rate above 98%.</p>
-    <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+  <!-- Dr. Deepak -->
+  <div class="doctor-card" onclick="showDoctorDetail('dr-deepak')">
+    <img src="https://via.placeholder.com/150" alt="Dr. Deepak">
+    <h4>Dr. Deepak</h4>
+    <p>Orthodontist</p>
   </div>
-</div>
+  <div id="dr-deepak" class="doctor-detail hidden">
+    <div class="doctor-detail-card">
+      <button class="close-btn" onclick="hideDoctorDetail('dr-deepak')">&times;</button>
+      <h3>Dr. Deepak</h3>
+      <p><strong>Total Patients:</strong> 1600+</p>
+      <p><strong>Experience:</strong> 10 years</p>
+      <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.7)</p>
+      <p><strong>Specialities:</strong> Invisalign, Inhouse Aligners</p>
+      <p><strong>Summary:</strong> Assistant Professor and experienced orthodontist.</p>
+      <p><strong>Contributions:</strong> Designed 200+ in-house clear aligners.</p>
+      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+    </div>
+  </div>
 
-<div id="dr-idhaya" class="doctor-detail hidden">
-  <div class="doctor-detail-card">
-    <button class="close-btn" onclick="hideDoctorDetail('dr-idhaya')">&times;</button>
-    <h3>Dr. Idhaya</h3>
-    <p><strong>Total Patients:</strong> 2000+</p>
-    <p><strong>Experience:</strong> 7 years</p>
-    <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.4)</p>
-    <p><strong>Specialities:</strong> Health Insurance, Healthcare Technology</p>
-    <p><strong>Summary:</strong> Director of Healthflo with a focus on tech-driven health coverage solutions.</p>
-    <p><strong>Contributions:</strong> Built a network of 350+ hospitals across India for Healthflo.</p>
-    <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+  <!-- Dr. Manoj Reddy -->
+  <div class="doctor-card" onclick="showDoctorDetail('dr-manoj')">
+    <img src="https://via.placeholder.com/150" alt="Dr. Manoj Reddy">
+    <h4>Dr. Manoj Reddy</h4>
+    <p>Implantologist</p>
   </div>
+  <div id="dr-manoj" class="doctor-detail hidden">
+    <div class="doctor-detail-card">
+      <button class="close-btn" onclick="hideDoctorDetail('dr-manoj')">&times;</button>
+      <h3>Dr. Manoj Reddy</h3>
+      <p><strong>Total Patients:</strong> 2300+</p>
+      <p><strong>Experience:</strong> 13 years</p>
+      <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.9)</p>
+      <p><strong>Specialities:</strong> Oral & Maxillofacial Surgery</p>
+      <p><strong>Summary:</strong> Renowned for implantology and facial restoration.</p>
+      <p><strong>Contributions:</strong> Placed over 800+ successful implants.</p>
+      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+    </div>
+  </div>
+
+  <!-- Dr. Idhaya -->
+  <div class="doctor-card" onclick="showDoctorDetail('dr-idhaya')">
+    <img src="https://via.placeholder.com/150" alt="Dr. Idhaya">
+    <h4>Dr. Idhaya</h4>
+    <p>Director of Healthflo</p>
+  </div>
+  <div id="dr-idhaya" class="doctor-detail hidden">
+    <div class="doctor-detail-card">
+      <button class="close-btn" onclick="hideDoctorDetail('dr-idhaya')">&times;</button>
+      <h3>Dr. Idhaya</h3>
+      <p><strong>Total Patients:</strong> 1400+</p>
+      <p><strong>Experience:</strong> 7 years</p>
+      <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.5)</p>
+      <p><strong>Specialities:</strong> Health Insurance, Pan-India Healthcare</p>
+      <p><strong>Summary:</strong> Driving force behind Healthflo with 350+ hospital tie-ups.</p>
+      <p><strong>Contributions:</strong> Helped thousands access affordable healthcare.</p>
+      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+    </div>
+  </div>
+
+  <!-- Internal Consultants -->
+  <div class="doctor-card" onclick="showDoctorDetail('internal-consultants')">
+    <img src="https://via.placeholder.com/150" alt="Internal Consultants">
+    <h4>Internal Consultants</h4>
+    <p>Multi-specialty Panel</p>
+  </div>
+  <div id="internal-consultants" class="doctor-detail hidden">
+    <div class="doctor-detail-card">
+      <button class="close-btn" onclick="hideDoctorDetail('internal-consultants')">&times;</button>
+      <h3>Internal Consultants</h3>
+      <p><strong>Total Patients:</strong> 3000+</p>
+      <p><strong>Experience:</strong> Avg 10+ years each</p>
+      <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.7)</p>
+      <p><strong>Specialities:</strong> Cardiology, Internal Medicine, General Medicine</p>
+      <p><strong>Summary:</strong> Includes Dr. Ashok (Cardiologist), Dr. Rakesh Kumar (MBBS), Dr. Gana Prakash (MBBS)</p>
+      <p><strong>Contributions:</strong> Provide critical in-patient and outpatient support services.</p>
+      <a class="call-button" href="tel:8074512305">📞 Call Now</a>
+    </div>
+  </div>
+
 </div>
 
 
@@ -554,6 +614,7 @@
 </script>
 </body>
 </html>
+
 
 
 
