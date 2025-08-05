@@ -470,6 +470,82 @@ header ul a:hover {
   font-weight: bold;
 }
 
+.doctor-section {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.doctor-list {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 100%;
+}
+
+.doctor-detail {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 400px;
+  background: #e0f7fa;
+  box-shadow: -3px 0 8px rgba(0,0,0,0.2);
+  padding: 1rem;
+  transition: right 0.4s ease-in-out;
+  z-index: 100;
+}
+
+.doctor-detail.show {
+  right: 0;
+}
+
+.detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.detail-content img {
+  width: 100px;
+  border-radius: 12px;
+  margin: 0 auto;
+}
+
+.call-button {
+  background: teal;
+  color: white;
+  text-align: center;
+  padding: 0.8rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.call-button:hover {
+  background: #00796b;
+}
+
+.close-detail {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  align-self: flex-end;
+  cursor: pointer;
+  color: #00796b;
+}
+
+.doctor-detail {
+  transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  opacity: 0;
+}
+
+.doctor-detail.show {
+  opacity: 1;
+}
+
 /* Gallery Section */
 .gallery {
   display: grid;
@@ -577,6 +653,7 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
