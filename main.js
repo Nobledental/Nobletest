@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const doctorCards = document.querySelectorAll(".doctor-card");
-  const overlay = document.createElement("div");
-  overlay.classList.add("doctor-overlay");
-  document.body.appendChild(overlay);
 
+  // Create the detail card once, but don't show yet
   const detailCard = document.createElement("div");
   detailCard.classList.add("doctor-detail-card");
-  detailCard.innerHTML = 
-    <button class="close-btn">&times;</button>
-    <img src="" alt="Doctor Image" id="docImage">
+  detailCard.style.display = "none";
+  detailCard.innerHTML = `
+    <button class="close-btn" style="position:absolute;top:18px;right:18px;">&times;</button>
+    <img src="" alt="Doctor Image" id="docImage" style="margin-top:32px;">
     <h3 id="docName" class="detail-item"></h3>
     <p id="docPatients" class="detail-item"></p>
     <p id="docExperience" class="detail-item"></p>
@@ -16,71 +15,38 @@ document.addEventListener("DOMContentLoaded", () => {
     <p id="docSpecialities" class="detail-item"></p>
     <p id="docSummary" class="detail-item"></p>
     <p id="docContributions" class="detail-item"></p>
-    <a href="tel:8074512305" class="call-button detail-item">📞 Call Doctor</a>
-  ;
-  document.body.appendChild(detailCard);
+    <a href="tel:8074512305" class="call-button detail-item" id="callBtn">📞 Call Doctor</a>
+  `;
+  // Append to the main section, so it sits beside your list
+  document.querySelector('.doctor-section').appendChild(detailCard);
 
   const closeBtn = detailCard.querySelector(".close-btn");
 
-  // Open detail card
+  // Show details on card click
   doctorCards.forEach(card => {
     card.addEventListener("click", () => {
       const name = card.querySelector("h4").textContent.trim();
       const data = doctorData[name];
       if (!data) return;
 
-      // Populate
       detailCard.querySelector("#docImage").src = data.image;
       detailCard.querySelector("#docName").textContent = data.name;
-      detailCard.querySelector("#docPatients").textContent = Patients Treated: ${data.patients};
-      detailCard.querySelector("#docExperience").textContent = Experience: ${data.experience};
-      detailCard.querySelector("#docRating").textContent = Rating: ${data.rating} ⭐;
-      detailCard.querySelector("#docSpecialities").textContent = Specialities: ${data.specialties};
-      detailCard.querySelector("#docSummary").textContent = Summary: ${data.summary};
-      detailCard.querySelector("#docContributions").textContent = Contributions: ${data.contributions};
+      detailCard.querySelector("#docPatients").textContent = `Patients Treated: ${data.patients}`;
+      detailCard.querySelector("#docExperience").textContent = `Experience: ${data.experience}`;
+      detailCard.querySelector("#docRating").textContent = `Rating: ${data.rating} ⭐`;
+      detailCard.querySelector("#docSpecialities").textContent = `Specialities: ${data.specialties}`;
+      detailCard.querySelector("#docSummary").textContent = `Summary: ${data.summary}`;
+      detailCard.querySelector("#docContributions").textContent = `Contributions: ${data.contributions}`;
+      detailCard.querySelector("#callBtn").href = `tel:${data.phone}`;
 
-      // Show
-      overlay.classList.add("active");
-      detailCard.classList.add("active");
+      detailCard.style.display = "flex";
     });
   });
 
-  // Close actions
-  function closeCard() {
-    overlay.classList.remove("active");
-    detailCard.classList.remove("active");
-  }
-
-  closeBtn.addEventListener("click", closeCard);
-  overlay.addEventListener("click", closeCard);
+  closeBtn.addEventListener("click", () => {
+    detailCard.style.display = "none";
+  });
 });
-
-  // ========= TESTIMONIAL SLIDES =========
-  const slides = document.querySelectorAll(".testimonial-slide");
-  let currentIndex = 0;
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove("active", "prev", "next");
-      if (i === index) {
-        slide.classList.add("active");
-      } else if (i === (index + 1) % slides.length) {
-        slide.classList.add("next");
-      } else if (i === (index - 1 + slides.length) % slides.length) {
-        slide.classList.add("prev");
-      }
-    });
-  }
-
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  if (slides.length > 0) {
-    showSlide(currentIndex);
-    setInterval(nextSlide, 5000); // every 5 seconds
-  }
 
   // ========= NAVIGATION TOGGLE =========
   const menuIcon = document.querySelector(".menu-icon");
