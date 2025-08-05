@@ -351,23 +351,15 @@ header ul a:hover {
 /* Doctors Section */
 .doctors-section {
   padding: 60px 20px;
-  background: #cbc9e8; /* Matching your reference */
+  background: linear-gradient(to bottom right, #0d1117, #1e2a38);
   text-align: center;
+  color: #fff;
 }
 
-.doctors-section h2 {
-  font-size: 50px;
-  font-weight: 500;
-  letter-spacing: 1.2px;
-  word-spacing: 5px;
-  color: #585757;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  display: inline-block;
-  padding: 20px;
-  backdrop-filter: blur(15px);
-  text-transform: uppercase;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+.section-title {
+  font-size: 2.5rem;
+  color: #00baff;
+  margin-bottom: 20px;
 }
 
 .doctor-cards {
@@ -375,108 +367,85 @@ header ul a:hover {
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
-  margin-top: 40px;
 }
 
 .doctor-card {
-  position: relative;
-  width: 300px;
-  height: 400px;
-  margin: 20px;
+  background: #121c2b;
+  border-radius: 24px;
+  width: 280px;
   overflow: hidden;
-  box-shadow: 0 30px 30px -20px rgba(0, 0, 0, 1),
-              inset 0 0 0 1000px rgba(67, 52, 109, 0.6);
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 .doctor-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 255, 255, 0.25);
 }
 
-.image-box,
-.image-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.info-overlay {
-  position: absolute;
-  bottom: -160px;
-  width: 100%;
-  height: 160px;
+.image-box {
+  background: linear-gradient(to bottom, #0050ff, #00baff);
+  padding: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  backdrop-filter: blur(15px);
-  box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  transition: bottom 0.5s;
-  transition-delay: 0.65s;
 }
 
-.doctor-card:hover .info-overlay {
-  bottom: 0;
-  transition-delay: 0s;
+.image-box img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 4px solid #1e2a38;
+}
+
+.info-overlay {
+  padding: 20px;
+  background-color: #1c2738;
+  border-top: 1px solid #2c3e50;
 }
 
 .info-overlay h3 {
-  text-transform: uppercase;
-  color: #fff;
-  letter-spacing: 2px;
-  font-weight: 500;
-  font-size: 18px;
-  text-align: center;
-  margin: 20px 0 15px;
-  line-height: 1.1em;
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: 0.5s;
-  transition-delay: 0.6s;
-}
-
-.doctor-card:hover .info-overlay h3 {
-  opacity: 1;
-  transform: translateY(0);
+  font-size: 20px;
+  margin: 0;
+  color: #ffffff;
 }
 
 .info-overlay h3 span {
-  font-size: 12px;
-  font-weight: 300;
-  text-transform: initial;
+  display: block;
+  font-size: 14px;
+  color: #9aa9bd;
+  margin-top: 6px;
+}
+
+.rating-stars {
+  margin-top: 10px;
+  color: #ffd700;
+  font-size: 16px;
+}
+
+.reviews {
+  font-size: 13px;
+  color: #79c2ff;
+  margin-top: 4px;
 }
 
 .social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.5s;
-  transition-delay: 0.8s;
-}
-
-.doctor-card:hover .social-icons {
-  transform: translateY(0);
-  opacity: 1;
+  margin-top: 16px;
 }
 
 .social-icons a {
-  color: #fff;
-  font-size: 24px;
-  transition: color 0.3s;
+  color: #79c2ff;
+  margin: 0 8px;
+  font-size: 20px;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .social-icons a:hover {
-  color: #ffcc00;
+  color: #ffffff;
+  transform: scale(1.2);
 }
-
 
 /* Gallery Section */
 .gallery {
@@ -585,5 +554,6 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
+
 
 
