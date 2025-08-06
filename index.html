@@ -241,105 +241,95 @@
 <!-- Doctor List Section -->
 <section class="doctor-section">
   <div class="doctor-list">
-    <h2>OUR, <span>TEAM</span></h2>
-    <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar" />
-  </div>
-
-  <div class="search-container">
-    <input type="text" placeholder="Search Doctor..." />
-    <button class="see-more">See More →</button>
-  </div>
-
-  <h3 class="section-title">Top Doctors</h3>
-
-  <div class="doctor-list">
-    <div class="doctor-card">
-      <img src="https://via.placeholder.com/60" alt="Dr Dhivakaran" />
+    <div class="doctor-card" data-idx="0">
+      <img src="images/doctors/dhivakaran.jpg" alt="Dr Dhivakaran">
       <div class="doc-info">
         <h4>Dr. Dhivakaran R</h4>
         <p>Chief Medical Director, 10 yrs exp.</p>
       </div>
-      <span class="rating">★ 5.0</span>
+      <span class="rating">★ 5</span>
     </div>
 
-    <div class="doctor-card">
-      <img src="https://via.placeholder.com/60" alt="Dr Vijay" />
+      <div class="doctor-card" data-idx="1">
+      <img src="images/doctors/thikvijay.jpg" alt="Dr Thik Vijay">
       <div class="doc-info">
         <h4>Dr. Thik Vijay</h4>
         <p>Aesthetic Cosmetologist, 11 yrs exp.</p>
       </div>
-      <span class="rating">★ 5.0</span>
+      <span class="rating">★ 4.8</span>
     </div>
 
-    <div class="doctor-card">
-      <img src="https://via.placeholder.com/60" alt="Dr Roger" />
+        <div class="doctor-card" data-idx="2">
+      <img src="images/doctors/roger.jpg" alt="Dr Thik Vijay">
       <div class="doc-info">
         <h4>Dr. Roger Ronaldo</h4>
         <p>Maxillofacial Surgeon, 13 yrs exp.</p>
       </div>
-      <span class="rating">★ 5.0</span>
+      <span class="rating">★ 5</span>
     </div>
 
-    <div class="doctor-card">
-      <img src="https://via.placeholder.com/60" alt="Dr Deepak" />
+        <div class="doctor-card" data-idx="3">
+      <img src="images/doctors/deepak.jpg" alt="Dr Thik Vijay">
       <div class="doc-info">
         <h4>Dr. Deepak</h4>
         <p>Orthodontist, 10 yrs exp.</p>
       </div>
-      <span class="rating">★ 5.0</span>
+      <span class="rating">★ 5</span>
     </div>
 
-    <div class="doctor-card">
-      <img src="https://via.placeholder.com/60" alt="Dr Manoj" />
+            <div class="doctor-card" data-idx="4">
+      <img src="images/doctors/deepak.jpg" alt="Dr Thik Vijay">
       <div class="doc-info">
         <h4>Dr. Manoj Reddy</h4>
         <p>Implantologist, 13 yrs exp.</p>
       </div>
-      <span class="rating">★ 5.0</span>
+      <span class="rating">★ 5</span>
     </div>
-
-    <div class="doctor-card">
-      <img src="https://via.placeholder.com/60" alt="Dr Idhaya" />
+    
+            <div class="doctor-card" data-idx="5">
+      <img src="images/doctors/deepak.jpg" alt="Dr Thik Vijay">
       <div class="doc-info">
         <h4>Dr. Idhaya</h4>
         <p>Health Insurance Expert, 7 yrs exp.</p>
       </div>
-      <span class="rating">★ 5.0</span>
+      <span class="rating">★ 5</span>
     </div>
 
-    <div class="doctor-card">
-      <img src="https://via.placeholder.com/60" alt="Internal Consultants" />
+            <div class="doctor-card" data-idx="6">    
+          <img src="images/doctors/deepak.jpg" alt="Dr Thik Vijay">
       <div class="doc-info">
-        <h4>Internal Consultants</h4>
-        <p>Dr Ashok, Dr Rakesh, Dr Gana</p>
+        <h4>Dr Ashok, Dr Rakesh, Dr Gana</h4>
+        <p>Internal Consultants</p>
       </div>
-      <span class="rating">★ 5.0</span>
+      <span class="rating">★ 5</span>
+    </div>
 
-  <div class="doctor-detail-glass" id="doctorDetailCard" style="display:none">
-  <button class="close-glass-btn" id="closeDetailBtn">&times;</button>
-  <div class="profile-photo">
-    <img id="docImage" src="" alt="Doctor Photo" />
+   <!-- Detail Card, always present on right -->
+  <div class="doctor-detail-glass" id="doctorDetailCard">
+    <button class="close-glass-btn" id="closeDetailBtn">&times;</button>
+    <div class="profile-photo">
+      <img id="docImage" src="images/doctors/dhivakaran.jpg" alt="Doctor Photo" />
+    </div>
+    <h2 id="docName">Dr. Dhivakaran R</h2>
+    <div class="doc-role" id="docRole">Chief Medical Director, 10 yrs exp.</div>
+    <div class="rating-glass" id="docRating">★ 4.9</div>
+    <div class="stats-row">
+      <div>
+        <div class="stat-val" id="docPatients">5000+</div>
+        <div class="stat-label">Patients</div>
+      </div>
+      <div>
+        <div class="stat-val" id="docExp">10 years</div>
+        <div class="stat-label">Years Exp</div>
+      </div>
+      <div>
+        <div class="stat-val" id="docAchiev">🏅</div>
+        <div class="stat-label">Achievements</div>
+      </div>
+    </div>
+    <div class="doc-desc" id="docSummary">Expert in diagnostics, digital dental care and patient management.</div>
+    <a class="glass-button" id="docCallBtn" href="tel:8074512305" target="_blank">Book Appointment</a>
   </div>
-  <h2 id="docName">Dr. Name</h2>
-  <div class="doc-role" id="docRole"></div>
-  <div class="rating-glass" id="docRating"></div>
-  <div class="stats-row">
-    <div>
-      <div class="stat-val" id="docPatients"></div>
-      <div class="stat-label">Patients</div>
-    </div>
-    <div>
-      <div class="stat-val" id="docExp"></div>
-      <div class="stat-label">Years Exp</div>
-    </div>
-    <div>
-      <div class="stat-val" id="docAchiev">🏅</div>
-      <div class="stat-label">Achievements</div>
-    </div>
-  </div>
-  <div class="doc-desc" id="docSummary"></div>
-  <a class="glass-button" id="docCallBtn" href="#" target="_blank">Book Appointment</a>
-</div>
 </section>
   
         <section class="gallery-section">
@@ -522,6 +512,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 </body>
 </html>
+
 
 
 
