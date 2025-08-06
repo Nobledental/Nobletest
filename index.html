@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/a2e0e6a89b.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
+  
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Noble Dental Nallagandla - Best Dental Clinic in Hyderabad" />
   <meta property="og:description" content="Expert dental treatments including implants, whitening, root canals, and more in Hyderabad." />
@@ -239,6 +240,7 @@
         </section>
 
 <!-- Doctor List Section -->
+
 <section class="doctor-section">
   <div class="doctor-list">
     <div class="doctor-card">
@@ -344,23 +346,9 @@
                     <p>"Best dental care experience ever! They even followed up after my procedure."</p>
                     <h4>- Meena K.</h4>
                 </div>
-
-  <div class="doctor-body">
-    <h4>Specialities</h4>
-    <p id="doctor-specialities">Specialities here...</p>
-
-    <h4>Brief Summary</h4>
-    <p id="doctor-summary">Doctor's background summary...</p>
-
-    <h4>Contributions</h4>
-    <p id="doctor-contributions">Published papers, awards, etc.</p>
-  </div>
-
-  <a href="tel:8074512305" class="call-button">📞 Call Now</a>
-</div>
-</div>
-</section>
-
+    </div> <!-- Add this closing tag for testimonial-carousel -->
+</section> <!-- Add this closing tag for testimonials-section -->
+  
         <section class="map-section">
             <h1 class="section-title autoDisplay">Find Us 📍</h1>
             <div class="map-container">
@@ -370,135 +358,19 @@
 
         <section class="footer">
             <h1>©️2025, Created by Dr Dhivakaran, C Akhila</h1>
-            <div class="box-icons">
-                <p><i class='bx bxl-youtube'></i></a>
-                <p><i class='bx bxl-github'></i></a>
-                <p><i class='bx bxl-linkedin-square'></i></a>
-            </div>
+<div class="box-icons">
+    <a href="#"><i class='bx bxl-youtube'></i></a>
+    <a href="#"><i class='bx bxl-github'></i></a>
+    <a href="#"><i class='bx bxl-linkedin-square'></i></a>
+</div>
         </section>
     
     <script src="app.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>AOS.init();</script>
-
-<script>
-// Doctor detail data
-const doctors = [
-  {
-    name: "Dr. Dhivakaran R",
-    image: "images/doctors/dhivakaran.jpg",
-    experience: "10 years",
-    patients: "5000+",
-    rating: "4.9",
-    specialities: "General Dentistry, Diagnostics, Digital Health",
-    summary: "Expert in diagnostics, digital dental care and patient management.",
-    contributions: "Founder, 500+ successful treatments"
-  },
-  {
-    name: "Dr. Thik Vijay",
-    image: "images/doctors/thikvijay.jpg",
-    experience: "11 years",
-    patients: "3200+",
-    rating: "4.8",
-    specialities: "Cosmetology, Smile Design",
-    summary: "Focused on facial aesthetics and smile makeovers.",
-    contributions: "400+ aesthetic treatments"
-  },
-  {
-    name: "Dr. Roger Ronaldo",
-    image: "images/doctors/roger.jpg",
-    experience: "13 years",
-    patients: "4500+",
-    rating: "4.9",
-    specialities: "Maxillofacial Surgery, Implants",
-    summary: "Specialist in facial trauma & implants.",
-    contributions: "350+ successful reconstructions"
-  },
-  {
-    name: "Dr. Deepak",
-    image: "images/doctors/deepak.jpg",
-    experience: "10 years",
-    patients: "2800+",
-    rating: "4.7",
-    specialities: "Orthodontics, Aligners",
-    summary: "Digital orthodontics expert.",
-    contributions: "Developed in-house aligner system"
-  },
-  {
-    name: "Dr. Manoj Reddy",
-    image: "images/doctors/manoj.jpg",
-    experience: "13 years",
-    patients: "3900+",
-    rating: "4.8",
-    specialities: "Implantology, Surgery",
-    summary: "Complex rehabilitation and implants.",
-    contributions: "Precise implant protocols"
-  },
-  {
-    name: "Dr. Idhaya",
-    image: "images/doctors/idhaya.jpg",
-    experience: "7 years",
-    patients: "4000+",
-    rating: "4.6",
-    specialities: "Insurance, AI Healthcare",
-    summary: "Hospital care with AI health insurance.",
-    contributions: "Health insurance in 350+ hospitals"
-  }
-];
-
-document.addEventListener("DOMContentLoaded", function() {
-  // Overlay/modal creation (single instance for all doctors)
-  const overlay = document.createElement("div");
-  overlay.className = "doctor-overlay";
-  document.body.appendChild(overlay);
-
-  const modal = document.createElement("div");
-  modal.className = "doctor-modal";
-  modal.innerHTML = `
-    <button class="close-modal">&times;</button>
-    <img src="" alt="Doctor Image" class="modal-image">
-    <h3 class="modal-name"></h3>
-    <p class="modal-role"></p>
-    <p><strong>Experience:</strong> <span class="modal-exp"></span></p>
-    <p><strong>Patients:</strong> <span class="modal-patients"></span></p>
-    <p><strong>Rating:</strong> <span class="modal-rating"></span></p>
-    <p><strong>Specialities:</strong> <span class="modal-spec"></span></p>
-    <p><strong>Summary:</strong> <span class="modal-summary"></span></p>
-    <p><strong>Contributions:</strong> <span class="modal-contrib"></span></p>
-    <a class="call-button" href="#" target="_blank">📞 Call Doctor</a>
-  `;
-  document.body.appendChild(modal);
-
-  // Click handler for doctor cards
-  document.querySelectorAll('.doctor-card').forEach((card, idx) => {
-    card.addEventListener('click', () => {
-      const doc = doctors[idx];
-      modal.querySelector(".modal-image").src = doc.image;
-      modal.querySelector(".modal-name").textContent = doc.name;
-      modal.querySelector(".modal-role").textContent = card.querySelector("p").textContent;
-      modal.querySelector(".modal-exp").textContent = doc.experience;
-      modal.querySelector(".modal-patients").textContent = doc.patients;
-      modal.querySelector(".modal-rating").textContent = doc.rating;
-      modal.querySelector(".modal-spec").textContent = doc.specialities;
-      modal.querySelector(".modal-summary").textContent = doc.summary;
-      modal.querySelector(".modal-contrib").textContent = doc.contributions;
-      modal.querySelector(".call-button").href = "tel:8074512305";
-      overlay.classList.add("active");
-      modal.classList.add("active");
-    });
-  });
-
-  // Close modal
-  function closeModal() {
-    overlay.classList.remove("active");
-    modal.classList.remove("active");
-  }
-  overlay.addEventListener('click', closeModal);
-  modal.querySelector('.close-modal').addEventListener('click', closeModal);
-});
-</script>
 </body>
 </html>
+
 
 
 
