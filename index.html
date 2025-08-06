@@ -70,16 +70,6 @@
   }
 </script>
 
-  <!-- Doctor List + Animated Profile Card Section -->
-<section class="doctor-ui-section">
-  <div class="doctor-list-ui" id="doctorList">
-    <!-- List of doctors - generated in JS below for demo, but you can hardcode if needed -->
-  </div>
-  <div class="doctor-profile-ui" id="doctorProfile">
-    <!-- Profile details will load here dynamically -->
-  </div>
-</section>
-
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
 <script>
@@ -120,7 +110,12 @@
             </div>            
         </header>
     
-
+  <!-- Doctor List + Animated Profile Card Section -->
+<section class="doctor-ui-section">
+  <div class="doctor-list-ui" id="doctorList"></div>
+  <div class="doctor-profile-ui" id="doctorProfile"></div>
+</section>
+  
 <!-- Gradient Background Hero Section -->
 <section class="hero-background">
   <div class="blackhole-box">
@@ -248,88 +243,6 @@
                 </section>
             </div>
         </section>
-
-<!-- Doctor List Section -->
-
-<section class="doctor-section">
-  <div class="doctor-list">
-    <div class="doctor-card">
-      <img src="images/doctors/dhivakaran.jpg" alt="Dr. Dhivakaran R" />
-      <div class="doc-info">
-        <h4>Dr. Dhivakaran R</h4>
-        <p>Chief Medical Director, 10 yrs exp.</p>
-      </div>
-      <span class="rating">★ 4.9</span>
-    </div>
-    <div class="doctor-card">
-      <img src="images/doctors/thikvijay.jpg" alt="Dr. Thik Vijay" />
-      <div class="doc-info">
-        <h4>Dr. Thik Vijay</h4>
-        <p>Aesthetic Cosmetologist, 11 yrs exp.</p>
-      </div>
-      <span class="rating">★ 4.8</span>
-    </div>
-    <div class="doctor-card">
-      <img src="images/doctors/roger.jpg" alt="Dr. Roger Ronaldo" />
-      <div class="doc-info">
-        <h4>Dr. Roger Ronaldo</h4>
-        <p>Maxillofacial Surgeon, 13 yrs exp.</p>
-      </div>
-      <span class="rating">★ 4.9</span>
-    </div>
-    <div class="doctor-card">
-      <img src="images/doctors/deepak.jpg" alt="Dr. Deepak" />
-      <div class="doc-info">
-        <h4>Dr. Deepak</h4>
-        <p>Orthodontist, 10 yrs exp.</p>
-      </div>
-      <span class="rating">★ 4.7</span>
-    </div>
-    <div class="doctor-card">
-      <img src="images/doctors/manoj.jpg" alt="Dr. Manoj Reddy" />
-      <div class="doc-info">
-        <h4>Dr. Manoj Reddy</h4>
-        <p>Implantologist, 13 yrs exp.</p>
-      </div>
-      <span class="rating">★ 4.8</span>
-    </div>
-    <div class="doctor-card">
-      <img src="images/doctors/idhaya.jpg" alt="Dr. Idhaya" />
-      <div class="doc-info">
-        <h4>Dr. Idhaya</h4>
-        <p>Health Insurance Expert, 7 yrs exp.</p>
-      </div>
-      <span class="rating">★ 4.6</span>
-    </div>
-  </div>
-
-   <!-- Detail Card, always present on right -->
-  <div class="doctor-detail-glass" id="doctorDetailCard">
-    <button class="close-glass-btn" id="closeDetailBtn">&times;</button>
-    <div class="profile-photo">
-      <img id="docImage" src="images/doctors/dhivakaran.jpg" alt="Doctor Photo" />
-    </div>
-    <h2 id="docName">Dr. Dhivakaran R</h2>
-    <div class="doc-role" id="docRole">Chief Medical Director, 10 yrs exp.</div>
-    <div class="rating-glass" id="docRating">★ 4.9</div>
-    <div class="stats-row">
-      <div>
-        <div class="stat-val" id="docPatients">5000+</div>
-        <div class="stat-label">Patients</div>
-      </div>
-      <div>
-        <div class="stat-val" id="docExp">10 years</div>
-        <div class="stat-label">Years Exp</div>
-      </div>
-      <div>
-        <div class="stat-val" id="docAchiev">🏅</div>
-        <div class="stat-label">Achievements</div>
-      </div>
-    </div>
-    <div class="doc-desc" id="docSummary">Expert in diagnostics, digital dental care and patient management.</div>
-    <a class="glass-button" id="docCallBtn" href="tel:8074512305" target="_blank">Book Appointment</a>
-  </div>
-</section>
   
         <section class="gallery-section">
             <h1 class="section-title autoDisplay">Clinic Gallery 🏥</h1>
@@ -378,14 +291,151 @@
     <script src="app.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>AOS.init();</script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const doctors = [
+    {
+      name: "Dr. Dhivakaran R",
+      image: "images/doctors/dhivakaran.jpg",
+      role: "Chief Medical Director",
+      experience: "10 years",
+      patients: "5,000+",
+      rating: "4.9",
+      specialities: "General Dentistry, Diagnostics, Digital Health",
+      summary: "Expert in diagnostics, digital dental care, and patient management.",
+      phone: "8074512305",
+      achiev: "🏅",
+    },
+    {
+      name: "Dr. Thik Vijay",
+      image: "images/doctors/thikvijay.jpg",
+      role: "Aesthetic Cosmetologist",
+      experience: "11 years",
+      patients: "3,200+",
+      rating: "4.8",
+      specialities: "Skin, Hair & Dental",
+      summary: "Cosmetologist with expertise in skin, hair, and smile transformations.",
+      phone: "9999999999",
+      achiev: "🏆",
+    },
+    {
+      name: "Dr. Roger Ronaldo",
+      image: "images/doctors/roger.jpg",
+      role: "Maxillofacial Surgeon",
+      experience: "13 years",
+      patients: "4,800+",
+      rating: "4.9",
+      specialities: "Maxillofacial Surgery",
+      summary: "Surgeon specialized in complex jaw and facial reconstructive procedures.",
+      phone: "8888888888",
+      achiev: "🥇",
+    },
+    {
+      name: "Dr. Deepak",
+      image: "images/doctors/deepak.jpg",
+      role: "Orthodontist",
+      experience: "10 years",
+      patients: "4,000+",
+      rating: "4.7",
+      specialities: "Braces, Aligners",
+      summary: "Focused on orthodontics for beautiful, healthy smiles.",
+      phone: "7777777777",
+      achiev: "🎖️",
+    },
+    {
+      name: "Dr. Manoj Reddy",
+      image: "images/doctors/manoj.jpg",
+      role: "Implantologist",
+      experience: "13 years",
+      patients: "2,900+",
+      rating: "4.8",
+      specialities: "Dental Implants, Oral Surgery",
+      summary: "Expert in dental implants and restorative oral surgery.",
+      phone: "6666666666",
+      achiev: "🏵️",
+    },
+    {
+      name: "Dr. Idhaya",
+      image: "images/doctors/idhaya.jpg",
+      role: "Health Insurance Expert",
+      experience: "7 years",
+      patients: "2,000+",
+      rating: "4.6",
+      specialities: "Insurance & Claims",
+      summary: "Guiding patients with insurance and treatment claims.",
+      phone: "5555555555",
+      achiev: "🎗️",
+    },
+  ];
+
+  // Create Doctor List
+  const doctorList = document.getElementById('doctorList');
+  doctorList.innerHTML = doctors.map((doc, idx) => `
+    <div class="doctor-card-ui" data-index="${idx}">
+      <img src="${doc.image}" class="doctor-avatar-ui" alt="${doc.name}" />
+      <div class="doc-info-ui">
+        <h4>${doc.name}</h4>
+        <p>${doc.role}</p>
+      </div>
+      <span class="rating-ui">★ ${doc.rating}</span>
+    </div>
+  `).join('');
+
+  // Show profile for selected doctor
+  function showProfile(idx) {
+    const d = doctors[idx];
+    const profile = `
+      <img src="${d.image}" class="profile-avatar-ui" alt="${d.name}">
+      <div class="profile-name-ui">${d.name}</div>
+      <div class="profile-role-ui">${d.role} &bull; ${d.experience}</div>
+      <div class="profile-rating-ui">★ ${d.rating}</div>
+      <div class="profile-stats-ui">
+        <div>
+          <div class="stat-val">${d.patients}</div>
+          <div class="stat-label">Patients</div>
+        </div>
+        <div>
+          <div class="stat-val">${d.experience}</div>
+          <div class="stat-label">Years Exp</div>
+        </div>
+        <div>
+          <div class="stat-val">${d.achiev}</div>
+          <div class="stat-label">Achievements</div>
+        </div>
+      </div>
+      <div class="profile-desc-ui">${d.summary}</div>
+      <a class="profile-btn-ui" href="tel:${d.phone}">Book Appointment</a>
+    `;
+    const profileDiv = document.getElementById('doctorProfile');
+    // Animate: reset then fade in
+    profileDiv.style.opacity = 0;
+    profileDiv.style.transform = "translateY(30px)";
+    setTimeout(()=>{
+      profileDiv.innerHTML = profile;
+      profileDiv.style.animation = 'none';
+      // restart animation
+      setTimeout(()=>{
+        profileDiv.style.animation = '';
+        profileDiv.style.opacity = 1;
+        profileDiv.style.transform = "translateY(0)";
+      }, 10);
+    }, 150);
+
+    // Highlight selected doctor
+    document.querySelectorAll('.doctor-card-ui').forEach(card => card.classList.remove('active'));
+    document.querySelector(`.doctor-card-ui[data-index="${idx}"]`).classList.add('active');
+  }
+
+  // Initial display
+  showProfile(0);
+
+  // On click, update card
+  document.querySelectorAll('.doctor-card-ui').forEach((card, idx) => {
+    card.addEventListener('click', () => showProfile(idx));
+  });
+});
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
 
