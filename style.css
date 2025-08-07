@@ -113,24 +113,30 @@ header ul li {
 }
 
 header ul a {
+  position: relative;
+  z-index: 1;
+  padding: 8px 22px;
+  border-radius: 32px;
+  transition: color .28s cubic-bezier(.59,1.34,.45,1.2);
+  color: #fff;
   text-decoration: none;
-  color: #ffffff;
   font-weight: 500;
-  margin: 0 12px;
-  padding: 5px 10px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  display: inline-block;
+  overflow: visible;
 }
 
-header ul a:hover {
-  background-color: rgb(229 232 239 / 84%);
-  color: #080808;
-  text-shadow: 0 0 15px #91919fcc;
-  transform: scale(1.15);
-  border-radius: 30px 30px 30px 30px / 25px 25px 25px 25px; /* makes it oval */
-  box-shadow: 0 8px 24px 0 #98c2e6b0, 0 0 0 4px #fff4; /* outside glow */
-  transition: all 0.35s cubic-bezier(.47,1.64,.41,.8);
+header ul a::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 140%;
+  height: 180%;
+  border-radius: 50px 80px 60px 80px / 45px 85px 80px 55px;
+  background: radial-gradient(circle at 60% 40%, #eaf9ff 75%, #51c2e8 120%);
+  box-shadow: 0 8px 32px #50e1ec6b;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  z-index: -1;
+  transition: all .42s cubic-bezier(.46,1.23,.64,1);
 }
 
 .box-icons{
@@ -640,6 +646,7 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
