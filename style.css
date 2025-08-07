@@ -139,6 +139,15 @@ header ul a::before {
   transition: all .42s cubic-bezier(.46,1.23,.64,1);
 }
 
+header ul a:hover, header ul a:focus {
+  color: #292354;
+}
+
+header ul a:hover::before, header ul a:focus::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
 .box-icons{
     display: flex;
     gap: 20px;
@@ -646,6 +655,7 @@ header ul a::before {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
