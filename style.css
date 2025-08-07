@@ -125,9 +125,12 @@ header ul a {
 
 header ul a:hover {
   background-color: rgb(229 232 239 / 84%);
-  transform: scale(1.15);
   color: #080808;
   text-shadow: 0 0 15px #91919fcc;
+  transform: scale(1.15);
+  border-radius: 30px 30px 30px 30px / 25px 25px 25px 25px; /* makes it oval */
+  box-shadow: 0 8px 24px 0 #98c2e6b0, 0 0 0 4px #fff4; /* outside glow */
+  transition: all 0.35s cubic-bezier(.47,1.64,.41,.8);
 }
 
 .box-icons{
@@ -637,6 +640,7 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
