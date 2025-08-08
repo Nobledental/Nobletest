@@ -717,6 +717,103 @@ header ul a:hover {
   .content .des { font-size: .95rem; }
 }
 
+/* ===== Lightbox / Netflix vibe ===== */
+.lb.hidden { display: none; }
+.lb {
+  position: fixed; inset: 0; z-index: 9999;
+  display: grid; place-items: center;
+}
+.lb-backdrop {
+  position: absolute; inset: 0;
+  background: radial-gradient(1200px 800px at 50% 60%, #000000cc, #000000f2 60%, #000 100%);
+  backdrop-filter: blur(4px) saturate(110%);
+}
+
+/* Android / device frame */
+.android-frame {
+  position: relative;
+  width: min(92vw, 1020px);
+  height: min(84vh, 640px);
+  border-radius: 26px;
+  background: #0b0f13;
+  border: 10px solid #070a0e;
+  box-shadow: 0 40px 120px #0009, 0 10px 40px #0007, inset 0 0 0 1px #1a1f28;
+  overflow: hidden;
+}
+
+/* optional notch/status bar vibe */
+.android-frame::before {
+  content: "";
+  position: absolute; top: 8px; left: 50%;
+  transform: translateX(-50%);
+  width: 28%; height: 6px; border-radius: 6px;
+  background: #1b2230;
+  box-shadow: 0 1px 0 #0a0d12;
+  opacity: .9;
+}
+
+.lb-toolbar {
+  position: absolute; top: 14px; right: 14px; z-index: 3;
+  display: flex; gap: 8px;
+}
+.lb-btn {
+  appearance: none; border: 1px solid #2a3344; background: #121822;
+  color: #cfe6ff; border-radius: 10px; padding: 8px 10px; cursor: pointer;
+  font-weight: 700; box-shadow: 0 4px 18px #0008;
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+.lb-btn:hover { transform: translateY(-1px); background:#162133; border-color:#394b6a; }
+.lb-btn:active { transform: translateY(0); }
+
+.lb-close {
+  position: absolute; top: 14px; left: 14px;
+  width: 38px; height: 38px; padding: 0; border-radius: 10px;
+  font-size: 16px; line-height: 1;
+}
+
+/* Canvas where image is transformed */
+.lb-canvas {
+  position: absolute; inset: 0; z-index: 1; cursor: grab;
+  display: grid; place-items: center;
+}
+.lb-canvas:active { cursor: grabbing; }
+
+#lbImg {
+  user-select: none;
+  will-change: transform;
+  transform-origin: center center;
+  max-width: none; /* we control size via transforms */
+  box-shadow: 0 20px 60px #000a;
+  border-radius: 14px;
+}
+
+/* Caption with Netflix-y subtle glow */
+.lb-caption {
+  position: absolute; bottom: 14px; left: 18px; right: 18px;
+  color: #e8f1ff; text-shadow: 0 2px 8px #000a;
+  background: linear-gradient(180deg, transparent, #0b0f13cc 50%, #0b0f13ee);
+  padding: 18px 16px 8px 16px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  letter-spacing: .2px;
+}
+
+/* Lightbox entrance */
+.lb .android-frame {
+  opacity: 0; transform: translateY(24px) scale(.98);
+  animation: lbIn .32s cubic-bezier(.22,.7,.4,1) forwards;
+}
+@keyframes lbIn {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Make it comfy on phones */
+@media (max-width: 560px){
+  .android-frame { border-width: 8px; border-radius: 20px; }
+  .lb-btn { padding: 7px 9px; }
+  .lb-close { width: 34px; height: 34px; }
+}
+
 /* Testimonials */
 .testimonial-carousel {
   max-width: 700px;
@@ -804,6 +901,7 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
