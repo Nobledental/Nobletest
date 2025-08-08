@@ -478,6 +478,208 @@
 </article>
     </div>
 
+    <!-- ============== -->
+<!-- FAQS (Drop-in) -->
+<!-- ============== -->
+<section id="faqs" class="nd-faqs" aria-labelledby="faqsTitle">
+  <h2 id="faqsTitle">Frequently Asked Questions</h2>
+
+  <div class="nd-faqs__controls">
+    <input id="faqSearch" class="nd-faqs__search" type="search"
+           placeholder="Type your question… (e.g., root canal, aligners, insurance)"
+           aria-label="Search FAQs">
+    <select id="faqCategory" class="nd-faqs__select" aria-label="Filter by category">
+      <option value="">All topics</option>
+    </select>
+  </div>
+
+  <div id="faqList" class="nd-faqs__list" role="list"></div>
+</section>
+
+<!-- Schema will be injected here -->
+<script id="faqSchemaTarget" type="application/ld+json"></script>
+
+<style>
+/* ===== Minimal FAQ styles (safe, scoped-ish) ===== */
+.nd-faqs { max-width: 900px; margin: 48px auto; padding: 0 16px; }
+.nd-faqs h2 { margin: 0 0 16px; color: #003147; }
+.nd-faqs__controls { display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 16px; }
+.nd-faqs__search{ flex:1 1 420px; padding:12px 14px; border:1px solid #d7ddea; border-radius:10px; }
+.nd-faqs__select{ flex:0 0 220px; padding:12px 14px; border:1px solid #d7ddea; border-radius:10px; }
+.nd-faqs__list { display:grid; gap:10px; }
+.nd-faq { border:1px solid #e6ebf5; border-radius:12px; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,.04); overflow:hidden; }
+.nd-faq__btn { width:100%; text-align:left; background:transparent; border:0; padding:16px 50px 16px 16px; font-size:16px; line-height:1.4; cursor:pointer; position:relative; color:#1f2430; }
+.nd-faq__btn:hover { background:#f7f9ff; }
+.nd-faq__btn:focus-visible { outline:3px solid rgba(10,163,127,.35); outline-offset:2px; }
+.nd-faq__btn::after{
+  content:"+"; position:absolute; right:16px; top:50%; transform:translateY(-50%); font-weight:700;
+}
+.nd-faq[open] .nd-faq__btn::after{ content:"–"; }
+.nd-faq__panel { padding:0 16px 16px 16px; color:#4a5665; }
+.nd-faq__panel p { margin: 10px 0 0; }
+.nd-faq__panel a { color:#0a7ea4; text-decoration:none; }
+.nd-faq__panel a:hover { text-decoration:underline; }
+.nd-faq__meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.nd-faq__tag { font-size:12px; background:#eef4ff; color:#2b4e9c; border-radius:999px; padding:4px 8px; }
+.nd-faq__empty { padding:18px; background:#fbfcff; border:1px dashed #d9e3f0; border-radius:10px; }
+@media (max-width:600px){
+  .nd-faqs__select{ flex:1 1 200px; }
+}
+</style>
+
+<script>
+/* ========= Data you edit ========= */
+const FAQS = [
+  { q:"Is a root canal painful?",
+    a:"With modern anesthesia, a root canal usually feels like a routine filling. Mild soreness for 24–48 hours is common and managed with OTC pain relief.",
+    cat:"Treatments", tags:"root canal pain rct sensitivity",
+  },
+  { q:"How much do clear aligners cost?",
+    a:"Pricing depends on case complexity and brand. Typical cases range from ₹60k–₹1.5L. We’ll confirm after a quick assessment and provide EMI options.",
+    cat:"Orthodontics", tags:"aligners braces cost price emi",
+  },
+  { q:"Braces vs clear aligners — which is better?",
+    a:"Aligners are nearly invisible and removable; braces can handle more complex tooth movements. Your orthodontist recommends based on your bite and goals.",
+    cat:"Orthodontics", tags:"braces vs aligners choice",
+  },
+  { q:"Do you accept insurance / cashless?",
+    a:"Yes. Our insurance desk helps with estimates, pre-approvals, and claims. Bring your card and ID; we’ll guide you through the process.",
+    cat:"Insurance", tags:"insurance claim cashless reimbursement",
+  },
+  { q:"What is the recovery time after a dental implant?",
+    a:"Most patients return to routine within 24–48 hours. The implant integrates with bone over 3–6 months before final crown placement.",
+    cat:"Implants", tags:"implant recovery osseointegration surgery",
+  },
+  { q:"Do teeth whitening treatments damage enamel?",
+    a:"Professional whitening is safe when done correctly. Temporary sensitivity is common; we use desensitizing gels to keep you comfortable.",
+    cat:"Cosmetic", tags:"whitening bleaching enamel sensitivity",
+  },
+  { q:"How often should I get a dental check-up?",
+    a:"Every 6 months for most adults. If you have gum issues, diabetes, or orthodontic treatment, we may suggest more frequent visits.",
+    cat:"General", tags:"checkup cleaning scaling frequency",
+  },
+  { q:"Are digital X-rays safe?",
+    a:"Yes — digital X-rays use very low radiation, typically a fraction of traditional films. We use protective aprons and limit exposure.",
+    cat:"Diagnostics", tags:"xray digital radiation safety",
+  },
+  { q:"Do you offer pediatric dentistry?",
+    a:"Yes. We provide child-friendly care, fluoride treatment, sealants, and early orthodontic guidance. Parents can stay in the operatory.",
+    cat:"Kids", tags:"children pedo kids sealants fluoride",
+  },
+  { q:"Can I get same-day emergency appointments?",
+    a:"We keep a few daily slots for pain, swelling, broken teeth, or lost fillings. Call or WhatsApp for fastest scheduling.",
+    cat:"Appointments", tags:"emergency urgent pain swelling",
+  },
+  { q:"What payment options are available?",
+    a:"UPI, cards, net-banking, and EMIs on major cards/partners. We provide itemized invoices and treatment plans up front.",
+    cat:"Billing", tags:"payment emi upi invoice",
+  },
+  { q:"How long do crowns last?",
+    a:"With good care, 8–15 years is common. Avoid chewing ice/hard objects, wear a guard if you grind, and get regular cleanings.",
+    cat:"Restorative", tags:"crown cap zirconia lifespan",
+  },
+  { q:"What is scaling & polishing?",
+    a:"A hygienist removes plaque/tartar above and below the gumline and then polishes. It helps prevent gum disease and freshens breath.",
+    cat:"Hygiene", tags:"scaling polishing cleaning prophylaxis",
+  },
+  { q:"Can I whiten if I have fillings or crowns?",
+    a:"You can whiten natural teeth, but existing fillings/crowns will not change color. We can replace visible restorations to match later.",
+    cat:"Cosmetic", tags:"whitening fillings crowns mismatch",
+  },
+  { q:"How do I know if I need a filling?",
+    a:"Sensitivity to sweets/cold, food getting stuck, or visible pits can be signs. Early fillings are smaller, cheaper, and preserve more tooth.",
+    cat:"Restorative", tags:"cavity caries filling symptoms",
+  },
+  { q:"Do you do smile design / veneers?",
+    a:"Yes. We plan digitally and offer veneers or bonding depending on goals, enamel thickness, and bite. Try-in previews available.",
+    cat:"Cosmetic", tags:"veneers bonding smile design",
+  },
+  { q:"Can braces/aligners affect speech?",
+    a:"A minor lisp can occur in the first week with aligners; it usually resolves as your tongue adapts. Braces rarely affect speech.",
+    cat:"Orthodontics", tags:"speech lisp aligners",
+  },
+  { q:"How soon can I eat after an extraction?",
+    a:"Wait until numbness wears off (2–3 hours). Start with soft, cool foods; avoid straws and smoking for 48–72 hours to prevent dry socket.",
+    cat:"Oral Surgery", tags:"extraction aftercare dry socket",
+  },
+  { q:"Is laser dentistry available?",
+    a:"We use lasers for gum contouring and soft-tissue procedures. Benefits include minimal bleeding and faster healing for suitable cases.",
+    cat:"Advanced", tags:"laser gums soft tissue",
+  },
+  { q:"Do you offer second opinions?",
+    a:"Absolutely. Bring your X-rays and prior plan; we’ll review options and costs clearly—no pressure.",
+    cat:"General", tags:"second opinion treatment plan"
+  }
+];
+
+/* ========= Component logic (no deps) ========= */
+(function initFAQs(){
+  const listEl = document.getElementById('faqList');
+  const searchEl = document.getElementById('faqSearch');
+  const catEl = document.getElementById('faqCategory');
+  const schemaTarget = document.getElementById('faqSchemaTarget');
+
+  if (!listEl || !searchEl || !catEl || !schemaTarget) return;
+
+  // Build category dropdown from data
+  const cats = Array.from(new Set(FAQS.map(f => f.cat).filter(Boolean))).sort();
+  catEl.insertAdjacentHTML('beforeend', cats.map(c => `<option value="${c}">${c}</option>`).join(''));
+
+  function matches(f, q, c){
+    const inCat = !c || f.cat === c;
+    if (!q) return inCat;
+    const t = (f.tags||"").toLowerCase();
+    return inCat && (
+      f.q.toLowerCase().includes(q) ||
+      f.a.toLowerCase().includes(q) ||
+      t.includes(q)
+    );
+  }
+
+  function render(faqs){
+    if (!faqs.length){
+      listEl.innerHTML = `<div class="nd-faq__empty">No results. Try different words (e.g., “insurance”, “aligners”, “pain”).</div>`;
+      schemaTarget.textContent = "[]";
+      return;
+    }
+
+    listEl.innerHTML = faqs.map((f, i) => `
+      <details class="nd-faq" ${i===0 ? 'open' : ''} role="listitem">
+        <summary class="nd-faq__btn">${f.q}</summary>
+        <div class="nd-faq__panel">
+          <p>${f.a}</p>
+          <div class="nd-faq__meta">
+            ${f.cat ? `<span class="nd-faq__tag">${f.cat}</span>` : ""}
+            ${(f.tags||"").split(" ").filter(Boolean).slice(0,3).map(t=>`<span class="nd-faq__tag">#${t}</span>`).join("")}
+          </div>
+        </div>
+      </details>
+    `).join('');
+
+    // Inject FAQPage schema (Google: not guaranteed to show, but good structure)
+    schemaTarget.textContent = JSON.stringify({
+      "@context":"https://schema.org",
+      "@type":"FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type":"Answer", "text": f.a }
+      }))
+    });
+  }
+
+  function apply(){
+    const q = searchEl.value.trim().toLowerCase();
+    const c = catEl.value;
+    render(FAQS.filter(f => matches(f, q, c)));
+  }
+
+  searchEl.addEventListener('input', apply);
+  catEl.addEventListener('change', apply);
+  render(FAQS);
+})();
+</script>
+
     <!-- Navigation -->
     <button class="nd-testimonials__nav nd-testimonials__nav--prev" aria-label="Previous testimonials">
       ‹
@@ -818,5 +1020,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
 
 
