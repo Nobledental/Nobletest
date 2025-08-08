@@ -244,41 +244,62 @@
   <div class="doctor-profile-ui" id="doctorProfile"></div>
 </section>
   
-<!-- ============ CLINIC GALLERY ============ -->
-<section id="clinic-gallery" class="xdev-gallery">
-  <div class="container">
-    <div class="slide">
-      <div class="item" style="background-image:url(https://omegadentists.com/wp-content/uploads/2020/02/Alveoloplasty-Houston.jpg);" data-title="Surgery Room"></div>
-      <div class="item" style="background-image:url(https://png.pngtree.com/png-vector/20241105/ourmid/pngtree-full-set-of-dentures-with-gums-and-teeth-png-image_14152999.png);" data-title="Prosthetics"></div>
-      <div class="item" style="background-image:url(https://st5.depositphotos.com/1238677/65537/i/450/depositphotos_655379690-stock-photo-abnormal-teeth-position-correction-metal.jpg);" data-title="Orthodontics"></div>
-      <div class="item" style="background-image:url(https://elitedental.com.vn/en/wp-content/uploads/sites/8/2024/07/advantages-of-clear-aligners.jpg);" data-title="Aligners"></div>
-      <div class="item" style="background-image:url(https://www.fastnewsmile.com/wp-content/uploads/2022/04/Common-Questions-About-Zirconia-Dental-Implants-1024x683.png);" data-title="Implants"></div>
-      <div class="item" style="background-image:url(https://omegadentists.com/wp-content/uploads/2020/02/Alveoloplasty-Houston.jpg);" data-title="Post-Op"></div>
-    </div>
+<!-- ============ CLINIC GALLERY (Coverflow) ============ -->
+<section id="clinic-gallery" class="cg">
+  <h2 class="cg-title">Clinic Gallery</h2>
 
-    <div class="button">
-      <button class="prev" aria-label="Previous slide"><i class="fa-solid fa-arrow-left"></i></button>
-      <button class="next" aria-label="Next slide"><i class="fa-solid fa-arrow-right"></i></button>
-    </div>
+  <div class="cg-stage" aria-label="Clinic gallery" tabindex="0">
+    <button class="cg-nav cg-prev" aria-label="Previous">&#10094;</button>
+
+    <ul class="cg-track">
+      <!-- Replace src + data-title as you like -->
+      <li class="cg-item" data-title="Surgery Room">
+        <img src="https://omegadentists.com/wp-content/uploads/2020/02/Alveoloplasty-Houston.jpg" alt="Surgery Room">
+      </li>
+      <li class="cg-item" data-title="Prosthetics">
+        <img src="https://png.pngtree.com/png-vector/20241105/ourmid/pngtree-full-set-of-dentures-with-gums-and-teeth-png-image_14152999.png" alt="Prosthetics">
+      </li>
+      <li class="cg-item" data-title="Orthodontics">
+        <img src="https://st5.depositphotos.com/1238677/65537/i/450/depositphotos_655379690-stock-photo-abnormal-teeth-position-correction-metal.jpg" alt="Orthodontics">
+      </li>
+      <li class="cg-item" data-title="Aligners">
+        <img src="https://elitedental.com.vn/en/wp-content/uploads/sites/8/2024/07/advantages-of-clear-aligners.jpg" alt="Aligners">
+      </li>
+      <li class="cg-item" data-title="Implants">
+        <img src="https://www.fastnewsmile.com/wp-content/uploads/2022/04/Common-Questions-About-Zirconia-Dental-Implants-1024x683.png" alt="Implants">
+      </li>
+      <li class="cg-item" data-title="Post-Op">
+        <img src="https://omegadentists.com/wp-content/uploads/2020/02/Alveoloplasty-Houston.jpg" alt="Post-Op">
+      </li>
+    </ul>
+
+    <button class="cg-nav cg-next" aria-label="Next">&#10095;</button>
   </div>
 
-  <!-- Lightbox -->
-  <div class="xdev-lightbox hidden" id="xdevLightbox" aria-hidden="true">
-    <button class="lb-close" aria-label="Close">&times;</button>
-    <div class="lb-canvas" id="lbCanvas">
-      <img id="lbImg" alt="">
-      <div class="lb-caption" id="lbCaption"></div>
-    </div>
-    <div class="lb-controls">
-      <button class="lb-zoom-out" aria-label="Zoom out">−</button>
-      <button class="lb-zoom-in" aria-label="Zoom in">+</button>
-      <button class="lb-reset" aria-label="Reset">Reset</button>
-      <button class="lb-prev" aria-label="Prev">&#9664;</button>
-      <button class="lb-next" aria-label="Next">&#9654;</button>
-    </div>
-  </div>
+  <div class="cg-dots" aria-label="Slide pagination"></div>
 </section>
-  
+
+<!-- Lightbox -->
+<div id="cg-lightbox" class="cg-lb cg-hidden" aria-hidden="true">
+  <div class="cg-lb-inner">
+    <button class="cg-lb-close" aria-label="Close">&times;</button>
+    <button class="cg-lb-prev" aria-label="Previous">‹</button>
+    <button class="cg-lb-next" aria-label="Next">›</button>
+
+    <div class="cg-lb-canvas" id="cg-lb-canvas">
+      <img class="cg-lb-img" alt="">
+    </div>
+    <div class="cg-lb-caption"></div>
+
+    <div class="cg-lb-tools">
+      <button class="cg-lb-zo" data-zo="-">−</button>
+      <button class="cg-lb-zo" data-zo="+">+</button>
+      <button class="cg-lb-reset">Reset</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Testimonials -->
         <section class="testimonials-section">
             <h1 class="section-title autoDisplay">What Our Patients Say 💬</h1>
             <div class="testimonial-carousel">
@@ -463,6 +484,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
