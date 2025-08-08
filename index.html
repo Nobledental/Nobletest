@@ -143,8 +143,6 @@
         <i class='bx bx-map'></i> Location
       </a>
     </div>
-  </div>
-
   <div class="scroll-down"></div>
 </section>
 
@@ -152,7 +150,7 @@
     <div class="container">
         <h1 class="section-title autoDisplay">Treatments We Offer</h1>
 
-        <input type="text" id="complaintInput" placeholder="Enter your dental concerns..." oninput="shuffleCards(this.value)">
+        <input type="text" id="complaintInput" placeholder="Explore your dental concerns..." oninput="shuffleCards(this.value)">
 
         <section class="services-grid" id="servicesGrid">
             <!-- Service Card 1: Teeth Whitening -->
@@ -333,7 +331,12 @@
     <a href="#"><i class='bx bxl-linkedin-square'></i></a>
 </div>
         </section>
-    
+  
+        <script>
+      function shuffleCards() {
+        /* TODO: Implement filtering later */
+      }
+          
     <script src="app.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>AOS.init();</script>
@@ -482,14 +485,154 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.getElementById('clinic-gallery');
+  if (!root) return;
+
+  const track   = root.querySelector('.cg-track');
+  const items   = [...root.querySelectorAll('.cg-item')];
+  const prevBtn = root.querySelector('.cg-prev');
+  const nextBtn = root.querySelector('.cg-next');
+  const dotsWrap= root.querySelector('.cg-dots');
+
+  // Build dots
+  dotsWrap.innerHTML = items.map((_,i)=>`<button aria-label="Go to slide ${i+1}" data-i="${i}"></button>`).join('');
+  const dots = [...dotsWrap.querySelectorAll('button')];
+
+  let current = 0;
+  const visible = [-2,-1,0,1,2]; // slots around center
+
+  function render(){
+    items.forEach(el => el.className = 'cg-item'); // reset classes
+    items.forEach((el, i) => {
+      const delta = i - current;
+      const wrap = ((delta + items.length) % items.length);
+      const shortest = wrap > items.length/2 ? wrap - items.length : wrap; // -N..+N
+      if (visible.includes(shortest)) el.classList.add(`cg-pos${shortest}`);
+    });
+    dots.forEach((d,i)=> d.classList.toggle('active', i === current));
+  }
+
+  function next(){ current = (current + 1) % items.length; render(); }
+  function prev(){ current = (current - 1 + items.length) % items.length; render(); }
+
+  // Init
+  render();
+
+  // Buttons
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  // Dots
+  dotsWrap.addEventListener('click', (e)=>{
+    const b = e.target.closest('button[data-i]');
+    if (!b) return;
+    current = +b.dataset.i;
+    render();
+  });
+
+  // Autoplay + pause on hover / when tab hidden
+  let timer;
+  const start = () => (timer = setInterval(next, 3000));
+  const stop  = () => timer && clearInterval(timer);
+  start();
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+
+  // Drag / swipe
+  let dragging = false, sx = 0, dx = 0;
+  const onDown = (e) => { dragging = true; dx = 0; sx = (e.touches?e.touches[0].clientX:e.clientX); track.style.transition='none'; };
+  const onMove = (e) => {
+    if (!dragging) return;
+    const x = (e.touches?e.touches[0].clientX:e.clientX);
+    dx = x - sx;
+    track.style.transform = `translateX(${Math.max(-60, Math.min(60, dx)) * 0.3}px)`;
+  };
+  const onUp = () => {
+    if (!dragging) return;
+    track.style.transition=''; track.style.transform='';
+    if (dx > 60) prev(); else if (dx < -60) next();
+    dragging = false;
+  };
+  track.addEventListener('mousedown', onDown);
+  track.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', onUp);
+  track.addEventListener('touchstart', onDown, {passive:true});
+  track.addEventListener('touchmove', onMove, {passive:true});
+  track.addEventListener('touchend', onUp);
+
+  // Lightbox
+  const lb       = document.getElementById('cg-lightbox');
+  const lbImg    = lb.querySelector('.cg-lb-img');
+  const lbCap    = lb.querySelector('.cg-lb-caption');
+  const lbCanvas = lb.querySelector('#cg-lb-canvas');
+  const lbClose  = lb.querySelector('.cg-lb-close');
+  const lbPrev   = lb.querySelector('.cg-lb-prev');
+  const lbNext   = lb.querySelector('.cg-lb-next');
+  const lbZBtns  = [...lb.querySelectorAll('.cg-lb-zo')];
+  const lbReset  = lb.querySelector('.cg-lb-reset');
+
+  function openLB(i){
+    current = i; render();
+    const el = items[current];
+    const img = el.querySelector('img');
+    lbImg.src = img.src;
+    lbCap.textContent = el.dataset.title || img.alt || '';
+    lb.classList.remove('cg-hidden');
+    lb.setAttribute('aria-hidden','false');
+    document.documentElement.style.overflow = 'hidden';
+    scale=1; tx=0; ty=0; apply();
+  }
+  function closeLB(){
+    lb.classList.add('cg-hidden');
+    lb.setAttribute('aria-hidden','true');
+    document.documentElement.style.overflow = '';
+  }
+  function lbNextFn(){ next(); openLB(current); }
+  function lbPrevFn(){ prev(); openLB(current); }
+
+  items.forEach((el,i)=> el.addEventListener('click', ()=> openLB(i)));
+  lbClose.addEventListener('click', closeLB);
+  lbNext.addEventListener('click', lbNextFn);
+  lbPrev.addEventListener('click', lbPrevFn);
+  lb.addEventListener('click', (e)=> { if (e.target === lb) closeLB(); });
+  document.addEventListener('keydown', (e)=>{
+    if (lb.classList.contains('cg-hidden')) return;
+    if (e.key === 'Escape') closeLB();
+    if (e.key === 'ArrowRight') lbNextFn();
+    if (e.key === 'ArrowLeft')  lbPrevFn();
+  });
+
+  // Zoom / Pan
+  let scale=1, tx=0, ty=0;
+  function apply(){ lbImg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`; }
+  lbZBtns.forEach(b => b.addEventListener('click', ()=>{
+    const dir = b.dataset.zo === '+' ? 0.2 : -0.2;
+    scale = Math.max(1, Math.min(4, scale + dir)); apply();
+  }));
+  lbReset.addEventListener('click', ()=> { scale=1; tx=0; ty=0; apply(); });
+
+  lbCanvas.addEventListener('wheel', (e)=>{
+    e.preventDefault();
+    const delta = e.deltaY < 0 ? 0.2 : -0.2;
+    const prev = scale;
+    scale = Math.max(1, Math.min(4, scale + delta));
+    const rect = lbImg.getBoundingClientRect();
+    const cx = e.clientX - rect.left - rect.width/2;
+    const cy = e.clientY - rect.top  - rect.height/2;
+    tx -= cx * (scale/prev - 1);
+    ty -= cy * (scale/prev - 1);
+    apply();
+  }, {passive:false});
+
+  let pan=false, sxp=0, syp=0;
+  lbCanvas.addEventListener('pointerdown', (e)=>{ pan=true; lbCanvas.setPointerCapture(e.pointerId); sxp=e.clientX - tx; syp=e.clientY - ty; });
+  lbCanvas.addEventListener('pointermove', (e)=>{ if(!pan) return; tx = e.clientX - sxp; ty = e.clientY - syp; apply(); });
+  ['pointerup','pointercancel','pointerleave'].forEach(ev=> lbCanvas.addEventListener(ev, ()=> pan=false));
+});
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
