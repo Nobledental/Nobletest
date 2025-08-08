@@ -244,74 +244,66 @@
   <div class="doctor-profile-ui" id="doctorProfile"></div>
 </section>
   
-<!-- Clinic Gallery Slider -->
-<section id="clinic-gallery" class="clinic-gallery-section">
-  <h1 class="section-title autoDisplay">Clinic Gallery 🏥</h1>
+<!-- ============ CLINIC GALLERY ============ -->
+<section id="clinic-gallery" class="cg-wrap">
+  <h2 class="cg-title">Clinic Gallery 🏥</h2>
 
-  <div class="slider">
-    <div class="slide" aria-live="polite">
-      <!-- Each .item is one slide -->
-      <div class="item" style="background-image:url(images/gallery1.jpg);">
-        <div class="content">
-          <div class="name">Operatory</div>
-          <div class="des">State-of-the-art equipment for precise care.</div>
-          <a class="btn" href="#contact">See More</a>
-        </div>
+  <div class="slide" aria-label="Clinic gallery slider">
+    <!-- Each .item uses the background image. Add an optional data-title and data-progress (0-100). -->
+    <div class="item" style="background-image:url('https://omegadentists.com/wp-content/uploads/2020/02/Alveoloplasty-Houston.jpg')" data-title="Procedure Room" data-progress="72">
+      <div class="content">
+        <div class="name">Procedure Room</div>
+        <div class="des">Sterile & modern operatory</div>
+        <button class="see-more" type="button">See More</button>
       </div>
-
-      <div class="item" style="background-image:url(images/gallery2.jpg);">
-        <div class="content">
-          <div class="name">Reception</div>
-          <div class="des">Comfortable, clean, and welcoming space.</div>
-          <a class="btn" href="#contact">See More</a>
-        </div>
-      </div>
-
-      <div class="item" style="background-image:url(images/gallery3.jpg);">
-        <div class="content">
-          <div class="name">X-Ray Suite</div>
-          <div class="des">Digital imaging for fast diagnosis.</div>
-          <a class="btn" href="#contact">See More</a>
-        </div>
-      </div>
-
-      <div class="item" style="background-image:url(images/gallery4.jpg);">
-        <div class="content">
-          <div class="name">Aligners Lab</div>
-          <div class="des">Precision fabrication and planning.</div>
-          <a class="btn" href="#contact">See More</a>
-        </div>
-      </div>
-
-      <!-- Add more .item blocks as needed -->
     </div>
 
-    <div class="controls">
-      <button class="prev" aria-label="Previous slide"><i class="fa-solid fa-arrow-left"></i></button>
-      <button class="next" aria-label="Next slide"><i class="fa-solid fa-arrow-right"></i></button>
+    <div class="item" style="background-image:url('https://png.pngtree.com/png-vector/20241105/ourmid/pngtree-full-set-of-dentures-with-gums-and-teeth-png-image_14152999.png')" data-title="Prosthetics" data-progress="25">
+      <div class="content">
+        <div class="name">Prosthetics</div>
+        <div class="des">High-precision prosthetic work</div>
+        <button class="see-more" type="button">See More</button>
+      </div>
     </div>
+
+    <div class="item" style="background-image:url('https://st5.depositphotos.com/1238677/65537/i/450/depositphotos_655379690-stock-photo-abnormal-teeth-position-correction-metal.jpg')" data-title="Orthodontics" data-progress="40"></div>
+    <div class="item" style="background-image:url('https://elitedental.com.vn/en/wp-content/uploads/sites/8/2024/07/advantages-of-clear-aligners.jpg')" data-title="Aligners" data-progress="10"></div>
+    <div class="item" style="background-image:url('https://www.fastnewsmile.com/wp-content/uploads/2022/04/Common-Questions-About-Zirconia-Dental-Implants-1024x683.png')" data-title="Implants" data-progress="90"></div>
+    <div class="item" style="background-image:url('https://omegadentists.com/wp-content/uploads/2020/02/Alveoloplasty-Houston.jpg')" data-title="Recovery" data-progress="55"></div>
+  </div>
+
+  <div class="button">
+    <button class="prev" aria-label="Previous">❮</button>
+    <button class="next" aria-label="Next">❯</button>
   </div>
 </section>
 
-  <!-- Lightbox / Cinematic Viewer -->
+<!-- ============ LIGHTBOX ============ -->
 <div id="lightbox" class="lb hidden" aria-hidden="true">
-  <div class="lb-backdrop"></div>
-
-  <div class="lb-stage android-frame" role="dialog" aria-modal="true" aria-label="Gallery viewer">
-    <button class="lb-btn lb-close" aria-label="Close (Esc)">✕</button>
-
-    <div class="lb-toolbar">
-      <button class="lb-btn lb-zoom-out" aria-label="Zoom out">−</button>
-      <button class="lb-btn lb-zoom-in" aria-label="Zoom in">+</button>
-      <button class="lb-btn lb-reset" aria-label="Reset zoom">⤾</button>
-      <button class="lb-btn lb-full" aria-label="Toggle fullscreen">⤢</button>
+  <div class="android-frame" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="lb-header">
+      <button class="lb-close" aria-label="Close">✕</button>
+      <div class="lb-title">Noble Dental Gallery</div>
+      <div class="lb-tools">
+        <button class="lb-zoom-out" title="Zoom out" aria-label="Zoom out">−</button>
+        <button class="lb-zoom-in"  title="Zoom in"  aria-label="Zoom in">+</button>
+        <button class="lb-reset"    title="Reset"    aria-label="Reset">⟳</button>
+        <button class="lb-full"     title="Fullscreen" aria-label="Fullscreen">⤢</button>
+      </div>
     </div>
 
     <div class="lb-canvas" id="lbCanvas">
-      <img id="lbImg" alt="Clinic photo" draggable="false"/>
+      <img id="lbImg" alt="Expanded clinic image" />
     </div>
 
-    <div class="lb-caption" id="lbCaption"></div>
+    <div class="lb-caption" id="lbCaption">Caption</div>
+
+    <!-- Netflix-style thumbnails rail -->
+    <div class="lb-rail">
+      <button class="lb-rail-btn rail-prev" aria-label="Scroll thumbnails left">❮</button>
+      <div class="lb-thumbs" id="lbThumbs" role="listbox" aria-label="Gallery thumbnails"></div>
+      <button class="lb-rail-btn rail-next" aria-label="Scroll thumbnails right">❯</button>
+    </div>
   </div>
 </div>
   
@@ -499,6 +491,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
