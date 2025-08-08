@@ -545,24 +545,176 @@ header ul a:hover {
   .doctor-card-ui { border-radius: 12px; }
 }
 
-/* Gallery Section */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
-  color: #000;
+/* === Clinic Gallery Slider === */
+.clinic-gallery-section {
+  padding: 3.5rem 1rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.gallery img {
+.clinic-gallery-section .section-title {
+  color: #003147;
+  margin-bottom: 1.5rem;
+}
+
+/* Slider wrapper */
+.slider {
+  position: relative;
+  max-width: 1000px;
+  height: 500px;
+  margin: 0 auto;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(44,53,99,.18);
+  background: linear-gradient(120deg, #1a2155 0%, #4d58b7 100%);
+  overflow: hidden;
+}
+
+/* The strip that contains items */
+.slide {
+  position: relative;
   width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  height: 100%;
 }
 
-.gallery img:hover {
-  transform: scale(1.05);
+/* Individual items */
+.slide .item {
+  width: 150px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+  background-position: 50% 50%;
+  background-size: cover;
+  display: inline-block;
+  transition: 0.5s;
+}
+
+/* The first two items expand to full frame (current + entering) */
+.slide .item:nth-child(1),
+.slide .item:nth-child(2) {
+  top: 0;
+  left: 0;
+  transform: none;
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* The next visible items peek on the right */
+.slide .item:nth-child(3) { left: 52%; }
+.slide .item:nth-child(4) { left: calc(52% + 220px); }
+.slide .item:nth-child(5) { left: calc(52% + 440px); }
+
+/* Hide the rest off to the right */
+.slide .item:nth-child(n + 6) {
+  left: calc(52% + 660px);
+  opacity: 0;
+}
+
+/* Content on the active slide */
+.item .content {
+  position: absolute;
+  top: 50%;
+  left: clamp(18px, 8vw, 100px);
+  width: clamp(260px, 32vw, 360px);
+  text-align: left;
+  color: #eef3ff;
+  transform: translate(0, -50%);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  display: none;
+  text-shadow: 0 2px 20px rgba(0,0,0,.35);
+}
+
+.slide .item:nth-child(2) .content { display: block; }
+
+.content .name {
+  font-size: clamp(22px, 3.5vw, 40px);
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: .5px;
+  opacity: 0;
+  animation: slideContent 1s ease-in-out 0s 1 forwards;
+}
+.content .des {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  line-height: 1.45;
+  opacity: 0;
+  animation: slideContent 1s ease-in-out .25s 1 forwards;
+}
+.content .btn {
+  display: inline-block;
+  background: #fff;
+  color: #1a2155;
+  font-weight: 700;
+  border-radius: 14px;
+  padding: 10px 18px;
+  text-decoration: none;
+  opacity: 0;
+  animation: slideContent 1s ease-in-out .5s 1 forwards;
+  box-shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+.content .btn:hover {
+  transform: translateY(-1px);
+}
+
+@keyframes slideContent {
+  from { opacity: 0; transform: translate(0, 24px); filter: blur(10px); }
+  to   { opacity: 1; transform: translate(0, 0); filter: blur(0); }
+}
+
+/* Prev/Next buttons */
+.controls {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  position: absolute;
+  bottom: 16px;
+  z-index: 3;
+}
+.controls button {
+  width: 44px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.3);
+  background: #ffffffd9;
+  cursor: pointer;
+  transition: .25s;
+  display: grid;
+  place-items: center;
+}
+.controls button:hover {
+  background: #e9f7ff;
+  transform: translateY(-2px);
+}
+
+/* Pause animation for reduced motion users */
+@media (prefers-reduced-motion: reduce) {
+  .slide .item, .content .name, .content .des, .content .btn { transition: none !important; animation: none !important; }
+}
+
+/* Responsiveness */
+@media (max-width: 1080px) {
+  .slider { height: 440px; }
+  .slide .item:nth-child(4) { left: calc(52% + 200px); }
+  .slide .item:nth-child(5) { left: calc(52% + 380px); }
+  .slide .item:nth-child(n + 6) { left: calc(52% + 560px); }
+}
+@media (max-width: 780px) {
+  .slider { height: 380px; }
+  .slide .item { width: 130px; height: 88px; }
+  .slide .item:nth-child(3) { left: 56%; }
+  .slide .item:nth-child(4) { left: calc(56% + 180px); }
+  .slide .item:nth-child(5) { left: calc(56% + 340px); }
+  .slide .item:nth-child(n + 6) { left: calc(56% + 500px); }
+}
+@media (max-width: 520px) {
+  .slider { height: 320px; }
+  .slide .item { width: 120px; height: 80px; }
+  .content .des { font-size: .95rem; }
 }
 
 /* Testimonials */
@@ -652,6 +804,7 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
