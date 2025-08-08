@@ -245,65 +245,51 @@
 </section>
   
 <!-- ============ CLINIC GALLERY ============ -->
-<section id="clinic-gallery" class="cg-wrap">
-  <h2 class="cg-title">Clinic Gallery 🏥</h2>
-
-  <div class="slide" aria-label="Clinic gallery slider">
-    <!-- Each .item uses the background image. Add an optional data-title and data-progress (0-100). -->
-    <div class="item" style="background-image:url('https://omegadentists.com/wp-content/uploads/2020/02/Alveoloplasty-Houston.jpg')" data-title="Procedure Room" data-progress="72">
-      <div class="content">
-        <div class="name">Procedure Room</div>
-        <div class="des">Sterile & modern operatory</div>
-        <button class="see-more" type="button">See More</button>
-      </div>
+<section id="clinic-gallery" class="cg">
+  <div class="cg-head">
+    <h2>Clinic Gallery</h2>
+    <div class="cg-controls">
+      <button class="cg-btn prev" aria-label="Previous">&#10094;</button>
+      <button class="cg-btn next" aria-label="Next">&#10095;</button>
     </div>
-
-    <div class="item" style="background-image:url('https://png.pngtree.com/png-vector/20241105/ourmid/pngtree-full-set-of-dentures-with-gums-and-teeth-png-image_14152999.png')" data-title="Prosthetics" data-progress="25">
-      <div class="content">
-        <div class="name">Prosthetics</div>
-        <div class="des">High-precision prosthetic work</div>
-        <button class="see-more" type="button">See More</button>
-      </div>
-    </div>
-
-    <div class="item" style="background-image:url('https://st5.depositphotos.com/1238677/65537/i/450/depositphotos_655379690-stock-photo-abnormal-teeth-position-correction-metal.jpg')" data-title="Orthodontics" data-progress="40"></div>
-    <div class="item" style="background-image:url('https://elitedental.com.vn/en/wp-content/uploads/sites/8/2024/07/advantages-of-clear-aligners.jpg')" data-title="Aligners" data-progress="10"></div>
-    <div class="item" style="background-image:url('https://www.fastnewsmile.com/wp-content/uploads/2022/04/Common-Questions-About-Zirconia-Dental-Implants-1024x683.png')" data-title="Implants" data-progress="90"></div>
-    <div class="item" style="background-image:url('https://omegadentists.com/wp-content/uploads/2020/02/Alveoloplasty-Houston.jpg')" data-title="Recovery" data-progress="55"></div>
   </div>
 
-  <div class="button">
-    <button class="prev" aria-label="Previous">❮</button>
-    <button class="next" aria-label="Next">❯</button>
+  <div class="cg-rail" aria-label="Image carousel">
+    <div class="cg-track">
+      <!-- Replace src with your images; add more items if you like -->
+      <article class="cg-item" data-title="Reception">
+        <img src="images/gallery1.jpg" alt="Reception" />
+      </article>
+      <article class="cg-item" data-title="Operatory">
+        <img src="images/gallery2.jpg" alt="Operatory" />
+      </article>
+      <article class="cg-item" data-title="Waiting Area">
+        <img src="images/gallery3.jpg" alt="Waiting Area" />
+      </article>
+      <article class="cg-item" data-title="Equipment">
+        <img src="images/gallery4.jpg" alt="Equipment" />
+      </article>
+      <article class="cg-item" data-title="Sterilization">
+        <img src="images/gallery5.jpg" alt="Sterilization" />
+      </article>
+    </div>
+    <div class="cg-fade left"></div>
+    <div class="cg-fade right"></div>
   </div>
+
+  <div class="cg-dots" role="tablist" aria-label="Slide dots"></div>
 </section>
 
-<!-- ============ LIGHTBOX ============ -->
-<div id="lightbox" class="lb hidden" aria-hidden="true">
-  <div class="android-frame" role="dialog" aria-modal="true" aria-label="Image viewer">
-    <div class="lb-header">
-      <button class="lb-close" aria-label="Close">✕</button>
-      <div class="lb-title">Noble Dental Gallery</div>
-      <div class="lb-tools">
-        <button class="lb-zoom-out" title="Zoom out" aria-label="Zoom out">−</button>
-        <button class="lb-zoom-in"  title="Zoom in"  aria-label="Zoom in">+</button>
-        <button class="lb-reset"    title="Reset"    aria-label="Reset">⟳</button>
-        <button class="lb-full"     title="Fullscreen" aria-label="Fullscreen">⤢</button>
-      </div>
-    </div>
-
-    <div class="lb-canvas" id="lbCanvas">
-      <img id="lbImg" alt="Expanded clinic image" />
-    </div>
-
-    <div class="lb-caption" id="lbCaption">Caption</div>
-
-    <!-- Netflix-style thumbnails rail -->
-    <div class="lb-rail">
-      <button class="lb-rail-btn rail-prev" aria-label="Scroll thumbnails left">❮</button>
-      <div class="lb-thumbs" id="lbThumbs" role="listbox" aria-label="Gallery thumbnails"></div>
-      <button class="lb-rail-btn rail-next" aria-label="Scroll thumbnails right">❯</button>
-    </div>
+<!-- Lightbox -->
+<div id="cg-lightbox" class="cg-lb hidden" aria-hidden="true">
+  <div class="cg-lb-ui">
+    <button class="cg-lb-close" aria-label="Close">&times;</button>
+    <button class="cg-lb-prev" aria-label="Previous">&#10094;</button>
+    <button class="cg-lb-next" aria-label="Next">&#10095;</button>
+  </div>
+  <div class="cg-lb-canvas">
+    <img class="cg-lb-img" alt="">
+    <div class="cg-lb-caption"></div>
   </div>
 </div>
   
@@ -491,6 +477,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
