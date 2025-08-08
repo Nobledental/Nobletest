@@ -245,53 +245,39 @@
 </section>
   
 <!-- ============ CLINIC GALLERY ============ -->
-<section id="clinic-gallery" class="cg">
-  <div class="cg-head">
-    <h2>Clinic Gallery</h2>
-    <div class="cg-controls">
-      <button class="cg-btn prev" aria-label="Previous">&#10094;</button>
-      <button class="cg-btn next" aria-label="Next">&#10095;</button>
+<section id="clinic-gallery" class="xdev-gallery">
+  <div class="container">
+    <div class="slide">
+      <div class="item" style="background-image:url(https://omegadentists.com/wp-content/uploads/2020/02/Alveoloplasty-Houston.jpg);" data-title="Surgery Room"></div>
+      <div class="item" style="background-image:url(https://png.pngtree.com/png-vector/20241105/ourmid/pngtree-full-set-of-dentures-with-gums-and-teeth-png-image_14152999.png);" data-title="Prosthetics"></div>
+      <div class="item" style="background-image:url(https://st5.depositphotos.com/1238677/65537/i/450/depositphotos_655379690-stock-photo-abnormal-teeth-position-correction-metal.jpg);" data-title="Orthodontics"></div>
+      <div class="item" style="background-image:url(https://elitedental.com.vn/en/wp-content/uploads/sites/8/2024/07/advantages-of-clear-aligners.jpg);" data-title="Aligners"></div>
+      <div class="item" style="background-image:url(https://www.fastnewsmile.com/wp-content/uploads/2022/04/Common-Questions-About-Zirconia-Dental-Implants-1024x683.png);" data-title="Implants"></div>
+      <div class="item" style="background-image:url(https://omegadentists.com/wp-content/uploads/2020/02/Alveoloplasty-Houston.jpg);" data-title="Post-Op"></div>
+    </div>
+
+    <div class="button">
+      <button class="prev" aria-label="Previous slide"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="next" aria-label="Next slide"><i class="fa-solid fa-arrow-right"></i></button>
     </div>
   </div>
 
-  <div class="cg-rail" aria-label="Image carousel">
-    <div class="cg-track">
-      <!-- Replace src with your images; add more items if you like -->
-      <article class="cg-item" data-title="Reception">
-        <img src="images/gallery1.jpg" alt="Reception" />
-      </article>
-      <article class="cg-item" data-title="Operatory">
-        <img src="images/gallery2.jpg" alt="Operatory" />
-      </article>
-      <article class="cg-item" data-title="Waiting Area">
-        <img src="images/gallery3.jpg" alt="Waiting Area" />
-      </article>
-      <article class="cg-item" data-title="Equipment">
-        <img src="images/gallery4.jpg" alt="Equipment" />
-      </article>
-      <article class="cg-item" data-title="Sterilization">
-        <img src="images/gallery5.jpg" alt="Sterilization" />
-      </article>
+  <!-- Lightbox -->
+  <div class="xdev-lightbox hidden" id="xdevLightbox" aria-hidden="true">
+    <button class="lb-close" aria-label="Close">&times;</button>
+    <div class="lb-canvas" id="lbCanvas">
+      <img id="lbImg" alt="">
+      <div class="lb-caption" id="lbCaption"></div>
     </div>
-    <div class="cg-fade left"></div>
-    <div class="cg-fade right"></div>
+    <div class="lb-controls">
+      <button class="lb-zoom-out" aria-label="Zoom out">−</button>
+      <button class="lb-zoom-in" aria-label="Zoom in">+</button>
+      <button class="lb-reset" aria-label="Reset">Reset</button>
+      <button class="lb-prev" aria-label="Prev">&#9664;</button>
+      <button class="lb-next" aria-label="Next">&#9654;</button>
+    </div>
   </div>
-
-  <div class="cg-dots" role="tablist" aria-label="Slide dots"></div>
 </section>
-
-<!-- Lightbox -->
-<div id="cg-lightbox" class="cg-lb hidden" aria-hidden="true">
-  <div class="cg-lb-ui">
-    <button class="cg-lb-close" aria-label="Close">&times;</button>
-    <button class="cg-lb-prev" aria-label="Previous">&#10094;</button>
-    <button class="cg-lb-next" aria-label="Next">&#10095;</button>
-  </div>
-  <div class="cg-lb-canvas">
-    <img class="cg-lb-img" alt="">
-    <div class="cg-lb-caption"></div>
-  </div>
-</div>
   
         <section class="testimonials-section">
             <h1 class="section-title autoDisplay">What Our Patients Say 💬</h1>
@@ -477,6 +463,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
