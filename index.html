@@ -244,16 +244,55 @@
   <div class="doctor-profile-ui" id="doctorProfile"></div>
 </section>
   
-        <section class="gallery-section">
-            <h1 class="section-title autoDisplay">Clinic Gallery 🏥</h1>
-            <div class="gallery">
-                <img src="images/gallery1.jpg" alt="Clinic View 1">
-                <img src="images/gallery2.jpg" alt="Clinic View 2">
-                <img src="images/gallery3.jpg" alt="Clinic View 3">
-                <img src="images/gallery4.jpg" alt="Clinic View 4">
-            </div>
-        </section>
+<!-- Clinic Gallery Slider -->
+<section id="clinic-gallery" class="clinic-gallery-section">
+  <h1 class="section-title autoDisplay">Clinic Gallery 🏥</h1>
 
+  <div class="slider">
+    <div class="slide" aria-live="polite">
+      <!-- Each .item is one slide -->
+      <div class="item" style="background-image:url(images/gallery1.jpg);">
+        <div class="content">
+          <div class="name">Operatory</div>
+          <div class="des">State-of-the-art equipment for precise care.</div>
+          <a class="btn" href="#contact">See More</a>
+        </div>
+      </div>
+
+      <div class="item" style="background-image:url(images/gallery2.jpg);">
+        <div class="content">
+          <div class="name">Reception</div>
+          <div class="des">Comfortable, clean, and welcoming space.</div>
+          <a class="btn" href="#contact">See More</a>
+        </div>
+      </div>
+
+      <div class="item" style="background-image:url(images/gallery3.jpg);">
+        <div class="content">
+          <div class="name">X-Ray Suite</div>
+          <div class="des">Digital imaging for fast diagnosis.</div>
+          <a class="btn" href="#contact">See More</a>
+        </div>
+      </div>
+
+      <div class="item" style="background-image:url(images/gallery4.jpg);">
+        <div class="content">
+          <div class="name">Aligners Lab</div>
+          <div class="des">Precision fabrication and planning.</div>
+          <a class="btn" href="#contact">See More</a>
+        </div>
+      </div>
+
+      <!-- Add more .item blocks as needed -->
+    </div>
+
+    <div class="controls">
+      <button class="prev" aria-label="Previous slide"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="next" aria-label="Next slide"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+</section>
+  
         <section class="testimonials-section">
             <h1 class="section-title autoDisplay">What Our Patients Say 💬</h1>
             <div class="testimonial-carousel">
@@ -438,5 +477,6 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
