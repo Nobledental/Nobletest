@@ -297,24 +297,111 @@
   </div>
 </div>
 
-  <!-- Testimonials -->
-        <section class="testimonials-section">
-            <h1 class="section-title autoDisplay">What Our Patients Say 💬</h1>
-            <div class="testimonial-carousel">
-                <div class="testimonial">
-                    <p>"Absolutely amazing service! I felt no pain and the team was incredibly professional."</p>
-                    <h4>- Sandeep R.</h4>
-                </div>
-                <div class="testimonial">
-                    <p>"Clean, friendly environment. The doctors explained everything clearly. Highly recommend!"</p>
-                    <h4>- Lakshmi T.</h4>
-                </div>
-                <div class="testimonial">
-                    <p>"Best dental care experience ever! They even followed up after my procedure."</p>
-                    <h4>- Meena K.</h4>
-                </div>
-    </div> <!-- Add this closing tag for testimonial-carousel -->
-</section> <!-- Add this closing tag for testimonials-section -->
+<!-- ===================== -->
+<!-- Noble Dental: Testimonials -->
+<!-- ===================== -->
+<section id="testimonials" class="nd-testimonials" aria-label="Patient testimonials">
+  <div class="nd-testimonials__head">
+    <h2 class="nd-testimonials__title">What Our Patients Say 💬</h2>
+    <p class="nd-testimonials__subtitle">Real stories. Real smiles. Real care.</p>
+  </div>
+
+  <div class="nd-testimonials__viewport">
+    <div class="nd-testimonials__track" id="ndTestimonialsTrack">
+      <!-- Card 1 -->
+      <article class="nd-testimonials__card" tabindex="0">
+        <div class="nd-testimonials__stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="nd-testimonials__quote">
+          “Absolutely amazing service! I felt no pain and the team was incredibly professional.”
+        </p>
+        <div class="nd-testimonials__author">
+          <img src="https://i.pravatar.cc/80?img=12" alt="Photo of Sandeep" />
+          <div>
+            <h4>Sandeep R.</h4>
+            <small>Root Canal & Crown</small>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="nd-testimonials__card" tabindex="0">
+        <div class="nd-testimonials__stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="nd-testimonials__quote">
+          “Clean, friendly environment. The doctors explained everything clearly. Highly recommend!”
+        </p>
+        <div class="nd-testimonials__author">
+          <img src="https://i.pravatar.cc/80?img=32" alt="Photo of Lakshmi" />
+          <div>
+            <h4>Lakshmi T.</h4>
+            <small>Teeth Whitening</small>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="nd-testimonials__card" tabindex="0">
+        <div class="nd-testimonials__stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="nd-testimonials__quote">
+          “Best dental care experience ever! They even followed up after my procedure.”
+        </p>
+        <div class="nd-testimonials__author">
+          <img src="https://i.pravatar.cc/80?img=5" alt="Photo of Meena" />
+          <div>
+            <h4>Meena K.</h4>
+            <small>Implants</small>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="nd-testimonials__card" tabindex="0">
+        <div class="nd-testimonials__stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="nd-testimonials__quote">
+          “Gentle, thorough, and super modern. My aligners journey has been smooth from day one.”
+        </p>
+        <div class="nd-testimonials__author">
+          <img src="https://i.pravatar.cc/80?img=57" alt="Photo of Arjun" />
+          <div>
+            <h4>Arjun P.</h4>
+            <small>Clear Aligners</small>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="nd-testimonials__card" tabindex="0">
+        <div class="nd-testimonials__stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="nd-testimonials__quote">
+          “Fast appointments, transparent pricing, and a team that truly cares. I’m a fan.”
+        </p>
+        <div class="nd-testimonials__author">
+          <img src="https://i.pravatar.cc/80?img=47" alt="Photo of Zoya" />
+          <div>
+            <h4>Zoya N.</h4>
+            <small>Scaling & Polishing</small>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Navigation -->
+    <button class="nd-testimonials__nav nd-testimonials__nav--prev" aria-label="Previous testimonials">
+      ‹
+    </button>
+    <button class="nd-testimonials__nav nd-testimonials__nav--next" aria-label="Next testimonials">
+      ›
+    </button>
+  </div>
+
+  <!-- Dots -->
+  <div class="nd-testimonials__dots" id="ndTestimonialsDots" aria-label="Testimonials pagination"></div>
+
+  <!-- Soft CTA strip -->
+  <div class="nd-testimonials__cta">
+    <span>Ready for a friendly, pain-free visit?</span>
+    <a class="nd-testimonials__cta-btn" href="https://wa.me/918610425342" target="_blank" rel="noopener">Book on WhatsApp</a>
+  </div>
+</section>
   
         <section class="map-section">
             <h1 class="section-title autoDisplay">Find Us 📍</h1>
@@ -2471,3 +2558,4 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="app.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>AOS.init();</script>
+
