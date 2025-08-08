@@ -737,9 +737,8 @@ header ul a:hover {
 }
 
 .nd-testimonials__card{
-  flex: 0 0 calc(100% - 48px); /* 1 per view on mobile, space for peeking */
+  flex: 0 0 100%; /* one card per view on mobile */
   max-width: 680px;
-  margin-inline: 24px;
   background: white;
   border-radius: 20px;
   padding: 20px 20px 18px;
@@ -801,7 +800,7 @@ header ul a:hover {
 .nd-testimonials__nav{
   position: absolute;
   top: 50%;
-  transform: 0 -50%;
+  transform: translateY(-50%);
   width: 44px; height: 44px;
   border-radius: 50%;
   border: 0;
@@ -863,10 +862,10 @@ header ul a:hover {
 
 /* Responsive: 2 or 3 cards per view on larger screens */
 @media (min-width: 720px){
-  .nd-testimonials__card{ flex-basis: calc(50% - 48px); }
+  .nd-testimonials__card{ flex-basis: calc(50% - 22px); }
 }
 @media (min-width: 1024px){
-  .nd-testimonials__card{ flex-basis: calc(33.333% - 48px); }
+  .nd-testimonials__card{ flex-basis: calc(33.333% - 22px); }
 }
 
 /* Motion sensitivity */
@@ -939,6 +938,7 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
