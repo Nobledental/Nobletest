@@ -292,6 +292,28 @@
     </div>
   </div>
 </section>
+
+  <!-- Lightbox / Cinematic Viewer -->
+<div id="lightbox" class="lb hidden" aria-hidden="true">
+  <div class="lb-backdrop"></div>
+
+  <div class="lb-stage android-frame" role="dialog" aria-modal="true" aria-label="Gallery viewer">
+    <button class="lb-btn lb-close" aria-label="Close (Esc)">✕</button>
+
+    <div class="lb-toolbar">
+      <button class="lb-btn lb-zoom-out" aria-label="Zoom out">−</button>
+      <button class="lb-btn lb-zoom-in" aria-label="Zoom in">+</button>
+      <button class="lb-btn lb-reset" aria-label="Reset zoom">⤾</button>
+      <button class="lb-btn lb-full" aria-label="Toggle fullscreen">⤢</button>
+    </div>
+
+    <div class="lb-canvas" id="lbCanvas">
+      <img id="lbImg" alt="Clinic photo" draggable="false"/>
+    </div>
+
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+</div>
   
         <section class="testimonials-section">
             <h1 class="section-title autoDisplay">What Our Patients Say 💬</h1>
@@ -477,6 +499,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
