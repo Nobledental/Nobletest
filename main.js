@@ -268,12 +268,35 @@ document.addEventListener("DOMContentLoaded", () => {
 })();
 
 (function () {
-  // Hook into the existing slider
+  // ===== Base slider (prev/next + autoplay) =====
   const gallery = document.getElementById('clinic-gallery');
-  const slide   = gallery?.querySelector('.slide');
-  if (!gallery || !slide) return;
+  if (!gallery) return;
 
-  // LIGHTBOX elements
+  const slide = gallery.querySelector('.slide');
+  const btnPrev = gallery.querySelector('.prev');
+  const btnNext = gallery.querySelector('.next');
+
+  function slideNext() {
+    const items = slide.querySelectorAll('.item');
+    if (items.length) slide.appendChild(items[0]);
+  }
+  function slidePrev() {
+    const items = slide.querySelectorAll('.item');
+    if (items.length) slide.prepend(items[items.length - 1]);
+  }
+
+  btnNext?.addEventListener('click', slideNext);
+  btnPrev?.addEventListener('click', slidePrev);
+
+  let timer;
+  const startAuto = () => timer = setInterval(slideNext, 3000);
+  const stopAuto  = () => timer && clearInterval(timer);
+  startAuto();
+  gallery.addEventListener('mouseenter', stopAuto);
+  gallery.addEventListener('mouseleave', startAuto);
+  document.addEventListener('visibilitychange', () => document.hidden ? stopAuto() : startAuto());
+
+  // ===== Lightbox elements =====
   const lb        = document.getElementById('lightbox');
   const lbImg     = document.getElementById('lbImg');
   const lbCaption = document.getElementById('lbCaption');
@@ -283,131 +306,151 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnOut    = lb.querySelector('.lb-zoom-out');
   const btnReset  = lb.querySelector('.lb-reset');
   const btnFull   = lb.querySelector('.lb-full');
+  const thumbsWrap= document.getElementById('lbThumbs');
+  const railPrev  = lb.querySelector('.rail-prev');
+  const railNext  = lb.querySelector('.rail-next');
 
-  let scale = 1, minScale = 1, maxScale = 4, tx = 0, ty = 0;
+  // Build dataset from slider items (background-image)
+  const items = [...slide.querySelectorAll('.item')];
+  const data = items.map((el, i) => {
+    const bg = getComputedStyle(el).backgroundImage;
+    const m  = bg.match(/url\(["']?(.*?)["']?\)/);
+    const src = m ? m[1] : "";
+    const title = el.dataset.title || `Photo ${i+1}`;
+    const progress = parseInt(el.dataset.progress || "0", 10);
+    return { src, title, progress: Math.max(0, Math.min(progress, 100)) };
+  });
+
+  // Render thumbnails with title chip + progress bar
+  thumbsWrap.innerHTML = data.map((d, i) => `
+    <button class="lb-thumb" role="option" aria-label="${d.title}" data-idx="${i}">
+      <img src="${d.src}" alt="${d.title}">
+      <span class="lb-chip">${d.title}</span>
+      <span class="lb-progress"><i style="width:${d.progress}%"></i></span>
+    </button>
+  `).join('');
+
+  let current = 0;
+  let scale = 1, tx = 0, ty = 0;
+  const minScale = 1, maxScale = 4;
   let isPanning = false, startX = 0, startY = 0;
-  let autoTimer; // reuse to pause slider if needed
 
-  const getBgUrl = (el) => {
-    const s = getComputedStyle(el).backgroundImage;
-    // background-image: url("...") -> extract
-    const m = s.match(/url\(["']?(.*?)["']?\)/);
-    return m ? m[1] : "";
-  };
-
-  const openLightbox = (src, caption = "") => {
-    // Pause slider autoplay (if you used the start/stop funcs)
-    document.dispatchEvent(new CustomEvent('slider:pause'));
-
-    lbImg.src = src;
-    lbCaption.textContent = caption;
-    scale = 1; tx = 0; ty = 0;
-    applyTransform();
-
-    lb.classList.remove('hidden');
-    lb.setAttribute('aria-hidden', 'false');
-
-    // Prevent page from scrolling in background
-    document.documentElement.style.overflow = 'hidden';
-    lb.focus();
-  };
-
-  const closeLightbox = () => {
-    lb.classList.add('hidden');
-    lb.setAttribute('aria-hidden', 'true');
-    document.documentElement.style.overflow = '';
-    // Resume slider autoplay
-    document.dispatchEvent(new CustomEvent('slider:resume'));
-  };
-
-  const applyTransform = () => {
-    lbImg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
-  };
-
-  const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
-
-  // Zoom helpers
-  const zoomBy = (delta, centerX, centerY) => {
-    const prev = scale;
-    scale = clamp(scale + delta, minScale, maxScale);
-
-    // Zoom towards cursor (Netflix-y smoothness)
-    if (centerX != null && centerY != null) {
-      // convert pointer to image space
-      const rect = lbImg.getBoundingClientRect();
-      const cx = centerX - rect.left - rect.width / 2;
-      const cy = centerY - rect.top  - rect.height / 2;
-      tx -= cx * (scale/prev - 1);
-      ty -= cy * (scale/prev - 1);
+  function setActiveThumb(i, smooth = true) {
+    thumbsWrap.querySelectorAll('.lb-thumb').forEach(t => t.classList.remove('active'));
+    const el = thumbsWrap.querySelector(`.lb-thumb[data-idx="${i}"]`);
+    if (el) {
+      el.classList.add('active');
+      const bx = el.getBoundingClientRect();
+      const wx = thumbsWrap.getBoundingClientRect();
+      const offset = (bx.left + bx.width/2) - (wx.left + wx.width/2);
+      thumbsWrap.scrollBy({ left: offset, behavior: smooth ? 'smooth' : 'auto' });
     }
+  }
 
-    applyTransform();
-  };
+  function applyTransform() {
+    lbImg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+  }
 
-  // Click any visible slide item to open lightbox
+  function loadIndex(i) {
+    current = (i + data.length) % data.length;
+    const d = data[current];
+    lbImg.src = d.src;
+    lbCaption.textContent = d.title;
+    scale = 1; tx = 0; ty = 0; applyTransform();
+    setActiveThumb(current);
+  }
+
+  function openLightbox(i) {
+    stopAuto();
+    lb.classList.remove('hidden');
+    lb.setAttribute('aria-hidden','false');
+    document.documentElement.style.overflow = 'hidden';
+    loadIndex(i);
+  }
+
+  function closeLightbox() {
+    lb.classList.add('hidden');
+    lb.setAttribute('aria-hidden','true');
+    document.documentElement.style.overflow = '';
+    startAuto();
+  }
+
+  // Open LB from any slide click
   slide.addEventListener('click', (e) => {
     const item = e.target.closest('.item');
     if (!item) return;
-    const url = getBgUrl(item);
-    const cap = item.querySelector('.name')?.textContent?.trim() || 'Clinic photo';
-    if (url) openLightbox(url, cap);
+    const idx = items.indexOf(item);
+    if (idx > -1) openLightbox(idx);
   });
 
-  // Buttons
+  // Rail controls
+  railPrev.addEventListener('click', () => thumbsWrap.scrollBy({left: -thumbsWrap.clientWidth, behavior: 'smooth'}));
+  railNext.addEventListener('click', () => thumbsWrap.scrollBy({left: +thumbsWrap.clientWidth, behavior: 'smooth'}));
+  thumbsWrap.addEventListener('click', (e) => {
+    const btn = e.target.closest('.lb-thumb');
+    if (!btn) return;
+    loadIndex(+btn.dataset.idx);
+  });
+
+  // LB buttons
   btnClose.addEventListener('click', closeLightbox);
-  btnIn.addEventListener('click', () => zoomBy(0.3));
-  btnOut.addEventListener('click', () => zoomBy(-0.3));
-  btnReset.addEventListener('click', () => { scale=1; tx=0; ty=0; applyTransform(); });
+  btnIn.addEventListener('click',  () => { scale = Math.min(maxScale, scale + .3); applyTransform(); });
+  btnOut.addEventListener('click', () => { scale = Math.max(minScale, scale - .3); applyTransform(); });
+  btnReset.addEventListener('click', () => { scale = 1; tx = 0; ty = 0; applyTransform(); });
   btnFull.addEventListener('click', () => {
-    const el = lb.requestFullscreen ? lb : document.documentElement;
-    if (!document.fullscreenElement) el.requestFullscreen?.();
-    else document.exitFullscreen?.();
+    if (!document.fullscreenElement) lb.requestFullscreen?.(); else document.exitFullscreen?.();
   });
 
-  // Wheel to zoom
+  // Wheel zoom
   lbCanvas.addEventListener('wheel', (e) => {
     e.preventDefault();
-    zoomBy(e.deltaY < 0 ? 0.2 : -0.2, e.clientX, e.clientY);
+    const delta = e.deltaY < 0 ? .2 : -.2;
+    const prev  = scale;
+    scale = Math.max(minScale, Math.min(maxScale, scale + delta));
+    const rect = lbImg.getBoundingClientRect();
+    const cx = e.clientX - rect.left - rect.width/2;
+    const cy = e.clientY - rect.top  - rect.height/2;
+    tx -= cx * (scale/prev - 1);
+    ty -= cy * (scale/prev - 1);
+    applyTransform();
   }, { passive:false });
 
-  // Double-click / double-tap to zoom
-  lbCanvas.addEventListener('dblclick', (e) => zoomBy( scale === 1 ? 1 : - (scale-1), e.clientX, e.clientY ));
+  // Double-click zoom
+  lbCanvas.addEventListener('dblclick', (e) => {
+    if (scale === 1) {
+      const rect = lbImg.getBoundingClientRect();
+      const cx = e.clientX - rect.left - rect.width/2;
+      const cy = e.clientY - rect.top  - rect.height/2;
+      scale = 2; tx -= cx; ty -= cy;
+    } else {
+      scale = 1; tx = 0; ty = 0;
+    }
+    applyTransform();
+  });
 
-  // Pointer pan (mouse/touch)
-  const startPan = (x, y) => { isPanning = true; startX = x - tx; startY = y - ty; };
-  const movePan  = (x, y) => { if(!isPanning) return; tx = x - startX; ty = y - startY; applyTransform(); };
-  const endPan   = () => { isPanning = false; };
+  // Pan with pointer
+  lbCanvas.addEventListener('pointerdown', (e) => {
+    lbCanvas.setPointerCapture(e.pointerId);
+    isPanning = true; startX = e.clientX - tx; startY = e.clientY - ty;
+  });
+  lbCanvas.addEventListener('pointermove', (e) => {
+    if (!isPanning) return;
+    tx = e.clientX - startX; ty = e.clientY - startY; applyTransform();
+  });
+  ['pointerup','pointercancel','pointerleave'].forEach(ev => lbCanvas.addEventListener(ev, () => isPanning = false));
 
-  lbCanvas.addEventListener('pointerdown', (e) => { lbCanvas.setPointerCapture(e.pointerId); startPan(e.clientX, e.clientY); });
-  lbCanvas.addEventListener('pointermove', (e) => movePan(e.clientX, e.clientY));
-  lbCanvas.addEventListener('pointerup', endPan);
-  lbCanvas.addEventListener('pointercancel', endPan);
-  lbCanvas.addEventListener('pointerleave', endPan);
-
-  // Close with backdrop / Esc
-  lb.querySelector('.lb-backdrop').addEventListener('click', closeLightbox);
+  // Keyboard
   document.addEventListener('keydown', (e) => {
     if (lb.classList.contains('hidden')) return;
     if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') document.querySelector('#clinic-gallery .next')?.click();
-    if (e.key === 'ArrowLeft')  document.querySelector('#clinic-gallery .prev')?.click();
+    if (e.key === 'ArrowRight') loadIndex(current + 1);
+    if (e.key === 'ArrowLeft')  loadIndex(current - 1);
   });
 
-  /* === Talk to your slider's autoplay (from previous step) === */
-  let sliderTimer;
-  const startAuto = () => sliderTimer = setInterval(() => {
-    document.querySelector('#clinic-gallery .next')?.click();
-  }, 3000);
-  const stopAuto = () => sliderTimer && clearInterval(sliderTimer);
-
-  // If you already had autoplay elsewhere, remove these two and keep your originals.
-  startAuto();
-  gallery.addEventListener('mouseenter', stopAuto);
-  gallery.addEventListener('mouseleave', startAuto);
-  document.addEventListener('visibilitychange', () => document.hidden ? stopAuto() : startAuto());
-
-  // Pause/resume when lightbox opens/closes
-  document.addEventListener('slider:pause', stopAuto);
-  document.addEventListener('slider:resume', startAuto);
+  function getBgUrl(el) {
+    const s = getComputedStyle(el).backgroundImage;
+    const m = s.match(/url\(["']?(.*?)["']?\)/);
+    return m ? m[1] : "";
+  }
 })();
 </script>
