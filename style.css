@@ -545,94 +545,58 @@ header ul a:hover {
   .doctor-card-ui { border-radius: 12px; }
 }
 
-/* ===== Clinic Gallery ===== */
-/* --- Core container --- */
-.xdev-gallery .container{
-  position: relative;
-  width: min(1000px, 95vw);
-  height: min(520px, 60vw);
-  margin: 40px auto;
-  background: transparent;
-}
-.xdev-gallery .slide .item{
+/* === Clinic Gallery (slider) === */
+.xdev-gallery { position: relative; padding: 60px 0; background: #0b1220; color: #fff; }
+.xdev-gallery .container { position: relative; max-width: 1100px; margin: 0 auto; }
+
+.xdev-gallery .slide { position: relative; height: 420px; overflow: hidden; }
+.xdev-gallery .item{
   width: 160px; height: 110px;
-  position: absolute; top: 50%;
-  transform: translate(0, -50%);
-  border-radius: 18px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.35);
-  background-position: 50% 50%;
-  background-size: cover;
-  display: inline-block;
-  transition: .5s;
-  cursor: pointer;
+  position: absolute; top: 50%; transform: translateY(-50%);
+  border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,.35);
+  background-position: center; background-size: cover; transition: .5s;
 }
 
-/* First two items fill the stage like old design */
-.xdev-gallery .slide .item:nth-child(1),
-.xdev-gallery .slide .item:nth-child(2){
-  top: 0; left: 0; transform: none;
-  border-radius: 0;
-  width: 100%; height: 100%;
+/* front two */
+.xdev-gallery .item:nth-child(1),
+.xdev-gallery .item:nth-child(2){
+  top: 0; left: 0; width: 100%; height: 100%;
+  transform: none; border-radius: 20px;
 }
+.xdev-gallery .item:nth-child(3){ left: 55%; }
+.xdev-gallery .item:nth-child(4){ left: calc(55% + 230px); }
+.xdev-gallery .item:nth-child(5){ left: calc(55% + 460px); }
+.xdev-gallery .item:nth-child(n + 6){ left: calc(55% + 690px); opacity: 0; }
 
-/* Stacked previews on right */
-.xdev-gallery .slide .item:nth-child(3){ left: 55%; }
-.xdev-gallery .slide .item:nth-child(4){ left: calc(55% + 220px); }
-.xdev-gallery .slide .item:nth-child(5){ left: calc(55% + 440px); }
-.xdev-gallery .slide .item:nth-child(n + 6){ left: calc(55% + 660px); opacity: 0; }
-
-.xdev-gallery .button{
-  width: 100%;
-  text-align: center; position: absolute; bottom: 12px; left: 0;
-}
+/* arrows */
+.xdev-gallery .button{ position: absolute; inset: auto 0 10px 0; display: flex; justify-content: center; gap: 10px; }
 .xdev-gallery .button button{
-  width: 42px; height: 36px; border-radius: 8px;
-  border: 1px solid #0003; background: #fff;
-  cursor: pointer; margin: 0 6px; transition: .25s;
+  width: 44px; height: 38px; border-radius: 10px; border: 1px solid #fff2;
+  background: #ffffff14; color:#fff; cursor:pointer; transition:.25s;
 }
-.xdev-gallery .button button:hover{ background: #111; color: #fff; }
+.xdev-gallery .button button:hover{ background:#ffffff33; }
 
-/* --- Lightbox --- */
+/* === Lightbox === */
+.xdev-lightbox.hidden{ display:none; }
 .xdev-lightbox{
-  position: fixed; inset: 0; background: rgba(0,0,0,.85);
-  display: grid; grid-template-rows: auto 1fr auto; gap: 10px;
-  align-items: center; justify-items: center; z-index: 9999;
+  position: fixed; inset:0; background: rgba(0,0,0,.85);
+  display:flex; flex-direction:column; gap:10px; z-index: 9999;
 }
-.xdev-lightbox.hidden{ display: none; }
 .xdev-lightbox .lb-close{
-  position: absolute; top: 18px; right: 18px;
-  width: 44px; height: 44px; border-radius: 50%;
-  border: none; background: #ffffff22; color: #fff; font-size: 28px; cursor: pointer;
+  position:absolute; top:16px; right:16px; font-size:28px; color:#fff;
+  background:transparent; border:none; cursor:pointer;
 }
-.xdev-lightbox .lb-canvas{
-  width: min(92vw, 1100px); height: min(75vh, 700px);
-  display: grid; place-items: center; overflow: hidden; position: relative;
-  border-radius: 12px; background: #000;
-}
-.xdev-lightbox #lbImg{
-  max-width: none; max-height: none;
-  transform-origin: center center;
-  transition: transform .12s linear;
-  user-select: none; pointer-events: none;
-}
-.xdev-lightbox .lb-caption{
-  color: #fff; font-size: 14px; margin-top: 6px; opacity: .85;
-}
+.xdev-lightbox .lb-canvas{ flex:1; display:grid; place-items:center; overflow:hidden; }
+.xdev-lightbox #lbImg{ max-width:90vw; max-height:80vh; will-change: transform; transition: transform .1s linear; }
+
+.xdev-lightbox .lb-caption{ color:#fff; text-align:center; opacity:.9; margin-top:8px; }
 .xdev-lightbox .lb-controls{
-  display: flex; gap: 10px; margin-bottom: 14px;
+  display:flex; gap:8px; align-items:center; justify-content:center; padding:10px;
 }
 .xdev-lightbox .lb-controls button{
-  padding: 8px 12px; border-radius: 8px; border: 1px solid #ffffff33;
-  background: #ffffff15; color: #fff; cursor: pointer;
+  padding:8px 12px; border-radius:8px; border:1px solid #fff2; background:#ffffff14; color:#fff; cursor:pointer;
 }
-
-/* Responsive tweaks */
-@media (max-width: 768px){
-  .xdev-gallery .slide .item:nth-child(3){ left: 52%; }
-  .xdev-gallery .slide .item:nth-child(4){ left: calc(52% + 200px); }
-  .xdev-gallery .slide .item:nth-child(5){ left: calc(52% + 400px); }
-  .xdev-gallery .slide .item:nth-child(n + 6){ left: calc(52% + 600px); }
-}
+.xdev-lightbox .lb-controls button:hover{ background:#ffffff33; }
 
 /* Testimonials */
 .testimonial-carousel {
@@ -721,6 +685,7 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
