@@ -222,4 +222,48 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+(function () {
+  const slide = document.querySelector('#clinic-gallery .slide');
+  if (!slide) return;
+
+  const nextBtn = document.querySelector('#clinic-gallery .next');
+  const prevBtn = document.querySelector('#clinic-gallery .prev');
+
+  const slideNext = () => {
+    const items = slide.querySelectorAll('.item');
+    if (items.length) slide.appendChild(items[0]);
+  };
+  const slidePrev = () => {
+    const items = slide.querySelectorAll('.item');
+    if (items.length) slide.prepend(items[items.length - 1]);
+  };
+
+  if (nextBtn) nextBtn.addEventListener('click', slideNext);
+  if (prevBtn) prevBtn.addEventListener('click', slidePrev);
+
+  // autoplay with pause on hover & when tab is hidden
+  let autoplay;
+  const startAuto = () => autoplay = setInterval(slideNext, 3000);
+  const stopAuto  = () => autoplay && clearInterval(autoplay);
+
+  const gallery = document.getElementById('clinic-gallery');
+  if (gallery) {
+    gallery.addEventListener('mouseenter', stopAuto);
+    gallery.addEventListener('mouseleave', startAuto);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAuto(); else startAuto();
+  });
+
+  // Keyboard accessibility
+  gallery?.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') slideNext();
+    if (e.key === 'ArrowLeft')  slidePrev();
+  });
+  gallery?.setAttribute('tabindex', '0');
+
+  startAuto();
+})();
 </script>
