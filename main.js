@@ -295,122 +295,134 @@ document.addEventListener("DOMContentLoaded", () => {
      TESTIMONIALS SLIDER (.nd-testimonials*)
   ========================== */
   const tTrack = document.getElementById("ndTestimonialsTrack");
-  const tViewport = document.querySelector(".nd-testimonials__viewport");
-  const tCards = tTrack ? [...tTrack.querySelectorAll(".nd-testimonials__card")] : [];
-  const tPrev = document.querySelector(".nd-testimonials__nav--prev");
-  const tNext = document.querySelector(".nd-testimonials__nav--next");
-  const tDotsWrap = document.getElementById("ndTestimonialsDots");
+const tViewport = document.querySelector(".nd-testimonials__viewport");
+const tCards = tTrack ? [...tTrack.querySelectorAll(".nd-testimonials__card")] : [];
+const tPrev = document.querySelector(".nd-testimonials__nav--prev");
+const tNext = document.querySelector(".nd-testimonials__nav--next");
+const tDotsWrap = document.getElementById("ndTestimonialsDots");
 
-  if (tTrack && tViewport && tCards.length && tDotsWrap && tPrev && tNext) {
-    tDotsWrap.innerHTML = tCards.map((_, i) =>
-      `<button type="button" aria-label="Go to slide ${i+1}" data-i="${i}"></button>`
-    ).join("");
-    const dots = [...tDotsWrap.querySelectorAll("button")];
+if (tTrack && tViewport && tCards.length && tDotsWrap && tPrev && tNext) {
+  // dots = one per "page" (optional: keep one per card)
+  tDotsWrap.innerHTML = tCards.map((_, i) =>
+    `<button type="button" aria-label="Go to slide ${i + 1}" data-i="${i}"></button>`
+  ).join("");
+  const dots = [...tDotsWrap.querySelectorAll("button")];
 
-    let current = 0, perView = 1;
-    let autoplay = null;
+  let current = 0, perView = 1;
+  let autoplay = null;
 
-    const updatePerView = () => {
-      const w = window.innerWidth;
-      perView = w >= 1024 ? 3 : w >= 720 ? 2 : 1;
-    };
-    const clampIndex = (i) => {
-      const maxIndex = Math.max(0, tCards.length - perView);
-      return Math.min(Math.max(0, i), maxIndex);
-    };
-    const render = () => {
-      const cardW = tCards[0].getBoundingClientRect().width + 22; // 22 = gap
-      const x = -(cardW * current);
-      tTrack.style.transform = `translate3d(${x}px,0,0)`;
-      dots.forEach((d, i) => d.setAttribute("aria-current", i === current ? "true" : "false"));
-    };
-    const next = () => { current = clampIndex(current + 1); render(); };
-    const prev = () => { current = clampIndex(current - 1); render(); };
+  const updatePerView = () => {
+    const w = window.innerWidth;
+    perView = w >= 1024 ? 3 : w >= 720 ? 2 : 1;
+  };
 
-    updatePerView();
+  const clampIndex = (i) => {
+    const maxIndex = Math.max(0, tCards.length - perView);
+    return Math.min(Math.max(0, i), maxIndex);
+  };
+
+  const cardGap = 22; // keep in sync with CSS .nd-testimonials__track { gap: 22px; }
+  const render = () => {
+    const cardW = tCards[0].getBoundingClientRect().width + cardGap;
+    const x = -(cardW * current);
+    tTrack.style.transform = `translate3d(${x}px,0,0)`;
+    dots.forEach((d, i) => d.setAttribute("aria-current", i === current ? "true" : "false"));
+  };
+
+  const next = () => { current = clampIndex(current + 1); render(); };
+  const prev = () => { current = clampIndex(current - 1); render(); };
+
+  updatePerView();
+  render();
+
+  tNext.addEventListener("click", next);
+  tPrev.addEventListener("click", prev);
+
+  tDotsWrap.addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-i]");
+    if (!b) return;
+    current = clampIndex(+b.dataset.i);
     render();
+  });
 
-    tNext.addEventListener("click", next);
-    tPrev.addEventListener("click", prev);
-    tDotsWrap.addEventListener("click", (e) => {
-      const b = e.target.closest("button[data-i]");
-      if (!b) return;
-      current = clampIndex(+b.dataset.i);
+  const start = () => {
+    if (autoplay) return;
+    autoplay = setInterval(() => {
+      const maxIndex = Math.max(0, tCards.length - perView);
+      current = current >= maxIndex ? 0 : current + 1;
       render();
-    });
+    }, 3500);
+  };
+  const stop = () => { if (!autoplay) return; clearInterval(autoplay); autoplay = null; };
 
-    const start = () => {
-      if (autoplay) return;
-      autoplay = setInterval(() => {
-        const maxIndex = Math.max(0, tCards.length - perView);
-        current = current >= maxIndex ? 0 : current + 1;
-        render();
-      }, 3500);
-    };
-    const stop = () => {
-      if (!autoplay) return;
-      clearInterval(autoplay);
-      autoplay = null;
-    };
-    start();
+  start();
+  tViewport.addEventListener("mouseenter", stop);
+  tViewport.addEventListener("mouseleave", start);
+  document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
 
-    tViewport.addEventListener("mouseenter", stop);
-    tViewport.addEventListener("mouseleave", start);
-    document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
+  // --- Drag / Swipe ---
+  const getCurrentX = () => {
+    const t = getComputedStyle(tTrack).transform;
+    if (!t || t === "none") return 0;
+    if (t.startsWith("matrix3d(")) {
+      const m = t.match(/matrix3d\(([^)]+)\)/);
+      return m ? parseFloat(m[1].split(",")[12]) || 0 : 0;
+    }
+    const m = t.match(/matrix\(([^)]+)\)/);
+    return m ? parseFloat(m[1].split(",")[4]) || 0 : 0;
+  };
 
-    // drag/swipe
-    let dragging = false, sx = 0, dx = 0, baseX = 0;
-    const getCurrentX = () => {
-      const t = getComputedStyle(tTrack).transform;
-      if (t === "none") return 0;
-      const m = t.match(/matrix\(([^)]+)\)/);
-      return m ? parseFloat(m[1].split(",")[4]) || 0 : 0;
-    };
+  let dragging = false, sx = 0, dx = 0, baseX = 0;
 
-    tViewport.addEventListener("mousedown", (e) => {
-      dragging = true; sx = e.clientX; dx = 0;
-      baseX = getCurrentX();
-      tTrack.style.transition = "none";
-    });
-    window.addEventListener("mousemove", (e) => {
-      if (!dragging) return;
-      dx = e.clientX - sx;
-      tTrack.style.transform = `translate3d(${baseX + dx}px,0,0)`;
-    });
-    window.addEventListener("mouseup", () => {
-      if (!dragging) return;
-      tTrack.style.transition = "";
-      if (dx > 60) prev(); else if (dx < -60) next(); else render();
-      dragging = false;
-    });
-    tViewport.addEventListener("touchstart", (e) => {
-      dragging = true; sx = e.touches[0].clientX; dx = 0;
-      baseX = getCurrentX();
-      tTrack.style.transition = "none";
-    }, { passive: true });
-    tViewport.addEventListener("touchmove", (e) => {
-      if (!dragging) return;
-      dx = e.touches[0].clientX - sx;
-      tTrack.style.transform = `translate3d(${baseX + dx}px,0,0)`;
-    }, { passive: true });
-    tViewport.addEventListener("touchend", () => {
-      if (!dragging) return;
-      tTrack.style.transition = "";
-      if (dx > 50) prev(); else if (dx < -50) next(); else render();
-      dragging = false;
-    });
+  tViewport.addEventListener("mousedown", (e) => {
+    dragging = true; sx = e.clientX; dx = 0;
+    baseX = getCurrentX();
+    tTrack.style.transition = "none";
+  });
 
-    window.addEventListener("resize", () => {
-      const old = perView;
-      updatePerView();
-      current = clampIndex(current);
-      if (old !== perView) render(); else render();
-    });
+  window.addEventListener("mousemove", (e) => {
+    if (!dragging) return;
+    dx = e.clientX - sx;
+    tTrack.style.transform = `translate3d(${baseX + dx}px,0,0)`;
+  });
 
-    tViewport.setAttribute("tabindex", "0");
-    tViewport.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft")  prev();
-    });
-  }
+  window.addEventListener("mouseup", () => {
+    if (!dragging) return;
+    tTrack.style.transition = "";
+    if (dx > 60) prev(); else if (dx < -60) next(); else render();
+    dragging = false;
+  });
+
+  tViewport.addEventListener("touchstart", (e) => {
+    dragging = true; sx = e.touches[0].clientX; dx = 0;
+    baseX = getCurrentX();
+    tTrack.style.transition = "none";
+  }, { passive: true });
+
+  tViewport.addEventListener("touchmove", (e) => {
+    if (!dragging) return;
+    dx = e.touches[0].clientX - sx;
+    tTrack.style.transform = `translate3d(${baseX + dx}px,0,0)`;
+  }, { passive: true });
+
+  tViewport.addEventListener("touchend", () => {
+    if (!dragging) return;
+    tTrack.style.transition = "";
+    if (dx > 50) prev(); else if (dx < -50) next(); else render();
+    dragging = false;
+  });
+
+  window.addEventListener("resize", () => {
+    const old = perView;
+    updatePerView();
+    current = clampIndex(current);
+    if (old !== perView) render(); else render();
+  });
+
+  tViewport.setAttribute("tabindex", "0");
+  tViewport.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") next();
+    if (e.key === "ArrowLeft")  prev();
+  });
+}
 });
