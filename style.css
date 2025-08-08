@@ -254,16 +254,6 @@ header ul a:hover {
     left: 5%;
 }
 
-.hero-info .hero-info-title {
-    color: #849da1;
-    padding: 8px 5px;
-    border-radius: 50px;
-    border: 1px solid #72a1de94;
-    width: 240px;
-    background-color: #462dbf00;
-    box-shadow: 0 0 5px #72a1de84;
-}
-
 .hero-info h1 {
     font-size: 60px;
     max-width: 600px;
@@ -949,6 +939,7 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
