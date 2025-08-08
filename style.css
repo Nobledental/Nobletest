@@ -811,7 +811,7 @@ header ul a:hover {
 .nd-testimonials__nav{
   position: absolute;
   top: 50%;
-  translate: 0 -50%;
+  transform: 0 -50%;
   width: 44px; height: 44px;
   border-radius: 50%;
   border: 0;
@@ -823,7 +823,10 @@ header ul a:hover {
   display: grid; place-items: center;
   transition: transform .2s ease, background .2s ease;
 }
-.nd-testimonials__nav:hover{ transform: scale(1.04); background: #fff; }
+.nd-testimonials__nav:hover{
+  transform: translateY(-50%) scale(1.04);
+  background: #fff;
+}
 .nd-testimonials__nav--prev{ left: 6px; }
 .nd-testimonials__nav--next{ right: 6px; }
 
@@ -946,6 +949,7 @@ header ul a:hover {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
