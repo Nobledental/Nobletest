@@ -266,4 +266,148 @@ document.addEventListener("DOMContentLoaded", () => {
 
   startAuto();
 })();
+
+(function () {
+  // Hook into the existing slider
+  const gallery = document.getElementById('clinic-gallery');
+  const slide   = gallery?.querySelector('.slide');
+  if (!gallery || !slide) return;
+
+  // LIGHTBOX elements
+  const lb        = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lbImg');
+  const lbCaption = document.getElementById('lbCaption');
+  const lbCanvas  = document.getElementById('lbCanvas');
+  const btnClose  = lb.querySelector('.lb-close');
+  const btnIn     = lb.querySelector('.lb-zoom-in');
+  const btnOut    = lb.querySelector('.lb-zoom-out');
+  const btnReset  = lb.querySelector('.lb-reset');
+  const btnFull   = lb.querySelector('.lb-full');
+
+  let scale = 1, minScale = 1, maxScale = 4, tx = 0, ty = 0;
+  let isPanning = false, startX = 0, startY = 0;
+  let autoTimer; // reuse to pause slider if needed
+
+  const getBgUrl = (el) => {
+    const s = getComputedStyle(el).backgroundImage;
+    // background-image: url("...") -> extract
+    const m = s.match(/url\(["']?(.*?)["']?\)/);
+    return m ? m[1] : "";
+  };
+
+  const openLightbox = (src, caption = "") => {
+    // Pause slider autoplay (if you used the start/stop funcs)
+    document.dispatchEvent(new CustomEvent('slider:pause'));
+
+    lbImg.src = src;
+    lbCaption.textContent = caption;
+    scale = 1; tx = 0; ty = 0;
+    applyTransform();
+
+    lb.classList.remove('hidden');
+    lb.setAttribute('aria-hidden', 'false');
+
+    // Prevent page from scrolling in background
+    document.documentElement.style.overflow = 'hidden';
+    lb.focus();
+  };
+
+  const closeLightbox = () => {
+    lb.classList.add('hidden');
+    lb.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    // Resume slider autoplay
+    document.dispatchEvent(new CustomEvent('slider:resume'));
+  };
+
+  const applyTransform = () => {
+    lbImg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+  };
+
+  const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+
+  // Zoom helpers
+  const zoomBy = (delta, centerX, centerY) => {
+    const prev = scale;
+    scale = clamp(scale + delta, minScale, maxScale);
+
+    // Zoom towards cursor (Netflix-y smoothness)
+    if (centerX != null && centerY != null) {
+      // convert pointer to image space
+      const rect = lbImg.getBoundingClientRect();
+      const cx = centerX - rect.left - rect.width / 2;
+      const cy = centerY - rect.top  - rect.height / 2;
+      tx -= cx * (scale/prev - 1);
+      ty -= cy * (scale/prev - 1);
+    }
+
+    applyTransform();
+  };
+
+  // Click any visible slide item to open lightbox
+  slide.addEventListener('click', (e) => {
+    const item = e.target.closest('.item');
+    if (!item) return;
+    const url = getBgUrl(item);
+    const cap = item.querySelector('.name')?.textContent?.trim() || 'Clinic photo';
+    if (url) openLightbox(url, cap);
+  });
+
+  // Buttons
+  btnClose.addEventListener('click', closeLightbox);
+  btnIn.addEventListener('click', () => zoomBy(0.3));
+  btnOut.addEventListener('click', () => zoomBy(-0.3));
+  btnReset.addEventListener('click', () => { scale=1; tx=0; ty=0; applyTransform(); });
+  btnFull.addEventListener('click', () => {
+    const el = lb.requestFullscreen ? lb : document.documentElement;
+    if (!document.fullscreenElement) el.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  });
+
+  // Wheel to zoom
+  lbCanvas.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    zoomBy(e.deltaY < 0 ? 0.2 : -0.2, e.clientX, e.clientY);
+  }, { passive:false });
+
+  // Double-click / double-tap to zoom
+  lbCanvas.addEventListener('dblclick', (e) => zoomBy( scale === 1 ? 1 : - (scale-1), e.clientX, e.clientY ));
+
+  // Pointer pan (mouse/touch)
+  const startPan = (x, y) => { isPanning = true; startX = x - tx; startY = y - ty; };
+  const movePan  = (x, y) => { if(!isPanning) return; tx = x - startX; ty = y - startY; applyTransform(); };
+  const endPan   = () => { isPanning = false; };
+
+  lbCanvas.addEventListener('pointerdown', (e) => { lbCanvas.setPointerCapture(e.pointerId); startPan(e.clientX, e.clientY); });
+  lbCanvas.addEventListener('pointermove', (e) => movePan(e.clientX, e.clientY));
+  lbCanvas.addEventListener('pointerup', endPan);
+  lbCanvas.addEventListener('pointercancel', endPan);
+  lbCanvas.addEventListener('pointerleave', endPan);
+
+  // Close with backdrop / Esc
+  lb.querySelector('.lb-backdrop').addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', (e) => {
+    if (lb.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') document.querySelector('#clinic-gallery .next')?.click();
+    if (e.key === 'ArrowLeft')  document.querySelector('#clinic-gallery .prev')?.click();
+  });
+
+  /* === Talk to your slider's autoplay (from previous step) === */
+  let sliderTimer;
+  const startAuto = () => sliderTimer = setInterval(() => {
+    document.querySelector('#clinic-gallery .next')?.click();
+  }, 3000);
+  const stopAuto = () => sliderTimer && clearInterval(sliderTimer);
+
+  // If you already had autoplay elsewhere, remove these two and keep your originals.
+  startAuto();
+  gallery.addEventListener('mouseenter', stopAuto);
+  gallery.addEventListener('mouseleave', startAuto);
+  document.addEventListener('visibilitychange', () => document.hidden ? stopAuto() : startAuto());
+
+  // Pause/resume when lightbox opens/closes
+  document.addEventListener('slider:pause', stopAuto);
+  document.addEventListener('slider:resume', startAuto);
+})();
 </script>
