@@ -425,108 +425,111 @@ header ul a:hover {
   --ink-500:#64748b;
 }
 
-.doctor-ui-section{
-  display:flex;
-  gap:24px;
-  justify-content:center;
-  align-items:flex-start;
-  margin:56px auto 40px;
-  max-width:1200px;           /* wider but still neat */
-  width:100%;
-  padding:20px 16px;
-  border-radius:24px;
-  background:var(--mica-bg);
+/* Doctor UI Section */
+.doctor-ui-section {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 56px auto 40px;
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px 16px;
+  border-radius: 24px;
+  background: var(--mica-bg);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
-  box-shadow: 0 10px 40px rgba(16,24,40,0.06);
-  border:1px solid var(--stroke);
+  box-shadow: 0 10px 40px rgba(16, 24, 40, 0.06);
+  border: 1px solid var(--stroke);
 }
 
-/* ========= LEFT: doctor list (compact) ========= */
-.doctor-list-ui{
-  display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Makes the cards flexible */
-  gap:14px;
-  min-width:300px;            /* tighter than before */
-  max-width:340px;
+/* Left Section: Doctor List */
+.doctor-list-ui {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  min-width: 300px;
+  max-width: 340px;
+  padding: 10px;
 }
 
-/* Card = cover image (top half) + content */
-.doctor-card-ui{
-  display:grid;
-  grid-template-rows: 150px auto;     /* image “upper half” */
-  background:var(--glass);
-  border:1px solid var(--stroke);
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow: 0 6px 16px rgba(17,23,41,0.06);
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-  position:relative;
+/* Doctor Card */
+.doctor-card-ui {
+  display: grid;
+  grid-template-rows: 150px auto 1fr; /* Adjust layout for doctor image, text, and book section */
+  background: var(--glass);
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(17, 23, 41, 0.06);
+  position: relative;
   color: var(--ink-900);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
-.doctor-card-ui:hover{
+.doctor-card-ui:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 28px rgba(17,23,41,0.10);
-  border-color: rgba(0,194,168,.35); /* teal hint on hover */
+  box-shadow: 0 14px 28px rgba(17, 23, 41, 0.10);
+  border-color: rgba(0, 194, 168, 0.35); /* Teal hover effect */
 }
 
-.doctor-card-ui.active{
-  border-color: rgba(0,194,168,.6);
-  box-shadow: 0 16px 36px rgba(0,194,168,.16);
+.doctor-card-ui.active {
+  border-color: rgba(0, 194, 168, 0.6);
+  box-shadow: 0 16px 36px rgba(0, 194, 168, 0.16);
 }
 
-/* Use existing <img class="doctor-avatar-ui"> as a COVER, not a circle */
-.doctor-card-ui .doctor-avatar-ui{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  border-radius:0;            /* remove circle */
-  border:none;                /* remove previous border */
-  box-shadow:none;
+/* Profile Image (Top Half) */
+.doctor-card-ui .doctor-avatar-ui {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-/* Content area */
-.doctor-card-ui .doc-info-ui{
-  display:grid;
-  gap:2px;
-  padding:10px 12px 12px;
-  background: linear-gradient(180deg, transparent, rgba(255,255,255,.45));
+/* Content Area */
+.doctor-card-ui .doc-info-ui {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px 12px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.45));
 }
-.doc-info-ui h4{
-  margin:0;
+
+.doc-info-ui h4 {
+  margin: 0;
   font-size: clamp(14px, 1.2vw, 15px);
   color: var(--ink-900);
-  font-weight:700;
+  font-weight: 700;
 }
-.doc-info-ui p{
-  margin:0;
+
+.doc-info-ui p {
+  margin: 0;
   font-size: clamp(12px, 1.1vw, 13px);
   color: var(--ink-500);
 }
 
-/* Rating chip (over image, top-right) */
-.rating-ui{
-  position:absolute;
-  top:10px;
-  right:10px;
-  padding:6px 10px;
-  font-size:12px;
-  font-weight:700;
-  color:#111;
+/* Rating Badge (Top-Right) */
+.rating-ui {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #111;
   background: linear-gradient(135deg, #fff, #ffffffcc);
-  border:1px solid var(--stroke);
-  border-radius:999px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Book cover image inside the card */
-.book-cover{
+/* Book Cover - Positioned inside the card */
+.book-cover {
   display: flex;
   justify-content: center;
   padding: 10px;
-  background: linear-gradient(180deg, transparent, rgba(255,255,255,.25));
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.25));
   position: absolute;
   bottom: 0;
   left: 0;
@@ -542,150 +545,184 @@ header ul a:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Subtle “material” hover ripple (no JS) */
-.doctor-card-ui::after{
-  content:"";
-  position:absolute; inset:0;
-  background: radial-gradient(400px 200px at 80% 0%, rgba(255,255,255,.35), transparent 60%);
-  opacity:0; transition:opacity .25s ease;
+/* Academic Contributions */
+.academic-contributions {
+  padding: 10px;
+  background: var(--acc-teal);
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  margin-top: 10px;
 }
 
-.doctor-card-ui:hover::after{ opacity:1; }
+.academic-contributions p {
+  margin: 0;
+  font-size: 14px;
+}
 
-/* ========= RIGHT: profile panel (compact, professional) ========= */
-.doctor-profile-ui{
-  flex:1 1 520px;
+/* Subtle "material" hover ripple (no JS) */
+.doctor-card-ui::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(400px 200px at 80% 0%, rgba(255, 255, 255, 0.35), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.doctor-card-ui:hover::after {
+  opacity: 1;
+}
+
+/* Profile Panel on the Right */
+.doctor-profile-ui {
+  flex: 1 1 520px;
   min-width: 420px;
   max-width: 560px;
-  background:var(--glass-strong);
-  border:1px solid var(--stroke);
-  border-radius:20px;
-  padding:18px 18px 16px;
-  box-shadow: 0 10px 28px rgba(16,24,40,0.08);
+  background: var(--glass-strong);
+  border: 1px solid var(--stroke);
+  border-radius: 20px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 10px 28px rgba(16, 24, 40, 0.08);
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
 }
 
 /* Make profile top image wide banner instead of circle */
-.profile-avatar-ui{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-  border-radius:12px;
-  border:none;
-  box-shadow: 0 6px 16px rgba(0,0,0,.08);
-  margin: 0 0 12px 0;        /* reset previous margins */
+.profile-avatar-ui {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  margin: 0 0 12px 0;
 }
 
-.profile-name-ui{
+/* Profile Name */
+.profile-name-ui {
   font-size: clamp(18px, 2vw, 20px);
   color: var(--ink-900);
-  font-weight:800;
+  font-weight: 800;
   margin: 0 0 4px 0;
 }
-.profile-role-ui{
+
+/* Profile Role */
+.profile-role-ui {
   color: var(--ink-700);
   font-size: clamp(13px, 1.6vw, 14px);
   margin-bottom: 8px;
 }
-.profile-rating-ui{
-  display:inline-block;
-  color:#111;
-  background: linear-gradient(135deg, #fff, #f7f7f7);
-  border:1px solid var(--stroke);
-  padding:6px 12px;
-  border-radius:999px;
-  font-weight:700;
-  font-size: 13px;
-  margin-bottom: 10px;
-}
 
-.profile-stats-ui{
-  display:grid;
+/* Profile Stats */
+.profile-stats-ui {
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap:10px;
-  width:100%;
+  gap: 10px;
+  width: 100%;
   margin: 8px 0 12px;
 }
-.profile-stats-ui > div{
+
+.profile-stats-ui > div {
   background: linear-gradient(180deg, #ffffffcc, #ffffff80);
-  border:1px solid var(--stroke);
-  border-radius:12px;
-  padding:10px 8px;
-  text-align:center;
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  padding: 10px 8px;
+  text-align: center;
 }
-.profile-stats-ui .stat-val{
+
+.profile-stats-ui .stat-val {
   color: var(--ink-900);
-  font-weight:800;
+  font-weight: 800;
   font-size: 14px;
 }
-.profile-stats-ui .stat-label{
+
+.profile-stats-ui .stat-label {
   font-size: 12px;
   color: var(--ink-500);
 }
 
-.profile-desc-ui{
+/* Profile Description */
+.profile-desc-ui {
   color: var(--ink-700);
   font-size: 14px;
   background: linear-gradient(180deg, #e9fff6, #ffffff);
-  border:1px solid rgba(0,194,168,.18);
-  padding:10px 12px;
-  border-radius:12px;
+  border: 1px solid rgba(0, 194, 168, 0.18);
+  padding: 10px 12px;
+  border-radius: 12px;
   margin: 8px 0 12px;
-  box-shadow: 0 2px 10px rgba(0,194,168,.08);
+  box-shadow: 0 2px 10px rgba(0, 194, 168, 0.08);
 }
 
-.profile-btn-ui{
+/* Profile Button */
+.profile-btn-ui {
   background: linear-gradient(90deg, var(--acc-teal) 0%, var(--acc-orange) 100%);
-  color:#fff;
-  font-weight:700;
-  font-size:14px;
-  border-radius:12px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 12px;
   border: none;
   padding: 12px 0;
   width: 100%;
   margin-top: 4px;
-  box-shadow: 0 10px 24px rgba(0,194,168,.16);
-  cursor:pointer;
-  text-align:center;
-  text-decoration:none;
-  letter-spacing:.2px;
-  transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+  box-shadow: 0 10px 24px rgba(0, 194, 168, 0.16);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
 }
-.profile-btn-ui:hover{
+
+.profile-btn-ui:hover {
   transform: translateY(-1px);
-  box-shadow: 0 16px 32px rgba(0,194,168,.22);
+  box-shadow: 0 16px 32px rgba(0, 194, 168, 0.22);
   filter: saturate(1.05);
 }
-.profile-btn-ui:active{
+
+.profile-btn-ui:active {
   transform: translateY(0);
 }
 
-/* Focus styles (keyboard) */
-.doctor-card-ui:focus-visible,
-.profile-btn-ui:focus-visible{
-  outline: 3px solid #9be8dc;
-  outline-offset: 2px;
-  border-radius:14px;
+/* ====== Responsive Design ====== */
+@media (max-width: 1024px) {
+  .doctor-ui-section {
+    gap: 18px;
+  }
+  .doctor-list-ui {
+    min-width: 280px;
+    max-width: 320px;
+  }
+  .doctor-card-ui {
+    grid-template-rows: 140px auto;
+  }
+  .doctor-profile-ui {
+    min-width: 100%;
+    max-width: 100%;
+  }
 }
 
-/* ====== Responsive ====== */
-@media (max-width: 1024px){
-  .doctor-ui-section{ gap:18px; }
-  .doctor-list-ui{ min-width:280px; max-width:320px; }
-  .doctor-card-ui{ grid-template-rows: 140px auto; }
-  .doctor-profile-ui{ min-width:100%; max-width:100%; }
-}
-@media (max-width: 680px){
-  .doctor-ui-section{ flex-direction:column; }
-  .doctor-list-ui{ width:100%; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
-  .doctor-card-ui{ grid-template-rows: 120px auto; }
-  .profile-avatar-ui{ height:180px; }
-}
-@media (max-width: 420px){
-  .doctor-list-ui{ grid-template-columns: 1fr; }
+@media (max-width: 680px) {
+  .doctor-ui-section {
+    flex-direction: column;
+  }
+  .doctor-list-ui {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .doctor-card-ui {
+    grid-template-rows: 120px auto;
+  }
+  .profile-avatar-ui {
+    height: 180px;
+  }
 }
 
+@media (max-width: 420px) {
+  .doctor-list-ui {
+    grid-template-columns: 1fr;
+  }
+}
 /* ===== Coverflow Gallery ===== */
 .cg { padding: 60px 0; background: #f8f9fb; }
 .cg-title { text-align:center; margin:0 0 22px; color:#003147; font-size:2rem; }
@@ -1075,6 +1112,7 @@ header ul a:hover {
 .nd-faq__tag { font-size:12px; background:#eef4ff; color:#2b4e9c; border-radius:999px; padding:4px 8px; }
 .nd-faq__empty { padding:18px; background:#fbfcff; border:1px dashed #d9e3f0; border-radius:10px; }
 @media (max-width:600px){ .nd-faqs__select{ flex:1 1 200px; } }
+
 
 
 
