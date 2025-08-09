@@ -401,264 +401,146 @@ header ul a:hover {
 }
 
 /* ==============================
-   Doctor List – Material + Windows 11 Mica
-   Compact, professional, matte gradients
-   ============================== */
-:root{
-  --mica-bg: radial-gradient(1200px 800px at 10% 10%, #ffffff66, transparent 50%),
-             radial-gradient(900px 700px at 90% 20%, #dff6ff55, transparent 55%),
-             linear-gradient(180deg, #f8fbff, #f2f5fa);
-  --glass: rgba(255,255,255,0.55);
-  --glass-strong: rgba(255,255,255,0.75);
-  --stroke: rgba(20, 20, 40, 0.10);
-
-  /* matte accents (Android/Material-ish) */
-  --acc-teal: #00c2a8;
-  --acc-teal-2: #00a896;
-  --acc-orange: #ffb86b;
-  --acc-lime: #a6f1b8;
-  --gold: #f4b400;
-
-  /* text */
-  --ink-900:#0f172a;
-  --ink-700:#334155;
-  --ink-500:#64748b;
-}
-
-.doctor-ui-section{
-  display:flex;
-  gap:24px;
-  justify-content:center;
-  align-items:flex-start;
-  margin:56px auto 40px;
-  max-width:1200px;           /* wider but still neat */
-  width:100%;
-  padding:20px 16px;
-  border-radius:24px;
-  background:var(--mica-bg);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  box-shadow: 0 10px 40px rgba(16,24,40,0.06);
-  border:1px solid var(--stroke);
-}
-
-/* ========= LEFT: doctor list (compact) ========= */
-.doctor-list-ui{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap:14px;
-  min-width:300px;            /* tighter than before */
-  max-width:340px;
-}
-
-/* Card = cover image (top half) + content */
-.doctor-card-ui{
-  display:grid;
-  grid-template-rows: 150px auto;     /* image “upper half” */
-  background:var(--glass);
-  border:1px solid var(--stroke);
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow: 0 6px 16px rgba(17,23,41,0.06);
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-  position:relative;
-}
-.doctor-card-ui:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 14px 28px rgba(17,23,41,0.10);
-  border-color: rgba(0,194,168,.35); /* teal hint on hover */
-}
-.doctor-card-ui.active{
-  border-color: rgba(0,194,168,.6);
-  box-shadow: 0 16px 36px rgba(0,194,168,.16);
-}
-
-/* Use existing <img class="doctor-avatar-ui"> as a COVER, not a circle */
-.doctor-card-ui .doctor-avatar-ui{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  border-radius:0;            /* remove circle */
-  border:none;                /* remove previous border */
-  box-shadow:none;
-}
-
-/* Content area */
-.doctor-card-ui .doc-info-ui{
-  display:grid;
-  gap:2px;
-  padding:10px 12px 12px;
-  background: linear-gradient(180deg, transparent, rgba(255,255,255,.45));
-}
-.doc-info-ui h4{
-  margin:0;
-  font-size: clamp(14px, 1.2vw, 15px);
-  color: var(--ink-900);
-  font-weight:700;
-}
-.doc-info-ui p{
-  margin:0;
-  font-size: clamp(12px, 1.1vw, 13px);
-  color: var(--ink-500);
-}
-
-/* Rating chip (over image, top-right) */
-.rating-ui{
-  position:absolute;
-  top:10px;
-  right:10px;
-  padding:6px 10px;
-  font-size:12px;
-  font-weight:700;
-  color:#111;
-  background: linear-gradient(135deg, #fff, #ffffffcc);
-  border:1px solid var(--stroke);
-  border-radius:999px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
-}
-
-/* Subtle “material” hover ripple (no JS) */
-.doctor-card-ui::after{
-  content:"";
-  position:absolute; inset:0;
-  background: radial-gradient(400px 200px at 80% 0%, rgba(255,255,255,.35), transparent 60%);
-  opacity:0; transition:opacity .25s ease;
-}
-.doctor-card-ui:hover::after{ opacity:1; }
-
-/* ========= RIGHT: profile panel (compact, professional) ========= */
-.doctor-profile-ui{
-  flex:1 1 520px;
-  min-width: 420px;
-  max-width: 560px;
-  background:var(--glass-strong);
-  border:1px solid var(--stroke);
-  border-radius:20px;
-  padding:18px 18px 16px;
-  box-shadow: 0 10px 28px rgba(16,24,40,0.08);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-}
-
-/* Make profile top image wide banner instead of circle */
-.profile-avatar-ui{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-  border-radius:12px;
-  border:none;
-  box-shadow: 0 6px 16px rgba(0,0,0,.08);
-  margin: 0 0 12px 0;        /* reset previous margins */
-}
-
-.profile-name-ui{
-  font-size: clamp(18px, 2vw, 20px);
-  color: var(--ink-900);
-  font-weight:800;
-  margin: 0 0 4px 0;
-}
-.profile-role-ui{
-  color: var(--ink-700);
-  font-size: clamp(13px, 1.6vw, 14px);
-  margin-bottom: 8px;
-}
-.profile-rating-ui{
-  display:inline-block;
-  color:#111;
-  background: linear-gradient(135deg, #fff, #f7f7f7);
-  border:1px solid var(--stroke);
-  padding:6px 12px;
-  border-radius:999px;
-  font-weight:700;
-  font-size: 13px;
-  margin-bottom: 10px;
-}
-
-.profile-stats-ui{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:10px;
-  width:100%;
-  margin: 8px 0 12px;
-}
-.profile-stats-ui > div{
-  background: linear-gradient(180deg, #ffffffcc, #ffffff80);
-  border:1px solid var(--stroke);
-  border-radius:12px;
-  padding:10px 8px;
-  text-align:center;
-}
-.profile-stats-ui .stat-val{
-  color: var(--ink-900);
-  font-weight:800;
-  font-size: 14px;
-}
-.profile-stats-ui .stat-label{
-  font-size: 12px;
-  color: var(--ink-500);
-}
-
-.profile-desc-ui{
-  color: var(--ink-700);
-  font-size: 14px;
-  background: linear-gradient(180deg, #e9fff6, #ffffff);
-  border:1px solid rgba(0,194,168,.18);
-  padding:10px 12px;
-  border-radius:12px;
-  margin: 8px 0 12px;
-  box-shadow: 0 2px 10px rgba(0,194,168,.08);
-}
-
-.profile-btn-ui{
-  background: linear-gradient(90deg, var(--acc-teal) 0%, var(--acc-orange) 100%);
-  color:#fff;
-  font-weight:700;
-  font-size:14px;
-  border-radius:12px;
-  border: none;
-  padding: 12px 0;
+   Doctor Card Styles (Android Material Design) 
+============================== */
+.doctor-card-ui {
+  background: linear-gradient(135deg, #00c2a8, #00a896, #0b121b);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  color: white;
   width: 100%;
-  margin-top: 4px;
-  box-shadow: 0 10px 24px rgba(0,194,168,.16);
-  cursor:pointer;
-  text-align:center;
-  text-decoration:none;
-  letter-spacing:.2px;
-  transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
 }
-.profile-btn-ui:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 16px 32px rgba(0,194,168,.22);
-  filter: saturate(1.05);
+
+.doctor-card-ui:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.4);
 }
-.profile-btn-ui:active{
+
+.doctor-avatar-ui {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.doctor-card-ui:hover .doctor-avatar-ui {
+  transform: scale(1.05);
+}
+
+.doctor-info-ui h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin: 5px 0;
+}
+
+.doctor-info-ui p {
+  color: #ddd;
+  font-size: 14px;
+}
+
+.rating-ui {
+  background: rgba(0,0,0,0.5);
+  padding: 6px 12px;
+  border-radius: 12px;
+  color: #ffb86b;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 14px;
+}
+
+.book-cover img {
+  max-width: 80px;
+  max-height: 120px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.book-cover img:hover {
+  transform: scale(1.05);
+}
+
+.profile-btn-ui {
+  background-color: #00c2a8;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.profile-btn-ui:hover {
+  background-color: #009f83;
+}
+
+.doctor-profile-ui {
+  background-color: #fff;
+  color: #333;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.3s ease;
+}
+
+.doctor-profile-ui.active {
+  opacity: 1;
   transform: translateY(0);
 }
 
-/* Focus styles (keyboard) */
-.doctor-card-ui:focus-visible,
-.profile-btn-ui:focus-visible{
-  outline: 3px solid #9be8dc;
-  outline-offset: 2px;
-  border-radius:14px;
-}
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .doctor-list-ui {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
-/* ====== Responsive ====== */
-@media (max-width: 1024px){
-  .doctor-ui-section{ gap:18px; }
-  .doctor-list-ui{ min-width:280px; max-width:320px; }
-  .doctor-card-ui{ grid-template-rows: 140px auto; }
-  .doctor-profile-ui{ min-width:100%; max-width:100%; }
-}
-@media (max-width: 680px){
-  .doctor-ui-section{ flex-direction:column; }
-  .doctor-list-ui{ width:100%; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
-  .doctor-card-ui{ grid-template-rows: 120px auto; }
-  .profile-avatar-ui{ height:180px; }
-}
-@media (max-width: 420px){
-  .doctor-list-ui{ grid-template-columns: 1fr; }
+  .doctor-card-ui {
+    width: 100%;
+    max-width: 320px;
+    margin-bottom: 20px;
+  }
+
+  .doctor-info-ui h4 {
+    font-size: 16px;
+  }
+
+  .doctor-info-ui p {
+    font-size: 12px;
+  }
+
+  .rating-ui {
+    font-size: 12px;
+  }
+
+  .doctor-profile-ui {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .profile-btn-ui {
+    padding: 8px 15px;
+  }
 }
 
 /* ===== Coverflow Gallery ===== */
@@ -1050,5 +932,6 @@ header ul a:hover {
 .nd-faq__tag { font-size:12px; background:#eef4ff; color:#2b4e9c; border-radius:999px; padding:4px 8px; }
 .nd-faq__empty { padding:18px; background:#fbfcff; border:1px dashed #d9e3f0; border-radius:10px; }
 @media (max-width:600px){ .nd-faqs__select{ flex:1 1 200px; } }
+
 
 
