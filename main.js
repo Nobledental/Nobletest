@@ -1,20 +1,56 @@
 document.addEventListener("DOMContentLoaded", () => {
   /* =========================
-     NAV: burger toggle (only if .nav-links/.close-icon exist)
+     NAV: burger toggle + focus trap + ESC
   ========================== */
   const menuIcon  = document.querySelector(".menu-icon");
   const navLinks  = document.querySelector(".nav-links");
   const closeIcon = document.querySelector(".close-icon");
 
   if (menuIcon && navLinks) {
-    menuIcon.addEventListener("click", () => navLinks.classList.toggle("active"));
-  }
-  if (closeIcon && navLinks) {
-    closeIcon.addEventListener("click", () => navLinks.classList.remove("active"));
+    const openDrawer = () => {
+      navLinks.classList.add("active");
+      setTimeout(() => firstFocusable()?.focus(), 50);
+    };
+    const closeDrawer = () => {
+      navLinks.classList.remove("active");
+      menuIcon?.focus();
+    };
+    menuIcon.addEventListener("click", () => {
+      navLinks.classList.contains("active") ? closeDrawer() : openDrawer();
+    });
+    closeIcon?.addEventListener("click", closeDrawer);
+
+    const firstFocusable = () =>
+      navLinks.querySelector('a,button,[tabindex]:not([tabindex="-1"])');
+
+    // trap focus + ESC to close
+    document.addEventListener("keydown", (e) => {
+      if (!navLinks.classList.contains("active")) return;
+      if (e.key === "Escape") return closeDrawer();
+      if (e.key !== "Tab") return;
+
+      const focusables = [
+        ...navLinks.querySelectorAll('a,button,[tabindex]:not([tabindex="-1"])'),
+      ];
+      if (!focusables.length) return;
+
+      const first = focusables[0];
+      const last  = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        last.focus(); e.preventDefault();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        first.focus(); e.preventDefault();
+      }
+    });
+
+    // close drawer when any drawer link is clicked
+    navLinks.querySelectorAll("a").forEach(a =>
+      a.addEventListener("click", closeDrawer)
+    );
   }
 
   /* =========================
-     SERVICES FILTER (#complaintInput)
+     SERVICES FILTER (optional #complaintInput)
   ========================== */
   const complaintInput = document.getElementById("complaintInput");
   const servicesGrid = document.getElementById("servicesGrid");
@@ -25,14 +61,13 @@ document.addEventListener("DOMContentLoaded", () => {
     servicesGrid.querySelectorAll(".service-card").forEach(card => {
       const keywords = (card.dataset.keywords || "").toLowerCase();
       const show = q === "" || keywords.includes(q);
-      card.hidden = !show; // better for grid layouts than display:none
+      card.hidden = !show;
     });
   }
-
   if (complaintInput) {
     complaintInput.addEventListener("input", (e) => shuffleCards(e.target.value));
   }
-  // expose to global if HTML uses oninput="shuffleCards(...)"
+  // keep global for HTML inline handlers if any
   window.shuffleCards = shuffleCards;
 
   /* =========================
@@ -49,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".animate-on-scroll").forEach(el => io.observe(el));
 
   /* =========================
-     Read More buttons: use data-url
+     Read More buttons: use data-url on .service-card
   ========================== */
   document.querySelectorAll(".service-card").forEach(card => {
     const btn = card.querySelector(".read-more-button");
@@ -64,18 +99,19 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", (e) => {
       const href = link.getAttribute("href");
       if (!href || href === "#") return;
+      if (location.hash === href) return; // already at target
       const target = document.querySelector(href);
       if (!target) return;
       e.preventDefault();
       target.scrollIntoView({ behavior: "smooth", block: "start" });
-      navLinks?.classList.remove("active"); // close mobile drawer
+      navLinks?.classList.remove("active");
     });
   });
 
-  // also close drawer when any drawer link is clicked
-  document.querySelectorAll(".nav-links a").forEach(a => {
-    a.addEventListener("click", () => navLinks?.classList.remove("active"));
-  });
+  /* =========================
+     Motion preference
+  ========================== */
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* =========================
      DOCTOR LIST + PROFILE (two-pane)
@@ -151,11 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextBtn = cgRoot.querySelector(".cg-next");
     const dotsWrap= cgRoot.querySelector(".cg-dots");
 
-    // Guard: if any key piece is missing, bail out of gallery setup
-    if (!track || !items.length || !prevBtn || !nextBtn || !dotsWrap) {
-      // console.warn("Clinic gallery: missing required elements.");
-    } else {
-      // dots
+    if (track && items.length && prevBtn && nextBtn && dotsWrap) {
       dotsWrap.innerHTML = items.map((_,i)=>`<button aria-label="Go to slide ${i+1}" data-i="${i}"></button>`).join("");
       const dots = [...dotsWrap.querySelectorAll("button")];
 
@@ -185,18 +217,22 @@ document.addEventListener("DOMContentLoaded", () => {
         render();
       });
 
-      // autoplay (prevent stacking)
+      // autoplay (respect reduced motion)
       let timer = null;
-      const start = () => { if (timer) return; timer = setInterval(next, 3000); };
+      const start = () => { if (prefersReduced || timer) return; timer = setInterval(next, 3000); };
       const stop  = () => { if (!timer) return; clearInterval(timer); timer = null; };
-      start();
+      if (!prefersReduced) start();
       cgRoot.addEventListener("mouseenter", stop);
       cgRoot.addEventListener("mouseleave", start);
       document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
 
-      // drag/swipe
-      let dragging = false, sx = 0, dx = 0;
-      const onDown = (e) => { dragging = true; dx = 0; sx = (e.touches?e.touches[0].clientX:e.clientX); track.style.transition='none'; };
+      // drag/swipe with click-guard
+      let dragging = false, sx = 0, dx = 0, dragStartTime = 0;
+      const onDown = (e) => {
+        dragging = true; dx = 0; dragStartTime = Date.now();
+        sx = (e.touches?e.touches[0].clientX:e.clientX);
+        track.style.transition='none';
+      };
       const onMove = (e) => {
         if (!dragging) return;
         const x = (e.touches?e.touches[0].clientX:e.clientX);
@@ -206,7 +242,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const onUp = () => {
         if (!dragging) return;
         track.style.transition=''; track.style.transform='';
-        if (dx > 60) prev(); else if (dx < -60) next();
+        const quick = Date.now() - dragStartTime < 250;
+        if (!quick && dx > 60) prev();
+        else if (!quick && dx < -60) next();
         dragging = false;
       };
       track.addEventListener("mousedown", onDown);
@@ -216,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
       track.addEventListener("touchmove", onMove, {passive:true});
       track.addEventListener("touchend", onUp);
 
-      // lightbox (guard all required parts)
+      // lightbox
       const lb = document.getElementById("cg-lightbox");
       if (lb) {
         const lbImg    = lb.querySelector(".cg-lb-img");
@@ -225,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const lbClose  = lb.querySelector(".cg-lb-close");
         const lbPrev   = lb.querySelector(".cg-lb-prev");
         const lbNext   = lb.querySelector(".cg-lb-next");
-        const lbZBtns  = [...lb.querySelectorAll(".cg-lb-zo, .cg-lb-zoom")]; // support either class
+        const lbZBtns  = [...lb.querySelectorAll(".cg-lb-zo, .cg-lb-zoom")];
         const lbReset  = lb.querySelector(".cg-lb-reset");
 
         if (lbImg && lbCap && lbCanvas && lbClose && lbPrev && lbNext) {
@@ -292,137 +330,152 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================
-     TESTIMONIALS SLIDER (.nd-testimonials*)
+     TESTIMONIALS SLIDER
   ========================== */
   const tTrack = document.getElementById("ndTestimonialsTrack");
-const tViewport = document.querySelector(".nd-testimonials__viewport");
-const tCards = tTrack ? [...tTrack.querySelectorAll(".nd-testimonials__card")] : [];
-const tPrev = document.querySelector(".nd-testimonials__nav--prev");
-const tNext = document.querySelector(".nd-testimonials__nav--next");
-const tDotsWrap = document.getElementById("ndTestimonialsDots");
+  const tViewport = document.querySelector(".nd-testimonials__viewport");
+  const tCards = tTrack ? [...tTrack.querySelectorAll(".nd-testimonials__card")] : [];
+  const tPrev = document.querySelector(".nd-testimonials__nav--prev");
+  const tNext = document.querySelector(".nd-testimonials__nav--next");
+  const tDotsWrap = document.getElementById("ndTestimonialsDots");
 
-if (tTrack && tViewport && tCards.length && tDotsWrap && tPrev && tNext) {
-  // dots = one per "page" (optional: keep one per card)
-  tDotsWrap.innerHTML = tCards.map((_, i) =>
-    `<button type="button" aria-label="Go to slide ${i + 1}" data-i="${i}"></button>`
-  ).join("");
-  const dots = [...tDotsWrap.querySelectorAll("button")];
+  if (tTrack && tViewport && tCards.length && tDotsWrap && tPrev && tNext) {
+    // dots per card (simple)
+    tDotsWrap.innerHTML = tCards.map((_, i) =>
+      `<button type="button" aria-label="Go to slide ${i + 1}" data-i="${i}"></button>`
+    ).join("");
+    const dots = [...tDotsWrap.querySelectorAll("button")];
 
-  let current = 0, perView = 1;
-  let autoplay = null;
+    let current = 0, perView = 1;
+    let autoplay = null;
 
-  const updatePerView = () => {
-    const w = window.innerWidth;
-    perView = w >= 1024 ? 3 : w >= 720 ? 2 : 1;
-  };
+    const updatePerView = () => {
+      const w = window.innerWidth;
+      perView = w >= 1024 ? 3 : w >= 720 ? 2 : 1;
+    };
 
-  const clampIndex = (i) => {
-    const maxIndex = Math.max(0, tCards.length - perView);
-    return Math.min(Math.max(0, i), maxIndex);
-  };
-
-  const cardGap = 22; // keep in sync with CSS .nd-testimonials__track { gap: 22px; }
-  const render = () => {
-    const cardW = tCards[0].getBoundingClientRect().width + cardGap;
-    const x = -(cardW * current);
-    tTrack.style.transform = `translate3d(${x}px,0,0)`;
-    dots.forEach((d, i) => d.setAttribute("aria-current", i === current ? "true" : "false"));
-  };
-
-  const next = () => { current = clampIndex(current + 1); render(); };
-  const prev = () => { current = clampIndex(current - 1); render(); };
-
-  updatePerView();
-  render();
-
-  tNext.addEventListener("click", next);
-  tPrev.addEventListener("click", prev);
-
-  tDotsWrap.addEventListener("click", (e) => {
-    const b = e.target.closest("button[data-i]");
-    if (!b) return;
-    current = clampIndex(+b.dataset.i);
-    render();
-  });
-
-  const start = () => {
-    if (autoplay) return;
-    autoplay = setInterval(() => {
+    const clampIndex = (i) => {
       const maxIndex = Math.max(0, tCards.length - perView);
-      current = current >= maxIndex ? 0 : current + 1;
-      render();
-    }, 3500);
-  };
-  const stop = () => { if (!autoplay) return; clearInterval(autoplay); autoplay = null; };
+      return Math.min(Math.max(0, i), maxIndex);
+    };
 
-  start();
-  tViewport.addEventListener("mouseenter", stop);
-  tViewport.addEventListener("mouseleave", start);
-  document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
+    const cardGap = 22; // keep in sync with CSS gap
+    const render = () => {
+      const cardW = tCards[0].getBoundingClientRect().width + cardGap;
+      const x = -(cardW * current);
+      tTrack.style.transform = `translate3d(${x}px,0,0)`;
+      dots.forEach((d, i) => d.setAttribute("aria-current", i === current ? "true" : "false"));
+    };
 
-  // --- Drag / Swipe ---
-  const getCurrentX = () => {
-    const t = getComputedStyle(tTrack).transform;
-    if (!t || t === "none") return 0;
-    if (t.startsWith("matrix3d(")) {
-      const m = t.match(/matrix3d\(([^)]+)\)/);
-      return m ? parseFloat(m[1].split(",")[12]) || 0 : 0;
-    }
-    const m = t.match(/matrix\(([^)]+)\)/);
-    return m ? parseFloat(m[1].split(",")[4]) || 0 : 0;
-  };
+    const next = () => { current = clampIndex(current + 1); render(); };
+    const prev = () => { current = clampIndex(current - 1); render(); };
 
-  let dragging = false, sx = 0, dx = 0, baseX = 0;
-
-  tViewport.addEventListener("mousedown", (e) => {
-    dragging = true; sx = e.clientX; dx = 0;
-    baseX = getCurrentX();
-    tTrack.style.transition = "none";
-  });
-
-  window.addEventListener("mousemove", (e) => {
-    if (!dragging) return;
-    dx = e.clientX - sx;
-    tTrack.style.transform = `translate3d(${baseX + dx}px,0,0)`;
-  });
-
-  window.addEventListener("mouseup", () => {
-    if (!dragging) return;
-    tTrack.style.transition = "";
-    if (dx > 60) prev(); else if (dx < -60) next(); else render();
-    dragging = false;
-  });
-
-  tViewport.addEventListener("touchstart", (e) => {
-    dragging = true; sx = e.touches[0].clientX; dx = 0;
-    baseX = getCurrentX();
-    tTrack.style.transition = "none";
-  }, { passive: true });
-
-  tViewport.addEventListener("touchmove", (e) => {
-    if (!dragging) return;
-    dx = e.touches[0].clientX - sx;
-    tTrack.style.transform = `translate3d(${baseX + dx}px,0,0)`;
-  }, { passive: true });
-
-  tViewport.addEventListener("touchend", () => {
-    if (!dragging) return;
-    tTrack.style.transition = "";
-    if (dx > 50) prev(); else if (dx < -50) next(); else render();
-    dragging = false;
-  });
-
-  window.addEventListener("resize", () => {
-    const old = perView;
     updatePerView();
-    current = clampIndex(current);
-    if (old !== perView) render(); else render();
-  });
+    render();
 
-  tViewport.setAttribute("tabindex", "0");
-  tViewport.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") next();
-    if (e.key === "ArrowLeft")  prev();
-  });
-}
+    tNext.addEventListener("click", next);
+    tPrev.addEventListener("click", prev);
+
+    tDotsWrap.addEventListener("click", (e) => {
+      const b = e.target.closest("button[data-i]");
+      if (!b) return;
+      current = clampIndex(+b.dataset.i);
+      render();
+    });
+
+    const start = () => {
+      if (prefersReduced || autoplay) return;
+      autoplay = setInterval(() => {
+        const maxIndex = Math.max(0, tCards.length - perView);
+        current = current >= maxIndex ? 0 : current + 1;
+        render();
+      }, 3500);
+    };
+    const stop = () => { if (!autoplay) return; clearInterval(autoplay); autoplay = null; };
+
+    if (!prefersReduced) start();
+    tViewport.addEventListener("mouseenter", stop);
+    tViewport.addEventListener("mouseleave", start);
+    document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
+
+    // --- Drag / Swipe ---
+    const getCurrentX = () => {
+      const t = getComputedStyle(tTrack).transform;
+      if (!t || t === "none") return 0;
+      if (t.startsWith("matrix3d(")) {
+        const m = t.match(/matrix3d\(([^)]+)\)/);
+        return m ? parseFloat(m[1].split(",")[12]) || 0 : 0;
+      }
+      const m = t.match(/matrix\(([^)]+)\)/);
+      return m ? parseFloat(m[1].split(",")[4]) || 0 : 0;
+    };
+
+    let dragging = false, sx = 0, dx = 0, baseX = 0;
+
+    tViewport.addEventListener("mousedown", (e) => {
+      dragging = true; sx = e.clientX; dx = 0;
+      baseX = getCurrentX();
+      tTrack.style.transition = "none";
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!dragging) return;
+      dx = e.clientX - sx;
+      tTrack.style.transform = `translate3d(${baseX + dx}px,0,0)`;
+    });
+
+    window.addEventListener("mouseup", () => {
+      if (!dragging) return;
+      tTrack.style.transition = "";
+      if (dx > 60) prev(); else if (dx < -60) next(); else render();
+      dragging = false;
+    });
+
+    tViewport.addEventListener("touchstart", (e) => {
+      dragging = true; sx = e.touches[0].clientX; dx = 0;
+      baseX = getCurrentX();
+      tTrack.style.transition = "none";
+    }, { passive: true });
+
+    tViewport.addEventListener("touchmove", (e) => {
+      if (!dragging) return;
+      dx = e.touches[0].clientX - sx;
+      tTrack.style.transform = `translate3d(${baseX + dx}px,0,0)`;
+    }, { passive: true });
+
+    tViewport.addEventListener("touchend", () => {
+      if (!dragging) return;
+      tTrack.style.transition = "";
+      if (dx > 50) prev(); else if (dx < -50) next(); else render();
+      dragging = false;
+    });
+
+    // re-render when images load (layout stability)
+    const imgs = tTrack.querySelectorAll("img");
+    let pending = imgs.length;
+    if (pending) {
+      imgs.forEach(img => {
+        if (img.complete) { if (--pending === 0) render(); }
+        else img.addEventListener("load", () => { if (--pending === 0) render(); }, { once:true });
+      });
+    }
+
+    // debounced resize
+    let rAF = null;
+    window.addEventListener("resize", () => {
+      if (rAF) cancelAnimationFrame(rAF);
+      rAF = requestAnimationFrame(() => {
+        updatePerView();
+        current = clampIndex(current);
+        render();
+      });
+    });
+
+    // keyboard support
+    tViewport.setAttribute("tabindex", "0");
+    tViewport.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft")  prev();
+    });
+  }
 });
