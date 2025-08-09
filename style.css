@@ -400,6 +400,9 @@ header ul a:hover {
   text-decoration: underline;
 }
 
+/* ===========================
+   Doctor List – Glassmorphic Pastel Theme
+   =========================== */
 .doctor-ui-section {
   display: flex;
   flex-wrap: wrap;
@@ -411,10 +414,14 @@ header ul a:hover {
   width: 100%;
   padding: 30px 10px;
   border-radius: 32px;
-  background: linear-gradient(120deg, #1a2155 0%, #4d58b7 100%);
-  box-shadow: 0 8px 40px 0 rgba(44,53,99,0.13);
+  background: rgba(255, 255, 255, 0.25); /* milky white glass */
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
 }
 
+/* Sidebar List of Doctors */
 .doctor-list-ui {
   display: flex;
   flex-direction: column;
@@ -423,97 +430,114 @@ header ul a:hover {
   max-width: 300px;
 }
 
+/* Each Doctor Card (Pastel Accent) */
 .doctor-card-ui {
   display: flex;
   align-items: center;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.35);
   border-radius: 18px;
   padding: 15px;
   cursor: pointer;
-  transition: background 0.22s, transform 0.18s;
-  box-shadow: 0 1px 6px rgba(44,53,99,0.05);
+  transition: background 0.25s ease, transform 0.18s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
   border: 2px solid transparent;
 }
 .doctor-card-ui.active, .doctor-card-ui:hover {
-  background: rgba(255,255,255,0.22);
-  border-color: #63f6e7;
+  background: linear-gradient(135deg, rgba(173, 239, 209, 0.4), rgba(255, 236, 200, 0.4)); /* pastel teal → orange */
+  border-color: rgba(255, 255, 255, 0.6);
   transform: scale(1.04);
 }
 
+/* Avatar Style */
 .doctor-avatar-ui {
-  width: 58px; height: 58px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
   margin-right: 15px;
   object-fit: cover;
-  border: 3px solid #7ceeff;
-  box-shadow: 0 2px 14px #aaf0ff33;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 10px rgba(173, 239, 209, 0.5);
 }
+
+/* Doctor Info Text */
 .doc-info-ui h4 {
   margin: 0 0 2px 0;
   font-size: 1.14rem;
-  color: #fff;
+  color: #1a3a3a; /* deep teal text */
 }
 .doc-info-ui p {
-  margin: 0; font-size: 0.94rem; color: #dbeaf9;
+  margin: 0;
+  font-size: 0.94rem;
+  color: #497474; /* muted teal */
 }
+
+/* Rating */
 .rating-ui {
   margin-left: auto;
-  color: #f7d038;
-  background: #fff8da33;
+  color: #f4b400; /* gold star color */
+  background: rgba(255, 255, 255, 0.5);
   font-weight: 700;
   border-radius: 15px;
   font-size: 1.01rem;
   padding: 6px 12px;
 }
 
+/* Main Profile Card */
 .doctor-profile-ui {
   flex: 1 1 350px;
   min-width: 330px;
   max-width: 390px;
-  background: rgba(255,255,255,0.18);
+  background: rgba(255, 255, 255, 0.35); /* glass */
   border-radius: 30px;
-  box-shadow: 0 8px 30px 0 rgba(50,80,190,0.13);
-  backdrop-filter: blur(15px) saturate(125%);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
   padding: 34px 30px 25px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   animation: fadeInUpGlass 0.4s cubic-bezier(.48,1.45,.77,1.01);
-  border: 1.5px solid #fff6;
+  border: 1.5px solid rgba(255,255,255,0.5);
   margin-left: 40px;
 }
-@keyframes fadeInUpGlass {
-  from { opacity:0; transform: translateY(60px) scale(0.97);}
-  to   { opacity:1; transform: translateY(0) scale(1);}
-}
+
+/* Profile Image */
 .profile-avatar-ui {
-  width: 110px; height: 110px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
-  border: 4px solid #e7eaffb8;
-  box-shadow: 0 4px 20px #b6d7ff4b;
-  margin-top: 7px; margin-bottom: 10px;
+  border: 4px solid rgba(255,255,255,0.6);
+  box-shadow: 0 4px 20px rgba(173, 239, 209, 0.5);
+  margin-top: 7px;
+  margin-bottom: 10px;
   object-fit: cover;
 }
+
+/* Name & Role */
 .profile-name-ui {
   font-size: 2rem;
-  color: #2d2e67;
+  color: #0d3b3b; /* deep teal */
   font-weight: 700;
   margin-bottom: 5px;
 }
 .profile-role-ui {
-  color: #5d62ae;
+  color: #ff914d; /* soft orange */
   font-size: 1.15rem;
   margin-bottom: 6px;
 }
+
+/* Rating Badge */
 .profile-rating-ui {
-  color: #f7b733;
-  background: #fff8db94;
+  color: #f4b400; /* gold */
+  background: rgba(255, 255, 255, 0.6);
   font-weight: bold;
   font-size: 1.13rem;
   padding: 7px 19px;
   border-radius: 1rem;
   margin-bottom: 14px;
 }
+
+/* Stats */
 .profile-stats-ui {
   display: flex;
   justify-content: space-between;
@@ -522,27 +546,31 @@ header ul a:hover {
   gap: 10px;
 }
 .profile-stats-ui .stat-val {
-  color: #3d347f;
+  color: #0d3b3b; /* deep teal */
   font-weight: 700;
   font-size: 1.07rem;
 }
 .profile-stats-ui .stat-label {
   font-size: 0.92rem;
-  color: #6e6da5;
+  color: #497474; /* muted teal */
 }
+
+/* Description */
 .profile-desc-ui {
-  color: #3d3775;
+  color: #1a3a3a;
   font-size: 1.04rem;
-  background: rgba(255,255,255,0.38);
+  background: rgba(173, 239, 209, 0.3); /* soft pastel teal */
   padding: 9px 14px;
   border-radius: 13px;
   margin: 10px 0 14px 0;
   width: 100%;
   text-align: center;
-  box-shadow: 0 2px 12px #b2bbd344;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
 }
+
+/* CTA Button */
 .profile-btn-ui {
-  background: linear-gradient(92deg, #726bfe 10%, #91f3e6 100%);
+  background: linear-gradient(92deg, #00e0c6 10%, #ffd28f 100%); /* teal → light orange */
   color: #fff;
   font-weight: 600;
   font-size: 1.08rem;
@@ -551,7 +579,7 @@ header ul a:hover {
   padding: 13px 0;
   width: 87%;
   margin-top: 9px;
-  box-shadow: 0 4px 24px #b6d7ff44;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -560,10 +588,11 @@ header ul a:hover {
   display: inline-block;
 }
 .profile-btn-ui:hover {
-  background: linear-gradient(90deg, #5c50e6 20%, #72e9d7 100%);
+  background: linear-gradient(90deg, #00c8ae 20%, #ffb347 100%);
   transform: scale(1.03);
 }
 
+/* Mobile */
 @media (max-width: 900px) {
   .doctor-ui-section {
     flex-direction: column;
@@ -971,3 +1000,4 @@ header ul a:hover {
 .nd-faq__tag { font-size:12px; background:#eef4ff; color:#2b4e9c; border-radius:999px; padding:4px 8px; }
 .nd-faq__empty { padding:18px; background:#fbfcff; border:1px dashed #d9e3f0; border-radius:10px; }
 @media (max-width:600px){ .nd-faqs__select{ flex:1 1 200px; } }
+
