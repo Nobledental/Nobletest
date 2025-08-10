@@ -390,7 +390,7 @@ header {
 .has-submenu { position: relative; }
 .has-submenu > a { display: inline-flex; align-items: center; gap: .35rem; }
 .has-submenu .caret {
-  display: inline-block; width: .45rem; height: .45rem;
+  display: inline-block; width: .1rem; height: .45rem;
   border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
   transform: rotate(45deg); transition: transform .2s ease;
 }
@@ -408,7 +408,7 @@ header {
 }
 .submenu li a {
   display: block; padding: 10px 14px; color: var(--ink, #0a0c12);
-  text-decoration: none; font-weight: 600;
+  text-decoration: none; font-weight: 500;
 }
 .submenu li a:hover {
   background: var(--teal, #0ea5a3); color: #fff;
@@ -436,6 +436,7 @@ header {
   .has-submenu.open-submenu > .submenu { display: block; }
   .has-submenu.open-submenu > a .caret { transform: rotate(-135deg); } /* caret flips up */
 }
+
 
 
 
