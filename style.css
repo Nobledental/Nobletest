@@ -40,134 +40,38 @@ a { text-decoration: none; color: inherit; }
 /* =========================================================
    HEADER – animated background + pill nav
    ========================================================= */
-.site-header,
-header {
-  display: flex;
-  position: fixed;
-  inset: 0 0 auto 0;
-  height: 70px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 30px;
-  z-index: 999;
-  backdrop-filter: blur(5px);
-  background: linear-gradient(135deg, #f1f2fb, #dfd8f7, #f8f0ff);
-  background-size: 300% 300%;
-  box-shadow: 0 0 15px #d6d9dea2;
-  animation: moveBackgroundBlack 12s linear infinite;
-}
-@keyframes moveBackgroundBlack {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
+<header class="site-header">
+  <!-- Brand: logo first, name second -->
+  <a href="/" class="brand" aria-label="Noble Dental Nallagandla home">
+    <img src="images/dentalcare.nallagandla.png" alt="Noble Dental Clinic - Nallagandla logo" />
+    <h1 class="brand-title"><span>Noble</span> Dental Care</h1>
+  </a>
 
-.left {
-  display: flex;
-  flex-direction: row;       /* ensure left-to-right order */
-  align-items: center;       /* vertical center */
-  gap: 0.75rem;              /* space between logo and text */
-}
+  <!-- Center pill nav (desktop), becomes drawer on mobile via .main-nav.open -->
+  <nav class="main-nav" aria-label="Primary">
+    <ul class="nav-pill">
+      <li><a href="#">Home</a></li>
+      <li><a href="#services">Specialities</a></li>
+      <li><a href="#selfcare">Selfcare</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#login">Patient Login</a></li>
+      <li><a href="#team">Our Team</a></li>
+      <li><a href="#about">Know More</a></li>
+    </ul>
+  </nav>
 
-.left img {
-  height: 56px;              /* scale to fit header */
-  width: auto;
-  display: block;
-}
-
-.left h2 {
-  margin: 0;
-  font-size: 1.125rem;
-  font-weight: 800;
-  color: var(--slate, #1f2937);
-  white-space: nowrap;       /* prevent wrapping */
-  line-height: 1;
-}
-
-.left h2 span {
-  color: var(--teal, #0ea5a3);
-}
-
-/* Desktop pill nav */
-.main-nav ul, header ul {
-  list-style: none;
-  margin: 0;
-  padding: 5px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  border-radius: 50px;
-  background-color: #848080bd;
-  backdrop-filter: blur(100px);
-  box-shadow: 0 0 10px #3134377a;
-}
-.main-nav a, header ul a {
-  position: relative;
-  z-index: 1;
-  margin: 0 12px;
-  padding: 8px 15px;
-  border-radius: 32px;
-  color: #fff;
-  font-weight: 600;
-  transition: all .35s cubic-bezier(.47,1.64,.41,.8);
-}
-.main-nav a:hover, header ul a:hover {
-  background: rgb(229 232 239 / 84%);
-  color: #080808;
-  text-shadow: 0 0 15px #91919fcc;
-  transform: scale(1.15);
-  box-shadow: 0 8px 24px 0 #98c2e6b0, 0 0 0 4px #fff4;
-}
-
-/* Social icons */
-.socials, .box-icons { display: flex; gap: 20px; }
-.socials a, .box-icons a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  font-size: 20px;
-  border: 2px solid #781802;
-  color: #1d1f25;
-  transition: .5s;
-  background: transparent;
-}
-.socials a:hover, .box-icons a:hover {
-  background: #1b1b19;
-  color: #f7efef;
-  box-shadow: 0 0 15px #ebedf1;
-  border-color: #650f50;
-}
-
-/* Mobile menu */
-.menu-toggle, .menu-icon {
-  display: none;
-  background: none;
-  border: 0;
-  font-size: 28px;
-  color: #111;
-  cursor: pointer;
-}
-@media (max-width: 900px) {
-  .menu-toggle, .menu-icon { display: block; }
-  header ul { display: none; }
-  .main-nav {
-    position: fixed;
-    inset: 70px 0 0 auto;
-    width: min(78vw, 320px);
-    background: #fff;
-    box-shadow: -12px 0 30px rgba(0,0,0,.08);
-    transform: translateX(100%);
-    transition: transform .3s ease;
-    padding: 18px;
-    z-index: 998;
-    border-left: 1px solid var(--stroke);
-  }
-  .main-nav.open { transform: translateX(0); }
-  .main-nav ul { flex-direction: column; gap: 12px; padding-top: 32px; }
-  .main-nav a { color: #1d1f25; }
-}
+  <!-- Right cluster: socials + burger -->
+  <div class="header-right">
+    <div class="socials">
+      <a href="#" aria-label="YouTube"><i class='bx bxl-youtube'></i></a>
+      <a href="#" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+      <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
+    </div>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      <i class='bx bx-menu'></i>
+    </button>
+  </div>
+</header>
 
 /* =========================================================
    HERO – animated gradient + blackhole overlay
@@ -372,4 +276,5 @@ header {
   }
   .blackhole-box video, .blackhole-video { animation: none; }
 }
+
 
