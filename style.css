@@ -1,13 +1,17 @@
 /* =========================================================
-   Noble Dental Nallagandla – FULL CSS (logo left, name right)
-   - Typeface: Source Sans 3 (body) + Inter (headings)
-   - Keeps: animated gradient hero, blackhole overlay, pill nav, socials
+   Noble Dental Nallagandla — FULL CSS (2025)
+   - Fonts: Source Sans 3 (body), Inter (headings)
+   - Header: logo+name inline, pill nav, socials
+   - Dropdown: multi-column, desktop hover / mobile tap
+   - Sticky + shrink-on-scroll header
+   - Hero with animated gradient + blackhole overlay
+   - Services grid
    ========================================================= */
 
-/* 1) Webfonts */
+/* Webfonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&family=Source+Sans+3:wght@400;600;700;800&display=swap');
 
-/* 2) Design tokens */
+/* Tokens */
 :root{
   --teal:#0ea5a3;
   --blue:#2563eb;
@@ -20,7 +24,7 @@
   --shadow:0 10px 30px rgba(2,6,23,.08), 0 2px 8px rgba(2,6,23,.06);
 }
 
-/* 3) Base / reset */
+/* Base / reset */
 *{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
 body{
@@ -28,86 +32,71 @@ body{
   font-family:'Source Sans 3', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
   line-height:1.6; color:#4a3c3c; background:var(--bg);
 }
-img{ max-width:100%; height:auto; display:block; } /* fix: was 10px */
+img{ max-width:100%; height:auto; display:block; }
 a{ text-decoration:none; color:inherit; }
 .container{ max-width:1200px; margin:0 auto; padding:2rem; display:flex; flex-direction:column; gap:100px; }
-.visually-hidden{ position:absolute!important; clip:rect(1px,1px,1px,1px); padding:0; border:0; height:1px; width:1px; overflow:hidden; }
+.visually-hidden{ position:absolute!important; clip:rect(1px,1px,1px,1px); padding:0;border:0;height:1px;width:1px;overflow:hidden; }
 
-/* Headings — Inter */
-h1,h2,h3,h4,h5,h6{
-  font-family:'Inter',sans-serif;
-  font-weight:800;               /* stronger like your example */
-  color:var(--slate);
-}
+/* Headings */
+h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:800; color:var(--slate); }
 
 /* =========================================================
-   HEADER – animated background + pill nav
+   HEADER
    ========================================================= */
-.site-header, header{
-  display:flex; position:fixed; inset:0 0 auto 0; height:70px;
-  align-items:center; justify-content:space-between;
-  padding:0 30px; z-index:999; backdrop-filter:blur(5px);
+.site-header{
+  position:fixed; inset:0 0 auto 0; height:72px; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between;
+  z-index:999; backdrop-filter:blur(5px);
   background:linear-gradient(135deg,#f1f2fb,#dfd8f7,#f8f0ff);
   background-size:300% 300%; box-shadow:0 0 15px #d6d9dea2;
-  animation:moveBackgroundBlack 12s linear infinite;
+  animation:headerBg 12s linear infinite;
+  transition:height .25s ease, box-shadow .25s ease, background .25s ease;
 }
-@keyframes moveBackgroundBlack{
-  0%{background-position:0% 50%} 100%{background-position:100% 50%}
-}
+@keyframes headerBg{ 0%{background-position:0% 50%} 100%{background-position:100% 50%} }
 
-/* Brand (matches your HTML: <a class="brand"> <img> <h1> ) */
-.brand{
-  display:flex; align-items:center; gap:.75rem; white-space:nowrap;
-}
-.site-header .brand img{
-  height:48px; width:auto;        /* visible and crisp in header */
-}
-.brand .brand-title{
-  margin:0; font-size:1.125rem; line-height:1;
-}
+/* Brand (logo left, name right) */
+.brand{ display:flex; align-items:center; gap:.75rem; white-space:nowrap; flex:0 0 auto; }
+.site-header .brand img{ height:48px; width:auto; }
+.brand .brand-title{ margin:0; font-size:1.125rem; line-height:1; }
 .brand .brand-title span{ color:var(--teal); }
 
-/* Desktop pill nav */
-.main-nav ul, header ul{
-  list-style:none; margin:0; padding:5px; display:flex; justify-content:center; width:100%;
-  border-radius:50px; background-color:#021c4fe8; backdrop-filter:blur(100px);
+/* Center nav that can shrink */
+.main-nav{ flex:1 1 auto; min-width:0; }
+.nav-pill{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  list-style:none; margin:0; padding:5px 8px;
+  width:auto; border-radius:50px; background:#021c4fe8; backdrop-filter:blur(100px);
   box-shadow:0 0 10px #3134377a;
 }
-.main-nav a, header ul a{
-  position:relative; z-index:1; margin:0 12px; padding:8px 15px; border-radius:32px;
-  color:#fff; font-weight:600; transition:all .35s cubic-bezier(.47,1.64,.41,.8);
+.nav-pill a{
+  position:relative; z-index:1; margin:0 8px; padding:8px 15px; border-radius:32px;
+  color:#fff; font-weight:600; white-space:nowrap;
+  transition:all .25s cubic-bezier(.47,1.64,.41,.8);
 }
-.main-nav a:hover, header ul a:hover{
-  background:rgb(229 232 239 / 84%); color:#080808; text-shadow:0 0 15px #91919fcc; transform:scale(1.15);
+.nav-pill a:hover{
+  background:rgb(229 232 239 / 84%); color:#080808; text-shadow:0 0 15px #91919fcc; transform:scale(1.05);
   box-shadow:0 8px 24px 0 #98c2e6b0, 0 0 0 4px #fff4;
 }
 
-/* Social icons */
-.socials,.box-icons{ display:flex; gap:20px; }
-.socials a,.box-icons a{
+/* Right cluster */
+.header-right{ flex:0 0 auto; display:flex; align-items:center; gap:12px; }
+.socials{ display:flex; gap:12px; }
+.socials a{
   display:flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%;
-  font-size:20px; border:2px solid #781802; color:#1d1f25; transition:.5s; background:transparent;
+  font-size:18px; border:2px solid #781802; color:#1d1f25; transition:.3s; background:transparent;
 }
-.socials a:hover,.box-icons a:hover{ background:#1b1b19; color:#f7efef; box-shadow:0 0 15px #ebedf1; border-color:#650f50; }
+.socials a:hover{ background:#1b1b19; color:#f7efef; box-shadow:0 0 15px #ebedf1; border-color:#650f50; }
 
-/* Mobile menu / drawer */
-.menu-toggle,.menu-icon{ display:none; background:none; border:0; font-size:28px; color:#111; cursor:pointer; }
-@media (max-width:900px){
-  .menu-toggle,.menu-icon{ display:block; }
-  header ul{ display:none; }
-  .main-nav{
-    position:fixed; inset:70px 0 0 auto; width:min(78vw,320px); background:#fff;
-    box-shadow:-12px 0 30px rgba(0,0,0,.08); transform:translateX(100%);
-    transition:transform .3s ease; padding:18px; z-index:998; border-left:1px solid var(--stroke);
-  }
-  .main-nav.open{ transform:translateX(0); }
-  .main-nav ul{ flex-direction:column; gap:12px; padding-top:32px; }
-  .main-nav a{ color:#1d1f25; }
+/* Elevated + shrink on scroll */
+.site-header.elevated{
+  height:58px;
+  box-shadow:0 4px 18px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.08);
+  background:linear-gradient(135deg,#e8ebff,#dcd6f8,#f6ecff);
 }
+.site-header.elevated .brand img{ height:40px; }
+.site-header.elevated .nav-pill a{ padding:6px 12px; margin:0 6px; }
 
-/* =========================================================
-   DROPDOWN (Specialities)
-   ========================================================= */
+/* Dropdown (Specialities) */
 .has-submenu{ position:relative; }
 .has-submenu > a{ display:inline-flex; align-items:center; gap:.35rem; }
 .has-submenu .caret{
@@ -115,38 +104,52 @@ h1,h2,h3,h4,h5,h6{
   border-right:2px solid currentColor; border-bottom:2px solid currentColor;
   transform:rotate(45deg); transition:transform .2s ease;
 }
-
-/* Panel */
+/* Multi-column panel */
 .submenu{
-  display:none; position:absolute; top:100%; left:0; min-width:260px;
-  list-style:none; margin:8px 0 0; padding:8px 0; background:#fff;
-  border:1px solid var(--stroke); border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.08); z-index:1000;
+  display:none; position:absolute; top:100%; left:0;
+  min-width:320px; max-width:600px;
+  padding:12px 16px; background:#fff; border:1px solid var(--stroke); border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08); z-index:1000;
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); gap:8px 16px;
 }
+.submenu li{ list-style:none; }
 .submenu li a{
-  display:block; padding:10px 14px; color:var(--ink); text-decoration:none; font-weight:600;
+  display:block; padding:8px 10px; border-radius:8px; color:var(--ink); font-weight:600; white-space:normal;
 }
 .submenu li a:hover{ background:var(--teal); color:#fff; }
 
-/* Desktop open */
+/* Show on hover/focus (desktop) */
 @media (min-width:901px){
   .has-submenu:hover > .submenu,
-  .has-submenu:focus-within > .submenu{ display:block; }
+  .has-submenu:focus-within > .submenu{ display:grid; }
 }
 
-/* Mobile collapsible */
+/* Mobile drawer */
+.menu-toggle{ display:none; background:none; border:0; font-size:28px; color:#111; cursor:pointer; }
 @media (max-width:900px){
-  .has-submenu{ width:100%; }
-  .has-submenu > a{ justify-content:space-between; width:100%; color:#1d1f25; border-radius:12px; }
-  .submenu{
-    position:static; display:none; margin:6px 0 0; padding:6px 0 6px 6px; border:0; box-shadow:none; background:transparent;
+  .menu-toggle{ display:block; }
+  .nav-pill{ flex-wrap:nowrap; }
+  .main-nav{
+    position:fixed; inset:72px 0 0 auto; width:min(78vw,320px); background:#fff;
+    box-shadow:-12px 0 30px rgba(0,0,0,.08); transform:translateX(100%); transition:transform .3s ease;
+    padding:18px; z-index:998; border-left:1px solid var(--stroke);
   }
-  .submenu li a{ padding:8px 10px; border-radius:10px; }
+  .main-nav.open{ transform:translateX(0); }
+  .nav-pill{
+    background:transparent; box-shadow:none; border-radius:0; padding:0; gap:0; flex-direction:column; align-items:stretch;
+  }
+  .nav-pill li{ margin-bottom:6px; }
+  .nav-pill a{ color:#1d1f25; border-radius:12px; padding:10px 12px; margin:0; }
+  /* Mobile submenu collapses */
+  .submenu{
+    position:static; display:none; grid-template-columns:1fr; padding:6px 0; border:0; box-shadow:none; background:transparent; gap:6px;
+  }
   .has-submenu.open-submenu > .submenu{ display:block; }
   .has-submenu.open-submenu > a .caret{ transform:rotate(-135deg); }
 }
 
 /* =========================================================
-   HERO – animated gradient + blackhole overlay
+   HERO — animated gradient + blackhole overlay
    ========================================================= */
 .hero-background{
   width:100%; min-height:70vh; position:relative; z-index:1; color:#fff; text-align:center;
@@ -164,15 +167,13 @@ h1,h2,h3,h4,h5,h6{
 .hero-background h1,.hero-heading{
   font-size:clamp(36px,6vw,64px); max-width:900px; line-height:1.1; margin:24px auto 16px;
 }
-.hero-background p,.hero-sub{
-  max-width:720px; margin:0 auto; font-size:clamp(16px,2.3vw,18px); opacity:.95;
-}
+.hero-background p,.hero-sub{ max-width:720px; margin:0 auto; font-size:clamp(16px,2.3vw,18px); opacity:.95; }
 .gradient{
   background:linear-gradient(90deg,#fbd3e9 0%, #bbf0f3 50%, #d5c7ff 100%);
   -webkit-background-clip:text; background-clip:text; color:transparent;
 }
 .blackhole-box{
-  position:absolute; top:0; left:0; width:100%; height:110%; overflow:hidden; z-index:0; pointer-events:none; mix-blend-mode:screen; opacity:.8;
+  position:absolute; inset:0; height:110%; overflow:hidden; z-index:0; pointer-events:none; mix-blend-mode:screen; opacity:.8;
 }
 .blackhole-box video,.blackhole-video{
   width:100%; height:130%; object-fit:cover; transform:translateY(-43%); filter:brightness(.8) contrast(1.8) saturate(.4);
@@ -190,7 +191,7 @@ h1,h2,h3,h4,h5,h6{
 .hero-button i{ font-size:1.2em; }
 
 /* =========================================================
-   INFO / SERVICES GRID
+   SERVICES GRID
    ========================================================= */
 .info-section{ padding:64px 2rem; background:#f8f9fa; }
 .section-title{ text-align:center; font-size:2.5rem; margin:0 0 2rem; color:#003147; }
@@ -199,16 +200,12 @@ h1,h2,h3,h4,h5,h6{
 }
 #complaintInput:focus{ border-color:#b5e4e6; box-shadow:0 8px 26px rgba(14,165,163,.12); }
 
-.services-grid{
-  display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:2rem;
-}
+.services-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:2rem; }
 .service-card{
   background:#fff; padding:1rem; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); transition:transform .3s ease;
 }
 .service-card:hover{ transform:translateY(-5px); }
-.service-card img{
-  width:100%; border-radius:10px; margin-top:.5rem; aspect-ratio:16/10; object-fit:cover;
-}
+.service-card img{ width:100%; border-radius:10px; margin-top:.5rem; aspect-ratio:16/10; object-fit:cover; }
 .text-section h3{ margin:.2rem 0 .5rem; color:#0077b6; }
 .text-section p{ color:#555; font-size:.95rem; margin:0; }
 .read-more-button{ display:inline-block; margin-top:.8rem; color:#0077b6; font-weight:800; }
@@ -217,15 +214,14 @@ h1,h2,h3,h4,h5,h6{
 /* =========================================================
    FOOTER
    ========================================================= */
-.site-footer{
-  padding:36px 16px; text-align:center; color:#475569; border-top:1px solid var(--stroke); background:#fff;
-}
+.site-footer{ padding:36px 16px; text-align:center; color:#475569; border-top:1px solid var(--stroke); background:#fff; }
 
 /* =========================================================
    RESPONSIVE TWEAKS
    ========================================================= */
-@media (max-width:1100px){
-  .container{ gap:72px; }
+@media (max-width:1200px) and (min-width:901px){
+  .nav-pill a{ padding:6px 12px; margin:0 6px; font-size:.95rem; }
+  .site-header .brand img{ height:44px; }
 }
 @media (max-width:720px){
   .section-title{ font-size:2rem; }
