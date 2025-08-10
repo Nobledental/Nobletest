@@ -32,7 +32,7 @@ body {
   color: #4a3c3c;
   background: var(--bg);
 }
-img { max-width: 100%; display: block; }
+img { max-width: auto; display: block; }
 a { text-decoration: none; color: inherit; }
 .container { max-width: 1200px; margin: 0 auto; padding: 2rem; display: flex; flex-direction: column; gap: 100px; }
 .visually-hidden { position: absolute!important; clip: rect(1px,1px,1px,1px); padding: 0; border: 0; height: 1px; width: 1px; overflow: hidden; }
@@ -369,3 +369,4 @@ header {
   }
   .blackhole-box video, .blackhole-video { animation: none; }
 }
+
