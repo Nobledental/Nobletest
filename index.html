@@ -101,17 +101,37 @@
   </a>
 
   <!-- Center pill nav (desktop), becomes drawer on mobile via .main-nav.open -->
-  <nav class="main-nav" aria-label="Primary">
-    <ul class="nav-pill">
-      <li><a href="#">Home</a></li>
-      <li><a href="specialities.html">Specialities</a></li>
-      <li><a href="#selfcare">Selfcare</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#login">Patient Login</a></li>
-      <li><a href="#team">Our Team</a></li>
-      <li><a href="#about">Know More</a></li>
-    </ul>
-  </nav>
+<nav class="main-nav" aria-label="Primary">
+  <ul class="nav-pill">
+    <li><a href="/">Home</a></li>
+
+    <!-- Specialities with SEO-friendly sublinks -->
+    <li class="has-submenu">
+      <a href="specialities.html">Specialities</a>
+      <ul class="submenu">
+        <li><a href="specialities/braces.html">Braces &amp; Orthodontics</a></li>
+        <li><a href="specialities/invisalign.html">Invisalign Clear Aligners</a></li>
+        <li><a href="specialities/extraction.html">Tooth Extraction</a></li>
+        <li><a href="specialities/root-canal.html">Root Canal Treatment</a></li>
+        <li><a href="specialities/fillings.html">Tooth Fillings</a></li>
+        <li><a href="specialities/crowns-bridges.html">Crowns &amp; Bridges</a></li>
+        <li><a href="specialities/implants.html">Dental Implants</a></li>
+        <li><a href="specialities/dentures.html">Dentures</a></li>
+        <li><a href="specialities/scaling-whitening.html">Scaling &amp; Teeth Whitening</a></li>
+        <li><a href="specialities/smile-design.html">Smile Designing</a></li>
+        <li><a href="specialities/gum-surgeries.html">Gum Surgeries</a></li>
+        <li><a href="specialities/kids-dentistry.html">Kids Dentistry</a></li>
+        <li><a href="specialities/pregnancy-dental-care.html">Pregnancy Dental Care</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#selfcare">Selfcare</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#login">Patient Login</a></li>
+    <li><a href="#team">Our Team</a></li>
+    <li><a href="#about">Know More</a></li>
+  </ul>
+</nav>
 
   <!-- Right cluster: socials + burger -->
   <div class="header-right">
@@ -310,5 +330,6 @@
   </script>
 </body>
 </html>
+
 
 
