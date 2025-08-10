@@ -93,7 +93,7 @@ header {
   justify-content: center;
   width: 100%;
   border-radius: 50px;
-  background-color: #848080bd;
+  background-color: #021c4fe8;
   backdrop-filter: blur(100px);
   box-shadow: 0 0 10px #3134377a;
 }
@@ -369,5 +369,6 @@ header {
   }
   .blackhole-box video, .blackhole-video { animation: none; }
 }
+
 
 
