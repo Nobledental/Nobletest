@@ -48,10 +48,31 @@ header{ /* support either class or tag (your original used <header>) */
 }
 @keyframes moveBackgroundBlack{0%{background-position:0% 50%}100%{background-position:100% 50%}}
 
-.left,.brand{display:flex; align-items:center; gap:.5rem}
-.left img,.brand img{width:100px; height:auto}
-.brand-title{margin:0; font-size:1.125rem; font-weight:800; color:var(--slate)}
-.brand-title span{color:var(--teal)}
+
+.brand, .left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* space between logo and text */
+}
+
+.brand img, .left img {
+  width: 100px;
+  height: auto;
+  display: block;
+}
+
+.brand-title, .left h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--slate, #1f2937);
+  display: flex;
+  align-items: center;
+}
+
+.brand-title span, .left h2 span {
+  color: var(--teal, #0ea5a3);
+}
 
 /* Desktop pill nav */
 .main-nav ul, header ul{
@@ -170,3 +191,4 @@ header{ /* support either class or tag (your original used <header>) */
   *, *::before, *::after{animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important}
   .blackhole-box video,.blackhole-video{animation:none}
 }
+
