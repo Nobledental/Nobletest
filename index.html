@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Noble Dental Nallagandla | Top Dental Clinic in Hyderabad</title>
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link rel="canonical" href="https://nobledentalnallagandla.in/" />
   <meta name="description" content="Noble Dental Nallagandla offers expert dental services including implants, whitening, root canal, and emergency care in Hyderabad." />
   <meta name="keywords" content="Dental Clinic Hyderabad, Best Dentist Nallagandla, Teeth Whitening, Root Canal, Dental Implants, Emergency Dental Care" />
   <meta name="author" content="Noble Dental Nallagandla" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0ea5a3" />
   <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
 
-  <link rel="stylesheet" href="style.css">
-  <script src="https://kit.fontawesome.com/a2e0e6a89b.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
-  
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Noble Dental Nallagandla - Best Dental Clinic in Hyderabad" />
   <meta property="og:description" content="Expert dental treatments including implants, whitening, root canals, and more in Hyderabad." />
@@ -29,6 +27,19 @@
   <meta name="twitter:description" content="Expert dental care including dental implants, root canals, and teeth cleaning." />
   <meta name="twitter:image" content="https://nobledentalnallagandla.in/images/logo.png" />
 
+  <!-- Primary CSS -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Icons: using Boxicons only (remove FA duplication for performance) -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <!-- AOS Animations (you used data-aos attributes) -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Preload hero video -->
+  <link rel="preload" as="video" href="/videos/blackhole.mp4" type="video/mp4" />
+
+  <!-- JSON-LD: Dentist (expanded) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,6 +49,7 @@
     "@id": "https://nobledentalnallagandla.in/",
     "url": "https://nobledentalnallagandla.in/",
     "telephone": "+91-8610425342",
+    "priceRange": "₹₹",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Nallagandla Main Road",
@@ -49,14 +61,7 @@
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
         "opens": "11:00",
         "closes": "22:00"
       },
@@ -66,203 +71,239 @@
         "opens": "10:00",
         "closes": "15:00"
       }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/",
+      "https://www.instagram.com/",
+      "https://www.linkedin.com/"
     ]
   }
-</script>
+  </script>
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXX');
-</script>
+  <!-- Google Analytics (replace with your real ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
 </head>
 <body>
 
-        <header data-aos="fade-down" data-aos-duration="2000">
-            <div class="left">
-                <img src="images/dentalcare.nallagandla.png" alt="Noble Dental Clinic - Nallagandla logo">
-                <h2><span style="color: #0a0c12d6;">Noble </span>Dental Care</h2>
-            </div>
+  <!-- ===== Header ===== -->
+  <header class="site-header" data-aos="fade-down" data-aos-duration="1200">
+    <div class="brand">
+      <a href="/" class="brand-link" aria-label="Noble Dental Nallagandla home">
+        <img src="/images/dentalcare.nallagandla.png" width="56" height="56" alt="Noble Dental Clinic - Nallagandla logo" />
+        <h1 class="brand-title"><span>Noble</span> Dental Care</h1>
+      </a>
+    </div>
 
-    <nav>  <!-- Use <nav> for the navigation -->            
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Specialities</a></li>
-                <li><a href="#">Selfcare</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Patient Login</a></li>
-                <li><a href="#">Our Team</a></li>
-                <li><a href="#">Know More</a></li>    
-            </ul>
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#top">Home</a></li>
+        <li><a href="#services">Specialities</a></li>
+        <li><a href="#selfcare">Self‑care</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#login">Patient Login</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#about">Know More</a></li>
+      </ul>
     </nav>
 
-<div class="box-icons">
-  <a href="#"><i class='bx bxl-youtube'></i></a>
-  <a href="#"><i class='bx bxl-github'></i></a>
-  <a href="#"><i class='bx bxl-linkedin-square'></i></a>
-</div>
-            
-            <div class="menu-icon">
-                <i class='bx bx-menu'></i>
-            </div>            
-        </header>
-  
-<!-- Gradient Background Hero Section -->
-<section class="hero-background">
-  <div class="blackhole-box">
-    <video autoplay muted loop playsinline src="videos/blackhole.mp4"></video>
-  </div>
-    <div class="hero-info-title">
-      <i class='bx bxl-sketch'></i>
-      HealthFlo Hospitals & Clinic
+    <div class="socials" aria-label="Social links">
+      <a href="#" aria-label="YouTube"><i class='bx bxl-youtube'></i></a>
+      <a href="#" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+      <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
     </div>
 
-    <h1 data-aos="fade-right" data-aos-duration="3000">
-      Providing <span class="gradient">the best</span> Dental Care <span class="gradient">Experience</span>
-    </h1>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      <i class='bx bx-menu'></i>
+    </button>
+  </header>
 
-    <p>Meet our team of expertise with advancements and treatment standards</p>
+  <!-- ===== Hero ===== -->
+  <section class="hero-background" id="top">
+    <div class="blackhole-box" aria-label="Clinic highlight video">
+      <video class="blackhole-video" autoplay muted loop playsinline src="/videos/blackhole.mp4" aria-label="Dental care hero video"></video>
+    </div>
+
+    <div class="hero-info-title"><i class='bx bxl-sketch'></i> HealthFlo Hospitals &amp; Clinic</div>
+
+    <h2 class="hero-heading" data-aos="fade-right" data-aos-duration="1400">
+      Providing <span class="gradient">the best</span> Dental Care <span class="gradient">Experience</span>
+    </h2>
+
+    <p class="hero-sub">Meet our team of experts with advanced treatment standards.</p>
 
     <div class="hero-buttons">
-      <a href="https://wa.me/918610425342" target="_blank" class="hero-button whatsapp">
-        <i class='bx bxl-whatsapp'></i> WhatsApp
-      </a>
-
-      <a href="tel:+918610425342" class="hero-button call">
-        <i class='bx bxs-phone'></i> Call
-      </a>
-
-      <a href="mailto:nobledental.org@gmail.com" class="hero-button mail">
-        <i class='bx bx-envelope'></i> Mail
-      </a>
-
-      <a href="https://g.co/kgs/Lebjyvw" target="_blank" class="hero-button location">
-        <i class='bx bx-map'></i> Location
-      </a>
+      <a href="https://wa.me/918610425342" target="_blank" rel="noopener" class="hero-button whatsapp"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+      <a href="tel:+918610425342" class="hero-button call"><i class='bx bxs-phone'></i> Call</a>
+      <a href="mailto:nobledental.org@gmail.com" class="hero-button mail"><i class='bx bx-envelope'></i> Mail</a>
+      <a href="https://g.co/kgs/Lebjyvw" target="_blank" rel="noopener" class="hero-button location"><i class='bx bx-map'></i> Location</a>
     </div>
-  <div class="scroll-down"></div>
-</section>
 
-<section class="info-section">
+    <div class="scroll-down" aria-hidden="true"></div>
+  </section>
+
+  <!-- ===== Services / Treatments We Offer ===== -->
+  <section class="info-section" id="services">
     <div class="container">
-        <h1 class="section-title autoDisplay">Treatments We Offer</h1>
-        <input type="text" id="complaintInput" placeholder="Explore your dental concerns..." oninput="shuffleCards(this.value)">
-  <section class="services-grid" id="servicesGrid">
-<article id="svc-whitening" class="service-card"
-         data-keywords="teeth whitening, brighten, smile, radiant look, discoloration"
-         data-url="https://www.example.com/teeth-whitening">
-  <div class="text-section">
-    <h3>Teeth Whitening</h3>
-    <p>Brighten your smile with professional whitening for a radiant look. Say goodbye to discoloration!</p>
-    <a href="https://www.example.com/teeth-whitening" class="read-more-button">Read More</a>
-  </div>
-  <img src="https://www.casadental.com.sg/wp-content/uploads/2024/02/White-Teeth-1.png"
-       alt="Teeth Whitening" loading="lazy">
-</article>
+      <h2 class="section-title autoDisplay">Treatments We Offer</h2>
+      <label for="complaintInput" class="visually-hidden">Search treatments</label>
+      <input type="text" id="complaintInput" placeholder="Explore your dental concerns..." />
 
-  <article id="svc-aligners" class="service-card"
-           data-keywords="invisalign, aligners, straighten, discreet, comfortable"
-           data-url="https://www.example.com/invisalign">
-    <div class="text-section">
-      <h3>Invisalign</h3>
-      <p>Discreet clear aligners for straightening teeth. Get a comfortable, nearly invisible alternative to braces.</p>
-      <a href="https://www.example.com/invisalign" class="read-more-button">Read More</a>
-    </div>
-    <img src="https://supersmilesfl.com/wp-content/uploads/2021/02/GettyImages-1210031986-scaled.jpg" alt="Invisalign Clear Aligners" loading="lazy">
-  </article>
+      <section class="services-grid" id="servicesGrid">
+        <article id="svc-whitening" class="service-card" data-keywords="teeth whitening, brighten, smile, radiant look, discoloration" data-url="/services/whitening.html">
+          <div class="text-section">
+            <h3>Teeth Whitening</h3>
+            <p>Brighten your smile with professional whitening for a radiant look. Say goodbye to discoloration!</p>
+            <a href="/services/whitening.html" class="read-more-button">Read More</a>
+          </div>
+          <img src="https://www.casadental.com.sg/wp-content/uploads/2024/02/White-Teeth-1.png" alt="Teeth Whitening" loading="lazy" />
+        </article>
 
-  <article id="svc-implants" class="service-card"
-           data-keywords="dental implants, tooth loss, replacement, secure, natural-looking"
-           data-url="https://www.example.com/dental-implants">
-    <div class="text-section">
-      <h3>Dental Implants</h3>
-      <p>Secure, natural tooth replacements. Restore your smile & confidence with our durable implants.</p>
-      <a href="https://www.example.com/dental-implants" class="read-more-button">Read More</a>
-    </div>
-    <img src="https://d3b3by4navws1f.cloudfront.net/herol.png" alt="Dental Implants" loading="lazy">
-  </article>
+        <article id="svc-aligners" class="service-card" data-keywords="invisalign, aligners, straighten, discreet, comfortable" data-url="/services/aligners.html">
+          <div class="text-section">
+            <h3>Invisalign</h3>
+            <p>Discreet clear aligners for straightening teeth. A comfortable, nearly invisible alternative to braces.</p>
+            <a href="/services/aligners.html" class="read-more-button">Read More</a>
+          </div>
+          <img src="https://supersmilesfl.com/wp-content/uploads/2021/02/GettyImages-1210031986-scaled.jpg" alt="Invisalign Clear Aligners" loading="lazy" />
+        </article>
 
-  <article id="svc-rct" class="service-card"
-           data-keywords="root canal, infection, pain, save tooth"
-           data-url="https://www.example.com/root-canal">
-    <div class="text-section">
-      <h3>Root Canal</h3>
-      <p>Save infected teeth with effective care. Our root canal relieves pain and restores your tooth’s health.</p>
-      <a href="https://www.example.com/root-canal" class="read-more-button">Read More</a>
-    </div>
-    <img src="https://dentistauburnca.com/wp-content/uploads/2022/04/root-canal.png" alt="Root Canal Treatment" loading="lazy">
-  </article>
+        <article id="svc-implants" class="service-card" data-keywords="dental implants, tooth loss, replacement, secure, natural-looking" data-url="/services/implants.html">
+          <div class="text-section">
+            <h3>Dental Implants</h3>
+            <p>Secure, natural tooth replacements. Restore your smile & confidence with durable implants.</p>
+            <a href="/services/implants.html" class="read-more-button">Read More</a>
+          </div>
+          <img src="https://d3b3by4navws1f.cloudfront.net/herol.png" alt="Dental Implants" loading="lazy" />
+        </article>
 
-  <article id="svc-braces" class="service-card"
-           data-keywords="braces, aligners, crooked teeth, perfect smile, orthodontic"
-           data-url="https://www.example.com/braces">
-    <div class="text-section">
-      <h3>Braces & Aligners</h3>
-      <p>Orthodontic options for a perfect smile. Correct teeth and improve your bite!</p>
-      <a href="https://www.example.com/braces" class="read-more-button">Read More</a>
-    </div>
-    <img src="https://www.jindaldentalclinic.com/wp-content/uploads/2018/03/speed-braces.png" alt="Braces and Aligners" loading="lazy">
-  </article>
+        <article id="svc-rct" class="service-card" data-keywords="root canal, infection, pain, save tooth" data-url="/services/root-canal.html">
+          <div class="text-section">
+            <h3>Root Canal</h3>
+            <p>Save infected teeth with effective care. Our root canal relieves pain and restores tooth health.</p>
+            <a href="/services/root-canal.html" class="read-more-button">Read More</a>
+          </div>
+          <img src="https://dentistauburnca.com/wp-content/uploads/2022/04/root-canal.png" alt="Root Canal Treatment" loading="lazy" />
+        </article>
 
-  <article id="svc-extraction" class="service-card"
-           data-keywords="wisdom teeth, removal, extraction, safe, prevent discomfort"
-           data-url="https://www.example.com/wisdom-teeth-removal">
-    <div class="text-section">
-      <h3>Wisdom Teeth Removal</h3>
-      <p>Safe extraction of wisdom teeth to prevent discomfort and infection. Smooth procedure.</p>
-      <a href="https://www.example.com/wisdom-teeth-removal" class="read-more-button">Read More</a>
-    </div>
-    <img src="https://queensboroplazadental.com/wp-content/uploads/2024/02/GettyImages-1406686372.jpg.webp" alt="Wisdom Teeth Removal" loading="lazy">
-  </article>
+        <article id="svc-braces" class="service-card" data-keywords="braces, aligners, crooked teeth, perfect smile, orthodontic" data-url="/services/braces.html">
+          <div class="text-section">
+            <h3>Braces &amp; Aligners</h3>
+            <p>Orthodontic options for a perfect smile. Correct teeth and improve your bite.</p>
+            <a href="/services/braces.html" class="read-more-button">Read More</a>
+          </div>
+          <img src="https://www.jindaldentalclinic.com/wp-content/uploads/2018/03/speed-braces.png" alt="Braces and Aligners" loading="lazy" />
+        </article>
 
-  <article id="svc-veneers" class="service-card"
-           data-keywords="veneers, smile, makeover, custom, aesthetic improvements"
-           data-url="https://www.example.com/veneers">
-    <div class="text-section">
-      <h3>Veneers & Smile Makeovers</h3>
-      <p>Transform your smile with custom veneers and aesthetic improvements. Beautiful smiles guaranteed.</p>
-      <a href="https://www.example.com/veneers" class="read-more-button">Read More</a>
-    </div>
-    <img src="https://www.dakabindental.com/wp-content/uploads/2020/08/veneers.png" alt="Veneers and Smile Makeovers" loading="lazy">
-  </article>
+        <article id="svc-extraction" class="service-card" data-keywords="wisdom teeth, removal, extraction, safe, prevent discomfort" data-url="/services/wisdom-teeth.html">
+          <div class="text-section">
+            <h3>Wisdom Teeth Removal</h3>
+            <p>Safe extraction of wisdom teeth to prevent discomfort and infection. A smooth procedure.</p>
+            <a href="/services/wisdom-teeth.html" class="read-more-button">Read More</a>
+          </div>
+          <img src="https://queensboroplazadental.com/wp-content/uploads/2024/02/GettyImages-1406686372.jpg.webp" alt="Wisdom Teeth Removal" loading="lazy" />
+        </article>
 
-  <article id="svc-crowns" class="service-card"
-           data-keywords="crowns, bridges, restoration, natural look, tooth function"
-           data-url="https://www.example.com/crowns-bridges">
-    <div class="text-section">
-      <h3>Crowns & Bridges</h3>
-      <p>Restore your teeth's function & create a natural look with crowns & bridges.</p>
-      <a href="https://www.example.com/crowns-bridges" class="read-more-button">Read More</a>
-    </div>
-    <img src="https://marigolddentaluae.com/wp-content/uploads/2024/12/Crowns-Bridges.png" alt="Crowns and Bridges" loading="lazy">
-  </article>
+        <article id="svc-veneers" class="service-card" data-keywords="veneers, smile, makeover, custom, aesthetic improvements" data-url="/services/veneers.html">
+          <div class="text-section">
+            <h3>Veneers &amp; Smile Makeovers</h3>
+            <p>Transform your smile with custom veneers and aesthetic improvements.</p>
+            <a href="/services/veneers.html" class="read-more-button">Read More</a>
+          </div>
+          <img src="https://www.dakabindental.com/wp-content/uploads/2020/08/veneers.png" alt="Veneers and Smile Makeovers" loading="lazy" />
+        </article>
 
-  <!-- Optional: add missing IDs to match FAQ links -->
-  <article id="svc-scaling" class="service-card"
-           data-keywords="scaling, polishing, cleaning, prophylaxis">
-    <div class="text-section">
-      <h3>Scaling & Polishing</h3>
-      <p>Remove plaque and tartar above/below the gumline and finish with a polish for gum health and fresher breath.</p>
-    </div>
-    <img src="https://via.placeholder.com/640x400?text=Scaling+%26+Polishing" alt="Scaling and Polishing" loading="lazy">
-  </article>
+        <article id="svc-crowns" class="service-card" data-keywords="crowns, bridges, restoration, natural look, tooth function" data-url="/services/crowns-bridges.html">
+          <div class="text-section">
+            <h3>Crowns &amp; Bridges</h3>
+            <p>Restore function and create a natural look with crowns &amp; bridges.</p>
+            <a href="/services/crowns-bridges.html" class="read-more-button">Read More</a>
+          </div>
+          <img src="https://marigolddentaluae.com/wp-content/uploads/2024/12/Crowns-Bridges.png" alt="Crowns and Bridges" loading="lazy" />
+        </article>
 
-  <article id="svc-fillings" class="service-card"
-           data-keywords="cavity, caries, filling, symptoms">
-    <div class="text-section">
-      <h3>Tooth Fillings</h3>
-      <p>Small, conservative fillings done early save cost and tooth structure.</p>
+        <article id="svc-scaling" class="service-card" data-keywords="scaling, polishing, cleaning, prophylaxis" data-url="/services/scaling.html">
+          <div class="text-section">
+            <h3>Scaling &amp; Polishing</h3>
+            <p>Remove plaque and tartar above/below the gumline and finish with a polish for gum health and fresher breath.</p>
+            <a href="/services/scaling.html" class="read-more-button">Read More</a>
+          </div>
+          <img src="https://via.placeholder.com/640x400?text=Scaling+%26+Polishing" alt="Scaling and Polishing" loading="lazy" />
+        </article>
+
+        <article id="svc-fillings" class="service-card" data-keywords="cavity, caries, filling, symptoms" data-url="/services/fillings.html">
+          <div class="text-section">
+            <h3>Tooth Fillings</h3>
+            <p>Small, conservative fillings done early save cost and tooth structure.</p>
+            <a href="/services/fillings.html" class="read-more-button">Read More</a>
+          </div>
+          <img src="https://via.placeholder.com/640x400?text=Tooth+Fillings" alt="Tooth Fillings" loading="lazy" />
+        </article>
+      </section>
     </div>
-    <img src="https://via.placeholder.com/640x400?text=Tooth+Fillings" alt="Tooth Fillings" loading="lazy">
-  </article>
-</section>
-                        
+  </section>
+
+  <!-- ===== Footer (stub) ===== -->
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Noble Dental Nallagandla. All rights reserved.</p>
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  </footer>
+
+  <!-- AOS + Main JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script>
+    // Init AOS once loaded
+    window.addEventListener('load', () => {
+      if (window.AOS) AOS.init({ once: true });
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.main-nav');
+    if (menuBtn && nav) {
+      menuBtn.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    // Services filter / reorder
+    const input = document.getElementById('complaintInput');
+    const grid = document.getElementById('servicesGrid');
+    const cards = Array.from(grid.querySelectorAll('.service-card'));
+
+    function normalize(s){ return (s||'').toLowerCase(); }
+
+    function scoreCard(card, q){
+      if (!q) return 0; // no score boost when empty
+      const keys = (card.getAttribute('data-keywords')||'') + ' ' + card.textContent;
+      const str = normalize(keys);
+      q = normalize(q);
+      let score = 0;
+      q.split(/[,\s]+/).filter(Boolean).forEach(term => {
+        if (str.includes(term)) score += 1;
+      });
+      return -score; // negative for Array.sort (ascending)
+    }
+
+    function shuffleCards(query){
+      const q = normalize(query);
+      const sorted = cards.slice().sort((a,b)=> scoreCard(a,q) - scoreCard(b,q));
+      // Move matching cards to top (stable)
+      sorted.forEach(card => grid.appendChild(card));
+    }
+
+    if (input) {
+      input.addEventListener('input', (e) => shuffleCards(e.target.value));
+    }
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
-
-
-
