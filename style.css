@@ -200,10 +200,8 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
 .nav-pill a, .hero-button{ border:1px solid rgba(255,255,255,.12); }
 .nav-pill a.ripple, .hero-button.ripple{ --ripple-c: rgba(0,0,0,.12); }
 
-/* =========================================================
    HERO — animated gradient + blackhole overlay
    ========================================================= */
-/* ===== Hero (as you wrote) ===== */
 .hero-background{
   width:100%; min-height:90vh; position:relative; z-index:1; color:#fff; text-align:center;
   background:linear-gradient(45deg,#301e74,#492977,#2a508f,#8a2c6c);
@@ -224,72 +222,7 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
 .gradient{
   background:linear-gradient(90deg,#c1518f 0%, #bbf0f3 50%, #d5c7ff 100%);
   -webkit-background-clip:text; background-clip:text; color:transparent;
-}
-
-/* Ensure hero layers stack correctly */
-.hero-background { position: relative; }
-.blackhole-box { z-index: 0; }
-.hero-aurora { z-index: 1; }
-.hero-background .hero-info-title,
-.hero-background .hero-heading,
-.hero-background .hero-sub,
-.hero-buttons,
-.scroll-down { position: relative; z-index: 2; }
-
-/* ===== Soft Aurora Gradient Waves ===== */
-.hero-aurora{
-  position:absolute; inset:0;
-  pointer-events:none; overflow:hidden;
-  mix-blend-mode: screen;         /* blends softly into your gradient */
-  filter: saturate(120%);
-}
-
-/* Two animated sheets that drift/rotate */
-.hero-aurora::before,
-.hero-aurora::after{
-  content:"";
-  position:absolute;
-  /* Oversize so rotations never show edges */
-  width: 220%;
-  height: 220%;
-  left: -60%;
-  top: -60%;
-
-  /* Layered soft gradients (teal, deep purple, milky white) */
-  background:
-    radial-gradient(60% 50% at 40% 45%, rgba(187,240,243,0.40) 0%, rgba(187,240,243,0.00) 60%),
-    radial-gradient(55% 45% at 65% 55%, rgba(193,81,143,0.35) 0%, rgba(193,81,143,0.00) 60%),
-    radial-gradient(80% 65% at 50% 50%, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.00) 70%);
-  filter: blur(70px);
-  transform-origin: 50% 50%;
-  opacity: 0.85;
-  animation: auroraDrift 16s ease-in-out infinite;
-}
-
-.hero-aurora::after{
-  /* Second sheet offset + different colors for depth */
-  background:
-    radial-gradient(60% 50% at 55% 50%, rgba(142,120,255,0.35) 0%, rgba(142,120,255,0.00) 60%),
-    radial-gradient(55% 45% at 40% 50%, rgba(155,92,255,0.28) 0%, rgba(155,92,255,0.00) 60%),
-    radial-gradient(80% 65% at 50% 50%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.00) 70%);
-  animation-duration: 22s;
-  animation-delay: -6s;
-  opacity: 0.75;
-}
-
-@keyframes auroraDrift{
-  0%   { transform: rotate(0deg)   scale(1.15) translate3d(0,0,0); }
-  50%  { transform: rotate(18deg)  scale(1.25) translate3d(2%, -2%, 0); }
-  100% { transform: rotate(0deg)   scale(1.15) translate3d(0,0,0); }
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .hero-aurora::before,
-  .hero-aurora::after{
-    animation: none;
-  }
-}
+} 
 
 .blackhole-box{
   position:absolute; inset:0; height:110%; overflow:hidden; z-index:0; pointer-events:none; mix-blend-mode:screen; opacity:2;
@@ -446,6 +379,7 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
   .nav-pill { gap: 6px; }
   .nav-pill a { padding: 7px 12px; margin: 0 4px; }
 }
+
 
 
 
