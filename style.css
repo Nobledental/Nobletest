@@ -300,3 +300,82 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:800; color:var(--
   *,*::before,*::after{ animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
   .blackhole-box video,.blackhole-video{ animation:none; }
 }
+
+/* --- Submenu: hidden by default everywhere --- */
+.has-submenu > .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 320px;
+  max-width: 640px;
+  padding: 14px 18px;
+  background: #fff;
+  border: 1px solid var(--stroke, #e6e9ef);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+  z-index: 1000;
+
+  /* multi-column layout when visible (desktop) */
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 10px 24px;
+
+  /* small show/hide animation */
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+/* Desktop/laptop: show on hover/focus ONLY when a hover device exists */
+@media (hover: hover) and (pointer: fine) {
+  .has-submenu:hover > .submenu,
+  .has-submenu:focus-within > .submenu {
+    display: grid;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .has-submenu:hover > a .caret { transform: rotate(225deg); }
+}
+
+/* Touch devices (Android/iOS): open only when JS adds .open-submenu */
+@media (hover: none), (pointer: coarse) {
+  .has-submenu { position: relative; }
+  .has-submenu > .submenu {
+    position: static;           /* drop inside the drawer/flow */
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    padding: 6px 0;
+    max-width: none;
+    min-width: 0;
+    gap: 6px;
+    grid-template-columns: 1fr; /* stack vertically */
+    transform: none;
+  }
+  .has-submenu.open-submenu > .submenu {
+    display: block;
+    opacity: 1;
+  }
+}
+
+/* Submenu link styling (kept tidy) */
+.submenu li { list-style: none; }
+.submenu li a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--ink, #0a0c12);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.submenu li a:hover {
+  background: var(--teal, #0ea5a3);
+  color: #fff;
+}
+
+/* Make sure the pill nav doesn’t force overflow */
+.nav-pill { width: auto; flex-wrap: nowrap; }
+@media (max-width: 1200px) and (min-width: 901px) {
+  .nav-pill { gap: 6px; }
+  .nav-pill a { padding: 7px 12px; margin: 0 4px; }
+}
