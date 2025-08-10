@@ -15,7 +15,7 @@
 /* Tokens */
 :root{
   /* Brand */
-  --teal: #0ea5a3;
+  --teal: #048c8a;
   --blue: #2563eb;
   --ink : #0a0c12;
   --slate: #1f2937;
@@ -42,7 +42,7 @@ html{ scroll-behavior:smooth; }
 body{
   margin:0; padding:0; overflow-x:hidden;
   font-family:'Source Sans 3', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  line-height:1.6; color:#333; background:var(--bg);
+  line-height:1; color:#eee1e1; background:var(--bg);
 }
 img{ max-width:100%; height:auto; display:block; }
 a{ text-decoration:none; color:inherit; }
@@ -50,7 +50,7 @@ a{ text-decoration:none; color:inherit; }
 .visually-hidden{ position:absolute!important; clip:rect(1px,1px,1px,1px); padding:0;border:0;height:1px;width:1px;overflow:hidden; }
 
 /* Headings */
-h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:800; color:var(--slate); }
+h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--slate); }
 
 /* =========================================================
    MATERIAL UTILS (elevation + ripple)
@@ -85,10 +85,10 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:800; color:var(--
   position:fixed; inset:0 0 auto 0; height:70px; padding:0 24px;
   display:flex; align-items:center; justify-content:space-between;
   z-index:999; backdrop-filter:blur(5px);
-  background:linear-gradient(135deg,#f2f3f9,#ece9f4,#6f5de1);
+  background:linear-gradient(135deg,#ffffff,#ffffff,#ffffff);
   background-size:300% 300%;
   box-shadow:0 0 15px rgb(238 238 238 / 72%);
-  animation:headerBg 12s linear infinite;
+  animation:headerBg 15s linear infinite;
   transition:height var(--dur) var(--curve), box-shadow var(--dur) var(--curve), background var(--dur) var(--curve);
 }
 @keyframes headerBg{ 0%{background-position:0% 50%} 100%{background-position:100% 50%} }
@@ -103,8 +103,8 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:800; color:var(--
 
 .nav-pill{
   display:flex; align-items:center; justify-content:center; gap:4px;
-  list-style:none; margin:0; padding:6px 8px;
-  width:auto; border-radius:50px; background:#f6f2f2e6; backdrop-filter:blur(10px);
+  list-style:none; margin:0; padding:3.5px 6px;
+  width:auto; border-radius:50px; background:#68686830; backdrop-filter:blur(10px);
   box-shadow: var(--elev-1);
 }
 .nav-pill a{
@@ -113,7 +113,7 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:800; color:var(--
   transition: all var(--dur) var(--curve);
 }
 .nav-pill a:hover{
-  background:rgb(59 54 54); color:#7a7d87; transform:translateY(-1px);
+  background:rgb(122 118 118); color:#ffffff; transform:translateY(-1px);
   box-shadow:0 6px 18px rgb(16 16 19 / 69%);
 }
 .nav-pill a:active{ transform:translateY(0); filter:saturate(.95); }
@@ -204,8 +204,8 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:800; color:var(--
    HERO — animated gradient + blackhole overlay
    ========================================================= */
 .hero-background{
-  width:100%; min-height:70vh; position:relative; z-index:1; color:#fff; text-align:center;
-  background:linear-gradient(-45deg,#140a74,#681868,#893417,#3e286d);
+  width:100%; min-height:100vh; position:relative; z-index:1; color:#fff; text-align:center;
+  background:linear-gradient(-45deg,#080808,#a151a1,#1981bc,#31058d);
   background-size:600% 600%; animation:gradientShift 4s ease infinite;
   display:flex; align-items:center; justify-content:center; flex-direction:column; padding:110px 16px 56px;
 }
@@ -225,10 +225,10 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:800; color:var(--
   -webkit-background-clip:text; background-clip:text; color:transparent;
 }
 .blackhole-box{
-  position:absolute; inset:0; height:110%; overflow:hidden; z-index:0; pointer-events:none; mix-blend-mode:screen; opacity:.8;
+  position:absolute; inset:0; height:110%; overflow:hidden; z-index:0; pointer-events:none; mix-blend-mode:hard-light; opacity:2;
 }
 .blackhole-box video,.blackhole-video{
-  width:100%; height:130%; object-fit:cover; transform:translateY(-43%); filter:brightness(.8) contrast(1.8) saturate(.4);
+  width:100%; height:200%; object-fit:cover; transform:translateY(-47%); filter:brightness(.9) contrast(.) saturate(.9);
 }
 .scroll-down{
   width:12px; height:12px; border-right:2px solid #fff; border-bottom:2px solid #fff; transform:rotate(45deg); margin-top:28px; animation:sd 1.2s infinite; opacity:.8;
