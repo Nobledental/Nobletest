@@ -155,3 +155,23 @@
   mediaQuery.addEventListener('change', applyMotionPref);
   applyMotionPref();
 })();
+
+
+<script>
+  // Mobile submenu toggle for Specialities
+  const specialitiesToggle = document.querySelector('.has-submenu > a');
+  const specialitiesItem = document.querySelector('.has-submenu');
+
+  if (specialitiesToggle && specialitiesItem) {
+    specialitiesToggle.addEventListener('click', (e) => {
+      // Only intercept when in mobile drawer
+      const isMobile = window.matchMedia('(max-width: 900px)').matches;
+      const navOpen = document.querySelector('.main-nav')?.classList.contains('open');
+      if (isMobile || navOpen) {
+        e.preventDefault();
+        const open = specialitiesItem.classList.toggle('open-submenu');
+        specialitiesToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+    });
+  }
+</script>
