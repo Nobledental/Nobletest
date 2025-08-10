@@ -192,3 +192,25 @@ header{ /* support either class or tag (your original used <header>) */
   .blackhole-box video,.blackhole-video{animation:none}
 }
 
+/* --- HEADER LAYOUT FIXES --- */
+header{
+  display: grid !important;
+  grid-template-columns: auto 1fr auto auto; /* logo+name | nav | socials | burger */
+  align-items: center;
+  height: 80px; /* give the logo room */
+}
+
+/* Brand (logo + name side-by-side) */
+.left{ display:flex; align-items:center; gap:.5rem; flex:0 0 auto; }
+.left img{ height:56px; width:auto; display:block; }  /* fit inside header */
+.left h2{ margin:0; white-space:nowrap; line-height:1; display:inline-block; }
+
+/* Center the pill nav but don't make it full width */
+header ul{ width:auto !important; }
+nav{ justify-self:center; }
+
+/* Keep mobile behavior */
+@media (max-width:900px){
+  header{ grid-template-columns:auto 1fr auto; height:72px; }
+  header ul{ display:none; }
+}
