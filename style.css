@@ -19,7 +19,7 @@ body {
 /* Headings — modern Inter font */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Inter', sans-serif;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--slate);
 }
 
@@ -385,6 +385,7 @@ header {
   }
   .blackhole-box video, .blackhole-video { animation: none; }
 }
+
 
 
 
