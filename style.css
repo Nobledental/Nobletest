@@ -61,25 +61,28 @@ header {
   100% { background-position: 100% 50%; }
 }
 
-/* Brand (name left, logo right) */
 .left {
   display: flex;
-  flex-direction: row-reverse; /* name first, logo second */
-  align-items: center;
-  gap: 0.75rem;
+  flex-direction: row;       /* ensure left-to-right order */
+  align-items: center;       /* vertical center */
+  gap: 0.75rem;              /* space between logo and text */
 }
+
 .left img {
-  width: 56px;
-  height: auto;
+  height: 56px;              /* scale to fit header */
+  width: auto;
+  display: block;
 }
+
 .left h2 {
   margin: 0;
   font-size: 1.125rem;
   font-weight: 800;
   color: var(--slate, #1f2937);
-  white-space: nowrap;
+  white-space: nowrap;       /* prevent wrapping */
   line-height: 1;
 }
+
 .left h2 span {
   color: var(--teal, #0ea5a3);
 }
@@ -369,3 +372,4 @@ header {
   }
   .blackhole-box video, .blackhole-video { animation: none; }
 }
+
