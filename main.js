@@ -1,14 +1,5 @@
-/* Main JS for Noble Dental Nallagandla
-   - AOS init (if present)
-   - Sticky header elevation
-   - Mobile menu (slide-in) + focus trap + Esc/outside click
-   - Specialities dropdown (desktop hover / mobile tap)
-   - Smooth scroll for in-page links
-   - Active link highlight on scroll
-   - Services search / relevance sort (stable)
-   - Footer year
-   - Motion preferences for video
-*/
+<script>
+/* Main JS for Noble Dental Nallagandla */
 (() => {
   const qs  = (sel, root = document) => root.querySelector(sel);
   const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
@@ -60,13 +51,11 @@
 
   if (menuBtn && nav) {
     menuBtn.addEventListener('click', () => (nav.classList.contains('open') ? closeMenu() : openMenu()));
-
-    // Close on link click (drawer)
+    // Close on link click
     nav.addEventListener('click', (e) => {
       const link = e.target.closest('a');
       if (link && nav.classList.contains('open')) closeMenu();
     });
-
     // Click outside to close
     document.addEventListener('click', (e) => {
       if (!nav.classList.contains('open')) return;
@@ -75,13 +64,10 @@
     });
   }
 
-  /* ========== Specialities dropdown ========== */
+  /* ========== Specialities dropdown (desktop hover via CSS; mobile tap here) ========== */
   const spItem   = qs('.has-submenu');
-  const spToggle = qs('.has-submenu > a'); // has aria-expanded + aria-controls
-
-  // Detect touch/pen (Android/iOS tablets/phones)
-  const isTouchMode = () =>
-    window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const spToggle = qs('.has-submenu > a');
+  const isTouchMode = () => window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
   const toggleSubmenu = (open) => {
     if (!spItem || !spToggle) return;
@@ -91,42 +77,26 @@
   };
 
   if (spItem && spToggle) {
-    // Tap to open on mobile / when drawer is open
     spToggle.addEventListener('click', (e) => {
       const drawerOpen = nav?.classList.contains('open');
       if (isTouchMode() || drawerOpen) {
-        e.preventDefault(); // prevent navigating parent link
-        toggleSubmenu();
-      }
-    });
-
-    // Keyboard support (Space/Enter) in mobile context
-    spToggle.addEventListener('keydown', (e) => {
-      const drawerOpen = nav?.classList.contains('open');
-      if (!(isTouchMode() || drawerOpen)) return;
-      if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault();
         toggleSubmenu();
       }
     });
-
-    // Close submenu on outside tap in mobile context
+    spToggle.addEventListener('keydown', (e) => {
+      const drawerOpen = nav?.classList.contains('open');
+      if (!(isTouchMode() || drawerOpen)) return;
+      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggleSubmenu(); }
+    });
     document.addEventListener('click', (e) => {
       const drawerOpen = nav?.classList.contains('open');
       if (!(isTouchMode() || drawerOpen)) return;
-      const inside = spItem.contains(e.target);
-      if (!inside) toggleSubmenu(false);
+      if (!spItem.contains(e.target)) toggleSubmenu(false);
     });
-
-    // Close on Esc
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleSubmenu(false); });
-
-    // Reset on resize/orientation change so desktop hover can take over
     let resizeTimer;
-    const onResize = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => toggleSubmenu(false), 120);
-    };
+    const onResize = () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => toggleSubmenu(false), 120); };
     window.addEventListener('resize', onResize);
     window.addEventListener('orientationchange', onResize);
   }
@@ -147,54 +117,112 @@
   /* ========== Active link highlight on scroll ========== */
   const sections = qsa('section[id]');
   const navLinks = new Map();
-  qsa('.main-nav a[href^="#"]').forEach(a => {
-    const id = a.getAttribute('href');
-    if (id) navLinks.set(id, a);
-  });
-
+  qsa('.main-nav a[href^="#"]').forEach(a => { const id = a.getAttribute('href'); if (id) navLinks.set(id, a); });
   if (sections.length && navLinks.size) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const id = `#${entry.target.id}`;
         navLinks.forEach(link => link.classList.remove('active'));
-        const active = navLinks.get(id);
-        if (active) active.classList.add('active');
+        navLinks.get(id)?.classList.add('active');
       });
     }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
-
     sections.forEach(sec => io.observe(sec));
     window.addEventListener('beforeunload', () => io.disconnect());
   }
 
-  /* ========== Services search / relevance sort (stable) ========== */
-  const grid  = qs('#servicesGrid');
-  const input = qs('#complaintInput');
-  const cards = grid ? qsa('.service-card', grid) : [];
-  cards.forEach((c, i) => c.dataset.initialIndex = String(i)); // stable baseline
+  /* ========== Services filter + relevance ranking (top 9) ========== */
+  const grid         = qs('#servicesGrid');
+  const searchInput  = qs('#complaintInput');
+  const selectFilter = qs('#serviceFilter');
+  const chipBar      = qs('.filter-chips');
 
-  const normalize = (s) => (s || '').toLowerCase();
-  const relevance = (card, q) => {
-    if (!q) return 0;
-    const blob = `${card.getAttribute('data-keywords') || ''} ${card.textContent}`;
-    let score = 0;
-    q.split(/[\s,]+/).filter(Boolean).forEach(t => {
-      if (normalize(blob).includes(normalize(t))) score++;
+  if (grid) {
+    const cards = qsa('.service-card', grid);
+    cards.forEach((c, i) => (c.dataset.initialIndex ??= String(i)));
+
+    const getActiveFilter = () => (selectFilter?.value || 'all');
+    const setActiveChip = (val) => {
+      if (!chipBar) return;
+      chipBar.querySelectorAll('.chip').forEach(ch => {
+        const isActive = (ch.dataset.filter || 'all') === val;
+        ch.classList.toggle('is-active', isActive);
+        ch.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+    };
+    const normalize = (s) => (s || '').toLowerCase();
+
+    const scoreCard = (card, q) => {
+      if (!q) return 0;
+      const title = card.querySelector('h3')?.textContent || '';
+      const kw    = card.getAttribute('data-keywords') || '';
+      const body  = card.querySelector('.text-section')?.textContent || '';
+      const tags  = card.getAttribute('data-tags') || '';
+
+      const hayTitle = normalize(title);
+      const hayKw    = normalize(kw + ' ' + tags);
+      const hayBody  = normalize(body);
+
+      let s = 0;
+      const terms = q.split(/[\s,]+/).filter(Boolean).map(normalize);
+      for (const t of terms) {
+        if (hayTitle.includes(t)) s += 6;
+        if (hayKw.includes(t))    s += 3;
+        if (hayBody.includes(t))  s += 1;
+      }
+      return s;
+    };
+
+    const matchesFilter = (card, filterVal) => {
+      if (!filterVal || filterVal === 'all') return true;
+      const tags = (card.getAttribute('data-tags') || '').toLowerCase().split(/\s+/);
+      return tags.includes(filterVal.toLowerCase());
+    };
+
+    const applyFilters = () => {
+      const q = normalize(searchInput?.value || '');
+      const f = getActiveFilter();
+
+      const ranked = cards
+        .map(card => ({ card, score: scoreCard(card, q) }))
+        .filter(({ card }) => matchesFilter(card, f))
+        .sort((a, b) => {
+          if (b.score !== a.score) return b.score - a.score;
+          const pa = Number(a.card.getAttribute('data-priority') || 999);
+          const pb = Number(b.card.getAttribute('data-priority') || 999);
+          if (pa !== pb) return pa - pb;
+          return Number(a.card.dataset.initialIndex) - Number(b.card.dataset.initialIndex);
+        });
+
+      const top = ranked.slice(0, 9).map(r => r.card);
+      const topSet = new Set(top);
+
+      // Show/hide
+      cards.forEach(c => { c.style.display = topSet.has(c) ? '' : 'none'; });
+
+      // Move top visually
+      top.forEach(c => grid.appendChild(c));
+    };
+
+    // Events
+    selectFilter?.addEventListener('change', (e) => {
+      setActiveChip(e.target.value);
+      applyFilters();
     });
-    return score;
-  };
-  const reorder = (query) => {
-    if (!grid) return;
-    const q = normalize(query);
-    const sorted = cards.slice().sort((a, b) => {
-      const sa = relevance(a, q);
-      const sb = relevance(b, q);
-      if (sa === sb) return Number(a.dataset.initialIndex) - Number(b.dataset.initialIndex);
-      return sb - sa; // higher first
+    chipBar?.addEventListener('click', (e) => {
+      const btn = e.target.closest('.chip');
+      if (!btn) return;
+      const val = btn.dataset.filter || 'all';
+      if (selectFilter) selectFilter.value = val;
+      setActiveChip(val);
+      applyFilters();
     });
-    sorted.forEach(card => grid.appendChild(card));
-  };
-  input?.addEventListener('input', (e) => reorder(e.target.value));
+    searchInput?.addEventListener('input', applyFilters);
+
+    // Init
+    setActiveChip(getActiveFilter());
+    applyFilters();
+  }
 
   /* ========== Footer year ========== */
   const yearEl = qs('#year');
@@ -211,3 +239,4 @@
   mq.addEventListener('change', applyMotionPref);
   applyMotionPref();
 })();
+</script>
