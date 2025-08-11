@@ -1,13 +1,13 @@
 /* Main JS for Noble Dental Nallagandla
    - AOS init (if present)
    - Sticky header elevation
-   - Mobile menu (slide-in) + focus trap + Esc/outside click
+   - Mobile menu (slide-in) + focus trap + Esc/outside click + body scroll lock
    - Specialities dropdown (desktop hover / mobile tap)
-   - Smooth scroll for in-page links
-   - Active link highlight on scroll
-   - Services search / relevance sort (stable)
+   - Smooth scroll for in-page links with fixed-header offset
+   - Active link highlight on scroll (robust IO)
+   - Services search / relevance sort (stable, debounced) + card click
    - Footer year
-   - Motion preferences for video
+   - Motion preferences for video (with Safari fallback)
 */
 (() => {
   const qs  = (sel, root = document) => root.querySelector(sel);
@@ -44,14 +44,16 @@
     if (!nav) return;
     prevFocus = document.activeElement;
     nav.classList.add('open');
+    document.body.classList.add('nav-open');            // lock background scroll
     menuBtn?.setAttribute('aria-expanded', 'true');
-    qs(focusSel, nav)?.focus();
+    (qs(focusSel, nav) || nav).focus();
     document.addEventListener('keydown', trapTab, true);
     document.addEventListener('keydown', onEscClose, true);
   };
   const closeMenu = () => {
     if (!nav) return;
     nav.classList.remove('open');
+    document.body.classList.remove('nav-open');         // unlock background scroll
     menuBtn?.setAttribute('aria-expanded', 'false');
     document.removeEventListener('keydown', trapTab, true);
     document.removeEventListener('keydown', onEscClose, true);
@@ -131,7 +133,13 @@
     window.addEventListener('orientationchange', onResize);
   }
 
-  /* ========== Smooth scroll for same-page links ========== */
+  /* ========== Smooth scroll for same-page links (offset for fixed header) ========== */
+  const scrollWithOffset = (el) => {
+    const h = header ? header.getBoundingClientRect().height : 0;
+    const y = el.getBoundingClientRect().top + window.scrollY - h - 8;
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+  };
+
   qsa('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
       const id = a.getAttribute('href');
@@ -139,8 +147,10 @@
       const el = qs(id);
       if (!el) return;
       e.preventDefault();
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollWithOffset(el);
       history.replaceState(null, '', id);
+      // If user came from the drawer, close it
+      if (nav?.classList.contains('open')) closeMenu();
     });
   });
 
@@ -154,17 +164,19 @@
 
   if (sections.length && navLinks.size) {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const id = `#${entry.target.id}`;
-        navLinks.forEach(link => link.classList.remove('active'));
-        const active = navLinks.get(id);
-        if (active) active.classList.add('active');
-      });
-    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+      // pick the entry with the highest intersection ratio
+      const best = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!best) return;
+      const id = `#${best.target.id}`;
+      navLinks.forEach(link => link.classList.remove('active'));
+      const active = navLinks.get(id);
+      if (active) active.classList.add('active');
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
 
     sections.forEach(sec => io.observe(sec));
-    window.addEventListener('beforeunload', () => io.disconnect());
+    window.addEventListener('pagehide', () => io.disconnect());
   }
 
   /* ========== Services search / relevance sort (stable) ========== */
@@ -194,13 +206,24 @@
     });
     sorted.forEach(card => grid.appendChild(card));
   };
-  input?.addEventListener('input', (e) => reorder(e.target.value));
+  const debounce = (fn, delay = 150) => {
+    let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), delay); };
+  };
+  input?.addEventListener('input', debounce(e => reorder(e.target.value), 150));
+
+  // Card click navigates to data-url unless a link was clicked
+  grid?.addEventListener('click', (e) => {
+    const card = e.target.closest('.service-card');
+    if (!card || e.target.closest('a')) return;
+    const url = card.dataset.url;
+    if (url) window.location.href = url;
+  });
 
   /* ========== Footer year ========== */
   const yearEl = qs('#year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  /* ========== Motion preferences for video ========== */
+  /* ========== Motion preferences for video (w/ Safari fallback) ========== */
   const video = qs('.blackhole-video');
   const mq    = window.matchMedia('(prefers-reduced-motion: reduce)');
   const applyMotionPref = () => {
@@ -208,6 +231,7 @@
     if (mq.matches) { video.pause(); video.removeAttribute('autoplay'); }
     else { if (video.paused) video.play().catch(() => {}); }
   };
-  mq.addEventListener('change', applyMotionPref);
+  if (mq.addEventListener) mq.addEventListener('change', applyMotionPref);
+  else if (mq.addListener) mq.addListener(applyMotionPref); // Safari <14
   applyMotionPref();
 })();
