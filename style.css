@@ -97,7 +97,7 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
 .brand{ display:flex; align-items:center; gap:.50rem; white-space:nowrap; flex:0 0 auto; }
 .site-header .brand img{ height:70px; width:auto; filter: drop-shadow(0 1px 1px rgba(0,0,0,.05)); }
 .brand .brand-title{ margin:0; font-size:1.525rem; line-height:1; letter-spacing:.1px; }
-.brand .brand-title span{ color: white; }
+.brand .brand-title span{ color: #373434; }
 
 /* Center nav that can shrink */
 
@@ -252,6 +252,91 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
 /* Add ripple class to hero buttons in HTML if you want it */
 .hero-button.ripple{ --ripple-c: rgba(255,255,255,.25); }
 
+/* ===== Hero highlights: milky white glowing card ===== */
+.hero-highlights{
+  width:100%;
+  max-width:1100px;
+  margin:24px auto 0;
+  padding:0 16px;
+}
+.hl-title{
+  margin: 0 0 12px;
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: 800;
+  color: #ffffffd9;
+  text-wrap: balance;
+}
+
+/* Glassmorphic card */
+.highlight-card{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:0;
+  border-radius:16px;
+  background: rgba(255,255,255,0.28);              /* milky */
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.18),
+    0 0 80px rgba(255,255,255,0.25) inset;
+  overflow:hidden;
+}
+
+/* Items */
+.hl-item{
+  display:flex; gap:12px; align-items:flex-start;
+  padding:16px 18px;
+  color:#0b0f1a;
+  background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.32));
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  position: relative;
+}
+.hl-item i{
+  font-size: 22px;
+  line-height: 1;
+  margin-top: 2px;
+  color:#6a48ff; /* deep purple accent; adjust if needed */
+  text-shadow: 0 0 18px rgba(106,72,255,0.4);
+}
+.hl-item h4{
+  margin:0 0 4px;
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 800;
+  color:#0b0f1a;
+}
+.hl-item p{
+  margin:0;
+  font-size: clamp(13px, 1.8vw, 14px);
+  color:#1d2636;
+  opacity:.95;
+}
+
+/* Hover / pressed */
+.hl-item:hover{
+  background: linear-gradient(180deg, rgba(255,255,255,0.70), rgba(255,255,255,0.38));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+.hl-item:active{ transform: translateY(0); }
+
+/* Dividers: vertical on desktop */
+.hl-item + .hl-item{
+  box-shadow: -1px 0 0 0 rgba(255,255,255,0.55) inset, 
+              -2px 0 0 0 rgba(0,0,0,0.06) inset;   /* subtle split line */
+}
+
+/* Responsive: stack + horizontal dividers */
+@media (max-width: 960px){
+  .highlight-card{ grid-template-columns: 1fr 1fr; }
+  .hl-item + .hl-item{ box-shadow: none; }
+  .hl-item{ border-top: 1px solid rgba(255,255,255,0.55); }
+  .hl-item:nth-child(1){ border-top: 0; }
+}
+@media (max-width: 560px){
+  .highlight-card{ grid-template-columns: 1fr; }
+}
+
 /* =========================================================
    SERVICES GRID
    ========================================================= */
@@ -381,4 +466,5 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
   .nav-pill { gap: 6px; }
   .nav-pill a { padding: 7px 12px; margin: 0 4px; }
 }
+
 
