@@ -1,196 +1,213 @@
-/* =========================================================
-   ANDROID / GLASS ADD-ON (opt-in)
-   Enable with: <section class="info-section android-cards" id="services">
-   ========================================================= */
-.info-section.android-cards{
-  --card-surface: rgba(255,255,255,.66);
-  --card-border : rgba(255,255,255,.48);
-  --ring       : rgba(16,171,222,.35);  /* medical blue */
-  --ring-2     : rgba(168,85,247,.35);  /* soft purple */
-  --shadow-1   : 0 10px 28px rgba(2,6,23,.14);
-  --shadow-2   : 0 16px 40px rgba(2,6,23,.18);
-  --blur       : 14px;
-}
+/* Main JS for Noble Dental Nallagandla
+   - AOS init (if present)
+   - Sticky header elevation
+   - Mobile menu (slide-in) + focus trap + Esc/outside click
+   - Specialities dropdown (desktop hover / mobile tap)
+   - Smooth scroll for in-page links
+   - Active link highlight on scroll
+   - Services search / relevance sort (stable)
+   - Footer year
+   - Motion preferences for video
+*/
+(() => {
+  const qs  = (sel, root = document) => root.querySelector(sel);
+  const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-/* Title – subtle Android lift */
-.info-section.android-cards .section-title{
-  display:inline-block;
-  padding:.25rem .75rem;
-  border-radius:12px;
-  background:linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.35));
-  border:1px solid rgba(255,255,255,.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-1);
-}
+  /* ========== AOS init (safe) ========== */
+  window.addEventListener('load', () => {
+    if (window.AOS) AOS.init({ once: true, duration: 700, easing: 'ease-out' });
+  });
 
-/* Search – pill, glassy, with focus ring */
-.info-section.android-cards #complaintInput{
-  border:1px solid var(--card-border);
-  background:linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.38));
-  backdrop-filter: blur(10px) saturate(1.1);
-  -webkit-backdrop-filter: blur(10px) saturate(1.1);
-  border-radius: 999px;
-  padding: 14px 18px;
-  box-shadow: var(--shadow-1), inset 0 1px 0 rgba(255,255,255,.5);
-  transition: box-shadow .25s, border-color .25s, transform .25s;
-}
-.info-section.android-cards #complaintInput:focus{
-  outline: none;
-  transform: translateY(-1px);
-  border-color: var(--ring);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--ring) 35%, transparent), var(--shadow-2);
-}
+  /* ========== Sticky header elevation ========== */
+  const header = qs('.site-header');
+  const onScroll = () => header?.classList.toggle('elevated', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-/* Grid – add spacing + playful stagger on load */
-.info-section.android-cards .services-grid{
-  gap: 2rem;
-  perspective: 1200px; /* for subtle 3D lift */
-}
+  /* ========== Mobile menu (drawer) ========== */
+  const nav      = qs('.main-nav');
+  const menuBtn  = qs('.menu-toggle');
+  const focusSel = 'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  let prevFocus = null;
 
-/* Card – glass, gradient ring, 3D hover */
-.info-section.android-cards .service-card{
-  position: relative;
-  overflow: hidden;
-  background: var(--card-surface);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
-  backdrop-filter: blur(var(--blur)) saturate(1.1);
-  -webkit-backdrop-filter: blur(var(--blur)) saturate(1.1);
-  box-shadow: var(--shadow-1), inset 0 1px 0 rgba(255,255,255,.45);
-  transform: translateY(0) rotateX(0) rotateY(0);
-  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, background .35s;
-}
+  const trapTab = (e) => {
+    if (!nav?.classList.contains('open') || e.key !== 'Tab') return;
+    const nodes = qsa(focusSel, nav).filter(el => !el.hasAttribute('disabled'));
+    if (!nodes.length) return;
+    const first = nodes[0], last = nodes[nodes.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  };
+  const onEscClose = (e) => { if (e.key === 'Escape') closeMenu(); };
 
-/* Animated gradient ring (shows on hover) */
-.info-section.android-cards .service-card::before{
-  content:"";
-  position:absolute; inset:-1px;
-  border-radius: inherit;
-  padding:1px;
-  background: conic-gradient(from 180deg at 50% 50%,
-              transparent 0%,
-              color-mix(in srgb, var(--ring) 80%, transparent) 25%,
-              color-mix(in srgb, var(--ring-2) 80%, transparent) 55%,
-              transparent 85%);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-  opacity: 0;
-  transform: scale(1.02);
-  transition: opacity .35s, transform .35s;
-}
+  const openMenu = () => {
+    if (!nav) return;
+    prevFocus = document.activeElement;
+    nav.classList.add('open');
+    menuBtn?.setAttribute('aria-expanded', 'true');
+    qs(focusSel, nav)?.focus();
+    document.addEventListener('keydown', trapTab, true);
+    document.addEventListener('keydown', onEscClose, true);
+  };
+  const closeMenu = () => {
+    if (!nav) return;
+    nav.classList.remove('open');
+    menuBtn?.setAttribute('aria-expanded', 'false');
+    document.removeEventListener('keydown', trapTab, true);
+    document.removeEventListener('keydown', onEscClose, true);
+    if (prevFocus && prevFocus.focus) prevFocus.focus();
+  };
 
-/* Soft corner glow */
-.info-section.android-cards .service-card::after{
-  content:"";
-  position:absolute; width:120px; height:120px;
-  right:-40px; top:-40px;
-  background: radial-gradient(120px 120px at 50% 50%,
-              color-mix(in srgb, var(--ring) 50%, transparent) 0%,
-              transparent 70%);
-  filter: blur(10px);
-  opacity:.25;
-  pointer-events:none;
-  transition: opacity .35s, transform .35s;
-}
+  if (menuBtn && nav) {
+    menuBtn.addEventListener('click', () => (nav.classList.contains('open') ? closeMenu() : openMenu()));
 
-.info-section.android-cards .service-card:hover{
-  transform: translateY(-8px) scale(1.01) rotateX(.7deg) rotateY(.7deg);
-  box-shadow: var(--shadow-2);
-}
-.info-section.android-cards .service-card:hover::before{ opacity:1; transform:none; }
-.info-section.android-cards .service-card:hover::after{ opacity:.45; transform: translate(-6px, -6px); }
+    // Close on link click (drawer)
+    nav.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (link && nav.classList.contains('open')) closeMenu();
+    });
 
-/* Image – gentle zoom + sheen */
-.info-section.android-cards .service-card img{
-  border-radius: 12px;
-  transform: scale(1);
-  transition: transform .45s cubic-bezier(.2,.8,.2,1), filter .45s;
-}
-.info-section.android-cards .service-card:hover img{ transform: scale(1.03); }
-
-/* Sheen sweep on hover */
-.info-section.android-cards .service-card .text-section{
-  position: relative;
-  z-index: 1;
-}
-.info-section.android-cards .service-card .text-section::after{
-  content:"";
-  position:absolute; inset:-12px -16px auto -16px; height: 70px;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,.55), transparent);
-  transform: translateX(-120%) rotate(3deg);
-  opacity: 0;
-  pointer-events:none;
-  transition: transform .8s ease, opacity .4s ease;
-}
-.info-section.android-cards .service-card:hover .text-section::after{
-  transform: translateX(120%) rotate(3deg);
-  opacity: .7;
-}
-
-/* Headings/body inside card */
-.info-section.android-cards .text-section h3{
-  color:#0b3a6f;
-  letter-spacing:.2px;
-}
-.info-section.android-cards .text-section p{
-  color:#465566;
-  line-height:1.55;
-}
-
-/* Button – Android ripple-ish + focus ring */
-.info-section.android-cards .read-more-button{
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  padding: 8px 12px;
-  border:1px solid color-mix(in srgb, var(--ring) 35%, transparent);
-  background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.75));
-  box-shadow: 0 6px 18px rgba(2,6,23,.10);
-  transition: transform .25s, box-shadow .25s, background .25s;
-}
-.info-section.android-cards .read-more-button:hover{
-  transform: translateY(-1px);
-  background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,.85));
-  box-shadow: 0 12px 28px rgba(2,6,23,.18);
-}
-.info-section.android-cards .read-more-button:active{ transform: translateY(0); }
-.info-section.android-cards .read-more-button:focus-visible{
-  outline: none;
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--ring) 35%, transparent);
-}
-
-/* Faux ripple */
-.info-section.android-cards .read-more-button::after{
-  content:"";
-  position:absolute; inset:0;
-  background: radial-gradient(120px 120px at var(--x,50%) var(--y,50%), rgba(16,171,222,.18), transparent 60%);
-  opacity: 0; transition: opacity .25s;
-}
-.info-section.android-cards .read-more-button:hover::after{ opacity: 1; }
-
-/* Staggered entrance */
-@keyframes cardPop{
-  from{ opacity:0; transform: translateY(16px) scale(.98); }
-  to  { opacity:1; transform: translateY(0)   scale(1); }
-}
-.info-section.android-cards .service-card{
-  animation: cardPop .45s both;
-}
-.info-section.android-cards .service-card:nth-child(1){ animation-delay: .02s; }
-.info-section.android-cards .service-card:nth-child(2){ animation-delay: .06s; }
-.info-section.android-cards .service-card:nth-child(3){ animation-delay: .10s; }
-.info-section.android-cards .service-card:nth-child(4){ animation-delay: .14s; }
-.info-section.android-cards .service-card:nth-child(5){ animation-delay: .18s; }
-.info-section.android-cards .service-card:nth-child(6){ animation-delay: .22s; }
-
-/* Motion-safe fallback */
-@media (prefers-reduced-motion: reduce){
-  .info-section.android-cards .service-card,
-  .info-section.android-cards .read-more-button,
-  .info-section.android-cards #complaintInput{
-    transition: none!important;
-    animation: none!important;
-    transform: none!important;
+    // Click outside to close
+    document.addEventListener('click', (e) => {
+      if (!nav.classList.contains('open')) return;
+      const inside = e.target.closest('.main-nav') || e.target.closest('.menu-toggle');
+      if (!inside) closeMenu();
+    });
   }
-}
+
+  /* ========== Specialities dropdown ========== */
+  const spItem   = qs('.has-submenu');
+  const spToggle = qs('.has-submenu > a'); // has aria-expanded + aria-controls
+
+  // Detect touch/pen (Android/iOS tablets/phones)
+  const isTouchMode = () =>
+    window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+  const toggleSubmenu = (open) => {
+    if (!spItem || !spToggle) return;
+    const willOpen = (typeof open === 'boolean') ? open : !spItem.classList.contains('open-submenu');
+    spItem.classList.toggle('open-submenu', willOpen);
+    spToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  };
+
+  if (spItem && spToggle) {
+    // Tap to open on mobile / when drawer is open
+    spToggle.addEventListener('click', (e) => {
+      const drawerOpen = nav?.classList.contains('open');
+      if (isTouchMode() || drawerOpen) {
+        e.preventDefault(); // prevent navigating parent link
+        toggleSubmenu();
+      }
+    });
+
+    // Keyboard support (Space/Enter) in mobile context
+    spToggle.addEventListener('keydown', (e) => {
+      const drawerOpen = nav?.classList.contains('open');
+      if (!(isTouchMode() || drawerOpen)) return;
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        toggleSubmenu();
+      }
+    });
+
+    // Close submenu on outside tap in mobile context
+    document.addEventListener('click', (e) => {
+      const drawerOpen = nav?.classList.contains('open');
+      if (!(isTouchMode() || drawerOpen)) return;
+      const inside = spItem.contains(e.target);
+      if (!inside) toggleSubmenu(false);
+    });
+
+    // Close on Esc
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleSubmenu(false); });
+
+    // Reset on resize/orientation change so desktop hover can take over
+    let resizeTimer;
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => toggleSubmenu(false), 120);
+    };
+    window.addEventListener('resize', onResize);
+    window.addEventListener('orientationchange', onResize);
+  }
+
+  /* ========== Smooth scroll for same-page links ========== */
+  qsa('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (!id || id === '#' || id.startsWith('#!')) return;
+      const el = qs(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', id);
+    });
+  });
+
+  /* ========== Active link highlight on scroll ========== */
+  const sections = qsa('section[id]');
+  const navLinks = new Map();
+  qsa('.main-nav a[href^="#"]').forEach(a => {
+    const id = a.getAttribute('href');
+    if (id) navLinks.set(id, a);
+  });
+
+  if (sections.length && navLinks.size) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id = `#${entry.target.id}`;
+        navLinks.forEach(link => link.classList.remove('active'));
+        const active = navLinks.get(id);
+        if (active) active.classList.add('active');
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+    sections.forEach(sec => io.observe(sec));
+    window.addEventListener('beforeunload', () => io.disconnect());
+  }
+
+  /* ========== Services search / relevance sort (stable) ========== */
+  const grid  = qs('#servicesGrid');
+  const input = qs('#complaintInput');
+  const cards = grid ? qsa('.service-card', grid) : [];
+  cards.forEach((c, i) => c.dataset.initialIndex = String(i)); // stable baseline
+
+  const normalize = (s) => (s || '').toLowerCase();
+  const relevance = (card, q) => {
+    if (!q) return 0;
+    const blob = `${card.getAttribute('data-keywords') || ''} ${card.textContent}`;
+    let score = 0;
+    q.split(/[\s,]+/).filter(Boolean).forEach(t => {
+      if (normalize(blob).includes(normalize(t))) score++;
+    });
+    return score;
+  };
+  const reorder = (query) => {
+    if (!grid) return;
+    const q = normalize(query);
+    const sorted = cards.slice().sort((a, b) => {
+      const sa = relevance(a, q);
+      const sb = relevance(b, q);
+      if (sa === sb) return Number(a.dataset.initialIndex) - Number(b.dataset.initialIndex);
+      return sb - sa; // higher first
+    });
+    sorted.forEach(card => grid.appendChild(card));
+  };
+  input?.addEventListener('input', (e) => reorder(e.target.value));
+
+  /* ========== Footer year ========== */
+  const yearEl = qs('#year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* ========== Motion preferences for video ========== */
+  const video = qs('.blackhole-video');
+  const mq    = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const applyMotionPref = () => {
+    if (!video) return;
+    if (mq.matches) { video.pause(); video.removeAttribute('autoplay'); }
+    else { if (video.paused) video.play().catch(() => {}); }
+  };
+  mq.addEventListener('change', applyMotionPref);
+  applyMotionPref();
+})();
