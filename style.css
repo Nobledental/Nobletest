@@ -264,108 +264,107 @@ body.nav-open{ overflow:hidden; }
 .hero-button i{ font-size:1.2em; }
 .hero-button.ripple{ --ripple-c: rgba(255,255,255,.25); }
 
-/* =========================================================
-   SERVICES — upgraded look (keeps your markup)
-   ========================================================= */
-.services-grid{ gap:22px; }
+/* ===== Treatments 2025 — layout + cards (ADVANCED) ===== */
+.services-2025 .services-head{ text-align:center; }
+.services-2025 .eyebrow{ font-weight:800; color:#0ea5a3; letter-spacing:.08em; text-transform:uppercase; }
+.services-2025 .section-sub{ margin:.35rem auto 1.4rem; color:#475569; max-width:720px; }
 
-.service-card{
-  /* transform vars + base style */
-  --rx: 0deg; --ry: 0deg; --tx: 0px; --ty: 0px; --ay: 0px; --scale: 1;
-  position:relative; overflow:hidden; border-radius:16px; isolation:isolate;
-  background:#ffffff; border:1px solid #e6e9f2; box-shadow: var(--elev-1);
-  transform:
-    perspective(1000px)
-    rotateX(var(--rx)) rotateY(var(--ry))
-    translateX(var(--tx)) translateY(calc(var(--ty) + var(--ay)))
-    translateZ(0) scale(var(--scale));
-  transition:
-    transform .35s var(--curve),
-    box-shadow .25s var(--curve),
-    border-color .25s var(--curve),
-    background-color .25s var(--curve),
-    opacity .28s var(--curve);
+.services-controls{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:.5rem 0 1rem; }
+.services-controls .field{
+  display:flex; align-items:center; gap:.5rem; background:#fff; border:1px solid #cfd6e3;
+  padding:.6rem .8rem; border-radius:12px; box-shadow: var(--elev-1);
+}
+.services-controls .field i{ color:#64748b; font-size:1.1rem; }
+#svcSearch{ border:0; outline:0; min-width:260px; font:inherit; background:transparent; }
+#svcCategory{ border:0; outline:0; font-weight:700; background:transparent; }
+.chip-row{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+.chip{
+  border:1px solid #dbe1ea; background:#fff; color:#0f172a; border-radius:999px; padding:.4rem .8rem; cursor:pointer;
+  box-shadow: var(--elev-1); transition:transform .18s var(--curve), box-shadow .18s var(--curve), background .18s var(--curve);
+}
+.chip:hover{ transform:translateY(-2px); box-shadow: var(--elev-2); background:#f6fbff; }
+
+.results-status{ text-align:center; color:#475569; margin:.5rem 0 1rem; }
+
+/* grid */
+.treatments-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:22px;
+}
+
+/* ===== CARD (Material You flair) ===== */
+.t-card{
+  position:relative; overflow:hidden; isolation:isolate;
+  border-radius:18px; background:#fff; border:1px solid #e6e9f2; box-shadow: var(--elev-1);
+  /* 3D & magnetic pipeline via CSS vars */
+  --rx:0deg; --ry:0deg; --tx:0px; --ty:0px; --scale:1; --px:50%; --py:50%;
+  transform: perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry)) translate(var(--tx),var(--ty)) scale(var(--scale));
+  transition: transform .35s var(--curve), box-shadow .28s var(--curve), border-color .28s var(--curve), background-color .28s var(--curve), opacity .28s var(--curve);
   will-change: transform;
+  /* Android state layer / ripple */
+  --ripple-c: rgba(0,0,0,.08); --ripple-s:0;
+  background-image: radial-gradient(circle at var(--ripple-x,50%) var(--ripple-y,50%), var(--ripple-c) 10%, transparent 10.01%);
+  background-size: var(--ripple-s) var(--ripple-s); background-repeat:no-repeat;
 }
-.service-card:hover{ box-shadow: var(--elev-2); border-color:#dbe3f8; }
 
-/* animated accent edge (subtle) */
-.service-card::before{
-  content:""; position:absolute; inset:-1px; border-radius:18px; pointer-events:none;
-  background: conic-gradient(from 220deg, #9ae6b4, #60a5fa, #22d3ee, #9ae6b4);
-  filter: blur(12px); opacity:0; transition: opacity .35s var(--curve);
-  z-index:0;
+/* conic glow border (animated on hover) */
+.t-card::before{
+  content:""; position:absolute; inset:-1px; border-radius:20px; z-index:0; pointer-events:none;
+  background: conic-gradient(from 220deg, #8ee3e1, #7fb4ff, #a8e6a1, #8ee3e1);
+  filter: blur(10px); opacity:.0; transform: scale(1.02);
+  transition: opacity .4s var(--curve), filter .4s var(--curve), transform .4s var(--curve);
 }
-.service-card:hover::before{ opacity:.25; }
+.t-card:hover::before{ opacity:.35; filter: blur(12px); transform: scale(1.03); }
 
-/* Android-like state layer + sheen */
-.service-card::after{
+/* sheen sweep (triggered on hover) */
+@keyframes cardSheen {
+  0% { transform: translateX(-120%) skewX(-18deg); opacity:0; }
+  30%{ opacity:.45; }
+  100%{ transform: translateX(140%) skewX(-18deg); opacity:0; }
+}
+.t-card::after{
   content:""; position:absolute; inset:0; pointer-events:none; z-index:1; opacity:0;
-  background:
-    radial-gradient(600px 200px at var(--px,50%) var(--py,50%), rgba(2,132,199,.09), transparent 40%),
-    linear-gradient(110deg, transparent 45%, rgba(255,255,255,.35) 50%, transparent 55%);
-  mix-blend-mode: overlay;
-  transition: opacity .35s var(--curve);
+  background: linear-gradient(110deg, transparent 40%, rgba(255,255,255,.55) 50%, transparent 60%);
 }
-.service-card:hover::after{ opacity:1; }
+.t-card.sheen::after{ animation: cardSheen 1.05s ease; }
 
-/* inner content sits above effects */
-.service-card > *{ position:relative; z-index:2; }
+/* hover/elevate */
+.t-card:hover{ --scale:1.02; box-shadow: 0 14px 38px rgba(2,6,23,.16), 0 6px 12px rgba(2,6,23,.10); border-color:#dbe3f8; }
+.t-card:active{ --ripple-s:220px; }
 
-/* Image polish */
-.service-card img{
-  width:100%; border-radius:12px; margin-top:.6rem; backface-visibility:hidden;
-  display:block; aspect-ratio:16/10; object-fit:cover;
-  transform: translateZ(20px) scale(1); transition: transform .5s var(--curve), filter .3s var(--curve);
+/* media */
+.t-media{ position:relative; }
+.t-media img{
+  width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:14px; margin:.85rem;
+  transform: translateZ(24px) scale(1); transition: transform .55s var(--curve), filter .35s var(--curve);
   will-change: transform;
 }
-.service-card:hover img{ transform: translateZ(20px) scale(1.03); }
+.t-card:hover .t-media img{ transform: translateZ(24px) scale(1.035); }
 
-/* Text */
-.service-card .text-section{ display:grid; gap:.35rem; }
-.service-card h3{
-  margin:.2rem 0 .25rem; color:#0f1d45; font-weight:800; letter-spacing:.15px;
-  text-wrap:balance; transform: translateZ(26px);
-}
-.service-card p{
-  color:#4b5563; margin:0; transform: translateZ(24px);
+/* category badge */
+.t-badge{
+  position:absolute; top:16px; left:16px; z-index:2;
+  background:#0ea5a31a; color:#0a3a39; border:1px solid #92ebe8;
+  font-weight:800; padding:.32rem .62rem; border-radius:999px; backdrop-filter: blur(6px);
 }
 
-/* Buttons */
-.read-more-button{
-  display:inline-flex; align-items:center; gap:8px; margin-top:.75rem;
-  padding:8px 12px; border-radius:10px; font-weight:800;
-  color:#0d5fa6; background:#f3f7ff; border:1px solid #e3ebff;
+/* body */
+.t-body{ padding:0 1rem 1rem; display:grid; gap:.45rem; position:relative; z-index:2; }
+.t-title{ font-weight:800; color:#0f1d45; margin:.2rem 0 0; text-wrap:balance; }
+.t-desc{ color:#4b5563; margin:0; }
+.t-meta{ color:#64748b; font-size:.92rem; display:flex; gap:.4rem; align-items:center; }
+
+/* actions */
+.t-actions{ display:flex; gap:10px; margin-top:.6rem; flex-wrap:wrap; }
+.t-btn{
+  display:inline-flex; align-items:center; gap:8px; padding:.6rem .9rem; border-radius:12px; font-weight:800;
+  border:1px solid #e3ebff; background:#f3f7ff; color:#0d5fa6;
   transition: transform .18s var(--curve), box-shadow .18s var(--curve), background .18s var(--curve);
 }
-.read-more-button::after{
-  content:"↗"; font-size:.95em; opacity:.9; transform: translateY(1px);
-}
-.read-more-button:hover{ transform: translateY(-2px); box-shadow: var(--elev-2); background:#eaf2ff; }
-.read-more-button:active{ transform: translateY(0); }
+.t-btn:hover{ transform:translateY(-2px); box-shadow: var(--elev-2); background:#eaf2ff; }
+.t-btn.secondary{ background:#fff; border-color:#dbe1ea; color:#0f172a; }
 
-/* Ripple on cards (origin set via JS) */
-.service-card{ --ripple-s:0; }
-.service-card:active{ --ripple-s:220px; }
-
-/* Keyboard focus */
-.service-card:focus-within{ outline:2px solid #93c5fd; outline-offset:2px; }
-
-/* ===== Toolbar (category dropdown auto-inserted by JS) ===== */
-.svc-toolbar{
-  margin: -1rem 0 1rem;
-  display:flex; gap:12px; align-items:center; flex-wrap:wrap;
-}
-.svc-toolbar .select{
-  display:flex; align-items:center; gap:.5rem; background:#fff; border:1px solid #cfd6e3;
-  padding:.45rem .7rem; border-radius:12px; box-shadow: var(--elev-1);
-}
-.svc-toolbar select{ border:0; outline:0; background:transparent; font-weight:700; color:#0c1b30; }
-
-/* ===== Pagination (6 per page) ===== */
-#svcPager{
-  display:flex; align-items:center; justify-content:center; gap:10px; margin-top:18px;
-}
+/* pagination */
+.treatments-pagination{ display:flex; align-items:center; justify-content:center; gap:10px; margin-top:18px; }
 .pg-btn{
   width:42px; height:42px; display:grid; place-items:center; border-radius:12px;
   border:1px solid #dbe1ea; background:#fff; color:#0f172a; box-shadow: var(--elev-1);
@@ -374,22 +373,17 @@ body.nav-open{ overflow:hidden; }
 .pg-btn:hover:not([disabled]){ transform:translateY(-2px); box-shadow: var(--elev-2); background:#f6fbff; }
 .pg-btn:disabled{ opacity:.5; cursor:not-allowed; }
 .pg-dots{ display:flex; gap:6px; }
-.pg-dot{
-  width:10px; height:10px; border-radius:50%; background:#d1d5db; border:2px solid transparent;
-}
+.pg-dot{ width:10px; height:10px; border-radius:50%; background:#d1d5db; border:2px solid transparent; }
 .pg-dot[aria-current="page"]{ background:#0ea5a3; border-color:#92ebe8; }
 
-/* ===== WOW extras: reveal + stagger + magnetic ===== */
-.service-card.reveal{ opacity:0; --ay: 14px; --scale: .98; }
-.service-card.in-view{
-  opacity:1; --ay: 0px; --scale: 1;
-  transition-delay: var(--delay, 0ms);
-}
-.service-card.in-view::before{ opacity:.38; filter: blur(10px); }
-.service-card.in-view:hover{
-  box-shadow:
-    0 10px 22px rgba(2,6,23,.15),
-    0 3px 8px rgba(2,6,23,.08);
+/* Reveal on scroll */
+.t-card.reveal{ opacity:0; transform: translateY(12px) scale(.985); }
+.t-card.in-view{ opacity:1; transform: perspective(1100px) rotateX(0) rotateY(0) translate(0,0) scale(1); transition-delay: var(--delay,0ms); }
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce){
+  .t-card, .t-card *{ transition:none !important; transform:none !important; }
+  .t-card::before, .t-card::after{ display:none !important; }
 }
 
 /* =========================================================
@@ -423,3 +417,4 @@ body.nav-open{ overflow:hidden; }
   .nav-pill { gap: 6px; }
   .nav-pill a { padding: 7px 12px; margin: 0 4px; }
 }
+
