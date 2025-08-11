@@ -15,7 +15,7 @@
 /* Tokens */
 :root{
   /* Brand */
-  --teal: #0cbdf7;
+  --teal: #10abde;
   --blue: #2563eb;
   --ink : #0a0c12;
   --slate: #1f2937;
@@ -85,7 +85,7 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
   position:fixed; inset:0 0 auto 0; height:70px; padding:0 24px;
   display:flex; align-items:center; justify-content:space-between;
   z-index:999; backdrop-filter:blur(5px);
-  background:linear-gradient(135deg,#ffffff,#ffffff,#ffffff);
+  background:linear-gradient(135deg,#ffffff73,#ffffff8c,#ffffff87);
   background-size:300% 300%;
   box-shadow:0 0 15px rgb(238 238 238 / 72%);
   animation:headerBg 15s linear infinite;
@@ -97,14 +97,14 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
 .brand{ display:flex; align-items:center; gap:.50rem; white-space:nowrap; flex:0 0 auto; }
 .site-header .brand img{ height:70px; width:auto; filter: drop-shadow(0 1px 1px rgba(0,0,0,.05)); }
 .brand .brand-title{ margin:0; font-size:1.525rem; line-height:1; letter-spacing:.1px; }
-.brand .brand-title span{ color:var(--teal); }
+.brand .brand-title span{ color: white; }
 
 /* Center nav that can shrink */
 
 .nav-pill{
   display:flex; align-items:center; justify-content:center; gap:4px;
   list-style:none; margin:0; padding:3.5px 6px;
-  width:auto; border-radius:50px; background:#68686830; backdrop-filter:blur(10px);
+  width:auto; border-radius:50px; background:#ffffff; backdrop-filter:blur(10px);
   box-shadow: var(--elev-1);
 }
 .nav-pill a{
@@ -123,7 +123,7 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
 .socials{ display:flex; gap:12px; }
 .socials a{
   display:flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%;
-  font-size:18px; border:2px solid #781802; color:#1d1f25; background:#fff; box-shadow: var(--elev-1);
+  font-size:18px; border:2px solid #dadada; color:#1d1f25; background:#fff; box-shadow: var(--elev-1);
   transition: transform var(--dur-fast) var(--curve), box-shadow var(--dur-fast) var(--curve), background var(--dur-fast) var(--curve);
 }
 .socials a:hover{ transform:translateY(-2px); background:#10121a; color:#f7efef; box-shadow: var(--elev-2); border-color:#650f50; }
@@ -206,7 +206,7 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
 /* ===== Hero (as you wrote) ===== */
 .hero-background{
   width:100%; min-height:90vh; position:relative; z-index:1; color:#fff; text-align:center;
-  background:linear-gradient(45deg,#301e74,#492977,#2a508f,#8a2c6c);
+  background:linear-gradient(45deg,#a695e4,#492977,#2a508f,#8a2c6c);
   background-size:600% 600%; animation:gradientShift 7s ease infinite;
   display:flex; align-items:center; justify-content:center; flex-direction:column; padding:110px 16px 56px;
 }
@@ -214,7 +214,7 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
   0%{background-position:0% 50%} 25%{background-position:50% 50%} 50%{background-position:100% 50%} 75%{background-position:50% 50%} 100%{background-position:0% 50%}
 }
 .hero-background .hero-info-title{
-  color:#cfe7ff; padding:8px 12px; border-radius:50px; border:1px solid #72a1de94; background:rgba(70,45,191,0.05);
+  color:#7db0e2; padding:8px 12px; border-radius:50px; border:1px solid #72a1de94; background:rgba(70,45,191,0.05);
   box-shadow:0 0 5px #72a1de84; display:inline-flex; align-items:center; gap:.5rem; font-weight:700;
 }
 .hero-background h1,.hero-heading{
