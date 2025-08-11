@@ -156,7 +156,7 @@
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        const id = #${entry.target.id};
+        const id = `#${entry.target.id}`;
         navLinks.forEach(link => link.classList.remove('active'));
         const active = navLinks.get(id);
         if (active) active.classList.add('active');
@@ -176,7 +176,7 @@
   const normalize = (s) => (s || '').toLowerCase();
   const relevance = (card, q) => {
     if (!q) return 0;
-    const blob = ${card.getAttribute('data-keywords') || ''} ${card.textContent};
+    const blob = `${card.getAttribute('data-keywords') || ''} ${card.textContent}`;
     let score = 0;
     q.split(/[\s,]+/).filter(Boolean).forEach(t => {
       if (normalize(blob).includes(normalize(t))) score++;
@@ -196,8 +196,6 @@
   };
   input?.addEventListener('input', (e) => reorder(e.target.value));
 
-
-   
   /* ========== Footer year ========== */
   const yearEl = qs('#year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
