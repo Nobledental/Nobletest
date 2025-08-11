@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Noble Dental Nallagandla | Top Dental Clinic in Hyderabad</title>
 
+  <!-- Favicon & Canonical -->
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link rel="canonical" href="https://nobledentalnallagandla.in/" />
+
+  <!-- SEO -->
   <meta name="description" content="Noble Dental Nallagandla offers expert dental services including implants, whitening, root canal, and emergency care in Hyderabad." />
   <meta name="keywords" content="Dental Clinic Hyderabad, Best Dentist Nallagandla, Teeth Whitening, Root Canal, Dental Implants, Emergency Dental Care" />
   <meta name="author" content="Noble Dental Nallagandla" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0ea5a3" />
-  <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
+  <meta name="google-site-verification" content="REPLACE_WITH_YOUR_VERIFICATION_CODE" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Noble Dental Nallagandla - Best Dental Clinic in Hyderabad" />
@@ -28,14 +30,23 @@
   <meta name="twitter:description" content="Expert dental care including dental implants, root canals, and teeth cleaning." />
   <meta name="twitter:image" content="https://nobledentalnallagandla.in/images/logo.png" />
 
-  <!-- CSS & Icons -->
-  <link rel="stylesheet" href="/style.css" />
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <!-- AOS CSS -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-  <!-- Preload hero video -->
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Preload hero video (keep only if it's above the fold and lightweight) -->
   <link rel="preload" as="video" href="/videos/blackhole.mp4" type="video/mp4" />
+
+  <!-- Sitemap link should be in head -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
   <!-- JSON-LD: Dentist -->
   <script type="application/ld+json">
@@ -71,14 +82,14 @@
       }
     ],
     "sameAs": [
-      "https://www.facebook.com/",
-      "https://www.instagram.com/",
-      "https://www.linkedin.com/"
+      "https://www.facebook.com/YOUR_PAGE",
+      "https://www.instagram.com/YOUR_HANDLE",
+      "https://www.linkedin.com/company/YOUR_PAGE"
     ]
   }
   </script>
 
-  <!-- Optional: Site SearchAction (helps AI/SERP) -->
+  <!-- Optional: Site SearchAction -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -94,12 +105,12 @@
   </script>
 
   <!-- Google Analytics (replace ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} 
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
+    gtag('config', 'G-XXXXXXXXXX');
   </script>
 </head>
 <body>
@@ -118,24 +129,25 @@
         <li><a href="/">Home</a></li>
 
         <!-- Specialities with SEO-friendly sublinks -->
-<li class="has-submenu">
-  <a href="/" aria-haspopup="true" aria-expanded="false" aria-controls="sp-submenu">
+        <li class="has-submenu">
+          <!-- FIX: point to your specialities landing page -->
+          <a href="/specialities/" aria-haspopup="true" aria-expanded="false" aria-controls="sp-submenu">
             Specialities <span class="caret" aria-hidden="true"></span>
           </a>
-  <ul class="submenu" id="sp-submenu">
-            <li><a href="specialities/braces.html">Braces &amp; Orthodontics</a></li>
-            <li><a href="specialities/invisalign.html">Invisalign Clear Aligners</a></li>
-            <li><a href="specialities/extraction.html">Tooth Extraction</a></li>
-            <li><a href="specialities/root-canal.html">Root Canal Treatment</a></li>
-            <li><a href="specialities/fillings.html">Tooth Fillings</a></li>
-            <li><a href="specialities/crowns-bridges.html">Crowns &amp; Bridges</a></li>
-            <li><a href="specialities/implants.html">Dental Implants</a></li>
-            <li><a href="specialities/dentures.html">Dentures</a></li>
-            <li><a href="specialities/scaling-whitening.html">Scaling &amp; Teeth Whitening</a></li>
-            <li><a href="specialities/smile-design.html">Smile Designing</a></li>
-            <li><a href="specialities/gum-surgeries.html">Gum Surgeries</a></li>
-            <li><a href="specialities/kids-dentistry.html">Kids Dentistry</a></li>
-            <li><a href="specialities/pregnancy-dental-care.html">Pregnancy Dental Care</a></li>
+          <ul class="submenu" id="sp-submenu">
+            <li><a href="/specialities/braces.html">Braces &amp; Orthodontics</a></li>
+            <li><a href="/specialities/invisalign.html">Invisalign Clear Aligners</a></li>
+            <li><a href="/specialities/extraction.html">Tooth Extraction</a></li>
+            <li><a href="/specialities/root-canal.html">Root Canal Treatment</a></li>
+            <li><a href="/specialities/fillings.html">Tooth Fillings</a></li>
+            <li><a href="/specialities/crowns-bridges.html">Crowns &amp; Bridges</a></li>
+            <li><a href="/specialities/implants.html">Dental Implants</a></li>
+            <li><a href="/specialities/dentures.html">Dentures</a></li>
+            <li><a href="/specialities/scaling-whitening.html">Scaling &amp; Teeth Whitening</a></li>
+            <li><a href="/specialities/smile-design.html">Smile Designing</a></li>
+            <li><a href="/specialities/gum-surgeries.html">Gum Surgeries</a></li>
+            <li><a href="/specialities/kids-dentistry.html">Kids Dentistry</a></li>
+            <li><a href="/specialities/pregnancy-dental-care.html">Pregnancy Dental Care</a></li>
           </ul>
         </li>
 
@@ -150,12 +162,13 @@
     <!-- Right cluster -->
     <div class="header-right">
       <div class="socials">
-        <a href="#" aria-label="YouTube"><i class='bx bxl-youtube'></i></a>
-        <a href="#" aria-label="GitHub"><i class='bx bxl-github'></i></a>
-        <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
+        <!-- Replace # with real profiles -->
+        <a href="#" aria-label="YouTube"><i class='bx bxl-youtube' aria-hidden="true"></i></a>
+        <a href="#" aria-label="GitHub"><i class='bx bxl-github' aria-hidden="true"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin-square' aria-hidden="true"></i></a>
       </div>
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
-        <i class='bx bx-menu'></i>
+        <i class='bx bx-menu' aria-hidden="true"></i>
       </button>
     </div>
   </header>
@@ -163,10 +176,16 @@
   <!-- ===== Hero ===== -->
   <section class="hero-background" id="top">
     <div class="blackhole-box" aria-label="Clinic highlight video">
-      <video class="blackhole-video" autoplay muted loop playsinline src="/videos/blackhole.mp4" aria-label="Dental care hero video"></video>
+      <!-- Add a poster image to improve perceived load -->
+      <video class="blackhole-video" autoplay muted loop playsinline
+             src="/videos/blackhole.mp4"
+             poster="/images/hero-poster.jpg"
+             aria-label="Dental care hero video">
+      </video>
     </div>
 
-    <div class="hero-info-title"><i class='bx bxl-sketch'></i> HealthFlo Hospitals &amp; Clinic</div>
+    <!-- FIX: brand consistency -->
+    <div class="hero-info-title"><i class='bx bxl-sketch' aria-hidden="true"></i> Noble Dental Care</div>
 
     <!-- Single H1 for SEO -->
     <h1 class="hero-heading" data-aos="fade-right" data-aos-duration="1400">
@@ -176,10 +195,10 @@
     <p class="hero-sub">Meet our team of experts with advanced treatment standards.</p>
 
     <div class="hero-buttons">
-      <a href="https://wa.me/918610425342" target="_blank" rel="noopener" class="hero-button whatsapp"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
-      <a href="tel:+918610425342" class="hero-button call"><i class='bx bxs-phone'></i> Call</a>
-      <a href="mailto:nobledental.org@gmail.com" class="hero-button mail"><i class='bx bx-envelope'></i> Mail</a>
-      <a href="https://g.co/kgs/Lebjyvw" target="_blank" rel="noopener" class="hero-button location"><i class='bx bx-map'></i> Location</a>
+      <a href="https://wa.me/918610425342" target="_blank" rel="noopener noreferrer" class="hero-button whatsapp"><i class='bx bxl-whatsapp' aria-hidden="true"></i> WhatsApp</a>
+      <a href="tel:+918610425342" class="hero-button call"><i class='bx bxs-phone' aria-hidden="true"></i> Call</a>
+      <a href="mailto:nobledental.org@gmail.com" class="hero-button mail"><i class='bx bx-envelope' aria-hidden="true"></i> Mail</a>
+      <a href="https://g.co/kgs/Lebjyvw" target="_blank" rel="noopener noreferrer" class="hero-button location"><i class='bx bx-map' aria-hidden="true"></i> Location</a>
     </div>
 
     <div class="scroll-down" aria-hidden="true"></div>
@@ -193,7 +212,7 @@
       <label for="complaintInput" class="visually-hidden">Search treatments</label>
       <input type="text" id="complaintInput" placeholder="Explore your dental concerns..." />
 
-      <section class="services-grid" id="servicesGrid">
+      <section class="services-grid" id="servicesGrid" aria-live="polite">
         <article id="svc-whitening" class="service-card" data-keywords="teeth whitening, brighten, smile, radiant look, discoloration" data-url="/specialities/scaling-whitening.html">
           <div class="text-section">
             <h3>Teeth Whitening</h3>
@@ -215,7 +234,7 @@
         <article id="svc-implants" class="service-card" data-keywords="dental implants, tooth loss, replacement, secure, natural-looking" data-url="/specialities/implants.html">
           <div class="text-section">
             <h3>Dental Implants</h3>
-            <p>Secure, natural tooth replacements. Restore your smile & confidence with durable implants.</p>
+            <p>Secure, natural tooth replacements. Restore your smile &amp; confidence with durable implants.</p>
             <a href="/specialities/implants.html" class="read-more-button">Read More</a>
           </div>
           <img src="https://d3b3by4navws1f.cloudfront.net/herol.png" alt="Dental Implants" loading="lazy" />
@@ -290,46 +309,85 @@
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
     <p>© <span id="year"></span> Noble Dental Nallagandla. All rights reserved.</p>
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
   </footer>
 
   <!-- AOS + Main JS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
   <script>
-    // Init AOS
+    // ---- Init AOS
     window.addEventListener('load', () => {
       if (window.AOS) AOS.init({ once: true });
     });
 
-    // Mobile menu toggle
-    const menuBtn = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.main-nav');
+    // ---- Helpers
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+    // ---- Mobile menu toggle + close on outside/Escape
+    const menuBtn = $('.menu-toggle');
+    const nav = $('.main-nav');
     if (menuBtn && nav) {
       menuBtn.addEventListener('click', () => {
         const open = nav.classList.toggle('open');
         menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.body.classList.toggle('nav-open', open);
+      });
+
+      document.addEventListener('click', (e) => {
+        if (nav.classList.contains('open') && !nav.contains(e.target) && !menuBtn.contains(e.target)) {
+          nav.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('nav-open');
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('nav-open');
+        }
       });
     }
 
-    // Mobile submenu toggle for Specialities
-    const spToggle = document.querySelector('.has-submenu > a');
-    const spItem = document.querySelector('.has-submenu');
-    if (spToggle && spItem) {
-      spToggle.addEventListener('click', (e) => {
+    // ---- Mobile submenu toggle for Specialities (keeps desktop link working)
+    const spItem = $('.has-submenu');
+    const spToggle = $('.has-submenu > a');
+    if (spItem && spToggle) {
+      const toggleSub = (e) => {
         const isMobile = window.matchMedia('(max-width: 900px)').matches;
-        const navOpen = document.querySelector('.main-nav')?.classList.contains('open');
+        const navOpen = $('.main-nav')?.classList.contains('open');
         if (isMobile || navOpen) {
           e.preventDefault();
           const open = spItem.classList.toggle('open-submenu');
           spToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
         }
+      };
+      spToggle.addEventListener('click', toggleSub);
+      spToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          toggleSub(e);
+        }
+      });
+      document.addEventListener('click', (e) => {
+        if (!spItem.contains(e.target)) {
+          spItem.classList.remove('open-submenu');
+          spToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          spItem.classList.remove('open-submenu');
+          spToggle.setAttribute('aria-expanded', 'false');
+        }
       });
     }
 
-    // Services filter / reorder
-    const input = document.getElementById('complaintInput');
-    const grid = document.getElementById('servicesGrid');
-    const cards = Array.from(grid.querySelectorAll('.service-card'));
+    // ---- Services filter / stable reorder + debounce
+    const input = $('#complaintInput');
+    const grid = $('#servicesGrid');
+    const cardEls = grid ? $$('.service-card', grid) : [];
+    const originalOrder = cardEls.slice();
 
     function normalize(s){ return (s||'').toLowerCase(); }
     function scoreCard(card, q){
@@ -338,18 +396,22 @@
       const str = normalize(keys), qq = normalize(q);
       let score = 0;
       qq.split(/[,\s]+/).filter(Boolean).forEach(term => { if (str.includes(term)) score += 1; });
-      return -score;
+      return -score; // more matches => higher priority
     }
+    function renderOrder(list){ list.forEach(el => grid.appendChild(el)); }
     function shuffleCards(query){
       const q = normalize(query);
-      cards.slice().sort((a,b)=> scoreCard(a,q) - scoreCard(b,q)).forEach(card => grid.appendChild(card));
+      if (!q) { renderOrder(originalOrder); return; }
+      cardEls.slice().sort((a,b)=> scoreCard(a,q) - scoreCard(b,q)).forEach(el => grid.appendChild(el));
     }
-    if (input) input.addEventListener('input', (e) => shuffleCards(e.target.value));
+    function debounce(fn, delay=150){
+      let t; return (...args) => { clearTimeout(t); t = setTimeout(()=>fn(...args), delay); };
+    }
+    if (input && grid) input.addEventListener('input', debounce(e => shuffleCards(e.target.value), 150));
 
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // ---- Footer year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
-
