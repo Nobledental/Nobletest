@@ -376,6 +376,47 @@ body.nav-open{ overflow:hidden; }
   .service-card::before, .service-card::after{ display:none; }
 }
 
+/* ===== WOW extras: reveal + stagger + magnetic (keeps old markup) ===== */
+
+/* augment transform pipeline so we can animate with CSS vars */
+.service-card{
+  /* defaults for transform vars */
+  --rx: 0deg; --ry: 0deg; --tx: 0px; --ty: 0px; --ay: 0px; --scale: 1;
+  transform:
+    perspective(1000px)
+    rotateX(var(--rx)) rotateY(var(--ry))
+    translateX(var(--tx)) translateY(calc(var(--ty) + var(--ay)))
+    translateZ(0) scale(var(--scale));
+  transition:
+    transform .35s var(--curve),
+    box-shadow .25s var(--curve),
+    border-color .25s var(--curve),
+    background-color .25s var(--curve),
+    opacity .28s var(--curve);
+}
+
+/* entrance state (set by JS), then lifted to .in-view */
+.service-card.reveal{ opacity:0; --ay: 14px; --scale: .98; }
+.service-card.in-view{
+  opacity:1; --ay: 0px; --scale: 1;
+  transition-delay: var(--delay, 0ms);
+}
+/* extra glow once visible */
+.service-card.in-view::before{ opacity:.38; filter: blur(10px); }
+
+/* even warmer highlight when hovered after reveal */
+.service-card.in-view:hover{
+  box-shadow:
+    0 10px 22px rgba(2,6,23,.15),
+    0 3px 8px rgba(2,6,23,.08);
+}
+
+/* motion safety */
+@media (prefers-reduced-motion: reduce){
+  .service-card{ transition: none !important; transform: none !important; }
+  .service-card::before, .service-card::after{ transition:none !important; }
+}
+
 /* =========================================================
    FOOTER
    ========================================================= */
@@ -405,5 +446,6 @@ body.nav-open{ overflow:hidden; }
   .nav-pill { gap: 6px; }
   .nav-pill a { padding: 7px 12px; margin: 0 4px; }
 }
+
 
 
