@@ -235,6 +235,7 @@
           <option value="Diagnostics">Diagnostics</option>
           <option value="Sedation & Sleep">Sedation & Sleep</option>
           <option value="Special Care">Special Care</option>
+          <option value="Prosthodontics">Prosthodontics</option>
         </select>
       </label>
 
@@ -722,126 +723,146 @@
 (() => {
   const $  = (s, r=document)=>r.querySelector(s);
   const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
-
-  const supportsFine = matchMedia('(pointer:fine)').matches;
-  const prefersReduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Observe grid changes (pagination re-renders), then enhance cards
   const grid = $('#treatmentsGrid');
   if (!grid) return;
 
-  const enhanceAll = () => {
+  /* Category → accent palette (rgb to allow opacity variants) */
+  const ACCENT = {
+    'Tooth Alignment':        [79,156,255],   // blue
+    'Tooth Saving':           [96,210,164],   // mint
+    'Implants & Replacement': [2,171,155],    // teal
+    'Cosmetic & Smile':       [255,138,181],  // pink
+    'Oral Surgery':           [255,177,79],   // orange
+    'Kids & Family':          [155,140,255],  // purple
+    'Periodontics':           [128,207,105],  // green
+    'Diagnostics':            [122,212,255],  // cyan
+    'Sedation & Sleep':       [160,180,255],  // periwinkle
+    'Special Care':           [255,122,122],  // coral
+    'Prosthodontics':         [255,170,90]    // amber
+  };
+  const rgb = (a)=>`rgb(${a[0]},${a[1]},${a[2]})`;
+  const rgba = (a,o)=>`rgba(${a[0]},${a[1]},${a[2]},${o})`;
+
+  const supportsFine   = matchMedia('(pointer:fine)').matches;
+  const prefersReduce  = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Find number of columns from computed style */
+  const getCols = () => {
+    const cs = getComputedStyle(grid).gridTemplateColumns;
+    return cs ? cs.split(' ').length : 3;
+  };
+
+  const applyAccentsAndSkeleton = (card) => {
+    const catText = card.querySelector('.t-badge')?.textContent?.trim() || '';
+    const a = ACCENT[catText] || [14,165,163];
+    card.style.setProperty('--accent', rgb(a));
+    card.style.setProperty('--accent-14', rgba(a,.14));
+    card.style.setProperty('--accent-20', rgba(a,.20));
+    card.style.setProperty('--accent-25', rgba(a,.25));
+    card.style.setProperty('--accent-30', rgba(a,.30));
+    card.style.setProperty('--accent-35', rgba(a,.35));
+
+    // Skeleton fade-in
+    const media = card.querySelector('.t-media');
+    const img   = card.querySelector('img');
+    if (media && img) {
+      const done = ()=> media.classList.add('img-loaded');
+      if (img.complete && img.naturalWidth) done();
+      img.addEventListener('load', done, {once:true});
+      img.addEventListener('error', done, {once:true}); // remove skeleton on error too
+    }
+  };
+
+  const markFeatured = () => {
+    const cards = $$('.t-card', grid);
+    cards.forEach(c=>c.classList.remove('featured'));
+    const cols = getCols();               // e.g., 3
+    const centerCol = Math.floor((cols-1)/2); // 1 for 3 cols, 0 for 1–2 cols
+    // feature the first card that visually lands in the "center" column
+    cards.forEach((c, i) => {
+      if (i % cols === centerCol) c.classList.add('featured');
+    });
+  };
+
+  /* Reveal on scroll + ripple origin + sheen + 3D tilt */
+  const enhanceInteractions = () => {
     const cards = $$('.t-card', grid);
     if (!cards.length) return;
 
-    // 1) Reveal on scroll (staggered)
+    // 1) Reveal (stagger per row)
     const io = new IntersectionObserver((entries)=>{
-      entries.forEach((ent) => {
-        const el = ent.target;
-        if (ent.isIntersecting) {
-          el.classList.add('in-view');
-          io.unobserve(el);
-        }
+      entries.forEach(ent=>{
+        if (ent.isIntersecting) { ent.target.classList.add('in-view'); io.unobserve(ent.target); }
       });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+    }, { rootMargin:'0px 0px -10% 0px', threshold: 0.08 });
 
-    cards.forEach((card, idx) => {
+    const cols = getCols();
+    cards.forEach((card, i)=>{
       card.classList.add('reveal');
-      card.style.setProperty('--delay', `${(idx%6)*60}ms`);
+      const rowIndex = Math.floor(i / cols);
+      const colIndex = i % cols;
+      const delay = (rowIndex*120) + (colIndex*60);
+      card.style.setProperty('--delay', `${delay}ms`);
       io.observe(card);
-    });
 
-    // 2) Ripple origin + sheen trigger on hover
-    cards.forEach((card) => {
-      // ripple origin
+      // ripple origin + sheen
       card.addEventListener('pointerdown', (e)=>{
         const r = card.getBoundingClientRect();
         card.style.setProperty('--ripple-x', ((e.clientX-r.left)/r.width*100)+'%');
         card.style.setProperty('--ripple-y', ((e.clientY-r.top)/r.height*100)+'%');
       });
-      // sheen (desktop-ish)
-      if (supportsFine && !prefersReduce) {
-        card.addEventListener('mouseenter', ()=> {
-          card.classList.remove('sheen'); // restart animation if re-entered quickly
-          // force reflow to restart keyframes
-          void card.offsetWidth;
-          card.classList.add('sheen');
-        });
-      }
+      card.addEventListener('mouseenter', ()=>{
+        card.classList.remove('sheen'); void card.offsetWidth; card.classList.add('sheen');
+      });
     });
 
-    // 3) 3D tilt + magnetic hover (fine pointers only)
+    // 2) 3D tilt + magnetic hover (desktop only)
     if (supportsFine && !prefersReduce) {
-      const maxTilt = 7;     // degrees
-      const mag = 4;         // translate px
-      let raf = null;
-
-      cards.forEach((card) => {
-        let mx=0, my=0, w=0, h=0, rect=null;
-
-        const update = () => {
-          raf = null;
-          // center-normalized -1..1
-          const cx = (mx - rect.left) / w * 2 - 1;
-          const cy = (my - rect.top)  / h * 2 - 1;
-          const rx = (-cy * maxTilt).toFixed(2) + 'deg';
-          const ry = ( cx * maxTilt).toFixed(2) + 'deg';
-          const tx = ( cx * mag).toFixed(2) + 'px';
-          const ty = ( cy * mag).toFixed(2) + 'px';
-          // set variables for CSS
-          card.style.setProperty('--rx', rx);
-          card.style.setProperty('--ry', ry);
-          card.style.setProperty('--tx', tx);
-          card.style.setProperty('--ty', ty);
-          // pointer highlight for state layer
-          card.style.setProperty('--ripple-x', ( (mx-rect.left)/w*100 ) + '%');
-          card.style.setProperty('--ripple-y', ( (my-rect.top)/h*100 ) + '%');
+      const maxTilt = 6;  // degrees
+      const mag     = 4;  // px
+      cards.forEach(card=>{
+        let mx=0, my=0, rect=null, raf=null;
+        const update = ()=>{
+          raf=null;
+          const w=rect.width, h=rect.height;
+          const cx = (mx-rect.left)/w*2-1, cy = (my-rect.top)/h*2-1;
+          card.style.setProperty('--rx', (-cy*maxTilt).toFixed(2)+'deg');
+          card.style.setProperty('--ry', ( cx*maxTilt).toFixed(2)+'deg');
+          card.style.setProperty('--tx', ( cx*mag).toFixed(2)+'px');
+          card.style.setProperty('--ty', ( cy*mag).toFixed(2)+'px');
         };
-
-        const onMove = (e) => {
-          rect = rect || card.getBoundingClientRect();
-          w = rect.width; h = rect.height;
-          mx = e.clientX; my = e.clientY;
-          if (!raf) raf = requestAnimationFrame(update);
-        };
-
-        const onEnter = (e) => {
-          rect = card.getBoundingClientRect();
-          w = rect.width; h = rect.height;
-          card.style.setProperty('--scale', '1.02');
-          document.addEventListener('pointermove', onMove);
-        };
-
-        const onLeave = () => {
-          document.removeEventListener('pointermove', onMove);
-          card.style.removeProperty('--rx');
-          card.style.removeProperty('--ry');
-          card.style.removeProperty('--tx');
-          card.style.removeProperty('--ty');
-          card.style.setProperty('--scale', '1');
-          rect = null;
-        };
-
+        const onMove=(e)=>{ if(!rect) rect = card.getBoundingClientRect(); mx=e.clientX; my=e.clientY; if(!raf) raf=requestAnimationFrame(update); };
+        const onEnter=()=>{ rect = card.getBoundingClientRect(); card.style.setProperty('--scale','1.02'); document.addEventListener('pointermove', onMove); };
+        const onLeave=()=>{ document.removeEventListener('pointermove', onMove); card.style.removeProperty('--rx'); card.style.removeProperty('--ry'); card.style.removeProperty('--tx'); card.style.removeProperty('--ty'); card.style.setProperty('--scale','1'); rect=null; };
         card.addEventListener('pointerenter', onEnter);
         card.addEventListener('pointerleave', onLeave);
       });
     }
   };
 
-  // Enhance now, and whenever grid content changes (pagination/search)
+  /* Run on every render (pagination/search) */
+  const enhanceAll = () => {
+    $$('.t-card', grid).forEach(c => applyAccentsAndSkeleton(c));
+    markFeatured();
+    enhanceInteractions();
+  };
+
+  // Watch changes to grid children
   const mo = new MutationObserver((m)=> {
-    // Re-run when children list changes
     if (m.some(r => r.type === 'childList')) enhanceAll();
   });
   mo.observe(grid, { childList:true });
 
-  // Initial pass
+  // Recompute featured on resize (column count can change)
+  addEventListener('resize', () => markFeatured());
+
+  // Initial
   enhanceAll();
 })();
-</script>
-  
+</script>  
 </body>
 </html>
+
 
 
 
