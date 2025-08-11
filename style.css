@@ -15,7 +15,7 @@
 /* Tokens */
 :root{
   /* Brand */
-  --teal: #048c8a;
+  --teal: #0cbdf7;
   --blue: #2563eb;
   --ink : #0a0c12;
   --slate: #1f2937;
@@ -230,7 +230,7 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
   position:absolute; inset:0; height:110%; overflow:hidden; z-index:0; pointer-events:none; mix-blend-mode:screen; opacity:2;
 }
 .blackhole-box video,.blackhole-video{
-  width:100%; height:200%; object-fit:cover; transform:translateY(-47%); filter:brightness(.9) contrast(.) saturate(.9);
+  width:100%; height:200%; object-fit:cover; transform:translateY(-47%); filter:brightness(1.9) contrast(.) saturate(.9);
 }
 .scroll-down{
   width:12px; height:12px; border-right:2px solid #fff; border-bottom:2px solid #fff; transform:rotate(45deg); margin-top:28px; animation:sd 1.2s infinite; opacity:.8;
