@@ -718,7 +718,130 @@
 })();
 </script>
 
+<script>
+(() => {
+  const $  = (s, r=document)=>r.querySelector(s);
+  const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
+
+  const supportsFine = matchMedia('(pointer:fine)').matches;
+  const prefersReduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Observe grid changes (pagination re-renders), then enhance cards
+  const grid = $('#treatmentsGrid');
+  if (!grid) return;
+
+  const enhanceAll = () => {
+    const cards = $$('.t-card', grid);
+    if (!cards.length) return;
+
+    // 1) Reveal on scroll (staggered)
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach((ent) => {
+        const el = ent.target;
+        if (ent.isIntersecting) {
+          el.classList.add('in-view');
+          io.unobserve(el);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+
+    cards.forEach((card, idx) => {
+      card.classList.add('reveal');
+      card.style.setProperty('--delay', `${(idx%6)*60}ms`);
+      io.observe(card);
+    });
+
+    // 2) Ripple origin + sheen trigger on hover
+    cards.forEach((card) => {
+      // ripple origin
+      card.addEventListener('pointerdown', (e)=>{
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--ripple-x', ((e.clientX-r.left)/r.width*100)+'%');
+        card.style.setProperty('--ripple-y', ((e.clientY-r.top)/r.height*100)+'%');
+      });
+      // sheen (desktop-ish)
+      if (supportsFine && !prefersReduce) {
+        card.addEventListener('mouseenter', ()=> {
+          card.classList.remove('sheen'); // restart animation if re-entered quickly
+          // force reflow to restart keyframes
+          void card.offsetWidth;
+          card.classList.add('sheen');
+        });
+      }
+    });
+
+    // 3) 3D tilt + magnetic hover (fine pointers only)
+    if (supportsFine && !prefersReduce) {
+      const maxTilt = 7;     // degrees
+      const mag = 4;         // translate px
+      let raf = null;
+
+      cards.forEach((card) => {
+        let mx=0, my=0, w=0, h=0, rect=null;
+
+        const update = () => {
+          raf = null;
+          // center-normalized -1..1
+          const cx = (mx - rect.left) / w * 2 - 1;
+          const cy = (my - rect.top)  / h * 2 - 1;
+          const rx = (-cy * maxTilt).toFixed(2) + 'deg';
+          const ry = ( cx * maxTilt).toFixed(2) + 'deg';
+          const tx = ( cx * mag).toFixed(2) + 'px';
+          const ty = ( cy * mag).toFixed(2) + 'px';
+          // set variables for CSS
+          card.style.setProperty('--rx', rx);
+          card.style.setProperty('--ry', ry);
+          card.style.setProperty('--tx', tx);
+          card.style.setProperty('--ty', ty);
+          // pointer highlight for state layer
+          card.style.setProperty('--ripple-x', ( (mx-rect.left)/w*100 ) + '%');
+          card.style.setProperty('--ripple-y', ( (my-rect.top)/h*100 ) + '%');
+        };
+
+        const onMove = (e) => {
+          rect = rect || card.getBoundingClientRect();
+          w = rect.width; h = rect.height;
+          mx = e.clientX; my = e.clientY;
+          if (!raf) raf = requestAnimationFrame(update);
+        };
+
+        const onEnter = (e) => {
+          rect = card.getBoundingClientRect();
+          w = rect.width; h = rect.height;
+          card.style.setProperty('--scale', '1.02');
+          document.addEventListener('pointermove', onMove);
+        };
+
+        const onLeave = () => {
+          document.removeEventListener('pointermove', onMove);
+          card.style.removeProperty('--rx');
+          card.style.removeProperty('--ry');
+          card.style.removeProperty('--tx');
+          card.style.removeProperty('--ty');
+          card.style.setProperty('--scale', '1');
+          rect = null;
+        };
+
+        card.addEventListener('pointerenter', onEnter);
+        card.addEventListener('pointerleave', onLeave);
+      });
+    }
+  };
+
+  // Enhance now, and whenever grid content changes (pagination/search)
+  const mo = new MutationObserver((m)=> {
+    // Re-run when children list changes
+    if (m.some(r => r.type === 'childList')) enhanceAll();
+  });
+  mo.observe(grid, { childList:true });
+
+  // Initial pass
+  enhanceAll();
+})();
+</script>
+  
 </body>
 </html>
+
 
 
