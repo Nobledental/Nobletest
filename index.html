@@ -205,7 +205,7 @@
   </section>
 
 <!-- ===== Services / Treatments We Offer (2025 redesign) ===== -->
-<section class="info-section services-2025" id="services">
+<section class="info-section services-2025 svc s25" id="services">
   <div class="container">
     <header class="services-head">
       <div class="eyebrow">Treatments</div>
@@ -342,32 +342,6 @@
         }
       });
     }
-
-    // ---- Services filter / stable reorder + debounce
-    const input = $('#complaintInput');
-    const grid = $('#servicesGrid');
-    const cardEls = grid ? $$('.service-card', grid) : [];
-    const originalOrder = cardEls.slice();
-
-    function normalize(s){ return (s||'').toLowerCase(); }
-    function scoreCard(card, q){
-      if (!q) return 0;
-      const keys = (card.getAttribute('data-keywords')||'') + ' ' + card.textContent;
-      const str = normalize(keys), qq = normalize(q);
-      let score = 0;
-      qq.split(/[,\s]+/).filter(Boolean).forEach(term => { if (str.includes(term)) score += 1; });
-      return -score; // more matches => higher priority
-    }
-    function renderOrder(list){ list.forEach(el => grid.appendChild(el)); }
-    function shuffleCards(query){
-      const q = normalize(query);
-      if (!q) { renderOrder(originalOrder); return; }
-      cardEls.slice().sort((a,b)=> scoreCard(a,q) - scoreCard(b,q)).forEach(el => grid.appendChild(el));
-    }
-    function debounce(fn, delay=150){
-      let t; return (...args) => { clearTimeout(t); t = setTimeout(()=>fn(...args), delay); };
-    }
-    if (input && grid) input.addEventListener('input', debounce(e => shuffleCards(e.target.value), 150));
 
     // ---- Footer year
     const yearEl = document.getElementById('year');
@@ -862,6 +836,7 @@
 </script>  
 </body>
 </html>
+
 
 
 
