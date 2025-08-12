@@ -566,6 +566,22 @@ body.nav-open{ overflow:hidden; }
   .nav-pill a { padding: 7px 12px; margin: 0 4px; }
 }
 
+/* === Per-category accents (CSS-only) ===================== */
+/* Default */
+.svc .t-card,
+.svc .service-card { --accent: #0ea5a3; }
+
+/* Map by data-category (must match your category names) */
+.svc [data-category="Tooth Alignment"]        { --accent:#4886ff; } /* blue  */
+.svc [data-category="Tooth Saving"]           { --accent:#54c4a0; } /* mint  */
+.svc [data-category="Implants & Replacement"] { --accent:#00a891; } /* teal  */
+.svc [data-category="Prosthodontics"]         { --accent:#ffc148; } /* amber */
+.svc [data-category="Cosmetic & Smile"]       { --accent:#f56da8; } /* pink  */
+.svc [data-category="Oral Surgery"]           { --accent:#ffab40; } /* orange*/
+.svc [data-category="Periodontics"]           { --accent:#4caf50; } /* green */
+.svc [data-category="Diagnostics"]            { --accent:#40c4ff; } /* cyan  */
+.svc [data-category="Sedation & Sleep"]       { --accent:#8ca0ff; } /* peri  */
+.svc [data-category="Special Care"]           { --accent:#ff7070; } /* coral */
 
 
 
