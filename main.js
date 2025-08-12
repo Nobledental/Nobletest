@@ -245,6 +245,29 @@
     c.el.classList.add('reveal'); // for entrance animation
   });
 
+   /* --- Per-category accent palette + setter --- */
+const ACCENT = {
+  'Tooth Alignment':        [ 72,134,255],  // blue
+  'Tooth Saving':           [ 84,196,160],  // mint
+  'Implants & Replacement': [  0,168,145],  // teal
+  'Prosthodontics':         [255,193, 72],  // amber
+  'Cosmetic & Smile':       [245,109,168],  // pink
+  'Oral Surgery':           [255,171, 64],  // orange
+  'Periodontics':           [ 76,175, 80],  // green
+  'Diagnostics':            [ 64,196,255],  // cyan
+  'Sedation & Sleep':       [140,160,255],  // periwinkle
+  'Special Care':           [255,112,112],  // coral
+  'General':                [ 14,165,163]   // default teal
+};
+
+const setAccentVars = (el, cat='General') => {
+  const [r,g,b] = (ACCENT[cat] || ACCENT.General);
+  el.style.setProperty('--accent', `rgb(${r} ${g} ${b})`);
+};
+
+// Apply once to every card (you already computed c.category above)
+allCards.forEach(c => setAccentVars(c.el, c.category));
+   
   /* Fancy interactions: tilt + magnetic + ripple origin */
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const clamp = (n,min,max)=> Math.min(max, Math.max(min, n));
