@@ -383,6 +383,39 @@ body.nav-open{ overflow:hidden; }
 }
 .svc .t-card:hover::before{ opacity:.22; filter: blur(10px); transform: scale(1.04); }
 
+/* Make service cards use the same sizing & tints */
+.svc .service-card{
+  /* equal height + structure */
+  height: clamp(290px, 32vw, 340px);
+  display:flex; flex-direction:column;
+  border-radius:12px; border:1px solid #dfe6f2; background:#fff;
+  box-shadow: 0 1px 2px rgba(2,6,23,.05), 0 4px 10px rgba(2,6,23,.04);
+  transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s, border-color .2s;
+  /* tints derived from --accent */
+  --tint-06: color-mix(in srgb, var(--accent), #fff 90%);
+  --tint-12: color-mix(in srgb, var(--accent), #fff 80%);
+  --tint-18: color-mix(in srgb, var(--accent), #fff 70%);
+  --tint-25: color-mix(in srgb, var(--accent), #fff 60%);
+  --tint-35: color-mix(in srgb, var(--accent), #fff 50%);
+  background:
+    linear-gradient(180deg, var(--tint-12), transparent 28%),
+    #fff;
+}
+.svc .service-card:hover{
+  transform: translateY(-2px);
+  border-color: var(--tint-35);
+  box-shadow: 0 8px 18px rgba(2,6,23,.10), 0 2px 6px rgba(2,6,23,.06), 0 0 0 5px var(--tint-06);
+}
+
+/* Equalize image/text split (adjust selectors to your markup) */
+.svc .service-card img{
+  height: 42%; object-fit: cover; border-radius:10px; margin:.5rem .5rem 0;
+}
+.svc .service-card .text-section{
+  padding:.7rem; display:flex; flex-direction:column; gap:.3rem; flex:1 1 auto;
+}
+.svc .service-card .read-more-button{ margin-top:auto; }
+
 /* sheen */
 @keyframes svcSheen { 0%{transform:translateX(-130%) skewX(-18deg);opacity:0;} 25%{opacity:.45;} 100%{transform:translateX(150%) skewX(-18deg);opacity:0;} }
 .svc .t-card::after{
@@ -532,6 +565,7 @@ body.nav-open{ overflow:hidden; }
   .nav-pill { gap: 6px; }
   .nav-pill a { padding: 7px 12px; margin: 0 4px; }
 }
+
 
 
 
