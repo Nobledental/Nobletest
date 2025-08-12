@@ -224,6 +224,18 @@
     el.style.setProperty('--tint-35', `rgba(${r},${g},${b},.35)`);
   };
 
+   const setSectionAccent = (cat='General') => {
+  const box = document.querySelector('.svc');
+  if (!box) return;
+  const [r,g,b] = (ACCENT[cat] || ACCENT.General);
+  box.style.setProperty('--accent', `rgb(${r} ${g} ${b})`);
+  box.style.setProperty('--tint-06', `rgba(${r},${g},${b},.06)`);
+  box.style.setProperty('--tint-12', `rgba(${r},${g},${b},.12)`);
+  box.style.setProperty('--tint-18', `rgba(${r},${g},${b},.18)`);
+  box.style.setProperty('--tint-25', `rgba(${r},${g},${b},.25)`);
+  box.style.setProperty('--tint-35', `rgba(${r},${g},${b},.35)`);
+};
+
   const toModel = (el, i) => {
     const idToken = (el.id||'').replace(/^svc-/, '').toLowerCase();
     const kw = (el.getAttribute('data-keywords')||'').toLowerCase();
