@@ -307,7 +307,7 @@ body.nav-open{ overflow:hidden; }
 
 /* tighter header spacing */
 .svc .services-head{ text-align:center; margin: 2px 0 6px; }
-.svc .eyebrow{ font-weight:800; color:#0ea5a3; letter-spacing:.08em; text-transform:uppercase; font-size:.82rem; }
+.svc .eyebrow{ font-weight:800; color:var(--accent); letter-spacing:.08em; text-transform:uppercase; font-size:.82rem; }
 .svc .section-title{ margin:.15rem 0 .25rem; }
 .svc .section-sub{ margin:.2rem auto .5rem; color:#475569; max-width:720px; font-size:.95rem; }
 
@@ -582,6 +582,7 @@ body.nav-open{ overflow:hidden; }
 .svc [data-category="Diagnostics"]            { --accent:#40c4ff; } /* cyan  */
 .svc [data-category="Sedation & Sleep"]       { --accent:#8ca0ff; } /* peri  */
 .svc [data-category="Special Care"]           { --accent:#ff7070; } /* coral */
+
 
 
 
