@@ -1,5 +1,5 @@
 /* =========================================================
-   main.js — Site behaviors + Services grid (v2)
+   main.js — Site behaviors + Services grid (v2, final)
    ========================================================= */
 
 /* ---------- Core site behaviors ---------- */
@@ -56,14 +56,10 @@
 
   if (menuBtn && nav) {
     menuBtn.addEventListener('click', () => (nav.classList.contains('open') ? closeMenu() : openMenu()));
-
-    // Close on link click
     nav.addEventListener('click', (e) => {
       const link = e.target.closest('a');
       if (link && nav.classList.contains('open')) closeMenu();
     });
-
-    // Click outside to close
     document.addEventListener('click', (e) => {
       if (!nav.classList.contains('open')) return;
       const inside = e.target.closest('.main-nav') || e.target.closest('.menu-toggle');
@@ -96,9 +92,7 @@
     spToggle.addEventListener('keydown', (e) => {
       const drawerOpen = nav?.classList.contains('open');
       if (!(isTouchMode() || drawerOpen)) return;
-      if (e.key === ' ' || e.key === 'Enter') {
-        e.preventDefault(); toggleSubmenu();
-      }
+      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggleSubmenu(); }
     });
     document.addEventListener('click', (e) => {
       const drawerOpen = nav?.classList.contains('open');
@@ -127,7 +121,7 @@
       e.preventDefault();
       scrollWithOffset(el);
       history.replaceState(null, '', id);
-      if (nav?.classList.contains('open')) closeMenu();
+      if (qs('.main-nav')?.classList.contains('open')) closeMenu();
     });
   });
 
@@ -165,203 +159,170 @@
   applyMotionPref();
 })();
 
-/* ---------- Services grid v2: 6-per-page + search + category + tilt/ripple/reveal ---------- */
+/* ---------- Services: accents + search + category + pagination + tilt/reveal ---------- */
 (() => {
   const qs  = (s, r=document)=>r.querySelector(s);
   const qsa = (s, r=document)=>Array.from(r.querySelectorAll(s));
 
-  const grid   = qs('#servicesGrid');
-  const input  = qs('#complaintInput');
+  // Works with either id
+  const grid = qs('#treatmentsGrid') || qs('#servicesGrid');
   if (!grid) return;
 
-  /* Toolbar (category) */
-  const toolbar = document.createElement('div');
-  toolbar.className = 'svc-toolbar';
-  toolbar.innerHTML = `
-    <div class="select">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M3 5h18l-7 8v6l-4-2v-4L3 5z" stroke="#475569" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <label for="svcCategory" class="visually-hidden">Filter by topic</label>
-      <select id="svcCategory">
-        <option value="all">All topics</option>
-        <option value="Tooth Alignment">Tooth Alignment</option>
-        <option value="Tooth Saving">Tooth Saving</option>
-        <option value="Implants & Replacement">Implants & Replacement</option>
-        <option value="Prosthodontics">Prosthodontics</option>
-        <option value="Cosmetic & Smile">Cosmetic & Smile</option>
-        <option value="Oral Surgery">Oral Surgery</option>
-        <option value="Periodontics">Gum & Periodontics</option>
-      </select>
-    </div>
-  `;
-  input?.insertAdjacentElement('afterend', toolbar);
-  const catSel = qs('#svcCategory', toolbar);
+  // Controls
+  const input  = qs('#svcSearch') || qs('#complaintInput') || null;
+  const catSel = qs('#svcCategory') || null;
 
-  /* Pager UI */
-  const pager = document.createElement('nav');
-  pager.id = 'svcPager';
-  pager.setAttribute('aria-label','Treatments pages');
-  pager.innerHTML = `
-    <button id="pgPrev" class="pg-btn" type="button" aria-label="Previous page">‹</button>
-    <div class="pg-dots" role="list"></div>
-    <button id="pgNext" class="pg-btn" type="button" aria-label="Next page">›</button>
-  `;
-  grid.insertAdjacentElement('afterend', pager);
+  // Pager (reuse or create)
+  let pager = grid.parentElement.querySelector('.treatments-pagination') || null;
+  if (!pager) {
+    pager = document.createElement('nav');
+    pager.className = 'treatments-pagination';
+    pager.setAttribute('aria-label','Treatments pages');
+    pager.innerHTML = `
+      <button id="pgPrev" class="pg-btn" type="button" aria-label="Previous page">‹</button>
+      <div id="pgDots" class="pg-dots" role="list"></div>
+      <button id="pgNext" class="pg-btn" type="button" aria-label="Next page">›</button>`;
+    grid.insertAdjacentElement('afterend', pager);
+  }
   const prevBtn = qs('#pgPrev', pager);
   const nextBtn = qs('#pgNext', pager);
-  const dots    = qs('.pg-dots', pager);
+  const dots    = qs('#pgDots', pager) || qs('.pg-dots', pager);
 
-  /* Collect cards (keep your original markup) */
-  const allCards = qsa('.service-card', grid).map((el, i)=>({
-    el,
-    index: i,
-    title: el.querySelector('h3')?.textContent?.trim() || '',
-    text:  el.querySelector('p')?.textContent?.trim() || '',
-    kw:    (el.getAttribute('data-keywords') || '').toLowerCase(),
-    id:    el.id || ''
-  }));
+  // Helpers
+  const getCardEls = () => qsa('.t-card, .service-card', grid);
 
   const CAT_MAP = {
-    'whitening':'Cosmetic & Smile',
-    'veneers':'Cosmetic & Smile',
-    'smile':'Cosmetic & Smile',
-    'aligners':'Tooth Alignment',
-    'braces':'Tooth Alignment',
-    'implants':'Implants & Replacement',
-    'crowns':'Prosthodontics',
-    'bridges':'Prosthodontics',
-    'rct':'Tooth Saving',
-    'fillings':'Tooth Saving',
-    'extraction':'Oral Surgery',
-    'scaling':'Periodontics',
+    whitening:'Cosmetic & Smile', veneers:'Cosmetic & Smile', smile:'Cosmetic & Smile',
+    aligners:'Tooth Alignment', braces:'Tooth Alignment',
+    implants:'Implants & Replacement',
+    crowns:'Prosthodontics', bridges:'Prosthodontics',
+    rct:'Tooth Saving', fillings:'Tooth Saving',
+    extraction:'Oral Surgery', scaling:'Periodontics'
   };
-  allCards.forEach(c=>{
-    const token = c.id.replace(/^svc-/, '');
-    const byId  = CAT_MAP[token];
-    const byKw  = Object.keys(CAT_MAP).find(k => c.kw.includes(k));
-    c.category  = byId || (byKw && CAT_MAP[byKw]) || 'General';
-    c.el.dataset.category = c.category;
-    c.el.classList.add('reveal'); // for entrance animation
-  });
 
-   /* --- Per-category accent palette + setter --- */
-const ACCENT = {
-  'Tooth Alignment':        [ 72,134,255],  // blue
-  'Tooth Saving':           [ 84,196,160],  // mint
-  'Implants & Replacement': [  0,168,145],  // teal
-  'Prosthodontics':         [255,193, 72],  // amber
-  'Cosmetic & Smile':       [245,109,168],  // pink
-  'Oral Surgery':           [255,171, 64],  // orange
-  'Periodontics':           [ 76,175, 80],  // green
-  'Diagnostics':            [ 64,196,255],  // cyan
-  'Sedation & Sleep':       [140,160,255],  // periwinkle
-  'Special Care':           [255,112,112],  // coral
-  'General':                [ 14,165,163]   // default teal
-};
+  const ACCENT = {
+    'Tooth Alignment':        [ 72,134,255],
+    'Tooth Saving':           [ 84,196,160],
+    'Implants & Replacement': [  0,168,145],
+    'Prosthodontics':         [255,193, 72],
+    'Cosmetic & Smile':       [245,109,168],
+    'Oral Surgery':           [255,171, 64],
+    'Periodontics':           [ 76,175, 80],
+    'Diagnostics':            [ 64,196,255],
+    'Sedation & Sleep':       [140,160,255],
+    'Special Care':           [255,112,112],
+    'General':                [ 14,165,163]
+  };
 
-const setAccentVars = (el, cat='General') => {
-  const [r,g,b] = (ACCENT[cat] || ACCENT.General);
-  el.style.setProperty('--accent', `rgb(${r} ${g} ${b})`);
-};
+  const setAccentVars = (el, cat='General') => {
+    const [r,g,b] = ACCENT[cat] || ACCENT.General;
+    el.style.setProperty('--accent',  `rgb(${r} ${g} ${b})`);
+    el.style.setProperty('--tint-06', `rgba(${r},${g},${b},.06)`);
+    el.style.setProperty('--tint-12', `rgba(${r},${g},${b},.12)`);
+    el.style.setProperty('--tint-18', `rgba(${r},${g},${b},.18)`);
+    el.style.setProperty('--tint-25', `rgba(${r},${g},${b},.25)`);
+    el.style.setProperty('--tint-35', `rgba(${r},${g},${b},.35)`);
+  };
 
-// Apply once to every card (you already computed c.category above)
-allCards.forEach(c => setAccentVars(c.el, c.category));
-   
-  /* Fancy interactions: tilt + magnetic + ripple origin */
+  const toModel = (el, i) => {
+    const idToken = (el.id||'').replace(/^svc-/, '').toLowerCase();
+    const kw = (el.getAttribute('data-keywords')||'').toLowerCase();
+    const fromId = CAT_MAP[idToken];
+    const keyHit = Object.keys(CAT_MAP).find(k => kw.includes(k));
+    const fromKw = keyHit ? CAT_MAP[keyHit] : null;
+    const badge  = el.querySelector('.t-badge')?.textContent?.trim();
+    const cat    = el.dataset.category || badge || fromId || fromKw || 'General';
+    el.dataset.category = cat;
+    setAccentVars(el, cat);
+    return {
+      el,
+      index: i,
+      title: el.querySelector('.t-title, h3')?.textContent?.trim() || '',
+      text:  el.querySelector('.t-desc, p')?.textContent?.trim() || '',
+      kw, category: cat
+    };
+  };
+
+  let allCards = getCardEls().map(toModel);
+
+  // Interactions
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const clamp = (n,min,max)=> Math.min(max, Math.max(min, n));
-  const setOrigin = (card, e)=>{
-    const r = card.getBoundingClientRect();
-    const px = ((e.clientX - r.left) / r.width) * 100;
-    const py = ((e.clientY - r.top ) / r.height)* 100;
-    card.style.setProperty('--px', px + '%');
-    card.style.setProperty('--py', py + '%');
-  };
-
-  allCards.forEach(({el})=>{
-    el.classList.add('ripple');
-    el.addEventListener('pointermove', (e)=>{
-      if (reduced) return;
-      const r = el.getBoundingClientRect();
-      const x = e.clientX - r.left;
-      const y = e.clientY - r.top;
-      const rotY = ((x / r.width) - 0.5) * 10;    // -5..5
-      const rotX = -((y / r.height) - 0.5) * 8;   // -4..4
-      const strength = 6;
-      const dx = Math.min(1, Math.max(-1, (x - r.width/2) / (r.width/2)));
-      const dy = Math.min(1, Math.max(-1, (y - r.height/2) / (r.height/2)));
-      const tx = dx * strength;
-      const ty = dy * strength;
-
-      el.style.setProperty('--ry', rotY.toFixed(2)+'deg');
-      el.style.setProperty('--rx', rotX.toFixed(2)+'deg');
-      el.style.setProperty('--tx', tx.toFixed(2)+'px');
-      el.style.setProperty('--ty', ty.toFixed(2)+'px');
-      setOrigin(el, e);
-    });
-    ['pointerleave','blur'].forEach(ev=>{
-      el.addEventListener(ev, ()=>{
+  const enhanceInteractions = (els) => {
+    if (!matchMedia('(pointer:fine)').matches || reduced) return;
+    els.forEach(el=>{
+      el.classList.add('ripple');
+      const onMove = (e)=>{
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left, y = e.clientY - r.top;
+        const rotY = ((x / r.width) - 0.5) * 10;
+        const rotX = -((y / r.height) - 0.5) * 8;
+        const dx = Math.min(1, Math.max(-1, (x - r.width/2) / (r.width/2)));
+        const dy = Math.min(1, Math.max(-1, (y - r.height/2) / (r.height/2)));
+        el.style.setProperty('--ry', rotY.toFixed(2)+'deg');
+        el.style.setProperty('--rx', rotX.toFixed(2)+'deg');
+        el.style.setProperty('--tx', (dx*6).toFixed(2)+'px');
+        el.style.setProperty('--ty', (dy*6).toFixed(2)+'px');
+        el.style.setProperty('--ripple-x', (x/r.width*100)+'%');
+        el.style.setProperty('--ripple-y', (y/r.height*100)+'%');
+      };
+      const onLeave = ()=>{
         el.style.setProperty('--ry','0deg');
         el.style.setProperty('--rx','0deg');
         el.style.setProperty('--tx','0px');
         el.style.setProperty('--ty','0px');
-      });
+      };
+      el.addEventListener('pointermove', onMove);
+      el.addEventListener('pointerleave', onLeave);
+      el.addEventListener('blur', onLeave);
+      el.addEventListener('pointerdown', onMove);
     });
-    el.addEventListener('pointerdown', (e)=> setOrigin(el, e));
-  });
+  };
 
-  /* Search + Category + Pagination */
-  const PAGE_SIZE = 6;
-  let state = { q:'', cat:'all', page:1, list: allCards };
+  // Reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in-view');
+      io.unobserve(en.target);
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+  const observeVisible = (els)=>{
+    if (reduced) { els.forEach(n => n.classList.add('in-view')); return; }
+    els.forEach(n => { n.classList.remove('in-view'); io.observe(n); });
+  };
 
+  // Search + Category + Pagination
   const normalize = s => (s||'').toLowerCase();
   const score = (c, q) => {
     if (!q) return 0;
     const blob = `${c.title} ${c.text} ${c.kw}`.toLowerCase();
     let s = 0;
     q.split(/[\s,]+/).filter(Boolean).forEach(t=>{
-      t = t.toLowerCase();
-      if (c.title.toLowerCase().includes(t)) s += 5;
-      if (c.kw.includes(t)) s += 3;
-      if (blob.includes(t)) s += 1;
+      const term = t.toLowerCase();
+      if (c.title.toLowerCase().includes(term)) s += 5;
+      if (c.kw.includes(term))                 s += 3;
+      if (blob.includes(term))                 s += 1;
     });
     return s;
   };
 
+  const PAGE_SIZE = 6;
+  const state = { q:'', cat:'all', page:1, list: allCards };
+
   const compute = ()=>{
-    const {q, cat} = state;
+    const { q, cat } = state;
     let pool = allCards.slice();
     if (cat !== 'all') pool = pool.filter(c => c.category === cat);
     state.list = !q ? pool
-      : pool.map(c=>({c, s: score(c,q)})).filter(x=>x.s>0)
-             .sort((a,b)=> b.s - a.s || a.c.index - b.c.index)
-             .map(x=>x.c);
+      : pool.map(c=>({c, s:score(c,q)})).filter(x=>x.s>0)
+            .sort((a,b)=> b.s - a.s || a.c.index - b.c.index)
+            .map(x=>x.c);
     const maxPage = Math.max(1, Math.ceil(state.list.length / PAGE_SIZE));
     if (state.page > maxPage) state.page = 1;
   };
 
-  /* Reveal on scroll (with stagger) */
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{
-      if (!en.isIntersecting) return;
-      const el = en.target;
-      el.classList.add('in-view');
-      io.unobserve(el);
-    });
-  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
-
-  const observeVisible = (nodes)=>{
-    if (reduced) { nodes.forEach(n => n.classList.add('in-view')); return; }
-    nodes.forEach(n => { n.classList.remove('in-view'); io.observe(n); });
-  };
-
-  const prevBtn = qs('#pgPrev', pager);
-  const nextBtn = qs('#pgNext', pager);
-  const dots    = qs('.pg-dots', pager);
-
   const render = ()=>{
-    const {page, list} = state;
+    const { page, list } = state;
 
     // hide all
     allCards.forEach(({el})=>{
@@ -369,64 +330,75 @@ allCards.forEach(c => setAccentVars(c.el, c.category));
       el.setAttribute('aria-hidden','true');
     });
 
+    // page slice
     const total = list.length;
     const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
     const start = (page - 1) * PAGE_SIZE;
     const slice = list.slice(start, start + PAGE_SIZE);
 
-    // show page + set stagger delays
     slice.forEach(({el}, i)=>{
       el.style.display='block';
       el.removeAttribute('aria-hidden');
-      el.style.setProperty('--delay', (i*70)+'ms');
-      el.classList.remove('in-view');
       el.classList.add('reveal');
+      el.style.setProperty('--delay', (i*70)+'ms');
+      setAccentVars(el, el.dataset.category || 'General');
     });
 
-    // observe visible for reveal
     observeVisible(slice.map(s => s.el));
+    enhanceInteractions(slice.map(s => s.el));
 
     // pager UI
-    prevBtn.disabled = (page<=1);
-    nextBtn.disabled = (page>=pages);
-    dots.innerHTML = '';
-    for (let i=1;i<=pages;i++){
-      const b = document.createElement('button');
-      b.type='button'; b.className='pg-dot'; if (i===page) b.setAttribute('aria-current','page');
-      b.addEventListener('click', ()=>{
-        state.page=i; render();
-        window.scrollTo({ top: grid.offsetTop - 120, behavior: 'smooth' });
-      });
-      dots.appendChild(b);
+    if (prevBtn && nextBtn && dots) {
+      prevBtn.disabled = (page<=1);
+      nextBtn.disabled = (page>=pages);
+      dots.innerHTML = '';
+      for (let i=1;i<=pages;i++){
+        const b = document.createElement('button');
+        b.type='button'; b.className='pg-dot';
+        if (i===page) b.setAttribute('aria-current','page');
+        b.addEventListener('click', ()=>{
+          state.page=i; render();
+          window.scrollTo({ top: grid.offsetTop - 120, behavior: 'smooth' });
+        });
+        dots.appendChild(b);
+      }
     }
   };
 
   const apply = ()=>{ compute(); render(); };
 
-  // Bind controls
-  let t;
+  // Bind controls (if present)
+  let deb;
   input?.addEventListener('input', (e)=>{
-    clearTimeout(t);
-    t = setTimeout(()=>{ state.q = normalize(e.target.value); state.page=1; apply(); }, 160);
+    clearTimeout(deb);
+    deb = setTimeout(()=>{ state.q = normalize(e.target.value); state.page=1; apply(); }, 160);
   });
-  catSel?.addEventListener('change', ()=>{ state.cat = catSel.value; state.page=1; apply(); });
+  catSel?.addEventListener('change', ()=>{
+    state.cat = catSel.value; state.page=1; apply();
+  });
 
-  // Pager buttons
-  prevBtn.addEventListener('click', ()=>{ if (state.page>1){ state.page--; render(); } });
-  nextBtn.addEventListener('click', ()=>{
+  prevBtn?.addEventListener('click', ()=>{ if (state.page>1){ state.page--; render(); } });
+  nextBtn?.addEventListener('click', ()=>{
     const pages = Math.max(1, Math.ceil(state.list.length / PAGE_SIZE));
     if (state.page<pages){ state.page++; render(); }
   });
 
-  // Initial render
+  // Initial pass
   apply();
+
+  // Keep up with dynamic DOM changes
+  const mo = new MutationObserver(()=>{
+    allCards = getCardEls().map(toModel);
+    apply();
+  });
+  mo.observe(grid, { childList:true, subtree:true });
 
   // Re-observe on resize
   let rT;
   window.addEventListener('resize', ()=>{
     clearTimeout(rT);
     rT = setTimeout(()=>{
-      const visible = qsa('.service-card', grid).filter(el => el.style.display !== 'none');
+      const visible = getCardEls().filter(el => el.style.display !== 'none');
       observeVisible(visible);
     }, 120);
   });
