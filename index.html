@@ -629,6 +629,7 @@
       const card = document.createElement('article');
       card.className = 't-card ripple';
       card.setAttribute('data-id', it.id);
+      + card.setAttribute('data-category', it.category); 
       card.innerHTML = `
         <div class="t-media">
           <span class="t-badge">${it.category}</span>
@@ -840,6 +841,7 @@
 </script>  
 </body>
 </html>
+
 
 
 
