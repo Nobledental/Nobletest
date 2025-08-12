@@ -377,7 +377,11 @@
     }
   };
 
-  const apply = ()=>{ compute(); render(); };
+const apply = ()=>{
+  compute();
+  setSectionAccent(state.cat === 'all' ? 'General' : state.cat);
+  render();
+};
 
   // Bind controls (if present)
   let deb;
