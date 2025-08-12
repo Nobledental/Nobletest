@@ -207,62 +207,66 @@
 <!-- ===== Services / Treatments We Offer (2025 redesign) ===== -->
 <section class="info-section services-2025 svc s25" id="services">
   <div class="container">
-    <header class="services-head">
-      <div class="eyebrow">Treatments</div>
-      <h2 class="section-title">Treatments We Offer</h2>
-      <p class="section-sub">Explore evidence-based care—from simple cleanings to advanced implant & smile rehab.</p>
-    </header>
+    <div class="svc-box">
+      <header class="services-head">
+        <div class="eyebrow">Treatments</div>
+        <h2 class="section-title">Treatments We Offer</h2>
+        <p class="section-sub">Explore evidence-based care—from simple cleanings to advanced implant &amp; smile rehab.</p>
+      </header>
 
-    <!-- Controls -->
-    <form class="services-controls" role="search" aria-label="Filter treatments" onsubmit="return false;">
-      <label class="field search">
-        <i class='bx bx-search' aria-hidden="true"></i>
-        <input id="svcSearch" type="search" inputmode="search" autocomplete="off"
-               placeholder="Search treatments (e.g., implants, pain, kids, braces)…" />
-      </label>
+      <!-- Controls -->
+      <form class="services-controls" role="search" aria-label="Filter treatments" onsubmit="return false;">
+        <label class="field search">
+          <i class='bx bx-search' aria-hidden="true"></i>
+          <input id="svcSearch" type="search" inputmode="search" autocomplete="off"
+                 placeholder="Search treatments (e.g., implants, pain, kids, braces)…" />
+        </label>
 
-      <label class="field select">
-        <i class='bx bx-filter-alt' aria-hidden="true"></i>
-        <select id="svcCategory" aria-label="Filter by topic">
-          <option value="all">All topics</option>
-          <option value="Tooth Alignment">Tooth Alignment</option>
-          <option value="Tooth Saving">Tooth Saving</option>
-          <option value="Implants & Replacement">Implants & Replacement</option>
-          <option value="Cosmetic & Smile">Cosmetic & Smile</option>
-          <option value="Oral Surgery">Oral Surgery</option>
-          <option value="Kids & Family">Kids & Family</option>
-          <option value="Periodontics">Gum & Periodontics</option>
-          <option value="Diagnostics">Diagnostics</option>
-          <option value="Sedation & Sleep">Sedation & Sleep</option>
-          <option value="Special Care">Special Care</option>
-          <option value="Prosthodontics">Prosthodontics</option>
-        </select>
-      </label>
+        <label class="field select">
+          <i class='bx bx-filter-alt' aria-hidden="true"></i>
+          <select id="svcCategory" aria-label="Filter by topic">
+            <option value="all">All topics</option>
+            <option value="Tooth Alignment">Tooth Alignment</option>
+            <option value="Tooth Saving">Tooth Saving</option>
+            <option value="Implants & Replacement">Implants & Replacement</option>
+            <option value="Cosmetic & Smile">Cosmetic & Smile</option>
+            <option value="Oral Surgery">Oral Surgery</option>
+            <option value="Kids & Family">Kids & Family</option>
+            <option value="Periodontics">Gum & Periodontics</option>
+            <option value="Diagnostics">Diagnostics</option>
+            <option value="Sedation & Sleep">Sedation & Sleep</option>
+            <option value="Special Care">Special Care</option>
+            <option value="Prosthodontics">Prosthodontics</option>
+          </select>
+        </label>
 
-      <!-- Quick topics (chips) -->
-      <div class="chip-row" aria-label="Quick topics">
-        <button class="chip" type="button" data-chip="implants">Implants</button>
-        <button class="chip" type="button" data-chip="root canal">Root canal</button>
-        <button class="chip" type="button" data-chip="braces">Braces</button>
-        <button class="chip" type="button" data-chip="kids">Kids</button>
-        <button class="chip" type="button" data-chip="whitening">Whitening</button>
+        <!-- Quick topics (chips) -->
+        <div class="chip-row" aria-label="Quick topics">
+          <button class="chip" type="button" data-chip="implants">Implants</button>
+          <button class="chip" type="button" data-chip="root canal">Root canal</button>
+          <button class="chip" type="button" data-chip="braces">Braces</button>
+          <button class="chip" type="button" data-chip="kids">Kids</button>
+          <button class="chip" type="button" data-chip="whitening">Whitening</button>
+        </div>
+      </form>
+
+      <!-- Results -->
+      <div class="cards-container">
+        <div id="treatmentsStatus" class="results-status" aria-live="polite"></div>
+        <section id="treatmentsGrid" class="treatments-grid" aria-live="polite" aria-busy="false"></section>
+
+        <!-- Pagination (6 per page) -->
+        <nav class="treatments-pagination" aria-label="Treatments pages">
+          <button id="pgPrev" class="pg-btn ripple" type="button" aria-label="Previous page" disabled>
+            <i class='bx bx-chevron-left'></i>
+          </button>
+          <div id="pgDots" class="pg-dots" role="list"></div>
+          <button id="pgNext" class="pg-btn ripple" type="button" aria-label="Next page" disabled>
+            <i class='bx bx-chevron-right'></i>
+          </button>
+        </nav>
       </div>
-    </form>
-
-    <!-- Results -->
-    <div id="treatmentsStatus" class="results-status" aria-live="polite"></div>
-    <section id="treatmentsGrid" class="treatments-grid" aria-live="polite" aria-busy="false"></section>
-
-    <!-- Pagination (6 per page) -->
-    <nav class="treatments-pagination" aria-label="Treatments pages">
-      <button id="pgPrev" class="pg-btn ripple" type="button" aria-label="Previous page" disabled>
-        <i class='bx bx-chevron-left'></i>
-      </button>
-      <div id="pgDots" class="pg-dots" role="list"></div>
-      <button id="pgNext" class="pg-btn ripple" type="button" aria-label="Next page" disabled>
-        <i class='bx bx-chevron-right'></i>
-      </button>
-    </nav>
+    </div>
   </div>
 </section>
 
@@ -836,6 +840,7 @@
 </script>  
 </body>
 </html>
+
 
 
 
