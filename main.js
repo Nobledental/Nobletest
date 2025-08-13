@@ -421,7 +421,6 @@ const apply = ()=>{
 })();
 
 <!-- Doctors Dashboard Component (scoped) — include ONCE -->
-<script>
 const DoctorDashboard = (() => {
   const CURRENT_YEAR = new Date().getFullYear();
   const BOOK_COVER = "https://limasy.com/limcms/uploads/products/triumphs-complete-review-of-dentistry-2-volume-set_1709201366_22611.png";
@@ -717,11 +716,9 @@ Notes: ${notes}`;
 
   return { init };
 })();
-</script>
 
 <!-- Initialize ONCE after the HTML exists -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   DoctorDashboard.init('#doctorDashboard'); // ensure an element with this id exists
 });
-</script>
