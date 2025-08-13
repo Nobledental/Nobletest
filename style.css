@@ -270,18 +270,18 @@ body.nav-open{ overflow:hidden; }
 
 /* Wider container just for this section */
 .services-2025 .container{
-  max-width: 1320px;
-  padding-inline: 2.25rem;
+  max-width: 1550px;
+  padding-inline: 1.25rem;
 }
 
 /* Section canvas: soft pastel + light gradient */
 .svc.s25{
   position: relative;
-  padding-block: 72px;
+  padding-block: 69px;
   background:
-    radial-gradient(900px 520px at 12% 6%,  #e9efff 0%, transparent 58%),
-    radial-gradient(900px 520px at 88% 96%, #ffe9f4 0%, transparent 58%),
-    linear-gradient(180deg, #f7f9fc 0%, #f5f7fb 100%);
+    radial-gradient(900px 520px at 12% 6%,  #ffffff 0%, #fcfcfc 58%),
+    radial-gradient(900px 520px at 88% 96%, #fefefe 0%, #fbfbfb 58%),
+    linear-gradient(180deg, #fefeff 0%, #fbfbfb 100%);
 }
 
 /* ================== TOKENS & CORE ================== */
@@ -289,18 +289,18 @@ body.nav-open{ overflow:hidden; }
   --curve: cubic-bezier(.2,.8,.2,1);
 
   /* Layout / grid */
-  --card-h: clamp(290px, 32vw, 340px);
+  --card-h: clamp(250px, 32vw, 340px);
   --grid-min: 200px;
   --grid-gap: 14px;
 
   /* Radii */
-  --card-r: 14px;
+  --card-r: 15px;
   --img-r: 10px;
   --ctrl-r: 10px;
   --chip-r: 999px;
 
   /* Accent (JS overrides per category; this is fallback) */
-  --accent: #0ea5a3;
+  --accent: #fcfcfcd6;
 
   /* Soft tints from accent (used in cards) */
   --tint-06: color-mix(in srgb, var(--accent), #fff 90%);
@@ -310,12 +310,12 @@ body.nav-open{ overflow:hidden; }
   --tint-35: color-mix(in srgb, var(--accent), #fff 52%);
 
   /* Shadows */
-  --s1: 0 1px 2px rgba(2,6,23,.05), 0 4px 10px rgba(2,6,23,.04);
+  --s1: 0 1px 2px rgb(14 19 37 / 5%), 0 4px 10px rgba(2,6,23,.04);
   --s2: 0 8px 18px rgba(2,6,23,.10), 0 2px 6px rgba(2,6,23,.06);
 
   /* Typography tokens (easy tuning) */
-  --eyebrow-fs: .82rem;
-  --head-fs: clamp(1.3rem, 1.1rem + 1vw, 1.8rem);
+  --eyebrow-fs: 5.92rem;
+  --head-fs: clamp(1.3rem, 1.5rem + 1vw, 1.8rem);
   --sub-fs: .95rem;
   --title-fs: 1.02rem;
   --desc-fs: .9rem;
@@ -323,22 +323,22 @@ body.nav-open{ overflow:hidden; }
   --chip-fs: .9rem;
   --btn-fs: .84rem;
 
-  --title-color: #0f1d45;
-  --desc-color: #475569;
-  --subtle-color: #64748b;
+  --title-color: #4d4d5c;
+  --desc-color: #1b1818f5;
+  --subtle-color: #121048;
 
   /* Matte button tokens (Android-ish pastel) */
-  --btn-bg:   color-mix(in srgb, var(--accent) 10%, #f3f7ff);
-  --btn-bg-h: color-mix(in srgb, var(--accent) 16%, #eaf2ff);
+  --btn-bg:   color-mix(in srgb, var(--accent) 20%, #7beb7a);
+  --btn-b/.g-h: color-mix(in srgb, var(--accent) 16%, #eaf2ff);
   --btn-br:   color-mix(in srgb, var(--accent) 22%, #e3ebff);
   --btn-txt:  #0e1320;
 }
 
 /* Milky glass panel */
 .svc .svc-box{
-  background: rgba(255,255,255,.78);
-  border: 1px solid rgba(255,255,255,.55);
-  border-radius: 20px;
+  background: rgb(45 19 209 / 42%);
+  border: 7px solid rgba(255,255,255,.55);
+  border-radius: 50px;
   backdrop-filter: blur(12px) saturate(1.05);
   -webkit-backdrop-filter: blur(12px) saturate(1.05);
   padding: 18px 18px 16px;
@@ -351,14 +351,14 @@ body.nav-open{ overflow:hidden; }
 /* ================== HEADER ================== */
 .svc .services-head{ text-align:center; margin: 2px 0 8px; }
 .svc .eyebrow{
-  font-weight:800; color:var(--accent); letter-spacing:.08em;
-  text-transform:uppercase; font-size:var(--eyebrow-fs);
+  font-weight:900; color:var(--accent); letter-spacing:.4em;
+  text-transform:uppercase; font-size: 50px;
 }
 .svc .section-title{
-  margin:.2rem 0 .3rem; font-size:var(--head-fs); color:#0f1d45;
+  margin:.1rem 0 .3rem; font-size:var(--head-fs); color:#0d0d03;
 }
 .svc .section-sub{
-  margin:.2rem auto .6rem; color:#4b5563; max-width:720px; font-size:var(--sub-fs);
+  margin:.2rem auto .1rem; color:#18191a; max-width:720px; font-size:var(--sub-fs);
 }
 
 /* ================== CONTROLS ================== */
@@ -367,13 +367,13 @@ body.nav-open{ overflow:hidden; }
 }
 .svc .services-controls .field{
   display:flex; align-items:center; gap:.5rem;
-  background: rgba(255,255,255,.72);
+  background: rgb(245 245 247 / 31%);
   border: 1px solid rgba(255,255,255,.5);
   border-radius: var(--ctrl-r);
   padding:.46rem .65rem;
   box-shadow: var(--s1);
 }
-.svc .services-controls .field i{ color:#64748b; font-size:1rem; }
+.svc .services-controls .field i{ color:#fbfdff; font-size:1rem; }
 .svc #svcSearch{ border:0; outline:0; min-width:230px; font:inherit; background:transparent; font-size:.95rem; }
 .svc #svcCategory{ border:0; outline:0; font-weight:700; background:transparent; font-size:.95rem; }
 
@@ -391,7 +391,7 @@ body.nav-open{ overflow:hidden; }
 }
 .svc .chip:hover{ transform:translateY(-2px); box-shadow: var(--s2); background:#f6fbff; }
 
-.svc .results-status{ text-align:center; color:#475569; margin:4px 0 8px; font-size:.92rem; }
+.svc .results-status{ text-align:center; color:#26282a; margin:4px 0 8px; font-size:.92rem; }
 
 /* ================== GRID ================== */
 .svc .cards-container{ background:transparent; border:0; border-radius:0; padding:0; box-shadow:none; }
