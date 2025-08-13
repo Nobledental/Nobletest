@@ -132,11 +132,6 @@
 </script>
 <!-- End Google Tag Manager -->
 
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7LJVS7T"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
   <!-- ===== Header ===== -->
   <header class="site-header">
     <!-- Brand: logo first, name second -->
@@ -651,7 +646,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const card = document.createElement('article');
       card.className = 't-card ripple';
       card.setAttribute('data-id', it.id);
-      + card.setAttribute('data-category', it.category); 
+      card.setAttribute('data-category', it.category); 
       card.innerHTML = `
         <div class="t-media">
           <span class="t-badge">${it.category}</span>
@@ -898,6 +893,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>  
 </body>
 </html>
+
 
 
 
