@@ -287,270 +287,174 @@
   </div>
 </section>
 
-/* Doctors Dashboard — minimal module wired to your data-dd hooks */
-(() => {
-  const CURRENT_YEAR = new Date().getFullYear();
-  const BOOK_COVER = "https://limasy.com/limcms/uploads/products/triumphs-complete-review-of-dentistry-2-volume-set_1709201366_22611.png";
+<!-- Doctors Dashboard Component -->
+<div id="doctorDashboard" class="dd-root">
+  <div class="dd-dashboard-container">
+    <main class="dd-main-grid">
+      <!-- LEFT: Instagram-like Doctor Card -->
+      <section class="dd-left-panel" data-dd="leftPanel" aria-live="polite">
+        <!-- IG-style header -->
+        <header class="dd-insta-header">
+          <div class="dd-insta-user">
+            <div class="dd-insta-avatar">
+              <img data-dd="docAvatar" src="" alt="Doctor avatar">
+            </div>
+            <div class="dd-insta-meta">
+              <div class="dd-insta-name" data-dd="docNameTop">Doctor Name</div>
+              <div class="dd-insta-sub" data-dd="docSpecialtyTop">Specialty</div>
+            </div>
+          </div>
+          <span class="dd-insta-rating" data-dd="docRatingPill">★ 4.9</span>
+        </header>
 
-  const DOCTORS = [
-    { id:"dhivakaran", name:"Dr Dhivakaran", rating:4.9,
-      specialty:"Chief Medical Director, Noble Dental Care · Director, Healthflo",
-      expertise:["CMD — Noble Dental Care","Director — Healthflo (557 hospitals)","Networks: Bengaluru, Chennai, Hyderabad, TN, Mumbai, Delhi, Indore, Pune, AP"],
-      experience:{startYear:CURRENT_YEAR-10},
-      bio:"Dental leader focused on seamless, outcome‑driven care across India via Noble Dental Care and Healthflo.",
-      phones:["8610425342","8074512305"],
-      consultation:["Walk‑in","Appointment Booking","Tele‑consultation"],
-      cities:["Nallagandla","Tellapur","Lingampally","Serilingampally","Gopanpally"],
-      books:[{title:"Triumph’s Complete Review of Dentistry (2 Vol Set), Ed. 1",cover:BOOK_COVER,link:"https://play.google.com/store/books/details/Triumph_s_Complete_Review_of_Dentistry?id=ZTjvDwAAQBAJ&hl=en_US&pli=1",publisher:"Wolters Kluwer · Oct 2018"}],
-      avatar:"https://i.imgur.com/1X5v8X2.png"},
-    { id:"roger", name:"Dr Roger Ronaldo", rating:4.8,
-      specialty:"Consultant Oral & Maxillofacial Surgeon — Implantology, Facial Reconstruction",
-      expertise:["Implantology","Orthognathic & Reconstruction","Trauma Surgery"],
-      experience:{startYear:CURRENT_YEAR-13},
-      bio:"Precision implantology and reconstructive care with calm, clear guidance.",
-      phones:["8610425342","8074512305"],
-      consultation:["Appointment Booking","Tele‑consultation"],
-      cities:["Nallagandla","Tellapur","Lingampally"],
-      books:[{title:"Triumph’s Complete Review of Dentistry (2 Vol Set), Ed. 1",cover:BOOK_COVER,link:"https://play.google.com/store/books/details/Triumph_s_Complete_Review_of_Dentistry?id=ZTjvDwAAQBAJ&hl=en_US&pli=1",publisher:"Wolters Kluwer · Oct 2018"}],
-      avatar:"https://i.imgur.com/7M2Qm1W.png"},
-    { id:"thikvijay", name:"Dr Thik Vijay", rating:4.6,
-      specialty:"FMC., (Germany) — Trichology, Aesthetic & Medical Cosmetology (ISHR)",
-      expertise:["Trichology","Aesthetic & Medical Cosmetology","Hair & Scalp Restoration"],
-      experience:{startYear:CURRENT_YEAR-11},
-      bio:"Evidence‑based trichology and aesthetic treatments with natural finish.",
-      phones:["8610425342","8074512305"],
-      consultation:["Appointment Booking","Tele‑consultation"],
-      cities:["Lingampally","Serilingampally"],
-      books:[], avatar:"https://i.imgur.com/y6w2m8a.png"},
-    { id:"deepak", name:"Dr Deepak", rating:4.7,
-      specialty:"Orthodontist (Assistant Professor)",
-      expertise:["Orthodontics","Smile Design & Aligners","Complex Malocclusion"],
-      experience:{startYear:CURRENT_YEAR-10},
-      bio:"Academic orthodontist crafting balanced smiles with modern appliances.",
-      phones:["8610425342","8074512305"],
-      consultation:["Appointment Booking","Tele‑consultation"],
-      cities:["Tellapur","Gopanpally"], books:[], avatar:"https://i.imgur.com/1X5v8X2.png"},
-    { id:"manoj", name:"Dr Manoj Reddy", rating:4.5,
-      specialty:"Oral & Maxillofacial Surgeon — Implantology",
-      expertise:["Dental Implants","Maxillofacial Surgery","Full‑mouth Rehab"],
-      experience:{startYear:CURRENT_YEAR-9},
-      bio:"Implant and maxillofacial care focused on function and long‑term results.",
-      phones:["8610425342","8074512305"],
-      consultation:["Appointment Booking","Tele‑consultation"],
-      cities:["Nallagandla","Serilingampally","Gopanpally"], books:[], avatar:"https://i.imgur.com/7M2Qm1W.png"},
-    { id:"idhaya", name:"Dr Idhaya", rating:4.4,
-      specialty:"General Dentistry · Health Insurance · Medical Tourism",
-      expertise:["Preventive Dentistry","Insurance Advisory","Tourism Coordination"],
-      experience:{startYear:CURRENT_YEAR-8},
-      bio:"Friendly general dentist guiding families through care, insurance and travel.",
-      phones:["8610425342","8074512305"],
-      consultation:["Tele‑consultation"],
-      cities:["Tellapur","Lingampally"], books:[], avatar:"https://i.imgur.com/y6w2m8a.png"}
-  ];
-
-  const qs  = (root, sel) => root.querySelector(sel);
-  const qsa = (root, sel) => Array.from(root.querySelectorAll(sel));
-  const starBadge = (r) => `★ ${r.toFixed(1)}`;
-  const starsDetail = (r)=>{const f=Math.floor(r),h=r-f>=.5?1:0,e=5-f-h;return "★".repeat(f)+(h?"½":"")+"☆".repeat(e)+`  ${r.toFixed(1)}`;};
-  const cityLink = (name)=>({
-    Nallagandla:"https://maps.app.goo.gl/xWyPi9pwkcM6hjYRA",
-    Tellapur:"https://maps.app.goo.gl/uxtsDV7hR6iCp5Uq8",
-    Lingampally:"https://maps.app.goo.gl/LQDetRYN3ednqDLn7",
-    Serilingampally:"https://maps.app.goo.gl/pLukMFtAPwzdoE9N8",
-    Gopanpally:"https://maps.app.goo.gl/EhtpSoxcchtQxG8E9"
-  }[name] || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Best dentist in '+name)}`);
-
-  const experienceLabel = (conf)=> conf?.startYear
-    ? `${Math.max(0, new Date().getFullYear() - conf.startYear)} Years`
-    : (conf?.baseYears ? `${conf.baseYears} Years` : "Years of Experience");
-
-  function toLabel(h,m){const p=h>=12?"PM":"AM";const hr=((h+11)%12)+1;return `${hr.toString().padStart(2,"0")}:${m===0?"00":"30"} ${p}`;}
-  function labelsEvery30min(start,end,wrap=false){
-    const out=[]; const push=(h,m)=>out.push(toLabel(h,m));
-    if(!wrap){for(let h=start;h<=end;h++){push(h,0); if(h!==end) push(h,30);}}
-    else {for(let h=start;h<=23;h++){push(h,0); if(h<23) push(h,30);} for(let h=0;h<=end;h++){push(h,0); if(h<end) push(h,30);}}
-    return out;
-  }
-
-  function renderSlots(root){
-    const reg = qs(root,'[data-dd="timeSlotsRegular"]');
-    const eme = qs(root,'[data-dd="timeSlotsEmergency"]');
-    const sel = qs(root,'[data-dd="timeSelect"]');
-    const regular=labelsEvery30min(11,22,false);
-    const emergency=labelsEvery30min(22,2,true);
-
-    const render = (container, labels, emergency=false)=>{
-      container.innerHTML="";
-      labels.forEach(lbl=>{
-        const b=document.createElement('button');
-        b.type='button'; b.className='dd-slot'+(emergency?' dd-slot--emergency':''); b.textContent=lbl;
-        b.addEventListener('click',()=>{
-          qsa(root,'.dd-slot').forEach(x=>x.classList.remove('dd-active'));
-          b.classList.add('dd-active'); sel.value=lbl;
-        });
-        container.appendChild(b);
-      });
-    };
-    render(reg,regular,false); render(eme,emergency,true);
-
-    sel.innerHTML=""; [...regular,...emergency].forEach(lbl=>{
-      const o=document.createElement('option'); o.value=o.textContent=lbl; sel.appendChild(o);
-    });
-    sel.addEventListener('change',()=>{
-      const chosen=sel.value;
-      qsa(root,'.dd-slot').forEach(s=>s.classList.toggle('dd-active', s.textContent===chosen));
-    });
-    sel.selectedIndex=0; qs(root,'.dd-slot')?.classList.add('dd-active');
-  }
-
-  function fillProfile(root, doc){
-    // header
-    qs(root,'[data-dd="docAvatar"]').src = doc.avatar;
-    qs(root,'[data-dd="docNameTop"]').textContent = doc.name;
-    qs(root,'[data-dd="docSpecialtyTop"]').textContent = doc.specialty;
-    qs(root,'[data-dd="docRatingPill"]').textContent = starBadge(doc.rating);
-    // hero image
-    const img = qs(root,'[data-dd="docImage"]'); img.src = doc.avatar; img.alt = `${doc.name} portrait`;
-    // caption
-    qs(root,'[data-dd="docName"]').textContent = doc.name;
-    qs(root,'[data-dd="docBio"]').textContent = doc.bio;
-    // facts
-    qs(root,'[data-dd="docExperience"]').textContent = `Experience: ${experienceLabel(doc.experience)}`;
-    qs(root,'[data-dd="docConsultation"]').textContent = doc.consultation.join(" · ");
-    // cities + phones
-    qs(root,'[data-dd="docCities"]').innerHTML = doc.cities.map(c=>`<a class="dd-chip" href="${cityLink(c)}" target="_blank" rel="noopener" title="Best dentist in ${c}">${c}</a>`).join(" ");
-    qs(root,'[data-dd="docPhones"]').innerHTML = doc.phones.map(n=>`<a class="dd-chip" href="tel:${n.replace(/\s+/g,'')}">${n}</a>`).join(" ");
-    // about + expertise + books
-    qs(root,'[data-dd="docBioFull"]').textContent = `${doc.bio} — Rating: ${starsDetail(doc.rating)}`;
-    const expList = qs(root,'[data-dd="docExpertise"]'); expList.innerHTML=""; doc.expertise.forEach(x=>{const li=document.createElement('li'); li.textContent=x; expList.appendChild(li);});
-    const books = qs(root,'[data-dd="docBooks"]'); books.innerHTML="";
-    if (doc.books.length){
-      doc.books.forEach(b=>{
-        const tile=document.createElement('div');
-        tile.className='dd-book-tile';
-        tile.innerHTML = `<img src="${b.cover}" alt="${b.title} cover"><a href="${b.link}" target="_blank" rel="noopener">${b.title}</a><div class="dd-small">${b.publisher||""}</div>`;
-        books.appendChild(tile);
-      });
-    } else { books.innerHTML = `<p class="dd-muted">No books added yet.</p>`; }
-
-    // actions
-    qs(root,'[data-dd="callBtn"]').onclick = ()=> window.location.href = `tel:${doc.phones[0]}`;
-    const citiesModal = qs(root,'[data-dd="citiesModal"]');
-    const citiesList  = qs(root,'[data-dd="citiesList"]');
-    const openMapsBtn = qs(root,'[data-dd="openMapsBtn"]');
-    const closeModalBtn = qs(root,'[data-dd="closeModalBtn"]');
-    qs(root,'[data-dd="openCities"]').onclick = ()=>{
-      citiesList.innerHTML = doc.cities.map(c=>`<li><a href="${cityLink(c)}" target="_blank" rel="noopener">${c}</a></li>`).join("");
-      openMapsBtn.onclick = ()=> window.open(cityLink(doc.cities[0]),'_blank');
-      citiesModal.showModal();
-    };
-    closeModalBtn.onclick = ()=> citiesModal.close();
-  }
-
-  function renderList(root){
-    const wrap = qs(root,'[data-dd="doctorsList"]');
-    const fallback = qs(root,'[data-dd="listFallback"]');
-    wrap.innerHTML="";
-    DOCTORS.forEach(doc=>{
-      const card=document.createElement('article');
-      card.className='dd-card'; card.dataset.id=doc.id;
-      card.innerHTML = `
-        <div class="dd-avatar"><img src="${doc.avatar}" alt="${doc.name}"></div>
-        <div class="dd-card-body">
-          <h3 class="dd-card-title" title="${doc.name}">${doc.name}</h3>
-          <div class="dd-card-rating">${starBadge(doc.rating)}</div>
+        <!-- Square media with animated gradient -->
+        <div class="dd-profile-hero-square">
+          <div class="dd-pulse-bg"></div>
+          <img data-dd="docImage" src="" alt="Doctor portrait" class="dd-doctor-hero-pic" />
         </div>
-        <div class="dd-card-actions">
-          <button class="dd-icon-btn" data-action="call" title="Call">Call</button>
-          <button class="dd-icon-btn" data-action="map"  title="Map">Map</button>
-          <button class="dd-icon-btn" data-action="select" title="View">View</button>
-        </div>`;
-      wrap.appendChild(card);
-    });
-    fallback.hidden = true;
 
-    wrap.addEventListener('click',(e)=>{
-      const card = e.target.closest('.dd-card'); if(!card) return;
-      const doc = DOCTORS.find(d=>d.id===card.dataset.id); if(!doc) return;
-      const act = e.target.dataset.action;
-      if (act === 'call'){ window.location.href = `tel:${doc.phones[0]}`; return; }
-      if (act === 'map'){
-        const modal = qs(root,'[data-dd="citiesModal"]');
-        const list  = qs(root,'[data-dd="citiesList"]');
-        const btn   = qs(root,'[data-dd="openMapsBtn"]');
-        list.innerHTML = doc.cities.map(c=>`<li><a href="${cityLink(c)}" target="_blank" rel="noopener">${c}</a></li>`).join("");
-        btn.onclick = ()=> window.open(cityLink(doc.cities[0]),'_blank');
-        modal.showModal(); return;
-      }
-      qs(root,'[data-dd="doctorSelect"]').value = doc.id;
-      fillProfile(root, doc);
-      const t = qs(root,'[data-dd="toast"]'); t.textContent = `${doc.name} selected`; t.classList.add('dd-show'); setTimeout(()=>t.classList.remove('dd-show'), 2200);
-    });
-  }
+        <!-- Actions like IG -->
+        <div class="dd-insta-actions">
+          <button class="dd-icon-action" type="button" title="Like" aria-label="Like">❤</button>
+          <button class="dd-icon-action" type="button" title="Comment" aria-label="Comment">💬</button>
+          <button class="dd-icon-action" type="button" title="Share" aria-label="Share">📤</button>
+          <button class="dd-icon-action dd-push-right" type="button" title="Save" aria-label="Save">🔖</button>
+        </div>
 
-  function renderSelect(root){
-    const sel = qs(root,'[data-dd="doctorSelect"]');
-    sel.innerHTML=""; DOCTORS.forEach(d=>{ const o=document.createElement('option'); o.value=d.id; o.textContent=d.name; sel.appendChild(o); });
-    sel.addEventListener('change', ()=>{ const d=DOCTORS.find(x=>x.id===sel.value); if(d) fillProfile(root,d); });
-  }
+        <!-- Caption -->
+        <div class="dd-insta-caption">
+          <span class="dd-insta-name" data-dd="docName">Doctor Name</span>
+          <span class="dd-insta-text" data-dd="docBio">Bio text…</span>
+        </div>
 
-  function bindConfirm(root){
-    qs(root,'[data-dd="confirmBtn"]').addEventListener('click', ()=>{
-      const sel = qs(root,'[data-dd="doctorSelect"]');
-      const doc = DOCTORS.find(d=>d.id===sel.value);
-      const date = qs(root,'[data-dd="appointmentDate"]').value || "";
-      const time = qs(root,'[data-dd="timeSelect"]').value || "";
-      const name = (qs(root,'[data-dd="patientName"]').value||"").trim();
-      const age  = (qs(root,'[data-dd="patientAge"]').value||"").trim();
-      const type = qs(root,'[data-dd="appointmentType"]').value;
-      const notes= (qs(root,'[data-dd="reason"]').value||"").trim();
+        <!-- Quick facts -->
+        <div class="dd-facts-row">
+          <span data-dd="docExperience" class="dd-fact-chip">Experience</span>
+          <span data-dd="docConsultation" class="dd-fact-chip">Consultation types</span>
+        </div>
 
-      const toast = (m)=>{const t=qs(root,'[data-dd="toast"]');t.textContent=m;t.classList.add('dd-show');setTimeout(()=>t.classList.remove('dd-show'),2200);};
-      if(!doc) return toast("Please select a doctor.");
-      if(!name) return toast("Please enter patient name.");
-      if(!age)  return toast("Please enter age.");
-      if(!date||!time) return toast("Please choose date & time.");
+        <div class="dd-actions-row">
+          <button data-dd="callBtn" class="dd-btn dd-action-btn">Call</button>
+          <button data-dd="openCities" class="dd-btn dd-ghost-btn">Cities</button>
+        </div>
 
-      const summary = `Appointment Request
-Doctor: ${doc.name}
-Type: ${type}
-Patient: ${name} (Age ${age})
-Date: ${date}
-Time: ${time}
-Phone(s): ${doc.phones.join(', ')}
-City Options: ${doc.cities.join(', ')}
+        <!-- Cities & Phones -->
+        <div class="dd-chips-block">
+          <div class="dd-chips-title">Cities</div>
+          <div data-dd="docCities" class="dd-chips"></div>
+        </div>
 
-Notes: ${notes}`;
+        <div class="dd-chips-block">
+          <div class="dd-chips-title">Phones</div>
+          <div data-dd="docPhones" class="dd-chips"></div>
+        </div>
 
-      const subject = `Appointment: ${type} | ${name} | ${date} ${time}`;
-      const mailto  = `mailto:dr.dhivakaran@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(summary)}`;
-      window.open(mailto,'_blank');
+        <!-- Details -->
+        <details class="dd-collapse">
+          <summary>About info</summary>
+          <p data-dd="docBioFull" class="dd-muted"></p>
+        </details>
 
-      const waNumber="91861425342";
-      const waLink=`https://wa.me/${waNumber}?text=${encodeURIComponent("Hello, I'd like to confirm an appointment.\n\n"+summary)}`;
-      window.open(waLink,'_blank');
+        <details class="dd-collapse">
+          <summary>Expertise</summary>
+          <ul data-dd="docExpertise" class="dd-list-compact"></ul>
+        </details>
 
-      toast("Appointment info prepared in Email & WhatsApp.");
-    });
+        <details class="dd-collapse">
+          <summary>Published Books</summary>
+          <div data-dd="docBooks" class="dd-book-grid"></div>
+        </details>
+      </section>
 
-    // middle-panel quick call
-    qs(root,'[data-dd="callBtnMiddle"]').addEventListener('click', ()=>{
-      const doc = DOCTORS.find(d=>d.id===qs(root,'[data-dd="doctorSelect"]').value);
-      window.location.href = `tel:${(doc?.phones?.[0]||'8610425342')}`;
-    });
-  }
+      <!-- MIDDLE: Appointment Booking -->
+      <section class="dd-middle-panel dd-appointment-panel">
+        <h2>Book an Appointment</h2>
 
-  function init(){
-    const root = document.querySelector('#doctorDashboard'); if(!root) return console.error('DoctorDashboard: #doctorDashboard not found');
-    renderSlots(root); renderList(root); renderSelect(root);
-    const first = DOCTORS[0]; qs(root,'[data-dd="doctorSelect"]').value = first.id; fillProfile(root, first);
-    bindConfirm(root);
-  }
+        <div class="dd-form-group">
+          <label>Doctor</label>
+          <select data-dd="doctorSelect" aria-label="Select Doctor"></select>
+        </div>
 
-  // run after DOM
-  document.addEventListener('DOMContentLoaded', init, { once:true });
-})();
-</script>
+        <div class="dd-form-row">
+          <div class="dd-form-group">
+            <label>Patient Name</label>
+            <input type="text" data-dd="patientName" placeholder="Full name" />
+          </div>
+          <div class="dd-form-group">
+            <label>Age</label>
+            <input type="number" data-dd="patientAge" min="0" placeholder="Years" />
+          </div>
+        </div>
+
+        <div class="dd-form-group">
+          <label>Type of Appointment</label>
+          <select data-dd="appointmentType">
+            <option value="Consultation">Consultation</option>
+            <option value="Follow-up">Follow-up</option>
+            <option value="Emergency">Emergency</option>
+            <option value="Second Opinion">Second Opinion</option>
+          </select>
+        </div>
+
+        <div class="dd-form-group">
+          <label>Date</label>
+          <input type="date" data-dd="appointmentDate" />
+        </div>
+
+        <div class="dd-form-group">
+          <label>Time</label>
+
+          <div class="dd-slot-section">
+            <div class="dd-slot-section__title">Regular (11:00 AM – 10:00 PM)</div>
+            <div class="dd-time-slots" data-dd="timeSlotsRegular"></div>
+          </div>
+
+          <div class="dd-slot-section">
+            <div class="dd-slot-section__title dd-emergency">Emergencies (10:00 PM – 2:00 AM)</div>
+            <div class="dd-time-slots" data-dd="timeSlotsEmergency"></div>
+          </div>
+
+          <div class="dd-form-group">
+            <label>Selected Time</label>
+            <select data-dd="timeSelect" aria-label="Selected Time"></select>
+          </div>
+        </div>
+
+        <div class="dd-form-group">
+          <label>Reason / Notes</label>
+          <textarea data-dd="reason" placeholder="Brief description..."></textarea>
+        </div>
+
+        <div class="dd-form-group dd-two-col">
+          <button class="dd-confirm-btn" data-dd="confirmBtn">Confirm Appointment</button>
+          <button class="dd-secondary-btn" data-dd="callBtnMiddle">Call Clinic</button>
+        </div>
+      </section>
+
+      <!-- RIGHT: Minimal Doctors List (name + rating only, no scroll) -->
+      <section class="dd-right-panel" aria-label="Doctors List">
+        <div data-dd="doctorsList" class="dd-list-no-scroll"></div>
+        <div data-dd="listFallback" class="dd-fallback" hidden>Loading doctors…</div>
+      </section>
+    </main>
+
+    <!-- Cities Modal -->
+    <dialog data-dd="citiesModal" class="dd-modal">
+      <div class="dd-modal-content">
+        <h3>Available Cities</h3>
+        <ul data-dd="citiesList"></ul>
+        <div class="dd-modal-actions">
+          <button data-dd="openMapsBtn" class="dd-confirm-btn">Open in Maps</button>
+          <button data-dd="closeModalBtn" class="dd-secondary-btn">Close</button>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Toast -->
+    <div data-dd="toast" class="dd-toast" role="status" aria-live="polite"></div>
+  </div>
+</div>
+
 
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
@@ -1158,6 +1062,7 @@ Notes: ${notes}`;
 </script>  
 </body>
 </html>
+
 
 
 
