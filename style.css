@@ -578,6 +578,145 @@ body.nav-open{ overflow:hidden; }
   .svc .t-desc{ font-size: .86rem; }
 }
 
+/* ===== Doctors Dashboard (scoped) ===== */
+.dd-root{
+  --dd-bg:#0f1014; --dd-panel:#151823; --dd-ink:#eaf0ff; --dd-muted:#b8c2d9;
+  --dd-blue:#aac7ff; --dd-lilac:#d7c7ff; --dd-mint:#b8f2e1; --dd-peach:#ffd7c8; --dd-rose:#ffc7da;
+  --dd-chip:#1b2030; --dd-radius:14px; --dd-shadow:0 10px 28px rgba(6,10,25,.35); --dd-star:#ffd97a;
+  color:var(--dd-ink);
+}
+.dd-dashboard-container{padding:20px;max-width:1400px;margin:auto;background:transparent}
+.dd-main-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:20px}
+.dd-left-panel,.dd-middle-panel,.dd-right-panel{background:var(--dd-panel);padding:16px;border-radius:var(--dd-radius);box-shadow:var(--dd-shadow)}
+.dd-left-panel h2,.dd-middle-panel h2{font-size:18px;margin:0 0 10px}
+.dd-muted{color:var(--dd-muted)}
+
+/* IG header */
+.dd-insta-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.dd-insta-user{display:flex;align-items:center;gap:10px}
+.dd-insta-avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.2)}
+.dd-insta-avatar img{width:100%;height:100%;object-fit:cover}
+.dd-insta-meta{display:flex;flex-direction:column}
+.dd-insta-name{font-weight:800}
+.dd-insta-sub{font-size:12px;color:#cbd6ff;opacity:.9}
+.dd-insta-rating{background:#0f1733;color:#f7eaa5;border:1px solid #2b3454;border-radius:999px;padding:4px 8px;font-weight:800}
+
+/* Square media with animated gradient */
+.dd-profile-hero-square{position:relative;width:100%;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#12162b,#1a1f36);isolation:isolate}
+.dd-pulse-bg::before,.dd-pulse-bg::after{
+  content:"";position:absolute;left:50%;top:50%;border-radius:50%;transform:translate(-50%,-50%);filter:blur(6px);
+  width:720px;height:720px;opacity:.6;z-index:0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.45), transparent 55%),
+    radial-gradient(circle at 20% 40%, rgba(153,183,255,.45), transparent 60%),
+    radial-gradient(circle at 80% 60%, rgba(205,187,255,.45), transparent 60%);
+  animation:dd-pulse 4.2s infinite ease-in-out;
+}
+.dd-pulse-bg::after{
+  width:920px;height:920px;opacity:.42;animation-delay:.8s;
+  background:
+    radial-gradient(circle at 40% 60%, rgba(255,255,255,.35), transparent 55%),
+    radial-gradient(circle at 70% 30%, rgba(153,183,255,.35), transparent 60%),
+    radial-gradient(circle at 30% 80%, rgba(205,187,255,.35), transparent 60%);
+}
+@keyframes dd-pulse{0%{transform:translate(-50%,-50%) scale(.85);opacity:.45}50%{transform:translate(-50%,-50%) scale(1);opacity:.9}100%{transform:translate(-50%,-50%) scale(1.15);opacity:.35}}
+.dd-doctor-hero-pic{position:absolute;inset:0;margin:auto;width:100%;height:100%;object-fit:cover;border-radius:12px;mix-blend-mode:screen;opacity:.98}
+
+/* Insta actions */
+.dd-insta-actions{display:flex;align-items:center;gap:10px;margin:8px 4px 6px}
+.dd-icon-action{background:#101525;border:1px solid #2b3454;color:#dfe7ff;border-radius:10px;padding:6px 8px}
+.dd-icon-action:hover{background:#172248}
+.dd-push-right{margin-left:auto}
+
+/* Caption */
+.dd-insta-caption{display:flex;gap:6px;margin:4px 4px 10px}
+.dd-insta-caption .dd-insta-name{font-weight:800}
+.dd-insta-caption .dd-insta-text{color:#c7d2ff}
+
+/* Chips / facts / actions */
+.dd-facts-row{display:flex;gap:8px;margin:8px 0}
+.dd-fact-chip{font-size:12px;background:#131a2b;border:1px solid #2b3454;color:#cfe0ff;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.dd-actions-row{display:flex;gap:8px;margin-bottom:8px}
+.dd-btn{padding:9px 12px;border-radius:10px;border:none;font-weight:600}
+.dd-action-btn{background:var(--dd-mint);color:#0f141f}
+.dd-ghost-btn{background:#101525;color:#cfe1ff;border:1px solid #2b3454}
+.dd-btn:hover{filter:brightness(1.06)}
+.dd-chips-block{margin:8px 0}
+.dd-chips-title{font-size:12px;color:var(--dd-blue);margin-bottom:6px}
+.dd-chips{display:flex;flex-wrap:wrap;gap:6px}
+.dd-chip{font-size:12px;background:#11182a;border:1px solid #243055;color:#a8c2ff;padding:6px 10px;border-radius:999px;text-decoration:none}
+
+/* Collapses */
+.dd-collapse{margin-top:8px;border:1px solid #232a45;border-radius:10px;overflow:hidden}
+.dd-collapse>summary{list-style:none;cursor:pointer;padding:9px 12px;background:#121a2f;font-weight:700;border-bottom:1px solid #232a45}
+.dd-collapse p,.dd-collapse ul{padding:10px 12px;margin:0}
+.dd-list-compact{padding-left:18px}
+.dd-list-compact li{margin:4px 0}
+
+/* Books */
+.dd-book-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.dd-book-tile{width:136px;background:#12182a;border:1px solid #243055;border-radius:10px;padding:10px;text-align:center}
+.dd-book-tile img{width:100%;height:168px;object-fit:cover;border-radius:6px;margin-bottom:8px}
+.dd-book-tile a{color:#a8c2ff;font-size:12.5px;display:block}
+.dd-book-tile .dd-small{font-size:11.5px;color:var(--dd-muted)}
+
+/* Middle form */
+.dd-appointment-panel h2{margin:0 0 10px}
+.dd-form-group{margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
+.dd-form-row{display:grid;grid-template-columns:1fr 140px;gap:10px}
+.dd-appointment-panel input[type="text"],
+.dd-appointment-panel input[type="number"],
+.dd-appointment-panel input[type="date"],
+.dd-appointment-panel textarea,
+.dd-appointment-panel select{
+  background:#101529;border:1px solid #273156;color:#e7ecff;padding:9px;border-radius:8px
+}
+.dd-appointment-panel textarea{resize:vertical;min-height:90px}
+
+/* Time slots */
+.dd-slot-section{margin-bottom:12px}
+.dd-slot-section__title{font-size:12.5px;color:#cbd6ff;margin-bottom:6px;font-weight:700}
+.dd-slot-section__title.dd-emergency{color:#ffc7da}
+.dd-time-slots{display:flex;flex-wrap:wrap;gap:8px}
+.dd-slot{background:#1a2036;border:1px solid #2a3560;color:#dfe7ff;padding:7px 11px;border-radius:9px;transition:transform .12s ease, box-shadow .12s ease, background .2s ease}
+.dd-slot:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(120,150,255,.15)}
+.dd-slot.dd-active{background:#213261;border-color:#4156a1}
+.dd-slot--emergency{background:#2a1630;border-color:#4b2f63;color:#ffe7ff}
+.dd-slot--emergency:hover{box-shadow:0 6px 14px rgba(216,160,255,.18)}
+.dd-slot--emergency.dd-active{background:#40245a;border-color:#6a3f88}
+
+/* Right list (name + rating, no inner scroll) */
+.dd-list-no-scroll{display:flex;flex-direction:column;gap:12px;padding-right:6px}
+.dd-card{display:grid;grid-template-columns:auto 1fr auto;gap:10px;background:#0f1428;border:1px solid #212a4b;border-radius:14px;padding:10px;box-shadow:var(--dd-shadow);transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+.dd-card:hover{transform:translateY(-2px);box-shadow:0 16px 28px rgba(160,190,255,.18);border-color:#33437a}
+.dd-avatar{width:50px;height:50px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.18)}
+.dd-avatar img{width:100%;height:100%;object-fit:cover}
+.dd-card-body{display:flex;align-items:center;gap:8px;min-width:0}
+.dd-card-title{margin:0;color:#f4f7ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px}
+.dd-card-rating{color:var(--dd-star);font-weight:700;font-size:12.5px;margin-left:auto}
+.dd-card-actions{display:flex;gap:6px}
+.dd-icon-btn{background:#121935;border:1px solid #273156;color:#cfe1ff;padding:7px;border-radius:9px;font-size:12.5px}
+.dd-icon-btn:hover{background:#172248}
+
+/* Buttons footer */
+.dd-confirm-btn{flex:1;background:var(--dd-peach);color:#262424;border:none;border-radius:10px;padding:10px 12px;font-weight:700}
+.dd-confirm-btn:hover{filter:brightness(1.05)}
+.dd-secondary-btn{flex:1;background:#101529;color:#e7ecff;border:1px solid #273156;border-radius:10px;padding:10px 12px}
+.dd-secondary-btn:hover{background:#131a2f}
+
+/* Toast & Modal */
+.dd-toast{position:fixed;bottom:22px;right:22px;background:#12162b;border:1px solid #243055;color:#dff9f1;padding:10px 14px;border-radius:10px;display:none;box-shadow:var(--dd-shadow);font-size:13px;z-index:9999}
+.dd-toast.dd-show{display:block}
+.dd-modal{border:none;padding:0;background:transparent}
+.dd-modal::backdrop{background:rgba(0,0,0,.6)}
+.dd-modal-content{background:#13182b;border:1px solid #243055;border-radius:12px;padding:14px;min-width:300px}
+.dd-modal-content h3{margin:0 0 10px}
+.dd-modal-actions{display:flex;gap:10px;margin-top:12px}
+.dd-fallback{color:#a8b3d9;opacity:.9;text-align:center;padding:12px}
+
+/* Responsive */
+@media (max-width:1100px){.dd-main-grid{grid-template-columns:1fr;gap:16px}}
+
 /* =========================================================
    FOOTER
    ========================================================= */
@@ -626,5 +765,6 @@ body.nav-open{ overflow:hidden; }
 .svc [data-category="Diagnostics"]            { --accent:#40c4ff; } /* cyan  */
 .svc [data-category="Sedation & Sleep"]       { --accent:#8ca0ff; } /* peri  */
 .svc [data-category="Special Care"]           { --accent:#ff7070; } /* coral */
+
 
 
