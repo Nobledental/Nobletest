@@ -267,16 +267,21 @@ body.nav-open{ overflow:hidden; }
 /* =========================================================
    Treatments 2025 — NeoGlass Cards (SCOPED, compact + equal height)
    ========================================================= */
+.services-2025 .container{
+  max-width: 1320px;          /* was 1200 */
+  padding-inline: 2.25rem;
+}
+
 .svc{
   --curve: cubic-bezier(.2,.8,.2,1);
 
   /* card sizing */
   --card-h: clamp(290px, 32vw, 340px);  /* equal height cards */
   --grid-min: 200px;                    /* smaller card width */
-  --grid-gap: 12px;
+  --grid-gap: 14px;
 
   /* radii */
-  --card-r: 12px;
+  --card-r: 14px;
   --img-r: 10px;
   --ctrl-r: 10px;
   --chip-r: 999px;
@@ -286,14 +291,21 @@ body.nav-open{ overflow:hidden; }
 
   /* soft tints from accent */
   --tint-06: color-mix(in srgb, var(--accent), #fff 90%);
-  --tint-12: color-mix(in srgb, var(--accent), #fff 80%);
-  --tint-18: color-mix(in srgb, var(--accent), #fff 70%);
-  --tint-25: color-mix(in srgb, var(--accent), #fff 60%);
-  --tint-35: color-mix(in srgb, var(--accent), #fff 50%);
+  --tint-12: color-mix(in srgb, var(--accent), #fff 82%);
+  --tint-18: color-mix(in srgb, var(--accent), #fff 72%);
+  --tint-25: color-mix(in srgb, var(--accent), #fff 62%);
+  --tint-35: color-mix(in srgb, var(--accent), #fff 52%);
 
   /* shadows */
   --s1: 0 1px 2px rgba(2,6,23,.05), 0 4px 10px rgba(2,6,23,.04);
   --s2: 0 8px 18px rgba(2,6,23,.10), 0 2px 6px rgba(2,6,23,.06);
+}
+
+  /* matte button tokens derived from --accent */
+  --btn-bg:  color-mix(in srgb, var(--accent), #fff 88%);
+  --btn-bg-h:color-mix(in srgb, var(--accent), #fff 82%);
+  --btn-br:  color-mix(in srgb, var(--accent), #000 8%);
+  --btn-txt: #0e1320;
 }
 
 /* Whole section panel */
@@ -582,6 +594,7 @@ body.nav-open{ overflow:hidden; }
 .svc [data-category="Diagnostics"]            { --accent:#40c4ff; } /* cyan  */
 .svc [data-category="Sedation & Sleep"]       { --accent:#8ca0ff; } /* peri  */
 .svc [data-category="Special Care"]           { --accent:#ff7070; } /* coral */
+
 
 
 
