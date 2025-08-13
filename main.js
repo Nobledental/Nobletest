@@ -419,3 +419,321 @@ const apply = ()=>{
     }, 120);
   });
 })();
+
+<!-- Doctors Dashboard Component (scoped) — include ONCE -->
+<script>
+const DoctorDashboard = (() => {
+  const CURRENT_YEAR = new Date().getFullYear();
+  const BOOK_COVER = "https://limasy.com/limcms/uploads/products/triumphs-complete-review-of-dentistry-2-volume-set_1709201366_22611.png";
+
+  const DOCTORS = [
+    { id:"dhivakaran", name:"Dr Dhivakaran", rating:4.9,
+      specialty:"Chief Medical Director, Noble Dental Care · Director, Healthflo",
+      expertise:["CMD — Noble Dental Care","Director — Healthflo (557 hospitals)","Networks: Bengaluru, Chennai, Hyderabad, TN, Mumbai, Delhi, Indore, Pune, AP"],
+      experience:{startYear:CURRENT_YEAR-10},
+      bio:"Dental leader focused on seamless, outcome‑driven care across India via Noble Dental Care and Healthflo.",
+      phones:["8610425342","8074512305"],
+      consultation:["Walk‑in","Appointment Booking","Tele‑consultation"],
+      cities:["Nallagandla","Tellapur","Lingampally","Serilingampally","Gopanpally"],
+      books:[{title:"Triumph’s Complete Review of Dentistry (2 Vol Set), Ed. 1",cover:BOOK_COVER,link:"https://play.google.com/store/books/details/Triumph_s_Complete_Review_of_Dentistry?id=ZTjvDwAAQBAJ&hl=en_US&pli=1",publisher:"Wolters Kluwer · Oct 2018"}],
+      avatar:"https://i.imgur.com/1X5v8X2.png"},
+    { id:"roger", name:"Dr Roger Ronaldo", rating:4.8,
+      specialty:"Consultant Oral & Maxillofacial Surgeon — Implantology, Facial Reconstruction",
+      expertise:["Implantology","Orthognathic & Reconstruction","Trauma Surgery"],
+      experience:{startYear:CURRENT_YEAR-13},
+      bio:"Precision implantology and reconstructive care with calm, clear guidance.",
+      phones:["8610425342","8074512305"],
+      consultation:["Appointment Booking","Tele‑consultation"],
+      cities:["Nallagandla","Tellapur","Lingampally"],
+      books:[{title:"Triumph’s Complete Review of Dentistry (2 Vol Set), Ed. 1",cover:BOOK_COVER,link:"https://play.google.com/store/books/details/Triumph_s_Complete_Review_of_Dentistry?id=ZTjvDwAAQBAJ&hl=en_US&pli=1",publisher:"Wolters Kluwer · Oct 2018"}],
+      avatar:"https://i.imgur.com/7M2Qm1W.png"},
+    { id:"thikvijay", name:"Dr Thik Vijay", rating:4.6,
+      specialty:"FMC., (Germany) — Trichology, Aesthetic & Medical Cosmetology (ISHR)",
+      expertise:["Trichology","Aesthetic & Medical Cosmetology","Hair & Scalp Restoration"],
+      experience:{startYear:CURRENT_YEAR-11},
+      bio:"Evidence‑based trichology and aesthetic treatments with natural finish.",
+      phones:["8610425342","8074512305"],
+      consultation:["Appointment Booking","Tele‑consultation"],
+      cities:["Lingampally","Serilingampally"],
+      books:[], avatar:"https://i.imgur.com/y6w2m8a.png"},
+    { id:"deepak", name:"Dr Deepak", rating:4.7,
+      specialty:"Orthodontist (Assistant Professor)",
+      expertise:["Orthodontics","Smile Design & Aligners","Complex Malocclusion"],
+      experience:{startYear:CURRENT_YEAR-10},
+      bio:"Academic orthodontist crafting balanced smiles with modern appliances.",
+      phones:["8610425342","8074512305"],
+      consultation:["Appointment Booking","Tele‑consultation"],
+      cities:["Tellapur","Gopanpally"], books:[], avatar:"https://i.imgur.com/1X5v8X2.png"},
+    { id:"manoj", name:"Dr Manoj Reddy", rating:4.5,
+      specialty:"Oral & Maxillofacial Surgeon — Implantology",
+      expertise:["Dental Implants","Maxillofacial Surgery","Full‑mouth Rehab"],
+      experience:{startYear:CURRENT_YEAR-9},
+      bio:"Implant and maxillofacial care focused on function and long‑term results.",
+      phones:["8610425342","8074512305"],
+      consultation:["Appointment Booking","Tele‑consultation"],
+      cities:["Nallagandla","Serilingampally","Gopanpally"], books:[], avatar:"https://i.imgur.com/7M2Qm1W.png"},
+    { id:"idhaya", name:"Dr Idhaya", rating:4.4,
+      specialty:"General Dentistry · Health Insurance · Medical Tourism",
+      expertise:["Preventive Dentistry","Insurance Advisory","Tourism Coordination"],
+      experience:{startYear:CURRENT_YEAR-8},
+      bio:"Friendly general dentist guiding families through care, insurance and travel.",
+      phones:["8610425342","8074512305"],
+      consultation:["Tele‑consultation"],
+      cities:["Tellapur","Lingampally"], books:[], avatar:"https://i.imgur.com/y6w2m8a.png"}
+  ];
+
+  const qs = (root, sel) => root.querySelector(sel);
+  const qsa = (root, sel) => Array.from(root.querySelectorAll(sel));
+
+  const cityLink = (name) => {
+    const DIRECT = {
+      Nallagandla:"https://maps.app.goo.gl/xWyPi9pwkcM6hjYRA",
+      Tellapur:"https://maps.app.goo.gl/uxtsDV7hR6iCp5Uq8",
+      Lingampally:"https://maps.app.goo.gl/LQDetRYN3ednqDLn7",
+      Serilingampally:"https://maps.app.goo.gl/pLukMFtAPwzdoE9N8",
+      Gopanpally:"https://maps.app.goo.gl/EhtpSoxcchtQxG8E9"
+    };
+    return DIRECT[name] || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Best dentist in '+name)}`;
+  };
+  const experienceLabel = (conf) => conf?.startYear ? `${Math.max(0, new Date().getFullYear() - conf.startYear)} Years`
+                                                   : (conf?.baseYears ? `${conf.baseYears} Years` : "Years of Experience");
+  const starBadge = (r) => `★ ${r.toFixed(1)}`;
+  const starsDetail = (r) => {const f=Math.floor(r), h=r-f>=.5?1:0, e=5-f-h; return "★".repeat(f)+(h?"½":"")+"☆".repeat(e)+`  ${r.toFixed(1)}`;};
+
+  function toLabel(h,m){const p=h>=12?"PM":"AM";const hr=((h+11)%12)+1;return `${hr.toString().padStart(2,"0")}:${m===0?"00":"30"} ${p}`;}
+  function labelsEvery30min(start,end,wrap=false){
+    const out=[]; const push=(h,m)=>out.push(toLabel(h,m));
+    if(!wrap){for(let h=start;h<=end;h++){push(h,0); if(h!==end) push(h,30);}}
+    else {for(let h=start;h<=23;h++){push(h,0); if(h<23) push(h,30);} for(let h=0;h<=end;h++){push(h,0); if(h<end) push(h,30);}}
+    return out;
+  }
+
+  function renderSlots(root){
+    const slotsRegularEl = qs(root,'[data-dd="timeSlotsRegular"]');
+    const slotsEmergencyEl = qs(root,'[data-dd="timeSlotsEmergency"]');
+    const timeSelectEl = qs(root,'[data-dd="timeSelect"]');
+
+    function renderButtons(container, labels, emergency=false){
+      container.innerHTML="";
+      labels.forEach(lbl=>{
+        const b=document.createElement('button');
+        b.type='button'; b.className='dd-slot'+(emergency?' dd-slot--emergency':''); b.textContent=lbl;
+        b.addEventListener('click',()=>{
+          qsa(root,'.dd-slot').forEach(x=>x.classList.remove('dd-active'));
+          b.classList.add('dd-active');
+          timeSelectEl.value=lbl;
+        });
+        container.appendChild(b);
+      });
+    }
+
+    const regular=labelsEvery30min(11,22,false);
+    const emergency=labelsEvery30min(22,2,true);
+    renderButtons(slotsRegularEl,regular,false);
+    renderButtons(slotsEmergencyEl,emergency,true);
+
+    timeSelectEl.innerHTML="";
+    [...regular,...emergency].forEach(lbl=>{
+      const o=document.createElement('option'); o.value=o.textContent=lbl; timeSelectEl.appendChild(o);
+    });
+    timeSelectEl.addEventListener('change',()=>{
+      const chosen=timeSelectEl.value;
+      qsa(root,'.dd-slot').forEach(s=>s.classList.toggle('dd-active', s.textContent===chosen));
+    });
+    timeSelectEl.selectedIndex=0;
+    qs(root,'.dd-slot')?.classList.add('dd-active');
+  }
+
+  function fillProfile(root, doc){
+    // Header & media
+    qs(root,'[data-dd="docAvatar"]').src = doc.avatar;
+    qs(root,'[data-dd="docNameTop"]').textContent = doc.name;
+    qs(root,'[data-dd="docSpecialtyTop"]').textContent = doc.specialty;
+    qs(root,'[data-dd="docRatingPill"]').textContent = starBadge(doc.rating);
+
+    const img = qs(root,'[data-dd="docImage"]');
+    img.src = doc.avatar; img.alt = `${doc.name} portrait`;
+
+    // Caption
+    qs(root,'[data-dd="docName"]').textContent = doc.name;
+    qs(root,'[data-dd="docBio"]').textContent = doc.bio;
+
+    // Facts, cities, phones
+    qs(root,'[data-dd="docExperience"]').textContent = `Experience: ${experienceLabel(doc.experience)}`;
+    qs(root,'[data-dd="docConsultation"]').textContent = doc.consultation.join(" · ");
+
+    const citiesEl = qs(root,'[data-dd="docCities"]');
+    citiesEl.innerHTML = doc.cities.map(c=>`<a class="dd-chip" href="${cityLink(c)}" target="_blank" rel="noopener" title="Best dentist in ${c}">${c}</a>`).join(" ");
+
+    const phonesEl = qs(root,'[data-dd="docPhones"]');
+    phonesEl.innerHTML = doc.phones.map(n=>`<a class="dd-chip" href="tel:${n.replace(/\s+/g,'')}">${n}</a>`).join(" ");
+
+    // About + expertise + books
+    qs(root,'[data-dd="docBioFull"]').textContent = `${doc.bio} — Rating: ${starsDetail(doc.rating)}`;
+
+    const expList = qs(root,'[data-dd="docExpertise"]');
+    expList.innerHTML = ""; doc.expertise.forEach(x=>{const li=document.createElement('li'); li.textContent=x; expList.appendChild(li);});
+
+    const books = qs(root,'[data-dd="docBooks"]');
+    books.innerHTML = "";
+    if (doc.books.length){
+      doc.books.forEach(b=>{
+        const tile=document.createElement('div');
+        tile.className='dd-book-tile';
+        tile.innerHTML = `<img src="${b.cover}" alt="${b.title} cover">
+                          <a href="${b.link}" target="_blank" rel="noopener">${b.title}</a>
+                          <div class="dd-small">${b.publisher||""}</div>`;
+        books.appendChild(tile);
+      });
+    } else {
+      const none=document.createElement('p'); none.className='dd-muted'; none.textContent='No books added yet.'; books.appendChild(none);
+    }
+
+    // Quick actions
+    qs(root,'[data-dd="callBtn"]').onclick = ()=> window.location.href = `tel:${doc.phones[0]}`;
+    qs(root,'[data-dd="callBtnMiddle"]').onclick = ()=> window.location.href = `tel:${doc.phones[0]}`;
+
+    const citiesModal = qs(root,'[data-dd="citiesModal"]');
+    const citiesList = qs(root,'[data-dd="citiesList"]');
+    const openCities = qs(root,'[data-dd="openCities"]');
+    const openMapsBtn = qs(root,'[data-dd="openMapsBtn"]');
+    const closeModalBtn = qs(root,'[data-dd="closeModalBtn"]');
+
+    openCities.onclick = ()=>{
+      citiesList.innerHTML = "";
+      doc.cities.forEach(c=>{
+        const li=document.createElement('li');
+        li.innerHTML = `<a href="${cityLink(c)}" target="_blank" rel="noopener">${c}</a>`;
+        citiesList.appendChild(li);
+      });
+      openMapsBtn.onclick = ()=> window.open(cityLink(doc.cities[0]),'_blank');
+      citiesModal.showModal();
+    };
+    closeModalBtn.onclick = ()=> citiesModal.close();
+  }
+
+  function renderList(root){
+    const wrap = qs(root,'[data-dd="doctorsList"]');
+    const fallback = qs(root,'[data-dd="listFallback"]');
+    wrap.innerHTML = "";
+    DOCTORS.forEach(doc=>{
+      const card = document.createElement('article');
+      card.className = 'dd-card';
+      card.dataset.id = doc.id;
+      card.innerHTML = `
+        <div class="dd-avatar"><img src="${doc.avatar}" alt="${doc.name}"></div>
+        <div class="dd-card-body">
+          <h3 class="dd-card-title" title="${doc.name}">${doc.name}</h3>
+          <div class="dd-card-rating">${starBadge(doc.rating)}</div>
+        </div>
+        <div class="dd-card-actions">
+          <button class="dd-icon-btn" data-action="call" title="Call">Call</button>
+          <button class="dd-icon-btn" data-action="map" title="Map">Map</button>
+          <button class="dd-icon-btn" data-action="select" title="View">View</button>
+        </div>`;
+      wrap.appendChild(card);
+    });
+    fallback.hidden = true;
+
+    // interactions (delegate)
+    wrap.addEventListener('click',(e)=>{
+      const card = e.target.closest('.dd-card'); if(!card) return;
+      const doc = DOCTORS.find(d=>d.id===card.dataset.id); if(!doc) return;
+
+      const act = e.target.dataset.action;
+      if (act === 'call'){ window.location.href = `tel:${doc.phones[0]}`; return; }
+      if (act === 'map'){
+        const modal = qs(root,'[data-dd="citiesModal"]');
+        const list  = qs(root,'[data-dd="citiesList"]');
+        const btn   = qs(root,'[data-dd="openMapsBtn"]');
+        list.innerHTML = doc.cities.map(c=>`<li><a href="${cityLink(c)}" target="_blank" rel="noopener">${c}</a></li>`).join("");
+        btn.onclick = ()=> window.open(cityLink(doc.cities[0]),'_blank');
+        modal.showModal(); return;
+      }
+      // select/view
+      qs(root,'[data-dd="doctorSelect"]').value = doc.id;
+      fillProfile(root, doc);
+      toast(root, `${doc.name} selected`);
+    });
+  }
+
+  function renderSelect(root){
+    const sel = qs(root,'[data-dd="doctorSelect"]');
+    sel.innerHTML = "";
+    DOCTORS.forEach(d=>{ const o=document.createElement('option'); o.value=d.id; o.textContent=d.name; sel.appendChild(o); });
+    sel.addEventListener('change', ()=>{
+      const d=DOCTORS.find(x=>x.id===sel.value);
+      if(d) fillProfile(root,d);
+    });
+  }
+
+  function toast(root, msg){
+    const t = qs(root,'[data-dd="toast"]');
+    t.textContent = msg; t.classList.add('dd-show');
+    setTimeout(()=>t.classList.remove('dd-show'), 2600);
+  }
+
+  function bindConfirm(root){
+    const btn = qs(root,'[data-dd="confirmBtn"]');
+    btn.addEventListener('click', ()=>{
+      const sel = qs(root,'[data-dd="doctorSelect"]');
+      const doc = DOCTORS.find(d=>d.id===sel.value);
+      const date = qs(root,'[data-dd="appointmentDate"]').value || "";
+      const time = qs(root,'[data-dd="timeSelect"]').value || "";
+      const name = (qs(root,'[data-dd="patientName"]').value||"").trim();
+      const age = (qs(root,'[data-dd="patientAge"]').value||"").trim();
+      const type = qs(root,'[data-dd="appointmentType"]').value;
+      const notes = (qs(root,'[data-dd="reason"]').value||"").trim();
+
+      if(!doc) return toast(root,"Please select a doctor.");
+      if(!name) return toast(root,"Please enter patient name.");
+      if(!age) return toast(root,"Please enter age.");
+      if(!date||!time) return toast(root,"Please choose date & time.");
+
+      const summary = `Appointment Request
+Doctor: ${doc.name}
+Type: ${type}
+Patient: ${name} (Age ${age})
+Date: ${date}
+Time: ${time}
+Phone(s): ${doc.phones.join(', ')}
+City Options: ${doc.cities.join(', ')}
+
+Notes: ${notes}`;
+
+      const subject = `Appointment: ${type} | ${name} | ${date} ${time}`;
+      const mailto  = `mailto:dr.dhivakaran@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(summary)}`;
+      window.open(mailto,'_blank');
+
+      const waNumber="91861425342";
+      const waLink=`https://wa.me/${waNumber}?text=${encodeURIComponent("Hello, I'd like to confirm an appointment.\n\n"+summary)}`;
+      window.open(waLink,'_blank');
+
+      toast(root,"Appointment info prepared in Email & WhatsApp.");
+    });
+  }
+
+  function init(selector){
+    const root = document.querySelector(selector);
+    if(!root){ console.error("DoctorDashboard: root not found:", selector); return; }
+
+    renderSlots(root);
+    renderList(root);
+    renderSelect(root);
+
+    const first = DOCTORS[0];
+    qs(root,'[data-dd="doctorSelect"]').value = first.id;
+    fillProfile(root, first);
+    bindConfirm(root);
+  }
+
+  return { init };
+})();
+</script>
+
+<script>
+  // Initialize after DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    DoctorDashboard.init('#doctorDashboard');
+  });
+</script>
