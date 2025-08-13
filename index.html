@@ -111,16 +111,31 @@
   }
   </script>
 
-  <!-- Google Analytics (replace ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-</head>
-<body>
+<!-- Google Tag Manager + Consent Mode (place first in <head>) -->
+<script>
+  // Consent Mode v2 defaults (adjust to your policy)
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted'  // set to 'denied' until accept if required
+  });
+</script>
+<script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-N7LJVS7T');
+</script>
+<!-- End Google Tag Manager -->
+
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7LJVS7T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
   <!-- ===== Header ===== -->
   <header class="site-header">
@@ -845,9 +860,45 @@
   // Initial
   enhanceAll();
 })();
+
+(function(){
+  const dl = window.dataLayer = window.dataLayer || [];
+  const send = (event, params={}) => dl.push({ event, ...params });
+
+  // Hero buttons (you already have these classes)
+  const bind = (sel, handler) => document.querySelector(sel)?.addEventListener('click', handler);
+
+  bind('.hero-button.whatsapp', e => {
+    send('contact', { method: 'WhatsApp', location: 'hero', link_url: e.currentTarget.href });
+  });
+
+  bind('.hero-button.call', e => {
+    send('contact', { method: 'Phone', location: 'hero', link_url: e.currentTarget.href });
+  });
+
+  bind('.hero-button.mail', e => {
+    send('contact', { method: 'Email', location: 'hero', link_url: e.currentTarget.href });
+  });
+
+  bind('.hero-button.location', e => {
+    send('view_map', { provider: 'Google Maps', location: 'hero', link_url: e.currentTarget.href });
+  });
+
+  // Sitewide safety net for tel/mailto/WhatsApp links
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (/^tel:/i.test(href))        send('contact', { method: 'Phone',  location: 'sitewide', link_url: href });
+    else if (/^mailto:/i.test(href))send('contact', { method: 'Email',  location: 'sitewide', link_url: href });
+    else if (/wa\.me|whatsapp\.com/i.test(href))
+                                   send('contact', { method: 'WhatsApp',location: 'sitewide', link_url: href });
+  }, { capture:true });
+})();
 </script>  
 </body>
 </html>
+
 
 
 
