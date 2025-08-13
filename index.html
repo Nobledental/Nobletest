@@ -287,6 +287,175 @@
   </div>
 </section>
 
+  <!-- Doctors Dashboard Component -->
+<div id="doctorDashboard" class="dd-root">
+  <div class="dd-dashboard-container">
+    <main class="dd-main-grid">
+      <!-- LEFT: Instagram-like Doctor Card -->
+      <section class="dd-left-panel" data-dd="leftPanel" aria-live="polite">
+        <!-- IG-style header -->
+        <header class="dd-insta-header">
+          <div class="dd-insta-user">
+            <div class="dd-insta-avatar">
+              <img data-dd="docAvatar" src="" alt="Doctor avatar">
+            </div>
+            <div class="dd-insta-meta">
+              <div class="dd-insta-name" data-dd="docNameTop">Doctor Name</div>
+              <div class="dd-insta-sub" data-dd="docSpecialtyTop">Specialty</div>
+            </div>
+          </div>
+          <span class="dd-insta-rating" data-dd="docRatingPill">★ 4.9</span>
+        </header>
+
+        <!-- Square media with animated gradient -->
+        <div class="dd-profile-hero-square">
+          <div class="dd-pulse-bg"></div>
+          <img data-dd="docImage" src="" alt="Doctor portrait" class="dd-doctor-hero-pic" />
+        </div>
+
+        <!-- Actions like IG -->
+        <div class="dd-insta-actions">
+          <button class="dd-icon-action" type="button" title="Like" aria-label="Like">❤</button>
+          <button class="dd-icon-action" type="button" title="Comment" aria-label="Comment">💬</button>
+          <button class="dd-icon-action" type="button" title="Share" aria-label="Share">📤</button>
+          <button class="dd-icon-action dd-push-right" type="button" title="Save" aria-label="Save">🔖</button>
+        </div>
+
+        <!-- Caption -->
+        <div class="dd-insta-caption">
+          <span class="dd-insta-name" data-dd="docName">Doctor Name</span>
+          <span class="dd-insta-text" data-dd="docBio">Bio text…</span>
+        </div>
+
+        <!-- Quick facts -->
+        <div class="dd-facts-row">
+          <span data-dd="docExperience" class="dd-fact-chip">Experience</span>
+          <span data-dd="docConsultation" class="dd-fact-chip">Consultation types</span>
+        </div>
+
+        <div class="dd-actions-row">
+          <button data-dd="callBtn" class="dd-btn dd-action-btn">Call</button>
+          <button data-dd="openCities" class="dd-btn dd-ghost-btn">Cities</button>
+        </div>
+
+        <!-- Cities & Phones -->
+        <div class="dd-chips-block">
+          <div class="dd-chips-title">Cities</div>
+          <div data-dd="docCities" class="dd-chips"></div>
+        </div>
+
+        <div class="dd-chips-block">
+          <div class="dd-chips-title">Phones</div>
+          <div data-dd="docPhones" class="dd-chips"></div>
+        </div>
+
+        <!-- Details -->
+        <details class="dd-collapse">
+          <summary>About info</summary>
+          <p data-dd="docBioFull" class="dd-muted"></p>
+        </details>
+
+        <details class="dd-collapse">
+          <summary>Expertise</summary>
+          <ul data-dd="docExpertise" class="dd-list-compact"></ul>
+        </details>
+
+        <details class="dd-collapse">
+          <summary>Published Books</summary>
+          <div data-dd="docBooks" class="dd-book-grid"></div>
+        </details>
+      </section>
+
+      <!-- MIDDLE: Appointment Booking -->
+      <section class="dd-middle-panel dd-appointment-panel">
+        <h2>Book an Appointment</h2>
+
+        <div class="dd-form-group">
+          <label>Doctor</label>
+          <select data-dd="doctorSelect" aria-label="Select Doctor"></select>
+        </div>
+
+        <div class="dd-form-row">
+          <div class="dd-form-group">
+            <label>Patient Name</label>
+            <input type="text" data-dd="patientName" placeholder="Full name" />
+          </div>
+          <div class="dd-form-group">
+            <label>Age</label>
+            <input type="number" data-dd="patientAge" min="0" placeholder="Years" />
+          </div>
+        </div>
+
+        <div class="dd-form-group">
+          <label>Type of Appointment</label>
+          <select data-dd="appointmentType">
+            <option value="Consultation">Consultation</option>
+            <option value="Follow-up">Follow-up</option>
+            <option value="Emergency">Emergency</option>
+            <option value="Second Opinion">Second Opinion</option>
+          </select>
+        </div>
+
+        <div class="dd-form-group">
+          <label>Date</label>
+          <input type="date" data-dd="appointmentDate" />
+        </div>
+
+        <div class="dd-form-group">
+          <label>Time</label>
+
+          <div class="dd-slot-section">
+            <div class="dd-slot-section__title">Regular (11:00 AM – 10:00 PM)</div>
+            <div class="dd-time-slots" data-dd="timeSlotsRegular"></div>
+          </div>
+
+          <div class="dd-slot-section">
+            <div class="dd-slot-section__title dd-emergency">Emergencies (10:00 PM – 2:00 AM)</div>
+            <div class="dd-time-slots" data-dd="timeSlotsEmergency"></div>
+          </div>
+
+          <div class="dd-form-group">
+            <label>Selected Time</label>
+            <select data-dd="timeSelect" aria-label="Selected Time"></select>
+          </div>
+        </div>
+
+        <div class="dd-form-group">
+          <label>Reason / Notes</label>
+          <textarea data-dd="reason" placeholder="Brief description..."></textarea>
+        </div>
+
+        <div class="dd-form-group dd-two-col">
+          <button class="dd-confirm-btn" data-dd="confirmBtn">Confirm Appointment</button>
+          <button class="dd-secondary-btn" data-dd="callBtnMiddle">Call Clinic</button>
+        </div>
+      </section>
+
+      <!-- RIGHT: Minimal Doctors List (name + rating only, no scroll) -->
+      <section class="dd-right-panel" aria-label="Doctors List">
+        <div data-dd="doctorsList" class="dd-list-no-scroll"></div>
+        <div data-dd="listFallback" class="dd-fallback" hidden>Loading doctors…</div>
+      </section>
+    </main>
+
+    <!-- Cities Modal -->
+    <dialog data-dd="citiesModal" class="dd-modal">
+      <div class="dd-modal-content">
+        <h3>Available Cities</h3>
+        <ul data-dd="citiesList"></ul>
+        <div class="dd-modal-actions">
+          <button data-dd="openMapsBtn" class="dd-confirm-btn">Open in Maps</button>
+          <button data-dd="closeModalBtn" class="dd-secondary-btn">Close</button>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Toast -->
+    <div data-dd="toast" class="dd-toast" role="status" aria-live="polite"></div>
+  </div>
+</div>
+
+
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
     <p>© <span id="year"></span> Noble Dental Nallagandla. All rights reserved.</p>
@@ -893,6 +1062,7 @@
 </script>  
 </body>
 </html>
+
 
 
 
