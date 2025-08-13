@@ -329,7 +329,7 @@ body.nav-open{ overflow:hidden; }
 
   /* Matte button tokens (Android-ish pastel) */
   --btn-bg:   color-mix(in srgb, var(--accent) 20%, #7beb7a);
-  --btn-b/.g-h: color-mix(in srgb, var(--accent) 16%, #eaf2ff);
+  --btn-bg-h: color-mix(in srgb, var(--accent) 16%, #eaf2ff);
   --btn-br:   color-mix(in srgb, var(--accent) 22%, #e3ebff);
   --btn-txt:  #0e1320;
 }
@@ -766,6 +766,7 @@ body.nav-open{ overflow:hidden; }
 .svc [data-category="Diagnostics"]            { --accent:#40c4ff; } /* cyan  */
 .svc [data-category="Sedation & Sleep"]       { --accent:#8ca0ff; } /* peri  */
 .svc [data-category="Special Care"]           { --accent:#ff7070; } /* coral */
+
 
 
 
