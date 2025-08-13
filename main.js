@@ -420,7 +420,7 @@ const apply = ()=>{
   });
 })();
 
-<!-- Doctors Dashboard Component (scoped) — include ONCE -->
+/* Doctors Dashboard Component (scoped) */
 const DoctorDashboard = (() => {
   const CURRENT_YEAR = new Date().getFullYear();
   const BOOK_COVER = "https://limasy.com/limcms/uploads/products/triumphs-complete-review-of-dentistry-2-volume-set_1709201366_22611.png";
@@ -481,7 +481,7 @@ const DoctorDashboard = (() => {
       cities:["Tellapur","Lingampally"], books:[], avatar:"https://i.imgur.com/y6w2m8a.png"}
   ];
 
-  const qs  = (root, sel) => root.querySelector(sel);
+  const qs = (root, sel) => root.querySelector(sel);
   const qsa = (root, sel) => Array.from(root.querySelectorAll(sel));
 
   const cityLink = (name) => {
@@ -494,18 +494,16 @@ const DoctorDashboard = (() => {
     };
     return DIRECT[name] || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Best dentist in '+name)}`;
   };
+  const experienceLabel = (conf) => conf?.startYear ? `${Math.max(0, new Date().getFullYear() - conf.startYear)} Years`
+                                                   : (conf?.baseYears ? `${conf.baseYears} Years` : "Years of Experience");
+  const starBadge = (r) => `★ ${r.toFixed(1)}`;
+  const starsDetail = (r) => {const f=Math.floor(r), h=r-f>=.5?1:0, e=5-f-h; return "★".repeat(f)+(h?"½":"")+"☆".repeat(e)+`  ${r.toFixed(1)}`;};
 
-  const experienceLabel = (conf) =>
-    conf?.startYear ? `${Math.max(0, new Date().getFullYear() - conf.startYear)} Years`
-                    : (conf?.baseYears ? `${conf.baseYears} Years` : "Years of Experience");
-  const starBadge   = (r) => `★ ${r.toFixed(1)}`;
-  const starsDetail = (r) => { const f=Math.floor(r), h=r-f>=.5?1:0, e=5-f-h; return "★".repeat(f)+(h?"½":"")+"☆".repeat(e)+`  ${r.toFixed(1)}`; };
-
-  function toLabel(h,m){ const p=h>=12?"PM":"AM"; const hr=((h+11)%12)+1; return `${hr.toString().padStart(2,"0")}:${m===0?"00":"30"} ${p}`; }
+  function toLabel(h,m){const p=h>=12?"PM":"AM";const hr=((h+11)%12)+1;return `${hr.toString().padStart(2,"0")}:${m===0?"00":"30"} ${p}`;}
   function labelsEvery30min(start,end,wrap=false){
     const out=[]; const push=(h,m)=>out.push(toLabel(h,m));
-    if(!wrap){ for(let h=start;h<=end;h++){ push(h,0); if(h!==end) push(h,30);} }
-    else { for(let h=start;h<=23;h++){ push(h,0); if(h<23) push(h,30);} for(let h=0;h<=end;h++){ push(h,0); if(h<end) push(h,30);} }
+    if(!wrap){for(let h=start;h<=end;h++){push(h,0); if(h!==end) push(h,30);}}
+    else {for(let h=start;h<=23;h++){push(h,0); if(h<23) push(h,30);} for(let h=0;h<=end;h++){push(h,0); if(h<end) push(h,30);}}
     return out;
   }
 
@@ -546,6 +544,7 @@ const DoctorDashboard = (() => {
   }
 
   function fillProfile(root, doc){
+    // Header & media
     qs(root,'[data-dd="docAvatar"]').src = doc.avatar;
     qs(root,'[data-dd="docNameTop"]').textContent = doc.name;
     qs(root,'[data-dd="docSpecialtyTop"]').textContent = doc.specialty;
@@ -554,9 +553,11 @@ const DoctorDashboard = (() => {
     const img = qs(root,'[data-dd="docImage"]');
     img.src = doc.avatar; img.alt = `${doc.name} portrait`;
 
+    // Caption
     qs(root,'[data-dd="docName"]').textContent = doc.name;
     qs(root,'[data-dd="docBio"]').textContent = doc.bio;
 
+    // Facts, cities, phones
     qs(root,'[data-dd="docExperience"]').textContent = `Experience: ${experienceLabel(doc.experience)}`;
     qs(root,'[data-dd="docConsultation"]').textContent = doc.consultation.join(" · ");
 
@@ -566,6 +567,7 @@ const DoctorDashboard = (() => {
     const phonesEl = qs(root,'[data-dd="docPhones"]');
     phonesEl.innerHTML = doc.phones.map(n=>`<a class="dd-chip" href="tel:${n.replace(/\s+/g,'')}">${n}</a>`).join(" ");
 
+    // About + expertise + books
     qs(root,'[data-dd="docBioFull"]').textContent = `${doc.bio} — Rating: ${starsDetail(doc.rating)}`;
 
     const expList = qs(root,'[data-dd="docExpertise"]');
@@ -586,7 +588,7 @@ const DoctorDashboard = (() => {
       const none=document.createElement('p'); none.className='dd-muted'; none.textContent='No books added yet.'; books.appendChild(none);
     }
 
-    // quick actions
+    // Quick actions
     qs(root,'[data-dd="callBtn"]').onclick = ()=> window.location.href = `tel:${doc.phones[0]}`;
     qs(root,'[data-dd="callBtnMiddle"]').onclick = ()=> window.location.href = `tel:${doc.phones[0]}`;
 
@@ -597,7 +599,12 @@ const DoctorDashboard = (() => {
     const closeModalBtn = qs(root,'[data-dd="closeModalBtn"]');
 
     openCities.onclick = ()=>{
-      citiesList.innerHTML = doc.cities.map(c=>`<li><a href="${cityLink(c)}" target="_blank" rel="noopener">${c}</a></li>`).join("");
+      citiesList.innerHTML = "";
+      doc.cities.forEach(c=>{
+        const li=document.createElement('li');
+        li.innerHTML = `<a href="${cityLink(c)}" target="_blank" rel="noopener">${c}</a>`;
+        citiesList.appendChild(li);
+      });
       openMapsBtn.onclick = ()=> window.open(cityLink(doc.cities[0]),'_blank');
       citiesModal.showModal();
     };
@@ -627,6 +634,7 @@ const DoctorDashboard = (() => {
     });
     fallback.hidden = true;
 
+    // interactions (delegate)
     wrap.addEventListener('click',(e)=>{
       const card = e.target.closest('.dd-card'); if(!card) return;
       const doc = DOCTORS.find(d=>d.id===card.dataset.id); if(!doc) return;
@@ -641,6 +649,7 @@ const DoctorDashboard = (() => {
         btn.onclick = ()=> window.open(cityLink(doc.cities[0]),'_blank');
         modal.showModal(); return;
       }
+      // select/view
       qs(root,'[data-dd="doctorSelect"]').value = doc.id;
       fillProfile(root, doc);
       toast(root, `${doc.name} selected`);
@@ -664,7 +673,8 @@ const DoctorDashboard = (() => {
   }
 
   function bindConfirm(root){
-    qs(root,'[data-dd="confirmBtn"]').addEventListener('click', ()=>{
+    const btn = qs(root,'[data-dd="confirmBtn"]');
+    btn.addEventListener('click', ()=>{
       const sel = qs(root,'[data-dd="doctorSelect"]');
       const doc = DOCTORS.find(d=>d.id===sel.value);
       const date = qs(root,'[data-dd="appointmentDate"]').value || "";
@@ -705,9 +715,11 @@ Notes: ${notes}`;
   function init(selector){
     const root = document.querySelector(selector);
     if(!root){ console.error("DoctorDashboard: root not found:", selector); return; }
+
     renderSlots(root);
     renderList(root);
     renderSelect(root);
+
     const first = DOCTORS[0];
     qs(root,'[data-dd="doctorSelect"]').value = first.id;
     fillProfile(root, first);
@@ -717,8 +729,7 @@ Notes: ${notes}`;
   return { init };
 })();
 
-<!-- Initialize ONCE after the HTML exists -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  DoctorDashboard.init('#doctorDashboard'); // ensure an element with this id exists
-});
+  // Initialize after DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    DoctorDashboard.init('#doctorDashboard');
+  });
