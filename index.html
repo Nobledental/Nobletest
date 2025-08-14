@@ -469,11 +469,14 @@
   </footer>
 
  
-<!-- AOS lib -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
-<!-- Your app -->
-<script src="/main.js" defer></script>
-    
+  <!-- AOS + Main JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script>
+        // ---- Init AOS
+    window.addEventListener('load', () => {
+      if (window.AOS) AOS.init({ once: true });
+    });
+
     // ---- Helpers
     const $ = (sel, root = document) => root.querySelector(sel);
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
@@ -1068,7 +1071,5 @@
 <script src="/main.js" defer></script>
 </body>
 </html>
-
-
 
 
