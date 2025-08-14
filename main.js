@@ -7,18 +7,18 @@
   const qs  = (s, r=document)=>r.querySelector(s);
   const qsa = (s, r=document)=>Array.from(r.querySelectorAll(s));
 
-  /* AOS init (safe) */
+  // AOS init (safe)
   window.addEventListener('load', () => {
     if (window.AOS) AOS.init({ once: true, duration: 700, easing: 'ease-out' });
   });
 
-  /* Sticky header elevation */
+  // Sticky header elevation
   const header = qs('.site-header');
   const onScroll = () => header?.classList.toggle('elevated', window.scrollY > 8);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* Mobile menu (drawer) + focus trap + Esc/outside + body lock */
+  // Mobile menu (drawer) + focus trap + Esc/outside + body lock
   const nav      = qs('.main-nav');
   const menuBtn  = qs('.menu-toggle');
   const focusSel = 'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
@@ -67,10 +67,9 @@
     });
   }
 
-  /* Specialities dropdown (tap on mobile) */
+  // Specialities dropdown (tap on mobile)
   const spItem   = qs('.has-submenu');
   const spToggle = qs('.has-submenu > a');
-
   const isTouchMode = () =>
     window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
@@ -106,7 +105,7 @@
     window.addEventListener('orientationchange', onResize);
   }
 
-  /* Smooth scroll with fixed-header offset */
+  // Smooth scroll with fixed-header offset
   const scrollWithOffset = (el) => {
     const h = header ? header.getBoundingClientRect().height : 0;
     const y = el.getBoundingClientRect().top + window.scrollY - h - 8;
@@ -125,7 +124,7 @@
     });
   });
 
-  /* Active link highlight on scroll */
+  // Active link highlight on scroll
   const sections = qsa('section[id]');
   const navLinks = new Map();
   qsa('.main-nav a[href^="#"]').forEach(a => { const id = a.getAttribute('href'); if (id) navLinks.set(id, a); });
@@ -142,11 +141,11 @@
     window.addEventListener('pagehide', () => io.disconnect());
   }
 
-  /* Footer year */
+  // Footer year
   const yearEl = qs('#year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  /* Motion preferences for hero video */
+  // Motion preferences for hero video
   const video = qs('.blackhole-video');
   const mq    = window.matchMedia('(prefers-reduced-motion: reduce)');
   const applyMotionPref = () => {
@@ -159,268 +158,7 @@
   applyMotionPref();
 })();
 
-/* ---------- Services: accents + search + category + pagination + tilt/reveal ---------- */
-(() => {
-  const qs  = (s, r=document)=>r.querySelector(s);
-  const qsa = (s, r=document)=>Array.from(r.querySelectorAll(s));
-
-  // Works with either id
-  const grid = qs('#treatmentsGrid') || qs('#servicesGrid');
-  if (!grid) return;
-
-  // Controls
-  const input  = qs('#svcSearch') || qs('#complaintInput') || null;
-  const catSel = qs('#svcCategory') || null;
-
-  // Pager (reuse or create)
-  let pager = grid.parentElement.querySelector('.treatments-pagination') || null;
-  if (!pager) {
-    pager = document.createElement('nav');
-    pager.className = 'treatments-pagination';
-    pager.setAttribute('aria-label','Treatments pages');
-    pager.innerHTML = `
-      <button id="pgPrev" class="pg-btn" type="button" aria-label="Previous page">‹</button>
-      <div id="pgDots" class="pg-dots" role="list"></div>
-      <button id="pgNext" class="pg-btn" type="button" aria-label="Next page">›</button>`;
-    grid.insertAdjacentElement('afterend', pager);
-  }
-  const prevBtn = qs('#pgPrev', pager);
-  const nextBtn = qs('#pgNext', pager);
-  const dots    = qs('#pgDots', pager) || qs('.pg-dots', pager);
-
-  // Helpers
-  const getCardEls = () => qsa('.t-card, .service-card', grid);
-
-  const CAT_MAP = {
-    whitening:'Cosmetic & Smile', veneers:'Cosmetic & Smile', smile:'Cosmetic & Smile',
-    aligners:'Tooth Alignment', braces:'Tooth Alignment',
-    implants:'Implants & Replacement',
-    crowns:'Prosthodontics', bridges:'Prosthodontics',
-    rct:'Tooth Saving', fillings:'Tooth Saving',
-    extraction:'Oral Surgery', scaling:'Periodontics'
-  };
-
-  const ACCENT = {
-    'Tooth Alignment':        [ 72,134,255],
-    'Tooth Saving':           [ 84,196,160],
-    'Implants & Replacement': [  0,168,145],
-    'Prosthodontics':         [255,193, 72],
-    'Cosmetic & Smile':       [245,109,168],
-    'Oral Surgery':           [255,171, 64],
-    'Periodontics':           [ 76,175, 80],
-    'Diagnostics':            [ 64,196,255],
-    'Sedation & Sleep':       [140,160,255],
-    'Special Care':           [255,112,112],
-    'General':                [ 14,165,163]
-  };
-
-  const setAccentVars = (el, cat='General') => {
-    const [r,g,b] = ACCENT[cat] || ACCENT.General;
-    el.style.setProperty('--accent',  `rgb(${r} ${g} ${b})`);
-    el.style.setProperty('--tint-06', `rgba(${r},${g},${b},.06)`);
-    el.style.setProperty('--tint-12', `rgba(${r},${g},${b},.12)`);
-    el.style.setProperty('--tint-18', `rgba(${r},${g},${b},.18)`);
-    el.style.setProperty('--tint-25', `rgba(${r},${g},${b},.25)`);
-    el.style.setProperty('--tint-35', `rgba(${r},${g},${b},.35)`);
-  };
-
-   const setSectionAccent = (cat='General') => {
-  const box = document.querySelector('.svc');
-  if (!box) return;
-  const [r,g,b] = (ACCENT[cat] || ACCENT.General);
-  box.style.setProperty('--accent', `rgb(${r} ${g} ${b})`);
-  box.style.setProperty('--tint-06', `rgba(${r},${g},${b},.06)`);
-  box.style.setProperty('--tint-12', `rgba(${r},${g},${b},.12)`);
-  box.style.setProperty('--tint-18', `rgba(${r},${g},${b},.18)`);
-  box.style.setProperty('--tint-25', `rgba(${r},${g},${b},.25)`);
-  box.style.setProperty('--tint-35', `rgba(${r},${g},${b},.35)`);
-};
-
-  const toModel = (el, i) => {
-    const idToken = (el.id||'').replace(/^svc-/, '').toLowerCase();
-    const kw = (el.getAttribute('data-keywords')||'').toLowerCase();
-    const fromId = CAT_MAP[idToken];
-    const keyHit = Object.keys(CAT_MAP).find(k => kw.includes(k));
-    const fromKw = keyHit ? CAT_MAP[keyHit] : null;
-    const badge  = el.querySelector('.t-badge')?.textContent?.trim();
-    const cat    = el.dataset.category || badge || fromId || fromKw || 'General';
-    el.dataset.category = cat;
-    setAccentVars(el, cat);
-    return {
-      el,
-      index: i,
-      title: el.querySelector('.t-title, h3')?.textContent?.trim() || '',
-      text:  el.querySelector('.t-desc, p')?.textContent?.trim() || '',
-      kw, category: cat
-    };
-  };
-
-  let allCards = getCardEls().map(toModel);
-
-  // Interactions
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const enhanceInteractions = (els) => {
-    if (!matchMedia('(pointer:fine)').matches || reduced) return;
-    els.forEach(el=>{
-      el.classList.add('ripple');
-      const onMove = (e)=>{
-        const r = el.getBoundingClientRect();
-        const x = e.clientX - r.left, y = e.clientY - r.top;
-        const rotY = ((x / r.width) - 0.5) * 10;
-        const rotX = -((y / r.height) - 0.5) * 8;
-        const dx = Math.min(1, Math.max(-1, (x - r.width/2) / (r.width/2)));
-        const dy = Math.min(1, Math.max(-1, (y - r.height/2) / (r.height/2)));
-        el.style.setProperty('--ry', rotY.toFixed(2)+'deg');
-        el.style.setProperty('--rx', rotX.toFixed(2)+'deg');
-        el.style.setProperty('--tx', (dx*6).toFixed(2)+'px');
-        el.style.setProperty('--ty', (dy*6).toFixed(2)+'px');
-        el.style.setProperty('--ripple-x', (x/r.width*100)+'%');
-        el.style.setProperty('--ripple-y', (y/r.height*100)+'%');
-      };
-      const onLeave = ()=>{
-        el.style.setProperty('--ry','0deg');
-        el.style.setProperty('--rx','0deg');
-        el.style.setProperty('--tx','0px');
-        el.style.setProperty('--ty','0px');
-      };
-      el.addEventListener('pointermove', onMove);
-      el.addEventListener('pointerleave', onLeave);
-      el.addEventListener('blur', onLeave);
-      el.addEventListener('pointerdown', onMove);
-    });
-  };
-
-  // Reveal
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{
-      if (!en.isIntersecting) return;
-      en.target.classList.add('in-view');
-      io.unobserve(en.target);
-    });
-  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
-  const observeVisible = (els)=>{
-    if (reduced) { els.forEach(n => n.classList.add('in-view')); return; }
-    els.forEach(n => { n.classList.remove('in-view'); io.observe(n); });
-  };
-
-  // Search + Category + Pagination
-  const normalize = s => (s||'').toLowerCase();
-  const score = (c, q) => {
-    if (!q) return 0;
-    const blob = `${c.title} ${c.text} ${c.kw}`.toLowerCase();
-    let s = 0;
-    q.split(/[\s,]+/).filter(Boolean).forEach(t=>{
-      const term = t.toLowerCase();
-      if (c.title.toLowerCase().includes(term)) s += 5;
-      if (c.kw.includes(term))                 s += 3;
-      if (blob.includes(term))                 s += 1;
-    });
-    return s;
-  };
-
-  const PAGE_SIZE = 6;
-  const state = { q:'', cat:'all', page:1, list: allCards };
-
-  const compute = ()=>{
-    const { q, cat } = state;
-    let pool = allCards.slice();
-    if (cat !== 'all') pool = pool.filter(c => c.category === cat);
-    state.list = !q ? pool
-      : pool.map(c=>({c, s:score(c,q)})).filter(x=>x.s>0)
-            .sort((a,b)=> b.s - a.s || a.c.index - b.c.index)
-            .map(x=>x.c);
-    const maxPage = Math.max(1, Math.ceil(state.list.length / PAGE_SIZE));
-    if (state.page > maxPage) state.page = 1;
-  };
-
-  const render = ()=>{
-    const { page, list } = state;
-
-    // hide all
-    allCards.forEach(({el})=>{
-      el.style.display='none';
-      el.setAttribute('aria-hidden','true');
-    });
-
-    // page slice
-    const total = list.length;
-    const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
-    const start = (page - 1) * PAGE_SIZE;
-    const slice = list.slice(start, start + PAGE_SIZE);
-
-    slice.forEach(({el}, i)=>{
-      el.style.display='block';
-      el.removeAttribute('aria-hidden');
-      el.classList.add('reveal');
-      el.style.setProperty('--delay', (i*70)+'ms');
-      setAccentVars(el, el.dataset.category || 'General');
-    });
-
-    observeVisible(slice.map(s => s.el));
-    enhanceInteractions(slice.map(s => s.el));
-
-    // pager UI
-    if (prevBtn && nextBtn && dots) {
-      prevBtn.disabled = (page<=1);
-      nextBtn.disabled = (page>=pages);
-      dots.innerHTML = '';
-      for (let i=1;i<=pages;i++){
-        const b = document.createElement('button');
-        b.type='button'; b.className='pg-dot';
-        if (i===page) b.setAttribute('aria-current','page');
-        b.addEventListener('click', ()=>{
-          state.page=i; render();
-          window.scrollTo({ top: grid.offsetTop - 120, behavior: 'smooth' });
-        });
-        dots.appendChild(b);
-      }
-    }
-  };
-
-const apply = ()=>{
-  compute();
-  setSectionAccent(state.cat === 'all' ? 'General' : state.cat);
-  render();
-};
-
-  // Bind controls (if present)
-  let deb;
-  input?.addEventListener('input', (e)=>{
-    clearTimeout(deb);
-    deb = setTimeout(()=>{ state.q = normalize(e.target.value); state.page=1; apply(); }, 160);
-  });
-  catSel?.addEventListener('change', ()=>{
-    state.cat = catSel.value; state.page=1; apply();
-  });
-
-  prevBtn?.addEventListener('click', ()=>{ if (state.page>1){ state.page--; render(); } });
-  nextBtn?.addEventListener('click', ()=>{
-    const pages = Math.max(1, Math.ceil(state.list.length / PAGE_SIZE));
-    if (state.page<pages){ state.page++; render(); }
-  });
-
-  // Initial pass
-  apply();
-
-  // Keep up with dynamic DOM changes
-  const mo = new MutationObserver(()=>{
-    allCards = getCardEls().map(toModel);
-    apply();
-  });
-  mo.observe(grid, { childList:true, subtree:true });
-
-  // Re-observe on resize
-  let rT;
-  window.addEventListener('resize', ()=>{
-    clearTimeout(rT);
-    rT = setTimeout(()=>{
-      const visible = getCardEls().filter(el => el.style.display !== 'none');
-      observeVisible(visible);
-    }, 120);
-  });
-})();
-
-/* Doctors Dashboard Component (scoped) */
+/* ---------- Doctors Dashboard Component ---------- */
 const DoctorDashboard = (() => {
   const CURRENT_YEAR = new Date().getFullYear();
   const BOOK_COVER = "https://limasy.com/limcms/uploads/products/triumphs-complete-review-of-dentistry-2-volume-set_1709201366_22611.png";
@@ -483,7 +221,6 @@ const DoctorDashboard = (() => {
 
   const qs = (root, sel) => root.querySelector(sel);
   const qsa = (root, sel) => Array.from(root.querySelectorAll(sel));
-
   const cityLink = (name) => {
     const DIRECT = {
       Nallagandla:"https://maps.app.goo.gl/xWyPi9pwkcM6hjYRA",
@@ -543,13 +280,14 @@ const DoctorDashboard = (() => {
     qs(root,'.dd-slot')?.classList.add('dd-active');
   }
 
+  const cityLinkTitle = c => `Best dentist in ${c}`;
+
   function fillProfile(root, doc){
     // Header & media
     qs(root,'[data-dd="docAvatar"]').src = doc.avatar;
     qs(root,'[data-dd="docNameTop"]').textContent = doc.name;
     qs(root,'[data-dd="docSpecialtyTop"]').textContent = doc.specialty;
     qs(root,'[data-dd="docRatingPill"]').textContent = starBadge(doc.rating);
-
     const img = qs(root,'[data-dd="docImage"]');
     img.src = doc.avatar; img.alt = `${doc.name} portrait`;
 
@@ -562,7 +300,7 @@ const DoctorDashboard = (() => {
     qs(root,'[data-dd="docConsultation"]').textContent = doc.consultation.join(" · ");
 
     const citiesEl = qs(root,'[data-dd="docCities"]');
-    citiesEl.innerHTML = doc.cities.map(c=>`<a class="dd-chip" href="${cityLink(c)}" target="_blank" rel="noopener" title="Best dentist in ${c}">${c}</a>`).join(" ");
+    citiesEl.innerHTML = doc.cities.map(c=>`<a class="dd-chip" href="${cityLink(c)}" target="_blank" rel="noopener" title="${cityLinkTitle(c)}">${c}</a>`).join(" ");
 
     const phonesEl = qs(root,'[data-dd="docPhones"]');
     phonesEl.innerHTML = doc.phones.map(n=>`<a class="dd-chip" href="tel:${n.replace(/\s+/g,'')}">${n}</a>`).join(" ");
@@ -729,12 +467,12 @@ Notes: ${notes}`;
   return { init };
 })();
 
-  // Initialize after DOM is ready
-  document.addEventListener('DOMContentLoaded', () => {
-    DoctorDashboard.init('#doctorDashboard');
-  });
+// Initialize after DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  DoctorDashboard.init('#doctorDashboard');
+});
 
-/* ===== Treatments data + renderer (6 per page) ===== */
+/* ---------- Treatments data + renderer (6 per page) ---------- */
 (() => {
   const $  = (s, r=document)=>r.querySelector(s);
   const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
@@ -750,9 +488,8 @@ Notes: ${notes}`;
 
   if (!grid) return;
 
-  /* ---------- DATA (from your list) ---------- */
+  // DATA
   const TREATMENTS = [
-    // Tooth Alignment
     {id:'braces', title:'Braces & Aligners', category:'Tooth Alignment',
       keywords:'braces aligners orthodontic crooked bite noble invisalign',
       desc:'Metal braces and clear aligners (including certified Invisalign) for a confident, aligned smile.',
@@ -774,7 +511,6 @@ Notes: ${notes}`;
       desc:'Esthetic braces and ceramic options for discreet tooth movement.',
       url:'/specialities/braces.html', img:'https://via.placeholder.com/800x500?text=Invisible+Orthodontics'},
 
-    // Tooth Saving
     {id:'rct', title:'Root Canal Treatment', category:'Tooth Saving',
       keywords:'root canal pain infection decay endodontic save tooth',
       desc:'Removes infected tissue, relieves pain and saves your natural tooth with precise care.',
@@ -788,7 +524,6 @@ Notes: ${notes}`;
       desc:'Rapid care for chipped, fractured or avulsed teeth to maximize survival.',
       url:'/specialities/emergency.html', img:'https://via.placeholder.com/800x500?text=Dental+Trauma+Care'},
 
-    // Implants & Replacement
     {id:'implants', title:'Dental Implants', category:'Implants & Replacement',
       keywords:'dental implants titanium tooth replacement missing teeth crowns bridges',
       desc:'Titanium implants replace missing roots and support natural-looking crowns or bridges.',
@@ -826,7 +561,6 @@ Notes: ${notes}`;
       desc:'Acrylic, cast-metal, flexible and implant-supported options for comfort and function.',
       url:'/specialities/dentures.html', img:'https://via.placeholder.com/800x500?text=Dentures'},
 
-    // Cosmetic & Smile
     {id:'smile-makeover', title:'Smile Makeover', category:'Cosmetic & Smile',
       keywords:'smile makeover veneers whitening bonding esthetics celebrity smile design',
       desc:'Customized combo—veneers, whitening & alignment—for a radiant, confident smile.',
@@ -856,7 +590,6 @@ Notes: ${notes}`;
       desc:'Solutions from teeth whitening to complex full-mouth smile rehabilitation.',
       url:'/specialities/smile-design.html', img:'https://via.placeholder.com/800x500?text=Smile+Design'},
 
-    // Oral Surgery
     {id:'wisdom', title:'Wisdom Tooth Extractions', category:'Oral Surgery',
       keywords:'third molar surgical extraction pain swelling impaction',
       desc:'Removes painful/impacted third molars—prevents decay and gum inflammation.',
@@ -866,7 +599,6 @@ Notes: ${notes}`;
       desc:'Improves bite, function and facial balance when jaw positions need correction.',
       url:'/specialities/face-surgery.html', img:'https://via.placeholder.com/800x500?text=Jaw+%2F+Face+Surgery'},
 
-    // Kids & Family
     {id:'peds', title:'Pediatric Dentistry / Child Care', category:'Kids & Family',
       keywords:'kids child care pulpectomy crown sealants fluoride toys',
       desc:'Kid-friendly care: sealants, fillings, pulpectomy & crowns in a comforting setting.',
@@ -876,7 +608,6 @@ Notes: ${notes}`;
       desc:'Protective coating for cavity-prone grooves—simple, painless prevention.',
       url:'/specialities/kids-dentistry.html', img:'https://via.placeholder.com/800x500?text=Sealants'},
 
-    // Periodontics
     {id:'scaling', title:'Scaling & Polishing', category:'Periodontics',
       keywords:'cleaning prophylaxis tartar plaque gum health fresh breath',
       desc:'Removes plaque & tartar and finishes with a polish for gum health and fresh breath.',
@@ -886,7 +617,6 @@ Notes: ${notes}`;
       desc:'Treats gum inflammation & bone loss—deep cleaning to regenerative surgery.',
       url:'/specialities/gum-surgeries.html', img:'https://via.placeholder.com/800x500?text=Gum+Treatment'},
 
-    // Diagnostics
     {id:'ct-scan', title:'Dental CT Scan (CBCT)', category:'Diagnostics',
       keywords:'3d scan cbct implant planning endodontics tmj',
       desc:'3D imaging for precise diagnosis & surgical planning—see roots, nerves & bone.',
@@ -900,7 +630,6 @@ Notes: ${notes}`;
       desc:'Evaluation and conservative care for jaw joint pain, clicking and movement issues.',
       url:'/specialities/tmj.html', img:'https://via.placeholder.com/800x500?text=TMJ+Care'},
 
-    // Sedation & Sleep
     {id:'iv-sedation', title:'IV Sedation (Conscious)', category:'Sedation & Sleep',
       keywords:'iv sedation twilight dentistry anxious phobia day care',
       desc:'Relaxed, semi-awake care with amnesia—ideal for long or anxiety-provoking visits.',
@@ -914,7 +643,6 @@ Notes: ${notes}`;
       desc:'Custom oral appliances and pathways for snoring and obstructive sleep apnea.',
       url:'/specialities/sleep-dentistry.html', img:'https://via.placeholder.com/800x500?text=Sleep+Dentistry'},
 
-    // Special Care
     {id:'pregnancy', title:'Pregnancy Dental Care', category:'Special Care',
       keywords:'pregnancy trimester safe protocols mom baby',
       desc:'Trimester-wise safe protocols for mom & baby—preventive and urgent care.',
@@ -936,7 +664,6 @@ Notes: ${notes}`;
       desc:'Same-day attention for pain, swelling or dental injuries.',
       url:'/specialities/emergency.html', img:'https://via.placeholder.com/800x500?text=Emergency+Dental+Care'},
 
-    // Prosthodontics
     {id:'fmr', title:'Full Mouth Rehabilitation', category:'Prosthodontics',
       keywords:'full mouth rehabilitation missing teeth bite rebuild',
       desc:'Restores all missing/affected teeth to rebuild chewing, comfort and smile.',
@@ -947,7 +674,6 @@ Notes: ${notes}`;
       url:'/specialities/crowns-bridges.html', img:'https://via.placeholder.com/800x500?text=Fixed+Artificial+Teeth'}
   ];
 
-  /* ---------- Logic ---------- */
   const PAGE_SIZE = 6;
   let filtered = TREATMENTS.slice();
   let page = 1;
@@ -1060,9 +786,7 @@ Notes: ${notes}`;
 
   // Events
   let t;
-  search?.addEventListener('input', ()=>{
-    clearTimeout(t); t=setTimeout(apply, 160);
-  });
+  search?.addEventListener('input', ()=>{ clearTimeout(t); t=setTimeout(apply, 160); });
   catSel?.addEventListener('change', apply);
   chips.forEach(ch => ch.addEventListener('click', ()=>{
     if (!search) return;
@@ -1077,36 +801,33 @@ Notes: ${notes}`;
   // Init
   apply();
 })();
-</script>
 
-<script>
+/* ---------- Treatments enhance (accents, reveal, tilt) ---------- */
 (() => {
   const $  = (s, r=document)=>r.querySelector(s);
   const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
   const grid = $('#treatmentsGrid');
   if (!grid) return;
 
-  /* Category → accent palette (rgb to allow opacity variants) */
   const ACCENT = {
-    'Tooth Alignment':        [79,156,255],   // blue
-    'Tooth Saving':           [96,210,164],   // mint
-    'Implants & Replacement': [2,171,155],    // teal
-    'Cosmetic & Smile':       [255,138,181],  // pink
-    'Oral Surgery':           [255,177,79],   // orange
-    'Kids & Family':          [155,140,255],  // purple
-    'Periodontics':           [128,207,105],  // green
-    'Diagnostics':            [122,212,255],  // cyan
-    'Sedation & Sleep':       [160,180,255],  // periwinkle
-    'Special Care':           [255,122,122],  // coral
-    'Prosthodontics':         [255,170,90]    // amber
+    'Tooth Alignment':        [79,156,255],
+    'Tooth Saving':           [96,210,164],
+    'Implants & Replacement': [ 2,171,155],
+    'Cosmetic & Smile':       [255,138,181],
+    'Oral Surgery':           [255,177, 79],
+    'Kids & Family':          [155,140,255],
+    'Periodontics':           [128,207,105],
+    'Diagnostics':            [122,212,255],
+    'Sedation & Sleep':       [160,180,255],
+    'Special Care':           [255,122,122],
+    'Prosthodontics':         [255,170, 90]
   };
   const rgb = (a)=>`rgb(${a[0]},${a[1]},${a[2]})`;
-  const rgba = (a,o)=>`rgba(${a[0]},${a[1]},${a[2]},${o})`;
+  const rgba= (a,o)=>`rgba(${a[0]},${a[1]},${a[2]},${o})`;
 
-  const supportsFine   = matchMedia('(pointer:fine)').matches;
-  const prefersReduce  = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const supportsFine  = matchMedia('(pointer:fine)').matches;
+  const prefersReduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Find number of columns from computed style */
   const getCols = () => {
     const cs = getComputedStyle(grid).gridTemplateColumns;
     return cs ? cs.split(' ').length : 3;
@@ -1122,34 +843,29 @@ Notes: ${notes}`;
     card.style.setProperty('--accent-30', rgba(a,.30));
     card.style.setProperty('--accent-35', rgba(a,.35));
 
-    // Skeleton fade-in
     const media = card.querySelector('.t-media');
     const img   = card.querySelector('img');
     if (media && img) {
       const done = ()=> media.classList.add('img-loaded');
       if (img.complete && img.naturalWidth) done();
       img.addEventListener('load', done, {once:true});
-      img.addEventListener('error', done, {once:true}); // remove skeleton on error too
+      img.addEventListener('error', done, {once:true});
     }
   };
 
   const markFeatured = () => {
     const cards = $$('.t-card', grid);
     cards.forEach(c=>c.classList.remove('featured'));
-    const cols = getCols();               // e.g., 3
-    const centerCol = Math.floor((cols-1)/2); // 1 for 3 cols, 0 for 1–2 cols
-    // feature the first card that visually lands in the "center" column
-    cards.forEach((c, i) => {
-      if (i % cols === centerCol) c.classList.add('featured');
-    });
+    const cols = getCols();
+    const centerCol = Math.floor((cols-1)/2);
+    cards.forEach((c, i) => { if (i % cols === centerCol) c.classList.add('featured'); });
   };
 
-  /* Reveal on scroll + ripple origin + sheen + 3D tilt */
   const enhanceInteractions = () => {
     const cards = $$('.t-card', grid);
     if (!cards.length) return;
 
-    // 1) Reveal (stagger per row)
+    // Reveal (stagger per row)
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(ent=>{
         if (ent.isIntersecting) { ent.target.classList.add('in-view'); io.unobserve(ent.target); }
@@ -1176,10 +892,9 @@ Notes: ${notes}`;
       });
     });
 
-    // 2) 3D tilt + magnetic hover (desktop only)
+    // 3D tilt + magnetic hover (desktop only)
     if (supportsFine && !prefersReduce) {
-      const maxTilt = 6;  // degrees
-      const mag     = 4;  // px
+      const maxTilt = 6;  const mag = 4;
       cards.forEach(card=>{
         let mx=0, my=0, rect=null, raf=null;
         const update = ()=>{
@@ -1200,50 +915,39 @@ Notes: ${notes}`;
     }
   };
 
-  /* Run on every render (pagination/search) */
   const enhanceAll = () => {
     $$('.t-card', grid).forEach(c => applyAccentsAndSkeleton(c));
     markFeatured();
     enhanceInteractions();
   };
 
-  // Watch changes to grid children
   const mo = new MutationObserver((m)=> {
     if (m.some(r => r.type === 'childList')) enhanceAll();
   });
   mo.observe(grid, { childList:true });
-
-  // Recompute featured on resize (column count can change)
   addEventListener('resize', () => markFeatured());
-
-  // Initial
   enhanceAll();
 })();
 
-(function(){
+/* ---------- Lightweight analytics bindings ---------- */
+(() => {
   const dl = window.dataLayer = window.dataLayer || [];
   const send = (event, params={}) => dl.push({ event, ...params });
-
-  // Hero buttons (you already have these classes)
   const bind = (sel, handler) => document.querySelector(sel)?.addEventListener('click', handler);
 
   bind('.hero-button.whatsapp', e => {
     send('contact', { method: 'WhatsApp', location: 'hero', link_url: e.currentTarget.href });
   });
-
   bind('.hero-button.call', e => {
     send('contact', { method: 'Phone', location: 'hero', link_url: e.currentTarget.href });
   });
-
   bind('.hero-button.mail', e => {
     send('contact', { method: 'Email', location: 'hero', link_url: e.currentTarget.href });
   });
-
   bind('.hero-button.location', e => {
     send('view_map', { provider: 'Google Maps', location: 'hero', link_url: e.currentTarget.href });
   });
 
-  // Sitewide safety net for tel/mailto/WhatsApp links
   document.addEventListener('click', function(e){
     const a = e.target.closest('a[href]');
     if (!a) return;
