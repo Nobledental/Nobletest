@@ -733,3 +733,524 @@ Notes: ${notes}`;
   document.addEventListener('DOMContentLoaded', () => {
     DoctorDashboard.init('#doctorDashboard');
   });
+
+/* ===== Treatments data + renderer (6 per page) ===== */
+(() => {
+  const $  = (s, r=document)=>r.querySelector(s);
+  const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
+
+  const grid   = $('#treatmentsGrid');
+  const status = $('#treatmentsStatus');
+  const search = $('#svcSearch');
+  const catSel = $('#svcCategory');
+  const chips  = $$('.chip');
+  const prevBtn= $('#pgPrev');
+  const nextBtn= $('#pgNext');
+  const dots   = $('#pgDots');
+
+  if (!grid) return;
+
+  /* ---------- DATA (from your list) ---------- */
+  const TREATMENTS = [
+    // Tooth Alignment
+    {id:'braces', title:'Braces & Aligners', category:'Tooth Alignment',
+      keywords:'braces aligners orthodontic crooked bite noble invisalign',
+      desc:'Metal braces and clear aligners (including certified Invisalign) for a confident, aligned smile.',
+      url:'/specialities/braces.html', img:'https://via.placeholder.com/800x500?text=Braces+%26+Aligners'},
+    {id:'invisalign', title:'Invisalign / Clear Aligners', category:'Tooth Alignment',
+      keywords:'invisible clear trays esthetic teen adult inman aligners',
+      desc:'Nearly invisible trays that straighten teeth comfortably with minimal lifestyle disruption.',
+      url:'/specialities/invisalign.html', img:'https://via.placeholder.com/800x500?text=Invisalign+%2F+Clear+Aligners'},
+    {id:'inman', title:'Inman Aligners', category:'Tooth Alignment',
+      keywords:'inman aligner fast alignment front teeth',
+      desc:'A rapid option for minor front-teeth alignment using a removable spring aligner.',
+      url:'/specialities/invisalign.html', img:'https://via.placeholder.com/800x500?text=Inman+Aligner'},
+    {id:'orthodontics', title:'Orthodontic Treatment', category:'Tooth Alignment',
+      keywords:'crowded teeth spacing bite correction growth jaw orthodontist',
+      desc:'Diagnosis & correction of crowding, spacing and bite issues for long-term oral health.',
+      url:'/specialities/braces.html', img:'https://via.placeholder.com/800x500?text=Orthodontic+Treatment'},
+    {id:'invisible-orthodontics', title:'Invisible Orthodontics', category:'Tooth Alignment',
+      keywords:'invisible braces ceramic clear aligners esthetics',
+      desc:'Esthetic braces and ceramic options for discreet tooth movement.',
+      url:'/specialities/braces.html', img:'https://via.placeholder.com/800x500?text=Invisible+Orthodontics'},
+
+    // Tooth Saving
+    {id:'rct', title:'Root Canal Treatment', category:'Tooth Saving',
+      keywords:'root canal pain infection decay endodontic save tooth',
+      desc:'Removes infected tissue, relieves pain and saves your natural tooth with precise care.',
+      url:'/specialities/root-canal.html', img:'https://via.placeholder.com/800x500?text=Root+Canal+Treatment'},
+    {id:'fillings', title:'Restorations & Fillings', category:'Tooth Saving',
+      keywords:'filling composite gic caries cavity restoration inlays onlays',
+      desc:'Tooth-coloured composites and aesthetic restorations to restore form and function.',
+      url:'/specialities/fillings.html', img:'https://via.placeholder.com/800x500?text=Restorations+%26+Fillings'},
+    {id:'trauma', title:'Dental Trauma Care', category:'Tooth Saving',
+      keywords:'fracture chipped avulsed knocked emergency splint',
+      desc:'Rapid care for chipped, fractured or avulsed teeth to maximize survival.',
+      url:'/specialities/emergency.html', img:'https://via.placeholder.com/800x500?text=Dental+Trauma+Care'},
+
+    // Implants & Replacement
+    {id:'implants', title:'Dental Implants', category:'Implants & Replacement',
+      keywords:'dental implants titanium tooth replacement missing teeth crowns bridges',
+      desc:'Titanium implants replace missing roots and support natural-looking crowns or bridges.',
+      url:'/specialities/implants.html', img:'https://via.placeholder.com/800x500?text=Dental+Implants'},
+    {id:'all-on-4', title:'All-on-4® Dental Treatment', category:'Implants & Replacement',
+      keywords:'full arch fixed teeth immediate loading all on four',
+      desc:'Four implants supporting a full-arch fixed bridge—confidence and comfort restored.',
+      url:'/specialities/implants.html', img:'https://via.placeholder.com/800x500?text=All-on-4+Full+Arch'},
+    {id:'zygomatic', title:'Zygoma Implants', category:'Implants & Replacement',
+      keywords:'zygoma implant atrophic maxilla no bone graft',
+      desc:'Solution for severe upper-jaw bone loss—zygomatic anchorage avoids hipbone grafts.',
+      url:'/specialities/implants.html', img:'https://via.placeholder.com/800x500?text=Zygoma+Implants'},
+    {id:'sinus-lift', title:'Sinus Lift Surgery', category:'Implants & Replacement',
+      keywords:'sinus lift augmentation graft posterior maxilla',
+      desc:'Adds bone in the upper jaw to enable predictable implant placement.',
+      url:'/specialities/implants.html', img:'https://via.placeholder.com/800x500?text=Sinus+Lift+Surgery'},
+    {id:'bone-graft', title:'Bone Grafting Procedures', category:'Implants & Replacement',
+      keywords:'bone graft ridge preservation augmentation implant site',
+      desc:'Builds support where bone is thin—improving long-term implant success.',
+      url:'/specialities/implants.html', img:'https://via.placeholder.com/800x500?text=Bone+Grafting'},
+    {id:'semi-fixed-dentures', title:'Semi-fixed Dentures (Implant Overdentures)', category:'Implants & Replacement',
+      keywords:'overdenture locator implant denture stability retention',
+      desc:'Implant-retained dentures for excellent fit, stability and everyday confidence.',
+      url:'/specialities/dentures.html', img:'https://via.placeholder.com/800x500?text=Implant+Overdenture'},
+    {id:'advanced-implant', title:'Advanced Implant Therapy', category:'Implants & Replacement',
+      keywords:'full mouth implants immediate load complex rehab',
+      desc:'Comprehensive implant solutions for complex cases and full-mouth rehabilitation.',
+      url:'/specialities/implants.html', img:'https://via.placeholder.com/800x500?text=Advanced+Implant+Therapy'},
+    {id:'crowns-bridges', title:'Crowns & Bridges', category:'Implants & Replacement',
+      keywords:'crown bridge fixed artificial teeth prosthodontics',
+      desc:'Strengthen damaged teeth or replace missing teeth with precise fixed prosthetics.',
+      url:'/specialities/crowns-bridges.html', img:'https://via.placeholder.com/800x500?text=Crowns+%26+Bridges'},
+    {id:'dentures', title:'Dentures (Removable & Implant-supported)', category:'Implants & Replacement',
+      keywords:'complete denture partial cast metal flexible implant supported',
+      desc:'Acrylic, cast-metal, flexible and implant-supported options for comfort and function.',
+      url:'/specialities/dentures.html', img:'https://via.placeholder.com/800x500?text=Dentures'},
+
+    // Cosmetic & Smile
+    {id:'smile-makeover', title:'Smile Makeover', category:'Cosmetic & Smile',
+      keywords:'smile makeover veneers whitening bonding esthetics celebrity smile design',
+      desc:'Customized combo—veneers, whitening & alignment—for a radiant, confident smile.',
+      url:'/specialities/smile-design.html', img:'https://via.placeholder.com/800x500?text=Smile+Makeover'},
+    {id:'veneers', title:'Dental Veneers', category:'Cosmetic & Smile',
+      keywords:'porcelain veneer laminate minimal prep esthetic',
+      desc:'Ultra-thin shells to refine shape, colour and symmetry with minimal preparation.',
+      url:'/specialities/smile-design.html', img:'https://via.placeholder.com/800x500?text=Dental+Veneers'},
+    {id:'whitening', title:'Teeth Whitening', category:'Cosmetic & Smile',
+      keywords:'teeth whitening bleaching stains shade',
+      desc:'Safe, effective brightening: in-clinic power whitening or take-home kits.',
+      url:'/specialities/scaling-whitening.html', img:'https://via.placeholder.com/800x500?text=Teeth+Whitening'},
+    {id:'gum-depig', title:'Gum Depigmentation', category:'Cosmetic & Smile',
+      keywords:'dark gums laser depigmentation esthetic pink gums',
+      desc:'Laser-assisted lightening for uniformly pink, healthy-looking gums.',
+      url:'/specialities/gum-surgeries.html', img:'https://via.placeholder.com/800x500?text=Gum+Depigmentation'},
+    {id:'laser-dentistry', title:'Laser Dentistry', category:'Cosmetic & Smile',
+      keywords:'laser minimally invasive soft tissue healing',
+      desc:'From gum contouring to ulcer relief—gentle, precise and quick healing.',
+      url:'/specialities/gum-surgeries.html', img:'https://via.placeholder.com/800x500?text=Laser+Dentistry'},
+    {id:'cosmetic-dentistry', title:'Cosmetic Dentistry', category:'Cosmetic & Smile',
+      keywords:'esthetic smile design bonding colour shape',
+      desc:'Modern cosmetic dentistry to enhance tooth shape, colour and proportions.',
+      url:'/specialities/smile-design.html', img:'https://via.placeholder.com/800x500?text=Cosmetic+Dentistry'},
+    {id:'smile-design', title:'Smile Design & Esthetics', category:'Cosmetic & Smile',
+      keywords:'smile design veneers planning digital waxup',
+      desc:'Solutions from teeth whitening to complex full-mouth smile rehabilitation.',
+      url:'/specialities/smile-design.html', img:'https://via.placeholder.com/800x500?text=Smile+Design'},
+
+    // Oral Surgery
+    {id:'wisdom', title:'Wisdom Tooth Extractions', category:'Oral Surgery',
+      keywords:'third molar surgical extraction pain swelling impaction',
+      desc:'Removes painful/impacted third molars—prevents decay and gum inflammation.',
+      url:'/specialities/extraction.html', img:'https://via.placeholder.com/800x500?text=Wisdom+Tooth+Extraction'},
+    {id:'face-surgery', title:'Corrective Jaw (Orthognathic) / Face Surgery', category:'Oral Surgery',
+      keywords:'jaw surgery bite correction profile tmj skeletal orthognathic',
+      desc:'Improves bite, function and facial balance when jaw positions need correction.',
+      url:'/specialities/face-surgery.html', img:'https://via.placeholder.com/800x500?text=Jaw+%2F+Face+Surgery'},
+
+    // Kids & Family
+    {id:'peds', title:'Pediatric Dentistry / Child Care', category:'Kids & Family',
+      keywords:'kids child care pulpectomy crown sealants fluoride toys',
+      desc:'Kid-friendly care: sealants, fillings, pulpectomy & crowns in a comforting setting.',
+      url:'/specialities/kids-dentistry.html', img:'https://via.placeholder.com/800x500?text=Pediatric+Dentistry'},
+    {id:'sealants', title:'Pit & Fissure Sealants', category:'Kids & Family',
+      keywords:'preventive sealant cavity decay kids',
+      desc:'Protective coating for cavity-prone grooves—simple, painless prevention.',
+      url:'/specialities/kids-dentistry.html', img:'https://via.placeholder.com/800x500?text=Sealants'},
+
+    // Periodontics
+    {id:'scaling', title:'Scaling & Polishing', category:'Periodontics',
+      keywords:'cleaning prophylaxis tartar plaque gum health fresh breath',
+      desc:'Removes plaque & tartar and finishes with a polish for gum health and fresh breath.',
+      url:'/specialities/scaling-whitening.html', img:'https://via.placeholder.com/800x500?text=Scaling+%26+Polishing'},
+    {id:'gum-treat', title:'Gum Treatment', category:'Periodontics',
+      keywords:'gingivitis periodontitis deep cleaning flap surgery pockets',
+      desc:'Treats gum inflammation & bone loss—deep cleaning to regenerative surgery.',
+      url:'/specialities/gum-surgeries.html', img:'https://via.placeholder.com/800x500?text=Gum+Treatment'},
+
+    // Diagnostics
+    {id:'ct-scan', title:'Dental CT Scan (CBCT)', category:'Diagnostics',
+      keywords:'3d scan cbct implant planning endodontics tmj',
+      desc:'3D imaging for precise diagnosis & surgical planning—see roots, nerves & bone.',
+      url:'/specialities/diagnostics.html', img:'https://via.placeholder.com/800x500?text=Dental+CT+%28CBCT%29'},
+    {id:'cancer-screen', title:'Oral Cancer Screening', category:'Diagnostics',
+      keywords:'early detection oral cancer surgeon screening',
+      desc:'Early detection saves lives—routine screening by our maxillofacial specialist.',
+      url:'/specialities/oral-cancer.html', img:'https://via.placeholder.com/800x500?text=Oral+Cancer+Screening'},
+    {id:'tmj', title:'TMJ Problems', category:'Diagnostics',
+      keywords:'tmj jaw joint clicking pain dysfunction splint',
+      desc:'Evaluation and conservative care for jaw joint pain, clicking and movement issues.',
+      url:'/specialities/tmj.html', img:'https://via.placeholder.com/800x500?text=TMJ+Care'},
+
+    // Sedation & Sleep
+    {id:'iv-sedation', title:'IV Sedation (Conscious)', category:'Sedation & Sleep',
+      keywords:'iv sedation twilight dentistry anxious phobia day care',
+      desc:'Relaxed, semi-awake care with amnesia—ideal for long or anxiety-provoking visits.',
+      url:'/specialities/sedation.html', img:'https://via.placeholder.com/800x500?text=IV+Sedation'},
+    {id:'general-anesthesia', title:'General Anesthesia', category:'Sedation & Sleep',
+      keywords:'general anesthesia pediatric special needs hospital',
+      desc:'One-visit completion for extensive pediatric/special cases under hospital settings.',
+      url:'/specialities/sedation.html', img:'https://via.placeholder.com/800x500?text=General+Anesthesia'},
+    {id:'sleep-dentistry', title:'Snoring Remedies & Sleep Dentistry', category:'Sedation & Sleep',
+      keywords:'snoring osa sleep apnea oral splints',
+      desc:'Custom oral appliances and pathways for snoring and obstructive sleep apnea.',
+      url:'/specialities/sleep-dentistry.html', img:'https://via.placeholder.com/800x500?text=Sleep+Dentistry'},
+
+    // Special Care
+    {id:'pregnancy', title:'Pregnancy Dental Care', category:'Special Care',
+      keywords:'pregnancy trimester safe protocols mom baby',
+      desc:'Trimester-wise safe protocols for mom & baby—preventive and urgent care.',
+      url:'/specialities/pregnancy-dental-care.html', img:'https://via.placeholder.com/800x500?text=Pregnancy+Dental+Care'},
+    {id:'diabetic', title:'Diabetic Dental Care', category:'Special Care',
+      keywords:'diabetes gum infection healing sugar control',
+      desc:'Tailored gum care, infection control and healing support for diabetics.',
+      url:'/specialities/diabetic-dental-care.html', img:'https://via.placeholder.com/800x500?text=Diabetic+Dental+Care'},
+    {id:'geriatric', title:'Geriatric Dentistry', category:'Special Care',
+      keywords:'elderly dentures dry mouth root caries caregiver',
+      desc:'Comfort-first care for seniors—denture tuning, root-caries prevention & home tips.',
+      url:'/specialities/geriatric.html', img:'https://via.placeholder.com/800x500?text=Geriatric+Dentistry'},
+    {id:'home-care', title:'Home Dental Care', category:'Special Care',
+      keywords:'home visit bedside immobilized special needs',
+      desc:'Clinical-grade care at home for immobile/special-needs patients (by appointment).',
+      url:'/specialities/home-care.html', img:'https://via.placeholder.com/800x500?text=Home+Dental+Care'},
+    {id:'emergency', title:'Emergency Dental Care', category:'Special Care',
+      keywords:'emergency pain swelling trauma broken tooth',
+      desc:'Same-day attention for pain, swelling or dental injuries.',
+      url:'/specialities/emergency.html', img:'https://via.placeholder.com/800x500?text=Emergency+Dental+Care'},
+
+    // Prosthodontics
+    {id:'fmr', title:'Full Mouth Rehabilitation', category:'Prosthodontics',
+      keywords:'full mouth rehabilitation missing teeth bite rebuild',
+      desc:'Restores all missing/affected teeth to rebuild chewing, comfort and smile.',
+      url:'/specialities/crowns-bridges.html', img:'https://via.placeholder.com/800x500?text=Full+Mouth+Rehabilitation'},
+    {id:'fixed-teeth', title:'Fixed Artificial Teeth', category:'Prosthodontics',
+      keywords:'fixed teeth bridges implant crowns',
+      desc:'Strong, natural-looking fixed teeth using bridges and/or implants.',
+      url:'/specialities/crowns-bridges.html', img:'https://via.placeholder.com/800x500?text=Fixed+Artificial+Teeth'}
+  ];
+
+  /* ---------- Logic ---------- */
+  const PAGE_SIZE = 6;
+  let filtered = TREATMENTS.slice();
+  let page = 1;
+
+  const norm = s => (s||'').toLowerCase();
+  const score = (it, q, cat) => {
+    if (!q && (cat==='all' || cat===it.category)) return 0.0001;
+    const hay = `${it.title} ${it.keywords} ${it.desc} ${it.category}`.toLowerCase();
+    const terms = q.split(/[\s,]+/).filter(Boolean).map(norm);
+    let s = 0;
+    terms.forEach(t=>{
+      if (it.title.toLowerCase().includes(t)) s += 5;
+      if (it.keywords.toLowerCase().includes(t)) s += 3;
+      if (hay.includes(t)) s += 1;
+    });
+    if (cat !== 'all' && it.category === cat) s += 2;
+    return s;
+  };
+
+  const paginate = (arr, page, size) => {
+    const start = (page-1)*size;
+    return arr.slice(start, start+size);
+  };
+
+  function renderPagination(pageCount){
+    prevBtn.disabled = page<=1;
+    nextBtn.disabled = page>=pageCount;
+    dots.innerHTML = '';
+    for (let i=1;i<=pageCount;i++){
+      const dot = document.createElement('button');
+      dot.className = 'pg-dot';
+      dot.type = 'button';
+      dot.setAttribute('role','listitem');
+      if (i===page) dot.setAttribute('aria-current','page');
+      dot.addEventListener('click', ()=>{ page=i; render(); window.scrollTo({top: grid.offsetTop-120, behavior:'smooth'}); });
+      dots.appendChild(dot);
+    }
+  }
+
+  function render(){
+    grid.setAttribute('aria-busy','true');
+    grid.innerHTML = '';
+
+    const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+    if (page > pageCount) page = pageCount;
+
+    const items = paginate(filtered, page, PAGE_SIZE);
+
+    if (!items.length){
+      status.textContent = 'No treatments match your search—try broader terms (e.g., “implants”, “pain”, “kids”).';
+      renderPagination(1);
+      grid.setAttribute('aria-busy','false');
+      return;
+    }
+
+    status.textContent = `${filtered.length} result${filtered.length>1?'s':''} — page ${page} of ${pageCount}`;
+
+    const frag = document.createDocumentFragment();
+    items.forEach(it=>{
+      const card = document.createElement('article');
+      card.className = 't-card ripple';
+      card.setAttribute('data-id', it.id);
+      card.setAttribute('data-category', it.category); 
+      card.innerHTML = `
+        <div class="t-media">
+          <span class="t-badge">${it.category}</span>
+          <img loading="lazy" src="${it.img}" alt="${it.title}">
+        </div>
+        <div class="t-body">
+          <h3 class="t-title">${it.title}</h3>
+          <p class="t-desc">${it.desc}</p>
+          <div class="t-meta"><i class='bx bx-check-shield'></i> Noble Dental</div>
+          <div class="t-actions">
+            <a class="t-btn" href="${it.url}"><i class='bx bx-info-circle'></i> Learn more</a>
+            <a class="t-btn secondary" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
+          </div>
+        </div>
+      `;
+      // Android-like ripple origin
+      card.addEventListener('pointerdown', (e)=>{
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--ripple-x', ((e.clientX-r.left)/r.width*100)+'%');
+        card.style.setProperty('--ripple-y', ((e.clientY-r.top)/r.height*100)+'%');
+      });
+      frag.appendChild(card);
+    });
+    grid.appendChild(frag);
+
+    renderPagination(pageCount);
+    grid.setAttribute('aria-busy','false');
+  }
+
+  function apply(){
+    const q = norm(search?.value || '');
+    const cat = catSel?.value || 'all';
+    const pool = (cat==='all') ? TREATMENTS.slice() : TREATMENTS.filter(it=>it.category===cat);
+
+    if (!q){
+      filtered = pool;
+    } else {
+      filtered = pool
+        .map(it=>({it, s: score(it,q,cat)}))
+        .filter(x=>x.s>0)
+        .sort((a,b)=> b.s - a.s || a.it.title.localeCompare(b.it.title))
+        .map(x=>x.it);
+    }
+    page = 1;
+    render();
+  }
+
+  // Events
+  let t;
+  search?.addEventListener('input', ()=>{
+    clearTimeout(t); t=setTimeout(apply, 160);
+  });
+  catSel?.addEventListener('change', apply);
+  chips.forEach(ch => ch.addEventListener('click', ()=>{
+    if (!search) return;
+    search.value = ch.dataset.chip || '';
+    apply();
+    search.focus();
+  }));
+
+  prevBtn?.addEventListener('click', ()=>{ if (page>1){ page--; render(); } });
+  nextBtn?.addEventListener('click', ()=>{ const pages=Math.ceil(filtered.length/PAGE_SIZE); if (page<pages){ page++; render(); } });
+
+  // Init
+  apply();
+})();
+</script>
+
+<script>
+(() => {
+  const $  = (s, r=document)=>r.querySelector(s);
+  const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
+  const grid = $('#treatmentsGrid');
+  if (!grid) return;
+
+  /* Category → accent palette (rgb to allow opacity variants) */
+  const ACCENT = {
+    'Tooth Alignment':        [79,156,255],   // blue
+    'Tooth Saving':           [96,210,164],   // mint
+    'Implants & Replacement': [2,171,155],    // teal
+    'Cosmetic & Smile':       [255,138,181],  // pink
+    'Oral Surgery':           [255,177,79],   // orange
+    'Kids & Family':          [155,140,255],  // purple
+    'Periodontics':           [128,207,105],  // green
+    'Diagnostics':            [122,212,255],  // cyan
+    'Sedation & Sleep':       [160,180,255],  // periwinkle
+    'Special Care':           [255,122,122],  // coral
+    'Prosthodontics':         [255,170,90]    // amber
+  };
+  const rgb = (a)=>`rgb(${a[0]},${a[1]},${a[2]})`;
+  const rgba = (a,o)=>`rgba(${a[0]},${a[1]},${a[2]},${o})`;
+
+  const supportsFine   = matchMedia('(pointer:fine)').matches;
+  const prefersReduce  = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Find number of columns from computed style */
+  const getCols = () => {
+    const cs = getComputedStyle(grid).gridTemplateColumns;
+    return cs ? cs.split(' ').length : 3;
+  };
+
+  const applyAccentsAndSkeleton = (card) => {
+    const catText = card.querySelector('.t-badge')?.textContent?.trim() || '';
+    const a = ACCENT[catText] || [14,165,163];
+    card.style.setProperty('--accent', rgb(a));
+    card.style.setProperty('--accent-14', rgba(a,.14));
+    card.style.setProperty('--accent-20', rgba(a,.20));
+    card.style.setProperty('--accent-25', rgba(a,.25));
+    card.style.setProperty('--accent-30', rgba(a,.30));
+    card.style.setProperty('--accent-35', rgba(a,.35));
+
+    // Skeleton fade-in
+    const media = card.querySelector('.t-media');
+    const img   = card.querySelector('img');
+    if (media && img) {
+      const done = ()=> media.classList.add('img-loaded');
+      if (img.complete && img.naturalWidth) done();
+      img.addEventListener('load', done, {once:true});
+      img.addEventListener('error', done, {once:true}); // remove skeleton on error too
+    }
+  };
+
+  const markFeatured = () => {
+    const cards = $$('.t-card', grid);
+    cards.forEach(c=>c.classList.remove('featured'));
+    const cols = getCols();               // e.g., 3
+    const centerCol = Math.floor((cols-1)/2); // 1 for 3 cols, 0 for 1–2 cols
+    // feature the first card that visually lands in the "center" column
+    cards.forEach((c, i) => {
+      if (i % cols === centerCol) c.classList.add('featured');
+    });
+  };
+
+  /* Reveal on scroll + ripple origin + sheen + 3D tilt */
+  const enhanceInteractions = () => {
+    const cards = $$('.t-card', grid);
+    if (!cards.length) return;
+
+    // 1) Reveal (stagger per row)
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(ent=>{
+        if (ent.isIntersecting) { ent.target.classList.add('in-view'); io.unobserve(ent.target); }
+      });
+    }, { rootMargin:'0px 0px -10% 0px', threshold: 0.08 });
+
+    const cols = getCols();
+    cards.forEach((card, i)=>{
+      card.classList.add('reveal');
+      const rowIndex = Math.floor(i / cols);
+      const colIndex = i % cols;
+      const delay = (rowIndex*120) + (colIndex*60);
+      card.style.setProperty('--delay', `${delay}ms`);
+      io.observe(card);
+
+      // ripple origin + sheen
+      card.addEventListener('pointerdown', (e)=>{
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--ripple-x', ((e.clientX-r.left)/r.width*100)+'%');
+        card.style.setProperty('--ripple-y', ((e.clientY-r.top)/r.height*100)+'%');
+      });
+      card.addEventListener('mouseenter', ()=>{
+        card.classList.remove('sheen'); void card.offsetWidth; card.classList.add('sheen');
+      });
+    });
+
+    // 2) 3D tilt + magnetic hover (desktop only)
+    if (supportsFine && !prefersReduce) {
+      const maxTilt = 6;  // degrees
+      const mag     = 4;  // px
+      cards.forEach(card=>{
+        let mx=0, my=0, rect=null, raf=null;
+        const update = ()=>{
+          raf=null;
+          const w=rect.width, h=rect.height;
+          const cx = (mx-rect.left)/w*2-1, cy = (my-rect.top)/h*2-1;
+          card.style.setProperty('--rx', (-cy*maxTilt).toFixed(2)+'deg');
+          card.style.setProperty('--ry', ( cx*maxTilt).toFixed(2)+'deg');
+          card.style.setProperty('--tx', ( cx*mag).toFixed(2)+'px');
+          card.style.setProperty('--ty', ( cy*mag).toFixed(2)+'px');
+        };
+        const onMove=(e)=>{ if(!rect) rect = card.getBoundingClientRect(); mx=e.clientX; my=e.clientY; if(!raf) raf=requestAnimationFrame(update); };
+        const onEnter=()=>{ rect = card.getBoundingClientRect(); card.style.setProperty('--scale','1.02'); document.addEventListener('pointermove', onMove); };
+        const onLeave=()=>{ document.removeEventListener('pointermove', onMove); card.style.removeProperty('--rx'); card.style.removeProperty('--ry'); card.style.removeProperty('--tx'); card.style.removeProperty('--ty'); card.style.setProperty('--scale','1'); rect=null; };
+        card.addEventListener('pointerenter', onEnter);
+        card.addEventListener('pointerleave', onLeave);
+      });
+    }
+  };
+
+  /* Run on every render (pagination/search) */
+  const enhanceAll = () => {
+    $$('.t-card', grid).forEach(c => applyAccentsAndSkeleton(c));
+    markFeatured();
+    enhanceInteractions();
+  };
+
+  // Watch changes to grid children
+  const mo = new MutationObserver((m)=> {
+    if (m.some(r => r.type === 'childList')) enhanceAll();
+  });
+  mo.observe(grid, { childList:true });
+
+  // Recompute featured on resize (column count can change)
+  addEventListener('resize', () => markFeatured());
+
+  // Initial
+  enhanceAll();
+})();
+
+(function(){
+  const dl = window.dataLayer = window.dataLayer || [];
+  const send = (event, params={}) => dl.push({ event, ...params });
+
+  // Hero buttons (you already have these classes)
+  const bind = (sel, handler) => document.querySelector(sel)?.addEventListener('click', handler);
+
+  bind('.hero-button.whatsapp', e => {
+    send('contact', { method: 'WhatsApp', location: 'hero', link_url: e.currentTarget.href });
+  });
+
+  bind('.hero-button.call', e => {
+    send('contact', { method: 'Phone', location: 'hero', link_url: e.currentTarget.href });
+  });
+
+  bind('.hero-button.mail', e => {
+    send('contact', { method: 'Email', location: 'hero', link_url: e.currentTarget.href });
+  });
+
+  bind('.hero-button.location', e => {
+    send('view_map', { provider: 'Google Maps', location: 'hero', link_url: e.currentTarget.href });
+  });
+
+  // Sitewide safety net for tel/mailto/WhatsApp links
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (/^tel:/i.test(href))        send('contact', { method: 'Phone',  location: 'sitewide', link_url: href });
+    else if (/^mailto:/i.test(href))send('contact', { method: 'Email',  location: 'sitewide', link_url: href });
+    else if (/wa\.me|whatsapp\.com/i.test(href))
+                                   send('contact', { method: 'WhatsApp',location: 'sitewide', link_url: href });
+  }, { capture:true });
+})();
