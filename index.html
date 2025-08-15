@@ -297,7 +297,13 @@
 <!-- Doctors Dashboard Component -->
 <div id="doctorDashboard" class="dd-root">
   <div class="dd-dashboard-container">
+
     <main class="dd-main-grid">
+      <!-- OUTSIDE HEADERS (top row) -->
+      <h2 class="dd-section-title dd-left-title">Doctor Profile</h2>
+      <h2 class="dd-section-title dd-details-title">Details</h2>
+      <h2 class="dd-section-title dd-right-title">Doctors</h2>
+
       <!-- LEFT: Instagram-like Doctor Card -->
       <section class="dd-left-panel" data-dd="leftPanel" aria-live="polite">
         <!-- IG-style header -->
@@ -320,7 +326,7 @@
           <img data-dd="docImage" src="" alt="Doctor portrait" class="dd-doctor-hero-pic" />
         </div>
 
-        <!-- Actions like IG -->
+        <!-- (Optional IG-style actions kept) -->
         <div class="dd-insta-actions">
           <button class="dd-icon-action" type="button" title="Like" aria-label="Like">❤</button>
           <button class="dd-icon-action" type="button" title="Comment" aria-label="Comment">💬</button>
@@ -328,8 +334,8 @@
           <button class="dd-icon-action dd-push-right" type="button" title="Save" aria-label="Save">🔖</button>
         </div>
 
-        <!-- Caption -->
-        <div class="dd-insta-caption">
+        <!-- Caption (HIDDEN but kept for JS compatibility) -->
+        <div class="dd-insta-caption" style="display:none" aria-hidden="true">
           <span class="dd-insta-name" data-dd="docName">Doctor Name</span>
           <span class="dd-insta-text" data-dd="docBio">Bio text…</span>
         </div>
@@ -340,43 +346,57 @@
           <span data-dd="docConsultation" class="dd-fact-chip">Consultation types</span>
         </div>
 
-        <div class="dd-actions-row">
+        <!-- Buttons (HIDDEN but kept so JS doesn’t break) -->
+        <div class="dd-actions-row" style="display:none" aria-hidden="true">
           <button data-dd="callBtn" class="dd-btn dd-action-btn">Call</button>
           <button data-dd="openCities" class="dd-btn dd-ghost-btn">Cities</button>
         </div>
+      </section>
 
-        <!-- Cities & Phones -->
+      <!-- CENTER: DETAILS CARD (static sections) -->
+      <aside class="dd-details-panel" aria-label="Doctor Details">
+        <!-- Region -->
         <div class="dd-chips-block">
           <div class="dd-chips-title">Region</div>
           <div data-dd="docCities" class="dd-chips"></div>
         </div>
 
+        <!-- Phones -->
         <div class="dd-chips-block">
           <div class="dd-chips-title">Phones</div>
           <div data-dd="docPhones" class="dd-chips"></div>
         </div>
 
-        <!-- Details -->
-        <details class="dd-collapse">
-          <summary>About info</summary>
+        <!-- About info (static) -->
+        <div class="dd-collapse dd-static">
+          <div class="dd-static-title">About info</div>
           <p data-dd="docBioFull" class="dd-muted"></p>
-        </details>
+        </div>
 
-        <details class="dd-collapse">
-          <summary>Expertise</summary>
+        <!-- Expertise (static) -->
+        <div class="dd-collapse dd-static">
+          <div class="dd-static-title">Expertise</div>
           <ul data-dd="docExpertise" class="dd-list-compact"></ul>
-        </details>
+        </div>
 
-        <details class="dd-collapse">
-          <summary>Published Books</summary>
+        <!-- Published Books (static) -->
+        <div class="dd-collapse dd-static">
+          <div class="dd-static-title">Published Books</div>
           <div data-dd="docBooks" class="dd-book-grid"></div>
-        </details>
+        </div>
+      </aside>
+
+      <!-- RIGHT: Minimal Doctors List (name + rating only) -->
+      <section class="dd-right-panel" aria-label="Doctors List">
+        <div data-dd="doctorsList" class="dd-list-no-scroll"></div>
+        <div data-dd="listFallback" class="dd-fallback" hidden>Loading doctors…</div>
       </section>
 
-      <!-- MIDDLE: Appointment Booking -->
-      <section class="dd-middle-panel dd-appointment-panel">
-        <h2>Book an Appointment</h2>
+      <!-- OUTSIDE HEADER for Book -->
+      <h2 class="dd-section-title dd-middle-title">Book an Appointment</h2>
 
+      <!-- BOTTOM: Appointment Booking (spans all columns) -->
+      <section class="dd-middle-panel dd-appointment-panel">
         <div class="dd-form-group">
           <label>Doctor</label>
           <select data-dd="doctorSelect" aria-label="Select Doctor"></select>
@@ -437,12 +457,6 @@
           <button class="dd-secondary-btn" data-dd="callBtnMiddle">Call Clinic</button>
         </div>
       </section>
-
-      <!-- RIGHT: Minimal Doctors List (name + rating only, no scroll) -->
-      <section class="dd-right-panel" aria-label="Doctors List">
-        <div data-dd="doctorsList" class="dd-list-no-scroll"></div>
-        <div data-dd="listFallback" class="dd-fallback" hidden>Loading doctors…</div>
-      </section>
     </main>
 
     <!-- Cities Modal -->
@@ -462,6 +476,53 @@
   </div>
 </div>
 
+<!-- minimal CSS helpers to “remove” buttons/expanders without breaking JS -->
+<style>
+  /* hide left-card Call/Cities buttons */
+  .dd-left-panel .dd-actions-row { display:none !important; }
+  /* hide the IG caption row */
+  .dd-left-panel .dd-insta-caption { display:none !important; }
+
+  /* make Details sections static (no <summary> used) */
+  .dd-static { border-radius: 12px; border: 1px solid #eef1f7; background:#fff; margin-top:10px; }
+  .dd-static-title { padding:10px 12px; font-weight:700; border-bottom:1px solid #eef1f7; }
+  .dd-static > p, .dd-static > ul, .dd-static > div { padding:10px 12px; margin:0; }
+
+  /* right list: hide Call/Map/View action buttons that JS injects */
+  .dd-right-panel .dd-card-actions { display:none !important; }
+
+  /* keep the grid tidy (three columns + headers) */
+  .dd-main-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "leftTitle    detailsTitle   rightTitle"
+      "left         details        right"
+      "middleTitle  middleTitle    middleTitle"
+      "middle       middle         middle";
+    column-gap:16px; row-gap:16px;
+  }
+  .dd-left-title{grid-area:leftTitle}
+  .dd-details-title{grid-area:detailsTitle}
+  .dd-right-title{grid-area:rightTitle}
+  .dd-middle-title{grid-area:middleTitle; margin-top:12px}
+
+  .dd-left-panel{grid-area:left}
+  .dd-details-panel{grid-area:details}
+  .dd-right-panel{grid-area:right}
+  .dd-middle-panel{grid-area:middle}
+
+  @media (max-width:1100px){
+    .dd-main-grid{
+      grid-template-columns:1fr;
+      grid-template-areas:
+        "leftTitle" "left"
+        "detailsTitle" "details"
+        "rightTitle" "right"
+        "middleTitle" "middle";
+    }
+  }
+</style>
 
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
@@ -1071,5 +1132,6 @@
 <script src="/main.js" defer></script>
 </body>
 </html>
+
 
 
