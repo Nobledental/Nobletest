@@ -933,6 +933,41 @@ body.nav-open{ overflow:hidden; }
   background: #ffffff;
 }
 
+/* ===== CONTROL CARD SIZE ===== */
+
+/* Left card (Doctor Profile) */
+.dd-left-panel {
+  max-width: 420px;  /* controls width */
+  min-height: 580px; /* controls height */
+}
+
+/* Right card (Doctors list) */
+.dd-right-panel {
+  max-width: 320px;
+  min-height: 580px;
+}
+
+/* Middle card (Book Appointment) */
+.dd-middle-panel {
+  max-width: 860px;  /* adjust to make it bigger or smaller */
+  min-height: 500px;
+}
+
+/* Center the panels when widths are smaller than container */
+.dd-main-grid {
+  justify-content: center;
+  align-items: start;
+}
+
+/* On mobile, let them be 100% width */
+@media (max-width: 1100px) {
+  .dd-left-panel,
+  .dd-right-panel,
+  .dd-middle-panel {
+    max-width: 100%;
+    min-height: auto;
+  }
+}
 
 /* =========================================================
    FOOTER
@@ -982,6 +1017,7 @@ body.nav-open{ overflow:hidden; }
 .svc [data-category="Diagnostics"]            { --accent:#40c4ff; } /* cyan  */
 .svc [data-category="Sedation & Sleep"]       { --accent:#8ca0ff; } /* peri  */
 .svc [data-category="Special Care"]           { --accent:#ff7070; } /* coral */
+
 
 
 
