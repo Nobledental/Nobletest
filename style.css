@@ -602,59 +602,46 @@ body.nav-open{ overflow:hidden; }
 
 /* ==== GRID: 2 cols top, appointment full width below ==== */
 .dd-main-grid{
-  display:grid;
+  display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "left  right"
+    "left   right"
+    "left   details"
     "middle middle";
-  gap: 36px 16px; /* row gap | column gap */
-  justify-content:center;
-  align-items:start;
-}
-.dd-left-panel  { grid-area:left;  }
-.dd-right-panel { grid-area:right; }
-.dd-middle-panel{
-  grid-area:middle;
-  max-width:980px;
-  margin-inline:auto;
+  gap: 36px 16px;
 }
 
-/* Responsive: stack */
-@media (max-width:1100px){
-  .dd-main-grid{
-    grid-template-columns:1fr;
-    grid-template-areas:
-      "left"
-      "right"
-      "middle";
-    gap:24px 14px;
-  }
-}
+.dd-left-panel     { grid-area: left; }
+.dd-right-panel    { grid-area: right; }
+.dd-details-panel  { grid-area: details; }
+.dd-middle-panel   { grid-area: middle; max-width: 980px; margin-inline: auto; }
 
-/* Panels base */
-.dd-left-panel,
-.dd-middle-panel,
-.dd-right-panel{
-  background:var(--dd-panel);
-  padding:10px;
-  border-radius:var(--dd-radius);
-  box-shadow:var(--dd-shadow);
-}
-
-/* Pastel look + hover elevation for side cards */
-.dd-left-panel,
-.dd-right-panel{
+/* Details panel styling */
+.dd-details-panel{
   background: linear-gradient(180deg, var(--pastel-a), var(--pastel-b));
   border: 1px solid rgba(120,140,220,.22);
+  border-radius: var(--dd-radius);
   box-shadow: var(--elev-1);
+  padding: 12px;
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
-.dd-left-panel:hover,
-.dd-right-panel:hover{
+.dd-details-panel:hover{
   transform: translateY(-2px);
   box-shadow: var(--elev-2);
   border-color: rgba(120,140,220,.35);
 }
+
+@media (max-width:1100px){
+  .dd-main-grid{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "right"
+      "details"
+      "middle";
+  }
+}
+
 
 /* Appointment hero card */
 .dd-middle-panel{
@@ -690,7 +677,8 @@ body.nav-open{ overflow:hidden; }
 }
 .dd-muted{color:var(--dd-muted)}
 
-/* ===== Left “Instagram” doctor card ===== */
+/* ===== Left “Instagram” 
+card ===== */
 .dd-insta-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
 .dd-insta-user{display:flex;align-items:center;gap:20px}
 .dd-insta-avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.2)}
@@ -881,8 +869,65 @@ body.nav-open{ overflow:hidden; }
   }
 }
 
+/* Grid areas to place new headers + details panel */
+.dd-main-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "left   rightTitle"
+    "left   right"
+    "left   details"
+    "middleTitle middleTitle"
+    "middle middle";
+  row-gap: 36px;
+  column-gap: 16px;
+}
 
-/* =========================================================
+.dd-left-panel     { grid-area: left; }
+.dd-right-title    { grid-area: rightTitle; align-self:end; }
+.dd-right-panel    { grid-area: right; }
+.dd-details-panel  { grid-area: details; }
+.dd-middle-title   { grid-area: middleTitle; }
+.dd-middle-panel   { grid-area: middle; max-width:980px; margin-inline:auto; }
+
+/* Outside section headers (Doctors, Book an Appointment) */
+.dd-section-title{
+  margin: 0;
+  padding: 2px 0 6px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: #1a275a;
+  background: linear-gradient(90deg,#5a78ff,#8eacee 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Details panel look — matches your pastel panels */
+.dd-details-panel{
+  background: linear-gradient(180deg, #E8F3FF, #FDF1FF);
+  border: 1px solid rgba(120,140,220,.22);
+  border-radius: var(--dd-radius);
+  box-shadow: var(--elev-1, 0 6px 16px rgba(20,28,60,.14));
+  padding: 12px;
+}
+
+/* Mobile stacking */
+@media (max-width:1100px){
+  .dd-main-grid{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "rightTitle"
+      "right"
+      "details"
+      "middleTitle"
+      "middle";
+    row-gap: 24px;
+  }
+}
+=========================================================
    FOOTER
    ========================================================= */
 .site-footer{ padding:36px 16px; text-align:center; color:#475569; border-top:1px solid var(--stroke); background:#fff; }
@@ -931,10 +976,136 @@ body.nav-open{ overflow:hidden; }
 .svc [data-category="Sedation & Sleep"]       { --accent:#8ca0ff; } /* peri  */
 .svc [data-category="Special Care"]           { --accent:#ff7070; } /* coral */
 
+/* ========== GRID with CENTER DETAILS + OUTSIDE HEADERS ========== */
+.dd-main-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;                /* left | center(details) | right */
+  grid-template-areas:
+    "leftTitle    detailsTitle   rightTitle"
+    "left         details        right"
+    "middleTitle  middleTitle    middleTitle"
+    "middle       middle         middle";
+  column-gap: 16px;
+  row-gap: 16px;     /* space between headers and cards */
+  margin-top: 4px;
+}
 
+/* map cards to areas */
+.dd-left-panel    { grid-area: left; }
+.dd-details-panel { grid-area: details; }
+.dd-right-panel   { grid-area: right; }
+.dd-middle-panel  { grid-area: middle; }
 
+/* OUTSIDE HEADERS */
+.dd-section-title{
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  background: linear-gradient(90deg,#5a78ff,#8eacee 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.dd-left-title    { grid-area: leftTitle; }
+.dd-details-title { grid-area: detailsTitle; }
+.dd-right-title   { grid-area: rightTitle; }
+.dd-middle-title  { grid-area: middleTitle; margin-top: 12px; }
 
+/* Give a bit more vertical breathing room between top row and Book card */
+.dd-middle-title { margin-bottom: 2px; }
+.dd-middle-panel { margin-top: 0; }
 
+/* Responsive: stack everything, but keep headers above their cards */
+@media (max-width:1100px){
+  .dd-main-grid{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "leftTitle"
+      "left"
+      "detailsTitle"
+      "details"
+      "rightTitle"
+      "right"
+      "middleTitle"
+      "middle";
+    row-gap: 14px;
+  }
+}
 
+/* ===== Stability + sizing patch ===== */
 
+/* 1) Lock left/right card size (equal heights), prevent hover-resize */
+.dd-left-panel,
+.dd-right-panel{
+  height: 620px;              /* <- set the height you like */
+  max-width: 100%;
+  transition: box-shadow .18s ease, border-color .18s ease; /* no transform */
+}
+.dd-left-panel:hover,
+.dd-right-panel:hover{ /* gentle elevation only */
+  box-shadow: var(--elev-2);
+  border-color: rgba(120,140,220,.35);
+}
+
+/* make their insides flex so content never forces height changes */
+.dd-left-panel,
+.dd-right-panel{ display:flex; flex-direction:column; }
+
+/* right list fills the panel without changing panel height */
+.dd-right-panel .dd-list-no-scroll{
+  overflow:auto;
+  min-height: 0;              /* allow the inner list to scroll, not grow */
+  flex: 1;
+}
+
+/* 2) IG action row: smaller, fixed height, no wrap → no layout jump */
+.dd-insta-actions{
+  gap: 6px;
+  margin: 6px 4px 4px;
+  min-height: 34px;           /* pins the row’s height */
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.dd-icon-action{
+  font-size: 12px;
+  line-height: 1;
+  padding: 6px 8px;
+  border-width: 1px;          /* stable border so no reflow on hover */
+}
+.dd-icon-action:hover{ background:#e9f0ff; } /* subtle, no size change */
+
+/* tighten caption + facts so they never push height */
+.dd-insta-caption{ gap:10px; margin:4px; font-size:12px; line-height:1.25; }
+.dd-facts-row{ gap:6px; margin:6px 0 2px; }
+.dd-fact-chip{ padding:5px 9px; font-size:11.5px; }
+
+/* 3) Profile image row stays stable */
+.dd-profile-hero-square{ flex: 0 0 auto; }
+
+/* 4) Prevent any transform-based “flicker” on middle card too */
+.dd-middle-panel{
+  justify-self: center;        /* always centered in the grid */
+  max-width: 860px;
+  transition: box-shadow .22s ease, border-color .22s ease; /* no transform */
+}
+.dd-middle-panel:hover{
+  box-shadow: 0 26px 70px rgba(90,120,255,.22);
+  border-color: rgba(120,140,220,.42);
+}
+
+/* 5) Ensure grid keeps side cards aligned and centered book below */
+.dd-main-grid{
+  align-items: start;          /* side cards align top, equal heights hold */
+  justify-items: stretch;
+}
+@media (min-width:1101px){
+  .dd-middle-panel{ width: 100%; max-width: 860px; } /* centered width cap */
+}
+
+/* 6) Extra safety: buttons/slots never cause reflow on press */
+.dd-btn, .dd-confirm-btn, .dd-secondary-btn, .dd-slot{
+  will-change: box-shadow;     /* no transform → no layout shift */
+  transform: none !important;  /* kill any leftover translate effects */
+}
 
