@@ -717,6 +717,222 @@ body.nav-open{ overflow:hidden; }
 /* Responsive */
 @media (max-width:1100px){.dd-main-grid{grid-template-columns:1fr;gap:16px}}
 
+/* ---- Make "Book an Appointment" sit BELOW the two cards ---- */
+.dd-main-grid{
+  /* from 3 columns → 2 columns + areas */
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "left  right"
+    "middle middle";
+  gap: 10px; /* keep your gap */
+}
+
+/* map the panels to areas */
+.dd-left-panel   { grid-area: left;  }
+.dd-right-panel  { grid-area: right; }
+.dd-middle-panel { 
+  grid-area: middle;
+  max-width: 980px;           /* nicely centered wide card */
+  margin-inline: auto;        /* center horizontally */
+}
+
+/* responsive: stack on small screens */
+@media (max-width: 1100px){
+  .dd-main-grid{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "right"
+      "middle";  /* stays below both */
+  }
+}
+
+/* ==== LAYOUT: more space between top row and the appointment card ==== */
+.dd-main-grid{
+  /* 1st value = row gap, 2nd = column gap */
+  gap: 36px 16px;                 /* more vertical breathing room */
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "left  right"
+    "middle middle";
+}
+.dd-left-panel   { grid-area: left;  }
+.dd-right-panel  { grid-area: right; }
+.dd-middle-panel { grid-area: middle; max-width: 980px; margin-inline: auto; }
+
+/* Stack order on small screens (card still below the two) */
+@media (max-width:1100px){
+  .dd-main-grid{
+    gap: 24px 14px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "right"
+      "middle";
+  }
+}
+
+/* ==== PASTEL THEME + ANDROID ELEVATION / HOVER ==== */
+:root{
+  --pastel-a:#E8F3FF;  /* baby blue */
+  --pastel-b:#FDF1FF;  /* lilac mist */
+  --pastel-c:#EFFFF6;  /* mint haze */
+  --pastel-d:#FFF7E8;  /* peach cream */
+  --ring      : rgba(90,120,255,.25);
+  --elev-1    : 0 6px 16px rgba(20,28,60,.14);
+  --elev-2    : 0 12px 28px rgba(20,28,60,.18);
+}
+
+/* Panels: softer, colorful, elevated */
+.dd-left-panel,
+.dd-right-panel{
+  background: linear-gradient(180deg, var(--pastel-a), var(--pastel-b));
+  border: 1px solid rgba(120,140,220,.22);
+  box-shadow: var(--elev-1);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.dd-left-panel:hover,
+.dd-right-panel:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--elev-2);
+  border-color: rgba(120,140,220,.35);
+}
+
+/* BOOK APPOINTMENT: make it a hero card */
+.dd-middle-panel{
+  position: relative;
+  background:
+    linear-gradient(135deg, var(--pastel-c) 0%, #f7faff 40%, var(--pastel-d) 100%);
+  border: 1px solid rgba(120,140,220,.28);
+  box-shadow: 0 20px 50px rgba(90,120,255,.18);
+  overflow: hidden;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+/* subtle animated corner glow */
+.dd-middle-panel::before{
+  content:"";
+  position:absolute; inset:-60% -40% auto auto;
+  width:70vmin; height:70vmin; border-radius:50%;
+  background: radial-gradient(closest-side, rgba(120,160,255,.18), transparent 70%);
+  filter: blur(14px);
+  animation: dd-orb 9s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+@keyframes dd-orb { from { transform: translate(6%, -4%) } to { transform: translate(-2%, 3%) } }
+
+.dd-middle-panel:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 26px 70px rgba(90,120,255,.22);
+  border-color: rgba(120,140,220,.42);
+}
+
+/* Card header tweak */
+.dd-appointment-panel h2{
+  background: linear-gradient(90deg, #5a78ff, #8eacee 70%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  letter-spacing:.2px;
+}
+
+/* ==== Buttons: pastel gradients + android-ish ripple ==== */
+.dd-confirm-btn,
+.dd-secondary-btn,
+.dd-btn,
+.dd-icon-btn,
+.dd-slot{
+  position: relative;
+  overflow: hidden; /* for ripple */
+}
+
+.dd-confirm-btn{
+  background: linear-gradient(135deg, #5a78ff, #86e1ff);
+  box-shadow: 0 10px 18px rgba(90,120,255,.25);
+}
+.dd-confirm-btn:hover{ filter: brightness(1.06); transform: translateY(-1px); }
+.dd-secondary-btn{
+  background: linear-gradient(135deg, #121a3a, #2c386b);
+  border: 1px solid rgba(200,210,255,.18);
+}
+.dd-secondary-btn:hover{ filter: brightness(1.05); transform: translateY(-1px); }
+
+/* Ripple (centered fallback) */
+.dd-confirm-btn:active::after,
+.dd-secondary-btn:active::after,
+.dd-btn:active::after,
+.dd-icon-btn:active::after,
+.dd-slot:active::after{
+  content:"";
+  position:absolute; left:50%; top:50%; width:16px; height:16px;
+  border-radius:50%;
+  background: rgba(255,255,255,.45);
+  transform: translate(-50%,-50%) scale(0);
+  animation: dd-ripple .5s ease-out forwards;
+}
+@keyframes dd-ripple{ to{ transform: translate(-50%,-50%) scale(16); opacity:0; } }
+
+/* ==== Time slots: soft chips with hover/active pop ==== */
+.dd-slot{
+  background: linear-gradient(180deg, #ffffff, #f4f7ff);
+  color: #0b0e14;
+  border: 1px solid rgba(120,140,220,.25);
+  box-shadow: 0 2px 8px rgba(30,45,90,.08);
+  transform: translateZ(0);
+}
+.dd-slot:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(30,45,90,.12);
+}
+.dd-slot.dd-active{
+  background: linear-gradient(180deg, #fffbd1, #ffeaa7);
+  border-color: #ffcf5f;
+  box-shadow: 0 10px 24px rgba(255,207,95,.22);
+}
+
+/* Emergency slots variant */
+.dd-slot--emergency{
+  background: linear-gradient(180deg, #ffe9f2, #ffd9eb);
+  color:#2b0f19;
+  border-color: rgba(255,120,170,.35);
+}
+.dd-slot--emergency.dd-active{
+  background: linear-gradient(180deg, #ffd6e9, #ffc0dd);
+  border-color:#ff8cc1;
+  box-shadow: 0 10px 24px rgba(255,140,193,.26);
+}
+
+/* ==== Chips / cards minor pastel polish ==== */
+.dd-chip{ background:#ffffff; border-color: rgba(120,140,220,.18); }
+.dd-chip:hover{ box-shadow: 0 4px 12px rgba(90,120,255,.12); transform: translateY(-1px); }
+
+.dd-card{
+  background: linear-gradient(180deg, #fbfdff, #f3f5ff);
+  border-color: rgba(120,140,220,.24);
+}
+.dd-card:hover{
+  border-color: rgba(120,140,220,.45);
+  box-shadow: 0 18px 32px rgba(90,120,255,.18);
+}
+
+/* Inputs: pastel ring on focus */
+.dd-appointment-panel input[type="text"],
+.dd-appointment-panel input[type="number"],
+.dd-appointment-panel input[type="date"],
+.dd-appointment-panel textarea,
+.dd-appointment-panel select{
+  outline: none;
+  box-shadow: none;
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+  background: #eef3ff;
+}
+.dd-appointment-panel input:focus,
+.dd-appointment-panel textarea:focus,
+.dd-appointment-panel select:focus{
+  border-color: rgba(90,120,255,.55);
+  box-shadow: 0 0 0 4px var(--ring);
+  background: #ffffff;
+}
+
 
 /* =========================================================
    FOOTER
@@ -766,6 +982,7 @@ body.nav-open{ overflow:hidden; }
 .svc [data-category="Diagnostics"]            { --accent:#40c4ff; } /* cyan  */
 .svc [data-category="Sedation & Sleep"]       { --accent:#8ca0ff; } /* peri  */
 .svc [data-category="Special Care"]           { --accent:#ff7070; } /* coral */
+
 
 
 
