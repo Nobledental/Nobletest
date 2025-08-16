@@ -952,3 +952,57 @@ document.addEventListener('DOMContentLoaded', () => {
                                    send('contact', { method: 'WhatsApp',location: 'sitewide', link_url: href });
   }, { capture:true });
 })();
+
+
+(function(){
+  // Blur-up: when the image decodes, drop the blur
+  document.querySelectorAll('.js-nd-blur').forEach(img=>{
+    const ready = () => img.classList.add('is-loaded');
+    if (img.complete && img.naturalWidth){
+      ('decode' in img) ? img.decode().then(ready).catch(ready) : ready();
+    } else {
+      img.addEventListener('load', ()=>('decode' in img ? img.decode().then(ready).catch(ready) : ready()), {once:true});
+      img.addEventListener('error', ready, {once:true});
+    }
+  });
+
+  // Accessible accordion
+  const acc = document.getElementById('nd-faq-accordion');
+  if (!acc) return;
+  const triggers = acc.querySelectorAll('.nd-qa__trigger');
+
+  function toggle(trigger, expand){
+    const panel = document.getElementById(trigger.getAttribute('aria-controls'));
+    const isOpen = expand ?? (trigger.getAttribute('aria-expanded') === 'false');
+    trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    panel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  }
+
+  // Init state
+  triggers.forEach(btn=>{
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    btn.setAttribute('aria-expanded','false');
+    panel.setAttribute('aria-hidden','true');
+    // click/keyboard
+    btn.addEventListener('click', ()=> toggle(btn));
+    btn.addEventListener('keydown', e=>{
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(btn); }
+    });
+  });
+
+  // Expand/Collapse all
+  const expandAllBtn = document.querySelector('[data-nd="expand-all"]');
+  const collapseAllBtn = document.querySelector('[data-nd="collapse-all"]');
+  if (expandAllBtn){
+    expandAllBtn.addEventListener('click', ()=>{
+      triggers.forEach(btn=> toggle(btn, true));
+      expandAllBtn.setAttribute('aria-expanded','true');
+    });
+  }
+  if (collapseAllBtn){
+    collapseAllBtn.addEventListener('click', ()=>{
+      triggers.forEach(btn=> toggle(btn, false));
+      expandAllBtn.setAttribute('aria-expanded','false');
+    });
+  }
+})();
