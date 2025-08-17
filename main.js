@@ -1105,3 +1105,48 @@ document.addEventListener('DOMContentLoaded', () => {
   setTransform(true);
   play();
 })();
+
+<script>
+(() => {
+  // Year
+  const y = document.getElementById('ndcYear');
+  if (y) y.textContent = String(new Date().getFullYear());
+
+  // Scroll to top
+  const topBtn = document.getElementById('ndcTop');
+  const showTop = () => {
+    const scrolled = window.scrollY || document.documentElement.scrollTop;
+    topBtn.classList.toggle('ndc-top--show', scrolled > 500);
+  };
+  window.addEventListener('scroll', showTop, { passive:true });
+  showTop();
+  topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // In-view animation (cards gently rise)
+  const cards = document.querySelectorAll('.ndc-card');
+  if ('IntersectionObserver' in window && cards.length){
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          e.target.style.willChange = 'transform';
+          e.target.animate([
+            { transform: 'translateY(12px)', opacity: .0 },
+            { transform: 'translateY(0)', opacity: 1 }
+          ], { duration: 420, easing: 'cubic-bezier(.2,.8,.2,1)', fill:'forwards' });
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: .08 });
+    cards.forEach(c => io.observe(c));
+  }
+
+  // (Optional) Track chip interactions for lightweight analytics
+  document.querySelectorAll('.ndc-chip[data-chip]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      // Example: push to your dataLayer if you use GTM
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'chip_click', label: chip.textContent.trim(), location: 'footer' });
+    });
+  });
+})();
+</script>
