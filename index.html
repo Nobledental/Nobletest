@@ -294,128 +294,148 @@
   </div>
 </section>
 
-<!-- Doctors Dashboard Component -->
-<div id="doctorDashboard" class="dd-root">
-  <div class="dd-dashboard-container">
+<!-- ========== DOCTORS + ABOUT + APPOINTMENT (Noble Dental Care) ========== -->
+<section id="ndc-doctors-app" class="ndc-wrap" aria-label="Dentists in Nallagandla, Hyderabad">
+  <!-- Fonts (safe + fast) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <main class="dd-main-grid">
-      <!-- OUTSIDE HEADERS (top row) -->
-      <h2 class="dd-section-title dd-left-title">Doctor Profile</h2>
-      <h2 class="dd-section-title dd-details-title">About Doctor</h2>
-      <h2 class="dd-section-title dd-right-title">Doctors</h2>
+  <!-- SEO Headings -->
+  <header class="ndc-head">
+    <h1 class="ndc-h1">Best Dentist in Nallagandla, Hyderabad — Noble Dental Care</h1>
+    <p class="ndc-sub">MDS Specialists • 12+ Years Experience • Advanced Technology • Honest, Affordable Care</p>
+  </header>
 
-      <!-- LEFT: Instagram-like Doctor Card -->
-      <section class="dd-left-panel" data-dd="leftPanel" aria-live="polite">
-        <!-- IG-style header -->
-        <header class="dd-insta-header">
-          <div class="dd-insta-user">
-            <div class="dd-insta-avatar">
-              <img data-dd="docAvatar" src="" alt="Doctor avatar">
+  <!-- 3-column Doctor area -->
+  <div class="ndc-grid">
+    <!-- LEFT: Doctors List -->
+    <aside class="ndc-col ndc-list" aria-label="Our Specialists">
+      <h2 class="ndc-h2">Our Specialists</h2>
+      <div class="ndc-doc-list" data-ndc="docList" role="list"></div>
+    </aside>
+
+    <!-- CENTER: About Doctor -->
+    <section class="ndc-col ndc-about" aria-label="About the Doctor">
+      <h2 class="ndc-h2">About the Doctor</h2>
+
+      <article class="ndc-about-card">
+        <div class="ndc-about-top">
+          <div class="ndc-about-id">
+            <img class="ndc-avatar" data-ndc="aboutAvatar" src="" alt="Doctor portrait">
+            <div>
+              <h3 class="ndc-doc-name" data-ndc="aboutName">Doctor Name</h3>
+              <p class="ndc-doc-role" data-ndc="aboutSpecialty">Specialty</p>
             </div>
-            <div class="dd-insta-meta">
-              <div class="dd-insta-name" data-dd="docNameTop">Doctor Name</div>
-              <div class="dd-insta-sub" data-dd="docSpecialtyTop">Specialty</div>
-            </div>
           </div>
-          <span class="dd-insta-rating" data-dd="docRatingPill">★ 4.9</span>
-        </header>
-
-        <!-- Square media with animated gradient -->
-        <div class="dd-profile-hero-square">
-          <div class="dd-pulse-bg"></div>
-          <img data-dd="docImage" src="" alt="Doctor portrait" class="dd-doctor-hero-pic" />
+          <span class="ndc-rating" data-ndc="aboutRating">★ 4.9</span>
         </div>
 
-        <!-- (Optional IG-style actions kept) -->
-        <div class="dd-insta-actions">
-          <button class="dd-icon-action" type="button" title="Like" aria-label="Like">❤</button>
-          <button class="dd-icon-action" type="button" title="Comment" aria-label="Comment">💬</button>
-          <button class="dd-icon-action" type="button" title="Share" aria-label="Share">📤</button>
-          <button class="dd-icon-action dd-push-right" type="button" title="Save" aria-label="Save">🔖</button>
+        <ul class="ndc-meta">
+          <li><strong>Experience:</strong> <span data-ndc="aboutExp">10+ years</span></li>
+          <li><strong>Consultation:</strong> <span data-ndc="aboutConsult"></span></li>
+        </ul>
+
+        <div class="ndc-chips-block">
+          <div class="ndc-chip-title">Available Regions</div>
+          <div class="ndc-chips" data-ndc="aboutCities"></div>
         </div>
 
-        <!-- Caption (HIDDEN but kept for JS compatibility) -->
-        <div class="dd-insta-caption" style="display:none" aria-hidden="true">
-          <span class="dd-insta-name" data-dd="docName">Doctor Name</span>
-          <span class="dd-insta-text" data-dd="docBio">Bio text…</span>
+        <div class="ndc-chips-block">
+          <div class="ndc-chip-title">Contact</div>
+          <div class="ndc-chips" data-ndc="aboutPhones"></div>
         </div>
 
-        <!-- Quick facts -->
-        <div class="dd-facts-row">
-          <span data-dd="docExperience" class="dd-fact-chip">Experience</span>
-          <span data-dd="docConsultation" class="dd-fact-chip">Consultation types</span>
+        <div class="ndc-divider"></div>
+
+        <div class="ndc-books" data-ndc="aboutBooksWrap">
+          <h4 class="ndc-h4">Published Work</h4>
+          <div class="ndc-book-grid" data-ndc="aboutBooks"></div>
         </div>
+      </article>
+    </section>
 
-        <!-- Buttons (HIDDEN but kept so JS doesn’t break) -->
-        <div class="dd-actions-row" style="display:none" aria-hidden="true">
-          <button data-dd="callBtn" class="dd-btn dd-action-btn">Call</button>
-          <button data-dd="openCities" class="dd-btn dd-ghost-btn">Cities</button>
+    <!-- RIGHT: Profile Card (hero) -->
+    <section class="ndc-col ndc-profile" aria-label="Doctor Profile">
+      <h2 class="ndc-h2">Profile</h2>
+      <div class="ndc-profile-card">
+        <div class="ndc-hero">
+          <img class="ndc-hero-img" data-ndc="heroImg" src="" alt="Doctor profile image">
+          <span class="ndc-hero-badge" data-ndc="heroRating">★ 4.9</span>
         </div>
-      </section>
-
-      <!-- CENTER: DETAILS CARD (static sections) -->
-      <aside class="dd-details-panel" aria-label="Doctor Details">
-        <!-- Region -->
-        <div class="dd-chips-block">
-          <div class="dd-chips-title">Region</div>
-          <div data-dd="docCities" class="dd-chips"></div>
-        </div>
-
-        <!-- Phones -->
-        <div class="dd-chips-block">
-          <div class="dd-chips-title">Phones</div>
-          <div data-dd="docPhones" class="dd-chips"></div>
-        </div>
-
-        <!-- About info (static) -->
-        <div class="dd-collapse dd-static">
-          <div class="dd-static-title">About info</div>
-          <p data-dd="docBioFull" class="dd-muted"></p>
-        </div>
-
-        <!-- Expertise (static) -->
-        <div class="dd-collapse dd-static">
-          <div class="dd-static-title">Expertise</div>
-          <ul data-dd="docExpertise" class="dd-list-compact"></ul>
-        </div>
-
-        <!-- Published Books (static) -->
-        <div class="dd-collapse dd-static">
-          <div class="dd-static-title">Published Books</div>
-          <div data-dd="docBooks" class="dd-book-grid"></div>
-        </div>
-      </aside>
-
-      <!-- RIGHT: Minimal Doctors List (name + rating only) -->
-      <section class="dd-right-panel" aria-label="Doctors List">
-        <div data-dd="doctorsList" class="dd-list-no-scroll"></div>
-        <div data-dd="listFallback" class="dd-fallback" hidden>Loading doctors…</div>
-      </section>
-
-      <!-- OUTSIDE HEADER for Book -->
-      <h2 class="dd-section-title dd-middle-title">Book an Appointment</h2>
-
-      <!-- BOTTOM: Appointment Booking (spans all columns) -->
-      <section class="dd-middle-panel dd-appointment-panel">
-        <div class="dd-form-group">
-          <label>Doctor</label>
-          <select data-dd="doctorSelect" aria-label="Select Doctor"></select>
-        </div>
-
-        <div class="dd-form-row">
-          <div class="dd-form-group">
-            <label>Patient Name</label>
-            <input type="text" data-dd="patientName" placeholder="Full name" />
-          </div>
-          <div class="dd-form-group">
-            <label>Age</label>
-            <input type="number" data-dd="patientAge" min="0" placeholder="Years" />
+        <div class="ndc-hero-body">
+          <h3 class="ndc-hero-name" data-ndc="heroName">Doctor Name</h3>
+          <p class="ndc-hero-sub" data-ndc="heroSpecialty">Specialty, Credentials</p>
+          <div class="ndc-hero-actions">
+            <a class="ndc-btn ndc-btn--tonal" data-ndc="btnCall" href="#" aria-label="Call the clinic">
+              <svg viewBox="0 0 24 24" class="i"><path d="M6.6,10.8c1.4,2.7,3.6,4.9,6.3,6.3l2.1-2.1c.3-.3.8-.4,1.2-.3 1,.3 2,.5 3,.5 .7,0 1.3,.6 1.3,1.3V20c0,.7-.6,1.3-1.3,1.3C10.9,21.3,2.7,13.1,2.7,2.7 2.7,2,3.3,1.4,4,1.4H7c.7,0,1.3,.6,1.3,1.3 0,1 .2,2 .5,3 .1,.4,0,.8-.3,1.2l-2,2Z"/></svg>
+              Call
+            </a>
+            <a class="ndc-btn ndc-btn--primary" href="#ndc-appointment" aria-label="Book appointment quickly">
+              Book Now
+            </a>
           </div>
         </div>
+      </div>
+    </section>
+  </div>
 
-        <div class="dd-form-group">
-          <label>Type of Appointment</label>
-          <select data-dd="appointmentType">
+  <!-- Care Team (E-E-A-T support) -->
+  <section class="ndc-care" aria-label="Care Coordination Team">
+    <h2 class="ndc-h2">Care Coordination Team</h2>
+    <div class="ndc-care-grid">
+      <article class="ndc-care-card">
+        <div class="ndc-care-top">
+          <div>
+            <h3 class="ndc-care-name">Akhila</h3>
+            <p class="ndc-care-role">Chief Executive Assistant (B.Com, ML &amp; AI)</p>
+          </div>
+          <span class="ndc-care-tag">Patient Help</span>
+        </div>
+        <p class="ndc-care-text">Scheduling assistance, treatment follow-ups, digital reports &amp; tele-consult coordination.</p>
+        <a class="ndc-chip ndc-chip--tel" href="tel:+917993745387">📞 79937 45387</a>
+      </article>
+
+      <article class="ndc-care-card">
+        <div class="ndc-care-top">
+          <div>
+            <h3 class="ndc-care-name">Nizamuddeen</h3>
+            <p class="ndc-care-role">Health Insurance &amp; Hospital Coordinator</p>
+          </div>
+          <span class="ndc-care-tag">Insurance</span>
+        </div>
+        <p class="ndc-care-text">Cashless support, insurer paperwork, hospital liaison for special cases.</p>
+        <a class="ndc-chip ndc-chip--tel" href="tel:+919944905138">📞 99449 05138</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- BOOK APPOINTMENT -->
+  <section id="ndc-appointment" class="ndc-appt" aria-label="Book an appointment at Noble Dental Care">
+    <div class="ndc-appt-head">
+      <h2 class="ndc-h2">Book an Appointment — Fast</h2>
+      <p class="ndc-sub">Choose your specialist, date &amp; time. Confirm via Email or WhatsApp in seconds.</p>
+    </div>
+
+    <form class="ndc-appt-form" novalidate>
+      <div class="ndc-form-grid">
+        <div class="ndc-field">
+          <label for="docSel">Doctor</label>
+          <select id="docSel" data-ndc="selDoctor"></select>
+        </div>
+
+        <div class="ndc-field">
+          <label for="name">Patient Name</label>
+          <input id="name" data-ndc="name" type="text" placeholder="Full name" required>
+        </div>
+
+        <div class="ndc-field ndc-field--sm">
+          <label for="age">Age</label>
+          <input id="age" data-ndc="age" type="number" min="0" placeholder="Years" required>
+        </div>
+
+        <div class="ndc-field">
+          <label for="apptType">Appointment Type</label>
+          <select id="apptType" data-ndc="type">
             <option value="Consultation">Consultation</option>
             <option value="Follow-up">Follow-up</option>
             <option value="Emergency">Emergency</option>
@@ -423,106 +443,67 @@
           </select>
         </div>
 
-        <div class="dd-form-group">
-          <label>Date</label>
-          <input type="date" data-dd="appointmentDate" />
+        <div class="ndc-field">
+          <label for="date">Date</label>
+          <input id="date" data-ndc="date" type="date" required>
         </div>
 
-        <div class="dd-form-group">
+        <div class="ndc-field ndc-full">
           <label>Time</label>
-
-          <div class="dd-slot-section">
-            <div class="dd-slot-section__title">Regular (11:00 AM – 10:00 PM)</div>
-            <div class="dd-time-slots" data-dd="timeSlotsRegular"></div>
+          <div class="ndc-slot-group">
+            <div class="ndc-slot-title">Regular (11:00 AM – 10:00 PM)</div>
+            <div class="ndc-slots" data-ndc="slotsRegular"></div>
           </div>
-
-          <div class="dd-slot-section">
-            <div class="dd-slot-section__title dd-emergency">Emergencies (10:00 PM – 2:00 AM)</div>
-            <div class="dd-time-slots" data-dd="timeSlotsEmergency"></div>
+          <div class="ndc-slot-group">
+            <div class="ndc-slot-title em">Emergencies (10:00 PM – 2:00 AM)</div>
+            <div class="ndc-slots" data-ndc="slotsEmergency"></div>
           </div>
-
-          <div class="dd-form-group">
-            <label>Selected Time</label>
-            <select data-dd="timeSelect" aria-label="Selected Time"></select>
+          <div class="ndc-field">
+            <label for="timeSel">Selected Time</label>
+            <select id="timeSel" data-ndc="selTime"></select>
           </div>
         </div>
 
-        <div class="dd-form-group">
-          <label>Reason / Notes</label>
-          <textarea data-dd="reason" placeholder="Brief description..."></textarea>
-        </div>
-
-        <div class="dd-form-group dd-two-col">
-          <button class="dd-confirm-btn" data-dd="confirmBtn">Confirm Appointment</button>
-          <button class="dd-secondary-btn" data-dd="callBtnMiddle">Call Clinic</button>
-        </div>
-      </section>
-    </main>
-
-    <!-- Cities Modal -->
-    <dialog data-dd="citiesModal" class="dd-modal">
-      <div class="dd-modal-content">
-        <h3>Available Cities</h3>
-        <ul data-dd="citiesList"></ul>
-        <div class="dd-modal-actions">
-          <button data-dd="openMapsBtn" class="dd-confirm-btn">Open in Maps</button>
-          <button data-dd="closeModalBtn" class="dd-secondary-btn">Close</button>
+        <div class="ndc-field ndc-full">
+          <label for="reason">Reason / Notes</label>
+          <textarea id="reason" data-ndc="notes" rows="3" placeholder="Brief description (pain, swelling, implants, braces, kids care, etc.)"></textarea>
         </div>
       </div>
-    </dialog>
 
-    <!-- Toast -->
-    <div data-dd="toast" class="dd-toast" role="status" aria-live="polite"></div>
-  </div>
-</div>
+      <div class="ndc-actions">
+        <button class="ndc-btn ndc-btn--primary" type="button" data-ndc="btnEmail">Confirm via Email</button>
+        <button class="ndc-btn ndc-btn--wa" type="button" data-ndc="btnWhatsApp">Confirm via WhatsApp</button>
+      </div>
+    </form>
+  </section>
 
-<!-- minimal CSS helpers to “remove” buttons/expanders without breaking JS -->
-<style>
-  /* hide left-card Call/Cities buttons */
-  .dd-left-panel .dd-actions-row { display:none !important; }
-  /* hide the IG caption row */
-  .dd-left-panel .dd-insta-caption { display:none !important; }
-
-  /* make Details sections static (no <summary> used) */
-  .dd-static { border-radius: 12px; border: 1px solid #eef1f7; background:#fff; margin-top:10px; }
-  .dd-static-title { padding:10px 12px; font-weight:700; border-bottom:1px solid #eef1f7; }
-  .dd-static > p, .dd-static > ul, .dd-static > div { padding:10px 12px; margin:0; }
-
-  /* right list: hide Call/Map/View action buttons that JS injects */
-  .dd-right-panel .dd-card-actions { display:none !important; }
-
-  /* keep the grid tidy (three columns + headers) */
-  .dd-main-grid{
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas:
-      "leftTitle    detailsTitle   rightTitle"
-      "left         details        right"
-      "middleTitle  middleTitle    middleTitle"
-      "middle       middle         middle";
-    column-gap:16px; row-gap:16px;
+  <!-- JSON-LD: Clinic + Doctors (E-E-A-T) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Dentist",
+    "name":"Noble Dental Care & Multispeciality Clinic",
+    "areaServed":["Nallagandla","Lingampally","Serilingampally","Hyderabad"],
+    "address":{"@type":"PostalAddress","addressLocality":"Nallagandla","addressRegion":"Telangana","addressCountry":"IN"},
+    "telephone":"+91-8610425342",
+    "url":"https://your-domain.example/",
+    "department":[
+      {"@type":"MedicalSpecialty","name":"Oral & Maxillofacial Surgery"},
+      {"@type":"MedicalSpecialty","name":"Orthodontics"},
+      {"@type":"MedicalSpecialty","name":"Implantology"},
+      {"@type":"MedicalSpecialty","name":"Pediatric Dentistry"}
+    ],
+    "founder":{"@type":"Person","name":"Dr Dhivakaran"},
+    "member":[
+      {"@type":"Person","name":"Dr Dhivakaran","jobTitle":"Chief Medical Director","telephone":"+91-8610425342"},
+      {"@type":"Person","name":"Dr Roger Ronaldo","jobTitle":"Oral & Maxillofacial Surgeon"},
+      {"@type":"Person","name":"Dr Deepak","jobTitle":"Orthodontist"},
+      {"@type":"Person","name":"Dr Manoj Reddy","jobTitle":"OMFS - Implantology"},
+      {"@type":"Person","name":"Dr Idhaya","jobTitle":"CEO - Healthflo"}
+    ]
   }
-  .dd-left-title{grid-area:leftTitle}
-  .dd-details-title{grid-area:detailsTitle}
-  .dd-right-title{grid-area:rightTitle}
-  .dd-middle-title{grid-area:middleTitle; margin-top:12px}
-
-  .dd-left-panel{grid-area:left}
-  .dd-details-panel{grid-area:details}
-  .dd-right-panel{grid-area:right}
-  .dd-middle-panel{grid-area:middle}
-
-  @media (max-width:1100px){
-    .dd-main-grid{
-      grid-template-columns:1fr;
-      grid-template-areas:
-        "leftTitle" "left"
-        "detailsTitle" "details"
-        "rightTitle" "right"
-        "middleTitle" "middle";
-    }
-  }
-</style>
+  </script>
+</section>
 
     <!-- ==================== Noble Dental — FAQ Section ==================== -->
 <section id="noble-faq" class="nd-faq" aria-labelledby="nd-faq-title">
@@ -1861,6 +1842,7 @@
 <script src="/main.js" defer></script>
 </body>
 </html>
+
 
 
 
