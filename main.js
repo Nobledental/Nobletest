@@ -159,189 +159,226 @@
 })();
 
 /* ---------- Doctors Dashboard Component ---------- */
-/* ===== Noble Dental Care — Android/Material-inspired Pastels ===== */
-:root{
-  --ndc-bg:#f7f9ff;
-  --ndc-ink:#111827;
-  --ndc-sub:#334155;
-  --ndc-slate:#64748b;
-  --ndc-white:#fff;
+/* ---------- Doctors + About + Appointment (single, clean) ---------- */
+(() => {
+  const $  = (s, r=document)=>r.querySelector(s);
+  const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
 
-  /* Pastels */
-  --p-lilac:#e9e7ff;
-  --p-sky:#e8f3ff;
-  --p-mint:#effff6;
-  --p-peach:#fff7e8;
-  --p-rose:#ffe9f2;
+  const root = document.getElementById('ndc-doctors-app');
+  if (!root) return;
 
-  /* Brand gradients */
-  --g-hero: linear-gradient(135deg,#a5b4fc 0%, #fbcfe8 50%, #6ee7b7 100%);
-  --g-card: linear-gradient(135deg,#E8F3FF,#FDF1FF 60%, #FFF7E8);
-  --g-chip: linear-gradient(135deg,#a5b4fc,#f0abfc);
+  const el = id => root.querySelector(`[data-ndc="${id}"]`);
 
-  /* Buttons */
-  --btn-primary: linear-gradient(135deg,#818cf8,#a78bfa 40%, #f0abfc);
-  --btn-wa: linear-gradient(135deg,#22c55e,#86efac);
+  // ---------- DATA ----------
+  const CURRENT_YEAR = new Date().getFullYear();
+  const BOOK_COVER = "https://limasy.com/limcms/uploads/products/triumphs-complete-review-of-dentistry-2-volume-set_1709201366_22611.png";
 
-  /* Radii & shadows */
-  --r-lg:20px;
-  --r-md:14px;
-  --r-sm:10px;
+  const DOCTORS = [
+    { id:"dhivakaran", name:"Dr Dhivakaran", rating:4.9,
+      specialty:"Chief Medical Director, Noble Dental Care · Director, Healthflo",
+      expertise:["CMD — Noble Dental Care","Director — Healthflo (557 hospitals)"],
+      experience:{startYear:CURRENT_YEAR-10},
+      phones:["8610425342","8074512305"],
+      consultation:["Walk-in","Appointment Booking","Tele-consultation"],
+      cities:["Hyderabad","Bangalore","Chennai","Madurai"],
+      books:[{title:"Triumph’s Complete Review of Dentistry (2 Vol Set), Ed. 1",cover:BOOK_COVER,link:"https://play.google.com/store/books/details/Triumph_s_Complete_Review_of_Dentistry?id=ZTjvDwAAQBAJ&hl=en_US&pli=1",publisher:"Wolters Kluwer · Oct 2018"}],
+      avatar:"https://i.imgur.com/1X5v8X2.png"},
+    { id:"roger", name:"Dr Roger Ronaldo", rating:4.8,
+      specialty:"Consultant Oral & Maxillofacial Surgeon — Implantology, Facial Reconstruction",
+      expertise:["Implantology","Orthognathic & Reconstruction","Trauma Surgery"],
+      experience:{startYear:CURRENT_YEAR-13},
+      phones:["8610425342","8074512305"],
+      consultation:["Appointment Booking","Tele-consultation"],
+      cities:["Hyderabad","Bangalore","Chennai"],
+      books:[{title:"Triumph’s Complete Review of Dentistry (2 Vol Set), Ed. 1",cover:BOOK_COVER,link:"https://play.google.com/store/books/details/Triumph_s_Complete_Review_of_Dentistry?id=ZTjvDwAAQBAJ&hl=en_US&pli=1",publisher:"Wolters Kluwer · Oct 2018"}],
+      avatar:"https://i.imgur.com/7M2Qm1W.png"},
+    { id:"thikvijay", name:"Dr Thik Vijay", rating:4.6,
+      specialty:"FMC., (Germany) — Trichology, Aesthetic & Medical Cosmetology (ISHR)",
+      expertise:["Trichology","Aesthetic & Medical Cosmetology","Hair & Scalp Restoration"],
+      experience:{startYear:CURRENT_YEAR-11},
+      phones:["8610425342","8074512305"],
+      consultation:["Appointment Booking","Tele-consultation"],
+      cities:["Chennai","Hyderabad"], books:[], avatar:"https://i.imgur.com/y6w2m8a.png"},
+    { id:"deepak", name:"Dr Deepak", rating:4.7,
+      specialty:"Orthodontist (Assistant Professor)",
+      expertise:["Orthodontics","Smile Design & Aligners","Complex Malocclusion"],
+      experience:{startYear:CURRENT_YEAR-10},
+      phones:["8610425342","8074512305"],
+      consultation:["Appointment Booking","Tele-consultation"],
+      cities:["Chennai","Hyderabad","Andhra"], books:[], avatar:"https://i.imgur.com/1X5v8X2.png"},
+    { id:"manoj", name:"Dr Manoj Reddy", rating:4.5,
+      specialty:"Oral & Maxillofacial Surgeon — Implantology",
+      expertise:["Dental Implants","Maxillofacial Surgery","Full-mouth Rehab"],
+      experience:{startYear:CURRENT_YEAR-9},
+      phones:["8610425342","8074512305"],
+      consultation:["Appointment Booking","Tele-consultation"],
+      cities:["Hyderabad","Andhra Pradessh","Chennai"], books:[], avatar:"https://i.imgur.com/7M2Qm1W.png"},
+    { id:"idhaya", name:"Dr Idhaya", rating:4.4,
+      specialty:"· CEO - Healthflo · Health Insurance · Medical Tourism",
+      expertise:["Preventive Dentistry","Insurance Advisory","Tourism Coordination"],
+      experience:{startYear:CURRENT_YEAR-8},
+      phones:["8610425342","8074512305"],
+      consultation:["Tele-consultation"],
+      cities:["Bangalore","Chennai","Hyderabad"], books:[], avatar:"https://i.imgur.com/y6w2m8a.png"}
+  ];
 
-  --elev-1: 0 8px 22px rgba(20, 28, 60, .10);
-  --elev-2: 0 12px 30px rgba(20, 28, 60, .16);
-  --focus: 0 0 0 3px rgba(129,140,248,.35);
-}
+  // ---------- UTIL ----------
+  const cityLink = (name) => {
+    const DIRECT = {
+      Nallagandla:"https://maps.app.goo.gl/xWyPi9pwkcM6hjYRA",
+      Tellapur:"https://maps.app.goo.gl/uxtsDV7hR6iCp5Uq8",
+      Lingampally:"https://maps.app.goo.gl/LQDetRYN3ednqDLn7",
+      Serilingampally:"https://maps.app.goo.gl/pLukMFtAPwzdoE9N8",
+      Gopanpally:"https://maps.app.goo.gl/EhtpSoxcchtQxG8E9"
+    };
+    return DIRECT[name] || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Best dentist in '+name)}`;
+  };
+  const expLabel = (conf) => conf?.startYear ? `${Math.max(0, new Date().getFullYear() - conf.startYear)} Years` : "—";
 
-#ndc-doctors-app, .ndc-wrap{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ndc-ink);background:var(--ndc-bg)}
-.ndc-h1{font-size:clamp(20px,2.3vw,28px);margin:0 0 6px;background:var(--g-hero);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;letter-spacing:.2px}
-.ndc-h2{font-size:clamp(18px,1.9vw,22px);margin:0 0 10px;font-weight:800;color:#1f2a58}
-.ndc-h4{margin:0 0 10px;font-size:15px;color:#1f2a58}
-.ndc-sub{color:var(--ndc-slate);margin:0}
+  // ---------- RENDER LIST ----------
+  const listWrap = el('docList');
+  function renderList(activeId){
+    if (!listWrap) return;
+    listWrap.innerHTML = '';
+    DOCTORS.forEach(d=>{
+      const card = document.createElement('button');
+      card.type='button'; card.className='ndc-doc-card'; card.setAttribute('role','listitem');
+      card.setAttribute('aria-current', d.id===activeId ? 'true' : 'false');
+      card.innerHTML = `
+        <img class="ndc-avatar" src="${d.avatar}" alt="${d.name} portrait" loading="lazy">
+        <div class="ndc-doc-main">
+          <div class="ndc-doc-name">${d.name}</div>
+          <div class="ndc-doc-role">${d.specialty}</div>
+        </div>
+        <div class="ndc-doc-right"><span class="ndc-badge">★ ${d.rating.toFixed(1)}</span></div>`;
+      card.addEventListener('click', ()=> selectDoctor(d.id));
+      listWrap.appendChild(card);
+    });
+  }
 
-/* Header */
-.ndc-head{max-width:1200px;margin:0 auto 14px;padding:6px 10px}
+  // ---------- FILL ABOUT + PROFILE ----------
+  function fillDoctor(d){
+    el('aboutAvatar').src = d.avatar;
+    el('aboutName').textContent = d.name;
+    el('aboutSpecialty').textContent = d.specialty;
+    el('aboutRating').textContent = `★ ${d.rating.toFixed(1)}`;
+    el('aboutExp').textContent = expLabel(d.experience);
+    el('aboutConsult').textContent = d.consultation.join(' · ');
+    el('aboutCities').innerHTML = d.cities.map(c=>`<a class="ndc-chip" href="${cityLink(c)}" target="_blank" rel="noopener" title="Best dentist in ${c}">${c}</a>`).join('');
+    el('aboutPhones').innerHTML = d.phones.map(p=>`<a class="ndc-chip ndc-chip--tel" href="tel:${p.replace(/\s+/g,'')}">📞 ${p}</a>`).join('');
 
-/* Grid */
-.ndc-wrap .ndc-grid{
-  max-width:1200px;margin:0 auto;display:grid;gap:18px;
-  grid-template-columns: 320px minmax(0,1fr) 360px;
-  align-items:start;padding:0 10px;
-}
-@media (max-width:1100px){
-  .ndc-wrap .ndc-grid{grid-template-columns:1fr;padding:0 12px}
-}
+    const booksWrap = el('aboutBooksWrap');
+    const booksGrid = el('aboutBooks');
+    booksGrid.innerHTML = '';
+    if (d.books?.length){
+      d.books.forEach(b=>{
+        const item = document.createElement('div');
+        item.className='ndc-book';
+        item.innerHTML = `
+          <img src="${b.cover}" alt="${b.title} book cover" loading="lazy">
+          <a href="${b.link}" target="_blank" rel="noopener">${b.title}</a>
+          <small>${b.publisher||''}</small>`;
+        booksGrid.appendChild(item);
+      });
+      booksWrap.classList.add('has-books');
+    } else {
+      booksWrap.classList.remove('has-books');
+    }
 
-/* Columns */
-.ndc-col{background:var(--g-card);border:1px solid #e6ebff;border-radius:var(--r-lg);box-shadow:var(--elev-1);padding:12px;transition:transform .2s ease, box-shadow .2s ease}
-.ndc-col:hover{transform:translateY(-2px);box-shadow:var(--elev-2)}
+    // Profile
+    el('heroImg').src = d.avatar;
+    el('heroRating').textContent = `★ ${d.rating.toFixed(1)}`;
+    el('heroName').textContent = d.name;
+    el('heroSpecialty').textContent = d.specialty;
 
-/* Doctors List */
-.ndc-doc-list{display:flex;flex-direction:column;gap:10px}
-.ndc-doc-card{
-  display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;
-  background:#fff;border:1px solid #e9e9ff;border-radius:var(--r-md);padding:8px;cursor:pointer;
-  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-}
-.ndc-doc-card:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(90,120,255,.14)}
-.ndc-doc-card[aria-current="true"]{border-color:#a5b4fc;box-shadow:0 0 0 3px rgba(129,140,248,.25)}
-.ndc-doc-main{min-width:0}
-.ndc-doc-name{margin:0;color:#0b1026;font-weight:800;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ndc-doc-role{margin:0;font-size:12.5px;color:#475569;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ndc-doc-right{display:flex;gap:6px;align-items:center}
-.ndc-badge{font-size:12px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:4px 8px}
-.ndc-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    const callBtn = el('btnCall');
+    if (callBtn) callBtn.href = `tel:${d.phones[0].replace(/\s+/g,'')}`;
+  }
 
-/* About Card */
-.ndc-about-card{background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg);padding:12px}
-.ndc-about-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
-.ndc-about-id{display:flex;align-items:center;gap:10px}
-.ndc-doc-name{font-size:16px}
-.ndc-doc-role{font-size:13px}
-.ndc-rating{background:#fff;border:1px solid #e7e9ff;border-radius:999px;padding:4px 10px;font-weight:800}
-.ndc-meta{list-style:none;padding:0;margin:6px 0 10px;display:grid;gap:6px;font-size:13.5px;color:#111}
-.ndc-divider{height:1px;background:#eef2ff;margin:10px 0}
-.ndc-chips-block{margin-top:8px}
-.ndc-chip-title{font-size:12.5px;color:#1f2a58;font-weight:800;margin-bottom:6px}
-.ndc-chips{display:flex;flex-wrap:wrap;gap:8px}
-.ndc-chip{
-  font-size:12.5px;background:#fff;border:1px solid #e7e9ff;border-radius:999px;padding:6px 10px;text-decoration:none;color:#111;
-  transition:transform .15s ease, box-shadow .15s ease;
-}
-.ndc-chip:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(90,120,255,.14)}
-.ndc-chip--tel{background:var(--g-chip);color:#111;border:1px solid #dcd6ff}
+  // ---------- SLOTS ----------
+  const toLabel=(h,m)=>`${(((h+11)%12)+1).toString().padStart(2,'0')}:${m===0?'00':'30'} ${h>=12?'PM':'AM'}`;
+  function labelsEvery30min(start,end,wrap=false){
+    const out=[]; const push=(h,m)=>out.push(toLabel(h,m));
+    if(!wrap){ for(let h=start;h<=end;h++){ push(h,0); if(h!==end) push(h,30); } }
+    else { for(let h=start;h<=23;h++){ push(h,0); if(h<23) push(h,30);} for(let h=0;h<=end;h++){ push(h,0); if(h<end) push(h,30);} }
+    return out;
+  }
+  function renderSlots(){
+    const slotsRegular = labelsEvery30min(11,22,false);
+    const slotsEmergency= labelsEvery30min(22,2,true);
+    const rWrap = el('slotsRegular'); const eWrap = el('slotsEmergency'); const sel = el('selTime');
 
-/* Books */
-.ndc-books{display:none}
-.ndc-books.has-books{display:block}
-.ndc-book-grid{display:flex;flex-wrap:wrap;gap:10px}
-.ndc-book{
-  width:140px;background:#fff;border:1px solid #eee;border-radius:12px;padding:8px;text-align:center
-}
-.ndc-book img{width:100%;height:170px;object-fit:cover;border-radius:8px}
-.ndc-book a{display:block;margin-top:6px;font-size:12.5px;color:#0b1026;font-weight:600;text-decoration:none}
-.ndc-book small{display:block;color:#64748b}
+    const make=(wrap,arr)=>{ wrap.innerHTML=''; arr.forEach(lbl=>{ const b=document.createElement('button'); b.type='button'; b.className='ndc-slot'; b.textContent=lbl;
+      b.addEventListener('click',()=>{ $$('.ndc-slot',root).forEach(x=>x.classList.remove('active')); b.classList.add('active'); sel.value=lbl; });
+      wrap.appendChild(b); }); };
+    make(rWrap,slotsRegular); make(eWrap,slotsEmergency);
 
-/* Profile Card */
-.ndc-profile-card{overflow:hidden;background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg)}
-.ndc-hero{position:relative;aspect-ratio:4/3;background:var(--g-hero)}
-.ndc-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;opacity:.95}
-.ndc-hero-badge{position:absolute;top:10px;right:10px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;font-weight:800}
-.ndc-hero-body{padding:12px}
-.ndc-hero-name{margin:0 0 4px;font-size:16px}
-.ndc-hero-sub{margin:0 0 10px;color:#475569;font-size:13.5px}
-.ndc-hero-actions{display:flex;gap:8px}
-.ndc-btn{
-  display:inline-flex;align-items:center;gap:8px;justify-content:center;
-  border:none;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer;text-decoration:none
-}
-.ndc-btn .i{width:18px;height:18px;fill:currentColor}
-.ndc-btn--tonal{background:#f1f5f9;color:#111}
-.ndc-btn--tonal:hover{background:#e2e8f0}
-.ndc-btn--primary{background:var(--btn-primary);color:#fff}
-.ndc-btn--primary:hover{filter:brightness(1.05)}
+    sel.innerHTML=''; [...slotsRegular,...slotsEmergency].forEach(lbl=>{ const o=document.createElement('option'); o.value=o.textContent=lbl; sel.appendChild(o); });
+    sel.selectedIndex=0; $('.ndc-slot',root)?.classList.add('active');
+  }
 
-/* Care Team */
-.ndc-care{max-width:1200px;margin:18px auto 0;padding:0 10px}
-.ndc-care-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-@media (max-width:900px){.ndc-care-grid{grid-template-columns:1fr}}
-.ndc-care-card{background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg);padding:12px;box-shadow:var(--elev-1)}
-.ndc-care-top{display:flex;justify-content:space-between;align-items:start;gap:12px}
-.ndc-care-name{margin:0;font-size:15px}
-.ndc-care-role{margin:0;color:#475569;font-size:13px}
-.ndc-care-tag{background:#eef2ff;border:1px solid #e7e9ff;border-radius:999px;padding:4px 8px;font-size:12px}
-.ndc-care-text{margin:8px 0 10px;color:#111;font-size:13.5px}
+  // ---------- SELECT & CONFIRM ----------
+  function renderDoctorSelect(activeId){
+    const sel = el('selDoctor');
+    sel.innerHTML='';
+    DOCTORS.forEach(d=>{ const o=document.createElement('option'); o.value=d.id; o.textContent=d.name; sel.appendChild(o); });
+    sel.value=activeId; sel.addEventListener('change',()=>selectDoctor(sel.value));
+  }
+  const summaryText=(doc,name,age,type,date,time,notes)=>`Appointment Request
+Doctor: ${doc.name}
+Type: ${type}
+Patient: ${name} (Age ${age})
+Date: ${date}
+Time: ${time}
+Phone(s): ${doc.phones.join(', ')}
+City Options: ${doc.cities.join(', ')}
 
-/* Appointment */
-.ndc-appt{max-width:1200px;margin:18px auto;padding:0 10px}
-.ndc-appt-head{background:var(--g-card);border:1px solid #e6ebff;border-radius:var(--r-lg);padding:12px;box-shadow:var(--elev-1)}
-.ndc-appt-form{margin-top:12px;background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg);padding:12px;box-shadow:var(--elev-1)}
-.ndc-form-grid{
-  display:grid;grid-template-columns:1fr 1fr 140px 1fr 1fr;gap:10px
-}
-.ndc-full{grid-column:1/-1}
-.ndc-field{display:flex;flex-direction:column;gap:6px}
-.ndc-field--sm{min-width:120px}
-.ndc-field label{font-weight:700;font-size:12.5px;color:#1f2a58}
-.ndc-appt-form input,
-.ndc-appt-form select,
-.ndc-appt-form textarea{
-  background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px;outline:none;transition:border .2s ease, box-shadow .2s ease
-}
-.ndc-appt-form input:focus,
-.ndc-appt-form select:focus,
-.ndc-appt-form textarea:focus{border-color:#818cf8;box-shadow:var(--focus)}
+Notes: ${notes}`;
 
-@media (max-width:1100px){
-  .ndc-form-grid{grid-template-columns:1fr 1fr}
-  .ndc-field--sm{grid-column:1/2}
-}
-@media (max-width:640px){
-  .ndc-form-grid{grid-template-columns:1fr}
-}
+  function bindConfirm(){
+    const btnEmail = el('btnEmail'); const btnWA = el('btnWhatsApp');
+    const selDoc = el('selDoctor'); const fName=el('name'); const fAge=el('age');
+    const fType=el('type'); const fDate=el('date'); const fTime=el('selTime'); const fNotes=el('notes');
+    const getDoc=()=>DOCTORS.find(d=>d.id===selDoc.value)||DOCTORS[0];
+    const ok=()=>{ if(!fName.value.trim()){alert('Please enter patient name.');fName.focus();return false;}
+                   if(!fAge.value.trim()){alert('Please enter age.');fAge.focus();return false;}
+                   if(!fDate.value){alert('Please choose a date.');fDate.focus();return false;}
+                   if(!fTime.value){alert('Please choose a time.');fTime.focus();return false;}
+                   return true; };
+    btnEmail.addEventListener('click',()=>{ if(!ok())return; const d=getDoc();
+      const txt=summaryText(d,fName.value.trim(),fAge.value.trim(),fType.value,fDate.value,fTime.value,fNotes.value.trim());
+      const subject=`Appointment: ${fType.value} | ${fName.value.trim()} | ${fDate.value} ${fTime.value}`;
+      window.open(`mailto:dr.dhivakaran@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(txt)}`,'_blank'); });
+    btnWA.addEventListener('click',()=>{ if(!ok())return; const d=getDoc();
+      const txt=summaryText(d,fName.value.trim(),fAge.value.trim(),fType.value,fDate.value,fTime.value,fNotes.value.trim());
+      window.open(`https://wa.me/91861425342?text=${encodeURIComponent("Hello, I'd like to confirm an appointment.\n\n"+txt)}`,'_blank'); });
+  }
 
-/* Slots */
-.ndc-slot-group{margin-top:6px}
-.ndc-slot-title{font-size:12px;font-weight:800;color:#1f2a58;margin-bottom:6px}
-.ndc-slot-title.em{color:#7c2d12}
-.ndc-slots{display:flex;flex-wrap:wrap;gap:8px}
-.ndc-slot{
-  background:#fff;border:1px solid #e2e8f0;border-radius:999px;padding:8px 12px;font-size:12.5px;cursor:pointer;
-  transition:transform .15s ease, box-shadow .15s ease, background .15s ease
-}
-.ndc-slot:hover{transform:translateY(-1px);box-shadow:0 6px 12px rgba(0,0,0,.06);background:#eef2ff}
-.ndc-slot.active{background:linear-gradient(135deg,#ffe4e6,#fef9c3);border-color:#facc15;color:#7c2d12;font-weight:800}
+  function selectDoctor(id){
+    const d = DOCTORS.find(x=>x.id===id) || DOCTORS[0];
+    fillDoctor(d); renderList(d.id);
+    const sel = el('selDoctor'); if (sel) sel.value=d.id;
+  }
 
-/* Actions */
-.ndc-actions{display:flex;gap:10px;margin-top:12px}
-.ndc-btn--wa{background:var(--btn-wa);color:#0a3319}
-.ndc-btn--wa:hover{filter:brightness(1.05)}
+  // ---------- INIT ----------
+  function init(){
+    renderSlots();
+    bindConfirm();
+    renderList(DOCTORS[0].id);
+    renderDoctorSelect(DOCTORS[0].id);
+    selectDoctor(DOCTORS[0].id);
 
-/* Accessibility focus */
-.ndc-doc-card:focus-visible,
-.ndc-slot:focus-visible,
-.ndc-btn:focus-visible{outline:none;box-shadow:var(--focus)}
-
+    // Default date: today
+    const d = el('date');
+    if (d){
+      const today = new Date(); const yyyy=today.getFullYear();
+      const mm = String(today.getMonth()+1).padStart(2,'0');
+      const dd = String(today.getDate()).padStart(2,'0');
+      d.value = `${yyyy}-${mm}-${dd}`;
+    }
+  }
+  init();
+})();
 
 /* ---------- Treatments data + renderer (6 per page) ---------- */
 (() => {
