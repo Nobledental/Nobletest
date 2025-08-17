@@ -578,355 +578,189 @@ body.nav-open{ overflow:hidden; }
   .svc .t-desc{ font-size: .86rem; }
 }
 
-/* ===== Doctors Dashboard (scoped) ===== */
-.dd-root{
-  --dd-bg:#393232; --dd-panel:#f8f8f8; --dd-ink:#6f98ff; --dd-muted:#1a7ca3;
-  --dd-blue:#091120; --dd-lilac:#8050f8; --dd-mint:#aac1f4; --dd-peach:#522ff8; --dd-rose:#67132f;
-  --dd-chip:#2251e8; --dd-radius:14px; --dd-shadow:0 10px 28px rgba(6,10,25,.35); --dd-star:#878786;
-  color:var(--dd-ink);
-}
-
-/* Pastel theme + elevations */
+/* ===== Noble Dental Care DOCTORS ===== */
 :root{
-  --pastel-a:#E8F3FF;  /* baby blue */
-  --pastel-b:#FDF1FF;  /* lilac mist */
-  --pastel-c:#EFFFF6;  /* mint haze */
-  --pastel-d:#FFF7E8;  /* peach cream */
-  --ring      : rgba(90,120,255,.25);
-  --elev-1    : 0 6px 16px rgba(20,28,60,.14);
-  --elev-2    : 0 12px 28px rgba(20,28,60,.18);
+  --ndc-bg:#f7f9ff;
+  --ndc-ink:#111827;
+  --ndc-sub:#334155;
+  --ndc-slate:#64748b;
+  --ndc-white:#fff;
+
+  /* Pastels */
+  --p-lilac:#e9e7ff;
+  --p-sky:#e8f3ff;
+  --p-mint:#effff6;
+  --p-peach:#fff7e8;
+  --p-rose:#ffe9f2;
+
+  /* Brand gradients */
+  --g-hero: linear-gradient(135deg,#a5b4fc 0%, #fbcfe8 50%, #6ee7b7 100%);
+  --g-card: linear-gradient(135deg,#E8F3FF,#FDF1FF 60%, #FFF7E8);
+  --g-chip: linear-gradient(135deg,#a5b4fc,#f0abfc);
+
+  /* Buttons */
+  --btn-primary: linear-gradient(135deg,#818cf8,#a78bfa 40%, #f0abfc);
+  --btn-wa: linear-gradient(135deg,#22c55e,#86efac);
+
+  /* Radii & shadows */
+  --r-lg:20px;
+  --r-md:14px;
+  --r-sm:10px;
+
+  --elev-1: 0 8px 22px rgba(20, 28, 60, .10);
+  --elev-2: 0 12px 30px rgba(20, 28, 60, .16);
+  --focus: 0 0 0 3px rgba(129,140,248,.35);
 }
 
-/* Container */
-.dd-dashboard-container{padding:70px;max-width:1300px;margin:auto;background:#ebebebdb}
+#ndc-doctors-app, .ndc-wrap{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ndc-ink);background:var(--ndc-bg)}
+.ndc-h1{font-size:clamp(20px,2.3vw,28px);margin:0 0 6px;background:var(--g-hero);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;letter-spacing:.2px}
+.ndc-h2{font-size:clamp(18px,1.9vw,22px);margin:0 0 10px;font-weight:800;color:#1f2a58}
+.ndc-h4{margin:0 0 10px;font-size:15px;color:#1f2a58}
+.ndc-sub{color:var(--ndc-slate);margin:0}
 
-/* ==== GRID: 2 cols top, appointment full width below ==== */
-.dd-main-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    "left   right"
-    "left   details"
-    "middle middle";
-  gap: 36px 16px;
+/* Header */
+.ndc-head{max-width:1200px;margin:0 auto 14px;padding:6px 10px}
+
+/* Grid */
+.ndc-wrap .ndc-grid{
+  max-width:1200px;margin:0 auto;display:grid;gap:18px;
+  grid-template-columns: 320px minmax(0,1fr) 360px;
+  align-items:start;padding:0 10px;
+}
+@media (max-width:1100px){
+  .ndc-wrap .ndc-grid{grid-template-columns:1fr;padding:0 12px}
 }
 
-.dd-left-panel     { grid-area: left; }
-.dd-right-panel    { grid-area: right; }
-.dd-details-panel  { grid-area: details; }
-.dd-middle-panel   { grid-area: middle; max-width: 980px; margin-inline: auto; }
+/* Columns */
+.ndc-col{background:var(--g-card);border:1px solid #e6ebff;border-radius:var(--r-lg);box-shadow:var(--elev-1);padding:12px;transition:transform .2s ease, box-shadow .2s ease}
+.ndc-col:hover{transform:translateY(-2px);box-shadow:var(--elev-2)}
 
-/* Details panel styling */
-.dd-details-panel{
-  background: linear-gradient(180deg, var(--pastel-a), var(--pastel-b));
-  border: 1px solid rgba(120,140,220,.22);
-  border-radius: var(--dd-radius);
-  box-shadow: var(--elev-1);
-  padding: 12px;
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+/* Doctors List */
+.ndc-doc-list{display:flex;flex-direction:column;gap:10px}
+.ndc-doc-card{
+  display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;
+  background:#fff;border:1px solid #e9e9ff;border-radius:var(--r-md);padding:8px;cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
 }
-.dd-details-panel:hover{
-  transform: translateY(-2px);
-  box-shadow: var(--elev-2);
-  border-color: rgba(120,140,220,.35);
+.ndc-doc-card:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(90,120,255,.14)}
+.ndc-doc-card[aria-current="true"]{border-color:#a5b4fc;box-shadow:0 0 0 3px rgba(129,140,248,.25)}
+.ndc-doc-main{min-width:0}
+.ndc-doc-name{margin:0;color:#0b1026;font-weight:800;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ndc-doc-role{margin:0;font-size:12.5px;color:#475569;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ndc-doc-right{display:flex;gap:6px;align-items:center}
+.ndc-badge{font-size:12px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:4px 8px}
+.ndc-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+
+/* About Card */
+.ndc-about-card{background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg);padding:12px}
+.ndc-about-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.ndc-about-id{display:flex;align-items:center;gap:10px}
+.ndc-doc-name{font-size:16px}
+.ndc-doc-role{font-size:13px}
+.ndc-rating{background:#fff;border:1px solid #e7e9ff;border-radius:999px;padding:4px 10px;font-weight:800}
+.ndc-meta{list-style:none;padding:0;margin:6px 0 10px;display:grid;gap:6px;font-size:13.5px;color:#111}
+.ndc-divider{height:1px;background:#eef2ff;margin:10px 0}
+.ndc-chips-block{margin-top:8px}
+.ndc-chip-title{font-size:12.5px;color:#1f2a58;font-weight:800;margin-bottom:6px}
+.ndc-chips{display:flex;flex-wrap:wrap;gap:8px}
+.ndc-chip{
+  font-size:12.5px;background:#fff;border:1px solid #e7e9ff;border-radius:999px;padding:6px 10px;text-decoration:none;color:#111;
+  transition:transform .15s ease, box-shadow .15s ease;
 }
+.ndc-chip:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(90,120,255,.14)}
+.ndc-chip--tel{background:var(--g-chip);color:#111;border:1px solid #dcd6ff}
+
+/* Books */
+.ndc-books{display:none}
+.ndc-books.has-books{display:block}
+.ndc-book-grid{display:flex;flex-wrap:wrap;gap:10px}
+.ndc-book{
+  width:140px;background:#fff;border:1px solid #eee;border-radius:12px;padding:8px;text-align:center
+}
+.ndc-book img{width:100%;height:170px;object-fit:cover;border-radius:8px}
+.ndc-book a{display:block;margin-top:6px;font-size:12.5px;color:#0b1026;font-weight:600;text-decoration:none}
+.ndc-book small{display:block;color:#64748b}
+
+/* Profile Card */
+.ndc-profile-card{overflow:hidden;background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg)}
+.ndc-hero{position:relative;aspect-ratio:4/3;background:var(--g-hero)}
+.ndc-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;opacity:.95}
+.ndc-hero-badge{position:absolute;top:10px;right:10px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;font-weight:800}
+.ndc-hero-body{padding:12px}
+.ndc-hero-name{margin:0 0 4px;font-size:16px}
+.ndc-hero-sub{margin:0 0 10px;color:#475569;font-size:13.5px}
+.ndc-hero-actions{display:flex;gap:8px}
+.ndc-btn{
+  display:inline-flex;align-items:center;gap:8px;justify-content:center;
+  border:none;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer;text-decoration:none
+}
+.ndc-btn .i{width:18px;height:18px;fill:currentColor}
+.ndc-btn--tonal{background:#f1f5f9;color:#111}
+.ndc-btn--tonal:hover{background:#e2e8f0}
+.ndc-btn--primary{background:var(--btn-primary);color:#fff}
+.ndc-btn--primary:hover{filter:brightness(1.05)}
+
+/* Care Team */
+.ndc-care{max-width:1200px;margin:18px auto 0;padding:0 10px}
+.ndc-care-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (max-width:900px){.ndc-care-grid{grid-template-columns:1fr}}
+.ndc-care-card{background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg);padding:12px;box-shadow:var(--elev-1)}
+.ndc-care-top{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.ndc-care-name{margin:0;font-size:15px}
+.ndc-care-role{margin:0;color:#475569;font-size:13px}
+.ndc-care-tag{background:#eef2ff;border:1px solid #e7e9ff;border-radius:999px;padding:4px 8px;font-size:12px}
+.ndc-care-text{margin:8px 0 10px;color:#111;font-size:13.5px}
+
+/* Appointment */
+.ndc-appt{max-width:1200px;margin:18px auto;padding:0 10px}
+.ndc-appt-head{background:var(--g-card);border:1px solid #e6ebff;border-radius:var(--r-lg);padding:12px;box-shadow:var(--elev-1)}
+.ndc-appt-form{margin-top:12px;background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg);padding:12px;box-shadow:var(--elev-1)}
+.ndc-form-grid{
+  display:grid;grid-template-columns:1fr 1fr 140px 1fr 1fr;gap:10px
+}
+.ndc-full{grid-column:1/-1}
+.ndc-field{display:flex;flex-direction:column;gap:6px}
+.ndc-field--sm{min-width:120px}
+.ndc-field label{font-weight:700;font-size:12.5px;color:#1f2a58}
+.ndc-appt-form input,
+.ndc-appt-form select,
+.ndc-appt-form textarea{
+  background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px;outline:none;transition:border .2s ease, box-shadow .2s ease
+}
+.ndc-appt-form input:focus,
+.ndc-appt-form select:focus,
+.ndc-appt-form textarea:focus{border-color:#818cf8;box-shadow:var(--focus)}
 
 @media (max-width:1100px){
-  .dd-main-grid{
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "left"
-      "right"
-      "details"
-      "middle";
-  }
+  .ndc-form-grid{grid-template-columns:1fr 1fr}
+  .ndc-field--sm{grid-column:1/2}
+}
+@media (max-width:640px){
+  .ndc-form-grid{grid-template-columns:1fr}
 }
 
-
-/* Appointment hero card */
-.dd-middle-panel{
-  position:relative;
-  background: linear-gradient(135deg, var(--pastel-c) 0%, #f7faff 40%, var(--pastel-d) 100%);
-  border: 1px solid rgba(120,140,220,.28);
-  box-shadow: 0 20px 50px rgba(90,120,255,.18);
-  overflow:hidden;
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+/* Slots */
+.ndc-slot-group{margin-top:6px}
+.ndc-slot-title{font-size:12px;font-weight:800;color:#1f2a58;margin-bottom:6px}
+.ndc-slot-title.em{color:#7c2d12}
+.ndc-slots{display:flex;flex-wrap:wrap;gap:8px}
+.ndc-slot{
+  background:#fff;border:1px solid #e2e8f0;border-radius:999px;padding:8px 12px;font-size:12.5px;cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease
 }
-.dd-middle-panel:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 26px 70px rgba(90,120,255,.22);
-  border-color: rgba(120,140,220,.42);
-}
-/* animated orb */
-.dd-middle-panel::before{
-  content:"";
-  position:absolute; inset:-60% -40% auto auto;
-  width:70vmin; height:70vmin; border-radius:50%;
-  background: radial-gradient(closest-side, rgba(120,160,255,.18), transparent 70%);
-  filter: blur(14px);
-  animation: dd-orb 9s ease-in-out infinite alternate;
-  pointer-events:none;
-}
-@keyframes dd-orb{from{transform:translate(6%,-4%)}to{transform:translate(-2%,3%)}}
+.ndc-slot:hover{transform:translateY(-1px);box-shadow:0 6px 12px rgba(0,0,0,.06);background:#eef2ff}
+.ndc-slot.active{background:linear-gradient(135deg,#ffe4e6,#fef9c3);border-color:#facc15;color:#7c2d12;font-weight:800}
 
-/* Titles */
-.dd-left-panel h2,.dd-middle-panel h2{font-size:20px;margin:0 0 15px}
-.dd-appointment-panel h2{
-  background: linear-gradient(90deg, #5a78ff, #8eacee 70%);
-  -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing:.2px;
-}
-.dd-muted{color:var(--dd-muted)}
+/* Actions */
+.ndc-actions{display:flex;gap:10px;margin-top:12px}
+.ndc-btn--wa{background:var(--btn-wa);color:#0a3319}
+.ndc-btn--wa:hover{filter:brightness(1.05)}
 
-/* ===== Left “Instagram” 
-card ===== */
-.dd-insta-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
-.dd-insta-user{display:flex;align-items:center;gap:20px}
-.dd-insta-avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.2)}
-.dd-insta-avatar img{width:100%;height:100%;object-fit:cover}
-.dd-insta-meta{display:flex;flex-direction:column}
-.dd-insta-name{font-weight:950}
-.dd-insta-sub{font-size:12px;color:#101012}
-.dd-insta-rating{background:#fff;color:#050404;border-radius:999px;padding:4px 8px;font-weight:800}
+/* Accessibility focus */
+.ndc-doc-card:focus-visible,
+.ndc-slot:focus-visible,
+.ndc-btn:focus-visible{outline:none;box-shadow:var(--focus)}
 
-/* Square media with animated gradient */
-.dd-profile-hero-square{position:relative;width:100%;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#686a78,#353c5a);isolation:isolate}
-.dd-pulse-bg::before,.dd-pulse-bg::after{
-  content:"";position:absolute;left:50%;top:50%;border-radius:50%;transform:translate(-50%,-50%);filter:blur(6px);
-  width:720px;height:720px;opacity:.6;z-index:0;
-  background:
-    radial-gradient(circle at 50% 50%, rgb(35 207 215), #2b3198fc 55%),
-    radial-gradient(circle at 20% 40%, rgb(54 14 127), #37c9aa 60%),
-    radial-gradient(circle at 80% 60%, rgb(57 10 188), #4f26c2e0 60%);
-  animation:dd-pulse 4.2s infinite ease-in-out;
-}
-.dd-pulse-bg::after{
-  width:920px;height:920px;opacity:.42;animation-delay:.8s;
-  background:
-    radial-gradient(circle at 40% 60%, rgb(83 86 234 / 69%), #140e0e00 55%),
-    radial-gradient(circle at 70% 30%, rgb(34 194 181 / 93%), transparent 60%),
-    radial-gradient(circle at 30% 80%, rgb(47 45 51 / 84%), transparent 60%);
-}
-@keyframes dd-pulse{0%{transform:translate(-50%,-50%) scale(.85);opacity:.45}50%{transform:translate(-50%,-50%) scale(1);opacity:.9}100%{transform:translate(-50%,-50%) scale(1.15);opacity:.35}}
-.dd-doctor-hero-pic{position:absolute;inset:0;margin:auto;width:100%;height:100%;object-fit:cover;border-radius:12px;mix-blend-mode:screen;opacity:.98}
-
-/* Insta actions */
-.dd-insta-actions{display:flex;align-items:center;gap:10px;margin:8px 4px 6px}
-.dd-icon-action{background:#fff;border:1px solid #dcdada;color:#ff3a81;border-radius:10px;padding:8px 12px;position:relative;overflow:hidden}
-.dd-icon-action:hover{background:#a7ceff}
-.dd-push-right{margin-left:auto}
-
-/* Caption */
-.dd-insta-caption{display:flex;gap:20px;margin:4px 4px 10px}
-.dd-insta-caption .dd-insta-name{font-weight:600}
-.dd-insta-caption .dd-insta-text{color:#000}
-
-/* Facts / chips / actions */
-.dd-facts-row{display:grid;grid-template-columns:1fr;gap:8px;margin:4px 0}
-.dd-fact-chip{font-size:12px;background:#2765fb;border:1px solid #cbcccf;color:#fff;padding:6px 10px;border-radius:999px;white-space:nowrap}
-.dd-actions-row{display:flex;gap:8px;margin-bottom:8px}
-.dd-btn{padding:9px 12px;border-radius:10px;border:none;font-weight:600;position:relative;overflow:hidden}
-.dd-action-btn{background:var(--dd-mint);color:#000}
-.dd-ghost-btn{background:#1e1c2c;color:#f8f8f8;border:1px solid #fff}
-.dd-btn:hover{filter:brightness(1.06)}
-
-/* Region & Phones blocks */
-.dd-chips-block{margin:1px 0}
-.dd-chips-title{font-size:14px;color:var(--dd-blue);margin:2px 0 6px;font-weight:800;letter-spacing:.1px}
-.dd-chips{display:flex;flex-wrap:wrap;gap:6px;row-gap:8px}
-.dd-chip{font-size:12px;background:#fff;border:1px solid rgba(120,140,220,.18);color:#000;padding:6px 10px;border-radius:999px;text-decoration:none}
-.dd-chip:hover{box-shadow:0 4px 12px rgba(90,120,255,.12);transform:translateY(-1px)}
-
-/* Collapses: About / Expertise / Published Books */
-.dd-collapse{margin-top:8px;border:1px solid #e7e9ff;border-radius:20px;overflow:hidden;background:#fff}
-.dd-collapse>summary{list-style:none;cursor:pointer;padding:9px 12px;background:linear-gradient(180deg,#f7f9ff,#eef2ff);font-weight:700;border-bottom:1px solid #e7e9ff}
-.dd-collapse p,.dd-collapse ul{padding:10px 12px;margin:0}
-.dd-list-compact{padding-left:18px}
-.dd-list-compact li{margin:4px 0}
-
-/* Books grid */
-.dd-book-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
-.dd-book-tile{width:136px;background:#fff;border:1px solid #f1f1f1;border-radius:10px;padding:10px;text-align:center}
-.dd-book-tile img{width:100%;height:168px;object-fit:cover;border-radius:6px;margin-bottom:8px}
-.dd-book-tile a{color:#000;font-size:12.5px;display:block}
-.dd-book-tile .dd-small{font-size:11.5px;color:var(--dd-muted)}
-
-/* ===== Appointment form ===== */
-.dd-appointment-panel h2{margin:0 0 10px}
-.dd-form-group{margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
-.dd-form-row{display:grid;grid-template-columns:1fr 140px;gap:10px}
-.dd-appointment-panel input[type="text"],
-.dd-appointment-panel input[type="number"],
-.dd-appointment-panel input[type="date"],
-.dd-appointment-panel textarea,
-.dd-appointment-panel select{
-  background:#eef3ff;border:1px solid #6876bf8c;color:#101112;padding:9px;border-radius:8px;
-  outline:none;box-shadow:none;transition:border-color .15s ease, box-shadow .15s ease, background .15s ease;
-}
-.dd-appointment-panel textarea{resize:vertical;min-height:90px}
-.dd-appointment-panel input:focus,
-.dd-appointment-panel textarea:focus,
-.dd-appointment-panel select:focus{
-  border-color:rgba(90,120,255,.55);
-  box-shadow:0 0 0 4px var(--ring);
-  background:#fff;
-}
-
-/* Time slots */
-.dd-slot-section{margin-bottom:12px}
-.dd-slot-section__title{font-size:12.5px;color:#060606;margin-bottom:6px;font-weight:700}
-.dd-slot-section__title.dd-emergency{color:#090909}
-.dd-time-slots{display:flex;flex-wrap:wrap;gap:8px}
-.dd-slot{
-  background:linear-gradient(180deg,#ffffff,#f4f7ff);
-  color:#0b0e14;
-  border:1px solid rgba(120,140,220,.25);
-  border-radius:9px;
-  padding:7px 11px;
-  box-shadow:0 2px 8px rgba(30,45,90,.08);
-  transition:transform .12s ease, box-shadow .12s ease, background .2s ease;
-  position:relative; overflow:hidden;
-}
-.dd-slot:hover{transform:translateY(-1px);box-shadow:0 8px 16px rgba(30,45,90,.12)}
-.dd-slot.dd-active{
-  background:linear-gradient(180deg,#fffbd1,#ffeaa7);
-  border-color:#ffcf5f;
-  box-shadow:0 10px 24px rgba(255,207,95,.22);
-}
-.dd-slot--emergency{
-  background:linear-gradient(180deg,#ffe9f2,#ffd9eb);
-  color:#2b0f19; border-color:rgba(255,120,170,.35);
-}
-.dd-slot--emergency.dd-active{
-  background:linear-gradient(180deg,#ffd6e9,#ffc0dd);
-  border-color:#ff8cc1; box-shadow:0 10px 24px rgba(255,140,193,.26);
-}
-
-/* Ripple feedback for buttons/slots */
-.dd-confirm-btn,
-.dd-secondary-btn,
-.dd-btn,
-.dd-icon-btn,
-.dd-slot{position:relative;overflow:hidden}
-.dd-confirm-btn:active::after,
-.dd-secondary-btn:active::after,
-.dd-btn:active::after,
-.dd-icon-btn:active::after,
-.dd-slot:active::after{
-  content:""; position:absolute; left:50%; top:50%; width:16px; height:16px; border-radius:50%;
-  background:rgba(255,255,255,.45); transform:translate(-50%,-50%) scale(0);
-  animation:dd-ripple .5s ease-out forwards;
-}
-@keyframes dd-ripple{to{transform:translate(-50%,-50%) scale(16);opacity:0}}
-
-/* ===== Right list (name + rating) ===== */
-.dd-list-no-scroll{display:flex;flex-direction:column;gap:15px;padding-right:3px}
-.dd-card{
-  display:grid; grid-template-columns:auto 1fr auto; gap:10px;
-  background:linear-gradient(180deg,#fbfdff,#f3f5ff);
-  border:1px solid rgba(120,140,220,.24);
-  border-radius:14px; padding:10px;
-  box-shadow:var(--elev-1);
-  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.dd-card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 18px 32px rgba(90,120,255,.18);
-  border-color:rgba(120,140,220,.45);
-}
-.dd-avatar{width:50px;height:50px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.18)}
-.dd-avatar img{width:100%;height:100%;object-fit:cover}
-.dd-card-body{display:flex;align-items:center;gap:4px;min-width:0}
-.dd-card-title{margin:0;color:#0b1026;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px}
-.dd-card-rating{color:var(--dd-star);font-weight:700;font-size:12.5px;margin-left:auto}
-.dd-card-actions{display:flex;gap:6px}
-.dd-icon-btn{background:#0b31cc;border:1px solid #2e57f000;color:#fff;padding:6px 10px;border-radius:9px;font-size:12.5px}
-.dd-icon-btn:hover{background:#696c73}
-
-/* Buttons footer (appointment) */
-.dd-confirm-btn{flex:1;background:linear-gradient(135deg,#5a78ff,#86e1ff);color:#fff;border:none;border-radius:10px;padding:10px 12px;font-weight:700;box-shadow:0 10px 18px rgba(90,120,255,.25)}
-.dd-confirm-btn:hover{filter:brightness(1.05);transform:translateY(-1px)}
-.dd-secondary-btn{flex:1;background:linear-gradient(135deg,#121a3a,#2c386b);color:#e7ecff;border:1px solid rgba(200,210,255,.18);border-radius:10px;padding:10px 12px}
-.dd-secondary-btn:hover{filter:brightness(1.05);transform:translateY(-1px)}
-
-/* Toast & Modal */
-.dd-toast{position:fixed;bottom:22px;right:22px;background:#edeef0;border:1px solid #243055;color:#0b1533;padding:10px 14px;border-radius:10px;display:none;box-shadow:var(--dd-shadow);font-size:13px;z-index:9999}
-.dd-toast.dd-show{display:block}
-.dd-modal{border:none;padding:0;background:transparent}
-.dd-modal::backdrop{background:rgba(0,0,0,.6)}
-.dd-modal-content{background:#13182b;border:1px solid #243055;border-radius:12px;padding:14px;min-width:300px;color:#e9efff}
-.dd-modal-content h3{margin:0 0 10px}
-.dd-modal-actions{display:flex;gap:10px;margin-top:12px}
-.dd-fallback{color:#a8b3d9;opacity:.9;text-align:center;padding:12px}
-
-/* ===== CONTROL CARD SIZE (single source of truth) ===== */
-.dd-left-panel  { max-width:420px; min-height:580px; }
-.dd-right-panel { max-width:320px; min-height:580px; }
-.dd-middle-panel{ max-width:860px; min-height:500px; }
-
-@media (max-width:1100px){
-  .dd-left-panel,.dd-right-panel,.dd-middle-panel{
-    max-width:100%; min-height:auto;
-  }
-}
-
-/* Grid areas to place new headers + details panel */
-.dd-main-grid{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    "left   rightTitle"
-    "left   right"
-    "left   details"
-    "middleTitle middleTitle"
-    "middle middle";
-  row-gap: 36px;
-  column-gap: 16px;
-}
-
-.dd-left-panel     { grid-area: left; }
-.dd-right-title    { grid-area: rightTitle; align-self:end; }
-.dd-right-panel    { grid-area: right; }
-.dd-details-panel  { grid-area: details; }
-.dd-middle-title   { grid-area: middleTitle; }
-.dd-middle-panel   { grid-area: middle; max-width:980px; margin-inline:auto; }
-
-/* Outside section headers (Doctors, Book an Appointment) */
-.dd-section-title{
-  margin: 0;
-  padding: 2px 0 6px;
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: .2px;
-  color: #1a275a;
-  background: linear-gradient(90deg,#5a78ff,#8eacee 70%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Details panel look — matches your pastel panels */
-.dd-details-panel{
-  background: linear-gradient(180deg, #E8F3FF, #FDF1FF);
-  border: 1px solid rgba(120,140,220,.22);
-  border-radius: var(--dd-radius);
-  box-shadow: var(--elev-1, 0 6px 16px rgba(20,28,60,.14));
-  padding: 12px;
-}
-
-/* Mobile stacking */
-@media (max-width:1100px){
-  .dd-main-grid{
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "left"
-      "rightTitle"
-      "right"
-      "details"
-      "middleTitle"
-      "middle";
-    row-gap: 24px;
-  }
-}
 =========================================================
    FOOTER
    ========================================================= */
@@ -1032,83 +866,6 @@ card ===== */
     row-gap: 14px;
   }
 }
-
-/* ===== Stability + sizing patch ===== */
-
-/* 1) Lock left/right card size (equal heights), prevent hover-resize */
-.dd-left-panel,
-.dd-right-panel{
-  height: 620px;              /* <- set the height you like */
-  max-width: 100%;
-  transition: box-shadow .18s ease, border-color .18s ease; /* no transform */
-}
-.dd-left-panel:hover,
-.dd-right-panel:hover{ /* gentle elevation only */
-  box-shadow: var(--elev-2);
-  border-color: rgba(120,140,220,.35);
-}
-
-/* make their insides flex so content never forces height changes */
-.dd-left-panel,
-.dd-right-panel{ display:flex; flex-direction:column; }
-
-/* right list fills the panel without changing panel height */
-.dd-right-panel .dd-list-no-scroll{
-  overflow:auto;
-  min-height: 0;              /* allow the inner list to scroll, not grow */
-  flex: 1;
-}
-
-/* 2) IG action row: smaller, fixed height, no wrap → no layout jump */
-.dd-insta-actions{
-  gap: 6px;
-  margin: 6px 4px 4px;
-  min-height: 34px;           /* pins the row’s height */
-  flex: 0 0 auto;
-  white-space: nowrap;
-}
-.dd-icon-action{
-  font-size: 12px;
-  line-height: 1;
-  padding: 6px 8px;
-  border-width: 1px;          /* stable border so no reflow on hover */
-}
-.dd-icon-action:hover{ background:#e9f0ff; } /* subtle, no size change */
-
-/* tighten caption + facts so they never push height */
-.dd-insta-caption{ gap:10px; margin:4px; font-size:12px; line-height:1.25; }
-.dd-facts-row{ gap:6px; margin:6px 0 2px; }
-.dd-fact-chip{ padding:5px 9px; font-size:11.5px; }
-
-/* 3) Profile image row stays stable */
-.dd-profile-hero-square{ flex: 0 0 auto; }
-
-/* 4) Prevent any transform-based “flicker” on middle card too */
-.dd-middle-panel{
-  justify-self: center;        /* always centered in the grid */
-  max-width: 860px;
-  transition: box-shadow .22s ease, border-color .22s ease; /* no transform */
-}
-.dd-middle-panel:hover{
-  box-shadow: 0 26px 70px rgba(90,120,255,.22);
-  border-color: rgba(120,140,220,.42);
-}
-
-/* 5) Ensure grid keeps side cards aligned and centered book below */
-.dd-main-grid{
-  align-items: start;          /* side cards align top, equal heights hold */
-  justify-items: stretch;
-}
-@media (min-width:1101px){
-  .dd-middle-panel{ width: 100%; max-width: 860px; } /* centered width cap */
-}
-
-/* 6) Extra safety: buttons/slots never cause reflow on press */
-.dd-btn, .dd-confirm-btn, .dd-secondary-btn, .dd-slot{
-  will-change: box-shadow;     /* no transform → no layout shift */
-  transform: none !important;  /* kill any leftover translate effects */
-}
-
 
 /* ================= Noble Dental — FAQ styles (Android/Material) ================= */
 :root{
@@ -1546,3 +1303,4 @@ card ===== */
 }
 .ndc-top.ndc-top--show{ opacity:1; pointer-events:auto; }
 .ndc-top:hover{ transform: translateY(-2px); }
+
