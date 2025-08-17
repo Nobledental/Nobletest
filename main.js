@@ -158,7 +158,6 @@
   applyMotionPref();
 })();
 
-/* ---------- Doctors Dashboard Component ---------- */
 /* ---------- Doctors + About + Appointment (single, clean) ---------- */
 (() => {
   const $  = (s, r=document)=>r.querySelector(s);
@@ -309,7 +308,7 @@
     const rWrap = el('slotsRegular'); const eWrap = el('slotsEmergency'); const sel = el('selTime');
 
     const make=(wrap,arr)=>{ wrap.innerHTML=''; arr.forEach(lbl=>{ const b=document.createElement('button'); b.type='button'; b.className='ndc-slot'; b.textContent=lbl;
-      b.addEventListener('click',()=>{ $$('.ndc-slot',root).forEach(x=>x.classList.remove('active')); b.classList.add('active'); sel.value=lbl; });
+      b.addEventListener('click',()=>{ $$('.ndc-slot',root).forEach(x=>x.classList.remove('active')); b.classList.add('active'); sel.value=lbl; updateProgressBar(); });
       wrap.appendChild(b); }); };
     make(rWrap,slotsRegular); make(eWrap,slotsEmergency);
 
@@ -320,10 +319,17 @@
   // ---------- SELECT & CONFIRM ----------
   function renderDoctorSelect(activeId){
     const sel = el('selDoctor');
-    sel.innerHTML='';
-    DOCTORS.forEach(d=>{ const o=document.createElement('option'); o.value=d.id; o.textContent=d.name; sel.appendChild(o); });
-    sel.value=activeId; sel.addEventListener('change',()=>selectDoctor(sel.value));
+    if (!sel) return;
+    sel.innerHTML = '';
+    DOCTORS.forEach(d=>{
+      const o=document.createElement('option');
+      o.value=d.id; o.textContent=d.name;
+      sel.appendChild(o);
+    });
+    sel.value = activeId || DOCTORS[0].id;
+    sel.addEventListener('change', ()=> selectDoctor(sel.value));
   }
+
   const summaryText=(doc,name,age,type,date,time,notes)=>`Appointment Request
 Doctor: ${doc.name}
 Type: ${type}
@@ -348,10 +354,10 @@ Notes: ${notes}`;
     btnEmail.addEventListener('click',()=>{ if(!ok())return; const d=getDoc();
       const txt=summaryText(d,fName.value.trim(),fAge.value.trim(),fType.value,fDate.value,fTime.value,fNotes.value.trim());
       const subject=`Appointment: ${fType.value} | ${fName.value.trim()} | ${fDate.value} ${fTime.value}`;
-      window.open(`mailto:dr.dhivakaran@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(txt)}`,'_blank'); });
+      window.open(`mailto:dr.dhivakaran@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(txt)}`,'_blank'); updateProgressBar(true); });
     btnWA.addEventListener('click',()=>{ if(!ok())return; const d=getDoc();
       const txt=summaryText(d,fName.value.trim(),fAge.value.trim(),fType.value,fDate.value,fTime.value,fNotes.value.trim());
-      window.open(`https://wa.me/91861425342?text=${encodeURIComponent("Hello, I'd like to confirm an appointment.\n\n"+txt)}`,'_blank'); });
+      window.open(`https://wa.me/91861425342?text=${encodeURIComponent("Hello, I'd like to confirm an appointment.\n\n"+txt)}`,'_blank'); updateProgressBar(true); });
   }
 
   function selectDoctor(id){
@@ -359,6 +365,28 @@ Notes: ${notes}`;
     fillDoctor(d); renderList(d.id);
     const sel = el('selDoctor'); if (sel) sel.value=d.id;
   }
+
+  // ---------- PROGRESS BAR (auto-detect) ----------
+function updateProgressUI(step){
+  const horiz = Array.from(root.querySelectorAll('.ndc-step'));
+  const vert  = Array.from(root.querySelectorAll('.ndc-vstep'));
+  [...horiz, ...vert].forEach((el, idx) => {
+    // determine the index for that set
+    const siblings = el.parentElement.querySelectorAll(el.classList.contains('ndc-vstep') ? '.ndc-vstep' : '.ndc-step');
+    const i = Array.from(siblings).indexOf(el);
+    el.classList.toggle('active', i <= step - 1);
+  });
+}
+  function getCurrentStep(){
+    const name = el('name')?.value.trim();
+    const age  = el('age')?.value.trim();
+    const date = el('date')?.value;
+    const time = el('selTime')?.value;
+    if (!name || !age) return 1;
+    if (!date || !time) return 2;
+    return 3;
+  }
+ 
 
   // ---------- INIT ----------
   function init(){
@@ -376,9 +404,12 @@ Notes: ${notes}`;
       const dd = String(today.getDate()).padStart(2,'0');
       d.value = `${yyyy}-${mm}-${dd}`;
     }
+
+    monitorAppointmentSteps();
   }
   init();
 })();
+
 
 /* ---------- Treatments data + renderer (6 per page) ---------- */
 (() => {
