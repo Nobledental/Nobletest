@@ -1106,7 +1106,7 @@ document.addEventListener('DOMContentLoaded', () => {
   play();
 })();
 
-<script>
+
 (() => {
   // Year
   const y = document.getElementById('ndcYear');
@@ -1149,4 +1149,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 })();
-</script>
