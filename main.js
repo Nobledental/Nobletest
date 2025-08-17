@@ -1006,3 +1006,102 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 })();
+
+(() => {
+  const track = document.getElementById('ndtTslTrack');
+  const btnPrev = document.getElementById('ndtTslPrev');
+  const btnNext = document.getElementById('ndtTslNext');
+  if (!track) return;
+
+  const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // duplicate slide set for seamless loop
+  const slides = Array.from(track.children);
+  const originalsCount = slides.length;
+  slides.forEach(s => track.appendChild(s.cloneNode(true)));
+
+  let index = 0;
+  let cardW = 0;
+  let gap = 0;
+  let perView = 1;
+  let rafId = null;
+  let autoplayId = null;
+  let isPaused = false;
+
+  const computeMetrics = () => {
+    const first = track.querySelector('.ndt-tsl-card');
+    if (!first) return;
+    const style = window.getComputedStyle(track);
+    gap = parseFloat(style.columnGap || style.gap || 18) || 18;
+    const rect = first.getBoundingClientRect();
+    cardW = rect.width;
+    const viewport = track.parentElement.getBoundingClientRect().width;
+    perView = Math.max(1, Math.floor((viewport + gap) / (cardW + gap)));
+  };
+
+  const setTransform = (instant=false) => {
+    const offset = index * (cardW + gap);
+    track.style.transition = instant ? 'none' : 'transform .42s cubic-bezier(.2,.8,.2,1)';
+    track.style.transform = `translateX(${-offset}px)`;
+  };
+
+  const normalizeIndex = () => {
+    if (index >= originalsCount) {
+      index = index - originalsCount;
+      setTransform(true);
+      // force reflow to apply the instant jump, then restore transition
+      track.getBoundingClientRect();
+      track.style.transition = 'transform .42s cubic-bezier(.2,.8,.2,1)';
+    } else if (index < 0) {
+      index = index + originalsCount;
+      setTransform(true);
+      track.getBoundingClientRect();
+      track.style.transition = 'transform .42s cubic-bezier(.2,.8,.2,1)';
+    }
+  };
+
+  const next = () => { index += 1; setTransform(); normalizeIndex(); };
+  const prev = () => { index -= 1; setTransform(); normalizeIndex(); };
+
+  const play = () => {
+    if (prefersReduce) return;
+    if (autoplayId) clearInterval(autoplayId);
+    autoplayId = setInterval(() => {
+      if (!isPaused) next();
+    }, 2800);
+  };
+  const pause = () => { if (autoplayId) clearInterval(autoplayId); autoplayId = null; };
+
+  // Pause on hover & focus inside
+  track.parentElement.addEventListener('mouseenter', () => { isPaused = true; });
+  track.parentElement.addEventListener('mouseleave', () => { isPaused = false; });
+  track.parentElement.addEventListener('focusin', () => { isPaused = true; });
+  track.parentElement.addEventListener('focusout', () => { isPaused = false; });
+
+  // Pause when not visible (battery friendly)
+  const io = new IntersectionObserver((ents) => {
+    const ent = ents[0];
+    if (ent && ent.isIntersecting) { play(); }
+    else { pause(); }
+  }, { threshold: 0.2 });
+  io.observe(track.parentElement);
+
+  // Buttons
+  btnNext?.addEventListener('click', next);
+  btnPrev?.addEventListener('click', prev);
+
+  // Resize
+  const onResize = () => {
+    computeMetrics();
+    setTransform(true);
+  };
+  window.addEventListener('resize', () => {
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(onResize);
+  });
+
+  // Init
+  computeMetrics();
+  setTransform(true);
+  play();
+})();
