@@ -159,312 +159,189 @@
 })();
 
 /* ---------- Doctors Dashboard Component ---------- */
-const DoctorDashboard = (() => {
-  const CURRENT_YEAR = new Date().getFullYear();
-  const BOOK_COVER = "https://limasy.com/limcms/uploads/products/triumphs-complete-review-of-dentistry-2-volume-set_1709201366_22611.png";
+/* ===== Noble Dental Care — Android/Material-inspired Pastels ===== */
+:root{
+  --ndc-bg:#f7f9ff;
+  --ndc-ink:#111827;
+  --ndc-sub:#334155;
+  --ndc-slate:#64748b;
+  --ndc-white:#fff;
 
-  const DOCTORS = [
-    { id:"dhivakaran", name:"Dr Dhivakaran", rating:4.9,
-      specialty:"Chief Medical Director, Noble Dental Care · Director, Healthflo",
-      expertise:["CMD — Noble Dental Care","Director — Healthflo (557 hospitals)"],
-      experience:{startYear:CURRENT_YEAR-10},
-      phones:["8610425342","8074512305"],
-      consultation:["Walk‑in","Appointment Booking","Tele‑consultation"],
-      cities:["Hyderabad","Bangalore","Chennai","Madurai"],
-      books:[{title:"Triumph’s Complete Review of Dentistry (2 Vol Set), Ed. 1",cover:BOOK_COVER,link:"https://play.google.com/store/books/details/Triumph_s_Complete_Review_of_Dentistry?id=ZTjvDwAAQBAJ&hl=en_US&pli=1",publisher:"Wolters Kluwer · Oct 2018"}],
-      avatar:"https://i.imgur.com/1X5v8X2.png"},
-    { id:"roger", name:"Dr Roger Ronaldo", rating:4.8,
-      specialty:"Consultant Oral & Maxillofacial Surgeon — Implantology, Facial Reconstruction",
-      expertise:["Implantology","Orthognathic & Reconstruction","Trauma Surgery"],
-      experience:{startYear:CURRENT_YEAR-13},
-      phones:["8610425342","8074512305"],
-      consultation:["Appointment Booking","Tele‑consultation"],
-      cities:["Hyderabad","Bangalore","Chennai"],
-      books:[{title:"Triumph’s Complete Review of Dentistry (2 Vol Set), Ed. 1",cover:BOOK_COVER,link:"https://play.google.com/store/books/details/Triumph_s_Complete_Review_of_Dentistry?id=ZTjvDwAAQBAJ&hl=en_US&pli=1",publisher:"Wolters Kluwer · Oct 2018"}],
-      avatar:"https://i.imgur.com/7M2Qm1W.png"},
-    { id:"thikvijay", name:"Dr Thik Vijay", rating:4.6,
-      specialty:"FMC., (Germany) — Trichology, Aesthetic & Medical Cosmetology (ISHR)",
-      expertise:["Trichology","Aesthetic & Medical Cosmetology","Hair & Scalp Restoration"],
-      experience:{startYear:CURRENT_YEAR-11},
-      phones:["8610425342","8074512305"],
-      consultation:["Appointment Booking","Tele‑consultation"],
-      cities:["Chennai","Hyderabad"],
-      books:[], avatar:"https://i.imgur.com/y6w2m8a.png"},
-    { id:"deepak", name:"Dr Deepak", rating:4.7,
-      specialty:"Orthodontist (Assistant Professor)",
-      expertise:["Orthodontics","Smile Design & Aligners","Complex Malocclusion"],
-      experience:{startYear:CURRENT_YEAR-10},
-      phones:["8610425342","8074512305"],
-      consultation:["Appointment Booking","Tele‑consultation"],
-      cities:["Chennai","Hyderabad","Andhra"], books:[], avatar:"https://i.imgur.com/1X5v8X2.png"},
-    { id:"manoj", name:"Dr Manoj Reddy", rating:4.5,
-      specialty:"Oral & Maxillofacial Surgeon — Implantology",
-      expertise:["Dental Implants","Maxillofacial Surgery","Full‑mouth Rehab"],
-      experience:{startYear:CURRENT_YEAR-9},
-      phones:["8610425342","8074512305"],
-      consultation:["Appointment Booking","Tele‑consultation"],
-      cities:["Hyderabad","Andhra Pradessh","Chennai"], books:[], avatar:"https://i.imgur.com/7M2Qm1W.png"},
-    { id:"idhaya", name:"Dr Idhaya", rating:4.4,
-      specialty:"· CEO - Healthflo · Health Insurance · Medical Tourism",
-      expertise:["Preventive Dentistry","Insurance Advisory","Tourism Coordination"],
-      experience:{startYear:CURRENT_YEAR-8},
-      phones:["8610425342","8074512305"],
-      consultation:["Tele‑consultation"],
-      cities:["Bangalore","Chennai","Hyderabad"], books:[], avatar:"https://i.imgur.com/y6w2m8a.png"}
-  ];
+  /* Pastels */
+  --p-lilac:#e9e7ff;
+  --p-sky:#e8f3ff;
+  --p-mint:#effff6;
+  --p-peach:#fff7e8;
+  --p-rose:#ffe9f2;
 
-  const qs = (root, sel) => root.querySelector(sel);
-  const qsa = (root, sel) => Array.from(root.querySelectorAll(sel));
-  const cityLink = (name) => {
-    const DIRECT = {
-      Nallagandla:"https://maps.app.goo.gl/xWyPi9pwkcM6hjYRA",
-      Tellapur:"https://maps.app.goo.gl/uxtsDV7hR6iCp5Uq8",
-      Lingampally:"https://maps.app.goo.gl/LQDetRYN3ednqDLn7",
-      Serilingampally:"https://maps.app.goo.gl/pLukMFtAPwzdoE9N8",
-      Gopanpally:"https://maps.app.goo.gl/EhtpSoxcchtQxG8E9"
-    };
-    return DIRECT[name] || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Best dentist in '+name)}`;
-  };
-  const experienceLabel = (conf) => conf?.startYear ? `${Math.max(0, new Date().getFullYear() - conf.startYear)} Years`
-                                                   : (conf?.baseYears ? `${conf.baseYears} Years` : "Years of Experience");
-  const starBadge = (r) => `★ ${r.toFixed(1)}`;
-  const starsDetail = (r) => {const f=Math.floor(r), h=r-f>=.5?1:0, e=5-f-h; return "★".repeat(f)+(h?"½":"")+"☆".repeat(e)+`  ${r.toFixed(1)}`;};
+  /* Brand gradients */
+  --g-hero: linear-gradient(135deg,#a5b4fc 0%, #fbcfe8 50%, #6ee7b7 100%);
+  --g-card: linear-gradient(135deg,#E8F3FF,#FDF1FF 60%, #FFF7E8);
+  --g-chip: linear-gradient(135deg,#a5b4fc,#f0abfc);
 
-  function toLabel(h,m){const p=h>=12?"PM":"AM";const hr=((h+11)%12)+1;return `${hr.toString().padStart(2,"0")}:${m===0?"00":"30"} ${p}`;}
-  function labelsEvery30min(start,end,wrap=false){
-    const out=[]; const push=(h,m)=>out.push(toLabel(h,m));
-    if(!wrap){for(let h=start;h<=end;h++){push(h,0); if(h!==end) push(h,30);}}
-    else {for(let h=start;h<=23;h++){push(h,0); if(h<23) push(h,30);} for(let h=0;h<=end;h++){push(h,0); if(h<end) push(h,30);}}
-    return out;
-  }
+  /* Buttons */
+  --btn-primary: linear-gradient(135deg,#818cf8,#a78bfa 40%, #f0abfc);
+  --btn-wa: linear-gradient(135deg,#22c55e,#86efac);
 
-  function renderSlots(root){
-    const slotsRegularEl = qs(root,'[data-dd="timeSlotsRegular"]');
-    const slotsEmergencyEl = qs(root,'[data-dd="timeSlotsEmergency"]');
-    const timeSelectEl = qs(root,'[data-dd="timeSelect"]');
+  /* Radii & shadows */
+  --r-lg:20px;
+  --r-md:14px;
+  --r-sm:10px;
 
-    function renderButtons(container, labels, emergency=false){
-      container.innerHTML="";
-      labels.forEach(lbl=>{
-        const b=document.createElement('button');
-        b.type='button'; b.className='dd-slot'+(emergency?' dd-slot--emergency':''); b.textContent=lbl;
-        b.addEventListener('click',()=>{
-          qsa(root,'.dd-slot').forEach(x=>x.classList.remove('dd-active'));
-          b.classList.add('dd-active');
-          timeSelectEl.value=lbl;
-        });
-        container.appendChild(b);
-      });
-    }
+  --elev-1: 0 8px 22px rgba(20, 28, 60, .10);
+  --elev-2: 0 12px 30px rgba(20, 28, 60, .16);
+  --focus: 0 0 0 3px rgba(129,140,248,.35);
+}
 
-    const regular=labelsEvery30min(11,22,false);
-    const emergency=labelsEvery30min(22,2,true);
-    renderButtons(slotsRegularEl,regular,false);
-    renderButtons(slotsEmergencyEl,emergency,true);
+#ndc-doctors-app, .ndc-wrap{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ndc-ink);background:var(--ndc-bg)}
+.ndc-h1{font-size:clamp(20px,2.3vw,28px);margin:0 0 6px;background:var(--g-hero);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;letter-spacing:.2px}
+.ndc-h2{font-size:clamp(18px,1.9vw,22px);margin:0 0 10px;font-weight:800;color:#1f2a58}
+.ndc-h4{margin:0 0 10px;font-size:15px;color:#1f2a58}
+.ndc-sub{color:var(--ndc-slate);margin:0}
 
-    timeSelectEl.innerHTML="";
-    [...regular,...emergency].forEach(lbl=>{
-      const o=document.createElement('option'); o.value=o.textContent=lbl; timeSelectEl.appendChild(o);
-    });
-    timeSelectEl.addEventListener('change',()=>{
-      const chosen=timeSelectEl.value;
-      qsa(root,'.dd-slot').forEach(s=>s.classList.toggle('dd-active', s.textContent===chosen));
-    });
-    timeSelectEl.selectedIndex=0;
-    qs(root,'.dd-slot')?.classList.add('dd-active');
-  }
+/* Header */
+.ndc-head{max-width:1200px;margin:0 auto 14px;padding:6px 10px}
 
-  const cityLinkTitle = c => `Best dentist in ${c}`;
+/* Grid */
+.ndc-wrap .ndc-grid{
+  max-width:1200px;margin:0 auto;display:grid;gap:18px;
+  grid-template-columns: 320px minmax(0,1fr) 360px;
+  align-items:start;padding:0 10px;
+}
+@media (max-width:1100px){
+  .ndc-wrap .ndc-grid{grid-template-columns:1fr;padding:0 12px}
+}
 
-  function fillProfile(root, doc){
-    // Header & media
-    qs(root,'[data-dd="docAvatar"]').src = doc.avatar;
-    qs(root,'[data-dd="docNameTop"]').textContent = doc.name;
-    qs(root,'[data-dd="docSpecialtyTop"]').textContent = doc.specialty;
-    qs(root,'[data-dd="docRatingPill"]').textContent = starBadge(doc.rating);
-    const img = qs(root,'[data-dd="docImage"]');
-    img.src = doc.avatar; img.alt = `${doc.name} portrait`;
+/* Columns */
+.ndc-col{background:var(--g-card);border:1px solid #e6ebff;border-radius:var(--r-lg);box-shadow:var(--elev-1);padding:12px;transition:transform .2s ease, box-shadow .2s ease}
+.ndc-col:hover{transform:translateY(-2px);box-shadow:var(--elev-2)}
 
-    // Caption
-    qs(root,'[data-dd="docName"]').textContent = doc.name;
-    qs(root,'[data-dd="docBio"]').textContent = doc.bio;
+/* Doctors List */
+.ndc-doc-list{display:flex;flex-direction:column;gap:10px}
+.ndc-doc-card{
+  display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;
+  background:#fff;border:1px solid #e9e9ff;border-radius:var(--r-md);padding:8px;cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.ndc-doc-card:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(90,120,255,.14)}
+.ndc-doc-card[aria-current="true"]{border-color:#a5b4fc;box-shadow:0 0 0 3px rgba(129,140,248,.25)}
+.ndc-doc-main{min-width:0}
+.ndc-doc-name{margin:0;color:#0b1026;font-weight:800;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ndc-doc-role{margin:0;font-size:12.5px;color:#475569;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ndc-doc-right{display:flex;gap:6px;align-items:center}
+.ndc-badge{font-size:12px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:4px 8px}
+.ndc-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 
-    // Facts, cities, phones
-    qs(root,'[data-dd="docExperience"]').textContent = `Experience: ${experienceLabel(doc.experience)}`;
-    qs(root,'[data-dd="docConsultation"]').textContent = doc.consultation.join(" · ");
+/* About Card */
+.ndc-about-card{background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg);padding:12px}
+.ndc-about-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.ndc-about-id{display:flex;align-items:center;gap:10px}
+.ndc-doc-name{font-size:16px}
+.ndc-doc-role{font-size:13px}
+.ndc-rating{background:#fff;border:1px solid #e7e9ff;border-radius:999px;padding:4px 10px;font-weight:800}
+.ndc-meta{list-style:none;padding:0;margin:6px 0 10px;display:grid;gap:6px;font-size:13.5px;color:#111}
+.ndc-divider{height:1px;background:#eef2ff;margin:10px 0}
+.ndc-chips-block{margin-top:8px}
+.ndc-chip-title{font-size:12.5px;color:#1f2a58;font-weight:800;margin-bottom:6px}
+.ndc-chips{display:flex;flex-wrap:wrap;gap:8px}
+.ndc-chip{
+  font-size:12.5px;background:#fff;border:1px solid #e7e9ff;border-radius:999px;padding:6px 10px;text-decoration:none;color:#111;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.ndc-chip:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(90,120,255,.14)}
+.ndc-chip--tel{background:var(--g-chip);color:#111;border:1px solid #dcd6ff}
 
-    const citiesEl = qs(root,'[data-dd="docCities"]');
-    citiesEl.innerHTML = doc.cities.map(c=>`<a class="dd-chip" href="${cityLink(c)}" target="_blank" rel="noopener" title="${cityLinkTitle(c)}">${c}</a>`).join(" ");
+/* Books */
+.ndc-books{display:none}
+.ndc-books.has-books{display:block}
+.ndc-book-grid{display:flex;flex-wrap:wrap;gap:10px}
+.ndc-book{
+  width:140px;background:#fff;border:1px solid #eee;border-radius:12px;padding:8px;text-align:center
+}
+.ndc-book img{width:100%;height:170px;object-fit:cover;border-radius:8px}
+.ndc-book a{display:block;margin-top:6px;font-size:12.5px;color:#0b1026;font-weight:600;text-decoration:none}
+.ndc-book small{display:block;color:#64748b}
 
-    const phonesEl = qs(root,'[data-dd="docPhones"]');
-    phonesEl.innerHTML = doc.phones.map(n=>`<a class="dd-chip" href="tel:${n.replace(/\s+/g,'')}">${n}</a>`).join(" ");
+/* Profile Card */
+.ndc-profile-card{overflow:hidden;background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg)}
+.ndc-hero{position:relative;aspect-ratio:4/3;background:var(--g-hero)}
+.ndc-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;opacity:.95}
+.ndc-hero-badge{position:absolute;top:10px;right:10px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;font-weight:800}
+.ndc-hero-body{padding:12px}
+.ndc-hero-name{margin:0 0 4px;font-size:16px}
+.ndc-hero-sub{margin:0 0 10px;color:#475569;font-size:13.5px}
+.ndc-hero-actions{display:flex;gap:8px}
+.ndc-btn{
+  display:inline-flex;align-items:center;gap:8px;justify-content:center;
+  border:none;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer;text-decoration:none
+}
+.ndc-btn .i{width:18px;height:18px;fill:currentColor}
+.ndc-btn--tonal{background:#f1f5f9;color:#111}
+.ndc-btn--tonal:hover{background:#e2e8f0}
+.ndc-btn--primary{background:var(--btn-primary);color:#fff}
+.ndc-btn--primary:hover{filter:brightness(1.05)}
 
-    // About + expertise + books
-    qs(root,'[data-dd="docBioFull"]').textContent = `${doc.bio} — Rating: ${starsDetail(doc.rating)}`;
+/* Care Team */
+.ndc-care{max-width:1200px;margin:18px auto 0;padding:0 10px}
+.ndc-care-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (max-width:900px){.ndc-care-grid{grid-template-columns:1fr}}
+.ndc-care-card{background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg);padding:12px;box-shadow:var(--elev-1)}
+.ndc-care-top{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.ndc-care-name{margin:0;font-size:15px}
+.ndc-care-role{margin:0;color:#475569;font-size:13px}
+.ndc-care-tag{background:#eef2ff;border:1px solid #e7e9ff;border-radius:999px;padding:4px 8px;font-size:12px}
+.ndc-care-text{margin:8px 0 10px;color:#111;font-size:13.5px}
 
-    const expList = qs(root,'[data-dd="docExpertise"]');
-    expList.innerHTML = ""; doc.expertise.forEach(x=>{const li=document.createElement('li'); li.textContent=x; expList.appendChild(li);});
+/* Appointment */
+.ndc-appt{max-width:1200px;margin:18px auto;padding:0 10px}
+.ndc-appt-head{background:var(--g-card);border:1px solid #e6ebff;border-radius:var(--r-lg);padding:12px;box-shadow:var(--elev-1)}
+.ndc-appt-form{margin-top:12px;background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg);padding:12px;box-shadow:var(--elev-1)}
+.ndc-form-grid{
+  display:grid;grid-template-columns:1fr 1fr 140px 1fr 1fr;gap:10px
+}
+.ndc-full{grid-column:1/-1}
+.ndc-field{display:flex;flex-direction:column;gap:6px}
+.ndc-field--sm{min-width:120px}
+.ndc-field label{font-weight:700;font-size:12.5px;color:#1f2a58}
+.ndc-appt-form input,
+.ndc-appt-form select,
+.ndc-appt-form textarea{
+  background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px;outline:none;transition:border .2s ease, box-shadow .2s ease
+}
+.ndc-appt-form input:focus,
+.ndc-appt-form select:focus,
+.ndc-appt-form textarea:focus{border-color:#818cf8;box-shadow:var(--focus)}
 
-    const books = qs(root,'[data-dd="docBooks"]');
-    books.innerHTML = "";
-    if (doc.books.length){
-      doc.books.forEach(b=>{
-        const tile=document.createElement('div');
-        tile.className='dd-book-tile';
-        tile.innerHTML = `<img src="${b.cover}" alt="${b.title} cover">
-                          <a href="${b.link}" target="_blank" rel="noopener">${b.title}</a>
-                          <div class="dd-small">${b.publisher||""}</div>`;
-        books.appendChild(tile);
-      });
-    } else {
-      const none=document.createElement('p'); none.className='dd-muted'; none.textContent='No books added yet.'; books.appendChild(none);
-    }
+@media (max-width:1100px){
+  .ndc-form-grid{grid-template-columns:1fr 1fr}
+  .ndc-field--sm{grid-column:1/2}
+}
+@media (max-width:640px){
+  .ndc-form-grid{grid-template-columns:1fr}
+}
 
-    // Quick actions
-    qs(root,'[data-dd="callBtn"]').onclick = ()=> window.location.href = `tel:${doc.phones[0]}`;
-    qs(root,'[data-dd="callBtnMiddle"]').onclick = ()=> window.location.href = `tel:${doc.phones[0]}`;
+/* Slots */
+.ndc-slot-group{margin-top:6px}
+.ndc-slot-title{font-size:12px;font-weight:800;color:#1f2a58;margin-bottom:6px}
+.ndc-slot-title.em{color:#7c2d12}
+.ndc-slots{display:flex;flex-wrap:wrap;gap:8px}
+.ndc-slot{
+  background:#fff;border:1px solid #e2e8f0;border-radius:999px;padding:8px 12px;font-size:12.5px;cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease
+}
+.ndc-slot:hover{transform:translateY(-1px);box-shadow:0 6px 12px rgba(0,0,0,.06);background:#eef2ff}
+.ndc-slot.active{background:linear-gradient(135deg,#ffe4e6,#fef9c3);border-color:#facc15;color:#7c2d12;font-weight:800}
 
-    const citiesModal = qs(root,'[data-dd="citiesModal"]');
-    const citiesList = qs(root,'[data-dd="citiesList"]');
-    const openCities = qs(root,'[data-dd="openCities"]');
-    const openMapsBtn = qs(root,'[data-dd="openMapsBtn"]');
-    const closeModalBtn = qs(root,'[data-dd="closeModalBtn"]');
+/* Actions */
+.ndc-actions{display:flex;gap:10px;margin-top:12px}
+.ndc-btn--wa{background:var(--btn-wa);color:#0a3319}
+.ndc-btn--wa:hover{filter:brightness(1.05)}
 
-    openCities.onclick = ()=>{
-      citiesList.innerHTML = "";
-      doc.cities.forEach(c=>{
-        const li=document.createElement('li');
-        li.innerHTML = `<a href="${cityLink(c)}" target="_blank" rel="noopener">${c}</a>`;
-        citiesList.appendChild(li);
-      });
-      openMapsBtn.onclick = ()=> window.open(cityLink(doc.cities[0]),'_blank');
-      citiesModal.showModal();
-    };
-    closeModalBtn.onclick = ()=> citiesModal.close();
-  }
+/* Accessibility focus */
+.ndc-doc-card:focus-visible,
+.ndc-slot:focus-visible,
+.ndc-btn:focus-visible{outline:none;box-shadow:var(--focus)}
 
-  function renderList(root){
-    const wrap = qs(root,'[data-dd="doctorsList"]');
-    const fallback = qs(root,'[data-dd="listFallback"]');
-    wrap.innerHTML = "";
-    DOCTORS.forEach(doc=>{
-      const card = document.createElement('article');
-      card.className = 'dd-card';
-      card.dataset.id = doc.id;
-      card.innerHTML = `
-        <div class="dd-avatar"><img src="${doc.avatar}" alt="${doc.name}"></div>
-        <div class="dd-card-body">
-          <h3 class="dd-card-title" title="${doc.name}">${doc.name}</h3>
-          <div class="dd-card-rating">${starBadge(doc.rating)}</div>
-        </div>
-        <div class="dd-card-actions">
-          <button class="dd-icon-btn" data-action="call" title="Call">Call</button>
-          <button class="dd-icon-btn" data-action="map" title="Map">Map</button>
-          <button class="dd-icon-btn" data-action="select" title="View">View</button>
-        </div>`;
-      wrap.appendChild(card);
-    });
-    fallback.hidden = true;
-
-    // interactions (delegate)
-    wrap.addEventListener('click',(e)=>{
-      const card = e.target.closest('.dd-card'); if(!card) return;
-      const doc = DOCTORS.find(d=>d.id===card.dataset.id); if(!doc) return;
-
-      const act = e.target.dataset.action;
-      if (act === 'call'){ window.location.href = `tel:${doc.phones[0]}`; return; }
-      if (act === 'map'){
-        const modal = qs(root,'[data-dd="citiesModal"]');
-        const list  = qs(root,'[data-dd="citiesList"]');
-        const btn   = qs(root,'[data-dd="openMapsBtn"]');
-        list.innerHTML = doc.cities.map(c=>`<li><a href="${cityLink(c)}" target="_blank" rel="noopener">${c}</a></li>`).join("");
-        btn.onclick = ()=> window.open(cityLink(doc.cities[0]),'_blank');
-        modal.showModal(); return;
-      }
-      // select/view
-      qs(root,'[data-dd="doctorSelect"]').value = doc.id;
-      fillProfile(root, doc);
-      toast(root, `${doc.name} selected`);
-    });
-  }
-
-  function renderSelect(root){
-    const sel = qs(root,'[data-dd="doctorSelect"]');
-    sel.innerHTML = "";
-    DOCTORS.forEach(d=>{ const o=document.createElement('option'); o.value=d.id; o.textContent=d.name; sel.appendChild(o); });
-    sel.addEventListener('change', ()=>{
-      const d=DOCTORS.find(x=>x.id===sel.value);
-      if(d) fillProfile(root,d);
-    });
-  }
-
-  function toast(root, msg){
-    const t = qs(root,'[data-dd="toast"]');
-    t.textContent = msg; t.classList.add('dd-show');
-    setTimeout(()=>t.classList.remove('dd-show'), 2600);
-  }
-
-  function bindConfirm(root){
-    const btn = qs(root,'[data-dd="confirmBtn"]');
-    btn.addEventListener('click', ()=>{
-      const sel = qs(root,'[data-dd="doctorSelect"]');
-      const doc = DOCTORS.find(d=>d.id===sel.value);
-      const date = qs(root,'[data-dd="appointmentDate"]').value || "";
-      const time = qs(root,'[data-dd="timeSelect"]').value || "";
-      const name = (qs(root,'[data-dd="patientName"]').value||"").trim();
-      const age = (qs(root,'[data-dd="patientAge"]').value||"").trim();
-      const type = qs(root,'[data-dd="appointmentType"]').value;
-      const notes = (qs(root,'[data-dd="reason"]').value||"").trim();
-
-      if(!doc) return toast(root,"Please select a doctor.");
-      if(!name) return toast(root,"Please enter patient name.");
-      if(!age) return toast(root,"Please enter age.");
-      if(!date||!time) return toast(root,"Please choose date & time.");
-
-      const summary = `Appointment Request
-Doctor: ${doc.name}
-Type: ${type}
-Patient: ${name} (Age ${age})
-Date: ${date}
-Time: ${time}
-Phone(s): ${doc.phones.join(', ')}
-City Options: ${doc.cities.join(', ')}
-
-Notes: ${notes}`;
-
-      const subject = `Appointment: ${type} | ${name} | ${date} ${time}`;
-      const mailto  = `mailto:dr.dhivakaran@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(summary)}`;
-      window.open(mailto,'_blank');
-
-      const waNumber="91861425342";
-      const waLink=`https://wa.me/${waNumber}?text=${encodeURIComponent("Hello, I'd like to confirm an appointment.\n\n"+summary)}`;
-      window.open(waLink,'_blank');
-
-      toast(root,"Appointment info prepared in Email & WhatsApp.");
-    });
-  }
-
-  function init(selector){
-    const root = document.querySelector(selector);
-    if(!root){ console.error("DoctorDashboard: root not found:", selector); return; }
-
-    renderSlots(root);
-    renderList(root);
-    renderSelect(root);
-
-    const first = DOCTORS[0];
-    qs(root,'[data-dd="doctorSelect"]').value = first.id;
-    fillProfile(root, first);
-    bindConfirm(root);
-  }
-
-  return { init };
-})();
-
-// Initialize after DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  DoctorDashboard.init('#doctorDashboard');
-});
 
 /* ---------- Treatments data + renderer (6 per page) ---------- */
 (() => {
