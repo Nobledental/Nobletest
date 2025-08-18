@@ -43,6 +43,9 @@
 
   <!-- Preload hero video (keep only if it's above the fold and lightweight) -->
   <link rel="preload" as="video" href="/videos/blackhole.mp4" type="video/mp4" />
+  <link rel="preload" as="image" href="/images/hero-poster.jpg" imagesrcset="/images/hero-poster.jpg" fetchpriority="high">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://wa.me">
 
   <!-- Sitemap link should be in head -->
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
@@ -1679,6 +1682,35 @@
 })();
 </script>
 
+    <script>
+  // after your init, or inside it:
+  (function(){
+    const d = document.querySelector('#ndc-appointment #date');
+    if (!d) return;
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm   = String(today.getMonth()+1).padStart(2,'0');
+    const dd   = String(today.getDate()).padStart(2,'0');
+    const iso  = `${yyyy}-${mm}-${dd}`;
+    d.setAttribute('min', iso);
+    if (!d.value) d.value = iso;
+  })();
+</script>
+
+    <div id="ndcLive" class="visually-hidden" aria-live="polite"></div>
+<script>
+  (function(){
+    const root = document.getElementById('ndc-doctors-app');
+    const live = document.getElementById('ndcLive');
+    if (!root || !live) return;
+    root.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.ndc-slot');
+      if (!btn) return;
+      live.textContent = `Selected time ${btn.textContent}`;
+    });
+  })();
+</script>
+    
 <script>
 (() => {
   const $  = (s, r=document)=>r.querySelector(s);
@@ -1858,6 +1890,7 @@
 <script src="/main.js" defer></script>
 </body>
 </html>
+
 
 
 
