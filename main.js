@@ -26,7 +26,7 @@
 
   const trapTab = (e) => {
     if (!nav?.classList.contains('open') || e.key !== 'Tab') return;
-    const nodes = qsa(focusSel, nav).filter(el => !el.hasAttribute('disabled'));
+    const nodes = qsa(focusSel, nav).filter(el => !el.hasAttribute('disabled') && el.tabIndex !== -1);
     if (!nodes.length) return;
     const first = nodes[0], last = nodes[nodes.length - 1];
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
@@ -211,7 +211,7 @@
       experience:{startYear:CURRENT_YEAR-9},
       phones:["8610425342","8074512305"],
       consultation:["Appointment Booking","Tele-consultation"],
-      cities:["Hyderabad","Andhra Pradessh","Chennai"], books:[], avatar:"https://i.imgur.com/7M2Qm1W.png"},
+      cities:["Hyderabad","Andhra Pradesh","Chennai"], books:[], avatar:"https://i.imgur.com/7M2Qm1W.png"},
     { id:"idhaya", name:"Dr Idhaya", rating:4.4,
       specialty:"· CEO - Healthflo · Health Insurance · Medical Tourism",
       expertise:["Preventive Dentistry","Insurance Advisory","Tourism Coordination"],
@@ -307,13 +307,15 @@
     const slotsEmergency= labelsEvery30min(22,2,true);
     const rWrap = el('slotsRegular'); const eWrap = el('slotsEmergency'); const sel = el('selTime');
 
-    const make=(wrap,arr)=>{ wrap.innerHTML=''; arr.forEach(lbl=>{ const b=document.createElement('button'); b.type='button'; b.className='ndc-slot'; b.textContent=lbl;
-      b.addEventListener('click',()=>{ $$('.ndc-slot',root).forEach(x=>x.classList.remove('active')); b.classList.add('active'); sel.value=lbl; updateProgressBar(); });
+    const make=(wrap,arr)=>{ if(!wrap) return; wrap.innerHTML=''; arr.forEach(lbl=>{ const b=document.createElement('button'); b.type='button'; b.className='ndc-slot'; b.textContent=lbl;
+      b.addEventListener('click',()=>{ $$('.ndc-slot',root).forEach(x=>x.classList.remove('active')); b.classList.add('active'); if(sel) sel.value=lbl; updateProgressBar(); });
       wrap.appendChild(b); }); };
     make(rWrap,slotsRegular); make(eWrap,slotsEmergency);
 
-    sel.innerHTML=''; [...slotsRegular,...slotsEmergency].forEach(lbl=>{ const o=document.createElement('option'); o.value=o.textContent=lbl; sel.appendChild(o); });
-    sel.selectedIndex=0; $('.ndc-slot',root)?.classList.add('active');
+    if (sel){
+      sel.innerHTML=''; [...slotsRegular,...slotsEmergency].forEach(lbl=>{ const o=document.createElement('option'); o.value=o.textContent=lbl; sel.appendChild(o); });
+      sel.selectedIndex=0; $('.ndc-slot',root)?.classList.add('active');
+    }
   }
 
   // ---------- SELECT & CONFIRM ----------
@@ -351,11 +353,11 @@ Notes: ${notes}`;
                    if(!fDate.value){alert('Please choose a date.');fDate.focus();return false;}
                    if(!fTime.value){alert('Please choose a time.');fTime.focus();return false;}
                    return true; };
-    btnEmail.addEventListener('click',()=>{ if(!ok())return; const d=getDoc();
+    btnEmail?.addEventListener('click',()=>{ if(!ok())return; const d=getDoc();
       const txt=summaryText(d,fName.value.trim(),fAge.value.trim(),fType.value,fDate.value,fTime.value,fNotes.value.trim());
       const subject=`Appointment: ${fType.value} | ${fName.value.trim()} | ${fDate.value} ${fTime.value}`;
       window.open(`mailto:dr.dhivakaran@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(txt)}`,'_blank'); updateProgressBar(true); });
-    btnWA.addEventListener('click',()=>{ if(!ok())return; const d=getDoc();
+    btnWA?.addEventListener('click',()=>{ if(!ok())return; const d=getDoc();
       const txt=summaryText(d,fName.value.trim(),fAge.value.trim(),fType.value,fDate.value,fTime.value,fNotes.value.trim());
       window.open(`https://wa.me/91861425342?text=${encodeURIComponent("Hello, I'd like to confirm an appointment.\n\n"+txt)}`,'_blank'); updateProgressBar(true); });
   }
@@ -367,16 +369,15 @@ Notes: ${notes}`;
   }
 
   // ---------- PROGRESS BAR (auto-detect) ----------
-function updateProgressUI(step){
-  const horiz = Array.from(root.querySelectorAll('.ndc-step'));
-  const vert  = Array.from(root.querySelectorAll('.ndc-vstep'));
-  [...horiz, ...vert].forEach((el, idx) => {
-    // determine the index for that set
-    const siblings = el.parentElement.querySelectorAll(el.classList.contains('ndc-vstep') ? '.ndc-vstep' : '.ndc-step');
-    const i = Array.from(siblings).indexOf(el);
-    el.classList.toggle('active', i <= step - 1);
-  });
-}
+  function updateProgressUI(step){
+    const horiz = Array.from(root.querySelectorAll('.ndc-step'));
+    const vert  = Array.from(root.querySelectorAll('.ndc-vstep'));
+    [...horiz, ...vert].forEach((node) => {
+      const siblings = node.parentElement.querySelectorAll(node.classList.contains('ndc-vstep') ? '.ndc-vstep' : '.ndc-step');
+      const idx = Array.from(siblings).indexOf(node);
+      node.classList.toggle('active', idx <= step - 1);
+    });
+  }
   function getCurrentStep(){
     const name = el('name')?.value.trim();
     const age  = el('age')?.value.trim();
@@ -386,7 +387,20 @@ function updateProgressUI(step){
     if (!date || !time) return 2;
     return 3;
   }
- 
+  // Wrapper used by other parts of the app
+  function updateProgressBar(forceComplete=false){
+    const step = forceComplete ? 3 : getCurrentStep();
+    updateProgressUI(step);
+  }
+  // Watch key inputs to keep progress in sync
+  function monitorAppointmentSteps(){
+    ['name','age','date','selTime','type','notes'].forEach(id=>{
+      const input = el(id);
+      input?.addEventListener('input', ()=> updateProgressBar());
+      input?.addEventListener('change', ()=> updateProgressBar());
+    });
+    updateProgressBar();
+  }
 
   // ---------- INIT ----------
   function init(){
@@ -409,7 +423,6 @@ function updateProgressUI(step){
   }
   init();
 })();
-
 
 /* ---------- Treatments data + renderer (6 per page) ---------- */
 (() => {
@@ -638,8 +651,9 @@ function updateProgressUI(step){
   };
 
   function renderPagination(pageCount){
-    prevBtn.disabled = page<=1;
-    nextBtn.disabled = page>=pageCount;
+    if (prevBtn) prevBtn.disabled = page<=1;
+    if (nextBtn) nextBtn.disabled = page>=pageCount;
+    if (!dots) return;
     dots.innerHTML = '';
     for (let i=1;i<=pageCount;i++){
       const dot = document.createElement('button');
@@ -662,13 +676,13 @@ function updateProgressUI(step){
     const items = paginate(filtered, page, PAGE_SIZE);
 
     if (!items.length){
-      status.textContent = 'No treatments match your search—try broader terms (e.g., “implants”, “pain”, “kids”).';
+      if (status) status.textContent = 'No treatments match your search—try broader terms (e.g., “implants”, “pain”, “kids”).';
       renderPagination(1);
       grid.setAttribute('aria-busy','false');
       return;
     }
 
-    status.textContent = `${filtered.length} result${filtered.length>1?'s':''} — page ${page} of ${pageCount}`;
+    if (status) status.textContent = `${filtered.length} result${filtered.length>1?'s':''} — page ${page} of ${pageCount}`;
 
     const frag = document.createDocumentFragment();
     items.forEach(it=>{
@@ -898,7 +912,6 @@ function updateProgressUI(step){
   }, { capture:true });
 })();
 
-
 (function(){
   // Blur-up: when the image decodes, drop the blur
   document.querySelectorAll('.js-nd-blur').forEach(img=>{
@@ -1051,7 +1064,6 @@ function updateProgressUI(step){
   play();
 })();
 
-
 (() => {
   // Year
   const y = document.getElementById('ndcYear');
@@ -1061,11 +1073,11 @@ function updateProgressUI(step){
   const topBtn = document.getElementById('ndcTop');
   const showTop = () => {
     const scrolled = window.scrollY || document.documentElement.scrollTop;
-    topBtn.classList.toggle('ndc-top--show', scrolled > 500);
+    topBtn?.classList.toggle('ndc-top--show', scrolled > 500);
   };
   window.addEventListener('scroll', showTop, { passive:true });
   showTop();
-  topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  topBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   // In-view animation (cards gently rise)
   const cards = document.querySelectorAll('.ndc-card');
@@ -1088,7 +1100,6 @@ function updateProgressUI(step){
   // (Optional) Track chip interactions for lightweight analytics
   document.querySelectorAll('.ndc-chip[data-chip]').forEach(chip => {
     chip.addEventListener('click', () => {
-      // Example: push to your dataLayer if you use GTM
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'chip_click', label: chip.textContent.trim(), location: 'footer' });
     });
