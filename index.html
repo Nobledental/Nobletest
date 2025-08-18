@@ -98,6 +98,14 @@
   }
   </script>
 
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList",
+ "itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Home","item":"https://nobledentalnallagandla.in/"},
+  {"@type":"ListItem","position":2,"name":"Dentists in Nallagandla, Hyderabad","item":"https://nobledentalnallagandla.in/#ndc-doctors-app"}
+ ]}
+</script>
+  
   <!-- Optional: Site SearchAction -->
   <script type="application/ld+json">
   {
@@ -414,7 +422,7 @@
 <section id="ndc-appointment" class="ndc-appt ndc-section-gap" aria-label="Book an appointment at Noble Dental Care">
   <div class="ndc-container ndc-appt-container">
     <div class="ndc-appt-head">
-      <h2 class="ndc-h2">Book an Appointment — Fast</h2>
+      <h2 class="ndc-h2">Book your Dental Appointment</h2>
       <p class="ndc-sub">Choose your specialist, date &amp; time. Confirm via Email or WhatsApp in seconds.</p>
     </div>
 
@@ -495,32 +503,91 @@
   </div>
 </section>
 
-  <!-- JSON-LD: Clinic + Doctors (E-E-A-T) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Dentist",
-    "name":"Noble Dental Care & Multispeciality Clinic",
-    "areaServed":["Nallagandla","Lingampally","Serilingampally","Hyderabad"],
-    "address":{"@type":"PostalAddress","addressLocality":"Nallagandla","addressRegion":"Telangana","addressCountry":"IN"},
-    "telephone":"+91-8610425342",
-    "url":"https://your-domain.example/",
-    "department":[
-      {"@type":"MedicalSpecialty","name":"Oral & Maxillofacial Surgery"},
-      {"@type":"MedicalSpecialty","name":"Orthodontics"},
-      {"@type":"MedicalSpecialty","name":"Implantology"},
-      {"@type":"MedicalSpecialty","name":"Pediatric Dentistry"}
-    ],
-    "founder":{"@type":"Person","name":"Dr Dhivakaran"},
-    "member":[
-      {"@type":"Person","name":"Dr Dhivakaran","jobTitle":"Chief Medical Director","telephone":"+91-8610425342"},
-      {"@type":"Person","name":"Dr Roger Ronaldo","jobTitle":"Oral & Maxillofacial Surgeon"},
-      {"@type":"Person","name":"Dr Deepak","jobTitle":"Orthodontist"},
-      {"@type":"Person","name":"Dr Manoj Reddy","jobTitle":"OMFS - Implantology"},
-      {"@type":"Person","name":"Dr Idhaya","jobTitle":"CEO - Healthflo"}
-    ]
-  }
-  </script>
+ <!-- JSON-LD: Noble Dental Care + Doctors (Merged) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "Noble Dental Care & Multispeciality Clinic",
+  "areaServed": ["Nallagandla","Lingampally","Serilingampally","Hyderabad"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Nallagandla",
+    "addressRegion": "Telangana",
+    "addressCountry": "IN"
+  },
+  "telephone": "+91-8610425342",
+  "url": "https://your-domain.example/",
+  "department": [
+    {"@type": "MedicalSpecialty","name": "Oral & Maxillofacial Surgery"},
+    {"@type": "MedicalSpecialty","name": "Orthodontics"},
+    {"@type": "MedicalSpecialty","name": "Implantology"},
+    {"@type": "MedicalSpecialty","name": "Pediatric Dentistry"}
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Dr Dhivakaran"
+  },
+  "member": [
+    {
+      "@type": "Physician",
+      "name": "Dr Dhivakaran",
+      "jobTitle": "Chief Medical Director",
+      "telephone": "+91-8610425342",
+      "medicalSpecialty": "Chief Medical Director, Noble Dental Care · Director, Healthflo",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "50"
+      }
+    },
+    {
+      "@type": "Physician",
+      "name": "Dr Roger Ronaldo",
+      "jobTitle": "Oral & Maxillofacial Surgeon",
+      "medicalSpecialty": "Consultant Oral & Maxillofacial Surgeon — Implantology, Facial Reconstruction",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "50"
+      }
+    },
+    {
+      "@type": "Physician",
+      "name": "Dr Deepak",
+      "jobTitle": "Orthodontist",
+      "medicalSpecialty": "Orthodontist (Assistant Professor)",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "reviewCount": "50"
+      }
+    },
+    {
+      "@type": "Physician",
+      "name": "Dr Manoj Reddy",
+      "jobTitle": "OMFS - Implantology",
+      "medicalSpecialty": "Oral & Maxillofacial Surgeon — Implantology",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.5",
+        "reviewCount": "50"
+      }
+    },
+    {
+      "@type": "Physician",
+      "name": "Dr Idhaya",
+      "jobTitle": "CEO - Healthflo",
+      "medicalSpecialty": "Health Insurance · Medical Tourism",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.4",
+        "reviewCount": "50"
+      }
+    }
+  ]
+}
+</script>
 </section>
 
 
@@ -1884,6 +1951,7 @@
 <script src="/main.js" defer></script>
 </body>
 </html>
+
 
 
 
