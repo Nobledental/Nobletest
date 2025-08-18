@@ -29,8 +29,8 @@
   --elev-3: 0 6px 14px rgba(0,0,0,.12), 0 10px 24px rgba(0,0,0,.10);
 
   /* Motion */
-  --dur-fast: .18s;
-  --dur: .28s;
+  --dur-fast: .10s;
+  --dur: .18s;
   --curve: cubic-bezier(.2,.8,.2,1);
 
   /* Focus ring */
@@ -106,7 +106,7 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
 /* Brand (logo left, name right) */
 .brand{ display:flex; align-items:center; gap:.75rem; white-space:nowrap; flex:0 0 auto; }
 .site-header .brand img{ height:70px; width:auto; filter: drop-shadow(0 1px 1px rgba(0,0,0,.05)); }
-.brand .brand-title{ margin:0; font-size:1.50rem; line-height:1; letter-spacing:.1px; }
+.brand .brand-title{ margin:0; font-size:1.70rem; line-height:1; letter-spacing:.1px; }
 .brand .brand-title span{ color:#02040ae6; }
 
 /* Center nav that can shrink */
@@ -118,7 +118,7 @@ h1,h2,h3,h4,h5,h6{ font-family:'Inter',sans-serif; font-weight:700; color:var(--
   box-shadow: var(--elev-1);
 }
 .nav-pill a{
-  position:relative; z-index:1; margin:0 6px; padding:5px 10px; border-radius:28px;
+  position:relative; z-index:1; margin:0 6px; padding:3px 10px; border-radius:28px;
   color:#1f1d1d; font-weight:500; letter-spacing:.2px;
   transition: all var(--dur) var(--curve);
 }
