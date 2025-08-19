@@ -349,9 +349,9 @@
 </section>
 
 <!-- ========== DOCTORS + ABOUT + APPOINTMENT (Noble Dental Care) ========== -->
-  <!-- ========== DOCTORS + ABOUT + APPOINTMENT (Noble Dental Care) ========== -->
 <section id="ndc-doctors-app" class="ndc-band"
-         style="--band-bg:#f7fafc; --surface-bg:#ffffff;" aria-label="Dentists in Nallagandla, Hyderabad">
+         style="--band-bg:var(--bg-doctors); --surface-bg:var(--surface-doctors);"
+         aria-label="Dentists in Nallagandla, Hyderabad">
   <div class="ndc-container">
     <div class="ndc-surface">
       <header class="ndc-head">
@@ -417,7 +417,7 @@
               <h3 class="ndc-hero-name" data-ndc="heroName">Doctor Name</h3>
               <p class="ndc-hero-sub" data-ndc="heroSpecialty">Specialty, Credentials</p>
               <div class="ndc-hero-actions">
-                <a class="ndc-btn ndc-btn--tonal" data-ndc="btnCall" href="#" aria-label="Call the clinic">Call</a>
+                <a class="ndc-btn ndc-btn--tonal" data-ndc="btnCall" href="tel:+918610425342" aria-label="Call the clinic">Call</a>
                 <a class="ndc-btn ndc-btn--primary" href="#ndc-appointment" aria-label="Book appointment quickly">Book Now</a>
               </div>
             </div>
@@ -425,14 +425,16 @@
         </section>
       </div>
 
+      <!-- JSON-LD (keep / update as needed) -->
       <script type="application/ld+json">{ /* your structured data */ }</script>
     </div>
   </div>
 </section>
 
-  <!-- Care Team -->
-
-<section class="ndc-band" style="--band-bg:#fff7ed; --surface-bg:#ffffff;" aria-label="Care Coordination Team">
+<!-- ========== CARE TEAM ========== -->
+<section class="ndc-band"
+         style="--band-bg:var(--bg-care); --surface-bg:var(--surface-care);"
+         aria-label="Care Coordination Team">
   <div class="ndc-container">
     <div class="ndc-surface">
       <h2 class="ndc-h2">CARE Coordination Team &amp; Health Insurance Assistance</h2>
@@ -446,8 +448,12 @@
             </div>
             <span class="ndc-care-tag">Patient Care</span>
           </div>
-          <p class="ndc-care-text">Operations Manager, Neo-AI Project coordinator and developer, &amp; coordinator for Empanelled Hospitals in Telengana, Andhra, Delhi, Chennai, Bangalore. Assist with Health insurer paperwork, facilitating both cashless and reimbursement claims, and offering grievance and ombudsman support.</p>
-          <a class="ndc-chip ndc-chip--tel" href="tel:+917993745387">📞 79937 45387</a>
+          <p class="ndc-care-text">
+            Operations Manager, Neo-AI Project coordinator and developer, &amp; coordinator for empanelled hospitals in Telangana, Andhra, Delhi,
+            Chennai, Bangalore. Assists with health insurer paperwork, facilitating both cashless and reimbursement claims, and offering grievance
+            and ombudsman support.
+          </p>
+          <a class="ndc-chip ndc-chip--tel" href="tel:+917993745387" aria-label="Call Akhila">📞 79937 45387</a>
         </article>
 
         <article class="ndc-care-card">
@@ -458,19 +464,22 @@
             </div>
             <span class="ndc-care-tag">Insurance</span>
           </div>
-          <p class="ndc-care-text">Team Lead support for Medical loans (with and without intrest) towards admission at hospital for Medical emergencies, specialized surgeries, and cancer care (Chemotherapy & Radiotherapy). Assists Health insurance processing for both cashless and reimbursement claims, and offering grievance and ombudsman support. Also act as a hospital liaison to ensure a smooth and seamless experience for all patients, from treatment to recovery.</p>
-          <a class="ndc-chip ndc-chip--tel" href="tel:+919944905138">📞 99449 05138</a>
+          <p class="ndc-care-text">
+            Team lead support for medical loans (with and without interest) towards admission at hospital for medical emergencies, specialized surgeries,
+            and cancer care (Chemotherapy &amp; Radiotherapy). Assists health insurance processing for both cashless and reimbursement claims, and offers
+            grievance and ombudsman support. Also acts as a hospital liaison to ensure a smooth and seamless experience for all patients, from treatment to recovery.
+          </p>
+          <a class="ndc-chip ndc-chip--tel" href="tel:+919944905138" aria-label="Call Nizamuddeen">📞 99449 05138</a>
         </article>
       </div>
     </div>
   </div>
 </section>
 
-
-
-<!-- BOOK APPOINTMENT --> 
+<!-- ========== APPOINTMENT ========== -->
 <section id="ndc-appointment" class="ndc-band"
-         style="--band-bg:#f0f9ff; --surface-bg:#ffffff;" aria-label="Book an appointment at Noble Dental Care">
+         style="--band-bg:var(--bg-appt); --surface-bg:var(--surface-appt);"
+         aria-label="Book an appointment at Noble Dental Care">
   <div class="ndc-container">
     <div class="ndc-surface ndc-appt-container">
       <div class="ndc-appt-head">
@@ -556,10 +565,7 @@
   </div>
 </section>
 
-</body>
-</html>
-    
- <!-- JSON-LD: Noble Dental Care + Doctors (Merged) -->
+<!-- JSON-LD: Noble Dental Care + Doctors (Merged) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -580,10 +586,7 @@
     {"@type": "MedicalSpecialty","name": "Implantology"},
     {"@type": "MedicalSpecialty","name": "Pediatric Dentistry"}
   ],
-  "founder": {
-    "@type": "Person",
-    "name": "Dr Dhivakaran"
-  },
+  "founder": {"@type": "Person", "name": "Dr Dhivakaran"},
   "member": [
     {
       "@type": "Physician",
@@ -591,60 +594,40 @@
       "jobTitle": "Chief Medical Director",
       "telephone": "+91-8610425342",
       "medicalSpecialty": "Chief Medical Director, Noble Dental Care · Director, Healthflo",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "500"
-      }
+      "aggregateRating": {"@type": "AggregateRating","ratingValue": "4.9","reviewCount": "500"}
     },
     {
       "@type": "Physician",
       "name": "Dr Roger Ronaldo",
       "jobTitle": "Oral & Maxillofacial Surgeon",
       "medicalSpecialty": "Consultant Oral & Maxillofacial Surgeon — Implantology, Facial Reconstruction",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "500"
-      }
+      "aggregateRating": {"@type": "AggregateRating","ratingValue": "4.9","reviewCount": "500"}
     },
     {
       "@type": "Physician",
       "name": "Dr Deepak",
       "jobTitle": "Orthodontist",
       "medicalSpecialty": "Orthodontist (Assistant Professor)",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "500"
-      }
+      "aggregateRating": {"@type": "AggregateRating","ratingValue": "4.9","reviewCount": "500"}
     },
     {
       "@type": "Physician",
       "name": "Dr Manoj Reddy",
       "jobTitle": "OMFS - Implantology",
       "medicalSpecialty": "Oral & Maxillofacial Surgeon — Implantology",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.5",
-        "reviewCount": "250"
-      }
+      "aggregateRating": {"@type": "AggregateRating","ratingValue": "4.5","reviewCount": "250"}
     },
     {
       "@type": "Physician",
       "name": "Dr Idhaya",
       "jobTitle": "CEO - Healthflo",
       "medicalSpecialty": "Health Insurance · Medical Tourism",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "350"
-      }
+      "aggregateRating": {"@type": "AggregateRating","ratingValue": "4.8","reviewCount": "350"}
     }
   ]
 }
 </script>
-</section>
+
 
 
     <!-- ==================== Noble Dental — FAQ Section ==================== -->
@@ -2007,6 +1990,7 @@
 <script src="/main.js" defer></script>
 </body>
 </html>
+
 
 
 
