@@ -463,96 +463,7 @@
     </div>
   </section>
 
-<!-- BOOK APPOINTMENT -->
-<section id="ndc-appointment" class="ndc-appt ndc-section-gap" aria-label="Book an appointment at Noble Dental Care">
-  <div class="ndc-container">
-    <div class="ndc-appt-container">
-      
-      <div class="ndc-appt-head">
-        <h2 class="ndc-h2">Book your Dental Appointment</h2>
-        <p class="ndc-sub">Choose your specialist, date &amp; time. Confirm via Email or WhatsApp in seconds.</p>
-      </div>
-
-      <form class="ndc-appt-form" novalidate>
-        <div class="ndc-appt-layout ndc-appt-layout--two">
-          
-          <!-- Left: Patient Details -->
-          <div class="ndc-appt-col ndc-appt-col--form" aria-label="Patient details">
-            <div class="ndc-card ndc-card--fill">
-              <h3 class="ndc-card-title">Patient Details</h3>
-              <div class="ndc-form-grid ndc-form-grid--details">
-                <div class="ndc-field">
-                  <select id="docSel" data-ndc="selDoctor" required></select>
-                  <label for="docSel">Doctor</label>
-                </div>
-
-                <div class="ndc-field">
-                  <input id="name" data-ndc="name" type="text" placeholder=" " required>
-                  <label for="name">Patient Name</label>
-                </div>
-
-                <div class="ndc-field ndc-field--sm">
-                  <input id="age" data-ndc="age" type="number" min="0" placeholder=" " required>
-                  <label for="age">Age</label>
-                </div>
-
-                <div class="ndc-field">
-                  <select id="apptType" data-ndc="type" required>
-                    <option value="Consultation">Consultation</option>
-                    <option value="Follow-up">Follow-up</option>
-                    <option value="Emergency">Emergency</option>
-                    <option value="Second Opinion">Second Opinion</option>
-                  </select>
-                  <label for="apptType">Appointment Type</label>
-                </div>
-
-                <div class="ndc-field">
-                  <input id="date" data-ndc="date" type="date" placeholder=" " required>
-                  <label for="date">Date</label>
-                </div>
-
-                <div class="ndc-field ndc-full">
-                  <textarea id="reason" data-ndc="notes" rows="3" placeholder=" "></textarea>
-                  <label for="reason">Reason / Notes</label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: Time Slots -->
-          <div class="ndc-appt-col ndc-appt-col--time" aria-label="Pick a time">
-            <div class="ndc-card ndc-card--fill ndc-card--time">
-              <h3 class="ndc-card-title">Pick a Time</h3>
-
-              <div class="ndc-slot-group">
-                <div class="ndc-slot-title">Regular (11:00 AM – 10:00 PM)</div>
-                <div class="ndc-slots" data-ndc="slotsRegular"></div>
-              </div>
-
-              <div class="ndc-slot-group">
-                <div class="ndc-slot-title em">Emergencies (10:00 PM – 2:00 AM)</div>
-                <div class="ndc-slots" data-ndc="slotsEmergency"></div>
-              </div>
-
-              <div class="ndc-field ndc-field--tight">
-                <select id="timeSel" data-ndc="selTime" required></select>
-                <label for="timeSel">Selected Time</label>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Centered actions row -->
-        <div class="ndc-actions ndc-actions--center">
-          <button class="ndc-btn ndc-btn--primary" type="button" data-ndc="btnEmail">Confirm via Email</button>
-          <button class="ndc-btn ndc-btn--wa" type="button" data-ndc="btnWhatsApp">Confirm via WhatsApp</button>
-        </div>
-      </form>
-
-    </div>
-  </div>
-</section>
-
+<!-- BOOK APPOINTMENT --> <section id="ndc-appointment" class="ndc-appt ndc-section-gap" aria-label="Book an appointment at Noble Dental Care"> <div class="ndc-container ndc-appt-container"> <div class="ndc-appt-head"> <h2 class="ndc-h2">Book your Dental Appointment</h2> <p class="ndc-sub">Choose your specialist, date &amp; time. Confirm via Email or WhatsApp in seconds.</p> </div> <form class="ndc-appt-form" novalidate> <div class="ndc-appt-layout ndc-appt-layout--two"> <!-- Left: Patient Details --> <div class="ndc-appt-col ndc-appt-col--form" aria-label="Patient details"> <div class="ndc-card ndc-card--fill"> <h3 class="ndc-card-title">Patient Details</h3> <div class="ndc-form-grid ndc-form-grid--details"> <div class="ndc-field"> <select id="docSel" data-ndc="selDoctor" required></select> <label for="docSel">Doctor</label> </div> <div class="ndc-field"> <input id="name" data-ndc="name" type="text" placeholder=" " required> <label for="name">Patient Name</label> </div> <div class="ndc-field ndc-field--sm"> <input id="age" data-ndc="age" type="number" min="0" placeholder=" " required> <label for="age">Age</label> </div> <div class="ndc-field"> <select id="apptType" data-ndc="type" required> <option value="Consultation">Consultation</option> <option value="Follow-up">Follow-up</option> <option value="Emergency">Emergency</option> <option value="Second Opinion">Second Opinion</option> </select> <label for="apptType">Appointment Type</label> </div> <div class="ndc-field"> <input id="date" data-ndc="date" type="date" placeholder=" " required> <label for="date">Date</label> </div> <div class="ndc-field ndc-full"> <textarea id="reason" data-ndc="notes" rows="3" placeholder=" "></textarea> <label for="reason">Reason / Notes</label> </div> </div> </div> </div> <!-- Right: Time Slots --> <div class="ndc-appt-col ndc-appt-col--time" aria-label="Pick a time"> <div class="ndc-card ndc-card--fill ndc-card--time"> <h3 class="ndc-card-title">Pick a Time</h3> <div class="ndc-slot-group"> <div class="ndc-slot-title">Regular (11:00 AM – 10:00 PM)</div> <div class="ndc-slots" data-ndc="slotsRegular"></div> </div> <div class="ndc-slot-group"> <div class="ndc-slot-title em">Emergencies (10:00 PM – 2:00 AM)</div> <div class="ndc-slots" data-ndc="slotsEmergency"></div> </div> <div class="ndc-field ndc-field--tight"> <select id="timeSel" data-ndc="selTime" required></select> <label for="timeSel">Selected Time</label> </div> </div> </div> </div> <!-- Centered actions row --> <div class="ndc-actions ndc-actions--center"> <button class="ndc-btn ndc-btn--primary" type="button" data-ndc="btnEmail">Confirm via Email</button> <button class="ndc-btn ndc-btn--wa" type="button" data-ndc="btnWhatsApp">Confirm via WhatsApp</button> </div> </form> </div> </section>
 
  <!-- JSON-LD: Noble Dental Care + Doctors (Merged) -->
 <script type="application/ld+json">
@@ -2002,5 +1913,6 @@
 <script src="/main.js" defer></script>
 </body>
 </html>
+
 
 
