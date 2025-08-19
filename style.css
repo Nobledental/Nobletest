@@ -659,11 +659,26 @@ body{
   background:#fff;
   margin:0;
 }
-.ndc-container{max-width:1200px;margin:0 auto;padding:0 20px;}
-.ndc-band{background:var(--band-bg,transparent);padding:var(--band-pad-y) 0;}
-.ndc-band + .ndc-band{margin-top:var(--section-gap);}
-.ndc-surface{background:var(--surface-bg,#fff);border-radius:var(--band-radius);box-shadow:var(--band-shadow);padding:28px;}
-@media (max-width:540px){.ndc-surface{padding:20px}}
+/* Container: width & side padding are now overridable */
+.ndc-container{
+  max-width: var(--container-max, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--container-pad, 20px);
+}
+
+/* Optional presets */
+.ndc-container--sm { --container-max: 960px;  --container-pad: 16px; }
+.ndc-container--md { --container-max: 1120px; --container-pad: 20px; }
+.ndc-container--lg { --container-max: 1280px; --container-pad: 24px; }
+.ndc-container--xl { --container-max: 1440px; --container-pad: 28px; }
+
+/* Make the 3-column layout widths overridable too */
+.ndc-grid{
+  display:grid; gap:12px;
+  grid-template-columns: var(--col-left, 420px) minmax(0,1fr) var(--col-right, 380px);
+  align-items:start;
+}
+@media (max-width:1100px){ .ndc-grid{ grid-template-columns:1fr; } }
 
 .ndc-h1{font-size:clamp(22px,5vw,32px);margin:0 0 8px;color:var(--ink-strong);font-weight:900;letter-spacing:.2px}
 .ndc-h2{font-size:clamp(18px,2.5vw,22px);margin:0 0 10px;font-weight:800;color:var(--ink-strong)}
@@ -1430,5 +1445,6 @@ body{
 .ndc-footer__cta .ndc-btn--whatsapp{ --bg:#25D366; }
 .ndc-footer__cta .ndc-btn--call{ --bg:#0ea5a3; }
 .ndc-footer__cta .ndc-btn--map{ --bg:#6e8bff; }
+
 
 
