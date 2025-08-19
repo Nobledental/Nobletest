@@ -348,317 +348,251 @@
   </div>
 </section>
 
-<!-- ========== DOCTORS + ABOUT + APPOINTMENT (Noble Dental Care) ========== -->
-<section id="ndc-doctors-app" class="ndc-band"
-         style="--band-bg:var(--bg-doctors); --surface-bg:var(--surface-doctors);"
-         aria-label="Dentists in Nallagandla, Hyderabad">
-  <div class="ndc-container">
-    <div class="ndc-surface">
-      <header class="ndc-head">
-        <h2 class="ndc-h1">Best Dentist in Nallagandla, Hyderabad — Noble Dental Care</h2>
-        <p class="ndc-sub">MDS Specialists • 12+ Years Experience • Advanced Technology • Honest, Affordable Care</p>
-      </header>
+  <!-- ===================== DOCTORS ===================== -->
+  <section id="ndc-doctors-app" class="ndc-band ndc-band--doctors" aria-label="Dentists in Nallagandla, Hyderabad">
+    <div class="ndc-container">
+      <div class="ndc-surface">
+        <header class="ndc-head">
+          <h2 class="ndc-h1">Best Dentist in Nallagandla, Hyderabad — Noble Dental Care</h2>
+          <p class="ndc-sub">MDS Specialists • 12+ Years Experience • Advanced Technology • Honest, Affordable Care</p>
+        </header>
 
-      <div class="ndc-grid">
-        <!-- LEFT: Doctors List -->
-        <aside class="ndc-col ndc-list" aria-label="Our Specialists">
-          <h2 class="ndc-h2">Our Specialists</h2>
-          <div class="ndc-doc-list" data-ndc="docList" role="list"></div>
-        </aside>
+        <div class="ndc-grid">
+          <!-- LEFT: Doctors List -->
+          <aside class="ndc-col ndc-list" aria-label="Our Specialists">
+            <h2 class="ndc-h2">Our Specialists</h2>
+            <div class="ndc-doc-list" data-ndc="docList" role="list"></div>
+          </aside>
 
-        <!-- CENTER: About Doctor -->
-        <section class="ndc-col ndc-about" aria-label="About the Doctor">
-          <h2 class="ndc-h2">About the Doctor</h2>
-          <article class="ndc-about-card">
-            <div class="ndc-about-top">
-              <div class="ndc-about-id">
-                <img class="ndc-avatar" data-ndc="aboutAvatar" src="" alt="Doctor portrait">
-                <div>
-                  <h3 class="ndc-doc-name" data-ndc="aboutName">Doctor Name</h3>
-                  <p class="ndc-doc-role" data-ndc="aboutSpecialty">Specialty</p>
+          <!-- CENTER: About Doctor -->
+          <section class="ndc-col ndc-about" aria-label="About the Doctor">
+            <h2 class="ndc-h2">About the Doctor</h2>
+            <article class="ndc-about-card">
+              <div class="ndc-about-top">
+                <div class="ndc-about-id">
+                  <img class="ndc-avatar" data-ndc="aboutAvatar" src="" alt="Doctor portrait">
+                  <div>
+                    <h3 class="ndc-doc-name" data-ndc="aboutName">Doctor Name</h3>
+                    <p class="ndc-doc-role" data-ndc="aboutSpecialty">Specialty</p>
+                  </div>
+                </div>
+                <span class="ndc-rating" data-ndc="aboutRating">★ 4.9</span>
+              </div>
+
+              <ul class="ndc-meta">
+                <li><strong>Experience:</strong> <span data-ndc="aboutExp">10+ years</span></li>
+                <li><strong>Consultation:</strong> <span data-ndc="aboutConsult">—</span></li>
+              </ul>
+
+              <div class="ndc-chips-block">
+                <div class="ndc-chip-title">Available Regions</div>
+                <div class="ndc-chips" data-ndc="aboutCities"></div>
+              </div>
+
+              <div class="ndc-chips-block">
+                <div class="ndc-chip-title">Contact</div>
+                <div class="ndc-chips" data-ndc="aboutPhones"></div>
+              </div>
+
+              <div class="ndc-divider"></div>
+
+              <div class="ndc-books" data-ndc="aboutBooksWrap">
+                <h4 class="ndc-h4">Published Work</h4>
+                <div class="ndc-book-grid" data-ndc="aboutBooks"></div>
+              </div>
+            </article>
+          </section>
+
+          <!-- RIGHT: Profile Card -->
+          <section class="ndc-col ndc-profile" aria-label="Doctor Profile">
+            <h2 class="ndc-h2">Profile</h2>
+            <div class="ndc-profile-card">
+              <div class="ndc-hero">
+                <img class="ndc-hero-img" data-ndc="heroImg" src="" alt="Doctor profile image">
+                <span class="ndc-hero-badge" data-ndc="heroRating">★ 4.9</span>
+              </div>
+              <div class="ndc-hero-body">
+                <h3 class="ndc-hero-name" data-ndc="heroName">Doctor Name</h3>
+                <p class="ndc-hero-sub" data-ndc="heroSpecialty">Specialty, Credentials</p>
+                <div class="ndc-hero-actions">
+                  <a class="ndc-btn ndc-btn--tonal" data-ndc="btnCall" href="tel:+918610425342" aria-label="Call the clinic">Call</a>
+                  <a class="ndc-btn ndc-btn--primary" href="#ndc-appointment" aria-label="Book appointment quickly">Book Now</a>
                 </div>
               </div>
-              <span class="ndc-rating" data-ndc="aboutRating">★ 4.9</span>
             </div>
+          </section>
+        </div><!-- /grid -->
+      </div>
+    </div>
+  </section>
 
-            <ul class="ndc-meta">
-              <li><strong>Experience:</strong> <span data-ndc="aboutExp">10+ years</span></li>
-              <li><strong>Consultation:</strong> <span data-ndc="aboutConsult"></span></li>
-            </ul>
-
-            <div class="ndc-chips-block">
-              <div class="ndc-chip-title">Available Regions</div>
-              <div class="ndc-chips" data-ndc="aboutCities"></div>
+  <!-- ===================== CARE TEAM ===================== -->
+  <section class="ndc-band ndc-band--care" aria-label="Care Coordination Team">
+    <div class="ndc-container">
+      <div class="ndc-surface">
+        <h2 class="ndc-h2">CARE Coordination Team &amp; Health Insurance Assistance</h2>
+        <div class="ndc-care-grid">
+          <article class="ndc-care-card">
+            <div class="ndc-care-top">
+              <div>
+                <h3 class="ndc-care-name">Akhila</h3>
+                <p class="ndc-care-role">Chief Executive Assistant</p>
+              </div>
+              <span class="ndc-care-tag">Patient Care</span>
             </div>
-
-            <div class="ndc-chips-block">
-              <div class="ndc-chip-title">Contact</div>
-              <div class="ndc-chips" data-ndc="aboutPhones"></div>
-            </div>
-
-            <div class="ndc-divider"></div>
-
-            <div class="ndc-books" data-ndc="aboutBooksWrap">
-              <h4 class="ndc-h4">Published Work</h4>
-              <div class="ndc-book-grid" data-ndc="aboutBooks"></div>
-            </div>
+            <p class="ndc-care-text">
+              Operations Manager, Neo-AI project coordinator &amp; developer; coordinator for empanelled hospitals in Telangana, Andhra,
+              Delhi, Chennai, Bangalore. Assists with insurer paperwork, cashless/reimbursement claims, grievance &amp; ombudsman support.
+            </p>
+            <a class="ndc-chip ndc-chip--tel" href="tel:+917993745387" aria-label="Call Akhila">📞 79937 45387</a>
           </article>
-        </section>
 
-        <!-- RIGHT: Profile Card -->
-        <section class="ndc-col ndc-profile" aria-label="Doctor Profile">
-          <h2 class="ndc-h2">Profile</h2>
-          <div class="ndc-profile-card">
-            <div class="ndc-hero">
-              <img class="ndc-hero-img" data-ndc="heroImg" src="" alt="Doctor profile image">
-              <span class="ndc-hero-badge" data-ndc="heroRating">★ 4.9</span>
-            </div>
-            <div class="ndc-hero-body">
-              <h3 class="ndc-hero-name" data-ndc="heroName">Doctor Name</h3>
-              <p class="ndc-hero-sub" data-ndc="heroSpecialty">Specialty, Credentials</p>
-              <div class="ndc-hero-actions">
-                <a class="ndc-btn ndc-btn--tonal" data-ndc="btnCall" href="tel:+918610425342" aria-label="Call the clinic">Call</a>
-                <a class="ndc-btn ndc-btn--primary" href="#ndc-appointment" aria-label="Book appointment quickly">Book Now</a>
+          <article class="ndc-care-card">
+            <div class="ndc-care-top">
+              <div>
+                <h3 class="ndc-care-name">Nizamuddeen</h3>
+                <p class="ndc-care-role">Health Insurance &amp; Hospital Coordinator</p>
               </div>
+              <span class="ndc-care-tag">Insurance</span>
             </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- Doctors: wider container + wider right column -->
-<section class="ndc-band" style="--band-bg:var(--bg-doctors);">
-  <div class="ndc-container ndc-container--xl"
-       style="--container-max:1320px; --container-pad:24px;">
-    <div class="ndc-surface" style="--surface-bg:var(--surface-doctors);
-                                    --col-left:440px; --col-right:420px;">
-      <!-- doctors content -->
-    </div>
-  </div>
-</section>
-
-<!-- Care Team: medium container -->
-<section class="ndc-band" style="--band-bg:var(--bg-care);">
-  <div class="ndc-container ndc-container--md">
-    <div class="ndc-surface" style="--surface-bg:var(--surface-care);">
-      <!-- care team content -->
-    </div>
-  </div>
-</section>
-
-<!-- Appointment: slightly narrower for focus -->
-<section id="ndc-appointment" class="ndc-band" style="--band-bg:var(--bg-appt);">
-  <div class="ndc-container"
-       style="--container-max:1000px; --container-pad:20px;">
-    <div class="ndc-surface ndc-appt-container" style="--surface-bg:var(--surface-appt);">
-      <!-- appointment form -->
-    </div>
-  </div>
-</section>
-
-      <!-- JSON-LD (keep / update as needed) -->
-      <script type="application/ld+json">{ /* your structured data */ }</script>
-    </div>
-  </div>
-</section>
-
-<!-- ========== CARE TEAM ========== -->
-<section class="ndc-band"
-         style="--band-bg:var(--bg-care); --surface-bg:var(--surface-care);"
-         aria-label="Care Coordination Team">
-  <div class="ndc-container">
-    <div class="ndc-surface">
-      <h2 class="ndc-h2">CARE Coordination Team &amp; Health Insurance Assistance</h2>
-
-      <div class="ndc-care-grid">
-        <article class="ndc-care-card">
-          <div class="ndc-care-top">
-            <div>
-              <h3 class="ndc-care-name">Akhila</h3>
-              <p class="ndc-care-role">Chief Executive Assistant</p>
-            </div>
-            <span class="ndc-care-tag">Patient Care</span>
-          </div>
-          <p class="ndc-care-text">
-            Operations Manager, Neo-AI Project coordinator and developer, &amp; coordinator for empanelled hospitals in Telangana, Andhra, Delhi,
-            Chennai, Bangalore. Assists with health insurer paperwork, facilitating both cashless and reimbursement claims, and offering grievance
-            and ombudsman support.
-          </p>
-          <a class="ndc-chip ndc-chip--tel" href="tel:+917993745387" aria-label="Call Akhila">📞 79937 45387</a>
-        </article>
-
-        <article class="ndc-care-card">
-          <div class="ndc-care-top">
-            <div>
-              <h3 class="ndc-care-name">Nizamuddeen</h3>
-              <p class="ndc-care-role">Health Insurance &amp; Hospital Coordinator</p>
-            </div>
-            <span class="ndc-care-tag">Insurance</span>
-          </div>
-          <p class="ndc-care-text">
-            Team lead support for medical loans (with and without interest) towards admission at hospital for medical emergencies, specialized surgeries,
-            and cancer care (Chemotherapy &amp; Radiotherapy). Assists health insurance processing for both cashless and reimbursement claims, and offers
-            grievance and ombudsman support. Also acts as a hospital liaison to ensure a smooth and seamless experience for all patients, from treatment to recovery.
-          </p>
-          <a class="ndc-chip ndc-chip--tel" href="tel:+919944905138" aria-label="Call Nizamuddeen">📞 99449 05138</a>
-        </article>
+            <p class="ndc-care-text">
+              Leads medical loans (with/without interest) for admissions; assists cashless/reimbursement insurance, grievance &amp; ombudsman support;
+              hospital liaison for a smooth patient journey.
+            </p>
+            <a class="ndc-chip ndc-chip--tel" href="tel:+919944905138" aria-label="Call Nizamuddeen">📞 99449 05138</a>
+          </article>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ========== APPOINTMENT ========== -->
-<section id="ndc-appointment" class="ndc-band"
-         style="--band-bg:var(--bg-appt); --surface-bg:var(--surface-appt);"
-         aria-label="Book an appointment at Noble Dental Care">
-  <div class="ndc-container">
-    <div class="ndc-surface ndc-appt-container">
-      <div class="ndc-appt-head">
-        <h2 class="ndc-h2">Book your Dental Appointment</h2>
-        <p class="ndc-sub">Choose your specialist, date &amp; time. Confirm via Email or WhatsApp in seconds.</p>
-      </div>
-
-      <form class="ndc-appt-form" novalidate>
-        <div class="ndc-appt-layout ndc-appt-layout--two">
-          <!-- Left: Patient Details -->
-          <div class="ndc-appt-col ndc-appt-col--form" aria-label="Patient details">
-            <div class="ndc-card ndc-card--fill">
-              <h3 class="ndc-card-title">Patient Details</h3>
-              <div class="ndc-form-grid ndc-form-grid--details">
-                <div class="ndc-field">
-                  <select id="docSel" data-ndc="selDoctor" required></select>
-                  <label for="docSel">Doctor</label>
-                </div>
-
-                <div class="ndc-field">
-                  <input id="name" data-ndc="name" type="text" placeholder=" " required>
-                  <label for="name">Patient Name</label>
-                </div>
-
-                <div class="ndc-field ndc-field--sm">
-                  <input id="age" data-ndc="age" type="number" min="0" placeholder=" " required>
-                  <label for="age">Age</label>
-                </div>
-
-                <div class="ndc-field">
-                  <select id="apptType" data-ndc="type" required>
-                    <option value="Consultation">Consultation</option>
-                    <option value="Follow-up">Follow-up</option>
-                    <option value="Emergency">Emergency</option>
-                    <option value="Second Opinion">Second Opinion</option>
-                  </select>
-                  <label for="apptType">Appointment Type</label>
-                </div>
-
-                <div class="ndc-field">
-                  <input id="date" data-ndc="date" type="date" placeholder=" " required>
-                  <label for="date">Date</label>
-                </div>
-
-                <div class="ndc-field ndc-full">
-                  <textarea id="reason" data-ndc="notes" rows="3" placeholder=" "></textarea>
-                  <label for="reason">Reason / Notes</label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: Time Slots -->
-          <div class="ndc-appt-col ndc-appt-col--time" aria-label="Pick a time">
-            <div class="ndc-card ndc-card--fill ndc-card--time">
-              <h3 class="ndc-card-title">Pick a Time</h3>
-
-              <div class="ndc-slot-group">
-                <div class="ndc-slot-title">Regular (11:00 AM – 10:00 PM)</div>
-                <div class="ndc-slots" data-ndc="slotsRegular"></div>
-              </div>
-
-              <div class="ndc-slot-group">
-                <div class="ndc-slot-title em">Emergencies (10:00 PM – 2:00 AM)</div>
-                <div class="ndc-slots" data-ndc="slotsEmergency"></div>
-              </div>
-
-              <div class="ndc-field ndc-field--tight">
-                <select id="timeSel" data-ndc="selTime" required></select>
-                <label for="timeSel">Selected Time</label>
-              </div>
-            </div>
-          </div>
+  <!-- ===================== APPOINTMENT ===================== -->
+  <section id="ndc-appointment" class="ndc-band ndc-band--appt" aria-label="Book an appointment at Noble Dental Care">
+    <div class="ndc-container">
+      <div class="ndc-surface ndc-appt-container">
+        <div class="ndc-appt-head">
+          <h2 class="ndc-h2">Book your Dental Appointment</h2>
+          <p class="ndc-sub">Choose your specialist, date &amp; time. Confirm via Email or WhatsApp in seconds.</p>
         </div>
 
-        <!-- Centered actions row -->
-        <div class="ndc-actions ndc-actions--center">
-          <button class="ndc-btn ndc-btn--primary" type="button" data-ndc="btnEmail">Confirm via Email</button>
-          <button class="ndc-btn ndc-btn--wa" type="button" data-ndc="btnWhatsApp">Confirm via WhatsApp</button>
-        </div>
-      </form>
+        <form class="ndc-appt-form" novalidate>
+          <div class="ndc-appt-layout ndc-appt-layout--two">
+            <!-- Left: Patient Details -->
+            <div class="ndc-appt-col ndc-appt-col--form" aria-label="Patient details">
+              <div class="ndc-card ndc-card--fill">
+                <h3 class="ndc-card-title">Patient Details</h3>
+                <div class="ndc-form-grid ndc-form-grid--details">
+                  <div class="ndc-field">
+                    <select id="docSel" data-ndc="selDoctor" required></select>
+                    <label for="docSel">Doctor</label>
+                  </div>
+
+                  <div class="ndc-field">
+                    <input id="name" data-ndc="name" type="text" placeholder=" " required>
+                    <label for="name">Patient Name</label>
+                  </div>
+
+                  <div class="ndc-field ndc-field--sm">
+                    <input id="age" data-ndc="age" type="number" min="0" placeholder=" " required>
+                    <label for="age">Age</label>
+                  </div>
+
+                  <div class="ndc-field">
+                    <select id="apptType" data-ndc="type" required>
+                      <option value="Consultation">Consultation</option>
+                      <option value="Follow-up">Follow-up</option>
+                      <option value="Emergency">Emergency</option>
+                      <option value="Second Opinion">Second Opinion</option>
+                    </select>
+                    <label for="apptType">Appointment Type</label>
+                  </div>
+
+                  <div class="ndc-field">
+                    <input id="date" data-ndc="date" type="date" placeholder=" " required>
+                    <label for="date">Date</label>
+                  </div>
+
+                  <div class="ndc-field ndc-full">
+                    <textarea id="reason" data-ndc="notes" rows="3" placeholder=" "></textarea>
+                    <label for="reason">Reason / Notes</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Time Slots -->
+            <div class="ndc-appt-col ndc-appt-col--time" aria-label="Pick a time">
+              <div class="ndc-card ndc-card--fill ndc-card--time">
+                <h3 class="ndc-card-title">Pick a Time</h3>
+
+                <div class="ndc-slot-group">
+                  <div class="ndc-slot-title">Regular (11:00 AM – 10:00 PM)</div>
+                  <div class="ndc-slots" data-ndc="slotsRegular"></div>
+                </div>
+
+                <div class="ndc-slot-group">
+                  <div class="ndc-slot-title em">Emergencies (10:00 PM – 2:00 AM)</div>
+                  <div class="ndc-slots" data-ndc="slotsEmergency"></div>
+                </div>
+
+                <div class="ndc-field ndc-field--tight">
+                  <select id="timeSel" data-ndc="selTime" required></select>
+                  <label for="timeSel">Selected Time</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Centered actions row -->
+          <div class="ndc-actions ndc-actions--center">
+            <button class="ndc-btn ndc-btn--primary" type="button" data-ndc="btnEmail">Confirm via Email</button>
+            <button class="ndc-btn ndc-btn--wa" type="button" data-ndc="btnWhatsApp">Confirm via WhatsApp</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- JSON-LD: Noble Dental Care + Doctors (Merged) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Dentist",
-  "name": "Noble Dental Care & Multispeciality Clinic",
-  "areaServed": ["Nallagandla","Lingampally","Serilingampally","Hyderabad"],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Nallagandla",
-    "addressRegion": "Telangana",
-    "addressCountry": "IN"
-  },
-  "telephone": "+91-8610425342",
-  "url": "https://your-domain.example/",
-  "department": [
-    {"@type": "MedicalSpecialty","name": "Oral & Maxillofacial Surgery"},
-    {"@type": "MedicalSpecialty","name": "Orthodontics"},
-    {"@type": "MedicalSpecialty","name": "Implantology"},
-    {"@type": "MedicalSpecialty","name": "Pediatric Dentistry"}
-  ],
-  "founder": {"@type": "Person", "name": "Dr Dhivakaran"},
-  "member": [
-    {
-      "@type": "Physician",
-      "name": "Dr Dhivakaran",
-      "jobTitle": "Chief Medical Director",
-      "telephone": "+91-8610425342",
-      "medicalSpecialty": "Chief Medical Director, Noble Dental Care · Director, Healthflo",
-      "aggregateRating": {"@type": "AggregateRating","ratingValue": "4.9","reviewCount": "500"}
-    },
-    {
-      "@type": "Physician",
-      "name": "Dr Roger Ronaldo",
-      "jobTitle": "Oral & Maxillofacial Surgeon",
-      "medicalSpecialty": "Consultant Oral & Maxillofacial Surgeon — Implantology, Facial Reconstruction",
-      "aggregateRating": {"@type": "AggregateRating","ratingValue": "4.9","reviewCount": "500"}
-    },
-    {
-      "@type": "Physician",
-      "name": "Dr Deepak",
-      "jobTitle": "Orthodontist",
-      "medicalSpecialty": "Orthodontist (Assistant Professor)",
-      "aggregateRating": {"@type": "AggregateRating","ratingValue": "4.9","reviewCount": "500"}
-    },
-    {
-      "@type": "Physician",
-      "name": "Dr Manoj Reddy",
-      "jobTitle": "OMFS - Implantology",
-      "medicalSpecialty": "Oral & Maxillofacial Surgeon — Implantology",
-      "aggregateRating": {"@type": "AggregateRating","ratingValue": "4.5","reviewCount": "250"}
-    },
-    {
-      "@type": "Physician",
-      "name": "Dr Idhaya",
-      "jobTitle": "CEO - Healthflo",
-      "medicalSpecialty": "Health Insurance · Medical Tourism",
-      "aggregateRating": {"@type": "AggregateRating","ratingValue": "4.8","reviewCount": "350"}
-    }
-  ]
-}
-</script>
+  <!-- Structured Data (edit values as needed) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Noble Dental Care & Multispeciality Clinic",
+    "areaServed": ["Nallagandla","Lingampally","Serilingampally","Hyderabad"],
+    "address": {"@type":"PostalAddress","addressLocality":"Nallagandla","addressRegion":"Telangana","addressCountry":"IN"},
+    "telephone": "+91-8610425342",
+    "url": "https://your-domain.example/",
+    "department": [
+      {"@type":"MedicalSpecialty","name":"Oral & Maxillofacial Surgery"},
+      {"@type":"MedicalSpecialty","name":"Orthodontics"},
+      {"@type":"MedicalSpecialty","name":"Implantology"},
+      {"@type":"MedicalSpecialty","name":"Pediatric Dentistry"}
+    ],
+    "founder":{"@type":"Person","name":"Dr Dhivakaran"},
+    "member":[
+      {"@type":"Physician","name":"Dr Dhivakaran","jobTitle":"Chief Medical Director","telephone":"+91-8610425342",
+       "medicalSpecialty":"Chief Medical Director, Noble Dental Care · Director, Healthflo",
+       "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"500"}},
+      {"@type":"Physician","name":"Dr Roger Ronaldo","jobTitle":"Oral & Maxillofacial Surgeon",
+       "medicalSpecialty":"Consultant Oral & Maxillofacial Surgeon — Implantology, Facial Reconstruction",
+       "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"500"}},
+      {"@type":"Physician","name":"Dr Deepak","jobTitle":"Orthodontist",
+       "medicalSpecialty":"Orthodontist (Assistant Professor)",
+       "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"500"}},
+      {"@type":"Physician","name":"Dr Manoj Reddy","jobTitle":"OMFS - Implantology",
+       "medicalSpecialty":"Oral & Maxillofacial Surgeon — Implantology",
+       "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","reviewCount":"250"}},
+      {"@type":"Physician","name":"Dr Idhaya","jobTitle":"CEO - Healthflo",
+       "medicalSpecialty":"Health Insurance · Medical Tourism",
+       "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"350"}}
+    ]
+  }
+  </script>
 
-
+  <script src="main.js"></script>
+</body>
+</html>
 
     <!-- ==================== Noble Dental — FAQ Section ==================== -->
 <section id="noble-faq" class="nd-faq" aria-labelledby="nd-faq-title">
@@ -2020,6 +1954,7 @@
 <script src="/main.js" defer></script>
 </body>
 </html>
+
 
 
 
