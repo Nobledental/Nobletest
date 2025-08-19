@@ -158,15 +158,18 @@
   applyMotionPref();
 })();
 
-/* ---------- Doctors + About + Appointment (single, clean) ---------- */
+/* ---------- Doctors + About + Appointment (scoped + cleaned) ---------- */
 (() => {
-  const $  = (s, r=document)=>r.querySelector(s);
-  const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
+  const $  = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
+  // Scope for the Doctors/About/Profile area only
   const root = document.getElementById('ndc-doctors-app');
   if (!root) return;
 
-  const el = id => root.querySelector(`[data-ndc="${id}"]`);
+  // Scoped (Doctors section) and Global (whole page) helpers
+  const elR = (id) => root.querySelector(`[data-ndc="${id}"]`);       // inside #ndc-doctors-app
+  const el  = (id) => document.querySelector(`[data-ndc="${id}"]`);   // anywhere on the page
 
   // ---------- DATA ----------
   const CURRENT_YEAR = new Date().getFullYear();
@@ -232,10 +235,10 @@
     };
     return DIRECT[name] || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Best dentist in '+name)}`;
   };
-  const expLabel = (conf) => conf?.startYear ? `${Math.max(0, new Date().getFullYear() - conf.startYear)} Years` : "—";
+  const expLabel = (conf) => conf?.startYear ? `${Math.max(0, CURRENT_YEAR - conf.startYear)} Years` : "—";
 
-  // ---------- RENDER LIST ----------
-  const listWrap = el('docList');
+  // ---------- RENDER LIST (Doctors left column) ----------
+  const listWrap = elR('docList');
   function renderList(activeId){
     if (!listWrap) return;
     listWrap.innerHTML = '';
@@ -255,72 +258,102 @@
     });
   }
 
-  // ---------- FILL ABOUT + PROFILE ----------
+  // ---------- FILL ABOUT + PROFILE (center + right columns) ----------
   function fillDoctor(d){
-    el('aboutAvatar').src = d.avatar;
-    el('aboutName').textContent = d.name;
-    el('aboutSpecialty').textContent = d.specialty;
-    el('aboutRating').textContent = `★ ${d.rating.toFixed(1)}`;
-    el('aboutExp').textContent = expLabel(d.experience);
-    el('aboutConsult').textContent = d.consultation.join(' · ');
-    el('aboutCities').innerHTML = d.cities.map(c=>`<a class="ndc-chip" href="${cityLink(c)}" target="_blank" rel="noopener" title="Best dentist in ${c}">${c}</a>`).join('');
-    el('aboutPhones').innerHTML = d.phones.map(p=>`<a class="ndc-chip ndc-chip--tel" href="tel:${p.replace(/\s+/g,'')}">📞 ${p}</a>`).join('');
+    // About (scoped under root)
+    elR('aboutAvatar')?.setAttribute('src', d.avatar);
+    const an = elR('aboutName');         if (an) an.textContent = d.name;
+    const as = elR('aboutSpecialty');    if (as) as.textContent = d.specialty;
+    const ar = elR('aboutRating');       if (ar) ar.textContent = `★ ${d.rating.toFixed(1)}`;
+    const ae = elR('aboutExp');          if (ae) ae.textContent = expLabel(d.experience);
+    const ac = elR('aboutConsult');      if (ac) ac.textContent = d.consultation.join(' · ');
+    const cities = elR('aboutCities');   if (cities) cities.innerHTML = d.cities.map(c=>`<a class="ndc-chip" href="${cityLink(c)}" target="_blank" rel="noopener" title="Best dentist in ${c}">${c}</a>`).join('');
+    const phones = elR('aboutPhones');   if (phones) phones.innerHTML = d.phones.map(p=>`<a class="ndc-chip ndc-chip--tel" href="tel:${p.replace(/\s+/g,'')}">📞 ${p}</a>`).join('');
 
-    const booksWrap = el('aboutBooksWrap');
-    const booksGrid = el('aboutBooks');
-    booksGrid.innerHTML = '';
-    if (d.books?.length){
-      d.books.forEach(b=>{
-        const item = document.createElement('div');
-        item.className='ndc-book';
-        item.innerHTML = `
-          <img src="${b.cover}" alt="${b.title} book cover" loading="lazy">
-          <a href="${b.link}" target="_blank" rel="noopener">${b.title}</a>
-          <small>${b.publisher||''}</small>`;
-        booksGrid.appendChild(item);
-      });
-      booksWrap.classList.add('has-books');
-    } else {
-      booksWrap.classList.remove('has-books');
+    const booksWrap = elR('aboutBooksWrap');
+    const booksGrid = elR('aboutBooks');
+    if (booksGrid){
+      booksGrid.innerHTML = '';
+      if (d.books?.length){
+        d.books.forEach(b=>{
+          const item = document.createElement('div');
+          item.className='ndc-book';
+          item.innerHTML = `
+            <img src="${b.cover}" alt="${b.title} book cover" loading="lazy">
+            <a href="${b.link}" target="_blank" rel="noopener">${b.title}</a>
+            <small>${b.publisher||''}</small>`;
+          booksGrid.appendChild(item);
+        });
+        booksWrap?.classList.add('has-books');
+      } else {
+        booksWrap?.classList.remove('has-books');
+      }
     }
 
-    // Profile
-    el('heroImg').src = d.avatar;
-    el('heroRating').textContent = `★ ${d.rating.toFixed(1)}`;
-    el('heroName').textContent = d.name;
-    el('heroSpecialty').textContent = d.specialty;
+    // Profile (scoped under root)
+    elR('heroImg')?.setAttribute('src', d.avatar);
+    const hr = elR('heroRating'); if (hr) hr.textContent = `★ ${d.rating.toFixed(1)}`;
+    const hn = elR('heroName');   if (hn) hn.textContent = d.name;
+    const hs = elR('heroSpecialty'); if (hs) hs.textContent = d.specialty;
 
-    const callBtn = el('btnCall');
+    // Call button (scoped)
+    const callBtn = elR('btnCall');
     if (callBtn) callBtn.href = `tel:${d.phones[0].replace(/\s+/g,'')}`;
   }
 
-  // ---------- SLOTS ----------
+  // ---------- TIME SLOTS (global; appointment section is outside root) ----------
   const toLabel=(h,m)=>`${(((h+11)%12)+1).toString().padStart(2,'0')}:${m===0?'00':'30'} ${h>=12?'PM':'AM'}`;
   function labelsEvery30min(start,end,wrap=false){
     const out=[]; const push=(h,m)=>out.push(toLabel(h,m));
-    if(!wrap){ for(let h=start;h<=end;h++){ push(h,0); if(h!==end) push(h,30); } }
-    else { for(let h=start;h<=23;h++){ push(h,0); if(h<23) push(h,30);} for(let h=0;h<=end;h++){ push(h,0); if(h<end) push(h,30);} }
+    if(!wrap){
+      for(let h=start; h<=end; h++){ push(h,0); if(h!==end) push(h,30); }
+    } else {
+      for(let h=start; h<=23; h++){ push(h,0); if(h<23) push(h,30); }
+      for(let h=0; h<=end; h++){ push(h,0); if(h<end) push(h,30); }
+    }
     return out;
   }
   function renderSlots(){
-    const slotsRegular = labelsEvery30min(11,22,false);
-    const slotsEmergency= labelsEvery30min(22,2,true);
-    const rWrap = el('slotsRegular'); const eWrap = el('slotsEmergency'); const sel = el('selTime');
+    const rWrap = el('slotsRegular');
+    const eWrap = el('slotsEmergency');
+    const sel   = el('selTime');
+    if (!rWrap || !eWrap || !sel) return;
 
-    const make=(wrap,arr)=>{ if(!wrap) return; wrap.innerHTML=''; arr.forEach(lbl=>{ const b=document.createElement('button'); b.type='button'; b.className='ndc-slot'; b.textContent=lbl;
-      b.addEventListener('click',()=>{ $$('.ndc-slot',root).forEach(x=>x.classList.remove('active')); b.classList.add('active'); if(sel) sel.value=lbl; updateProgressBar(); });
-      wrap.appendChild(b); }); };
-    make(rWrap,slotsRegular); make(eWrap,slotsEmergency);
+    const slotsRegular  = labelsEvery30min(11,22,false);  // 11:00 → 22:00
+    const slotsEmergency= labelsEvery30min(22,2,true);    // 22:00 → 02:00 (wrap)
 
-    if (sel){
-      sel.innerHTML=''; [...slotsRegular,...slotsEmergency].forEach(lbl=>{ const o=document.createElement('option'); o.value=o.textContent=lbl; sel.appendChild(o); });
-      sel.selectedIndex=0; $('.ndc-slot',root)?.classList.add('active');
-    }
+    const make = (wrap, arr) => {
+      wrap.innerHTML = '';
+      arr.forEach(lbl => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'ndc-slot';
+        b.textContent = lbl;
+        b.addEventListener('click', () => {
+          $$('.ndc-slot').forEach(x => x.classList.remove('active'));
+          b.classList.add('active');
+          sel.value = lbl;
+        });
+        wrap.appendChild(b);
+      });
+    };
+    make(rWrap, slotsRegular);
+    make(eWrap, slotsEmergency);
+
+    // Build the <select>
+    sel.innerHTML = '';
+    [...slotsRegular, ...slotsEmergency].forEach(lbl=>{
+      const o = document.createElement('option');
+      o.value = o.textContent = lbl;
+      sel.appendChild(o);
+    });
+    sel.selectedIndex = 0;
+    $('.ndc-slot')?.classList.add('active');
   }
 
   // ---------- SELECT & CONFIRM ----------
   function renderDoctorSelect(activeId){
-    const sel = el('selDoctor');
+    const sel = el('selDoctor'); // global (inside appointment section)
     if (!sel) return;
     sel.innerHTML = '';
     DOCTORS.forEach(d=>{
@@ -332,7 +365,7 @@
     sel.addEventListener('change', ()=> selectDoctor(sel.value));
   }
 
-  const summaryText=(doc,name,age,type,date,time,notes)=>`Appointment Request
+  const summaryText = (doc,name,age,type,date,time,notes) => `Appointment Request
 Doctor: ${doc.name}
 Type: ${type}
 Patient: ${name} (Age ${age})
@@ -344,62 +377,48 @@ City Options: ${doc.cities.join(', ')}
 Notes: ${notes}`;
 
   function bindConfirm(){
-    const btnEmail = el('btnEmail'); const btnWA = el('btnWhatsApp');
-    const selDoc = el('selDoctor'); const fName=el('name'); const fAge=el('age');
-    const fType=el('type'); const fDate=el('date'); const fTime=el('selTime'); const fNotes=el('notes');
-    const getDoc=()=>DOCTORS.find(d=>d.id===selDoc.value)||DOCTORS[0];
-    const ok=()=>{ if(!fName.value.trim()){alert('Please enter patient name.');fName.focus();return false;}
-                   if(!fAge.value.trim()){alert('Please enter age.');fAge.focus();return false;}
-                   if(!fDate.value){alert('Please choose a date.');fDate.focus();return false;}
-                   if(!fTime.value){alert('Please choose a time.');fTime.focus();return false;}
-                   return true; };
-    btnEmail?.addEventListener('click',()=>{ if(!ok())return; const d=getDoc();
-      const txt=summaryText(d,fName.value.trim(),fAge.value.trim(),fType.value,fDate.value,fTime.value,fNotes.value.trim());
-      const subject=`Appointment: ${fType.value} | ${fName.value.trim()} | ${fDate.value} ${fTime.value}`;
-      window.open(`mailto:dr.dhivakaran@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(txt)}`,'_blank'); updateProgressBar(true); });
-    btnWA?.addEventListener('click',()=>{ if(!ok())return; const d=getDoc();
-      const txt=summaryText(d,fName.value.trim(),fAge.value.trim(),fType.value,fDate.value,fTime.value,fNotes.value.trim());
-      window.open(`https://wa.me/91861425342?text=${encodeURIComponent("Hello, I'd like to confirm an appointment.\n\n"+txt)}`,'_blank'); updateProgressBar(true); });
+    const btnEmail = el('btnEmail');
+    const btnWA    = el('btnWhatsApp');
+
+    const selDoc = el('selDoctor');
+    const fName  = el('name');
+    const fAge   = el('age');
+    const fType  = el('type');     // data-ndc="type" on #apptType
+    const fDate  = el('date');
+    const fTime  = el('selTime');
+    const fNotes = el('notes');
+
+    const getDoc = () => DOCTORS.find(d=>d.id === selDoc?.value) || DOCTORS[0];
+    const ok = () => {
+      if (!fName?.value.trim()){ alert('Please enter patient name.'); fName?.focus(); return false; }
+      if (!fAge?.value.trim()){  alert('Please enter age.');         fAge?.focus();  return false; }
+      if (!fDate?.value){        alert('Please choose a date.');     fDate?.focus(); return false; }
+      if (!fTime?.value){        alert('Please choose a time.');     fTime?.focus(); return false; }
+      return true;
+    };
+
+    btnEmail?.addEventListener('click', () => {
+      if (!ok()) return;
+      const d = getDoc();
+      const txt = summaryText(d, fName.value.trim(), fAge.value.trim(), fType?.value, fDate.value, fTime.value, fNotes?.value.trim() || '');
+      const subject = `Appointment: ${fType?.value} | ${fName.value.trim()} | ${fDate.value} ${fTime.value}`;
+      window.open(`mailto:dr.dhivakaran@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(txt)}`, '_blank');
+    });
+
+    btnWA?.addEventListener('click', () => {
+      if (!ok()) return;
+      const d = getDoc();
+      const txt = summaryText(d, fName.value.trim(), fAge.value.trim(), fType?.value, fDate.value, fTime.value, fNotes?.value.trim() || '');
+      window.open(`https://wa.me/91861425342?text=${encodeURIComponent("Hello, I'd like to confirm an appointment.\n\n"+txt)}`, '_blank');
+    });
   }
 
   function selectDoctor(id){
     const d = DOCTORS.find(x=>x.id===id) || DOCTORS[0];
-    fillDoctor(d); renderList(d.id);
-    const sel = el('selDoctor'); if (sel) sel.value=d.id;
-  }
-
-  // ---------- PROGRESS BAR (auto-detect) ----------
-  function updateProgressUI(step){
-    const horiz = Array.from(root.querySelectorAll('.ndc-step'));
-    const vert  = Array.from(root.querySelectorAll('.ndc-vstep'));
-    [...horiz, ...vert].forEach((node) => {
-      const siblings = node.parentElement.querySelectorAll(node.classList.contains('ndc-vstep') ? '.ndc-vstep' : '.ndc-step');
-      const idx = Array.from(siblings).indexOf(node);
-      node.classList.toggle('active', idx <= step - 1);
-    });
-  }
-  function getCurrentStep(){
-    const name = el('name')?.value.trim();
-    const age  = el('age')?.value.trim();
-    const date = el('date')?.value;
-    const time = el('selTime')?.value;
-    if (!name || !age) return 1;
-    if (!date || !time) return 2;
-    return 3;
-  }
-  // Wrapper used by other parts of the app
-  function updateProgressBar(forceComplete=false){
-    const step = forceComplete ? 3 : getCurrentStep();
-    updateProgressUI(step);
-  }
-  // Watch key inputs to keep progress in sync
-  function monitorAppointmentSteps(){
-    ['name','age','date','selTime','type','notes'].forEach(id=>{
-      const input = el(id);
-      input?.addEventListener('input', ()=> updateProgressBar());
-      input?.addEventListener('change', ()=> updateProgressBar());
-    });
-    updateProgressBar();
+    fillDoctor(d);
+    renderList(d.id);
+    const sel = el('selDoctor');
+    if (sel) sel.value = d.id;
   }
 
   // ---------- INIT ----------
@@ -413,16 +432,16 @@ Notes: ${notes}`;
     // Default date: today
     const d = el('date');
     if (d){
-      const today = new Date(); const yyyy=today.getFullYear();
+      const today = new Date();
+      const yyyy = today.getFullYear();
       const mm = String(today.getMonth()+1).padStart(2,'0');
       const dd = String(today.getDate()).padStart(2,'0');
       d.value = `${yyyy}-${mm}-${dd}`;
     }
-
-    monitorAppointmentSteps();
   }
   init();
 })();
+
 
 /* ---------- Treatments data + renderer (6 per page) ---------- */
 (() => {
