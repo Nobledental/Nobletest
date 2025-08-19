@@ -586,7 +586,7 @@ body.nav-open{ overflow:hidden; }
 
 /* ===== Noble Dental Care DOCTORS ===== */
 :root{
-  --ndc-bg:#f7f9ff;
+  --ndc-bg:#c0cae8e3;
   --ndc-ink:#111827;
   --ndc-sub:#334155;
   --ndc-slate:#64748b;
@@ -600,106 +600,106 @@ body.nav-open{ overflow:hidden; }
   --p-rose:#ffe9f2;
 
   /* Brand gradients */
-  --g-hero: linear-gradient(135deg,#a5b4fc 0%, #fbcfe8 50%, #6ee7b7 100%);
-  --g-card: linear-gradient(135deg,#E8F3FF,#FDF1FF 60%, #FFF7E8);
-  --g-chip: linear-gradient(135deg,#a5b4fc,#f0abfc);
+  --g-hero: linear-gradient(135deg,#556bcc 0%, #c25b95 50%, #5b78a3 100%);
+  --g-card: linear-gradient(135deg,#ffffff,#ffffff 60%, #ccc7c3);
+  --g-chip: linear-gradient(135deg,#bfc4de,#bfafc1);
 
   /* Buttons */
-  --btn-primary: linear-gradient(135deg,#818cf8,#a78bfa 40%, #f0abfc);
-  --btn-wa: linear-gradient(135deg,#22c55e,#86efac);
+  --btn-primary: linear-gradient(135deg,#5f6de4,#7a59dd 40%, #d962ed);
+  --btn-wa: linear-gradient(135deg,#77ffa9,#8ed1a6);
 
   /* Radii & shadows */
-  --r-lg:20px;
+  --r-lg:25px;
   --r-md:14px;
   --r-sm:10px;
 
-  --elev-1: 0 8px 22px rgba(20, 28, 60, .10);
+  --elev-1: 0 8px 22px rgb(227 228 232 / 10%);
   --elev-2: 0 12px 30px rgba(20, 28, 60, .16);
   --focus: 0 0 0 3px rgba(129,140,248,.35);
 }
 
-#ndc-doctors-app, .ndc-wrap{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ndc-ink);background:var(--ndc-bg)}
-.ndc-h1{font-size:clamp(20px,2.3vw,28px);margin:0 0 6px;background:var(--g-hero);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;letter-spacing:.2px}
-.ndc-h2{font-size:clamp(18px,1.9vw,22px);margin:0 0 10px;font-weight:800;color:#1f2a58}
-.ndc-h4{margin:0 0 10px;font-size:15px;color:#1f2a58}
+#ndc-doctors-app, .ndc-wrap{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#040405;background:#ffffffb8;}
+.ndc-h1{font-size:clamp(20px,5.3vw,30px);margin:0 0 10px;background:#f2f5ff;-webkit-background-clip:text;background-clip:text;color:#050508e6;font-weight:900;letter-spacing:.2px}
+.ndc-h2{font-size:clamp(22px,0.9vw,22px);margin:0 0 px;font-weight:700;color:#080a18}
+.ndc-h4{margin:0 0 0px;font-size:14px;color:#0f2da7}
 .ndc-sub{color:var(--ndc-slate);margin:0}
 
 /* Header */
-.ndc-head{max-width:1200px;margin:0 auto 14px;padding:6px 10px}
+.ndc-head{max-width:1250px;margin:0 auto 2px;padding:50px 120px}
 
 /* Grid */
 .ndc-wrap .ndc-grid{
-  max-width:1200px;margin:0 auto;display:grid;gap:18px;
-  grid-template-columns: 320px minmax(0,1fr) 360px;
-  align-items:start;padding:0 10px;
+  max-width:1350px;margin:0 auto;display:grid;gap:10px;
+  grid-template-columns: 450px minmax(0,1fr) 400px;
+  align-items:start;padding:0 0px;
 }
 @media (max-width:1100px){
   .ndc-wrap .ndc-grid{grid-template-columns:1fr;padding:0 12px}
 }
 
 /* Columns */
-.ndc-col{background:var(--g-card);border:1px solid #e6ebff;border-radius:var(--r-lg);box-shadow:var(--elev-1);padding:12px;transition:transform .2s ease, box-shadow .2s ease}
+.ndc-col{background:var(--g-card);border:1px solid #dadada6e;border-radius:var(--r-lg);box-shadow:var(--elev-1);padding:10px;transition:transform .2s ease, box-shadow .2s ease}
 .ndc-col:hover{transform:translateY(-2px);box-shadow:var(--elev-2)}
 
 /* Doctors List */
-.ndc-doc-list{display:flex;flex-direction:column;gap:10px}
+.ndc-doc-list{display:flex;flex-direction:column;gap:12px}
 .ndc-doc-card{
-  display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;
-  background:#fff;border:1px solid #e9e9ff;border-radius:var(--r-md);padding:8px;cursor:pointer;
+  display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;
+  background:#ffd8a899;border:1px solid #ffffff;border-radius:var(--r-md);padding:24.2px;cursor:pointer;
   transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
   position:relative;overflow:hidden;
 }
-.ndc-doc-card:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(90,120,255,.14)}
-.ndc-doc-card[aria-current="true"]{border-color:#a5b4fc;box-shadow:0 0 0 3px rgba(129,140,248,.25)}
+.ndc-doc-card:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgb(189 192 192 / 88%)}
+.ndc-doc-card[aria-current="true"]{border-color:#ffffff;box-shadow:0 0 0 3px rgb(233 233 226 / 65%)}
 .ndc-doc-main{min-width:0}
-.ndc-doc-name{margin:0;color:#0b1026;font-weight:800;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ndc-doc-role{margin:0;font-size:12.5px;color:#475569;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ndc-doc-name{margin:1;color:#091a1e;font-weight:700;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ndc-doc-role{margin:0;font-size:10px;color:#000203;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ndc-doc-right{display:flex;gap:6px;align-items:center}
-.ndc-badge{font-size:12px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:4px 8px}
+.ndc-badge{font-size:10px;background:#ffffff;border:1px solid #e5e7eb;border-radius:999px;padding:2px 5px}
 .ndc-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 
 /* About Card */
-.ndc-about-card{background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg);padding:12px}
+.ndc-about-card{background:#d7e1fda6;border:1px solid #efefef;border-radius:var(--r-lg);padding:12px}
 .ndc-about-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
-.ndc-about-id{display:flex;align-items:center;gap:10px}
+.ndc-about-id{display:flex;align-items:center;gap:30px}
 .ndc-doc-name{font-size:16px}
-.ndc-doc-role{font-size:13px}
-.ndc-rating{background:#fff;border:1px solid #e7e9ff;border-radius:999px;padding:4px 10px;font-weight:800}
-.ndc-meta{list-style:none;padding:0;margin:6px 0 10px;display:grid;gap:6px;font-size:13.5px;color:#111}
-.ndc-divider{height:1px;background:#eef2ff;margin:10px 0}
-.ndc-chips-block{margin-top:8px}
-.ndc-chip-title{font-size:12.5px;color:#1f2a58;font-weight:800;margin-bottom:6px}
-.ndc-chips{display:flex;flex-wrap:wrap;gap:8px}
+.ndc-doc-role{font-size:8px}
+.ndc-rating{background:#f9f9f9d9;border:1px solid #ffffff0d;border-radius:999px;padding:0px 0px;font-weight:500}
+.ndc-meta{list-style:none;padding:0;margin:3px 0 10px;display:grid;gap:3px;font-size:13.5px;color:#000000}
+.ndc-divider{height:.1px;background:#232529;margin:10px 0}
+.ndc-chips-block{margin-top:1px}
+.ndc-chip-title{font-size:12.5px;color:#2f2d9b;font-weight:800;margin-bottom:6px}
+.ndc-chips{display:flex;flex-wrap:wrap;gap:10px}
 .ndc-chip{
-  font-size:12.5px;background:#fff;border:1px solid #e7e9ff;border-radius:999px;padding:6px 10px;text-decoration:none;color:#111;
+  font-size:10.5px;background:#365190;border:1px solid #e7e9ff;border-radius:999px;padding:6px 10px;text-decoration:none;color:#111;
   transition:transform .15s ease, box-shadow .15s ease;
 }
 .ndc-chip:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(90,120,255,.14)}
-.ndc-chip--tel{background:var(--g-chip);color:#111;border:1px solid #dcd6ff}
+.ndc-chip--tel{background:var(--g-chip);color:#211d1d;border:1px solid #dcd6ff}
 
 /* Books */
 .ndc-books{display:none}
 .ndc-books.has-books{display:block}
-.ndc-book-grid{display:flex;flex-wrap:wrap;gap:10px}
+.ndc-book-grid{display:flex;flex-wrap:wrap;gap:8px}
 .ndc-book{
-  width:140px;background:#fff;border:1px solid #eee;border-radius:12px;padding:8px;text-align:center
+  width:220px;background:#fdfdfd;border:1px solid #ffffff;border-radius:12px;padding:2px;text-align:center
 }
-.ndc-book img{width:100%;height:170px;object-fit:cover;border-radius:8px}
-.ndc-book a{display:block;margin-top:6px;font-size:12.5px;color:#0b1026;font-weight:600;text-decoration:none}
-.ndc-book small{display:block;color:#64748b}
+.ndc-book img{width:100%;height:170px;object-fit:cover;border-radius:4px}
+.ndc-book a{display:block;margin-top:6px;font-size:12.5px;color:#060813;font-weight:600;text-decoration:none}
+.ndc-book small{display:block;color:#2d2f34}
 
 /* Profile Card */
-.ndc-profile-card{overflow:hidden;background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg)}
+.ndc-profile-card{overflow:hidden;background:#f5f5f5;border:1px solid #e7e9ff;border-radius:var(--r-lg)}
 .ndc-hero{position:relative;aspect-ratio:4/3;background:var(--g-hero)}
-.ndc-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;opacity:.95}
-.ndc-hero-badge{position:absolute;top:10px;right:10px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;font-weight:800}
-.ndc-hero-body{padding:12px}
-.ndc-hero-name{margin:0 0 4px;font-size:16px}
-.ndc-hero-sub{margin:0 0 10px;color:#475569;font-size:13.5px}
-.ndc-hero-actions{display:flex;gap:8px}
-.ndc-btn .i{width:18px;height:18px;fill:currentColor}
-.ndc-btn--tonal{background:#f1f5f9;color:#111}
-.ndc-btn--tonal:hover{background:#e2e8f0}
+.ndc-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;opacity:.65}
+.ndc-hero-badge{position:absolute;top:10px;right:10px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:1px 5px;font-weight:500}
+.ndc-hero-body{padding:30px}
+.ndc-hero-name{margin:0 0 4px;font-size:18px}
+.ndc-hero-sub{margin:0 0 10px;color:#141516;font-size:13.5px}
+.ndc-hero-actions{display:flex;gap:18px}
+.ndc-btn .i{width:20px;height:20px;fill:currentColor}
+.ndc-btn--tonal{background:#cbe2f9;color:#413737}
+.ndc-btn--tonal:hover{background:#91b3e1}
 .ndc-btn--primary{background:var(--btn-primary);color:#fff}
 .ndc-btn--primary:hover{filter:brightness(1.05)}
 /* ripple-like hover */
@@ -710,18 +710,19 @@ body.nav-open{ overflow:hidden; }
 .ndc-btn:active::after{width:220%;height:220%;opacity:1}
 
 /* Care Team */
-.ndc-care{max-width:1200px;margin:18px auto 0;padding:0 10px}
-.ndc-care-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.ndc-care{max-width:1400px;margin:0px auto 1px;padding:30 10px}
+.ndc-care-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 @media (max-width:900px){.ndc-care-grid{grid-template-columns:1fr}}
-.ndc-care-card{background:#fff;border:1px solid #e7e9ff;border-radius:var(--r-lg);padding:12px;box-shadow:var(--elev-1)}
+.ndc-care-card{background:#efeaea73;border:1px solid #dddddde8;border-radius:var(--r-lg);padding:12px;box-shadow:var(--elev-1)}
 .ndc-care-top{display:flex;justify-content:space-between;align-items:start;gap:12px}
-.ndc-care-name{margin:0;font-size:15px}
-.ndc-care-role{margin:0;color:#475569;font-size:13px}
-.ndc-care-tag{background:#eef2ff;border:1px solid #e7e9ff;border-radius:999px;padding:4px 8px;font-size:12px}
-.ndc-care-text{margin:8px 0 10px;color:#111;font-size:13.5px}
+.ndc-care-name{margin:0;font-size:22px}
+.ndc-care-role{margin:0;color:#eec212;font-size:18px}
+.ndc-care-tag{background:#fbf3f3;border:1px solid #e0dada;border-radius:999px;padding:4px 8px;font-size:12px}
+.ndc-care-text{margin:8px 0 10px;color:#413e3e;font-size:15.5px}
+
 
 /* ---------- Appointment: New Layout & Look ---------- */
-.ndc-appt-form{margin-top:12px;background:transparent;padding:0;border:none;box-shadow:none}
+.ndc-appt-form{margin-top:10px;background:#070707fa;padding:0;border:none;box-shadow:none}
 .ndc-appt-layout{
   display:grid;grid-template-columns:1.1fr .9fr;gap:14px;
 }
@@ -729,13 +730,13 @@ body.nav-open{ overflow:hidden; }
 
 .ndc-card{
   background:var(--p-mint);
-  border:1px solid #cfeae0;
+  border:1px solid #adf0d7;
   border-radius:var(--r-lg);
   padding:14px;
   box-shadow:var(--elev-2);
   animation:ndcFadeIn .35s ease;
 }
-.ndc-card--time{background:var(--p-sky);border-color:#cfe0ff}
+.ndc-card--time{background:var(--p-sky);border-color:#c9dbfb}
 .ndc-card-title{
   margin:0 0 10px;font-size:14px;font-weight:800;color:#1f2a58;
 }
@@ -1468,7 +1469,7 @@ body.nav-open{ overflow:hidden; }
 }
 .ndc-btn:active::after{
   content:""; position:absolute; left:50%; top:50%; width:0; height:0; transform:translate(-50%,-50%);
-  background:rgba(255,255,255,.35); border-radius:999px; animation: ndcRipple .5s ease forwards;
+  background:rgb(255 255 255 / 35%); border-radius:999px; animation: ndcRipple .5s ease forwards;
 }
 .ndc-btn--primary{ background: var(--btn-primary); color:#fff; }
 .ndc-btn--wa{ background: var(--btn-wa); color:#0a3319; }
@@ -1530,3 +1531,4 @@ body.nav-open{ overflow:hidden; }
 .ndc-footer__cta .ndc-btn--whatsapp{ --bg:#25D366; }
 .ndc-footer__cta .ndc-btn--call{ --bg:#0ea5a3; }
 .ndc-footer__cta .ndc-btn--map{ --bg:#6e8bff; }
+
