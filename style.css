@@ -34,7 +34,8 @@
   --curve: cubic-bezier(.2,.8,.2,1);
 
   /* Focus ring */
-  --focus: 2px solid #7dd3fc;
+  --focus-outline: 2px solid #7dd3fc;                 /* for outline */
+  --focus-ring:     0 0 0 3px rgba(13,148,136,.30);   /* for box-shadow rings */
 }
 
 /* Base / reset */
@@ -54,7 +55,7 @@ a{ text-decoration:none; color:inherit; }
 a:focus-visible,
 button:focus-visible,
 [role="button"]:focus-visible{
-  outline: var(--focus);
+  outline: var(--focus-outline);
   outline-offset: 2px;
   border-radius: 10px;
 }
@@ -644,7 +645,7 @@ body.nav-open{ overflow:hidden; }
   --r-lg:25px; --r-md:14px; --r-sm:10px;
   --elev-1: 0 8px 22px rgb(17 24 39 / 10%);
   --elev-2: 0 12px 30px rgba(17, 24, 39, .16);
-  --focus:  0 0 0 3px rgba(13,148,136,.30);
+  --focus-ring: 0 0 0 3px rgba(13,148,136,.30);
   --section-gap:72px;
   --band-pad-y:52px;
   --band-radius:22px;
@@ -844,7 +845,7 @@ body{
 .ndc-btn--tonal:hover{background:#CDE8FF}
 .ndc-btn--primary{background:var(--btn-primary);color:#fff}
 .ndc-btn--primary:hover{filter:brightness(1.05)}
-.ndc-btn:focus-visible{outline:var(--focus);outline-offset:2px}
+.ndc-btn:focus-visible{outline:0; box-shadow:var(--focus-ring)}
 .ndc-btn::after{content:"";position:absolute;left:50%;top:50%;width:0;height:0;transform:translate(-50%,-50%);background:rgba(255,255,255,.35);border-radius:999px;transition:width .35s ease,height .35s ease,opacity .45s ease;opacity:0}
 .ndc-btn:active::after{width:220%;height:220%;opacity:1}
 
@@ -888,7 +889,7 @@ body{
   background:#fff;border:1px solid #e2e8f0;border-radius:12px;outline:none;
   padding:13px 12px 11px;transition:border .2s ease, box-shadow .2s ease, transform .08s ease;
 }
-.ndc-appt-form input:focus,.ndc-appt-form select:focus,.ndc-appt-form textarea:focus{border-color:var(--teal-600);box-shadow:var(--focus)}
+.ndc-appt-form input:focus,.ndc-appt-form select:focus,.ndc-appt-form textarea:focus{border-color:var(--teal-600);box-shadow:var(--focus-ring)}
 .ndc-appt-form input:active,.ndc-appt-form select:active,.ndc-appt-form textarea:active{transform:scale(.998)}
 .ndc-field input:focus + label,
 .ndc-field input:not(:placeholder-shown) + label,
@@ -1084,6 +1085,8 @@ body{
   filter: blur(16px); opacity:.86;
   transition: filter .6s var(--curve), opacity .6s var(--curve), transform .4s var(--curve);
   background-image: attr(data-lqip url); background-size:cover; background-position:center;
+  background-image: none; /* attr() not supported in bg-image; JS can swap in a real URL */
+  background-size:cover; background-position:center;
 }
 .nd-hero-img.is-loaded{ filter:blur(0); opacity:1; background-image:none; }
 .nd-hero-img:hover{ transform: scale(1.02); }
@@ -1526,7 +1529,6 @@ body{
 .ndc-footer__cta .ndc-btn--whatsapp{ --bg:#25D366; }
 .ndc-footer__cta .ndc-btn--call{ --bg:#0ea5a3; }
 .ndc-footer__cta .ndc-btn--map{ --bg:#6e8bff; }
-
 
 
 
