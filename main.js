@@ -315,8 +315,8 @@
     const sel   = el('selTime');
     if (!rWrap || !eWrap || !sel) return;
 
-    const slotsRegular  = labelsEvery30min(11,22,false);  // 11:00 → 22:00
-    const slotsEmergency= labelsEvery30min(22,2,true);    // 22:00 → 02:00 (wrap)
+   const slotsRegular  = labelsEvery30min(11,22,false);     // 11:00 → 22:00
+   const slotsEmergency= labelsEvery30min(22,2,true).slice(1); // drop 22:00 duplicate
 
     const make = (wrap, arr) => {
       wrap.innerHTML = '';
