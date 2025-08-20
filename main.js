@@ -158,16 +158,15 @@
   applyMotionPref();
 })();
 
-/* ---------- Doctors + About + Appointment (scoped + cleaned) ---------- */
+/* ---------- Doctors + About + Appointment (clean, no overrides) ---------- */
 (() => {
   const $  = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
-  // Scope for the Doctors/About/Profile area only
+  // Scope for the Doctors/About/Profile area
   const root = document.getElementById('ndc-doctors-app');
   if (!root) return;
 
-  // Scoped (Doctors section) and Global (whole page) helpers
   const elR = (id) => root.querySelector(`[data-ndc="${id}"]`);       // inside #ndc-doctors-app
   const el  = (id) => document.querySelector(`[data-ndc="${id}"]`);   // anywhere on the page
 
@@ -184,7 +183,7 @@
       consultation:["Walk-in","Appointment Booking","Tele-consultation"],
       cities:["Hyderabad","Bangalore","Chennai","Madurai"],
       books:[{title:"Triumph’s Complete Review of Dentistry (2 Vol Set), Ed. 1",cover:BOOK_COVER,link:"https://play.google.com/store/books/details/Triumph_s_Complete_Review_of_Dentistry?id=ZTjvDwAAQBAJ&hl=en_US&pli=1",publisher:"Wolters Kluwer · Oct 2018"}],
-      avatar:"https://i.imgur.com/1X5v8X2.png"},
+      avatar:"https://picsum.photos/seed/d1/96"},
     { id:"roger", name:"Dr Roger Ronaldo", rating:4.8,
       specialty:"Consultant Oral & Maxillofacial Surgeon — Implantology, Facial Reconstruction",
       expertise:["Implantology","Orthognathic & Reconstruction","Trauma Surgery"],
@@ -193,35 +192,35 @@
       consultation:["Appointment Booking","Tele-consultation"],
       cities:["Hyderabad","Bangalore","Chennai"],
       books:[{title:"Triumph’s Complete Review of Dentistry (2 Vol Set), Ed. 1",cover:BOOK_COVER,link:"https://play.google.com/store/books/details/Triumph_s_Complete_Review_of_Dentistry?id=ZTjvDwAAQBAJ&hl=en_US&pli=1",publisher:"Wolters Kluwer · Oct 2018"}],
-      avatar:"https://i.imgur.com/7M2Qm1W.png"},
+      avatar:"https://picsum.photos/seed/d2/96"},
     { id:"thikvijay", name:"Dr Thik Vijay", rating:4.6,
       specialty:"FMC., (Germany) — Trichology, Aesthetic & Medical Cosmetology (ISHR)",
       expertise:["Trichology","Aesthetic & Medical Cosmetology","Hair & Scalp Restoration"],
       experience:{startYear:CURRENT_YEAR-11},
       phones:["8610425342","8074512305"],
       consultation:["Appointment Booking","Tele-consultation"],
-      cities:["Chennai","Hyderabad"], books:[], avatar:"https://i.imgur.com/y6w2m8a.png"},
+      cities:["Chennai","Hyderabad"], books:[], avatar:"https://picsum.photos/seed/d3/96"},
     { id:"deepak", name:"Dr Deepak", rating:4.7,
       specialty:"Orthodontist (Assistant Professor)",
       expertise:["Orthodontics","Smile Design & Aligners","Complex Malocclusion"],
       experience:{startYear:CURRENT_YEAR-10},
       phones:["8610425342","8074512305"],
       consultation:["Appointment Booking","Tele-consultation"],
-      cities:["Chennai","Hyderabad","Andhra"], books:[], avatar:"https://i.imgur.com/1X5v8X2.png"},
+      cities:["Chennai","Hyderabad","Andhra"], books:[], avatar:"https://picsum.photos/seed/d4/96"},
     { id:"manoj", name:"Dr Manoj Reddy", rating:4.5,
       specialty:"Oral & Maxillofacial Surgeon — Implantology",
       expertise:["Dental Implants","Maxillofacial Surgery","Full-mouth Rehab"],
       experience:{startYear:CURRENT_YEAR-9},
       phones:["8610425342","8074512305"],
       consultation:["Appointment Booking","Tele-consultation"],
-      cities:["Hyderabad","Andhra Pradesh","Chennai"], books:[], avatar:"https://i.imgur.com/7M2Qm1W.png"},
+      cities:["Hyderabad","Andhra Pradesh","Chennai"], books:[], avatar:"https://picsum.photos/seed/d5/96"},
     { id:"idhaya", name:"Dr Idhaya", rating:4.4,
       specialty:"· CEO - Healthflo · Health Insurance · Medical Tourism",
       expertise:["Preventive Dentistry","Insurance Advisory","Tourism Coordination"],
       experience:{startYear:CURRENT_YEAR-8},
       phones:["8610425342","8074512305"],
       consultation:["Tele-consultation"],
-      cities:["Bangalore","Chennai","Hyderabad"], books:[], avatar:"https://i.imgur.com/y6w2m8a.png"}
+      cities:["Bangalore","Chennai","Hyderabad"], books:[], avatar:"https://picsum.photos/seed/d6/96"}
   ];
 
   // ---------- UTIL ----------
@@ -258,9 +257,8 @@
     });
   }
 
-  // ---------- FILL ABOUT + PROFILE (center + right columns) ----------
+  // ---------- FILL ABOUT + PROFILE (center + right) ----------
   function fillDoctor(d){
-    // About (scoped under root)
     elR('aboutAvatar')?.setAttribute('src', d.avatar);
     const an = elR('aboutName');         if (an) an.textContent = d.name;
     const as = elR('aboutSpecialty');    if (as) as.textContent = d.specialty;
@@ -290,13 +288,11 @@
       }
     }
 
-    // Profile (scoped under root)
     elR('heroImg')?.setAttribute('src', d.avatar);
     const hr = elR('heroRating'); if (hr) hr.textContent = `★ ${d.rating.toFixed(1)}`;
     const hn = elR('heroName');   if (hn) hn.textContent = d.name;
     const hs = elR('heroSpecialty'); if (hs) hs.textContent = d.specialty;
 
-    // Call button (scoped)
     const callBtn = elR('btnCall');
     if (callBtn) callBtn.href = `tel:${d.phones[0].replace(/\s+/g,'')}`;
   }
@@ -340,7 +336,6 @@
     make(rWrap, slotsRegular);
     make(eWrap, slotsEmergency);
 
-    // Build the <select>
     sel.innerHTML = '';
     [...slotsRegular, ...slotsEmergency].forEach(lbl=>{
       const o = document.createElement('option');
@@ -353,7 +348,7 @@
 
   // ---------- SELECT & CONFIRM ----------
   function renderDoctorSelect(activeId){
-    const sel = el('selDoctor'); // global (inside appointment section)
+    const sel = el('selDoctor'); // inside appointment section
     if (!sel) return;
     sel.innerHTML = '';
     DOCTORS.forEach(d=>{
@@ -383,7 +378,7 @@ Notes: ${notes}`;
     const selDoc = el('selDoctor');
     const fName  = el('name');
     const fAge   = el('age');
-    const fType  = el('type');     // data-ndc="type" on #apptType
+    const fType  = el('type');
     const fDate  = el('date');
     const fTime  = el('selTime');
     const fNotes = el('notes');
@@ -441,7 +436,6 @@ Notes: ${notes}`;
   }
   init();
 })();
-
 
 /* ---------- Treatments data + renderer (6 per page) ---------- */
 (() => {
