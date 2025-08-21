@@ -1530,6 +1530,7 @@ body{
 .ndc-footer__cta .ndc-btn--call{ --bg:#0ea5a3; }
 .ndc-footer__cta .ndc-btn--map{ --bg:#6e8bff; }
 
+<style>
   /* minimal shim so the toggle is visibly effective even if your CSS is media-query based */
   :root{--bg:#fff;--fg:#0b0e14}
   @media (prefers-color-scheme: dark){ :root{--bg:#0b0e14;--fg:#e6edf3} }
@@ -1541,45 +1542,6 @@ body{
   @media (prefers-color-scheme: dark){
     .theme-toggle{ background:#12161d; color:#e6edf3; border-color:#ffffff22 }
   }
-
-/* ======================= NDC: CLS + TESTIMONIALS PATCH ======================= */
-
-/* 1) Header CLS: keep brand/nav from reflowing during webfont swap */
-.brand .brand-title{
-  display:inline-block;
-  min-width:160px;           /* reserve width so Inter swap doesn't push nav */
-  min-height:24px;           /* reserve line box */
-  font-size-adjust:.52;      /* keep fallback font visually similar to Inter */
-}
-.nav-pill{ white-space:nowrap; }      /* prevent wrap jump */
-.nav-pill a{ font-size-adjust:.50; }  /* closer fallback metrics */
-
-/* 2) FAQ media CLS: reserve caption & badges height so the image load can't push */
-.nd-media-card figcaption{ min-height:48px; }
-.nd-media-badges{ min-height:36px; }
-
-/* 3) Testimonials: convert to static grid (no scrolling/snap), hide nav */
-.ndt-tsl-viewport{
-  overflow:visible;           /* allow content to size normally */
-  border-radius:0;
-}
-#ndtTslTrack{
-  display:grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--tsl-gap);
-  padding: 8px 0;
-  transform: none !important; /* neutralize any slider transform */
-}
-.ndt-tsl-card{
-  flex: initial !important;   /* kill slider sizing */
-  width:auto !important;
-  min-width:0 !important;     /* override inline min/max widths in HTML */
-  max-width:none !important;
-  height:auto;                /* let cards grow with content */
-  min-height: var(--tsl-card-h);
-}
-
-/* hide scroll buttons entirely */
-.ndt-tsl-navwrap, .ndt-tsl-nav{ display:none !important; }
+</style>
 
 
