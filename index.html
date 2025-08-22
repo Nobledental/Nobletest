@@ -129,6 +129,7 @@
   }
   </script>
 
+  
   <!-- Breadcrumbs -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList",
@@ -178,6 +179,16 @@
       <img src="images/dentalcare.nallagandla.png" alt="Noble Dental Clinic - Nallagandla logo" />
       <p class="brand-title"><span>Noble</span> Dental Care</p>
     </a>
+    
+    <script>
+  // Toggle the compact header on scroll
+  addEventListener('scroll', () => {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
+    if (window.scrollY > 12) header.classList.add('elevated');
+    else header.classList.remove('elevated');
+  }, { passive: true });
+</script>
 
     <!-- Nav (desktop pill / mobile drawer) -->
     <nav class="main-nav" aria-label="Primary">
@@ -1319,12 +1330,32 @@
   </section>
 
   <!-- Compliance & Quality badges -->
-  <section class="ndc-compliance">
-    <div class="ndc-container">
-      <p class="ndc-compliance__title">We align our protocols with</p>
-      <ul class="ndc-badges" aria-label="Clinical & regulatory bodies">
-        <li>IDA</li><li>WHO</li><li>ADA</li><li>ICMR</li><li>CDC</li><li>IRDAI</li><li>NHI</li><li>CDSCO</li><li>MCA</li><li>FDA</li>
-      </ul>
+<section class="ndc-protocols">
+  <p class="ndc-protocols__title">We align our protocols with</p>
+  <div class="proto-row">
+    <!-- Existing bodies -->
+    <a class="proto-link" href="https://www.ida.org.in/" target="_blank" rel="noopener">IDA</a>
+    <a class="proto-link" href="https://www.who.int/" target="_blank" rel="noopener">WHO</a>
+    <a class="proto-link" href="https://www.ada.org/" target="_blank" rel="noopener">ADA</a>
+    <a class="proto-link" href="https://www.icmr.gov.in/" target="_blank" rel="noopener">ICMR</a>
+    <a class="proto-link" href="https://www.cdc.gov/" target="_blank" rel="noopener">CDC</a>
+    <a class="proto-link" href="https://irdai.gov.in/" target="_blank" rel="noopener">IRDAI</a>
+    <a class="proto-link" href="#" target="_blank" rel="noopener">NHI</a> <!-- replace with official link if needed -->
+    <a class="proto-link" href="https://cdsco.gov.in/" target="_blank" rel="noopener">CDSCO</a>
+    <a class="proto-link" href="https://www.mca.gov.in/" target="_blank" rel="noopener">MCA</a>
+    <a class="proto-link" href="https://www.fda.gov/" target="_blank" rel="noopener">FDA</a>
+
+    <!-- Newly added as requested -->
+    <a class="proto-link" href="https://www.mohfw.gov.in/" target="_blank" rel="noopener">Ministry of Health &amp; Family Welfare (MoHFW)</a>
+    <a class="proto-link" href="https://nha.gov.in/" target="_blank" rel="noopener">National Health Authority (NHA)</a>
+    <a class="proto-link" href="https://pmjay.gov.in/" target="_blank" rel="noopener">PM-JAY</a>
+    <a class="proto-link" href="https://www.esic.gov.in/" target="_blank" rel="noopener">ESIC</a>
+    <a class="proto-link" href="https://cghs.gov.in/" target="_blank" rel="noopener">CGHS</a>
+  </div>
+</section>
+
+      
+      
       <p class="ndc-ai">
         We continuously optimize patient education and discovery using advancements, updates at Internal standards to reduce, promote the prevanlance of preventable dental illness, Inspire Next Generation to adapt a enriched lifestyle where the value of selfcare is emphasised.
       </p>
