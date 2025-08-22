@@ -16,8 +16,15 @@
   <meta name="author" content="Noble Dental Care — Nallagandla" />
   <meta name="google-site-verification" content="coO5jvSypAc95p3t7cWWDaTsqtjt-W2bK3ybS21ZsIc" />
   
-  <meta http-equiv="Content-Security-Policy"
-      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; script-src 'self' https://unpkg.com https://www.googletagmanager.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https:; frame-src https://www.googletagmanager.com;">
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               img-src 'self' data: https:;
+               style-src 'self' https://fonts.googleapis.com https://unpkg.com 'unsafe-inline';
+               script-src 'self' https://unpkg.com https://www.googletagmanager.com 'unsafe-inline';
+               font-src 'self' https://fonts.gstatic.com https://unpkg.com data:;
+               connect-src 'self' https:;
+               frame-src https://www.googletagmanager.com;">
+
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy"
       content="camera=(), microphone=(), geolocation=(self), payment=(), interest-cohort=()">
@@ -49,7 +56,7 @@
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
   
   <!-- Icons & AOS -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
@@ -1389,7 +1396,7 @@
   const TREATMENTS = [
     // Tooth Alignment
     {id:'braces', title:'Braces & Aligners', category:'Tooth Alignment',
-      keywords:''braces, aligners, orthodontist, crooked teeth, alingment, irregular teeth, gaps, gaps between tooth, gaps between teeth, bite alignment, metal braces Nallagandla, ceramic braces Hyderabad',
+      keywords:'braces, aligners, orthodontist, crooked teeth, alingment, irregular teeth, gaps, gaps between tooth, gaps between teeth, bite alignment, metal braces Nallagandla, ceramic braces Hyderabad',
       desc:'Metal braces and clear aligners (including certified Invisalign) for a confident, aligned smile. Our expert orthodontists at Noble Dental Care use customized metal and discreet ceramic braces to correct crooked teeth, spacing issues, and improve your bite. Consult our top-rated specialists in Nallagandla for a beautifully aligned smile that lasts.',
       url:'/specialities/braces.html', img:'https://via.placeholder.com/800x500?text=Braces+%26+Aligners'},
     {id:'invisalign', title:'Invisalign / Clear Aligners', category:'Tooth Alignment',
@@ -1922,4 +1929,3 @@
 <script src="/main.js" defer></script>
 </body>
 </html>
-
