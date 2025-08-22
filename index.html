@@ -1080,6 +1080,87 @@
     <button class="ndt-tsl-nav prev" aria-label="Previous testimonials" id="ndtTslPrev" type="button">‹</button>
     <button class="ndt-tsl-nav next" aria-label="Next testimonials" id="ndtTslNext" type="button">›</button>
   </div>
+  
+  <script>
+(function(){
+  // Find viewport & track
+  const viewport = document.querySelector('.ndt-tsl-viewport');
+  const track    = document.querySelector('.ndt-tsl-track');
+  if(!viewport || !track) return;
+
+  // Collect slides
+  const slides = Array.from(track.children).filter(n => n.classList.contains('ndt-tsl-card'));
+  const ORIGINAL_COUNT = slides.length;
+  if(ORIGINAL_COUNT === 0) return;
+
+  // Clone the first few slides to enable seamless looping
+  const clonesToMake = Math.min(3, ORIGINAL_COUNT);
+  for(let i=0;i<clonesToMake;i++){
+    track.appendChild(slides[i].cloneNode(true));
+  }
+
+  // Measurements
+  let step = 0, index = 0, gap = 18, timer = null, speed = 3800; // ms per slide
+
+  function measure(){
+    const first = track.querySelector('.ndt-tsl-card');
+    if(!first) return;
+    const cs = getComputedStyle(track);
+    gap = parseFloat(cs.gap || '18') || 18;
+    step = first.getBoundingClientRect().width + gap;
+    // snap back to nearest step on resize
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${-index * step}px)`;
+    // force reflow then restore transition
+    requestAnimationFrame(()=>{ track.style.transition = 'transform 600ms ease'; });
+  }
+
+  function goNext(){
+    index++;
+    track.style.transition = 'transform 600ms ease';
+    track.style.transform  = `translateX(${-index * step}px)`;
+
+    // When we've just slid into the first clone, snap back to real slide 0
+    if(index >= ORIGINAL_COUNT){
+      track.addEventListener('transitionend', resetIfNeeded, { once:true });
+    }
+  }
+
+  function resetIfNeeded(){
+    if(index >= ORIGINAL_COUNT){
+      index = 0;
+      track.style.transition = 'none';
+      track.style.transform  = `translateX(0px)`;
+      // ensure next tick has transition again
+      requestAnimationFrame(()=>{ track.style.transition = 'transform 600ms ease'; });
+    }
+  }
+
+  function start(){
+    if(timer) return;
+    timer = setInterval(goNext, speed);
+    viewport.classList.remove('is-paused');
+  }
+  function stop(){
+    clearInterval(timer); timer = null;
+    viewport.classList.add('is-paused');
+  }
+
+  // Pause on hover / resume on leave (also works on touchstart)
+  viewport.addEventListener('mouseenter', stop);
+  viewport.addEventListener('mouseleave', start);
+  viewport.addEventListener('touchstart', stop, {passive:true});
+  viewport.addEventListener('touchend',   start, {passive:true});
+
+  // Recalculate on resize
+  window.addEventListener('resize', measure);
+
+  // Initial
+  measure();
+  start();
+})();
+</script>
+
 
   <!-- LocalBusiness + Review schema (SEO) -->
   <script type="application/ld+json">
