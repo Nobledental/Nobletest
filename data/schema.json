@@ -1,0 +1,24 @@
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Organization",
+      "name":"Noble Dental Care - Nallagandla",
+      "url":"https://nobledentalnallagandla.in/",
+      "logo":"https://nobledentalnallagandla.in/images/logo.png"
+    },
+    {
+      "@type":"Dentist",
+      "name":"Noble Dental Care - Nallagandla",
+      "telephone":"+918610425342",
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"Nallagandla Main Road",
+        "addressLocality":"Hyderabad",
+        "addressRegion":"Telangana",
+        "postalCode":"500019",
+        "addressCountry":"IN"
+      }
+    }
+  ]
+}
