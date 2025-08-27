@@ -65,8 +65,7 @@
   <!-- Preload critical media (avoid preloading large MP4 to protect LCP) -->
   <link rel="preload" as="image" href="/images/hero-poster.jpg" fetchpriority="high">
   
-  <link rel="stylesheet" href="/assets/style.css">
-  <script src="/assets/main.js" defer></script>
+  <link rel="stylesheet" href="/assets/site.css">
 
   <!-- ===================== Structured Data ===================== -->
 
@@ -207,9 +206,18 @@
     })(window,document,'script','dataLayer','GTM-N7LJVS7T');
   </script>
 </head>
-<body>
+<body class="theme-voka">
   <a class="visually-hidden" href="#main">Skip to content</a>
 
+  <script>
+  const body = document.body;
+  if (body.classList.contains('theme-voka')) {
+    body.setAttribute('data-mode',
+      matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    );
+  }
+</script>
+  
   <!-- Google Tag Manager (noscript) -->
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7LJVS7T"
@@ -318,921 +326,664 @@
     <div class="scroll-down" aria-hidden="true"></div>
   </section>
 
-<!-- ===== Answer-engine intro (succinct bullets) ===== -->
-<main id="main" role="main">
-  <section class="band" aria-label="Quick reasons to choose us">
-    <div>
-      <h2 class="section-title">Top Reasons Patients Choose Noble Dental Care</h2>
-      <p class="section-sub">
-        Clear answers. Specialist treatments. Ethical recommendations. Protocols aligned with IDA, ADA, WHO &amp; ICMR, tuned for Hyderabad.
-      </p>
-      <ul role="list" class="reason-grid">
-        <li class="chip">Painless Root Canals (RVG + Apex)</li>
-        <li class="chip">Dental Implants (Digital Planning)</li>
-        <li class="chip">Braces &amp; Clear Aligners</li>
-        <li class="chip">Wisdom Tooth Extractions</li>
-        <li class="chip">Kids Dentistry &amp; Sealants</li>
-        <li class="chip">Gum Treatment &amp; Laser Dentistry</li>
-        <li class="chip">Teeth Whitening &amp; Veneers</li>
-        <li class="chip">Emergency Care (10 PM–2 AM)</li>
-        <li class="chip">Insurance Coordination Support</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Lightweight site search fallback (AEO/LLMO) -->
-  <section class="band" aria-label="Site search">
-    <form action="/search" method="get" role="search" aria-label="Search site" class="site-search">
-      <label class="visually-hidden" for="q">Search</label>
-      <input id="q" name="q" type="search" placeholder="Search services, symptoms, doctors…" autocomplete="off" inputmode="search" />
-      <button class="btn primary" type="submit" aria-label="Search">
-        <i class='bx bx-search' aria-hidden="true"></i> Search
-      </button>
-    </form>
-  </section>
-</main>
-
-<!-- ========================= CONDITIONS GRID ========================= -->
-<div class="conditions-grid">
-  <!-- Toothache -->
-  <article class="condition-card" id="cond-toothache">
-    <h3>Toothache / Sensitivity</h3>
-    <p class="muted">Sharp or lingering pain with hot/cold often means decay, cracked tooth, or exposed dentin.</p>
-    <ul>
-      <li><strong>Do now:</strong> Rinse warm salt water; OTC pain relief if safe; avoid extremes.</li>
-      <li><strong>Likely care:</strong> Filling or <a href="#svc-rct">Root Canal</a>, desensitizer, or crown.</li>
-    </ul>
-    <div class="t-actions">
-      <a class="t-btn" href="/specialities/fillings.html"><i class='bx bx-band-aid'></i> Fillings</a>
-      <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-      <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-    </div>
-  </article>
-
-  <!-- Swelling -->
-  <article class="condition-card" id="cond-swelling">
-    <h3>Facial Swelling / Gum Boil</h3>
-    <p class="muted">May indicate spreading infection (abscess). Needs urgent evaluation.</p>
-    <ul>
-      <li><strong>Do now:</strong> Cold compress outside; do <em>not</em> apply heat.</li>
-      <li><strong>Likely care:</strong> <a href="#svc-rct">RCT</a> or extraction + antibiotics if indicated.</li>
-    </ul>
-    <div class="t-actions">
-      <a class="t-btn" href="/specialities/emergency.html"><i class='bx bx-time-five'></i> Emergency</a>
-      <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-    </div>
-  </article>
-
-  <!-- Wisdom tooth -->
-  <article class="condition-card" id="cond-wisdom">
-    <h3>Wisdom Tooth Pain</h3>
-    <p class="muted">Impacted third molars can trap food and cause gum infection (pericoronitis).</p>
-    <ul>
-      <li><strong>Do now:</strong> Warm saltwater rinses; gentle brushing.</li>
-      <li><strong>Likely care:</strong> <a href="#svc-wisdom">Surgical extraction</a> + irrigation.</li>
-    </ul>
-    <div class="t-actions">
-      <a class="t-btn" href="/specialities/extraction.html"><i class='bx bx-scatter-chart'></i> Extractions</a>
-      <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-    </div>
-  </article>
-
-  <!-- Bleeding gums -->
-  <article class="condition-card" id="cond-bleeding">
-    <h3>Bleeding Gums / Bad Breath</h3>
-    <p class="muted">Common in gingivitis/periodontitis. Often painless, but progressive.</p>
-    <ul>
-      <li><strong>Do now:</strong> Brush 2×/day with fluoride paste; floss/interdental brush daily.</li>
-      <li><strong>Likely care:</strong> <a href="#svc-scaling">Scaling</a> ± deep cleaning; <a href="#svc-gum">Gum therapy</a>.</li>
-    </ul>
-    <div class="t-actions">
-      <a class="t-btn" href="/specialities/scaling-whitening.html"><i class='bx bx-check-shield'></i> Scaling</a>
-      <a class="t-btn" href="/specialities/gum-surgeries.html"><i class='bx bx-detail'></i> Periodontics</a>
-    </div>
-  </article>
-
-  <!-- Missing tooth -->
-  <article class="condition-card" id="cond-missing">
-    <h3>Missing Tooth / Loose Denture</h3>
-    <p class="muted">Bone shrinks over time; early replacement preserves bite & looks.</p>
-    <ul>
-      <li><strong>Options:</strong> <a href="#svc-implants">Implant</a>, <a href="#svc-crowns">Bridge</a>, or <a href="#svc-dentures">Denture</a>.</li>
-    </ul>
-    <div class="t-actions">
-      <a class="t-btn" href="/specialities/implants.html"><i class='bx bx-cuboid'></i> Implants</a>
-      <a class="t-btn" href="/specialities/crowns-bridges.html"><i class='bx bx-layer'></i> Crowns/Bridges</a>
-    </div>
-  </article>
-
-  <!-- Crooked teeth -->
-  <article class="condition-card" id="cond-crooked">
-    <h3>Crooked / Spaced Teeth</h3>
-    <p class="muted">Alignment improves hygiene, bite, and confidence.</p>
-    <ul>
-      <li><strong>Care:</strong> Braces (metal/ceramic) or clear aligners (Invisalign).</li>
-    </ul>
-    <div class="t-actions">
-      <a class="t-btn" href="/specialities/braces.html"><i class='bx bx-chevrons-right'></i> Braces</a>
-      <a class="t-btn" href="/specialities/invisalign.html"><i class='bx bx-grid-alt'></i> Clear Aligners</a>
-    </div>
-  </article>
-
-  <!-- TMJ -->
-  <article class="condition-card" id="cond-tmj">
-    <h3>Jaw Pain / Clicking (TMJ)</h3>
-    <p class="muted">Often muscular or bite-related. Most cases respond to conservative care.</p>
-    <ul>
-      <li><strong>Care:</strong> Soft diet, heat packs, splints, physio; scan if persistent.</li>
-    </ul>
-    <div class="t-actions">
-      <a class="t-btn" href="/specialities/tmj.html"><i class='bx bx-brain'></i> TMJ Care</a>
-      <a class="t-btn" href="/specialities/diagnostics.html"><i class='bx bx-bone'></i> CBCT</a>
-    </div>
-  </article>
-
-  <!-- Snoring -->
-  <article class="condition-card" id="cond-snore">
-    <h3>Snoring / Sleep Apnea (OSA)</h3>
-    <p class="muted">Custom oral appliances can reduce airway collapse in mild–moderate cases.</p>
-    <div class="t-actions">
-      <a class="t-btn" href="/specialities/sleep-dentistry.html"><i class='bx bx-moon'></i> Sleep Dentistry</a>
-    </div>
-  </article>
-
-  <!-- Ulcers -->
-  <article class="condition-card" id="cond-ulcer">
-    <h3>Mouth Ulcers / White Patches</h3>
-    <p class="muted">Trauma, stress, or nutrition are common; persistent lesions need screening.</p>
-    <div class="t-actions">
-      <a class="t-btn" href="/specialities/gum-surgeries.html"><i class='bx bx-clinic'></i> Soft Tissue Care</a>
-      <a class="t-btn" href="/specialities/oral-cancer.html"><i class='bx bx-health'></i> Cancer Screening</a>
-    </div>
-  </article>
-
-  <!-- Kids -->
-  <article class="condition-card" id="cond-kids">
-    <h3>Kids: Cavities / ECC</h3>
-    <p class="muted">Early childhood caries spreads quickly—tiny pits need sealants or fillings.</p>
-    <div class="t-actions">
-      <a class="t-btn" href="/specialities/kids-dentistry.html"><i class='bx bx-happy'></i> Pediatric</a>
-      <a class="t-btn" href="/specialities/kids-dentistry.html#sealants"><i class='bx bx-shield-alt-2'></i> Sealants</a>
-    </div>
-  </article>
-</div>
-
-
-<!-- ========================= SERVICES (Comprehensive treatments) ========================= -->
-<section class="band" id="services" aria-label="Comprehensive Dental Treatments">
-  <div>
-    <header>
-      <p class="eyebrow">Treatments</p>
-      <h2 class="section-title">Comprehensive Dental Treatments in Nallagandla, Hyderabad</h2>
-      <p class="section-sub">
-        Evidence-based dentistry—from check-ups and gum care to implants, braces, cosmetic and pediatric solutions.
-        Simple language, clear outcomes, fast actions.
-      </p>
-    </header>
-
-    <!-- Controls (works only when services.js is loaded; harmless otherwise) -->
-    <form class="services-controls" role="search" aria-label="Filter treatments" onsubmit="return false;">
-      <label class="field search">
-        <i class='bx bx-search' aria-hidden="true"></i>
-        <input id="svcSearch" type="search" inputmode="search" autocomplete="off"
-               placeholder="Search treatments (e.g., implants, pain, kids, braces)…"
-               aria-label="Search treatments"/>
-      </label>
-
-      <label class="field select">
-        <i class='bx bx-filter-alt' aria-hidden="true"></i>
-        <select id="svcCategory" aria-label="Filter by category">
-          <option value="all">All topics</option>
-          <option value="Tooth Alignment">Tooth Alignment</option>
-          <option value="Tooth Saving">Tooth Saving</option>
-          <option value="Implants & Replacement">Implants & Replacement</option>
-          <option value="Cosmetic & Smile">Cosmetic & Smile</option>
-          <option value="Oral Surgery">Oral Surgery</option>
-          <option value="Kids & Family">Kids & Family</option>
-          <option value="Periodontics">Gum & Periodontics</option>
-          <option value="Diagnostics">Diagnostics</option>
-          <option value="Sedation & Sleep">Sedation & Sleep</option>
-          <option value="Special Care">Special Care</option>
-          <option value="Prosthodontics">Prosthodontics</option>
-        </select>
-      </label>
-
-      <div class="chip-row" aria-label="Quick topics">
-        <button class="chip" type="button" data-chip="implants">Implants</button>
-        <button class="chip" type="button" data-chip="root canal">Root canal</button>
-        <button class="chip" type="button" data-chip="braces">Braces</button>
-        <button class="chip" type="button" data-chip="kids">Kids</button>
-        <button class="chip" type="button" data-chip="whitening">Whitening</button>
-        <button class="chip" type="button" data-chip="wisdom tooth">Wisdom tooth</button>
-        <button class="chip" type="button" data-chip="gum">Gum</button>
-        <button class="chip" type="button" data-chip="pain">Pain</button>
+  <!-- ===== Answer-engine intro (succinct bullets) ===== -->
+  <main id="main" role="main">
+    <section class="band" aria-label="Quick reasons to choose us">
+      <div>
+        <h2 class="section-title">Top Reasons Patients Choose Noble Dental Care</h2>
+        <p class="section-sub">Clear answers. Specialist treatments. Ethical recommendations. Protocols aligned with IDA, ADA, WHO &amp; ICMR, tuned for Hyderabad.</p>
+        <ul role="list" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;list-style:none;padding:0;margin:16px 0">
+          <li class="chip">Painless Root Canals (RVG + Apex)</li>
+          <li class="chip">Dental Implants (Digital Planning)</li>
+          <li class="chip">Braces &amp; Clear Aligners</li>
+          <li class="chip">Wisdom Tooth Extractions</li>
+          <li class="chip">Kids Dentistry &amp; Sealants</li>
+          <li class="chip">Gum Treatment &amp; Laser Dentistry</li>
+          <li class="chip">Teeth Whitening &amp; Veneers</li>
+          <li class="chip">Emergency Care (10 PM–2 AM)</li>
+          <li class="chip">Insurance Coordination Support</li>
+        </ul>
       </div>
-    </form>
-
-    <!-- Results status (filled by JS if present) -->
-    <div id="treatmentsStatus" class="results-status" aria-live="polite"></div>
-
-    <!-- Pre-rendered grid: ALL cards are already in the HTML -->
-    <section id="treatmentsGrid" class="treatments-grid" aria-live="polite" aria-busy="false">
-      <!-- Tooth Alignment -->
-      <article class="t-card"
-               data-id="braces"
-               data-category="Tooth Alignment"
-               data-keywords="braces, aligners, orthodontist, crooked teeth, spacing, gaps, bite correction, metal braces, ceramic braces, self-ligating, Invisalign, clear trays, Hyderabad, Nallagandla, Lingampally"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Braces & Aligners">
-        <div class="t-media">
-          <span class="t-badge">Tooth Alignment</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Braces+%26+Aligners" alt="Braces & Aligners" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Braces &amp; Aligners</h3>
-          <p class="t-desc" itemprop="description">Metal/ceramic braces and clear aligners for crowding, spacing, and bite issues. Digital planning + monthly reviews.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/braces.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card"
-               data-id="invisalign"
-               data-category="Tooth Alignment"
-               data-keywords="clear aligners, invisible braces, teen aligners, adult aligners, trays, scan, 3D simulation, Gachibowli, Kondapur"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Clear Aligners (Invisalign®)">
-        <div class="t-media">
-          <span class="t-badge">Tooth Alignment</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Clear+Aligners" alt="Clear Aligners" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Clear Aligners (Invisalign®)</h3>
-          <p class="t-desc" itemprop="description">Nearly invisible trays guided by 3D simulations—comfortable, hygienic, lifestyle-friendly.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/invisalign.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card"
-               data-id="orthodontics"
-               data-category="Tooth Alignment"
-               data-keywords="jaw growth, interceptive, crowding, deep bite, open bite, crossbite, retention, space maintainers"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Comprehensive Orthodontics">
-        <div class="t-media">
-          <span class="t-badge">Tooth Alignment</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Orthodontics" alt="Comprehensive Orthodontics" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Comprehensive Orthodontics</h3>
-          <p class="t-desc" itemprop="description">Full-scope orthodontics including growth guidance, complex bite correction, and retainers.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/braces.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Tooth Saving -->
-      <article class="t-card" data-id="svc-rct" data-category="Tooth Saving"
-               data-keywords="root canal, severe pain, hot cold sensitivity, pulp infection, abscess, endodontics, rotary, apex locator, rubber dam"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Root Canal Treatment (RCT)">
-        <div class="t-media">
-          <span class="t-badge">Tooth Saving</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Root+Canal" alt="Root Canal Treatment" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Root Canal Treatment (RCT)</h3>
-          <p class="t-desc" itemprop="description">Relieves pain by removing inflamed/infected pulp. Rotary instruments + apex locator for precision and comfort.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/root-canal.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="re-rct" data-category="Tooth Saving"
-               data-keywords="re-treatment, failed root canal, persistent infection, apicoectomy, microsurgery"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Re-RCT / Apicoectomy">
-        <div class="t-media">
-          <span class="t-badge">Tooth Saving</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Re-RCT+%2F+Apicoectomy" alt="Re-RCT / Apicoectomy" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Re-RCT / Apicoectomy</h3>
-          <p class="t-desc" itemprop="description">Second chance for previously treated teeth using re-RCT or minor endodontic surgery.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/root-canal.html#retreatment" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="fillings" data-category="Tooth Saving"
-               data-keywords="white fillings, composite, bonding, cavity, tooth decay repair, minimal prep"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Tooth-Coloured Fillings">
-        <div class="t-media">
-          <span class="t-badge">Tooth Saving</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Tooth+Fillings" alt="Tooth-Coloured Fillings" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Tooth-Coloured Fillings</h3>
-          <p class="t-desc" itemprop="description">Aesthetic, mercury-free composites that restore strength and shape with minimal drilling.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/fillings.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="inlay-onlay" data-category="Tooth Saving"
-               data-keywords="partial crown, cuspal coverage, cracked tooth, indirect restoration, CAD/CAM"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Inlays & Onlays">
-        <div class="t-media">
-          <span class="t-badge">Tooth Saving</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Inlays+%26+Onlays" alt="Inlays and Onlays" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Inlays &amp; Onlays</h3>
-          <p class="t-desc" itemprop="description">Stronger than large fillings and more conservative than full crowns; ideal for cracked or worn teeth.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/fillings.html#inlays" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="trauma" data-category="Tooth Saving"
-               data-keywords="chipped tooth, fractured, avulsed, knocked out, splint, emergency, sports injury"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Dental Trauma Care">
-        <div class="t-media">
-          <span class="t-badge">Tooth Saving</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Dental+Trauma" alt="Dental Trauma Care" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Dental Trauma Care</h3>
-          <p class="t-desc" itemprop="description">Immediate management for broken/knocked-out teeth to maximise survival and aesthetics.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/emergency.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Implants & Replacement -->
-      <article class="t-card" data-id="svc-implants" data-category="Implants & Replacement"
-               data-keywords="titanium implants, single tooth implant, missing tooth, screw-retained crown, guided surgery"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Dental Implants">
-        <div class="t-media">
-          <span class="t-badge">Implants &amp; Replacement</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Dental+Implants" alt="Dental Implants" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Dental Implants</h3>
-          <p class="t-desc" itemprop="description">Replace missing roots with titanium implants and restore lifelike crowns for confident chewing.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/implants.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="all-on-4" data-category="Implants & Replacement"
-               data-keywords="full arch fixed teeth, hybrid bridge, immediate loading, edentulous, same-day teeth"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Full-Arch (All-on-4/6)">
-        <div class="t-media">
-          <span class="t-badge">Implants &amp; Replacement</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=All-on-4%2F6" alt="Full-Arch All-on-4/6" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Full-Arch (All-on-4/6)</h3>
-          <p class="t-desc" itemprop="description">Fixed full-arch teeth on 4–6 implants for rapid function and a complete smile makeover.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/implants.html#allonx" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="zygomatic" data-category="Implants & Replacement"
-               data-keywords="severe bone loss, atrophic maxilla, zygoma, maxillary rehabilitation"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Zygomatic Implants">
-        <div class="t-media">
-          <span class="t-badge">Implants &amp; Replacement</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Zygomatic+Implants" alt="Zygomatic Implants" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Zygomatic Implants</h3>
-          <p class="t-desc" itemprop="description">Solutions for extreme upper-jaw bone loss using cheekbone anchorage—no major grafts.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/implants.html#zygoma" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="svc-crowns" data-category="Implants & Replacement"
-               data-keywords="crown, bridge, zirconia, porcelain fused to metal, PFM, cracked tooth, cap"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Crowns & Bridges">
-        <div class="t-media">
-          <span class="t-badge">Implants &amp; Replacement</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Crowns+%26+Bridges" alt="Crowns and Bridges" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Crowns &amp; Bridges</h3>
-          <p class="t-desc" itemprop="description">Protect weak teeth and replace gaps with durable, aesthetic crowns and bridges.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/crowns-bridges.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="svc-dentures" data-category="Implants & Replacement"
-               data-keywords="complete denture, partial denture, flexible, cast metal, locator, implant overdenture"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Dentures & Overdentures">
-        <div class="t-media">
-          <span class="t-badge">Implants &amp; Replacement</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Dentures" alt="Dentures & Overdentures" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Dentures &amp; Overdentures</h3>
-          <p class="t-desc" itemprop="description">Comfortable removable options; add implants for superior stability and speech.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/dentures.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Cosmetic & Smile -->
-      <article class="t-card" data-id="smile-makeover" data-category="Cosmetic & Smile"
-               data-keywords="smile design, veneers, bonding, whitening, diastema closure, gummy smile"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Smile Makeover">
-        <div class="t-media">
-          <span class="t-badge">Cosmetic &amp; Smile</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Smile+Makeover" alt="Smile Makeover" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Smile Makeover</h3>
-          <p class="t-desc" itemprop="description">Tailored blend of veneers, whitening, and alignment for a balanced, confident smile.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/smile-design.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="veneers" data-category="Cosmetic & Smile"
-               data-keywords="veneers, laminates, minimal prep, cosmetic, shade match, symmetry"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Porcelain Veneers">
-        <div class="t-media">
-          <span class="t-badge">Cosmetic &amp; Smile</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Veneers" alt="Porcelain Veneers" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Porcelain Veneers</h3>
-          <p class="t-desc" itemprop="description">Ultra-thin porcelain shells refine shape, colour and proportions with minimal preparation.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/smile-design.html#veneers" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="whitening" data-category="Cosmetic & Smile"
-               data-keywords="bleaching, stains, power whitening, take-home trays, shade improvement"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Teeth Whitening">
-        <div class="t-media">
-          <span class="t-badge">Cosmetic &amp; Smile</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Teeth+Whitening" alt="Teeth Whitening" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Teeth Whitening</h3>
-          <p class="t-desc" itemprop="description">Safe brightening with in-clinic power whitening or custom take-home kits.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/scaling-whitening.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="gum-depig" data-category="Cosmetic & Smile"
-               data-keywords="dark gums, melanin depigmentation, pink gums, laser dentistry"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Gum Depigmentation (Laser)">
-        <div class="t-media">
-          <span class="t-badge">Cosmetic &amp; Smile</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Gum+Depigmentation" alt="Gum Depigmentation (Laser)" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Gum Depigmentation (Laser)</h3>
-          <p class="t-desc" itemprop="description">Laser-assisted lightening for uniformly pink, healthy-looking gums.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/gum-surgeries.html#depig" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Oral Surgery -->
-      <article class="t-card" data-id="svc-wisdom" data-category="Oral Surgery"
-               data-keywords="third molar, impaction, pericoronitis, jaw swelling, surgical extraction"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Wisdom Tooth Extraction">
-        <div class="t-media">
-          <span class="t-badge">Oral Surgery</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Wisdom+Tooth" alt="Wisdom Tooth Extraction" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Wisdom Tooth Extraction</h3>
-          <p class="t-desc" itemprop="description">Gentle removal of impacted/painful wisdom teeth with clear post-op care.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/extraction.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="frenectomy" data-category="Oral Surgery"
-               data-keywords="tongue tie, lip tie, speech issues, feeding difficulty, laser release"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Frenectomy (Tongue/Lip-Tie)">
-        <div class="t-media">
-          <span class="t-badge">Oral Surgery</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Frenectomy" alt="Frenectomy (Tongue/Lip-Tie)" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Frenectomy (Tongue/Lip-Tie)</h3>
-          <p class="t-desc" itemprop="description">Quick procedure to release restrictive frena improving function and hygiene access.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/gum-surgeries.html#frenectomy" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Kids & Family -->
-      <article class="t-card" data-id="peds" data-category="Kids & Family"
-               data-keywords="kids dentist, pulpectomy, stainless steel crown, fluoride, behaviour guidance, kid-friendly"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Pediatric Dentistry">
-        <div class="t-media">
-          <span class="t-badge">Kids &amp; Family</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Kids+Dentistry" alt="Pediatric Dentistry" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Pediatric Dentistry</h3>
-          <p class="t-desc" itemprop="description">Sealants, fillings, pulpectomy &amp; crowns delivered with child-friendly techniques.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/kids-dentistry.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="sealants" data-category="Kids & Family"
-               data-keywords="groove protection, cavity prevention, molars, painless, school dental programs"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Pit & Fissure Sealants">
-        <div class="t-media">
-          <span class="t-badge">Kids &amp; Family</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Sealants" alt="Pit & Fissure Sealants" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Pit &amp; Fissure Sealants</h3>
-          <p class="t-desc" itemprop="description">Fast, painless coatings that block food-trapping grooves on new molars.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/kids-dentistry.html#sealants" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="fluoride" data-category="Kids & Family"
-               data-keywords="high-risk caries, enamel strengthening, varnish, prevention"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Fluoride Varnish">
-        <div class="t-media">
-          <span class="t-badge">Kids &amp; Family</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Fluoride+Varnish" alt="Fluoride Varnish" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Fluoride Varnish</h3>
-          <p class="t-desc" itemprop="description">Topical fluoride for cavity-prone patients to harden enamel and reduce risk.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/kids-dentistry.html#fluoride" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Periodontics -->
-      <article class="t-card" data-id="svc-scaling" data-category="Periodontics"
-               data-keywords="cleaning, tartar removal, prophylaxis, bleeding gums, bad breath, hygiene"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Scaling & Polishing">
-        <div class="t-media">
-          <span class="t-badge">Periodontics</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Scaling+%26+Polishing" alt="Scaling & Polishing" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Scaling &amp; Polishing</h3>
-          <p class="t-desc" itemprop="description">Removes plaque/tartar and polishes surfaces to support gum health and fresh breath.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/scaling-whitening.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="svc-gum" data-category="Periodontics"
-               data-keywords="gingivitis, periodontitis, deep cleaning, root planing, flap surgery, bone graft"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Advanced Gum Therapy">
-        <div class="t-media">
-          <span class="t-badge">Periodontics</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Gum+Therapy" alt="Advanced Gum Therapy" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Advanced Gum Therapy</h3>
-          <p class="t-desc" itemprop="description">From deep cleaning to regenerative surgery for stable gums and teeth.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/gum-surgeries.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="gum-graft" data-category="Periodontics"
-               data-keywords="receding gums, root coverage, sensitivity, soft tissue graft, tunnel technique"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Gum Recession Grafting">
-        <div class="t-media">
-          <span class="t-badge">Periodontics</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Gum+Graft" alt="Gum Recession Grafting" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Gum Recession Grafting</h3>
-          <p class="t-desc" itemprop="description">Covers exposed roots to reduce sensitivity and improve aesthetics.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/gum-surgeries.html#graft" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Diagnostics -->
-      <article class="t-card" data-id="cbct" data-category="Diagnostics"
-               data-keywords="3D scan, implant planning, endodontics, TMJ, airway, guided surgery"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Dental CT Scan (CBCT)">
-        <div class="t-media">
-          <span class="t-badge">Diagnostics</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=CBCT" alt="Dental CT Scan (CBCT)" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Dental CT Scan (CBCT)</h3>
-          <p class="t-desc" itemprop="description">High-detail 3D imaging for precise diagnosis and safer treatment planning.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/diagnostics.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="tmj" data-category="Diagnostics"
-               data-keywords="jaw joint pain, clicking, bruxism, night guard, splint therapy, myofascial pain"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="TMJ Evaluation & Splints">
-        <div class="t-media">
-          <span class="t-badge">Diagnostics</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=TMJ+Care" alt="TMJ Evaluation & Splints" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">TMJ Evaluation &amp; Splints</h3>
-          <p class="t-desc" itemprop="description">Conservative care and custom splints to relieve TMJ strain and protect teeth.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/tmj.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Sedation & Sleep -->
-      <article class="t-card" data-id="iv-sedation" data-category="Sedation & Sleep"
-               data-keywords="dental anxiety, long appointments, sedation dentistry, day care"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="IV Sedation (Conscious)">
-        <div class="t-media">
-          <span class="t-badge">Sedation &amp; Sleep</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=IV+Sedation" alt="IV Sedation (Conscious)" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">IV Sedation (Conscious)</h3>
-          <p class="t-desc" itemprop="description">Relaxed, semi-awake care with amnesia—ideal for lengthy or anxiety-provoking procedures.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/sedation.html#iv" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="ga" data-category="Sedation & Sleep"
-               data-keywords="special needs, pediatric dentistry, operating theatre, one-visit"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="General Anesthesia (Hospital)">
-        <div class="t-media">
-          <span class="t-badge">Sedation &amp; Sleep</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=General+Anesthesia" alt="General Anesthesia (Hospital)" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">General Anesthesia (Hospital)</h3>
-          <p class="t-desc" itemprop="description">One-visit completion for extensive pediatric/special cases in accredited hospitals.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/sedation.html#ga" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="sleep-dentistry" data-category="Sedation & Sleep"
-               data-keywords="OSA, sleep apnea, mandibular advancement device, airway, snore guard"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Snoring & Sleep Dentistry">
-        <div class="t-media">
-          <span class="t-badge">Sedation &amp; Sleep</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Sleep+Dentistry" alt="Snoring & Sleep Dentistry" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Snoring &amp; Sleep Dentistry</h3>
-          <p class="t-desc" itemprop="description">Oral appliances and referral pathways for sleep apnea management.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/sleep-dentistry.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Special Care -->
-      <article class="t-card" data-id="pregnancy" data-category="Special Care"
-               data-keywords="trimester protocols, morning sickness erosion, safe X-rays, lactation counselling"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Pregnancy Dental Care">
-        <div class="t-media">
-          <span class="t-badge">Special Care</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Pregnancy+Care" alt="Pregnancy Dental Care" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Pregnancy Dental Care</h3>
-          <p class="t-desc" itemprop="description">Trimester-wise guidance and safe care for moms-to-be; prevention first.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/pregnancy-dental-care.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="diabetic" data-category="Special Care"
-               data-keywords="diabetes, periodontitis link, infection control, wound healing, glycemic control"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Diabetic Dental Care">
-        <div class="t-media">
-          <span class="t-badge">Special Care</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Diabetic+Care" alt="Diabetic Dental Care" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Diabetic Dental Care</h3>
-          <p class="t-desc" itemprop="description">Tailored gum/infection control and healing support to protect systemic health.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/diabetic-dental-care.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="geriatric" data-category="Special Care"
-               data-keywords="elderly, xerostomia, root caries, caregiver training, denture tuning, falls risk"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Geriatric Dentistry">
-        <div class="t-media">
-          <span class="t-badge">Special Care</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Geriatric" alt="Geriatric Dentistry" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Geriatric Dentistry</h3>
-          <p class="t-desc" itemprop="description">Comfort-first care with simple home routines and device-friendly tips.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/geriatric.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Prosthodontics -->
-      <article class="t-card" data-id="fmr" data-category="Prosthodontics"
-               data-keywords="worn dentition, bite rebuild, occlusal scheme, vertical dimension, complex rehab"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Full Mouth Rehabilitation">
-        <div class="t-media">
-          <span class="t-badge">Prosthodontics</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Full+Mouth+Rehab" alt="Full Mouth Rehabilitation" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Full Mouth Rehabilitation</h3>
-          <p class="t-desc" itemprop="description">Rebuilds function and aesthetics across the arch using crowns/implants as needed.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/crowns-bridges.html#fmr" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card" data-id="fixed-teeth" data-category="Prosthodontics"
-               data-keywords="fixed teeth, bridges, implant crowns, long-span, zirconia bridge"
-               itemscope itemtype="https://schema.org/Service">
-        <meta itemprop="serviceType" content="Fixed Artificial Teeth">
-        <div class="t-media">
-          <span class="t-badge">Prosthodontics</span>
-          <img loading="lazy" width="800" height="500" src="https://via.placeholder.com/800x500?text=Fixed+Teeth" alt="Fixed Artificial Teeth" itemprop="image">
-        </div>
-        <div class="t-body">
-          <h3 class="t-title" itemprop="name">Fixed Artificial Teeth</h3>
-          <p class="t-desc" itemprop="description">Strong, natural-looking fixed teeth via bridges and implant restorations.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/specialities/crowns-bridges.html" itemprop="url"><i class='bx bx-info-circle'></i> Learn more</a>
-            <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-          </div>
-        </div>
-      </article>
     </section>
 
-    <!-- Pagination (JS enhances; no-JS = all cards visible, pagination hidden by CSS) -->
-    <nav class="treatments-pagination" aria-label="Treatments pages">
-      <button id="pgPrev" class="pg-btn" type="button" aria-label="Previous page" disabled>
-        <i class='bx bx-chevron-left' aria-hidden="true"></i>
-      </button>
-      <div id="pgDots" class="pg-dots" role="list"></div>
-      <button id="pgNext" class="pg-btn" type="button" aria-label="Next page" disabled>
-        <i class='bx bx-chevron-right' aria-hidden="true"></i>
-      </button>
-    </nav>
-  </div>
-</section>
+    <!-- Lightweight site search fallback (AEO/LLMO) -->
+    <section class="band" aria-label="Site search">
+      <form action="/search" method="get" role="search" aria-label="Search site"
+            style="display:flex;gap:8px;flex-wrap:wrap;margin:.2rem 0">
+        <label class="visually-hidden" for="q">Search</label>
+        <input id="q" name="q" type="search" placeholder="Search services, symptoms, doctors…"
+               autocomplete="off" inputmode="search"
+               style="flex:1;min-width:260px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:var(--paper);color:var(--text)"/>
+        <button class="btn primary" type="submit" aria-label="Search">
+          <i class='bx bx-search' aria-hidden="true"></i> Search
+        </button>
+      </form>
+    </section>
+    <!-- ========================= CONDITIONS (AEO-ready) ========================= -->
+    <section class="band" id="conditions" aria-label="Common Dental Conditions & First Aid">
+      <div>
+        <header>
+          <p class="eyebrow">Conditions</p>
+          <h2 class="section-title">Common Dental Problems — What It Means & What To Do</h2>
+          <p class="section-sub">Short, plain-English guidance for symptoms people search. Tap a card to learn the next step or jump to the right treatment.</p>
+        </header>
 
+        <div class="grid grid-even" style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+          <!-- Toothache -->
+          <article class="surface" id="cond-toothache" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
+            <h3>Toothache / Sensitivity</h3>
+            <p class="muted">Sharp or lingering pain with hot/cold often means decay, cracked tooth, or exposed dentin.</p>
+            <ul>
+              <li><strong>Do now:</strong> Rinse warm salt water; OTC pain relief if safe; avoid extremes.</li>
+              <li><strong>Likely care:</strong> Filling or <a href="#svc-rct">Root Canal</a>, desensitizer, or crown.</li>
+            </ul>
+            <div class="t-actions" style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+              <a class="t-btn" href="/specialities/fillings.html"><i class='bx bx-band-aid'></i> Fillings</a>
+              <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
+              <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
+            </div>
+          </article>
+
+          <!-- Swelling -->
+          <article class="surface" id="cond-swelling" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
+            <h3>Facial Swelling / Gum Boil</h3>
+            <p class="muted">May indicate spreading infection (abscess). Needs urgent evaluation.</p>
+            <ul>
+              <li><strong>Do now:</strong> Cold compress outside; do <em>not</em> apply heat.</li>
+              <li><strong>Likely care:</strong> <a href="#svc-rct">RCT</a> or extraction + antibiotics if indicated.</li>
+            </ul>
+            <div class="t-actions">
+              <a class="t-btn" href="/specialities/emergency.html"><i class='bx bx-time-five'></i> Emergency</a>
+              <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
+            </div>
+          </article>
+
+          <!-- Wisdom tooth -->
+          <article class="surface" id="cond-wisdom" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
+            <h3>Wisdom Tooth Pain</h3>
+            <p class="muted">Impacted third molars can trap food and cause gum infection (pericoronitis).</p>
+            <ul>
+              <li><strong>Do now:</strong> Warm saltwater rinses; gentle brushing.</li>
+              <li><strong>Likely care:</strong> <a href="#svc-wisdom">Surgical extraction</a> + irrigation.</li>
+            </ul>
+            <div class="t-actions">
+              <a class="t-btn" href="/specialities/extraction.html"><i class='bx bx-scatter-chart'></i> Extractions</a>
+              <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
+            </div>
+          </article>
+
+          <!-- Bleeding gums -->
+          <article class="surface" id="cond-bleeding" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
+            <h3>Bleeding Gums / Bad Breath</h3>
+            <p class="muted">Common in gingivitis/periodontitis. Often painless, but progressive.</p>
+            <ul>
+              <li><strong>Do now:</strong> Brush 2×/day with fluoride paste; floss/interdental brush daily.</li>
+              <li><strong>Likely care:</strong> <a href="#svc-scaling">Scaling</a> ± deep cleaning; <a href="#svc-gum">Gum therapy</a>.</li>
+            </ul>
+            <div class="t-actions">
+              <a class="t-btn" href="/specialities/scaling-whitening.html"><i class='bx bx-check-shield'></i> Scaling</a>
+              <a class="t-btn" href="/specialities/gum-surgeries.html"><i class='bx bx-detail'></i> Periodontics</a>
+            </div>
+          </article>
+
+          <!-- Missing tooth -->
+          <article class="surface" id="cond-missing" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
+            <h3>Missing Tooth / Loose Denture</h3>
+            <p class="muted">Bone shrinks over time; early replacement preserves bite & looks.</p>
+            <ul>
+              <li><strong>Options:</strong> <a href="#svc-implants">Implant</a>, <a href="#svc-crowns">Bridge</a>, or <a href="#svc-dentures">Denture</a>.</li>
+            </ul>
+            <div class="t-actions">
+              <a class="t-btn" href="/specialities/implants.html"><i class='bx bx-cuboid'></i> Implants</a>
+              <a class="t-btn" href="/specialities/crowns-bridges.html"><i class='bx bx-layer'></i> Crowns/Bridges</a>
+            </div>
+          </article>
+
+          <!-- Crooked teeth -->
+          <article class="surface" id="cond-crooked" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
+            <h3>Crooked / Spaced Teeth</h3>
+            <p class="muted">Alignment improves hygiene, bite, and confidence.</p>
+            <ul><li><strong>Care:</strong> Braces (metal/ceramic) or clear aligners (Invisalign).</li></ul>
+            <div class="t-actions">
+              <a class="t-btn" href="/specialities/braces.html"><i class='bx bx-chevrons-right'></i> Braces</a>
+              <a class="t-btn" href="/specialities/invisalign.html"><i class='bx bx-grid-alt'></i> Clear Aligners</a>
+            </div>
+          </article>
+
+          <!-- TMJ -->
+          <article class="surface" id="cond-tmj" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
+            <h3>Jaw Pain / Clicking (TMJ)</h3>
+            <p class="muted">Often muscular or bite-related. Most cases respond to conservative care.</p>
+            <ul><li><strong>Care:</strong> Soft diet, heat packs, splints, physio; scan if persistent.</li></ul>
+            <div class="t-actions">
+              <a class="t-btn" href="/specialities/tmj.html"><i class='bx bx-brain'></i> TMJ Care</a>
+              <a class="t-btn" href="/specialities/diagnostics.html"><i class='bx bx-bone'></i> CBCT</a>
+            </div>
+          </article>
+
+          <!-- Snoring -->
+          <article class="surface" id="cond-snore" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
+            <h3>Snoring / Sleep Apnea (OSA)</h3>
+            <p class="muted">Custom oral appliances can reduce airway collapse in mild–moderate cases.</p>
+            <div class="t-actions">
+              <a class="t-btn" href="/specialities/sleep-dentistry.html"><i class='bx bx-moon'></i> Sleep Dentistry</a>
+            </div>
+          </article>
+
+          <!-- Ulcers -->
+          <article class="surface" id="cond-ulcer" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
+            <h3>Mouth Ulcers / White Patches</h3>
+            <p class="muted">Trauma, stress, or nutrition are common; persistent lesions need screening.</p>
+            <div class="t-actions">
+              <a class="t-btn" href="/specialities/gum-surgeries.html"><i class='bx bx-clinic'></i> Soft Tissue Care</a>
+              <a class="t-btn" href="/specialities/oral-cancer.html"><i class='bx bx-health'></i> Cancer Screening</a>
+            </div>
+          </article>
+
+          <!-- Kids -->
+          <article class="surface" id="cond-kids" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
+            <h3>Kids: Cavities / ECC</h3>
+            <p class="muted">Early childhood caries spreads quickly—tiny pits need sealants or fillings.</p>
+            <div class="t-actions">
+              <a class="t-btn" href="/specialities/kids-dentistry.html"><i class='bx bx-happy'></i> Pediatric</a>
+              <a class="t-btn" href="/specialities/kids-dentistry.html#sealants"><i class='bx bx-shield-alt-2'></i> Sealants</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= SERVICES (Treatments grid scaffold) ========================= -->
+    <section class="band" id="services" aria-label="Comprehensive Dental Treatments">
+      <div>
+        <header>
+          <p class="eyebrow">Treatments</p>
+          <h2 class="section-title">Comprehensive Dental Treatments in Nallagandla, Hyderabad</h2>
+          <p class="section-sub">Evidence-based dentistry—from check-ups and gum care to implants, braces, cosmetic and pediatric solutions. Simple language, clear outcomes, fast actions.</p>
+        </header>
+
+        <!-- Controls (CLS-safe; height reserved via inline min-height on inputs) -->
+        <form class="services-controls" role="search" aria-label="Filter treatments" onsubmit="return false;"
+              style="display:flex;gap:8px;flex-wrap:wrap;margin:.8rem 0">
+          <label class="field search"
+                 style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:var(--paper)">
+            <i class='bx bx-search' aria-hidden="true"></i>
+            <input id="svcSearch" type="search" inputmode="search" autocomplete="off"
+                   placeholder="Search treatments (e.g., implants, pain, kids, braces)…"
+                   aria-label="Search treatments"
+                   style="min-height:36px;background:transparent;border:0;outline:0;color:inherit"/>
+          </label>
+
+          <label class="field select"
+                 style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:var(--paper)">
+            <i class='bx bx-filter-alt' aria-hidden="true"></i>
+            <select id="svcCategory" aria-label="Filter by category" style="min-height:36px;background:transparent;border:0;color:inherit">
+              <option value="all">All topics</option>
+              <option value="Tooth Alignment">Tooth Alignment</option>
+              <option value="Tooth Saving">Tooth Saving</option>
+              <option value="Implants & Replacement">Implants & Replacement</option>
+              <option value="Cosmetic & Smile">Cosmetic & Smile</option>
+              <option value="Oral Surgery">Oral Surgery</option>
+              <option value="Kids & Family">Kids & Family</option>
+              <option value="Periodontics">Gum & Periodontics</option>
+              <option value="Diagnostics">Diagnostics</option>
+              <option value="Sedation & Sleep">Sedation & Sleep</option>
+              <option value="Special Care">Special Care</option>
+              <option value="Prosthodontics">Prosthodontics</option>
+            </select>
+          </label>
+
+          <div class="chip-row" aria-label="Quick topics" style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="chip" type="button" data-chip="implants">Implants</button>
+            <button class="chip" type="button" data-chip="root canal">Root canal</button>
+            <button class="chip" type="button" data-chip="braces">Braces</button>
+            <button class="chip" type="button" data-chip="kids">Kids</button>
+            <button class="chip" type="button" data-chip="whitening">Whitening</button>
+            <button class="chip" type="button" data-chip="wisdom tooth">Wisdom tooth</button>
+            <button class="chip" type="button" data-chip="gum">Gum</button>
+            <button class="chip" type="button" data-chip="pain">Pain</button>
+          </div>
+        </form>
+
+        <!-- Results status -->
+        <div id="treatmentsStatus" class="results-status" aria-live="polite"></div>
+
+        <!-- Grid (CLS-safe media boxes: reserve space via aspect-ratio and width/height) -->
+        <section id="treatmentsGrid" class="treatments-grid" aria-live="polite" aria-busy="false"
+                 style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+
+          <!-- Skeleton cards (noscript/first paint) -->
+          <article class="t-card skeleton" aria-hidden="true"
+                   style="background:var(--card);border:1px solid color-mix(in srgb, var(--text) 10%, transparent);border-radius:16px;overflow:hidden">
+            <div class="t-media" style="aspect-ratio:16/10;background:linear-gradient(90deg,rgba(255,255,255,.06),transparent,rgba(255,255,255,.06));"></div>
+            <div class="t-body" style="padding:12px">
+              <div style="height:18px;background:rgba(255,255,255,.08);border-radius:6px;width:60%"></div>
+              <div style="height:12px;background:rgba(255,255,255,.06);border-radius:6px;width:90%;margin-top:8px"></div>
+            </div>
+          </article>
+
+          <article class="t-card skeleton" aria-hidden="true"
+                   style="background:var(--card);border:1px solid color-mix(in srgb, var(--text) 10%, transparent);border-radius:16px;overflow:hidden">
+            <div class="t-media" style="aspect-ratio:16/10;background:linear-gradient(90deg,rgba(255,255,255,.06),transparent,rgba(255,255,255,.06));"></div>
+            <div class="t-body" style="padding:12px">
+              <div style="height:18px;background:rgba(255,255,255,.08);border-radius:6px;width:50%"></div>
+              <div style="height:12px;background:rgba(255,255,255,.06);border-radius:6px;width:85%;margin-top:8px"></div>
+            </div>
+          </article>
+
+          <article class="t-card skeleton" aria-hidden="true"
+                   style="background:var(--card);border:1px solid color-mix(in srgb, var(--text) 10%, transparent);border-radius:16px;overflow:hidden">
+            <div class="t-media" style="aspect-ratio:16/10;background:linear-gradient(90deg,rgba(255,255,255,.06),transparent,rgba(255,255,255,.06));"></div>
+            <div class="t-body" style="padding:12px">
+              <div style="height:18px;background:rgba(255,255,255,.08);border-radius:6px;width:70%"></div>
+              <div style="height:12px;background:rgba(255,255,255,.06);border-radius:6px;width:88%;margin-top:8px"></div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Pagination -->
+        <nav class="treatments-pagination" aria-label="Treatments pages"
+             style="display:flex;justify-content:center;align-items:center;gap:8px;margin:12px 0">
+          <button id="pgPrev" class="pg-btn" type="button" aria-label="Previous page" disabled
+                  style="display:grid;place-content:center;width:38px;height:38px;border-radius:10px;border:1px solid color-mix(in srgb, var(--text) 12%, transparent);background:var(--card);color:inherit">
+            <i class='bx bx-chevron-left' aria-hidden="true"></i>
+          </button>
+          <div id="pgDots" class="pg-dots" role="list" style="display:flex;gap:6px"></div>
+          <button id="pgNext" class="pg-btn" type="button" aria-label="Next page" disabled
+                  style="display:grid;place-content:center;width:38px;height:38px;border-radius:10px;border:1px solid color-mix(in srgb, var(--text) 12%, transparent);background:var(--card);color:inherit">
+            <i class='bx bx-chevron-right' aria-hidden="true"></i>
+          </button>
+        </nav>
+
+        <!-- Noscript fallback (AEO/LLMO: indexable content) -->
+        <noscript>
+          <ul aria-label="Popular treatments" style="margin:8px 0 0;padding-left:18px">
+            <li><a href="/specialities/implants.html">Dental Implants</a></li>
+            <li><a href="/specialities/root-canal.html">Root Canal Treatment</a></li>
+            <li><a href="/specialities/braces.html">Braces &amp; Orthodontics</a></li>
+            <li><a href="/specialities/scaling-whitening.html">Scaling &amp; Teeth Whitening</a></li>
+            <li><a href="/specialities/kids-dentistry.html">Pediatric Dentistry</a></li>
+          </ul>
+        </noscript>
+      </div>
+    </section>
+<!-- ========================= Part 4: SERVICES data + renderer (AIO/GEO/LLMO/AEO) ========================= -->
+<script>
+(() => {
+  const $  = (s, r=document)=>r.querySelector(s);
+  const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
+
+  const grid   = $('#treatmentsGrid');
+  const status = $('#treatmentsStatus');
+  const search = $('#svcSearch');
+  const catSel = $('#svcCategory');
+  const chips  = $$('.chip[data-chip]');
+  const prevBtn= $('#pgPrev');
+  const nextBtn= $('#pgNext');
+  const dots   = $('#pgDots');
+
+  if (!grid) return;
+
+  /* ---------- DATA (LLMO keyword-rich; local GEO variants included) ---------- */
+  const TREATMENTS = [
+    // Tooth Alignment
+    {id:'braces', title:'Braces & Aligners', category:'Tooth Alignment',
+      keywords:'braces, aligners, orthodontist, crooked teeth, spacing, gaps, bite correction, metal braces, ceramic braces, self-ligating, Invisalign, clear trays, Hyderabad, Nallagandla, Lingampally',
+      desc:'Metal/ceramic braces and clear aligners for crowding, spacing, and bite issues. Digital planning + monthly reviews.',
+      url:'/specialities/braces.html', img:'https://via.placeholder.com/800x500?text=Braces+%26+Aligners'},
+    {id:'invisalign', title:'Clear Aligners (Invisalign®)', category:'Tooth Alignment',
+      keywords:'clear aligners, invisible braces, teen aligners, adult aligners, trays, scan, 3D simulation, Gachibowli, Kondapur',
+      desc:'Nearly invisible trays guided by 3D simulations—comfortable, hygienic, lifestyle-friendly.',
+      url:'/specialities/invisalign.html', img:'https://via.placeholder.com/800x500?text=Clear+Aligners'},
+    {id:'orthodontics', title:'Comprehensive Orthodontics', category:'Tooth Alignment',
+      keywords:'jaw growth, interceptive, crowding, deep bite, open bite, crossbite, retention, space maintainers',
+      desc:'Full-scope orthodontics including growth guidance, complex bite correction, and retainers.',
+      url:'/specialities/braces.html', img:'https://via.placeholder.com/800x500?text=Orthodontics'},
+
+    // Tooth Saving
+    {id:'svc-rct', title:'Root Canal Treatment (RCT)', category:'Tooth Saving',
+      keywords:'root canal, severe pain, hot cold sensitivity, pulp infection, abscess, endodontics, rotary, apex locator, rubber dam',
+      desc:'Relieves pain by removing inflamed/infected pulp. Rotary instruments + apex locator for precision and comfort.',
+      url:'/specialities/root-canal.html', img:'https://via.placeholder.com/800x500?text=Root+Canal'},
+    {id:'re-rct', title:'Re-RCT / Apicoectomy', category:'Tooth Saving',
+      keywords:'re-treatment, failed root canal, persistent infection, apicoectomy, microsurgery',
+      desc:'Second chance for previously treated teeth using re-RCT or minor endodontic surgery.',
+      url:'/specialities/root-canal.html#retreatment', img:'https://via.placeholder.com/800x500?text=Re-RCT+%2F+Apicoectomy'},
+    {id:'fillings', title:'Tooth-Coloured Fillings', category:'Tooth Saving',
+      keywords:'white fillings, composite, bonding, cavity, tooth decay repair, minimal prep',
+      desc:'Aesthetic, mercury-free composites that restore strength and shape with minimal drilling.',
+      url:'/specialities/fillings.html', img:'https://via.placeholder.com/800x500?text=Tooth+Fillings'},
+    {id:'inlay-onlay', title:'Inlays & Onlays', category:'Tooth Saving',
+      keywords:'partial crown, cuspal coverage, cracked tooth, indirect restoration, CAD/CAM',
+      desc:'Stronger than large fillings and more conservative than full crowns; ideal for cracked or worn teeth.',
+      url:'/specialities/fillings.html#inlays', img:'https://via.placeholder.com/800x500?text=Inlays+%26+Onlays'},
+    {id:'trauma', title:'Dental Trauma Care', category:'Tooth Saving',
+      keywords:'chipped tooth, fractured, avulsed, knocked out, splint, emergency, sports injury',
+      desc:'Immediate management for broken/knocked-out teeth to maximise survival and aesthetics.',
+      url:'/specialities/emergency.html', img:'https://via.placeholder.com/800x500?text=Dental+Trauma'},
+
+    // Implants & Replacement
+    {id:'svc-implants', title:'Dental Implants', category:'Implants & Replacement',
+      keywords:'titanium implants, single tooth implant, missing tooth, screw-retained crown, guided surgery',
+      desc:'Replace missing roots with titanium implants and restore lifelike crowns for confident chewing.',
+      url:'/specialities/implants.html', img:'https://via.placeholder.com/800x500?text=Dental+Implants'},
+    {id:'all-on-4', title:'Full-Arch (All-on-4/6)', category:'Implants & Replacement',
+      keywords:'full arch fixed teeth, hybrid bridge, immediate loading, edentulous, same-day teeth',
+      desc:'Fixed full-arch teeth on 4–6 implants for rapid function and a complete smile makeover.',
+      url:'/specialities/implants.html#allonx', img:'https://via.placeholder.com/800x500?text=All-on-4%2F6'},
+    {id:'zygomatic', title:'Zygomatic Implants', category:'Implants & Replacement',
+      keywords:'severe bone loss, atrophic maxilla, zygoma, maxillary rehabilitation',
+      desc:'Solutions for extreme upper-jaw bone loss using cheekbone anchorage—no major grafts.',
+      url:'/specialities/implants.html#zygoma', img:'https://via.placeholder.com/800x500?text=Zygomatic+Implants'},
+    {id:'svc-crowns', title:'Crowns & Bridges', category:'Implants & Replacement',
+      keywords:'crown, bridge, zirconia, porcelain fused to metal, PFM, cracked tooth, cap',
+      desc:'Protect weak teeth and replace gaps with durable, aesthetic crowns and bridges.',
+      url:'/specialities/crowns-bridges.html', img:'https://via.placeholder.com/800x500?text=Crowns+%26+Bridges'},
+    {id:'svc-dentures', title:'Dentures & Overdentures', category:'Implants & Replacement',
+      keywords:'complete denture, partial denture, flexible, cast metal, locator, implant overdenture',
+      desc:'Comfortable removable options; add implants for superior stability and speech.',
+      url:'/specialities/dentures.html', img:'https://via.placeholder.com/800x500?text=Dentures'},
+
+    // Cosmetic & Smile
+    {id:'smile-makeover', title:'Smile Makeover', category:'Cosmetic & Smile',
+      keywords:'smile design, veneers, bonding, whitening, diastema closure, gummy smile',
+      desc:'Tailored blend of veneers, whitening, and alignment for a balanced, confident smile.',
+      url:'/specialities/smile-design.html', img:'https://via.placeholder.com/800x500?text=Smile+Makeover'},
+    {id:'veneers', title:'Porcelain Veneers', category:'Cosmetic & Smile',
+      keywords:'veneers, laminates, minimal prep, cosmetic, shade match, symmetry',
+      desc:'Ultra-thin porcelain shells refine shape, colour and proportions with minimal preparation.',
+      url:'/specialities/smile-design.html#veneers', img:'https://via.placeholder.com/800x500?text=Veneers'},
+    {id:'whitening', title:'Teeth Whitening', category:'Cosmetic & Smile',
+      keywords:'bleaching, stains, power whitening, take-home trays, shade improvement',
+      desc:'Safe brightening with in-clinic power whitening or custom take-home kits.',
+      url:'/specialities/scaling-whitening.html', img:'https://via.placeholder.com/800x500?text=Teeth+Whitening'},
+    {id:'gum-depig', title:'Gum Depigmentation (Laser)', category:'Cosmetic & Smile',
+      keywords:'dark gums, melanin depigmentation, pink gums, laser dentistry',
+      desc:'Laser-assisted lightening for uniformly pink, healthy-looking gums.',
+      url:'/specialities/gum-surgeries.html#depig', img:'https://via.placeholder.com/800x500?text=Gum+Depigmentation'},
+
+    // Oral Surgery
+    {id:'svc-wisdom', title:'Wisdom Tooth Extraction', category:'Oral Surgery',
+      keywords:'third molar, impaction, pericoronitis, jaw swelling, surgical extraction',
+      desc:'Gentle removal of impacted/painful wisdom teeth with clear post-op care.',
+      url:'/specialities/extraction.html', img:'https://via.placeholder.com/800x500?text=Wisdom+Tooth'},
+    {id:'frenectomy', title:'Frenectomy (Tongue/Lip-Tie)', category:'Oral Surgery',
+      keywords:'tongue tie, lip tie, speech issues, feeding difficulty, laser release',
+      desc:'Quick procedure to release restrictive frena improving function and hygiene access.',
+      url:'/specialities/gum-surgeries.html#frenectomy', img:'https://via.placeholder.com/800x500?text=Frenectomy'},
+
+    // Kids & Family
+    {id:'peds', title:'Pediatric Dentistry', category:'Kids & Family',
+      keywords:'kids dentist, pulpectomy, stainless steel crown, fluoride, behaviour guidance, kid-friendly',
+      desc:'Sealants, fillings, pulpectomy & crowns delivered with child-friendly techniques.',
+      url:'/specialities/kids-dentistry.html', img:'https://via.placeholder.com/800x500?text=Kids+Dentistry'},
+    {id:'sealants', title:'Pit & Fissure Sealants', category:'Kids & Family',
+      keywords:'groove protection, cavity prevention, molars, painless, school dental programs',
+      desc:'Fast, painless coatings that block food-trapping grooves on new molars.',
+      url:'/specialities/kids-dentistry.html#sealants', img:'https://via.placeholder.com/800x500?text=Sealants'},
+    {id:'fluoride', title:'Fluoride Varnish', category:'Kids & Family',
+      keywords:'high-risk caries, enamel strengthening, varnish, prevention',
+      desc:'Topical fluoride for cavity-prone patients to harden enamel and reduce risk.',
+      url:'/specialities/kids-dentistry.html#fluoride', img:'https://via.placeholder.com/800x500?text=Fluoride+Varnish'},
+
+    // Periodontics
+    {id:'svc-scaling', title:'Scaling & Polishing', category:'Periodontics',
+      keywords:'cleaning, tartar removal, prophylaxis, bleeding gums, bad breath, hygiene',
+      desc:'Removes plaque/tartar and polishes surfaces to support gum health and fresh breath.',
+      url:'/specialities/scaling-whitening.html', img:'https://via.placeholder.com/800x500?text=Scaling+%26+Polishing'},
+    {id:'svc-gum', title:'Advanced Gum Therapy', category:'Periodontics',
+      keywords:'gingivitis, periodontitis, deep cleaning, root planing, flap surgery, bone graft',
+      desc:'From deep cleaning to regenerative surgery for stable gums and teeth.',
+      url:'/specialities/gum-surgeries.html', img:'https://via.placeholder.com/800x500?text=Gum+Therapy'},
+    {id:'gum-graft', title:'Gum Recession Grafting', category:'Periodontics',
+      keywords:'receding gums, root coverage, sensitivity, soft tissue graft, tunnel technique',
+      desc:'Covers exposed roots to reduce sensitivity and improve aesthetics.',
+      url:'/specialities/gum-surgeries.html#graft', img:'https://via.placeholder.com/800x500?text=Gum+Graft'},
+
+    // Diagnostics
+    {id:'cbct', title:'Dental CT Scan (CBCT)', category:'Diagnostics',
+      keywords:'3D scan, implant planning, endodontics, TMJ, airway, guided surgery',
+      desc:'High-detail 3D imaging for precise diagnosis and safer treatment planning.',
+      url:'/specialities/diagnostics.html', img:'https://via.placeholder.com/800x500?text=CBCT'},
+    {id:'tmj', title:'TMJ Evaluation & Splints', category:'Diagnostics',
+      keywords:'jaw joint pain, clicking, bruxism, night guard, splint therapy, myofascial pain',
+      desc:'Conservative care and custom splints to relieve TMJ strain and protect teeth.',
+      url:'/specialities/tmj.html', img:'https://via.placeholder.com/800x500?text=TMJ+Care'},
+
+    // Sedation & Sleep
+    {id:'iv-sedation', title:'IV Sedation (Conscious)', category:'Sedation & Sleep',
+      keywords:'dental anxiety, long appointments, sedation dentistry, day care',
+      desc:'Relaxed, semi-awake care with amnesia—ideal for lengthy or anxiety-provoking procedures.',
+      url:'/specialities/sedation.html#iv', img:'https://via.placeholder.com/800x500?text=IV+Sedation'},
+    {id:'ga', title:'General Anesthesia (Hospital)', category:'Sedation & Sleep',
+      keywords:'special needs, pediatric dentistry, operating theatre, one-visit',
+      desc:'One-visit completion for extensive pediatric/special cases in accredited hospitals.',
+      url:'/specialities/sedation.html#ga', img:'https://via.placeholder.com/800x500?text=General+Anesthesia'},
+    {id:'sleep-dentistry', title:'Snoring & Sleep Dentistry', category:'Sedation & Sleep',
+      keywords:'OSA, sleep apnea, mandibular advancement device, airway, snore guard',
+      desc:'Oral appliances and referral pathways for sleep apnea management.',
+      url:'/specialities/sleep-dentistry.html', img:'https://via.placeholder.com/800x500?text=Sleep+Dentistry'},
+
+    // Special Care
+    {id:'pregnancy', title:'Pregnancy Dental Care', category:'Special Care',
+      keywords:'trimester protocols, morning sickness erosion, safe X-rays, lactation counselling',
+      desc:'Trimester-wise guidance and safe care for moms-to-be; prevention first.',
+      url:'/specialities/pregnancy-dental-care.html', img:'https://via.placeholder.com/800x500?text=Pregnancy+Care'},
+    {id:'diabetic', title:'Diabetic Dental Care', category:'Special Care',
+      keywords:'diabetes, periodontitis link, infection control, wound healing, glycemic control',
+      desc:'Tailored gum/infection control and healing support to protect systemic health.',
+      url:'/specialities/diabetic-dental-care.html', img:'https://via.placeholder.com/800x500?text=Diabetic+Care'},
+    {id:'geriatric', title:'Geriatric Dentistry', category:'Special Care',
+      keywords:'elderly, xerostomia, root caries, caregiver training, denture tuning, falls risk',
+      desc:'Comfort-first care with simple home routines and device-friendly tips.',
+      url:'/specialities/geriatric.html', img:'https://via.placeholder.com/800x500?text=Geriatric'},
+
+    // Prosthodontics
+    {id:'fmr', title:'Full Mouth Rehabilitation', category:'Prosthodontics',
+      keywords:'worn dentition, bite rebuild, occlusal scheme, vertical dimension, complex rehab',
+      desc:'Rebuilds function and aesthetics across the arch using crowns/implants as needed.',
+      url:'/specialities/crowns-bridges.html#fmr', img:'https://via.placeholder.com/800x500?text=Full+Mouth+Rehab'},
+    {id:'fixed-teeth', title:'Fixed Artificial Teeth', category:'Prosthodontics',
+      keywords:'fixed teeth, bridges, implant crowns, long-span, zirconia bridge',
+      desc:'Strong, natural-looking fixed teeth via bridges and implant restorations.',
+      url:'/specialities/crowns-bridges.html', img:'https://via.placeholder.com/800x500?text=Fixed+Teeth'}
+  ];
+
+  /* ---------- Logic (ranking, pagination, anchors, keyboard) ---------- */
+  const LOCAL_BOOST = ['nallagandla','lingampally','tellapur','hyderabad'];
+  const norm = s => (s||'').toLowerCase();
+
+  const score = (it, q, cat) => {
+    if (!q && (cat==='all' || cat===it.category)) return 0.0001;
+    const hay = `${it.title} ${it.keywords} ${it.desc} ${it.category}`.toLowerCase();
+    const terms = q.split(/[\s,]+/).filter(Boolean).map(norm);
+    let s = 0;
+    terms.forEach(t=>{
+      if (it.title.toLowerCase().includes(t)) s += 6;
+      if (it.keywords.toLowerCase().includes(t)) s += 4;
+      if (hay.includes(t)) s += 1.5;
+      if (LOCAL_BOOST.includes(t)) s += 3; // GEO
+    });
+    if (cat !== 'all' && it.category === cat) s += 2; // category match boost
+    return s;
+  };
+
+  const getPageSize = () => {
+    if (matchMedia('(min-width:1200px)').matches) return 8;
+    if (matchMedia('(min-width:900px)').matches)  return 6;
+    if (matchMedia('(min-width:640px)').matches)  return 4;
+    return 3;
+  };
+  let PAGE_SIZE = getPageSize();
+  let filtered = TREATMENTS.slice();
+  let page = 1;
+
+  const paginate = (arr, page, size) => {
+    const start = (page-1)*size;
+    return arr.slice(start, start+size);
+  };
+
+  function renderPagination(pageCount){
+    prevBtn.disabled = page<=1;
+    nextBtn.disabled = page>=pageCount;
+    dots.innerHTML = '';
+    for (let i=1;i<=pageCount;i++){
+      const dot = document.createElement('button');
+      dot.className = 'pg-dot';
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Go to page ${i}`);
+      dot.style.width='10px'; dot.style.height='10px'; dot.style.borderRadius='999px';
+      dot.style.border='1px solid color-mix(in srgb, var(--text) 20%, transparent)';
+      if (i===page) dot.style.background='var(--text)';
+      dot.addEventListener('click', ()=>{ page=i; render(); grid.scrollIntoView({behavior:'smooth', block:'start'}); });
+      dots.appendChild(dot);
+    }
+  }
+
+  const cardHtml = (it) => `
+    <article class="t-card" data-id="${it.id}" data-category="${it.category}"
+             itemscope itemtype="https://schema.org/Service"
+             style="background:var(--card);border:1px solid color-mix(in srgb, var(--text) 10%, transparent);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)">
+      <meta itemprop="serviceType" content="${it.title}">
+      <div class="t-media" style="position:relative;aspect-ratio:16/10;background:linear-gradient(120deg, color-mix(in srgb, var(--brand) 8%, transparent), transparent)">
+        <span class="t-badge" style="position:absolute;left:10px;top:10px;background:var(--brand);color:#041312;font-weight:800;padding:6px 10px;border-radius:999px">${it.category}</span>
+        <img loading="lazy" width="800" height="500" src="${it.img}" alt="${it.title}" itemprop="image">
+      </div>
+      <div class="t-body" style="padding:12px">
+        <h3 class="t-title" style="margin:.1rem 0 .25rem;font-size:1.05rem" itemprop="name">${it.title}</h3>
+        <p class="t-desc" style="margin:.25rem 0 .6rem;color:var(--muted)" itemprop="description">${it.desc}</p>
+        <div class="t-actions" style="display:flex;gap:8px;flex-wrap:wrap">
+          <a class="t-btn" href="${it.url}" itemprop="url" aria-label="Learn more about ${it.title}"><i class='bx bx-info-circle'></i> Learn more</a>
+          <a class="t-btn" href="#ndc-appointment" aria-label="Book ${it.title}"><i class='bx bx-calendar'></i> Book</a>
+          <a class="t-btn" href="tel:+918610425342" aria-label="Call clinic about ${it.title}"><i class='bx bxs-phone'></i> Call</a>
+        </div>
+      </div>
+    </article>
+  `;
+
+  function applyFilters(){
+    const q = norm(search?.value || '');
+    const cat = catSel?.value || 'all';
+    const pool = (cat==='all') ? TREATMENTS.slice() : TREATMENTS.filter(it=>it.category===cat);
+
+    if (!q){
+      filtered = pool;
+    } else {
+      filtered = pool
+        .map(it=>({it, s: score(it,q,cat)}))
+        .filter(x=>x.s>0)
+        .sort((a,b)=> b.s - a.s || a.it.title.localeCompare(b.it.title))
+        .map(x=>x.it);
+    }
+    page = 1;
+  }
+
+  function render(){
+    if (!grid) return;
+    grid.setAttribute('aria-busy','true');
+    grid.innerHTML = '';
+
+    const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+    if (page > pageCount) page = pageCount;
+
+    const items = paginate(filtered, page, PAGE_SIZE);
+
+    if (!items.length){
+      status.textContent = 'No treatments match your search—try “implants”, “pain”, “kids”, or “whitening”.';
+      renderPagination(1);
+      grid.setAttribute('aria-busy','false');
+      return;
+    }
+
+    status.textContent = `${filtered.length} result${filtered.length>1?'s':''} — page ${page} of ${pageCount}`;
+    grid.innerHTML = items.map(cardHtml).join('');
+    renderPagination(pageCount);
+    grid.setAttribute('aria-busy','false');
+  }
+
+  // Events (debounced search; chip shortcuts; category)
+  let t;
+  search?.addEventListener('input', ()=>{
+    clearTimeout(t);
+    t = setTimeout(()=>{ applyFilters(); render(); }, 150);
+  });
+  catSel?.addEventListener('change', ()=>{ applyFilters(); render(); });
+  chips.forEach(ch => ch.addEventListener('click', ()=>{
+    if (!search) return;
+    search.value = ch.dataset.chip || '';
+    applyFilters(); render(); search.focus();
+  }));
+
+  // Pagination buttons + keyboard shortcuts
+  prevBtn?.addEventListener('click', ()=>{ if (page>1){ page--; render(); } });
+  nextBtn?.addEventListener('click', ()=>{
+    const pages=Math.ceil(filtered.length/PAGE_SIZE);
+    if (page<pages){ page++; render(); }
+  });
+  document.addEventListener('keydown', (e)=>{
+    if (e.altKey || e.metaKey || e.ctrlKey) return;
+    if (e.key === 'ArrowLeft' && page>1){ page--; render(); }
+    if (e.key === 'ArrowRight'){
+      const pages=Math.ceil(filtered.length/PAGE_SIZE);
+      if (page<pages){ page++; render(); }
+    }
+  });
+
+  // Responsive PAGE_SIZE recalculation
+  const mqHandler = () => {
+    const newSize = getPageSize();
+    if (newSize !== PAGE_SIZE){
+      PAGE_SIZE = newSize;
+      render();
+    }
+  };
+  ['(min-width:1200px)','(min-width:900px)','(min-width:640px)'].forEach(q=>{
+    const mq = matchMedia(q);
+    mq.addEventListener ? mq.addEventListener('change', mqHandler) : mq.addListener(mqHandler);
+  });
+
+  // Deep-link anchors from conditions (hash like #svc-rct)
+  function jumpTo(id){
+    const idx = TREATMENTS.findIndex(x=>x.id===id);
+    if (idx<0) return;
+    page = Math.floor(idx / PAGE_SIZE) + 1;
+    render();
+    requestAnimationFrame(()=>{
+      const card = grid.querySelector(`.t-card[data-id="${id}"]`);
+      if (card){
+        card.scrollIntoView({behavior:'smooth', block:'center'});
+        card.style.outline = '2px solid var(--brand)';
+        setTimeout(()=> card.style.outline = '', 1600);
+      }
+    });
+  }
+  // Handle clicks on inline anchors already in DOM
+  ([
+    ['#svc-rct','svc-rct'],
+    ['#svc-wisdom','svc-wisdom'],
+    ['#svc-implants','svc-implants'],
+    ['#svc-crowns','svc-crowns'],
+    ['#svc-dentures','svc-dentures'],
+    ['#svc-scaling','svc-scaling'],
+    ['#svc-gum','svc-gum']
+  ]).forEach(([href,id])=>{
+    document.querySelectorAll(`a[href="${href}"]`).forEach(a=>{
+      a.addEventListener('click', (e)=>{ e.preventDefault(); jumpTo(id); });
+    });
+  });
+  // Hash on load (e.g., /#svc-implants)
+  if (location.hash && location.hash.startsWith('#svc-')) {
+    const id = location.hash.slice(1);
+    // ensure first render then jump
+    applyFilters(); render();
+    setTimeout(()=> jumpTo(id), 50);
+    return;
+  }
+
+  // Initial run
+  applyFilters(); render();
+})();
+</script>
 <!-- ===================== Part 5: Testimonials ===================== -->
 <section id="ndt-testimonials" class="ndt-tsl band" aria-labelledby="ndt-tsl-title">
   <div>
@@ -1386,7 +1137,7 @@
 
     measure(); start();
   })();
-  </script>
+</script>
 
     <!-- ===================== DOCTORS — TEAM DIRECTORY ===================== -->
 <section id="ndc-doctors-app" class="band" aria-label="Dentists in Nallagandla, Hyderabad">
@@ -2600,120 +2351,3 @@ Notes: ${v.notes}`;
     })();
   </script>
 </footer>
-
-  
-  <!-- Place this in your HTML footer or wherever the chatbot appears -->
-<style>
-  #chat-widget {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 320px;
-    max-height: 500px;
-    border-radius: 12px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
-    font-family: system-ui, sans-serif;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    z-index: 9999;
-  }
-
-  #chat-header {
-    background: #0080ff;
-    color: #fff;
-    padding: 12px;
-    font-weight: bold;
-    text-align: center;
-  }
-
-  #chat-messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .chat-msg {
-    margin-bottom: 12px;
-  }
-
-  .chat-user {
-    font-weight: bold;
-    color: #0080ff;
-  }
-
-  .chat-bot {
-    font-weight: bold;
-    color: #222;
-  }
-
-  #chat-form {
-    display: flex;
-    border-top: 1px solid #ccc;
-  }
-
-  #chat-input {
-    flex: 1;
-    padding: 8px;
-    border: none;
-    outline: none;
-  }
-
-  #chat-submit {
-    background: #0080ff;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-  }
-</style>
-
-<div id="chat-widget">
-  <div id="chat-header">🦷 Ask NobleBot</div>
-  <div id="chat-messages"></div>
-  <form id="chat-form">
-    <input type="text" id="chat-input" placeholder="Ask a dental question..." required />
-    <button id="chat-submit" type="submit">Send</button>
-  </form>
-</div>
-
-<script>
-const chatForm = document.getElementById('chat-form');
-const chatInput = document.getElementById('chat-input');
-const chatMessages = document.getElementById('chat-messages');
-
-function addMessage(sender, text) {
-  const div = document.createElement('div');
-  div.className = 'chat-msg';
-  div.innerHTML = `<span class="chat-${sender}">${sender === 'user' ? 'You' : 'NobleBot'}:</span> ${text}`;
-  chatMessages.appendChild(div);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-chatForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const question = chatInput.value.trim();
-  if (!question) return;
-
-  addMessage('user', question);
-  chatInput.value = '';
-
-  try {
-    const res = await fetch('http://localhost:3000/ask', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question }),
-    });
-
-    const data = await res.json();
-    addMessage('bot', data.answer || 'Sorry, I could not find an answer.');
-  } catch (err) {
-    addMessage('bot', '❌ Error reaching backend.');
-    console.error(err);
-  }
-});
-</script>
-
-
