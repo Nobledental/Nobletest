@@ -1,0 +1,35 @@
+// chunk-html.js
+import fs from 'fs';
+import cheerio from 'cheerio';
+
+const html = fs.readFileSync('your-site.html', 'utf-8');
+const $ = cheerio.load(html);
+const chunks = [];
+
+// ✅ Chunk FAQs
+$('#noble-faq article').each((_, el) => {
+  const id = $(el).find('button').attr('aria-controls');
+  const title = $(el).find('button').text().trim();
+  const content = $(el).find('.nd-qa__panel p').first().text().trim();
+  chunks.push({ id, type: 'faq', title, content });
+});
+
+// ✅ Care Team
+$('#ndc-insurance-support .care-card').each((_, el) => {
+  const name = $(el).find('.care-name').text().trim();
+  const role = $(el).find('.care-role').text().trim();
+  const description = $(el).find('.care-text').text().trim();
+  chunks.push({ type: 'staff', name, role, content: description });
+});
+
+// ✅ Insurance Support bullets
+$('#ndc-insurance-support .surface').each((_, el) => {
+  const title = $(el).find('h3').first().text().trim();
+  const content = $(el).find('p').first().text().trim();
+  if (title && content) {
+    chunks.push({ type: 'insurance', title, content });
+  }
+});
+
+fs.writeFileSync('chunks.json', JSON.stringify(chunks, null, 2));
+console.log(`✅ Extracted ${chunks.length} chunks`);
