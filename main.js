@@ -204,3 +204,44 @@ function renderPagination(pageCount){
   }
 })();
 
+  // Hero
+(() => {
+  const vid = document.querySelector('.blackhole-video');
+  if (!vid) return;
+  const mq = matchMedia('(prefers-reduced-motion: reduce)');
+  const apply = () => { if (mq.matches) { vid.pause(); vid.removeAttribute('autoplay'); } else { vid.play().catch(()=>{}); } };
+  mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply);
+  apply();
+})();
+
+  // for Image standardization
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import sharp from 'sharp';
+
+const srcDir = 'src-images', outDir = 'public/images';
+const widths = [320, 480, 640, 800, 960, 1200, 1600];
+
+await fs.mkdir(outDir, { recursive: true });
+const files = (await fs.readdir(srcDir)).filter(f => /\.(jpe?g|png)$/i.test(f));
+
+for (const file of files) {
+  const base = file.replace(/\.(jpe?g|png)$/i,'');
+  const input = path.join(srcDir, file);
+  const meta = await sharp(input).metadata();
+
+  for (const w of widths) {
+    if (!meta.width || w > meta.width) continue;
+    await sharp(input).resize(w).toFormat('avif',{quality:50}).toFile(`${outDir}/${base}-${w}.avif`);
+    await sharp(input).resize(w).toFormat('webp',{quality:70}).toFile(`${outDir}/${base}-${w}.webp`);
+    await sharp(input).resize(w).jpeg({quality:78, mozjpeg:true}).toFile(`${outDir}/${base}-${w}.jpg`);
+  }
+
+  await sharp(input).toFormat('avif',{quality:50}).toFile(`${outDir}/${base}.avif`);
+  await sharp(input).toFormat('webp',{quality:70}).toFile(`${outDir}/${base}.webp`);
+  await sharp(input).jpeg({quality:78, mozjpeg:true}).toFile(`${outDir}/${base}.jpg`);
+
+  // Store natural size for width/height
+  await fs.writeFile(`${outDir}/${base}.json`, JSON.stringify({width: meta.width, height: meta.height}));
+}
+console.log('✅ images built');
