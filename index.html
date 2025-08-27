@@ -144,19 +144,16 @@
   </header>
 
   <!-- Hero -->
-  <section class="hero-background band is-full" id="top" aria-labelledby="hero-title">
-    <div class="blackhole-box" aria-label="Clinic highlight video">
-      <video class="blackhole-video"
-             src="/videos/blackhole.mp4"
-             poster="/images/hero-poster.jpg"
-             preload="none" autoplay muted loop playsinline
-             aria-label="Dental care hero video"></video>
-    </div>
-
-    <div class="hero-info-title">
-      <i class="bx bxl-sketch" aria-hidden="true"></i>
-      Noble Dental Care
-    </div>
+<section class="hero-background band is-full">
+  <div class="blackhole-box" aria-label="Clinic highlight video">
+    <video class="blackhole-video"
+           poster="/images/hero-poster.jpg"
+           preload="none" autoplay muted loop playsinline
+           width="1280" height="720">
+  <source src="/videos/hero-teaser.webm" type="video/webm">
+  <source src="/videos/hero-teaser.mp4"  type="video/mp4">
+    </video>
+  </div>
 
     <div class="container">
       <h1 id="hero-title" class="hero-heading">
@@ -646,64 +643,67 @@
       </div>
     </section>
 
-    <!-- Services -->
-    <section class="band" id="services" aria-label="Comprehensive Dental Treatments">
-      <div class="container">
-        <header>
-          <p class="eyebrow">Treatments</p>
-          <h2 class="section-title">Comprehensive Dental Treatments in Nallagandla, Hyderabad</h2>
-          <p class="section-sub">Evidence-based dentistry—from check-ups and gum care to implants, braces, cosmetic and pediatric solutions. Simple language, clear outcomes, fast actions.</p>
-        </header>
+<!-- ===================== TREATMENTS ===================== -->
+<section class="band treatments-section" id="services" aria-label="Comprehensive Dental Treatments">
+  <div class="container">
+    <header class="treatments-header">
+      <p class="eyebrow">Treatments</p>
+      <h2 class="section-title">Comprehensive Dental Treatments in Nallagandla, Hyderabad</h2>
+      <p class="section-sub">Evidence-based care from pain relief and tooth saving to implants, orthodontics, cosmetics, and kids’ dentistry.</p>
+    </header>
 
-        <form class="services-controls" role="search" aria-label="Filter treatments" onsubmit="return false;">
-          <label class="field search">
-            <i class="bx bx-search" aria-hidden="true"></i>
-            <input id="svcSearch" type="search" inputmode="search" autocomplete="off" placeholder="Search treatments (e.g., implants, pain, kids, braces)…" aria-label="Search treatments" />
-          </label>
-
-          <label class="field select">
-            <i class="bx bx-filter-alt" aria-hidden="true"></i>
-            <select id="svcCategory" aria-label="Filter by category">
-              <option value="all">All topics</option>
-              <option value="Tooth Alignment">Tooth Alignment</option>
-              <option value="Tooth Saving">Tooth Saving</option>
-              <option value="Implants & Replacement">Implants & Replacement</option>
-              <option value="Cosmetic & Smile">Cosmetic & Smile</option>
-              <option value="Oral Surgery">Oral Surgery</option>
-              <option value="Kids & Family">Kids & Family</option>
-              <option value="Periodontics">Gum & Periodontics</option>
-              <option value="Diagnostics">Diagnostics</option>
-              <option value="Sedation & Sleep">Sedation & Sleep</option>
-              <option value="Special Care">Special Care</option>
-              <option value="Prosthodontics">Prosthodontics</option>
-            </select>
-          </label>
-
-          <div class="chip-row" aria-label="Quick topics">
-            <button class="chip" type="button" data-chip="implants">Implants</button>
-            <button class="chip" type="button" data-chip="root canal">Root canal</button>
-            <button class="chip" type="button" data-chip="braces">Braces</button>
-            <button class="chip" type="button" data-chip="kids">Kids</button>
-            <button class="chip" type="button" data-chip="whitening">Whitening</button>
-            <button class="chip" type="button" data-chip="wisdom tooth">Wisdom tooth</button>
-            <button class="chip" type="button" data-chip="gum">Gum</button>
-            <button class="chip" type="button" data-chip="pain">Pain</button>
-          </div>
-        </form>
-
-        <div id="treatmentsStatus" class="results-status" aria-live="polite"></div>
-
-        <section id="treatmentsGrid" class="treatments-grid" aria-live="polite" aria-busy="false">
-          <!-- skeletons rendered by CSS; JS will populate -->
-        </section>
-
-        <nav class="treatments-pagination" aria-label="Treatments pages">
-          <button id="pgPrev" class="pg-btn" type="button" aria-label="Previous page" disabled><i class="bx bx-chevron-left" aria-hidden="true"></i></button>
-          <div id="pgDots" class="pg-dots" role="list"></div>
-          <button id="pgNext" class="pg-btn" type="button" aria-label="Next page" disabled><i class="bx bx-chevron-right" aria-hidden="true"></i></button>
-        </nav>
+    <form class="treatments-controls" role="search" aria-label="Filter treatments" onsubmit="return false;">
+      <label class="t-field t-search">
+        <i class="bx bx-search" aria-hidden="true"></i>
+        <input id="tSearch" type="search" inputmode="search" autocomplete="off"
+               placeholder="Search (e.g., implants, braces, pain, kids)…" aria-label="Search treatments">
+      </label>
+      <label class="t-field t-select">
+        <i class="bx bx-filter-alt" aria-hidden="true"></i>
+        <select id="tCategory" aria-label="Filter by category">
+          <option value="all">All categories</option>
+          <option value="Tooth Saving">Tooth Saving</option>
+          <option value="Implants & Replacement">Implants & Replacement</option>
+          <option value="Tooth Alignment">Tooth Alignment</option>
+          <option value="Cosmetic & Smile">Cosmetic & Smile</option>
+          <option value="Oral Surgery">Oral Surgery</option>
+          <option value="Gum & Periodontics">Gum & Periodontics</option>
+          <option value="Kids & Family">Kids & Family</option>
+          <option value="Prosthodontics">Prosthodontics</option>
+        </select>
+      </label>
+      <div class="t-chiprow" role="group" aria-label="Quick topics">
+        <button class="t-chip" type="button" data-chip="implants">Implants</button>
+        <button class="t-chip" type="button" data-chip="root canal">Root canal</button>
+        <button class="t-chip" type="button" data-chip="braces">Braces</button>
+        <button class="t-chip" type="button" data-chip="aligners">Aligners</button>
+        <button class="t-chip" type="button" data-chip="whitening">Whitening</button>
+        <button class="t-chip" type="button" data-chip="wisdom tooth">Wisdom tooth</button>
+        <button class="t-chip" type="button" data-chip="kids">Kids</button>
+        <button class="t-chip" type="button" data-chip="gum">Gum</button>
       </div>
+    </form>
+
+    <div id="tStatus" class="t-status" aria-live="polite"></div>
+
+    <section id="tGrid" class="t-grid" aria-live="polite" aria-busy="false">
+      <div class="t-skeleton" aria-hidden="true"></div>
+      <div class="t-skeleton" aria-hidden="true"></div>
+      <div class="t-skeleton" aria-hidden="true"></div>
+      <div class="t-skeleton" aria-hidden="true"></div>
     </section>
+
+    <nav class="t-pages" aria-label="Treatments pages">
+      <button id="tPrev" class="t-pagebtn" type="button" aria-label="Previous page" disabled>
+        <i class="bx bx-chevron-left" aria-hidden="true"></i>
+      </button>
+      <div id="tDots" class="t-pagedots" role="list"></div>
+      <button id="tNext" class="t-pagebtn" type="button" aria-label="Next page" disabled>
+        <i class="bx bx-chevron-right" aria-hidden="true"></i>
+      </button>
+    </nav>
+  </div>
+</section>
   </main>
 
   <footer class="site-footer">
@@ -714,4 +714,3 @@
   </footer>
 </body>
 </html>
-
