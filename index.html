@@ -1,34 +1,20 @@
 <!doctype html>
-<html lang="en-US"><head>
+<html lang="en-US">
+<head>
   <meta charset="UTF-8" />
-  <!-- Viewport & display -->
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#0b0e14">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b0e14">
 
-  <!-- Primary SEO -->
   <title>Dentist in Nallagandla | Noble Dental Care — Near Tellapur, Lingampally</title>
   <meta name="description" content="Noble Dental Care in Nallagandla—implants, braces, painless RCT, cosmetic & pediatric dentistry. Easy parking, late hours, emergency care. Call +91 86104 25342." />
   <link rel="canonical" href="https://nobledentalnallagandla.in/" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Noble Dental Care — Nallagandla" />
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="google-site-verification" content="coO5jvSypAc95p3t7cWWDaTsqtjt-W2bK3ybS21ZsIc" />
 
-  <!-- Security & performance -->
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self';
-                 img-src 'self' data: https:;
-                 style-src 'self' https://fonts.googleapis.com https://unpkg.com 'unsafe-inline';
-                 font-src  'self' https://fonts.gstatic.com https://unpkg.com data:;
-                 script-src 'self' https://unpkg.com https://www.googletagmanager.com 'unsafe-inline';
-                 connect-src 'self' https:;
-                 frame-src https://www.googletagmanager.com;">
-  <meta http-equiv="Permissions-Policy"
-        content="camera=(), microphone=(), geolocation=(), payment=(), interest-cohort=()">
-
-  <!-- Open Graph / Twitter -->
+  <!-- Social cards -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Noble Dental Care" />
   <meta property="og:locale" content="en_US" />
@@ -41,35 +27,27 @@
   <meta name="twitter:description" content="Expert-led dental care for the whole family—implants, RCT, braces & more." />
   <meta name="twitter:site" content="@care_ndc" />
   <meta name="twitter:image" content="https://nobledentalnallagandla.in/images/twitter-card-image.jpg" />
-  <meta name="twitter:image:alt" content="A smiling patient with the Noble Dental Care team" />
 
-  <!-- Sitemap -->
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-
-  <!-- Preconnects (deduped) -->
+  <!-- Preconnects -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://www.googletagmanager.com" />
   <link rel="preconnect" href="https://www.google-analytics.com" />
-  <link rel="preconnect" href="https://wa.me" />
-  <link rel="preconnect" href="https://g.co" />
+  <link rel="preload" href="/fonts/Manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Manrope-700.woff2" as="font" type="font/woff2" crossorigin>
+
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/images/favicon.png" />
-
-  <!-- Preload critical media (avoid preloading large MP4 to protect LCP) -->
+  <!-- Preload only the hero poster to protect LCP -->
   <link rel="preload" as="image" href="/images/hero-poster.jpg" fetchpriority="high">
-  
-  <link rel="stylesheet" href="/assets/style.css">
 
-  <!-- ===================== Structured Data ===================== -->
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/main.js" type="module" defer></script>
 
-  <!-- Primary: Dentist / LocalBusiness / MedicalBusiness (single source of truth) -->
+  <!-- ======= Structured Data (keep as single source of truth) ======= -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -114,146 +92,40 @@
     "logo":"https://nobledentalnallagandla.in/images/logo.png"
   }
   </script>
-
-  <!-- Organization + Logo (helps knowledge panel & AEO) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "@id":"https://nobledentalnallagandla.in/#org",
-    "name":"Noble Dental Care",
-    "url":"https://nobledentalnallagandla.in/",
-    "logo":{
-      "@type":"ImageObject",
-      "url":"https://nobledentalnallagandla.in/images/logo.png",
-      "width":512,
-      "height":512
-    },
-    "contactPoint":[{
-      "@type":"ContactPoint",
-      "telephone":"+918610425342",
-      "contactType":"customer service",
-      "areaServed":"IN",
-      "availableLanguage":["en","hi","te","ta"]
-    }]
-  }
-  </script>
-
-  <!-- Breadcrumbs -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BreadcrumbList",
-   "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Home","item":"https://nobledentalnallagandla.in/"},
-      {"@type":"ListItem","position":2,"name":"Dentists in Nallagandla, Hyderabad","item":"https://nobledentalnallagandla.in/#ndc-doctors-app"},
-      {"@type":"ListItem","position":3,"name":"Treatments","item":"https://nobledentalnallagandla.in/#services"}
-   ]}
-  </script>
-
-  <!-- WebSite SearchAction (sitelinks) -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"Noble Dental Nallagandla","url":"https://nobledentalnallagandla.in/",
-   "potentialAction":{"@type":"SearchAction","target":"https://nobledentalnallagandla.in/search?q={search_term_string}","query-input":"required name=search_term_string"}}
-  </script>
-
-  <!-- Speakable (add hero sub too) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebPage",
-    "url":"https://nobledentalnallagandla.in/",
-    "speakable":{
-      "@type":"SpeakableSpecification",
-      "xpath":[
-        "/html/body/section[@id='top']//h1",
-        "/html/body/section[@id='top']//p[contains(@class,'hero-sub')]"
-      ]
-    }
-  }
-  </script>
-
-  <!-- Base theme & critical styles (kept minimal; full CSS later) -->
-  <style>
-    :root{
-      --max: 1280px; --pad: clamp(16px, 3vw, 28px);
-      --bg:#0b0e14; --paper:#0f141c; --card:#121926;
-      --text:#e5eef7; --muted:#8aa0b4; --brand:#57c0b9; --brand-2:#7aa3ff;
-      --radius: 14px;
-    }
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#f6fafc; --paper:#ffffff; --card:#ffffff; --text:#0f172a; --muted:#475569; }
-    }
-    html,body{height:100%} body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
-    .band{display:grid;grid-template-columns:minmax(var(--pad),1fr) minmax(0,var(--max)) minmax(var(--pad),1fr)}
-    .band>*{grid-column:2}.band.is-full>*{grid-column:1/-1}
-    .visually-hidden{position:absolute!important;clip:rect(0 0 0 0)!important;width:1px!important;height:1px!important;overflow:hidden!important;white-space:nowrap!important}
-  </style>
-
-  <!-- Google Tag Manager + Consent -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('consent', 'default', {
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: 'granted'
-    });
-  </script>
-  <script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-      var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-      j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-N7LJVS7T');
-  </script>
 </head>
-<body class="theme-voka">
+<body class="theme-voka" data-mode="light">
   <a class="visually-hidden" href="#main">Skip to content</a>
 
-  <script>
-  const body = document.body;
-  if (body.classList.contains('theme-voka')) {
-    body.setAttribute('data-mode',
-      matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    );
-  }
-</script>
-  
-  <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7LJVS7T"
-            height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe>
-  </noscript>
-
-  <!-- ===== Header (kept, a11y/CLS tuned) ===== -->
+  <!-- Header -->
   <header class="site-header" role="banner">
-    <!-- Brand -->
     <a href="/" class="brand" aria-label="Noble Dental Nallagandla home">
-      <img src="/images/dentalcare.nallagandla.png"
-           alt="Noble Dental Clinic - Nallagandla logo"
+      <img src="/images/dentalcare.nallagandla.png" alt="Noble Dental Clinic - Nallagandla logo"
            width="40" height="40" decoding="async" fetchpriority="high" />
       <p class="brand-title"><span>Noble</span> Dental Care</p>
     </a>
 
-    <!-- Primary Nav -->
     <nav class="main-nav" aria-label="Primary">
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <i class="bx bx-menu" aria-hidden="true"></i>
+      </button>
+
       <ul class="nav-pill" role="list">
         <li><a href="/">Home</a></li>
 
-        <!-- Specialities with SEO-friendly sublinks -->
         <li class="has-submenu">
-          <a href="/specialities/" aria-haspopup="true" aria-expanded="false" aria-controls="sp-submenu">
+          <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sp-submenu">
             Specialities <span class="caret" aria-hidden="true"></span>
-          </a>
+          </button>
           <ul class="submenu" id="sp-submenu" role="menu">
-            <li role="none"><a role="menuitem" href="/specialities/braces.html">Braces &amp; Orthodontics</a></li>
+            <li role="none"><a role="menuitem" href="/specialities/braces.html">Braces & Orthodontics</a></li>
             <li role="none"><a role="menuitem" href="/specialities/invisalign.html">Invisalign Clear Aligners</a></li>
             <li role="none"><a role="menuitem" href="/specialities/extraction.html">Tooth Extraction</a></li>
             <li role="none"><a role="menuitem" href="/specialities/root-canal.html">Root Canal Treatment</a></li>
             <li role="none"><a role="menuitem" href="/specialities/fillings.html">Tooth Fillings</a></li>
-            <li role="none"><a role="menuitem" href="/specialities/crowns-bridges.html">Crowns &amp; Bridges</a></li>
+            <li role="none"><a role="menuitem" href="/specialities/crowns-bridges.html">Crowns & Bridges</a></li>
             <li role="none"><a role="menuitem" href="/specialities/implants.html">Dental Implants</a></li>
             <li role="none"><a role="menuitem" href="/specialities/dentures.html">Dentures</a></li>
-            <li role="none"><a role="menuitem" href="/specialities/scaling-whitening.html">Scaling &amp; Whitening</a></li>
+            <li role="none"><a role="menuitem" href="/specialities/scaling-whitening.html">Scaling & Whitening</a></li>
             <li role="none"><a role="menuitem" href="/specialities/smile-design.html">Smile Designing</a></li>
             <li role="none"><a role="menuitem" href="/specialities/gum-surgeries.html">Gum Surgeries</a></li>
             <li role="none"><a role="menuitem" href="/specialities/kids-dentistry.html">Kids Dentistry</a></li>
@@ -268,57 +140,43 @@
         <li><a href="#noble-faq">FAQ</a></li>
       </ul>
     </nav>
-
-    <!-- Right cluster -->
-    <div class="header-right">
-      <div class="socials" aria-label="Social links">
-        <a href="https://www.youtube.com/" aria-label="YouTube" rel="noopener"><i class='bx bxl-youtube' aria-hidden="true"></i></a>
-        <a href="https://github.com/" aria-label="GitHub" rel="noopener"><i class='bx bxl-github' aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn" rel="noopener"><i class='bx bxl-linkedin-square' aria-hidden="true"></i></a>
-      </div>
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
-        <i class='bx bx-menu' aria-hidden="true"></i>
-      </button>
-    </div>
   </header>
 
-  <!-- ===== Hero (kept, CLS safe) ===== -->
+  <!-- Hero -->
   <section class="hero-background band is-full" id="top" aria-labelledby="hero-title">
     <div class="blackhole-box" aria-label="Clinic highlight video">
       <video class="blackhole-video"
              src="/videos/blackhole.mp4"
              poster="/images/hero-poster.jpg"
-             autoplay muted loop playsinline
-             aria-label="Dental care hero video">
-      </video>
+             preload="none" autoplay muted loop playsinline
+             aria-label="Dental care hero video"></video>
     </div>
 
     <div class="hero-info-title">
-      <i class='bx bxl-sketch' aria-hidden="true"></i>
+      <i class="bx bxl-sketch" aria-hidden="true"></i>
       Noble Dental Care
     </div>
 
-    <div style="max-width:var(--max); margin-inline:auto; padding-inline:var(--pad);">
-      <h1 id="hero-title" class="hero-heading" data-aos="fade-right" data-aos-duration="140">
+    <div class="container">
+      <h1 id="hero-title" class="hero-heading">
         Your Trusted <span class="gradient">Dentist</span> in Nallagandla<span class="gradient">, Hyderabad</span>
       </h1>
       <p class="hero-sub">
         Expert-led care in dental implants, painless root canal treatment, orthodontics, cosmetic and pediatric dentistry —
         late hours, easy parking, and emergency support.
       </p>
-
       <div class="hero-buttons" role="group" aria-label="Primary actions">
         <a href="https://wa.me/918610425342" target="_blank" rel="noopener" class="hero-button whatsapp">
-          <i class='bx bxl-whatsapp' aria-hidden="true"></i> WhatsApp
+          <i class="bx bxl-whatsapp" aria-hidden="true"></i> WhatsApp
         </a>
         <a href="tel:+918610425342" class="hero-button call">
-          <i class='bx bxs-phone' aria-hidden="true"></i> Call
+          <i class="bx bxs-phone" aria-hidden="true"></i> Call
         </a>
         <a href="mailto:nobledental.org@gmail.com" class="hero-button mail">
-          <i class='bx bx-envelope' aria-hidden="true"></i> Mail
+          <i class="bx bx-envelope" aria-hidden="true"></i> Mail
         </a>
         <a href="https://g.co/kgs/Lebjyvw" target="_blank" rel="noopener" class="hero-button location">
-          <i class='bx bx-map' aria-hidden="true"></i> Location
+          <i class="bx bx-map" aria-hidden="true"></i> Location
         </a>
       </div>
     </div>
@@ -326,198 +184,485 @@
     <div class="scroll-down" aria-hidden="true"></div>
   </section>
 
-  <!-- ===== Answer-engine intro (succinct bullets) ===== -->
+  <!-- Reasons -->
   <main id="main" role="main">
     <section class="band" aria-label="Quick reasons to choose us">
-      <div>
+      <div class="container">
         <h2 class="section-title">Top Reasons Patients Choose Noble Dental Care</h2>
-        <p class="section-sub">Clear answers. Specialist treatments. Ethical recommendations. Protocols aligned with IDA, ADA, WHO &amp; ICMR, tuned for Hyderabad.</p>
-        <ul role="list" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;list-style:none;padding:0;margin:16px 0">
+        <p class="section-sub">Clear answers. Specialist treatments. Ethical recommendations. Protocols aligned with IDA, ADA, WHO & ICMR, tuned for Hyderabad.</p>
+        <ul class="chip-grid" role="list">
           <li class="chip">Painless Root Canals (RVG + Apex)</li>
           <li class="chip">Dental Implants (Digital Planning)</li>
-          <li class="chip">Braces &amp; Clear Aligners</li>
+          <li class="chip">Braces & Clear Aligners</li>
           <li class="chip">Wisdom Tooth Extractions</li>
-          <li class="chip">Kids Dentistry &amp; Sealants</li>
-          <li class="chip">Gum Treatment &amp; Laser Dentistry</li>
-          <li class="chip">Teeth Whitening &amp; Veneers</li>
+          <li class="chip">Kids Dentistry & Sealants</li>
+          <li class="chip">Gum Treatment & Laser Dentistry</li>
+          <li class="chip">Teeth Whitening & Veneers</li>
           <li class="chip">Emergency Care (10 PM–2 AM)</li>
           <li class="chip">Insurance Coordination Support</li>
         </ul>
       </div>
     </section>
 
-    <!-- Lightweight site search fallback (AEO/LLMO) -->
+    <!-- Site search -->
     <section class="band" aria-label="Site search">
-      <form action="/search" method="get" role="search" aria-label="Search site"
-            style="display:flex;gap:8px;flex-wrap:wrap;margin:.2rem 0">
+      <form action="/search" method="get" role="search" aria-label="Search site" class="search-form">
         <label class="visually-hidden" for="q">Search</label>
-        <input id="q" name="q" type="search" placeholder="Search services, symptoms, doctors…"
-               autocomplete="off" inputmode="search"
-               style="flex:1;min-width:260px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:var(--paper);color:var(--text)"/>
-        <button class="btn primary" type="submit" aria-label="Search">
-          <i class='bx bx-search' aria-hidden="true"></i> Search
-        </button>
+        <input id="q" name="q" type="search" placeholder="Search services, symptoms, doctors…" autocomplete="off" inputmode="search" />
+        <button class="btn primary" type="submit" aria-label="Search"><i class="bx bx-search" aria-hidden="true"></i> Search</button>
       </form>
     </section>
-    <!-- ========================= CONDITIONS (AEO-ready) ========================= -->
+
+    <!-- Conditions -->
     <section class="band" id="conditions" aria-label="Common Dental Conditions & First Aid">
-      <div>
+      <div class="container">
         <header>
           <p class="eyebrow">Conditions</p>
           <h2 class="section-title">Common Dental Problems — What It Means & What To Do</h2>
           <p class="section-sub">Short, plain-English guidance for symptoms people search. Tap a card to learn the next step or jump to the right treatment.</p>
         </header>
 
-        <div class="grid grid-even" style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
-          <!-- Toothache -->
-          <article class="surface" id="cond-toothache" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-            <h3>Toothache / Sensitivity</h3>
-            <p class="muted">Sharp or lingering pain with hot/cold often means decay, cracked tooth, or exposed dentin.</p>
-            <ul>
-              <li><strong>Do now:</strong> Rinse warm salt water; OTC pain relief if safe; avoid extremes.</li>
-              <li><strong>Likely care:</strong> Filling or <a href="#svc-rct">Root Canal</a>, desensitizer, or crown.</li>
-            </ul>
-            <div class="t-actions" style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
-              <a class="t-btn" href="/specialities/fillings.html"><i class='bx bx-band-aid'></i> Fillings</a>
-              <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-              <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-            </div>
-          </article>
+<div class="cards-grid">
+  <!-- Toothache / Sensitivity -->
+  <article class="surface" id="cond-toothache">
+    <h3>Toothache / Sensitivity</h3>
+    <p class="muted">Sharp or lingering pain with hot/cold may be decay, cracked tooth, or exposed dentin.</p>
+    <ul>
+      <li><strong>Do now:</strong> Warm salt-water rinse; avoid very hot/cold; OTC pain relief if safe.</li>
+      <li><strong>Likely care:</strong> Filling, <a href="#svc-rct">Root Canal</a>, fluoride/desensitizer, or crown.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/fillings.html"><i class="bx bx-band-aid"></i> Fillings</a>
+      <a class="t-btn" href="#ndc-appointment"><i class="bx bx-calendar"></i> Book</a>
+      <a class="t-btn" href="tel:+918610425342"><i class="bx bxs-phone"></i> Call</a>
+    </div>
+  </article>
 
-          <!-- Swelling -->
-          <article class="surface" id="cond-swelling" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-            <h3>Facial Swelling / Gum Boil</h3>
-            <p class="muted">May indicate spreading infection (abscess). Needs urgent evaluation.</p>
-            <ul>
-              <li><strong>Do now:</strong> Cold compress outside; do <em>not</em> apply heat.</li>
-              <li><strong>Likely care:</strong> <a href="#svc-rct">RCT</a> or extraction + antibiotics if indicated.</li>
-            </ul>
-            <div class="t-actions">
-              <a class="t-btn" href="/specialities/emergency.html"><i class='bx bx-time-five'></i> Emergency</a>
-              <a class="t-btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call</a>
-            </div>
-          </article>
+  <!-- Swelling / Dental Abscess -->
+  <article class="surface" id="cond-abscess">
+    <h3>Swelling / Dental Abscess</h3>
+    <p class="muted">Local swelling, throbbing pain, pus taste, fever = likely infection at tooth or gum.</p>
+    <ul>
+      <li><strong>Do now:</strong> Cold compress outside cheek; do <em>not</em> apply heat; seek urgent care.</li>
+      <li><strong>Likely care:</strong> Drainage + antibiotics (if indicated) and <a href="#svc-rct">RCT</a> or extraction.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/root-canal.html"><i class="bx bx-plus-medical"></i> Pain Relief & RCT</a>
+      <a class="t-btn" href="#ndc-appointment"><i class="bx bx-time-five"></i> Urgent Visit</a>
+    </div>
+  </article>
 
-          <!-- Wisdom tooth -->
-          <article class="surface" id="cond-wisdom" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-            <h3>Wisdom Tooth Pain</h3>
-            <p class="muted">Impacted third molars can trap food and cause gum infection (pericoronitis).</p>
-            <ul>
-              <li><strong>Do now:</strong> Warm saltwater rinses; gentle brushing.</li>
-              <li><strong>Likely care:</strong> <a href="#svc-wisdom">Surgical extraction</a> + irrigation.</li>
-            </ul>
-            <div class="t-actions">
-              <a class="t-btn" href="/specialities/extraction.html"><i class='bx bx-scatter-chart'></i> Extractions</a>
-              <a class="t-btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book</a>
-            </div>
-          </article>
+  <!-- Broken / Cracked Tooth -->
+  <article class="surface" id="cond-cracked">
+    <h3>Broken / Cracked Tooth</h3>
+    <p class="muted">Fracture from biting hard foods, trauma, or old fillings; pain on biting common.</p>
+    <ul>
+      <li><strong>Do now:</strong> Save any piece; avoid chewing on that side.</li>
+      <li><strong>Likely care:</strong> Bonding or crown; deep cracks may need <a href="#svc-rct">RCT</a>.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/crowns-bridges.html"><i class="bx bx-diamond"></i> Crowns</a>
+      <a class="t-btn" href="/specialities/fillings.html"><i class="bx bx-band-aid"></i> Bonding</a>
+    </div>
+  </article>
 
-          <!-- Bleeding gums -->
-          <article class="surface" id="cond-bleeding" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-            <h3>Bleeding Gums / Bad Breath</h3>
-            <p class="muted">Common in gingivitis/periodontitis. Often painless, but progressive.</p>
-            <ul>
-              <li><strong>Do now:</strong> Brush 2×/day with fluoride paste; floss/interdental brush daily.</li>
-              <li><strong>Likely care:</strong> <a href="#svc-scaling">Scaling</a> ± deep cleaning; <a href="#svc-gum">Gum therapy</a>.</li>
-            </ul>
-            <div class="t-actions">
-              <a class="t-btn" href="/specialities/scaling-whitening.html"><i class='bx bx-check-shield'></i> Scaling</a>
-              <a class="t-btn" href="/specialities/gum-surgeries.html"><i class='bx bx-detail'></i> Periodontics</a>
-            </div>
-          </article>
+  <!-- Knocked-Out Tooth -->
+  <article class="surface" id="cond-avulsion">
+    <h3>Knocked-Out Tooth (Avulsion)</h3>
+    <p class="muted">Permanent tooth out of socket. Time-critical (best within 30–60 minutes).</p>
+    <ul>
+      <li><strong>Do now:</strong> Handle by the crown, rinse gently, reinsert if possible or store in milk/saliva.</li>
+      <li><strong>Likely care:</strong> Reimplantation + splint; follow-up for <a href="#svc-rct">RCT</a> if needed.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="tel:+918610425342"><i class="bx bxs-phone-call"></i> Emergency Call</a>
+      <a class="t-btn" href="#ndc-appointment"><i class="bx bx-current-location"></i> Come In Now</a>
+    </div>
+  </article>
 
-          <!-- Missing tooth -->
-          <article class="surface" id="cond-missing" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-            <h3>Missing Tooth / Loose Denture</h3>
-            <p class="muted">Bone shrinks over time; early replacement preserves bite & looks.</p>
-            <ul>
-              <li><strong>Options:</strong> <a href="#svc-implants">Implant</a>, <a href="#svc-crowns">Bridge</a>, or <a href="#svc-dentures">Denture</a>.</li>
-            </ul>
-            <div class="t-actions">
-              <a class="t-btn" href="/specialities/implants.html"><i class='bx bx-cuboid'></i> Implants</a>
-              <a class="t-btn" href="/specialities/crowns-bridges.html"><i class='bx bx-layer'></i> Crowns/Bridges</a>
-            </div>
-          </article>
+  <!-- Wisdom Tooth Pain -->
+  <article class="surface" id="cond-wisdom">
+    <h3>Wisdom Tooth Pain / Pericoronitis</h3>
+    <p class="muted">Inflamed gum flap over a partially erupted molar; pain, bad taste, swelling.</p>
+    <ul>
+      <li><strong>Do now:</strong> Warm salt-water rinses; gentle cleaning; avoid hard foods.</li>
+      <li><strong>Likely care:</strong> Cleaning + antibiotics (if indicated) or <a href="#svc-extraction">extraction</a>.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/extraction.html"><i class="bx bx-cut"></i> Wisdom Extraction</a>
+      <a class="t-btn" href="#ndc-appointment"><i class="bx bx-calendar"></i> Book</a>
+    </div>
+  </article>
 
-          <!-- Crooked teeth -->
-          <article class="surface" id="cond-crooked" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-            <h3>Crooked / Spaced Teeth</h3>
-            <p class="muted">Alignment improves hygiene, bite, and confidence.</p>
-            <ul><li><strong>Care:</strong> Braces (metal/ceramic) or clear aligners (Invisalign).</li></ul>
-            <div class="t-actions">
-              <a class="t-btn" href="/specialities/braces.html"><i class='bx bx-chevrons-right'></i> Braces</a>
-              <a class="t-btn" href="/specialities/invisalign.html"><i class='bx bx-grid-alt'></i> Clear Aligners</a>
-            </div>
-          </article>
+  <!-- Bleeding Gums -->
+  <article class="surface" id="cond-bleeding-gums">
+    <h3>Bleeding Gums / Gingivitis</h3>
+    <p class="muted">Plaque-related inflammation; bleeding on brushing/flossing, bad breath.</p>
+    <ul>
+      <li><strong>Do now:</strong> Don’t stop brushing; add floss/interdental brush; use soft brush.</li>
+      <li><strong>Likely care:</strong> Scaling & polishing; gum therapy if pockets present.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/scaling-whitening.html"><i class="bx bx-brightness"></i> Scaling</a>
+      <a class="t-btn" href="/specialities/gum-surgeries.html"><i class="bx bx-leaf"></i> Gum Treatment</a>
+    </div>
+  </article>
 
-          <!-- TMJ -->
-          <article class="surface" id="cond-tmj" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-            <h3>Jaw Pain / Clicking (TMJ)</h3>
-            <p class="muted">Often muscular or bite-related. Most cases respond to conservative care.</p>
-            <ul><li><strong>Care:</strong> Soft diet, heat packs, splints, physio; scan if persistent.</li></ul>
-            <div class="t-actions">
-              <a class="t-btn" href="/specialities/tmj.html"><i class='bx bx-brain'></i> TMJ Care</a>
-              <a class="t-btn" href="/specialities/diagnostics.html"><i class='bx bx-bone'></i> CBCT</a>
-            </div>
-          </article>
+  <!-- Loose Tooth (Adult) -->
+  <article class="surface" id="cond-loose-tooth">
+    <h3>Loose Tooth (Adult)</h3>
+    <p class="muted">Often due to gum disease or trauma; mobility may be reversible early on.</p>
+    <ul>
+      <li><strong>Do now:</strong> Avoid wiggling/biting hard foods; keep area clean.</li>
+      <li><strong>Likely care:</strong> Deep cleaning, splinting, bite adjustment; advanced cases need grafts/extraction + implant.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/gum-surgeries.html"><i class="bx bx-leaf"></i> Periodontal Care</a>
+      <a class="t-btn" href="/specialities/implants.html"><i class="bx bx-bone"></i> Implant Options</a>
+    </div>
+  </article>
 
-          <!-- Snoring -->
-          <article class="surface" id="cond-snore" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-            <h3>Snoring / Sleep Apnea (OSA)</h3>
-            <p class="muted">Custom oral appliances can reduce airway collapse in mild–moderate cases.</p>
-            <div class="t-actions">
-              <a class="t-btn" href="/specialities/sleep-dentistry.html"><i class='bx bx-moon'></i> Sleep Dentistry</a>
-            </div>
-          </article>
+  <!-- Bad Breath -->
+  <article class="surface" id="cond-halitosis">
+    <h3>Bad Breath (Halitosis)</h3>
+    <p class="muted">Commonly from tongue coating, gum disease, dry mouth, or cavities.</p>
+    <ul>
+      <li><strong>Do now:</strong> Brush tongue; hydrate; avoid tobacco; consider sugar-free gum.</li>
+      <li><strong>Likely care:</strong> Treat gum disease/cavities; saliva management; review diet/meds.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/scaling-whitening.html"><i class="bx bx-brightness"></i> Cleaning</a>
+      <a class="t-btn" href="/specialities/fillings.html"><i class="bx bx-band-aid"></i> Fix Cavities</a>
+    </div>
+  </article>
 
-          <!-- Ulcers -->
-          <article class="surface" id="cond-ulcer" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-            <h3>Mouth Ulcers / White Patches</h3>
-            <p class="muted">Trauma, stress, or nutrition are common; persistent lesions need screening.</p>
-            <div class="t-actions">
-              <a class="t-btn" href="/specialities/gum-surgeries.html"><i class='bx bx-clinic'></i> Soft Tissue Care</a>
-              <a class="t-btn" href="/specialities/oral-cancer.html"><i class='bx bx-health'></i> Cancer Screening</a>
-            </div>
-          </article>
+  <!-- Mouth Ulcers -->
+  <article class="surface" id="cond-ulcer">
+    <h3>Mouth Ulcers / Canker Sores</h3>
+    <p class="muted">Small painful sores from stress, trauma, diet, or deficiencies.</p>
+    <ul>
+      <li><strong>Do now:</strong> Avoid spicy/acidic foods; topical soothing gels; B-complex if advised.</li>
+      <li><strong>Likely care:</strong> Identify triggers; medicated gels; rule out systemic causes for recurrent ulcers.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="#ndc-appointment"><i class="bx bx-user-check"></i> Get Checked</a>
+    </div>
+  </article>
 
-          <!-- Kids -->
-          <article class="surface" id="cond-kids" style="padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-            <h3>Kids: Cavities / ECC</h3>
-            <p class="muted">Early childhood caries spreads quickly—tiny pits need sealants or fillings.</p>
-            <div class="t-actions">
-              <a class="t-btn" href="/specialities/kids-dentistry.html"><i class='bx bx-happy'></i> Pediatric</a>
-              <a class="t-btn" href="/specialities/kids-dentistry.html#sealants"><i class='bx bx-shield-alt-2'></i> Sealants</a>
-            </div>
-          </article>
-        </div>
+  <!-- Teeth Grinding -->
+  <article class="surface" id="cond-bruxism">
+    <h3>Teeth Grinding (Bruxism)</h3>
+    <p class="muted">Jaw clenching at night; wear facets, jaw pain, headaches.</p>
+    <ul>
+      <li><strong>Do now:</strong> Heat on muscles; gentle jaw stretches; reduce caffeine late.</li>
+      <li><strong>Likely care:</strong> Night guard; bite balancing; stress/sleep counseling.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/smile-design.html"><i class="bx bx-shield"></i> Night Guard</a>
+    </div>
+  </article>
+
+  <!-- Jaw Pain / Clicking -->
+  <article class="surface" id="cond-tmj">
+    <h3>Jaw Pain / Clicking (TMJ)</h3>
+    <p class="muted">Joint/muscle disorder; clicking, limited opening, morning stiffness.</p>
+    <ul>
+      <li><strong>Do now:</strong> Soft diet; avoid wide yawns; warm compress.</li>
+      <li><strong>Likely care:</strong> Splints, physio, habit therapy; imaging if persistent.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="#ndc-appointment"><i class="bx bx-user-check"></i> Assessment</a>
+    </div>
+  </article>
+
+  <!-- Tooth Decay / Cavity -->
+  <article class="surface" id="cond-caries">
+    <h3>Tooth Decay / Cavity</h3>
+    <p class="muted">Brown/black spots, food lodgment, sensitivity.</p>
+    <ul>
+      <li><strong>Do now:</strong> Reduce sugar frequency; floss; fluoride toothpaste twice daily.</li>
+      <li><strong>Likely care:</strong> Filling; deep cases need <a href="#svc-rct">RCT</a> + crown.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/fillings.html"><i class="bx bx-band-aid"></i> Fillings</a>
+    </div>
+  </article>
+
+  <!-- Stained Teeth -->
+  <article class="surface" id="cond-stains">
+    <h3>Stained / Yellow Teeth</h3>
+    <p class="muted">Surface stains (tea/coffee/tobacco) or internal discoloration.</p>
+    <ul>
+      <li><strong>Do now:</strong> Limit staining foods; rinse after; non-abrasive paste.</li>
+      <li><strong>Likely care:</strong> Scaling & polishing, <a href="#svc-whitening">whitening</a>, veneers for intrinsic stains.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/scaling-whitening.html"><i class="bx bx-brightness"></i> Whitening</a>
+      <a class="t-btn" href="/specialities/smile-design.html"><i class="bx bx-smile"></i> Veneers</a>
+    </div>
+  </article>
+
+  <!-- Sensitive Teeth (Generalized) -->
+  <article class="surface" id="cond-dentin">
+    <h3>Generalized Sensitivity</h3>
+    <p class="muted">Worn enamel/recession; zingers to cold/sweets.</p>
+    <ul>
+      <li><strong>Do now:</strong> Desensitizing toothpaste; soft brush; avoid aggressive brushing.</li>
+      <li><strong>Likely care:</strong> Fluoride/desensitizers, treat gum recession, fix high bites.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="#ndc-appointment"><i class="bx bx-user-check"></i> Checkup</a>
+    </div>
+  </article>
+
+  <!-- Orthodontic Issues -->
+  <article class="surface" id="cond-crowding">
+    <h3>Crooked / Spaced Teeth</h3>
+    <p class="muted">Crowding, gaps, bite problems affect function and smile.</p>
+    <ul>
+      <li><strong>Do now:</strong> Early evaluation age 7+; maintain flossing.</li>
+      <li><strong>Likely care:</strong> Braces or <a href="#svc-aligners">Clear Aligners</a>; retainers post-treatment.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/braces.html"><i class="bx bx-grid"></i> Braces</a>
+      <a class="t-btn" href="/specialities/invisalign.html"><i class="bx bx-shape-circle"></i> Clear Aligners</a>
+    </div>
+  </article>
+
+  <!-- Kids Tooth Pain -->
+  <article class="surface" id="cond-kids-pain">
+    <h3>Kids’ Tooth Pain / Cavities</h3>
+    <p class="muted">Baby teeth get cavities fast; affects eating/sleep and adult tooth health.</p>
+    <ul>
+      <li><strong>Do now:</strong> Brush with pea-size fluoride paste; limit sticky snacks/juices.</li>
+      <li><strong>Likely care:</strong> Fillings, pulpotomy/pulpectomy, stainless steel crowns; sealants for prevention.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/kids-dentistry.html"><i class="bx bx-child"></i> Pediatric Care</a>
+    </div>
+  </article>
+
+  <!-- Teeth Replacement -->
+  <article class="surface" id="cond-missing">
+    <h3>Missing Tooth / Space</h3>
+    <p class="muted">Gaps shift bite and stress other teeth over time.</p>
+    <ul>
+      <li><strong>Do now:</strong> Keep area clean; consider temporary flipper if visible.</li>
+      <li><strong>Likely care:</strong> <a href="#svc-implants">Implant</a>, bridge, or denture based on case/bone.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/implants.html"><i class="bx bx-bone"></i> Implants</a>
+      <a class="t-btn" href="/specialities/crowns-bridges.html"><i class="bx bx-intersect"></i> Bridges</a>
+      <a class="t-btn" href="/specialities/dentures.html"><i class="bx bx-grid-small"></i> Dentures</a>
+    </div>
+  </article>
+
+  <!-- Gum Recession -->
+  <article class="surface" id="cond-recession">
+    <h3>Gum Recession / Notching</h3>
+    <p class="muted">Exposed roots cause sensitivity and aesthetics concerns.</p>
+    <ul>
+      <li><strong>Do now:</strong> Softer brush; correct technique; desensitizing paste.</li>
+      <li><strong>Likely care:</strong> Bite adjustment, bonding, grafts for advanced cases.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/gum-surgeries.html"><i class="bx bx-leaf"></i> Grafting</a>
+    </div>
+  </article>
+
+  <!-- Denture Sore Spots -->
+  <article class="surface" id="cond-denture">
+    <h3>Denture Sore Spots / Loose Denture</h3>
+    <p class="muted">Pressure points or poor fit; affects chewing and speech.</p>
+    <ul>
+      <li><strong>Do now:</strong> Remove overnight; rinse mouth; avoid self-adjustment.</li>
+      <li><strong>Likely care:</strong> Relining, repairs, or implant-supported dentures for stability.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/dentures.html"><i class="bx bx-grid-small"></i> Denture Care</a>
+      <a class="t-btn" href="/specialities/implants.html"><i class="bx bx-bone"></i> Implant Denture</a>
+    </div>
+  </article>
+
+  <!-- Post-Extraction Care -->
+  <article class="surface" id="cond-post-extraction">
+    <h3>After Tooth Removal / Dry Socket</h3>
+    <p class="muted">Pain peaking day 2–3 can indicate dry socket.</p>
+    <ul>
+      <li><strong>Do now:</strong> Bite on gauze 30–45 min; no spitting/straws/smoking; soft diet.</li>
+      <li><strong>Likely care:</strong> Dressing/medicated packing; pain control; review hygiene.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/extraction.html"><i class="bx bx-cut"></i> Extraction Care</a>
+    </div>
+  </article>
+
+  <!-- Orthodontic Emergency -->
+  <article class="surface" id="cond-ortho-emergency">
+    <h3>Braces Wire Poking / Bracket Off</h3>
+    <p class="muted">Irritation from wires or detached bracket between visits.</p>
+    <ul>
+      <li><strong>Do now:</strong> Orthodontic wax on the wire; sterile nail clipper to trim <em>only if necessary</em>.</li>
+      <li><strong>Likely care:</strong> Quick in-clinic fix; keep next review.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/braces.html"><i class="bx bx-grid"></i> Ortho Review</a>
+    </div>
+  </article>
+
+  <!-- Pregnancy Dental Care -->
+  <article class="surface" id="cond-pregnancy">
+    <h3>Pregnancy Dental Care</h3>
+    <p class="muted">Gums may bleed more; safe dental care is possible with precautions.</p>
+    <ul>
+      <li><strong>Do now:</strong> Soft brush + floss; small frequent meals; rinse after nausea.</li>
+      <li><strong>Likely care:</strong> Cleanings, fillings, emergency care; coordinate meds/x-rays as needed.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/pregnancy-dental-care.html"><i class="bx bx-heart"></i> Pregnancy-Safe Care</a>
+    </div>
+  </article>
+
+  <!-- Oral Lesions / White Patches -->
+  <article class="surface" id="cond-leukoplakia">
+    <h3>White/Red Patches (Oral Lesions)</h3>
+    <p class="muted">Persistent patches or non-healing sores need evaluation.</p>
+    <ul>
+      <li><strong>Do now:</strong> Avoid tobacco/alcohol; document duration.</li>
+      <li><strong>Likely care:</strong> Exam, possible biopsy, targeted treatment or referral.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="#ndc-appointment"><i class="bx bx-user-check"></i> Oral Screening</a>
+    </div>
+  </article>
+
+  <!-- Sensitive Gums / Ulcers in Kids -->
+  <article class="surface" id="cond-kids-ulcer">
+    <h3>Kids’ Mouth Ulcers / Teething</h3>
+    <p class="muted">Teething causes irritability; ulcers from bites/viral causes.</p>
+    <ul>
+      <li><strong>Do now:</strong> Cool teething rings; gentle gels as advised; fluids.</li>
+      <li><strong>Likely care:</strong> Counseling, topical care; rule out dehydration/fever management.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/kids-dentistry.html"><i class="bx bx-child"></i> Pediatric Visit</a>
+    </div>
+  </article>
+
+  <!-- Gummy Smile / Short Teeth -->
+  <article class="surface" id="cond-gummy-smile">
+    <h3>Gummy Smile / Short Teeth</h3>
+    <p class="muted">Excess gum display or worn teeth affects smile line.</p>
+    <ul>
+      <li><strong>Do now:</strong> Photo documentation; evaluate grinding habits.</li>
+      <li><strong>Likely care:</strong> Gum contouring, bonding/veneers, ortho or aligners as needed.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/smile-design.html"><i class="bx bx-smile"></i> Smile Design</a>
+    </div>
+  </article>
+
+  <!-- Implant Aftercare -->
+  <article class="surface" id="cond-implant-care">
+    <h3>Implant Tenderness / Aftercare</h3>
+    <p class="muted">Normal mild soreness early; persistent pain/swelling needs review.</p>
+    <ul>
+      <li><strong>Do now:</strong> Soft diet; chlorhexidine rinse as directed; avoid smoking.</li>
+      <li><strong>Likely care:</strong> Bite adjustments, hygiene review, treat peri-implantitis if present.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/implants.html"><i class="bx bx-bone"></i> Implant Review</a>
+    </div>
+  </article>
+
+  <!-- Whitening Aftercare -->
+  <article class="surface" id="cond-whitening-care">
+    <h3>Post-Whitening Sensitivity</h3>
+    <p class="muted">Transient zings common after bleaching.</p>
+    <ul>
+      <li><strong>Do now:</strong> Avoid extremes 48 hrs; use desensitizing gel/paste.</li>
+      <li><strong>Likely care:</strong> Fluoride varnish; adjust concentration/exposure time next session.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/scaling-whitening.html"><i class="bx bx-brightness"></i> Whitening Care</a>
+    </div>
+  </article>
+
+  <!-- Orthodontic Retainer -->
+  <article class="surface" id="cond-retainer">
+    <h3>Lost / Broken Retainer</h3>
+    <p class="muted">Teeth may shift without retention after braces/aligners.</p>
+    <ul>
+      <li><strong>Do now:</strong> Wear backup if available; contact clinic quickly.</li>
+      <li><strong>Likely care:</strong> New retainer or minor tooth alignment touch-ups.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/invisalign.html"><i class="bx bx-shape-circle"></i> Retainers</a>
+    </div>
+  </article>
+
+  <!-- Dental Trauma (Chipped in Kids) -->
+  <article class="surface" id="cond-kids-trauma">
+    <h3>Kids’ Chipped / Displaced Tooth</h3>
+    <p class="muted">Common with falls; primary vs permanent needs different care.</p>
+    <ul>
+      <li><strong>Do now:</strong> Control bleeding; cold compress; store fragment.</li>
+      <li><strong>Likely care:</strong> Smoothening/bonding; monitor nerve; splint if displaced.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/kids-dentistry.html"><i class="bx bx-child"></i> Pediatric Trauma Care</a>
+    </div>
+  </article>
+
+  <!-- Orthodontic Spacing for Adults -->
+  <article class="surface" id="cond-diastema">
+    <h3>Gap Between Teeth (Diastema)</h3>
+    <p class="muted">Spaces from size mismatch or habits; cosmetic + functional impact.</p>
+    <ul>
+      <li><strong>Do now:</strong> Break thumb-sucking/tongue thrust habits; evaluation needed.</li>
+      <li><strong>Likely care:</strong> Aligners/braces, bonding, or veneers; retainers to hold.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/invisalign.html"><i class="bx bx-shape-circle"></i> Close Gaps</a>
+      <a class="t-btn" href="/specialities/smile-design.html"><i class="bx bx-smile"></i> Veneers</a>
+    </div>
+  </article>
+
+  <!-- Mouth Guards / Sports -->
+  <article class="surface" id="cond-sports-guard">
+    <h3>Sports Mouth Guard</h3>
+    <p class="muted">Protects teeth/jaw during contact sports.</p>
+    <ul>
+      <li><strong>Do now:</strong> Use a temporary boil-and-bite if playing soon.</li>
+      <li><strong>Likely care:</strong> Custom guard for comfort and protection; replace yearly.</li>
+    </ul>
+    <div class="t-actions">
+      <a class="t-btn" href="/specialities/special-care.html"><i class="bx bx-shield-alt-2"></i> Custom Guard</a>
+    </div>
+  </article>
+</div>
+
       </div>
     </section>
 
-    <!-- ========================= SERVICES (Treatments grid scaffold) ========================= -->
+    <!-- Services -->
     <section class="band" id="services" aria-label="Comprehensive Dental Treatments">
-      <div>
+      <div class="container">
         <header>
           <p class="eyebrow">Treatments</p>
           <h2 class="section-title">Comprehensive Dental Treatments in Nallagandla, Hyderabad</h2>
           <p class="section-sub">Evidence-based dentistry—from check-ups and gum care to implants, braces, cosmetic and pediatric solutions. Simple language, clear outcomes, fast actions.</p>
         </header>
 
-        <!-- Controls (CLS-safe; height reserved via inline min-height on inputs) -->
-        <form class="services-controls" role="search" aria-label="Filter treatments" onsubmit="return false;"
-              style="display:flex;gap:8px;flex-wrap:wrap;margin:.8rem 0">
-          <label class="field search"
-                 style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:var(--paper)">
-            <i class='bx bx-search' aria-hidden="true"></i>
-            <input id="svcSearch" type="search" inputmode="search" autocomplete="off"
-                   placeholder="Search treatments (e.g., implants, pain, kids, braces)…"
-                   aria-label="Search treatments"
-                   style="min-height:36px;background:transparent;border:0;outline:0;color:inherit"/>
+        <form class="services-controls" role="search" aria-label="Filter treatments" onsubmit="return false;">
+          <label class="field search">
+            <i class="bx bx-search" aria-hidden="true"></i>
+            <input id="svcSearch" type="search" inputmode="search" autocomplete="off" placeholder="Search treatments (e.g., implants, pain, kids, braces)…" aria-label="Search treatments" />
           </label>
 
-          <label class="field select"
-                 style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:var(--paper)">
-            <i class='bx bx-filter-alt' aria-hidden="true"></i>
-            <select id="svcCategory" aria-label="Filter by category" style="min-height:36px;background:transparent;border:0;color:inherit">
+          <label class="field select">
+            <i class="bx bx-filter-alt" aria-hidden="true"></i>
+            <select id="svcCategory" aria-label="Filter by category">
               <option value="all">All topics</option>
               <option value="Tooth Alignment">Tooth Alignment</option>
               <option value="Tooth Saving">Tooth Saving</option>
@@ -533,7 +678,7 @@
             </select>
           </label>
 
-          <div class="chip-row" aria-label="Quick topics" style="display:flex;gap:8px;flex-wrap:wrap">
+          <div class="chip-row" aria-label="Quick topics">
             <button class="chip" type="button" data-chip="implants">Implants</button>
             <button class="chip" type="button" data-chip="root canal">Root canal</button>
             <button class="chip" type="button" data-chip="braces">Braces</button>
@@ -545,1810 +690,26 @@
           </div>
         </form>
 
-        <!-- Results status -->
         <div id="treatmentsStatus" class="results-status" aria-live="polite"></div>
 
-        <!-- Grid (CLS-safe media boxes: reserve space via aspect-ratio and width/height) -->
-        <section id="treatmentsGrid" class="treatments-grid" aria-live="polite" aria-busy="false"
-                 style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
-
-          <!-- Skeleton cards (noscript/first paint) -->
-          <article class="t-card skeleton" aria-hidden="true"
-                   style="background:var(--card);border:1px solid color-mix(in srgb, var(--text) 10%, transparent);border-radius:16px;overflow:hidden">
-            <div class="t-media" style="aspect-ratio:16/10;background:linear-gradient(90deg,rgba(255,255,255,.06),transparent,rgba(255,255,255,.06));"></div>
-            <div class="t-body" style="padding:12px">
-              <div style="height:18px;background:rgba(255,255,255,.08);border-radius:6px;width:60%"></div>
-              <div style="height:12px;background:rgba(255,255,255,.06);border-radius:6px;width:90%;margin-top:8px"></div>
-            </div>
-          </article>
-
-          <article class="t-card skeleton" aria-hidden="true"
-                   style="background:var(--card);border:1px solid color-mix(in srgb, var(--text) 10%, transparent);border-radius:16px;overflow:hidden">
-            <div class="t-media" style="aspect-ratio:16/10;background:linear-gradient(90deg,rgba(255,255,255,.06),transparent,rgba(255,255,255,.06));"></div>
-            <div class="t-body" style="padding:12px">
-              <div style="height:18px;background:rgba(255,255,255,.08);border-radius:6px;width:50%"></div>
-              <div style="height:12px;background:rgba(255,255,255,.06);border-radius:6px;width:85%;margin-top:8px"></div>
-            </div>
-          </article>
-
-          <article class="t-card skeleton" aria-hidden="true"
-                   style="background:var(--card);border:1px solid color-mix(in srgb, var(--text) 10%, transparent);border-radius:16px;overflow:hidden">
-            <div class="t-media" style="aspect-ratio:16/10;background:linear-gradient(90deg,rgba(255,255,255,.06),transparent,rgba(255,255,255,.06));"></div>
-            <div class="t-body" style="padding:12px">
-              <div style="height:18px;background:rgba(255,255,255,.08);border-radius:6px;width:70%"></div>
-              <div style="height:12px;background:rgba(255,255,255,.06);border-radius:6px;width:88%;margin-top:8px"></div>
-            </div>
-          </article>
+        <section id="treatmentsGrid" class="treatments-grid" aria-live="polite" aria-busy="false">
+          <!-- skeletons rendered by CSS; JS will populate -->
         </section>
 
-        <!-- Pagination -->
-        <nav class="treatments-pagination" aria-label="Treatments pages"
-             style="display:flex;justify-content:center;align-items:center;gap:8px;margin:12px 0">
-          <button id="pgPrev" class="pg-btn" type="button" aria-label="Previous page" disabled
-                  style="display:grid;place-content:center;width:38px;height:38px;border-radius:10px;border:1px solid color-mix(in srgb, var(--text) 12%, transparent);background:var(--card);color:inherit">
-            <i class='bx bx-chevron-left' aria-hidden="true"></i>
-          </button>
-          <div id="pgDots" class="pg-dots" role="list" style="display:flex;gap:6px"></div>
-          <button id="pgNext" class="pg-btn" type="button" aria-label="Next page" disabled
-                  style="display:grid;place-content:center;width:38px;height:38px;border-radius:10px;border:1px solid color-mix(in srgb, var(--text) 12%, transparent);background:var(--card);color:inherit">
-            <i class='bx bx-chevron-right' aria-hidden="true"></i>
-          </button>
+        <nav class="treatments-pagination" aria-label="Treatments pages">
+          <button id="pgPrev" class="pg-btn" type="button" aria-label="Previous page" disabled><i class="bx bx-chevron-left" aria-hidden="true"></i></button>
+          <div id="pgDots" class="pg-dots" role="list"></div>
+          <button id="pgNext" class="pg-btn" type="button" aria-label="Next page" disabled><i class="bx bx-chevron-right" aria-hidden="true"></i></button>
         </nav>
-
-        <!-- Noscript fallback (AEO/LLMO: indexable content) -->
-        <noscript>
-          <ul aria-label="Popular treatments" style="margin:8px 0 0;padding-left:18px">
-            <li><a href="/specialities/implants.html">Dental Implants</a></li>
-            <li><a href="/specialities/root-canal.html">Root Canal Treatment</a></li>
-            <li><a href="/specialities/braces.html">Braces &amp; Orthodontics</a></li>
-            <li><a href="/specialities/scaling-whitening.html">Scaling &amp; Teeth Whitening</a></li>
-            <li><a href="/specialities/kids-dentistry.html">Pediatric Dentistry</a></li>
-          </ul>
-        </noscript>
       </div>
     </section>
-<!-- ========================= Part 4: SERVICES data + renderer (AIO/GEO/LLMO/AEO) ========================= -->
-<script>
-(() => {
-  const $  = (s, r=document)=>r.querySelector(s);
-  const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
-
-  const grid   = $('#treatmentsGrid');
-  const status = $('#treatmentsStatus');
-  const search = $('#svcSearch');
-  const catSel = $('#svcCategory');
-  const chips  = $$('.chip[data-chip]');
-  const prevBtn= $('#pgPrev');
-  const nextBtn= $('#pgNext');
-  const dots   = $('#pgDots');
-
-  if (!grid) return;
-
-  /* ---------- DATA (LLMO keyword-rich; local GEO variants included) ---------- */
-  const TREATMENTS = [
-    // Tooth Alignment
-    {id:'braces', title:'Braces & Aligners', category:'Tooth Alignment',
-      keywords:'braces, aligners, orthodontist, crooked teeth, spacing, gaps, bite correction, metal braces, ceramic braces, self-ligating, Invisalign, clear trays, Hyderabad, Nallagandla, Lingampally',
-      desc:'Metal/ceramic braces and clear aligners for crowding, spacing, and bite issues. Digital planning + monthly reviews.',
-      url:'/specialities/braces.html', img:'https://via.placeholder.com/800x500?text=Braces+%26+Aligners'},
-    {id:'invisalign', title:'Clear Aligners (Invisalign®)', category:'Tooth Alignment',
-      keywords:'clear aligners, invisible braces, teen aligners, adult aligners, trays, scan, 3D simulation, Gachibowli, Kondapur',
-      desc:'Nearly invisible trays guided by 3D simulations—comfortable, hygienic, lifestyle-friendly.',
-      url:'/specialities/invisalign.html', img:'https://via.placeholder.com/800x500?text=Clear+Aligners'},
-    {id:'orthodontics', title:'Comprehensive Orthodontics', category:'Tooth Alignment',
-      keywords:'jaw growth, interceptive, crowding, deep bite, open bite, crossbite, retention, space maintainers',
-      desc:'Full-scope orthodontics including growth guidance, complex bite correction, and retainers.',
-      url:'/specialities/braces.html', img:'https://via.placeholder.com/800x500?text=Orthodontics'},
-
-    // Tooth Saving
-    {id:'svc-rct', title:'Root Canal Treatment (RCT)', category:'Tooth Saving',
-      keywords:'root canal, severe pain, hot cold sensitivity, pulp infection, abscess, endodontics, rotary, apex locator, rubber dam',
-      desc:'Relieves pain by removing inflamed/infected pulp. Rotary instruments + apex locator for precision and comfort.',
-      url:'/specialities/root-canal.html', img:'https://via.placeholder.com/800x500?text=Root+Canal'},
-    {id:'re-rct', title:'Re-RCT / Apicoectomy', category:'Tooth Saving',
-      keywords:'re-treatment, failed root canal, persistent infection, apicoectomy, microsurgery',
-      desc:'Second chance for previously treated teeth using re-RCT or minor endodontic surgery.',
-      url:'/specialities/root-canal.html#retreatment', img:'https://via.placeholder.com/800x500?text=Re-RCT+%2F+Apicoectomy'},
-    {id:'fillings', title:'Tooth-Coloured Fillings', category:'Tooth Saving',
-      keywords:'white fillings, composite, bonding, cavity, tooth decay repair, minimal prep',
-      desc:'Aesthetic, mercury-free composites that restore strength and shape with minimal drilling.',
-      url:'/specialities/fillings.html', img:'https://via.placeholder.com/800x500?text=Tooth+Fillings'},
-    {id:'inlay-onlay', title:'Inlays & Onlays', category:'Tooth Saving',
-      keywords:'partial crown, cuspal coverage, cracked tooth, indirect restoration, CAD/CAM',
-      desc:'Stronger than large fillings and more conservative than full crowns; ideal for cracked or worn teeth.',
-      url:'/specialities/fillings.html#inlays', img:'https://via.placeholder.com/800x500?text=Inlays+%26+Onlays'},
-    {id:'trauma', title:'Dental Trauma Care', category:'Tooth Saving',
-      keywords:'chipped tooth, fractured, avulsed, knocked out, splint, emergency, sports injury',
-      desc:'Immediate management for broken/knocked-out teeth to maximise survival and aesthetics.',
-      url:'/specialities/emergency.html', img:'https://via.placeholder.com/800x500?text=Dental+Trauma'},
-
-    // Implants & Replacement
-    {id:'svc-implants', title:'Dental Implants', category:'Implants & Replacement',
-      keywords:'titanium implants, single tooth implant, missing tooth, screw-retained crown, guided surgery',
-      desc:'Replace missing roots with titanium implants and restore lifelike crowns for confident chewing.',
-      url:'/specialities/implants.html', img:'https://via.placeholder.com/800x500?text=Dental+Implants'},
-    {id:'all-on-4', title:'Full-Arch (All-on-4/6)', category:'Implants & Replacement',
-      keywords:'full arch fixed teeth, hybrid bridge, immediate loading, edentulous, same-day teeth',
-      desc:'Fixed full-arch teeth on 4–6 implants for rapid function and a complete smile makeover.',
-      url:'/specialities/implants.html#allonx', img:'https://via.placeholder.com/800x500?text=All-on-4%2F6'},
-    {id:'zygomatic', title:'Zygomatic Implants', category:'Implants & Replacement',
-      keywords:'severe bone loss, atrophic maxilla, zygoma, maxillary rehabilitation',
-      desc:'Solutions for extreme upper-jaw bone loss using cheekbone anchorage—no major grafts.',
-      url:'/specialities/implants.html#zygoma', img:'https://via.placeholder.com/800x500?text=Zygomatic+Implants'},
-    {id:'svc-crowns', title:'Crowns & Bridges', category:'Implants & Replacement',
-      keywords:'crown, bridge, zirconia, porcelain fused to metal, PFM, cracked tooth, cap',
-      desc:'Protect weak teeth and replace gaps with durable, aesthetic crowns and bridges.',
-      url:'/specialities/crowns-bridges.html', img:'https://via.placeholder.com/800x500?text=Crowns+%26+Bridges'},
-    {id:'svc-dentures', title:'Dentures & Overdentures', category:'Implants & Replacement',
-      keywords:'complete denture, partial denture, flexible, cast metal, locator, implant overdenture',
-      desc:'Comfortable removable options; add implants for superior stability and speech.',
-      url:'/specialities/dentures.html', img:'https://via.placeholder.com/800x500?text=Dentures'},
-
-    // Cosmetic & Smile
-    {id:'smile-makeover', title:'Smile Makeover', category:'Cosmetic & Smile',
-      keywords:'smile design, veneers, bonding, whitening, diastema closure, gummy smile',
-      desc:'Tailored blend of veneers, whitening, and alignment for a balanced, confident smile.',
-      url:'/specialities/smile-design.html', img:'https://via.placeholder.com/800x500?text=Smile+Makeover'},
-    {id:'veneers', title:'Porcelain Veneers', category:'Cosmetic & Smile',
-      keywords:'veneers, laminates, minimal prep, cosmetic, shade match, symmetry',
-      desc:'Ultra-thin porcelain shells refine shape, colour and proportions with minimal preparation.',
-      url:'/specialities/smile-design.html#veneers', img:'https://via.placeholder.com/800x500?text=Veneers'},
-    {id:'whitening', title:'Teeth Whitening', category:'Cosmetic & Smile',
-      keywords:'bleaching, stains, power whitening, take-home trays, shade improvement',
-      desc:'Safe brightening with in-clinic power whitening or custom take-home kits.',
-      url:'/specialities/scaling-whitening.html', img:'https://via.placeholder.com/800x500?text=Teeth+Whitening'},
-    {id:'gum-depig', title:'Gum Depigmentation (Laser)', category:'Cosmetic & Smile',
-      keywords:'dark gums, melanin depigmentation, pink gums, laser dentistry',
-      desc:'Laser-assisted lightening for uniformly pink, healthy-looking gums.',
-      url:'/specialities/gum-surgeries.html#depig', img:'https://via.placeholder.com/800x500?text=Gum+Depigmentation'},
-
-    // Oral Surgery
-    {id:'svc-wisdom', title:'Wisdom Tooth Extraction', category:'Oral Surgery',
-      keywords:'third molar, impaction, pericoronitis, jaw swelling, surgical extraction',
-      desc:'Gentle removal of impacted/painful wisdom teeth with clear post-op care.',
-      url:'/specialities/extraction.html', img:'https://via.placeholder.com/800x500?text=Wisdom+Tooth'},
-    {id:'frenectomy', title:'Frenectomy (Tongue/Lip-Tie)', category:'Oral Surgery',
-      keywords:'tongue tie, lip tie, speech issues, feeding difficulty, laser release',
-      desc:'Quick procedure to release restrictive frena improving function and hygiene access.',
-      url:'/specialities/gum-surgeries.html#frenectomy', img:'https://via.placeholder.com/800x500?text=Frenectomy'},
-
-    // Kids & Family
-    {id:'peds', title:'Pediatric Dentistry', category:'Kids & Family',
-      keywords:'kids dentist, pulpectomy, stainless steel crown, fluoride, behaviour guidance, kid-friendly',
-      desc:'Sealants, fillings, pulpectomy & crowns delivered with child-friendly techniques.',
-      url:'/specialities/kids-dentistry.html', img:'https://via.placeholder.com/800x500?text=Kids+Dentistry'},
-    {id:'sealants', title:'Pit & Fissure Sealants', category:'Kids & Family',
-      keywords:'groove protection, cavity prevention, molars, painless, school dental programs',
-      desc:'Fast, painless coatings that block food-trapping grooves on new molars.',
-      url:'/specialities/kids-dentistry.html#sealants', img:'https://via.placeholder.com/800x500?text=Sealants'},
-    {id:'fluoride', title:'Fluoride Varnish', category:'Kids & Family',
-      keywords:'high-risk caries, enamel strengthening, varnish, prevention',
-      desc:'Topical fluoride for cavity-prone patients to harden enamel and reduce risk.',
-      url:'/specialities/kids-dentistry.html#fluoride', img:'https://via.placeholder.com/800x500?text=Fluoride+Varnish'},
-
-    // Periodontics
-    {id:'svc-scaling', title:'Scaling & Polishing', category:'Periodontics',
-      keywords:'cleaning, tartar removal, prophylaxis, bleeding gums, bad breath, hygiene',
-      desc:'Removes plaque/tartar and polishes surfaces to support gum health and fresh breath.',
-      url:'/specialities/scaling-whitening.html', img:'https://via.placeholder.com/800x500?text=Scaling+%26+Polishing'},
-    {id:'svc-gum', title:'Advanced Gum Therapy', category:'Periodontics',
-      keywords:'gingivitis, periodontitis, deep cleaning, root planing, flap surgery, bone graft',
-      desc:'From deep cleaning to regenerative surgery for stable gums and teeth.',
-      url:'/specialities/gum-surgeries.html', img:'https://via.placeholder.com/800x500?text=Gum+Therapy'},
-    {id:'gum-graft', title:'Gum Recession Grafting', category:'Periodontics',
-      keywords:'receding gums, root coverage, sensitivity, soft tissue graft, tunnel technique',
-      desc:'Covers exposed roots to reduce sensitivity and improve aesthetics.',
-      url:'/specialities/gum-surgeries.html#graft', img:'https://via.placeholder.com/800x500?text=Gum+Graft'},
-
-    // Diagnostics
-    {id:'cbct', title:'Dental CT Scan (CBCT)', category:'Diagnostics',
-      keywords:'3D scan, implant planning, endodontics, TMJ, airway, guided surgery',
-      desc:'High-detail 3D imaging for precise diagnosis and safer treatment planning.',
-      url:'/specialities/diagnostics.html', img:'https://via.placeholder.com/800x500?text=CBCT'},
-    {id:'tmj', title:'TMJ Evaluation & Splints', category:'Diagnostics',
-      keywords:'jaw joint pain, clicking, bruxism, night guard, splint therapy, myofascial pain',
-      desc:'Conservative care and custom splints to relieve TMJ strain and protect teeth.',
-      url:'/specialities/tmj.html', img:'https://via.placeholder.com/800x500?text=TMJ+Care'},
-
-    // Sedation & Sleep
-    {id:'iv-sedation', title:'IV Sedation (Conscious)', category:'Sedation & Sleep',
-      keywords:'dental anxiety, long appointments, sedation dentistry, day care',
-      desc:'Relaxed, semi-awake care with amnesia—ideal for lengthy or anxiety-provoking procedures.',
-      url:'/specialities/sedation.html#iv', img:'https://via.placeholder.com/800x500?text=IV+Sedation'},
-    {id:'ga', title:'General Anesthesia (Hospital)', category:'Sedation & Sleep',
-      keywords:'special needs, pediatric dentistry, operating theatre, one-visit',
-      desc:'One-visit completion for extensive pediatric/special cases in accredited hospitals.',
-      url:'/specialities/sedation.html#ga', img:'https://via.placeholder.com/800x500?text=General+Anesthesia'},
-    {id:'sleep-dentistry', title:'Snoring & Sleep Dentistry', category:'Sedation & Sleep',
-      keywords:'OSA, sleep apnea, mandibular advancement device, airway, snore guard',
-      desc:'Oral appliances and referral pathways for sleep apnea management.',
-      url:'/specialities/sleep-dentistry.html', img:'https://via.placeholder.com/800x500?text=Sleep+Dentistry'},
-
-    // Special Care
-    {id:'pregnancy', title:'Pregnancy Dental Care', category:'Special Care',
-      keywords:'trimester protocols, morning sickness erosion, safe X-rays, lactation counselling',
-      desc:'Trimester-wise guidance and safe care for moms-to-be; prevention first.',
-      url:'/specialities/pregnancy-dental-care.html', img:'https://via.placeholder.com/800x500?text=Pregnancy+Care'},
-    {id:'diabetic', title:'Diabetic Dental Care', category:'Special Care',
-      keywords:'diabetes, periodontitis link, infection control, wound healing, glycemic control',
-      desc:'Tailored gum/infection control and healing support to protect systemic health.',
-      url:'/specialities/diabetic-dental-care.html', img:'https://via.placeholder.com/800x500?text=Diabetic+Care'},
-    {id:'geriatric', title:'Geriatric Dentistry', category:'Special Care',
-      keywords:'elderly, xerostomia, root caries, caregiver training, denture tuning, falls risk',
-      desc:'Comfort-first care with simple home routines and device-friendly tips.',
-      url:'/specialities/geriatric.html', img:'https://via.placeholder.com/800x500?text=Geriatric'},
-
-    // Prosthodontics
-    {id:'fmr', title:'Full Mouth Rehabilitation', category:'Prosthodontics',
-      keywords:'worn dentition, bite rebuild, occlusal scheme, vertical dimension, complex rehab',
-      desc:'Rebuilds function and aesthetics across the arch using crowns/implants as needed.',
-      url:'/specialities/crowns-bridges.html#fmr', img:'https://via.placeholder.com/800x500?text=Full+Mouth+Rehab'},
-    {id:'fixed-teeth', title:'Fixed Artificial Teeth', category:'Prosthodontics',
-      keywords:'fixed teeth, bridges, implant crowns, long-span, zirconia bridge',
-      desc:'Strong, natural-looking fixed teeth via bridges and implant restorations.',
-      url:'/specialities/crowns-bridges.html', img:'https://via.placeholder.com/800x500?text=Fixed+Teeth'}
-  ];
-
-  /* ---------- Logic (ranking, pagination, anchors, keyboard) ---------- */
-  const LOCAL_BOOST = ['nallagandla','lingampally','tellapur','hyderabad'];
-  const norm = s => (s||'').toLowerCase();
-
-  const score = (it, q, cat) => {
-    if (!q && (cat==='all' || cat===it.category)) return 0.0001;
-    const hay = `${it.title} ${it.keywords} ${it.desc} ${it.category}`.toLowerCase();
-    const terms = q.split(/[\s,]+/).filter(Boolean).map(norm);
-    let s = 0;
-    terms.forEach(t=>{
-      if (it.title.toLowerCase().includes(t)) s += 6;
-      if (it.keywords.toLowerCase().includes(t)) s += 4;
-      if (hay.includes(t)) s += 1.5;
-      if (LOCAL_BOOST.includes(t)) s += 3; // GEO
-    });
-    if (cat !== 'all' && it.category === cat) s += 2; // category match boost
-    return s;
-  };
-
-  const getPageSize = () => {
-    if (matchMedia('(min-width:1200px)').matches) return 8;
-    if (matchMedia('(min-width:900px)').matches)  return 6;
-    if (matchMedia('(min-width:640px)').matches)  return 4;
-    return 3;
-  };
-  let PAGE_SIZE = getPageSize();
-  let filtered = TREATMENTS.slice();
-  let page = 1;
-
-  const paginate = (arr, page, size) => {
-    const start = (page-1)*size;
-    return arr.slice(start, start+size);
-  };
-
-  function renderPagination(pageCount){
-    prevBtn.disabled = page<=1;
-    nextBtn.disabled = page>=pageCount;
-    dots.innerHTML = '';
-    for (let i=1;i<=pageCount;i++){
-      const dot = document.createElement('button');
-      dot.className = 'pg-dot';
-      dot.type = 'button';
-      dot.setAttribute('aria-label', `Go to page ${i}`);
-      dot.style.width='10px'; dot.style.height='10px'; dot.style.borderRadius='999px';
-      dot.style.border='1px solid color-mix(in srgb, var(--text) 20%, transparent)';
-      if (i===page) dot.style.background='var(--text)';
-      dot.addEventListener('click', ()=>{ page=i; render(); grid.scrollIntoView({behavior:'smooth', block:'start'}); });
-      dots.appendChild(dot);
-    }
-  }
-
-  const cardHtml = (it) => `
-    <article class="t-card" data-id="${it.id}" data-category="${it.category}"
-             itemscope itemtype="https://schema.org/Service"
-             style="background:var(--card);border:1px solid color-mix(in srgb, var(--text) 10%, transparent);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)">
-      <meta itemprop="serviceType" content="${it.title}">
-      <div class="t-media" style="position:relative;aspect-ratio:16/10;background:linear-gradient(120deg, color-mix(in srgb, var(--brand) 8%, transparent), transparent)">
-        <span class="t-badge" style="position:absolute;left:10px;top:10px;background:var(--brand);color:#041312;font-weight:800;padding:6px 10px;border-radius:999px">${it.category}</span>
-        <img loading="lazy" width="800" height="500" src="${it.img}" alt="${it.title}" itemprop="image">
-      </div>
-      <div class="t-body" style="padding:12px">
-        <h3 class="t-title" style="margin:.1rem 0 .25rem;font-size:1.05rem" itemprop="name">${it.title}</h3>
-        <p class="t-desc" style="margin:.25rem 0 .6rem;color:var(--muted)" itemprop="description">${it.desc}</p>
-        <div class="t-actions" style="display:flex;gap:8px;flex-wrap:wrap">
-          <a class="t-btn" href="${it.url}" itemprop="url" aria-label="Learn more about ${it.title}"><i class='bx bx-info-circle'></i> Learn more</a>
-          <a class="t-btn" href="#ndc-appointment" aria-label="Book ${it.title}"><i class='bx bx-calendar'></i> Book</a>
-          <a class="t-btn" href="tel:+918610425342" aria-label="Call clinic about ${it.title}"><i class='bx bxs-phone'></i> Call</a>
-        </div>
-      </div>
-    </article>
-  `;
-
-  function applyFilters(){
-    const q = norm(search?.value || '');
-    const cat = catSel?.value || 'all';
-    const pool = (cat==='all') ? TREATMENTS.slice() : TREATMENTS.filter(it=>it.category===cat);
-
-    if (!q){
-      filtered = pool;
-    } else {
-      filtered = pool
-        .map(it=>({it, s: score(it,q,cat)}))
-        .filter(x=>x.s>0)
-        .sort((a,b)=> b.s - a.s || a.it.title.localeCompare(b.it.title))
-        .map(x=>x.it);
-    }
-    page = 1;
-  }
-
-  function render(){
-    if (!grid) return;
-    grid.setAttribute('aria-busy','true');
-    grid.innerHTML = '';
-
-    const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-    if (page > pageCount) page = pageCount;
-
-    const items = paginate(filtered, page, PAGE_SIZE);
-
-    if (!items.length){
-      status.textContent = 'No treatments match your search—try “implants”, “pain”, “kids”, or “whitening”.';
-      renderPagination(1);
-      grid.setAttribute('aria-busy','false');
-      return;
-    }
-
-    status.textContent = `${filtered.length} result${filtered.length>1?'s':''} — page ${page} of ${pageCount}`;
-    grid.innerHTML = items.map(cardHtml).join('');
-    renderPagination(pageCount);
-    grid.setAttribute('aria-busy','false');
-  }
-
-  // Events (debounced search; chip shortcuts; category)
-  let t;
-  search?.addEventListener('input', ()=>{
-    clearTimeout(t);
-    t = setTimeout(()=>{ applyFilters(); render(); }, 150);
-  });
-  catSel?.addEventListener('change', ()=>{ applyFilters(); render(); });
-  chips.forEach(ch => ch.addEventListener('click', ()=>{
-    if (!search) return;
-    search.value = ch.dataset.chip || '';
-    applyFilters(); render(); search.focus();
-  }));
-
-  // Pagination buttons + keyboard shortcuts
-  prevBtn?.addEventListener('click', ()=>{ if (page>1){ page--; render(); } });
-  nextBtn?.addEventListener('click', ()=>{
-    const pages=Math.ceil(filtered.length/PAGE_SIZE);
-    if (page<pages){ page++; render(); }
-  });
-  document.addEventListener('keydown', (e)=>{
-    if (e.altKey || e.metaKey || e.ctrlKey) return;
-    if (e.key === 'ArrowLeft' && page>1){ page--; render(); }
-    if (e.key === 'ArrowRight'){
-      const pages=Math.ceil(filtered.length/PAGE_SIZE);
-      if (page<pages){ page++; render(); }
-    }
-  });
-
-  // Responsive PAGE_SIZE recalculation
-  const mqHandler = () => {
-    const newSize = getPageSize();
-    if (newSize !== PAGE_SIZE){
-      PAGE_SIZE = newSize;
-      render();
-    }
-  };
-  ['(min-width:1200px)','(min-width:900px)','(min-width:640px)'].forEach(q=>{
-    const mq = matchMedia(q);
-    mq.addEventListener ? mq.addEventListener('change', mqHandler) : mq.addListener(mqHandler);
-  });
-
-  // Deep-link anchors from conditions (hash like #svc-rct)
-  function jumpTo(id){
-    const idx = TREATMENTS.findIndex(x=>x.id===id);
-    if (idx<0) return;
-    page = Math.floor(idx / PAGE_SIZE) + 1;
-    render();
-    requestAnimationFrame(()=>{
-      const card = grid.querySelector(`.t-card[data-id="${id}"]`);
-      if (card){
-        card.scrollIntoView({behavior:'smooth', block:'center'});
-        card.style.outline = '2px solid var(--brand)';
-        setTimeout(()=> card.style.outline = '', 1600);
-      }
-    });
-  }
-  // Handle clicks on inline anchors already in DOM
-  ([
-    ['#svc-rct','svc-rct'],
-    ['#svc-wisdom','svc-wisdom'],
-    ['#svc-implants','svc-implants'],
-    ['#svc-crowns','svc-crowns'],
-    ['#svc-dentures','svc-dentures'],
-    ['#svc-scaling','svc-scaling'],
-    ['#svc-gum','svc-gum']
-  ]).forEach(([href,id])=>{
-    document.querySelectorAll(`a[href="${href}"]`).forEach(a=>{
-      a.addEventListener('click', (e)=>{ e.preventDefault(); jumpTo(id); });
-    });
-  });
-  // Hash on load (e.g., /#svc-implants)
-  if (location.hash && location.hash.startsWith('#svc-')) {
-    const id = location.hash.slice(1);
-    // ensure first render then jump
-    applyFilters(); render();
-    setTimeout(()=> jumpTo(id), 50);
-    return;
-  }
-
-  // Initial run
-  applyFilters(); render();
-})();
-</script>
-<!-- ===================== Part 5: Testimonials ===================== -->
-<section id="ndt-testimonials" class="ndt-tsl band" aria-labelledby="ndt-tsl-title">
-  <div>
-    <div class="ndt-tsl-head">
-      <h2 id="ndt-tsl-title" class="section-title">What Patients in Nallagandla Say</h2>
-      <p class="section-sub">Real experiences with implants, root canals, braces, cosmetic care & kids dentistry near Tellapur, Lingampally & Gachibowli.</p>
-    </div>
-
-    <div class="ndt-tsl-viewport" role="region" aria-label="Patient testimonials carousel">
-      <ul class="ndt-tsl-track" id="ndtTslTrack">
-        <li class="ndt-tsl-card" itemscope itemtype="https://schema.org/Review" data-service="implants" data-area="Nallagandla">
-          <div class="ndt-tsl-rating" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            ★★★★★<meta itemprop="ratingValue" content="5">
-          </div>
-          <blockquote class="ndt-tsl-quote" itemprop="reviewBody">
-            “If you’re searching for the <strong>best dentist near me</strong> in Nallagandla, stop here.
-            My <strong>dental implant</strong> surgery was painless and follow-up was meticulous.”
-          </blockquote>
-          <div class="ndt-tsl-meta">
-            <span class="ndt-tsl-name" itemprop="author">Rahul S.</span>
-            <time datetime="2024-12" itemprop="datePublished">Dec 2024</time>
-          </div>
-        </li>
-
-        <li class="ndt-tsl-card" itemscope itemtype="https://schema.org/Review" data-service="rct" data-area="Hyderabad">
-          <div class="ndt-tsl-rating" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            ★★★★★<meta itemprop="ratingValue" content="5">
-          </div>
-          <blockquote class="ndt-tsl-quote" itemprop="reviewBody">
-            “Severe toothache—got a same-day <strong>root canal</strong>. Clear explanation, gentle anesthesia, fast recovery.”
-          </blockquote>
-          <div class="ndt-tsl-meta">
-            <span class="ndt-tsl-name" itemprop="author">Suganya</span>
-            <time datetime="2023-06" itemprop="datePublished">Jun 2023</time>
-          </div>
-        </li>
-
-        <li class="ndt-tsl-card" itemscope itemtype="https://schema.org/Review" data-service="kids" data-area="Lingampally">
-          <div class="ndt-tsl-rating" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            ★★★★★<meta itemprop="ratingValue" content="5">
-          </div>
-          <blockquote class="ndt-tsl-quote" itemprop="reviewBody">
-            “Fantastic with children! The doctor taught brushing habits and fixed cavities gently.”
-          </blockquote>
-          <div class="ndt-tsl-meta">
-            <span class="ndt-tsl-name" itemprop="author">Grace</span>
-            <time datetime="2024-08" itemprop="datePublished">Aug 2024</time>
-          </div>
-        </li>
-
-        <li class="ndt-tsl-card" itemscope itemtype="https://schema.org/Review" data-service="braces" data-area="Gachibowli">
-          <div class="ndt-tsl-rating" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            ★★★★★<meta itemprop="ratingValue" content="5">
-          </div>
-          <blockquote class="ndt-tsl-quote" itemprop="reviewBody">
-            “Switched to <strong>clear aligners</strong> after a detailed consult. Smooth progress & transparent pricing.”
-          </blockquote>
-          <div class="ndt-tsl-meta">
-            <span class="ndt-tsl-name" itemprop="author">Arjun</span>
-            <time datetime="2024-11" itemprop="datePublished">Nov 2024</time>
-          </div>
-        </li>
-
-        <li class="ndt-tsl-card" itemscope itemtype="https://schema.org/Review" data-service="cosmetic" data-area="Kondapur">
-          <div class="ndt-tsl-rating" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            ★★★★★<meta itemprop="ratingValue" content="5">
-          </div>
-          <blockquote class="ndt-tsl-quote" itemprop="reviewBody">
-            “Got <strong>veneers</strong> and whitening—natural, not overdone. A top cosmetic clinic near Kondapur.”
-          </blockquote>
-          <div class="ndt-tsl-meta">
-            <span class="ndt-tsl-name" itemprop="author">Priya M.</span>
-            <time datetime="2024-09" itemprop="datePublished">Sep 2024</time>
-          </div>
-        </li>
-
-        <li class="ndt-tsl-card" itemscope itemtype="https://schema.org/Review" data-service="rct" data-area="Nallagandla">
-          <div class="ndt-tsl-rating" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            ★★★★★<meta itemprop="ratingValue" content="5">
-          </div>
-          <blockquote class="ndt-tsl-quote" itemprop="reviewBody">
-            “Weekend emergency <strong>RCT</strong>—no waiting, fair fees, ethical advice.”
-          </blockquote>
-          <div class="ndt-tsl-meta">
-            <span class="ndt-tsl-name" itemprop="author">Ayesha K.</span>
-            <time datetime="2025-01" itemprop="datePublished">Jan 2025</time>
-          </div>
-        </li>
-      </ul>
-
-      <button class="ndt-tsl-nav prev" aria-label="Previous testimonials" id="ndtTslPrev" type="button">‹</button>
-      <button class="ndt-tsl-nav next" aria-label="Next testimonials" id="ndtTslNext" type="button">›</button>
-    </div>
-  </div>
-</section>
-
-<script>
-  // Testimonials carousel (auto-loop + pause on hover/touch)
-  (function(){
-    const viewport = document.querySelector('.ndt-tsl-viewport');
-    const track    = document.getElementById('ndtTslTrack');
-    if(!viewport || !track) return;
-    const prev = document.getElementById('ndtTslPrev');
-    const next = document.getElementById('ndtTslNext');
-
-    const slides = Array.from(track.children);
-    if (!slides.length) return;
-
-    // clone first N for loop illusion
-    const clones = Math.min(3, slides.length);
-    for(let i=0;i<clones;i++) track.appendChild(slides[i].cloneNode(true));
-
-    let step = slides[0].getBoundingClientRect().width + 18;
-    let index = 0, timer = null, speed = 4200;
-
-    const measure = ()=> {
-      const first = track.querySelector('.ndt-tsl-card');
-      if (!first) return;
-      step = first.getBoundingClientRect().width + 18;
-      track.style.transition = 'none';
-      track.style.transform = `translateX(${-index * step}px)`;
-      requestAnimationFrame(()=> track.style.transition = 'transform 600ms ease');
-    };
-
-    const go = dir => {
-      index += dir;
-      track.style.transition = 'transform 600ms ease';
-      track.style.transform  = `translateX(${-index * step}px)`;
-      if (index >= slides.length){
-        track.addEventListener('transitionend', ()=>{ index = 0; track.style.transition='none'; track.style.transform='translateX(0)'; requestAnimationFrame(()=> track.style.transition='transform 600ms ease'); }, {once:true});
-      }
-      if (index < 0){
-        index = slides.length - 1;
-        track.style.transition = 'none';
-        track.style.transform  = `translateX(${-index * step}px)`;
-        requestAnimationFrame(()=> track.style.transition='transform 600ms ease');
-      }
-    };
-
-    const start = ()=> { if (timer) return; timer = setInterval(()=>go(1), speed); viewport.classList.remove('is-paused'); };
-    const stop  = ()=> { clearInterval(timer); timer = null; viewport.classList.add('is-paused'); };
-
-    viewport.addEventListener('mouseenter', stop);
-    viewport.addEventListener('mouseleave', start);
-    viewport.addEventListener('touchstart', stop, {passive:true});
-    viewport.addEventListener('touchend',   start, {passive:true});
-    window.addEventListener('resize', measure);
-
-    prev?.addEventListener('click', ()=> go(-1));
-    next?.addEventListener('click', ()=> go(1));
-
-    measure(); start();
-  })();
-</script>
-
-    <!-- ===================== DOCTORS — TEAM DIRECTORY ===================== -->
-<section id="ndc-doctors-app" class="band" aria-label="Dentists in Nallagandla, Hyderabad">
-  <style>
-    /* Lightweight, component-scoped styles (no external container) */
-    #ndc-doctors-app .surface{background:var(--card);border:1px solid color-mix(in srgb, var(--text) 10%, transparent);border-radius:16px;box-shadow:var(--shadow)}
-    #ndc-doctors-app .muted{color:var(--muted)}
-    #ndc-doctors-app .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:color-mix(in srgb, var(--brand) 18%, var(--paper));border:1px solid color-mix(in srgb, var(--brand) 35%, transparent);font-weight:700}
-    #ndc-doctors-app .ndc-head{padding:16px 0 6px}
-    #ndc-doctors-app .ndc-grid{display:grid;gap:14px;grid-template-columns: 1.2fr 1.4fr 1fr}
-    @media (max-width:1100px){#ndc-doctors-app .ndc-grid{grid-template-columns: 1fr}}
-    #ndc-doctors-app .ndc-surface{padding:14px}
-    #ndc-doctors-app .h3{margin:.2rem 0 .6rem;font-size:1.05rem}
-    /* Left list */
-    #ndc-doctors-app .ndc-doc-list{display:grid;gap:8px}
-    #ndc-doctors-app .ndc-doc-item{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:8px;border-radius:12px;background:var(--paper);border:1px solid rgba(255,255,255,.08);text-align:left}
-    #ndc-doctors-app .ndc-doc-item[aria-selected="true"]{outline:2px solid var(--brand);background:color-mix(in srgb, var(--brand) 10%, var(--paper))}
-    #ndc-doctors-app .ndc-doc-item img{width:44px;height:44px;border-radius:10px;object-fit:cover}
-    #ndc-doctors-app .ndc-doc-role{color:var(--muted);font-size:.9rem}
-    /* Center: About card */
-    #ndc-doctors-app .ndc-about-card{padding:12px}
-    #ndc-doctors-app .ndc-about-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-    #ndc-doctors-app .ndc-about-id{display:flex;gap:10px;align-items:center}
-    #ndc-doctors-app .ndc-avatar{width:64px;height:64px;border-radius:12px;object-fit:cover;border:1px solid rgba(255,255,255,.08)}
-    #ndc-doctors-app .ndc-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;list-style:none;padding:0;margin:10px 0}
-    @media (max-width:640px){#ndc-doctors-app .ndc-meta{grid-template-columns:1fr}}
-    #ndc-doctors-app .ndc-chips{display:flex;flex-wrap:wrap;gap:6px}
-    #ndc-doctors-app .ndc-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px dashed rgba(255,255,255,.18);background:transparent}
-    /* Right: Profile */
-    #ndc-doctors-app .ndc-profile-card{padding:0;overflow:hidden}
-    #ndc-doctors-app .ndc-hero{position:relative}
-    #ndc-doctors-app .ndc-hero-img{display:block;width:100%;height:180px;object-fit:cover;background:linear-gradient(120deg, color-mix(in srgb, var(--brand) 14%, transparent), transparent)}
-    #ndc-doctors-app .ndc-hero-badge{position:absolute;right:10px;top:10px}
-    #ndc-doctors-app .ndc-hero-body{padding:12px}
-    #ndc-doctors-app .ndc-hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-  </style>
-
-  <div class="ndc-surface surface">
-    <header class="ndc-head">
-      <h2 class="section-title">Meet Our Team — Noble Dental Care</h2>
-      <p class="section-sub">MDS specialists • Digital dentistry • Ethical, transparent care</p>
-    </header>
-
-    <div class="ndc-grid">
-      <!-- LEFT: Doctors List -->
-      <aside aria-label="Our Specialists">
-        <h3 class="h3">Our Specialists</h3>
-        <div class="ndc-doc-list" data-ndc="docList" role="listbox" aria-label="Select a doctor"></div>
-      </aside>
-
-      <!-- CENTER: About Doctor -->
-      <section aria-label="About the Doctor">
-        <article class="ndc-about-card surface">
-          <div class="ndc-about-top">
-            <div class="ndc-about-id">
-              <img class="ndc-avatar" data-ndc="aboutAvatar" src="" alt="Doctor portrait">
-              <div>
-                <h3 class="ndc-doc-name" data-ndc="aboutName">Doctor Name</h3>
-                <p class="ndc-doc-role muted" data-ndc="aboutSpecialty">Specialty</p>
-              </div>
-            </div>
-            <span class="pill" data-ndc="aboutRating">★ 4.9</span>
-          </div>
-
-          <ul class="ndc-meta">
-            <li><strong>Experience:</strong> <span data-ndc="aboutExp">—</span></li>
-            <li><strong>Consultation:</strong> <span data-ndc="aboutConsult">—</span></li>
-            <li><strong>Languages:</strong> <span data-ndc="aboutLangs">EN • HI • TE</span></li>
-            <li><strong>Education:</strong> <span data-ndc="aboutEdu">BDS/MDS</span></li>
-          </ul>
-
-          <div class="ndc-chips-block">
-            <div class="eyebrow">Expertise</div>
-            <div class="ndc-chips" data-ndc="aboutExpertise"></div>
-          </div>
-
-          <div class="ndc-chips-block" style="margin-top:8px">
-            <div class="eyebrow">Available Regions</div>
-            <div class="ndc-chips" data-ndc="aboutCities"></div>
-          </div>
-
-          <div class="ndc-chips-block" style="margin-top:8px">
-            <div class="eyebrow">Contact</div>
-            <div class="ndc-chips" data-ndc="aboutPhones"></div>
-          </div>
-
-          <div class="ndc-chips-block" style="margin-top:8px">
-            <div class="eyebrow">Consultation Modes</div>
-            <div class="ndc-chips" data-ndc="aboutConsultModes"></div>
-          </div>
-
-          <div style="border-top:1px dashed color-mix(in srgb, var(--text) 18%, transparent); margin:10px 0;"></div>
-
-          <div class="ndc-books" data-ndc="aboutBooksWrap">
-            <h4 class="h3">Published Work</h4>
-            <div class="ndc-chips" data-ndc="aboutBooks"></div>
-          </div>
-        </article>
-      </section>
-
-      <!-- RIGHT: Profile Card -->
-      <section aria-label="Doctor Profile">
-        <div class="ndc-profile-card surface">
-          <div class="ndc-hero">
-            <img class="ndc-hero-img" data-ndc="heroImg" src="" alt="Doctor profile image">
-            <span class="pill ndc-hero-badge" data-ndc="heroRating">★ 4.9</span>
-          </div>
-          <div class="ndc-hero-body">
-            <h3 class="ndc-hero-name" data-ndc="heroName">Doctor Name</h3>
-            <p class="ndc-hero-sub muted" data-ndc="heroSpecialty">Specialty, Credentials</p>
-            <div class="ndc-hero-actions">
-              <a class="btn" data-ndc="btnCall" href="tel:+918610425342" aria-label="Call the clinic"><i class='bx bxs-phone'></i> Call</a>
-              <a class="btn primary" href="#ndc-appointment" aria-label="Book appointment quickly"><i class='bx bx-calendar'></i> Book Now</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div><!-- /grid -->
-  </div>
-</section>
-
-<!-- ===================== DOCTORS — DATA + RENDERER ===================== -->
-<script>
-(function(){
-  const CURRENT_YEAR = new Date().getFullYear();
-  const BOOK_COVER   = "https://via.placeholder.com/120x160?text=Dental+Book";
-
-  const DOCTORS = [
-    {
-      id:"dhivakaran",
-      name:"Dr Dhivakaran",
-      rating:4.9,
-      specialty:"Chief Medical Director, Noble Dental Care · Director, Healthflo",
-      expertise:["CMD — Noble Dental Care","Director — Healthflo (557 hospitals)"],
-      startYear: CURRENT_YEAR - 10,
-      phones:["8610425342","8074512305"],
-      consultation:["Walk-in","Appointment Booking","Tele-consultation"],
-      cities:["Hyderabad","Bangalore","Chennai","Madurai"],
-      edu:"BDS, MDS",
-      langs:"EN • HI • TE • TA",
-      hero:"https://picsum.photos/seed/dh-hero/960/480",
-      avatar:"https://picsum.photos/seed/d1/96",
-      books:[{
-        title:"Triumph’s Complete Review of Dentistry (2 Vol Set), Ed. 1",
-        cover:BOOK_COVER,
-        link:"https://play.google.com/store/books/details/Triumph_s_Complete_Review_of_Dentistry?id=ZTjvDwAAQBAJ&hl=en_US&pli=1",
-        publisher:"Wolters Kluwer · Oct 2018"
-      }]
-    },
-    {
-      id:"roger",
-      name:"Dr Roger Ronaldo",
-      rating:4.8,
-      specialty:"Consultant Oral & Maxillofacial Surgeon — Implantology, Facial Reconstruction",
-      expertise:["Implantology","Orthognathic & Reconstruction","Trauma Surgery"],
-      startYear: CURRENT_YEAR - 13,
-      phones:["8610425342","8074512305"],
-      consultation:["Appointment Booking","Tele-consultation"],
-      cities:["Hyderabad","Bangalore","Chennai"],
-      edu:"BDS, MDS (OMFS)",
-      langs:"EN",
-      hero:"https://picsum.photos/seed/ro-hero/960/480",
-      avatar:"https://picsum.photos/seed/d2/96",
-      books:[{
-        title:"Triumph’s Complete Review of Dentistry (2 Vol Set), Ed. 1",
-        cover:BOOK_COVER,
-        link:"https://play.google.com/store/books/details/Triumph_s_Complete_Review_of_Dentistry?id=ZTjvDwAAQBAJ&hl=en_US&pli=1",
-        publisher:"Wolters Kluwer · Oct 2018"
-      }]
-    },
-    {
-      id:"thikvijay",
-      name:"Dr Thik Vijay",
-      rating:4.6,
-      specialty:"FMC., (Germany) — Trichology, Aesthetic & Medical Cosmetology (ISHR)",
-      expertise:["Trichology","Aesthetic & Medical Cosmetology","Hair & Scalp Restoration"],
-      startYear: CURRENT_YEAR - 11,
-      phones:["8610425342","8074512305"],
-      consultation:["Appointment Booking","Tele-consultation"],
-      cities:["Chennai","Hyderabad"],
-      edu:"FMC (Germany), ISHR",
-      langs:"EN • HI",
-      hero:"https://picsum.photos/seed/tv-hero/960/480",
-      avatar:"https://picsum.photos/seed/d3/96",
-      books:[]
-    },
-    {
-      id:"deepak",
-      name:"Dr Deepak",
-      rating:4.7,
-      specialty:"Orthodontist (Assistant Professor)",
-      expertise:["Orthodontics","Smile Design & Aligners","Complex Malocclusion"],
-      startYear: CURRENT_YEAR - 10,
-      phones:["8610425342","8074512305"],
-      consultation:["Appointment Booking","Tele-consultation"],
-      cities:["Chennai","Hyderabad","Andhra"],
-      edu:"BDS, MDS (Orthodontics)",
-      langs:"EN • HI • TE",
-      hero:"https://picsum.photos/seed/dp-hero/960/480",
-      avatar:"https://picsum.photos/seed/d4/96",
-      books:[]
-    },
-    {
-      id:"manoj",
-      name:"Dr Manoj Reddy",
-      rating:4.5,
-      specialty:"Oral & Maxillofacial Surgeon — Implantology",
-      expertise:["Dental Implants","Maxillofacial Surgery","Full-mouth Rehab"],
-      startYear: CURRENT_YEAR - 9,
-      phones:["8610425342","8074512305"],
-      consultation:["Appointment Booking","Tele-consultation"],
-      cities:["Hyderabad","Andhra Pradesh","Chennai"],
-      edu:"BDS, MDS (OMFS)",
-      langs:"EN • HI • TE",
-      hero:"https://picsum.photos/seed/mr-hero/960/480",
-      avatar:"https://picsum.photos/seed/d5/96",
-      books:[]
-    },
-    {
-      id:"idhaya",
-      name:"Dr Idhaya",
-      rating:4.4,
-      specialty:"CEO - Healthflo · Health Insurance · Medical Tourism",
-      expertise:["Preventive Dentistry","Insurance Advisory","Tourism Coordination"],
-      startYear: CURRENT_YEAR - 8,
-      phones:["8610425342","8074512305"],
-      consultation:["Tele-consultation"],
-      cities:["Bangalore","Chennai","Hyderabad"],
-      edu:"BDS",
-      langs:"EN • HI • TA",
-      hero:"https://picsum.photos/seed/id-hero/960/480",
-      avatar:"https://picsum.photos/seed/d6/96",
-      books:[]
-    }
-  ];
-
-  const $  = (s, r=document)=>r.querySelector(s);
-  const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
-
-  const listBox = $('[data-ndc="docList"]');
-  const about = {
-    avatar: $('[data-ndc="aboutAvatar"]'),
-    name: $('[data-ndc="aboutName"]'),
-    specialty: $('[data-ndc="aboutSpecialty"]'),
-    rating: $('[data-ndc="aboutRating"]'),
-    exp: $('[data-ndc="aboutExp"]'),
-    consult: $('[data-ndc="aboutConsult"]'),
-    langs: $('[data-ndc="aboutLangs"]'),
-    edu: $('[data-ndc="aboutEdu"]'),
-    expertise: $('[data-ndc="aboutExpertise"]'),
-    cities: $('[data-ndc="aboutCities"]'),
-    phones: $('[data-ndc="aboutPhones"]'),
-    consultModes: $('[data-ndc="aboutConsultModes"]'),
-    booksWrap: $('[data-ndc="aboutBooksWrap"]'),
-    books: $('[data-ndc="aboutBooks"]')
-  };
-  const hero = {
-    img: $('[data-ndc="heroImg"]'),
-    rating: $('[data-ndc="heroRating"]'),
-    name: $('[data-ndc="heroName"]'),
-    spec: $('[data-ndc="heroSpecialty"]'),
-    btnCall: $('[data-ndc="btnCall"]')
-  };
-
-  if (!listBox) return;
-
-  // Render doctor list
-  listBox.innerHTML = DOCTORS.map((d, i)=>`
-    <button class="ndc-doc-item" role="option" aria-selected="${i===0?'true':'false'}" data-id="${d.id}">
-      <img src="${d.avatar}" alt="${d.name} portrait" loading="lazy" width="44" height="44">
-      <div>
-        <div style="font-weight:700">${d.name}</div>
-        <div class="ndc-doc-role">${d.specialty}</div>
-      </div>
-      <span class="pill">★ ${d.rating.toFixed(1)}</span>
-    </button>
-  `).join('');
-
-  function yearsSince(startYear){
-    return `${Math.max(1, CURRENT_YEAR - startYear)}+ years`;
-  }
-
-  function select(id){
-    const d = DOCTORS.find(x=>x.id===id) || DOCTORS[0];
-    $$('.ndc-doc-item', listBox).forEach(el=>el.setAttribute('aria-selected', el.dataset.id===d.id ? 'true' : 'false'));
-
-    about.avatar.src = d.avatar;
-    about.name.textContent = d.name;
-    about.specialty.textContent = d.specialty;
-    about.rating.textContent = '★ ' + d.rating.toFixed(1);
-    about.exp.textContent = yearsSince(d.startYear);
-    about.consult.textContent = d.consultation?.[0] || '—';
-    about.langs.textContent = d.langs || 'EN • HI';
-    about.edu.textContent = d.edu || 'BDS';
-    about.expertise.innerHTML = d.expertise.map(x=>`<span class="ndc-chip">🏷️ ${x}</span>`).join('');
-    about.cities.innerHTML = d.cities.map(c=>`<span class="ndc-chip">📍 ${c}</span>`).join('');
-    about.phones.innerHTML = d.phones.map(p=>{
-      const tel = p.replace(/[^\d]/g,'');
-      return `<a class="ndc-chip" href="tel:+91${tel}">📞 +91 ${p}</a>`;
-    }).join('');
-    about.consultModes.innerHTML = d.consultation.map(m=>`<span class="ndc-chip">🗓️ ${m}</span>`).join('');
-    if (d.books.length){
-      about.booksWrap.style.display = '';
-      about.books.innerHTML = d.books.map(b=>`<a class="ndc-chip" href="${b.link}" target="_blank">📘 ${b.title}</a>`).join('');
-    } else {
-      about.booksWrap.style.display = 'none';
-    }
-
-    hero.img.src = d.hero || d.avatar;
-    hero.rating.textContent = '★ ' + d.rating.toFixed(1);
-    hero.name.textContent = d.name;
-    hero.spec.textContent = `${d.specialty} — ${d.edu}`;
-    hero.btnCall.href = 'tel:+918610425342';
-  }
-
-  // Event: select doctor
-  listBox.addEventListener('click', e=>{
-    const btn = e.target.closest('.ndc-doc-item');
-    if (btn) select(btn.dataset.id);
-  });
-
-  // --- Deep-link support ---
-  const urlParams = new URLSearchParams(location.search);
-  const hashMatch = location.hash.match(/doc=([\w-]+)/);
-  const docId = urlParams.get('doc') || (hashMatch ? hashMatch[1] : null);
-  if (docId) {
-    select(docId);
-    document.querySelector('#ndc-doctors-app')?.scrollIntoView({behavior:'smooth'});
-  } else {
-    select(DOCTORS[0].id);
-  }
-})();
-</script>
-
-
-<!-- ===================== DOCTORS — STRUCTURED DATA (JSON-LD) ===================== -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Dentist",
-  "@id": "https://nobledentalnallagandla.in/#dentist",
-  "name": "Noble Dental Care - Nallagandla",
-  "founder": { "@type": "Person", "name": "Dr Dhivakaran" },
-  "member": [
-    {
-      "@type": "Physician",
-      "name": "Dr Dhivakaran",
-      "jobTitle": "Chief Medical Director",
-      "telephone": "+91-8610425342",
-      "medicalSpecialty": "Chief Medical Director, Noble Dental Care · Director, Healthflo",
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "500" }
-    },
-    {
-      "@type": "Physician",
-      "name": "Dr Roger Ronaldo",
-      "jobTitle": "Oral & Maxillofacial Surgeon",
-      "medicalSpecialty": "Consultant Maxillofacial Surgeon — Implantology, Facial Reconstruction",
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "500" }
-    },
-    {
-      "@type": "Physician",
-      "name": "Dr Deepak",
-      "jobTitle": "Orthodontist",
-      "medicalSpecialty": "Orthodontist (Assistant Professor)",
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "400" }
-    },
-    {
-      "@type": "Physician",
-      "name": "Dr Manoj Reddy",
-      "jobTitle": "OMFS - Implantology",
-      "medicalSpecialty": "Oral & Maxillofacial Surgeon — Implantology",
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.5", "reviewCount": "250" }
-    },
-    {
-      "@type": "Physician",
-      "name": "Dr Idhaya",
-      "jobTitle": "CEO - Healthflo",
-      "description": "Health Insurance · Medical Tourism",
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "350" }
-    },
-    {
-      "@type": "Physician",
-      "name": "Dr Thik Vijay",
-      "jobTitle": "FMC (Germany) — Trichology / Aesthetic & Medical Cosmetology (ISHR)",
-      "medicalSpecialty": "Trichology · Aesthetic & Medical Cosmetology",
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "reviewCount": "280" }
-    }
-  ]
-}
-</script>
-
-    <!-- ===================== APPOINTMENT (UPGRADED) ===================== -->
-<section id="ndc-appointment" class="band" aria-label="Book an appointment at Noble Dental Care">
-  <style>
-    /* Scoped styles */
-    #ndc-appointment .surface{background:var(--card);border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:16px;box-shadow:var(--shadow)}
-    #ndc-appointment .muted{color:var(--muted)}
-    #ndc-appointment .ndc-appt-container{padding:14px}
-    #ndc-appointment .ndc-appt-head{display:grid;gap:6px;margin-bottom:8px}
-    #ndc-appointment .ndc-appt-form{display:block}
-    #ndc-appointment .ndc-appt-layout{display:grid;gap:14px;grid-template-columns: 1.2fr 1fr}
-    @media (max-width:960px){#ndc-appointment .ndc-appt-layout{grid-template-columns:1fr}}
-    #ndc-appointment .ndc-card{background:var(--paper);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px}
-    #ndc-appointment .h3{margin:.2rem 0 .6rem;font-size:1.06rem}
-    #ndc-appointment .ndc-form-grid{display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
-    @media (max-width:680px){#ndc-appointment .ndc-form-grid{grid-template-columns:1fr}}
-    #ndc-appointment .ndc-field{position:relative}
-    #ndc-appointment .ndc-field input,
-    #ndc-appointment .ndc-field select,
-    #ndc-appointment .ndc-field textarea{
-      width:100%;padding:12px 12px;border-radius:10px;border:1px solid color-mix(in srgb,var(--text) 14%,transparent);
-      background:var(--card);color:var(--text);font:inherit
-    }
-    #ndc-appointment .ndc-field--sm input{max-width:140px}
-    #ndc-appointment .ndc-field label{
-      position:absolute;left:10px;top:-9px;font-size:.8rem;background:var(--paper);padding:0 6px;border-radius:6px;color:var(--muted)
-    }
-    #ndc-appointment .ndc-full{grid-column:1 / -1}
-    #ndc-appointment .ndc-slot-group{margin:8px 0}
-    #ndc-appointment .ndc-slot-title{font-weight:700;margin-bottom:6px}
-    #ndc-appointment .ndc-slot-title.em{color:var(--warn)}
-    #ndc-appointment .ndc-slots{display:flex;flex-wrap:wrap;gap:8px}
-    #ndc-appointment .ndc-slot{
-      border:1px solid color-mix(in srgb,var(--text) 14%,transparent);background:var(--card);color:inherit;padding:8px 10px;border-radius:10px
-    }
-    #ndc-appointment .ndc-slot[aria-pressed="true"]{outline:2px solid var(--brand);background:color-mix(in srgb,var(--brand) 12%,var(--paper))}
-    #ndc-appointment .ndc-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;justify-content:center}
-    #ndc-appointment .hint{font-size:.9rem;color:var(--muted)}
-    #ndc-appointment .ndc-badge{display:inline-flex;gap:6px;align-items:center;border:1px dashed rgba(255,255,255,.2);border-radius:999px;padding:6px 10px}
-    #ndc-appointment .ndc-cta-inline{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    /* mini trust row */
-    #ndc-appointment .trust{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-    #ndc-appointment .trust .pill{display:inline-flex;gap:6px;align-items:center;padding:4px 10px;border-radius:999px;background:color-mix(in srgb,var(--brand) 18%,var(--paper));border:1px solid color-mix(in srgb,var(--brand) 35%,transparent);font-weight:700}
-  </style>
-
-  <div class="ndc-surface surface ndc-appt-container" itemscope itemtype="https://schema.org/MedicalClinic">
-    <meta itemprop="name" content="Noble Dental Care - Nallagandla">
-    <header class="ndc-appt-head">
-      <h2 class="section-title">Book your Dental Appointment</h2>
-      <p class="section-sub">Choose specialist, date & time — confirm via Email/WhatsApp in seconds.</p>
-      <div class="trust" aria-label="Assurances">
-        <span class="pill">ISO Sterilization</span>
-        <span class="pill">Digital X-rays</span>
-        <span class="pill">Emergency 10 PM–2 AM</span>
-      </div>
-    </header>
-
-    <form class="ndc-appt-form" id="apptForm" novalidate>
-      <div class="ndc-appt-layout">
-        <!-- Left: Patient Details -->
-        <div class="ndc-card" aria-label="Patient details">
-          <h3 class="h3">Patient Details</h3>
-          <div class="ndc-form-grid">
-            <div class="ndc-field">
-              <select id="docSel" required aria-required="true">
-                <option value="">— choose doctor —</option>
-                <option value="dhivakaran">Dr Dhivakaran — Chief Medical Director</option>
-                <option value="deepak">Dr Deepak — Orthodontist</option>
-                <option value="manoj">Dr Manoj Reddy — OMFS</option>
-                <option value="roger">Dr Roger Ronaldo — OMFS</option>
-              </select>
-              <label for="docSel">Doctor</label>
-            </div>
-
-            <div class="ndc-field">
-              <input id="name" type="text" placeholder=" " required inputmode="text" autocomplete="name" aria-required="true">
-              <label for="name">Patient Name</label>
-            </div>
-
-            <div class="ndc-field ndc-field--sm">
-              <input id="age" type="number" min="0" max="120" placeholder=" " required aria-required="true">
-              <label for="age">Age</label>
-            </div>
-
-            <div class="ndc-field">
-              <select id="apptType" required>
-                <option value="Consultation">Consultation</option>
-                <option value="Follow-up">Follow-up</option>
-                <option value="Emergency">Emergency</option>
-                <option value="Second Opinion">Second Opinion</option>
-              </select>
-              <label for="apptType">Appointment Type</label>
-            </div>
-
-            <div class="ndc-field">
-              <input id="date" type="date" placeholder=" " required>
-              <label for="date">Date</label>
-            </div>
-
-            <div class="ndc-field">
-              <input id="phone" type="tel" placeholder=" " inputmode="tel" autocomplete="tel">
-              <label for="phone">Phone (optional)</label>
-            </div>
-
-            <div class="ndc-field ndc-full">
-              <textarea id="reason" rows="3" placeholder=" "></textarea>
-              <label for="reason">Reason / Notes</label>
-            </div>
-          </div>
-
-          <p class="hint">By booking you agree to our <a href="/privacy">Privacy</a> & <a href="/terms">Terms</a>.</p>
-        </div>
-
-        <!-- Right: Time Slots -->
-        <div class="ndc-card" aria-label="Pick a time">
-          <h3 class="h3">Pick a Time</h3>
-
-          <div class="ndc-slot-group">
-            <div class="ndc-slot-title">Regular (11:00 AM – 10:00 PM)</div>
-            <div class="ndc-slots" data-ndc="slotsRegular"></div>
-          </div>
-
-          <div class="ndc-slot-group">
-            <div class="ndc-slot-title em">Emergencies (10:00 PM – 2:00 AM)</div>
-            <div class="ndc-slots" data-ndc="slotsEmergency"></div>
-          </div>
-
-          <div class="ndc-field">
-            <select id="timeSel" required>
-  <option value="" disabled selected>— choose —</option>
-  </select>
-            <label for="timeSel">Selected Time</label>
-          </div>
-
-          <div class="ndc-cta-inline">
-            <button class="btn primary" type="submit" id="btnEmail"><i class='bx bx-envelope'></i> Confirm via Email</button>
-            <button class="btn" type="button" id="btnWhatsApp"><i class='bx bxl-whatsapp'></i> Confirm via WhatsApp</button>
-          </div>
-        </div>
-      </div>
-    </form>
-
-    <div class="ndc-badge" aria-live="polite" id="apptLive">Ready to book.</div>
-  </div>
-
-  <script>
-  (function(){
-    const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
-    const $ = (s,r=document)=>r.querySelector(s);
-
-    // set min date = today
-    const d = $('#ndc-appointment #date');
-    if (d){
-      const t = new Date();
-      const iso = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`;
-      d.min = iso; if (!d.value) d.value = iso;
-    }
-
-    const REG = ['11:30','12:30','14:00','16:00','17:30','19:00','20:30','21:30'];
-    const EMR = ['22:15','23:00','23:45','00:30','01:15'];
-    const regWrap = $('[data-ndc="slotsRegular"]');
-    const emWrap  = $('[data-ndc="slotsEmergency"]');
-    const selTime = $('#timeSel');
-    const live    = $('#apptLive');
-
-    function renderSlots(){
-      function mk(t){
-        const b = document.createElement('button');
-        b.type='button'; b.className='ndc-slot'; b.textContent=t;
-        b.addEventListener('click', ()=>{
-          $$('.ndc-slot').forEach(x=>x.setAttribute('aria-pressed','false'));
-          b.setAttribute('aria-pressed','true');
-          selTime.value = t;
-          live.textContent = `Selected time ${t}`;
-        });
-        return b;
-      }
-      selTime.innerHTML = '<option value="">— choose —</option>';
-      [...REG,...EMR].forEach(t=> selTime.innerHTML += `<option>${t}</option>`);
-      regWrap.replaceChildren(...REG.map(mk));
-      emWrap.replaceChildren(...EMR.map(mk));
-    }
-    renderSlots();
-
-    function buildText(){
-      const get = id => document.getElementById(id)?.value || '';
-      const v = {
-        doctor: get('docSel') || 'Any',
-        name:   get('name'),
-        age:    get('age'),
-        type:   get('apptType'),
-        date:   get('date'),
-        time:   get('timeSel'),
-        phone:  get('phone'),
-        notes:  get('reason')
-      };
-      return `Appointment Request — Noble Dental Care
-Doctor: ${v.doctor}
-Patient: ${v.name} (Age ${v.age})
-Type: ${v.type}
-Preferred: ${v.date} ${v.time}
-Phone: ${v.phone}
-Notes: ${v.notes}`;
-    }
-
-    // Email submit
-    $('#apptForm')?.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const form = e.currentTarget;
-      if (!form.checkValidity()){
-        form.reportValidity();
-        live.textContent = 'Please fill the required fields (Doctor, Name, Age, Date, Time).';
-        return;
-      }
-      const body = encodeURIComponent(buildText());
-      const subj = encodeURIComponent('Appointment — Noble Dental Care');
-      location.href = `mailto:nobledental.org@gmail.com?subject=${subj}&body=${body}`;
-    });
-
-    // WhatsApp compose
-    $('#btnWhatsApp')?.addEventListener('click', ()=>{
-      const text = encodeURIComponent(buildText());
-      open(`https://wa.me/918610425342?text=${text}`, '_blank', 'noopener');
-    });
-  })();
-  </script>
-
-  <!-- ReserveAction for booking signals -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Dentist",
-    "name":"Noble Dental Care - Nallagandla",
-    "potentialAction":{
-      "@type":"ReserveAction",
-      "target":{
-        "@type":"EntryPoint",
-        "urlTemplate":"https://nobledentalnallagandla.in/#ndc-appointment",
-        "inLanguage":"en-IN",
-        "actionPlatform":[
-          "http://schema.org/DesktopWebPlatform",
-          "http://schema.org/MobileWebPlatform"
-        ]
-      },
-      "result":{"@type":"Reservation","name":"Dental appointment"}
-    }
-  }
-  </script>
-</section>
-<!-- ==================== FAQ (UPGRADED AEO with Gov/Health-Body Links) ==================== -->
-<section id="noble-faq" class="band" aria-labelledby="nd-faq-title">
-  <style>
-    #noble-faq .surface{background:var(--card);border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:14px;box-shadow:var(--shadow)}
-    #noble-faq .nd-qa__trigger{display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px 6px;background:transparent;border:0;color:inherit;font:inherit}
-    #noble-faq .nd-qa__trigger:focus{outline:2px solid var(--brand)}
-    #noble-faq .nd-qa__panel{padding:0 6px 12px 6px;color:var(--muted)}
-    #noble-faq .grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    #noble-faq .nd-refs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-    #noble-faq .nd-ref{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px dashed rgba(255,255,255,.22);color:inherit;text-decoration:none}
-    #noble-faq .nd-ref:hover{border-color:color-mix(in srgb, var(--brand) 60%, transparent)}
-  </style>
-
-  <div>
-    <header class="nd-faq__header">
-      <h2 id="nd-faq-title" class="section-title">FAQs — Noble Dental Care, Nallagandla</h2>
-      <p class="section-sub">Short, direct answers with trusted public-health references.</p>
-    </header>
-
-    <div class="grid" id="nd-faq-accordion">
-      <!-- 1 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq1">
-          Why are regular dental check-ups important? <i class='bx bx-chevron-down' aria-hidden="true"></i>
-        </button></h3>
-        <div id="faq1" class="nd-qa__panel" hidden>
-          <p>Many dental issues (cavities, gum disease) are painless early on. Regular exams help detect problems sooner, reduce treatment costs, and support overall health—especially helpful for busy families in Nallagandla.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.cdc.gov/oralhealth/fast-facts/index.html">CDC — Oral Health Basics</a>
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.nidcr.nih.gov/health-info">NIH/NIDCR — Oral Health Topics</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 2 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq2">
-          How often should I visit the dentist? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq2" class="nd-qa__panel" hidden>
-          <p>Twice-yearly check-ups are common. Your interval may be shorter if you have gum disease, diabetes, heart/liver conditions, blood abnormalities, cancer, are on radiotherapy, or are pregnant. In Hyderabad’s context, six-monthly cleanings work well for most.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.nice.org.uk/guidance/cg19">NICE (via NHS) — Recall Intervals</a>
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.cdc.gov/oralhealth/">CDC — Oral Health</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 3 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq3">
-          What is the right way to brush and floss? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq3" class="nd-qa__panel" hidden>
-          <p>Brush twice daily for two minutes with a soft brush at a 45° angle to the gumline. Ask your dentist to confirm the right brush and technique for your gums/teeth. Clean the ~40% your brush can’t reach by flossing or using interdental brushes once daily.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.cdc.gov/oralhealth/basics/adults/adult_oral_health/index.html">CDC — Adult Oral Health</a>
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.who.int/news-room/fact-sheets/detail/oral-health">WHO — Oral Health Fact Sheet</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 4 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq4">
-          Are dental X-rays safe at Noble Dental Care? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq4" class="nd-qa__panel" hidden>
-          <p>Yes. We use digital RVG sensors (lower radiation than film) and ALARA protocols. Protective aprons/thyroid collars and selective imaging further minimize exposure.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.cdc.gov/nceh/radiation/dentalx-rays.html">CDC — Dental X-rays & Radiation</a>
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.fda.gov/radiation-emitting-products/medical-x-ray-imaging/dental-radiography">US FDA — Dental Radiography</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 5 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq5">
-          What is a root canal and is it painful? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq5" class="nd-qa__panel" hidden>
-          <p>A root canal removes inflamed/infected pulp to save your natural tooth. With local anesthesia and modern techniques, it’s designed to relieve pain—not cause it.</p>
-        <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.nidcr.nih.gov/health-info/root-canals">NIH/NIDCR — Root Canals</a>
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.nhs.uk/conditions/root-canal-treatment/">NHS — Root Canal Treatment</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 6 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq6">
-          Do I really need a crown after a root canal? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq6" class="nd-qa__panel" hidden>
-          <p>Often, yes—especially for molars. After RCT, teeth may become brittle. A crown protects against fracture and restores chewing strength.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.nhs.uk/conditions/root-canal-treatment/">NHS — Root Canal & Crowns</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 7 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq7">
-          What are my options for a missing tooth? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq7" class="nd-qa__panel" hidden>
-          <p>Implants, fixed bridges, or dentures. We’ll guide you based on bone, bite, esthetics, medical history, medications/allergies, budget, and maintenance.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.nhs.uk/conditions/dental-implants/">NHS — Dental Implants</a>
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.nidcr.nih.gov/health-info/tooth-replacement">NIH/NIDCR — Tooth Replacement</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 8 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq8">
-          Are dental implants safe and long-lasting? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq8" class="nd-qa__panel" hidden>
-          <p>With proper case selection and hygiene, implants can last many years. We use evidence-based protocols, biocompatible materials, and digital planning (3D imaging, virtual setup, biomechanical analysis) to optimize outcomes.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.nhs.uk/conditions/dental-implants/">NHS — Dental Implants</a>
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.who.int/news-room/fact-sheets/detail/oral-health">WHO — Oral Health</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 9 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq9">
-          Do kids in Nallagandla need sealants and fluoride? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq9" class="nd-qa__panel" hidden>
-          <p>Yes. Sealants protect deep grooves; fluoride strengthens enamel. For Hyderabad diets/school snacks, both cut cavities significantly. <em>Note:</em> avoid topical fluoride in dental fluorosis—ask your dentist.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.cdc.gov/oralhealth/dental_sealants/index.html">CDC — Dental Sealants</a>
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.cdc.gov/fluoridation/index.html">CDC — Community Water Fluoridation</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 10 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq10">
-          How is oral health linked to overall health (heart, diabetes)? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq10" class="nd-qa__panel" hidden>
-          <p>Gum inflammation is associated with cardiovascular risk and can worsen blood-sugar control. Preventive dental care supports systemic health.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.cdc.gov/oralhealth/conditions/index.html">CDC — Oral Conditions & Systemic Links</a>
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.nhs.uk/conditions/gum-disease/">NHS — Gum Disease</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 11 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq11">
-          Are clear aligners effective for adults? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq11" class="nd-qa__panel" hidden>
-          <p>Yes—many adults choose aligners for comfort and aesthetics. Success depends on case selection and wearing trays as prescribed.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.nhs.uk/conditions/orthodontics/">NHS — Orthodontics (Braces & Aligners)</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 12 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq12">
-          Is dental care safe during pregnancy? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq12" class="nd-qa__panel" hidden>
-          <p>Yes. Preventive care and necessary treatment are safe and recommended. Managing gum inflammation during pregnancy improves comfort and health.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://main.icmr.nic.in/">ICMR — Public Health Guidance</a>
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.cdc.gov/oralhealth/publications/features/pregnancy-and-oral-health.html">CDC — Pregnancy & Oral Health</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 13 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq13">
-          Dental emergency: what to do if a tooth is knocked out? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq13" class="nd-qa__panel" hidden>
-          <p>Handle by the crown, gently rinse, reinsert if possible, or store in milk. Reach our clinic immediately—survival is time-critical.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.nhs.uk/conditions/knocked-out-tooth/">NHS — Knocked-out Tooth</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 14 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq14">
-          Fluoride: what toothpaste and mouthwash should my family use? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq14" class="nd-qa__panel" hidden>
-          <p>Adults: fluoride toothpaste (~1,000–1,500 ppm) twice daily; consider a fluoride mouthwash if cavity-prone. Kids 3–6: pea-sized paste with supervision. Under 3: a smear (rice-grain size) only if advised by your dentist. Spit, don’t rinse.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.cdc.gov/fluoridation/faqs/index.htm">CDC — Fluoride FAQs</a>
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.nhs.uk/live-well/healthy-body/how-to-keep-your-teeth-clean/">NHS — Keep Teeth Clean</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 15 -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq15">
-          Post-extraction basics: how do I avoid a dry socket? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq15" class="nd-qa__panel" hidden>
-          <p>Bite on gauze 30–45 minutes, avoid smoking and straws for 72 hours, eat soft/cool foods day one, and start gentle warm saltwater rinses after 24 hours. Call us if pain or bleeding persists.</p>
-          <div class="nd-refs">
-            <a class="nd-ref" target="_blank" rel="noopener noreferrer" href="https://www.nhs.uk/conditions/teeth-and-gums/tooth-removal/">NHS — Tooth Removal</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Convenience Qs -->
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq16">
-          How do I book or reschedule an appointment? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq16" class="nd-qa__panel" hidden>
-          <p>Use the <a href="#ndc-appointment">Book</a> section to pick a time and confirm via Email/WhatsApp. To reschedule, reply to your confirmation or call <a href="tel:+918610425342">+91&nbsp;86104&nbsp;25342</a>.</p>
-        </div>
-      </article>
-
-      <article class="surface">
-        <h3><button class="nd-qa__trigger" aria-expanded="false" aria-controls="faq17">
-          Do you accept insurance? <i class='bx bx-chevron-down'></i>
-        </button></h3>
-        <div id="faq17" class="nd-qa__panel" hidden>
-          <p>We provide documents for reimbursement. Cashless depends on your insurer/TPA, policy, and procedure. See our <a href="#ndc-insurance-support">Insurance Support</a> section.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-
-  <!-- FAQPage JSON-LD (unchanged structure; content aligned with answers) -->
-  <script type="application/ld+json">
-  { "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"Why are regular dental check-ups important?","acceptedAnswer":{"@type":"Answer","text":"Many dental issues are painless early on. Regular exams help detect problems sooner, reduce treatment costs, and support overall health—especially helpful for busy families in Nallagandla."}},
-    {"@type":"Question","name":"How often should I visit the dentist?","acceptedAnswer":{"@type":"Answer","text":"Twice-yearly check-ups are common. Your interval may be shorter if you have gum disease, diabetes, heart or liver conditions, blood abnormalities, cancer, are on radiotherapy, or are pregnant. In Hyderabad’s context, six-monthly cleanings work well for most."}},
-    {"@type":"Question","name":"What is the right way to brush and floss?","acceptedAnswer":{"@type":"Answer","text":"Brush twice daily for two minutes with a soft brush at a 45° angle to the gumline, and clean between teeth once daily with floss or interdental brushes."}},
-    {"@type":"Question","name":"Are dental X-rays safe at Noble Dental Care?","acceptedAnswer":{"@type":"Answer","text":"Yes. We use digital RVG sensors and ALARA protocols with protective aprons/thyroid collars and selective imaging to minimize exposure."}},
-    {"@type":"Question","name":"What is a root canal and is it painful?","acceptedAnswer":{"@type":"Answer","text":"A root canal removes inflamed or infected pulp to save the tooth. With local anesthesia and modern techniques, it relieves pain rather than causing it."}},
-    {"@type":"Question","name":"Do I really need a crown after a root canal?","acceptedAnswer":{"@type":"Answer","text":"Often, yes—especially for molars. Teeth can become brittle after RCT; a crown protects against fracture and restores function."}},
-    {"@type":"Question","name":"What are my options for a missing tooth?","acceptedAnswer":{"@type":"Answer","text":"Implants, fixed bridges, or dentures. The best choice depends on bone, bite, esthetics, medical history, budget, and maintenance."}},
-    {"@type":"Question","name":"Are dental implants safe and long-lasting?","acceptedAnswer":{"@type":"Answer","text":"With proper case selection and oral hygiene, implants can last many years. We use evidence-based protocols and digital planning to optimize outcomes."}},
-    {"@type":"Question","name":"Do kids in Nallagandla need sealants and fluoride?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sealants protect deep grooves and fluoride strengthens enamel. In case of dental fluorosis, avoid topical fluoride unless advised by a dentist."}},
-    {"@type":"Question","name":"How is oral health linked to overall health (heart, diabetes)?","acceptedAnswer":{"@type":"Answer","text":"Gum inflammation is associated with cardiovascular risk and can worsen blood-sugar control. Preventive care supports systemic health."}},
-    {"@type":"Question","name":"Are clear aligners effective for adults?","acceptedAnswer":{"@type":"Answer","text":"Yes. Case selection and compliance determine success."}},
-    {"@type":"Question","name":"Is dental care safe during pregnancy?","acceptedAnswer":{"@type":"Answer","text":"Yes. Preventive and necessary treatment are safe and recommended; managing gum inflammation is important for maternal comfort and health."}},
-    {"@type":"Question","name":"Dental emergency: what to do if a tooth is knocked out?","acceptedAnswer":{"@type":"Answer","text":"Handle by the crown, gently rinse, reinsert if possible or store in milk, and reach the clinic immediately—time is critical."}},
-    {"@type":"Question","name":"Fluoride: what toothpaste and mouthwash should my family use?","acceptedAnswer":{"@type":"Answer","text":"Adults: fluoride toothpaste (~1,000–1,500 ppm) twice daily; consider fluoride mouthwash if cavity-prone. Kids 3–6: pea-sized paste with supervision. Under 3: a smear if advised by your dentist. Spit, don’t rinse."}},
-    {"@type":"Question","name":"Post-extraction basics: how do I avoid a dry socket?","acceptedAnswer":{"@type":"Answer","text":"Bite on gauze for 30–45 minutes; avoid smoking and straws for 72 hours; soft/cool foods day one; start gentle warm saltwater rinses after 24 hours. Seek help if pain or bleeding persists."}},
-    {"@type":"Question","name":"How do I book or reschedule an appointment?","acceptedAnswer":{"@type":"Answer","text":"Use the Book section to choose a time and confirm via Email/WhatsApp. To reschedule, reply to your confirmation or call +91 86104 25342."}},
-    {"@type":"Question","name":"Do you accept insurance?","acceptedAnswer":{"@type":"Answer","text":"We provide documentation for reimbursement. Cashless depends on your insurer/TPA, policy, and procedure. See our Insurance Support section."}}
-  ]}
-  </script>
-
-  <script>
-    (function(){
-     document.querySelectorAll('#noble-faq .nd-qa__trigger').forEach(btn=>{
-      const panel = document.getElementById(btn.getAttribute('aria-controls'));
-      const toggle = ()=>{
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!expanded));
-        if(panel) panel.hidden = expanded;
-      };
-      btn.addEventListener('click', toggle);
-      btn.addEventListener('keydown', (e)=>{
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-      });
-    });
-  })();
-  </script>
-</section>
-
-<!-- ===================== CARE TEAM & INSURANCE SUPPORT ===================== -->
-<section id="ndc-insurance-support" class="band" aria-label="Care Team & Insurance Support — India-wide">
-  <style>
-    #ndc-insurance-support .surface{background:var(--card);border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:16px;box-shadow:var(--shadow)}
-    #ndc-insurance-support .h3{margin:.2rem 0 .6rem;font-size:1.06rem}
-    #ndc-insurance-support .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    #ndc-insurance-support .list{list-style:none;padding:0;margin:0;display:grid;gap:8px}
-    #ndc-insurance-support .chip{display:inline-flex;gap:6px;align-items:center;border:1px dashed rgba(255,255,255,.2);border-radius:999px;padding:6px 10px}
-    #ndc-insurance-support .row{display:flex;gap:8px;flex-wrap:wrap}
-    #ndc-insurance-support .muted{color:var(--muted)}
-    /* care cards */
-    #ndc-insurance-support .care-profiles{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    #ndc-insurance-support .care-card{background:var(--paper);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px}
-    #ndc-insurance-support .care-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-    #ndc-insurance-support .care-name{margin:0;font-weight:800}
-    #ndc-insurance-support .care-role{margin:0;color:var(--muted);font-size:.95rem}
-    #ndc-insurance-support .tag{background:color-mix(in srgb,var(--brand) 18%,var(--paper));border:1px solid color-mix(in srgb,var(--brand) 35%,transparent);border-radius:999px;padding:4px 10px;font-size:.8rem;font-weight:700}
-    #ndc-insurance-support .care-text{margin:0;color:var(--muted);font-size:.95rem;line-height:1.45}
-    #ndc-insurance-support .care-actions{display:flex;gap:8px;flex-wrap:wrap}
-  </style>
-
-  <div class="grid">
-    <!-- Care Team -->
-    <article class="surface" style="padding:12px">
-      <h3 class="h3">Care Team</h3>
-      <p class="muted">A multi-disciplinary team coordinating your journey from consult to recovery.</p>
-
-      <div class="care-profiles">
-        <!-- Akhila -->
-        <article class="care-card" itemscope itemtype="https://schema.org/Person">
-          <div class="care-top">
-            <div>
-              <h4 class="care-name" itemprop="name">Akhila</h4>
-              <p class="care-role" itemprop="jobTitle">Chief Executive Assistant</p>
-            </div>
-            <span class="tag">Patient Care</span>
-          </div>
-          <p class="care-text" itemprop="description">
-            Operations Manager, Neo-AI project coordinator &amp; developer; coordinator for empanelled hospitals in
-            Telangana, Andhra, Delhi, Chennai &amp; Bengaluru. Helps with insurer paperwork, cashless/reimbursement claims,
-            and grievance/ombudsman escalation.
-          </p>
-          <div class="care-actions">
-            <a class="chip" href="tel:+917993745387" itemprop="telephone">📞 +91 79937 45387</a>
-          </div>
-        </article>
-
-        <!-- Nizamuddeen -->
-        <article class="care-card" itemscope itemtype="https://schema.org/Person">
-          <div class="care-top">
-            <div>
-              <h4 class="care-name" itemprop="name">Nizamuddeen</h4>
-              <p class="care-role" itemprop="jobTitle">Health Insurance &amp; Hospital Coordinator</p>
-            </div>
-            <span class="tag">Insurance</span>
-          </div>
-          <p class="care-text" itemprop="description">
-            Leads medical loans (with/without interest) for admissions; assists with cashless/reimbursement insurance,
-            grievance &amp; ombudsman support; hospital liaison for smooth admission, OT scheduling and discharge.
-          </p>
-          <div class="care-actions">
-            <a class="chip" href="tel:+919944905138" itemprop="telephone">📞 +91 99449 05138</a>
-          </div>
-        </article>
-      </div>
-    </article>
-
-    <!-- Insurance Support -->
-    <article class="surface" style="padding:12px">
-      <h3 class="h3">Insurance Support (Dental &amp; Hospitalization)</h3>
-      <p class="muted">Cashless/claim assistance for eligible procedures via Healthflo’s pan-India network (≈557 hospitals). Coverage depends on plan/policy terms.</p>
-      <ul class="list">
-        <li><span class="chip">🧾 Pre-auth &amp; documentation</span></li>
-        <li><span class="chip">🏥 Day-care / OT coordination (OMFS, GA cases)</span></li>
-        <li><span class="chip">🧮 Estimates &amp; itemized bills</span></li>
-        <li><span class="chip">🔁 Claim filing &amp; follow-up</span></li>
-      </ul>
-      <div class="row" style="margin-top:8px">
-        <span class="chip">📍 Hyderabad</span>
-        <span class="chip">📍 Bengaluru</span>
-        <span class="chip">📍 Chennai</span>
-        <span class="chip">📍 Andhra Pradesh</span>
-        <span class="chip">📍 Madurai</span>
-        <span class="chip">🌏 Other metros on request</span>
-      </div>
-      <div class="row" style="margin-top:8px">
-        <a class="btn" href="tel:+918610425342"><i class='bx bxs-phone'></i> Insurance Desk</a>
-        <a class="btn" href="mailto:nobledental.org@gmail.com?subject=Insurance%20Assistance&body=Hi%20Noble%20Dental%20Care%2C%0AI%20need%20help%20with%20insurance%20for%3A%20%5Bprocedure%5D.%20Policy%20provider%3A%20%5Binsurer%5D.%0AName%3A%20%5BYour%20Name%5D%0APhone%3A%20%5B%5D"><i class='bx bx-envelope'></i> Email Docs</a>
-        <a class="btn" href="#noble-faq"><i class='bx bx-help-circle'></i> Insurance FAQ</a>
-      </div>
-    </article>
-
-    <!-- Hospital Tie-ups (summary) -->
-    <article class="surface" style="padding:12px">
-      <h3 class="h3">Hospital Tie-ups (Summary)</h3>
-      <p class="muted">For complex surgeries (orthognathic, trauma, GA pediatric cases), we coordinate admission and cashless evaluation at partner hospitals within the Healthflo network.</p>
-      <ul class="list">
-        <li><span class="chip">📝 Referral &amp; surgical plan from our specialists</span></li>
-        <li><span class="chip">🧑‍⚕️ Surgeon privileges &amp; OT scheduling</span></li>
-        <li><span class="chip">💳 Cashless feasibility check with insurer/TPA</span></li>
-        <li><span class="chip">📂 Discharge summary &amp; claim pack</span></li>
-      </ul>
-      <p class="muted" style="margin-top:6px">Note: Cashless availability varies by insurer/TPA, indication, city and policy exclusions.</p>
-    </article>
-  </div>
-
-  <!-- Structured data for support desk + employees -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Healthflo Insurance Support Desk — Noble Dental Care",
-    "parentOrganization":{"@type":"Dentist","name":"Noble Dental Care - Nallagandla"},
-    "areaServed":"IN",
-    "employee":[
-      {
-        "@type":"Person",
-        "name":"Akhila",
-        "jobTitle":"Chief Executive Assistant",
-        "telephone":"+91-7993745387",
-        "description":"Operations Manager, Neo-AI coordinator & developer; coordinates empanelled hospitals; handles insurer paperwork, cashless/reimbursement claims, and grievance/ombudsman escalation."
-      },
-      {
-        "@type":"Person",
-        "name":"Nizamuddeen",
-        "jobTitle":"Health Insurance & Hospital Coordinator",
-        "telephone":"+91-9944905138",
-        "description":"Leads medical loans (with/without interest); supports cashless/reimbursement claims and grievance/ombudsman; hospital liaison for admission, OT scheduling, and discharge."
-      }
-    ],
-    "contactPoint":[
-      {
-        "@type":"ContactPoint",
-        "contactType":"customer support",
-        "telephone":"+91-8610425342",
-        "email":"nobledental.org@gmail.com",
-        "availableLanguage":["en","hi","te","ta"],
-        "areaServed":["Hyderabad","Bengaluru","Chennai","Andhra Pradesh","Madurai"]
-      }
-    ],
-    "hasOfferCatalog":{
-      "@type":"OfferCatalog",
-      "name":"Insurance Assistance",
-      "itemListElement":[
-        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Dental insurance claim support"}},
-        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Hospitalization (OMFS/GA) cashless coordination"}},
-        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pre-authorization & documentation"}}
-      ]
-    }
-  }
-  </script>
-</section>
-
-    
-<!-- ======================= FOOTER (UPGRADED) ======================= -->
-<footer class="ndc-footer" id="footer" itemscope itemtype="https://schema.org/LocalBusiness">
-  <style>
-    #footer .surface{background:var(--card);border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:14px;box-shadow:var(--shadow)}
-    #footer .brandline{display:flex;align-items:center;gap:10px}
-    #footer .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    #footer .row{display:flex;gap:8px;flex-wrap:wrap}
-    #footer .ndc-why .pillar{padding:12px}
-    #footer .ndc-chip{display:inline-flex;gap:6px;align-items:center;border:1px dashed rgba(255,255,255,.2);border-radius:999px;padding:6px 10px}
-    #footer .mini{font-size:.9rem;color:var(--muted)}
-    #footer .legal{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.1);padding-top:10px;margin-top:8px}
-    #footer .btnrow{display:flex;gap:10px;flex-wrap:wrap}
-  </style>
-
-  <!-- Hero band -->
-  <section class="band is-full" style="background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 10%,transparent),transparent)">
-    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
-      <div class="brandline">
-        <img src="/assets/brand/logo.svg" alt="Noble Dental Care logo" style="height:38px" itemprop="image">
-        <h2 class="section-title">Why Choose <span style="color:var(--brand)">Noble Dental Care</span> in Nallagandla?</h2>
-      </div>
-      <p class="section-sub">Implants • Root canals • Braces & aligners • Cosmetic dentistry • Kids dentistry.</p>
-      <div class="btnrow" role="group" aria-label="Footer actions">
-        <a class="btn" href="https://wa.me/918610425342" target="_blank" rel="noopener"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
-        <a class="btn primary" href="tel:+918610425342"><i class='bx bxs-phone'></i> Call Now</a>
-        <a class="btn" href="https://maps.app.goo.gl/bJ7wAARx6ywRf2pPA" target="_blank" rel="noopener"><i class='bx bx-map'></i> Directions</a>
-        <a class="btn" href="#ndc-appointment"><i class='bx bx-calendar'></i> Book Online</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why pillars -->
-  <section class="ndc-why band">
-    <div class="grid">
-      <article class="surface pillar"><h3>Comprehensive Services</h3><p>Check-ups to full-mouth rehab—one roof, one team.</p></article>
-      <article class="surface pillar"><h3>Cutting-Edge Tech</h3><p>Digital X-rays, Endomotor & Apex Locator, CAD/CAM.</p></article>
-      <article class="surface pillar"><h3>Compassionate Care</h3><p>Special attention for children, elderly, and anxious patients.</p></article>
-      <article class="surface pillar"><h3>Hygiene & Prevention</h3><p>ISO-grade sterilization, clear home-care routines.</p></article>
-      <article class="surface pillar"><h3>12+ Years Experience</h3><p>MDS specialists only—no compromises.</p></article>
-      <article class="surface pillar"><h3>Transparent Pricing</h3><p>Clear options/pricing; insurance coordination support.</p></article>
-    </div>
-  </section>
-
-  <!-- NAP + Hours + Links (with microdata) -->
-  <section class="band">
-    <div class="grid">
-      <div class="surface" style="padding:12px">
-        <h3>Clinic Info</h3>
-        <p class="mini" itemprop="name">Noble Dental Care — Nallagandla</p>
-        <p class="mini" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-          <span itemprop="streetAddress">Nallagandla Main Road</span>, 
-          <span itemprop="addressLocality">Hyderabad</span> — 
-          <span itemprop="postalCode">500019</span>, 
-          <span itemprop="addressRegion">Telangana</span>, 
-          <span itemprop="addressCountry">IN</span>
-        </p>
-        <p class="mini">Phone: <a href="tel:+918610425342" itemprop="telephone">+91 86104 25342</a></p>
-        <p class="mini">Map: <a href="https://g.co/kgs/Lebjyvw" target="_blank" rel="noopener" itemprop="hasMap">Google Maps</a></p>
-
-        <div class="row" style="margin-top:6px">
-          <span class="ndc-chip">Parking available</span>
-          <span class="ndc-chip">Late hours</span>
-          <span class="ndc-chip">Emergency care</span>
-        </div>
-      </div>
-
-      <div class="surface" style="padding:12px">
-        <h3>Opening Hours</h3>
-        <ul class="mini" style="list-style:none;padding:0;margin:0" itemprop="openingHoursSpecification" itemscope itemtype="https://schema.org/OpeningHoursSpecification">
-          <li><meta itemprop="dayOfWeek" content="Monday Tuesday Wednesday Thursday Friday Saturday">Mon–Sat: <time itemprop="opens" datetime="11:00">11:00</time>–<time itemprop="closes" datetime="22:00">22:00</time></li>
-        </ul>
-        <ul class="mini" style="list-style:none;padding:0;margin:0" itemprop="openingHoursSpecification" itemscope itemtype="https://schema.org/OpeningHoursSpecification">
-          <li><meta itemprop="dayOfWeek" content="Sunday">Sun: <time itemprop="opens" datetime="10:00">10:00</time>–<time itemprop="closes" datetime="15:00">15:00</time></li>
-        </ul>
-      </div>
-
-      <div class="surface" style="padding:12px">
-        <h3>Quick Links</h3>
-        <nav class="row" aria-label="Footer quick links">
-          <a class="ndc-chip" href="/">Home</a>
-          <a class="ndc-chip" href="#services">Treatments</a>
-          <a class="ndc-chip" href="#conditions">Conditions</a>
-          <a class="ndc-chip" href="#ndc-doctors-app">Team</a>
-          <a class="ndc-chip" href="#ndc-appointment">Book</a>
-          <a class="ndc-chip" href="#noble-faq">FAQ</a>
-          <a class="ndc-chip" href="/sitemap.xml">Sitemap</a>
-        </nav>
-      </div>
-
-<div class="surface" style="padding:12px">
-  <h3>Social</h3>
-  <div class="btnrow" aria-label="Social media">
-    <a class="btn" href="https://wa.me/918610425342" target="_blank" rel="noopener">WhatsApp</a>
-    <a class="btn" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
-    <a class="btn" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
-    <a class="btn" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
-    <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="btn" href="/blog/" target="_blank" rel="noopener">Blog</a>
-    <a class="btn" href="https://www.threads.net/" target="_blank" rel="noopener">Threads</a>
-    <a class="btn" href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
-    <a class="btn" href="https://www.quora.com/profile/" target="_blank" rel="noopener">Quora</a>
-    <a class="btn" href="mailto:nobledental.org@gmail.com">Email</a>
-  </div>
-</div>
-      </div>
-    </div>
-
-    <div class="legal">
-      <p>© <span id="ndcYear"></span> Noble Dental Care & Multispeciality Clinic — Nallagandla, Hyderabad.</p>
-      <nav class="row" aria-label="Legal links">
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <a href="/sitemap.xml">Sitemap</a>
-      </nav>
-    </div>
-  </section>
-
-  <!-- Back to top -->
-  <button class="ndc-top" id="ndcTop" aria-label="Back to top">↑</button>
-
-  <script>
-    (function(){
-      const y = document.getElementById('ndcYear');
-      if (y) y.textContent = new Date().getFullYear();
-      const topBtn = document.getElementById('ndcTop');
-      const onScroll = ()=> { if (window.scrollY > 600) topBtn.classList.add('show'); else topBtn.classList.remove('show'); };
-      window.addEventListener('scroll', onScroll, {passive:true});
-      topBtn?.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
-      onScroll();
-    })();
-  </script>
-</footer>
-
+  </main>
+
+  <footer class="site-footer">
+    <nav aria-label="Legal">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </nav>
+  </footer>
+</body>
+</html>
