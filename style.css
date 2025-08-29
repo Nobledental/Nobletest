@@ -174,20 +174,13 @@ img, video { max-width: 100%; display: block; }
 .hero-background {
   position: relative;
   min-height: 70svh;
-  display: grid;
+  display: grid; 
+  background:linear-gradient(to bottom right,#eaebec,#a19999);
   align-items: center;
 }
-.blackhole-box {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-}
-.blackhole-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(.7) contrast(1.05) brightness(.9);
+.blackhole-box{ position:absolute; inset:0; height:130%; overflow:hidden; z-index:0; pointer-events:none; mix-blend-mode:soft-light; opacity:90; }
+.blackhole-box video,.blackhole-video{ width:100%; height:200%; object-fit:cover; transform:translateY(-51%); filter:brightness(1.1) contrast(1.2) saturate(6.3); }
+
 }
 .hero-info-title {
   position: absolute;
@@ -197,7 +190,7 @@ img, video { max-width: 100%; display: block; }
   align-items: center;
   gap: 8px;
   background: color-mix(in srgb, var(--paper) 90%, transparent);
-  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text) 12%, #ffffff00);
   padding: 6px 10px;
   border-radius: 999px;
 }
@@ -208,7 +201,7 @@ img, video { max-width: 100%; display: block; }
   margin: 0 var(--pad);
 }
 .container > .hero-sub {
-  color: var(--muted);
+  color: #ffffff;
   max-width: 68ch;
   margin: 10px 0 var(--pad);
 }
