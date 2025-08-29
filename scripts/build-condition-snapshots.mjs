@@ -1,8 +1,9 @@
-// scripts/build-condition-snapshots.mjs
-import fs from 'node:fs';
-import path from 'node:path';
+// ESM only. Run with: node scripts/build-condition-snapshots.mjs --out public --sitemap
+import fs from "node:fs";
+import path from "node:path";
+import url from "node:url";
 
-/* ================= Site / Author ================= */
+// ---------- CONFIG ----------
 const META = {
   author: { name: "Dr Dhivakaran R", lastReviewed: "2025-08-29" },
   site: {
@@ -11,55 +12,81 @@ const META = {
   }
 };
 
-/* ================= Bring in your data =================
-   OPTION A: Import from a shared module you create (recommended)
-   - Create: ./shared/ndn-data.mjs exporting: KB, EXPLAINERS, KB_TO_EX
-   - Example exports:
-       export const KB = [...];
-       export const EXPLAINERS = {...};
-       export const KB_TO_EX = {...};
+// Optional: list localized city landing pages to include in sitemap (edit or leave empty)
+const CITY_PAGES = [
+  // Example:
+  // `${META.site.baseUrl}/en-in/chennai/`,
+  // `${META.site.baseUrl}/en-in/coimbatore/`,
+  // `${META.site.baseUrl}/en-in/madurai/`
+];
+
+// ---------- DATA IMPORT (one source of truth) ----------
+/*
+  Create shared/ndn-data.mjs that exports:
+    export const KB = [ ... ];                  // array of conditions from your app
+    export const EXPLAINERS = { ... };          // explainers map from your app
+    export const KB_TO_EX = { ... };            // condition.id -> explainer.id
 */
-// import { KB, EXPLAINERS, KB_TO_EX } from '../shared/ndn-data.mjs';
+import { KB, EXPLAINERS, KB_TO_EX } from "../shared/ndn-data.mjs";
 
-/* OPTION B: Paste inline (quick start) — replace the [] and {} with your live data */
-const KB = /* paste your KB array here */ [];
-const EXPLAINERS = /* paste your EXPLAINERS map here */ {};
-const KB_TO_EX = /* paste your KB_TO_EX map here */ {};
+// ---------- CLI ARGS ----------
+const argv = process.argv.slice(2);
+const OUT_ROOT = argValue("--out") || "snapshots";  // default output folder
+const MAKE_SITEMAP = argv.includes("--sitemap");
 
-/* ================= Helpers ================= */
-const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
-const esc = s => String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+// ---------- UTILS ----------
+function argValue(flag) {
+  const i = argv.indexOf(flag);
+  return i !== -1 ? argv[i + 1] : null;
+}
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+const esc = s => String(s).replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[m]));
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
+const ensureDir = p => fs.mkdirSync(p, { recursive: true });
 
-/* ================= Page builder ================= */
-function pageForCondition(k){
-  const exId = KB_TO_EX[k.id];
+// ---------- TEMPLATES ----------
+function htmlForCondition(cond) {
+  const exId = KB_TO_EX[cond.id];
   const ex = exId && EXPLAINERS[exId] ? EXPLAINERS[exId] : null;
 
-  const title = `${k.name} | ${META.site.name}`;
-  const summary = ex?.summary || `Information about ${k.name} from ${META.site.name}.`;
+  const title = `${cond.name} | ${META.site.name}`;
+  const summary = ex?.summary || `Information about ${cond.name} from ${META.site.name}.`;
 
-  // JSON-LD
+  // JSON-LD: MedicalCondition
   const ldCondition = {
-    "@context":"https://schema.org",
-    "@type":"MedicalCondition",
-    "name": k.name,
+    "@context": "https://schema.org",
+    "@type": "MedicalCondition",
+    "name": cond.name,
     "description": summary,
-    "signOrSymptom": ex?.points?.slice(0,3) || [],
-    "possibleTreatment": (k.outcomes || []).slice(0,3),
-    "author": {"@type":"Person","name": META.author.name}
+    "signOrSymptom": ex?.points?.slice(0, 3) || [],
+    "possibleTreatment": (cond.outcomes || []).slice(0, 3),
+    "author": { "@type": "Person", "name": META.author.name }
   };
 
+  // JSON-LD: FAQPage (simple)
   const faq = {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":`What is ${k.name}?`,"acceptedAnswer":{"@type":"Answer","text": summary}},
-      {"@type":"Question","name":`When should I see a dentist for ${k.name}?`,"acceptedAnswer":{"@type":"Answer","text": (ex?.when||[]).join(' ') || 'Seek professional advice if symptoms persist or worsen.'}},
-      {"@type":"Question","name":`What not to do for ${k.name}?`,"acceptedAnswer":{"@type":"Answer","text": (ex?.donts||[]).join(' ') || 'Avoid self-medication.'}}
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `What is ${cond.name}?`,
+        "acceptedAnswer": { "@type": "Answer", "text": summary }
+      },
+      {
+        "@type": "Question",
+        "name": `When should I see a dentist for ${cond.name}?`,
+        "acceptedAnswer": { "@type": "Answer", "text": (ex?.when || []).join(" ") || "Seek professional advice if symptoms persist or worsen." }
+      },
+      {
+        "@type": "Question",
+        "name": `What not to do for ${cond.name}?`,
+        "acceptedAnswer": { "@type": "Answer", "text": (ex?.donts || []).join(" ") || "Avoid self-medication." }
+      }
     ]
   };
 
-  const canonical = `${META.site.baseUrl}/conditions/${slug(k.name)}/`;
+  const canonical = `${META.site.baseUrl}/conditions/${slug(cond.name)}/`;
 
   return `<!doctype html>
 <html lang="en-IN">
@@ -84,56 +111,84 @@ function pageForCondition(k){
 <body>
   <div class="wrap">
     <header class="card">
-      <h1>${esc(k.name)}</h1>
+      <h1>${esc(cond.name)}</h1>
       <p class="muted">${esc(summary)}</p>
       <p class="muted">by <strong>${esc(META.author.name)}</strong> · Last reviewed: ${esc(META.author.lastReviewed)}</p>
       <p><a href="${esc(META.site.baseUrl)}">← Back to ${esc(META.site.name)}</a></p>
     </header>
 
-    <section class="card">
-      <h2>Key points</h2>
-      <ul>${(EXPLAINERS[exId]?.points||[]).map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
-    </section>
-
-    <section class="card">
-      <h2>Possible causes (not a diagnosis)</h2>
-      <ul>${(k.causes||[]).map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
-    </section>
-
-    <section class="card">
-      <h2>Investigations</h2>
-      <ul>${(k.investigations||[]).map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
-    </section>
-
-    <section class="card">
-      <h2>Home care (authorised)</h2>
-      <ul>
-        <li>Use medications only as prescribed by a doctor; do not self-medicate antibiotics or analgesics without advice.</li>
-        ${(k.home||[]).map(p=>`<li>${esc(p)}</li>`).join('')}
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>Likely treatment outcomes</h2>
-      <ul>${(k.outcomes||[]).map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
-    </section>
+    ${section("Key points", (EXPLAINERS[exId]?.points || []))}
+    ${section("Possible causes (not a diagnosis)", (cond.causes || []))}
+    ${section("Investigations", (cond.investigations || []))}
+    ${section("Home care (authorised)", [
+      "Use medications only as prescribed by a doctor; do not self-medicate antibiotics or analgesics without advice.",
+      ...(cond.home || [])
+    ])}
+    ${section("Likely treatment outcomes", (cond.outcomes || []))}
   </div>
 </body>
 </html>`;
 }
 
-/* ================= Build all ================= */
-const outDir = path.resolve('snapshots');
-fs.mkdirSync(outDir, { recursive: true });
-
-if (!KB.length) {
-  console.warn("⚠️  KB is empty. Import or paste your KB / EXPLAINERS / KB_TO_EX before running.");
-  process.exit(1);
+function section(title, items) {
+  return `
+  <section class="card">
+    <h2>${esc(title)}</h2>
+    <ul>${(items || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+  </section>`;
 }
 
-for (const k of KB){
-  const file = path.join(outDir, `${slug(k.name)}.html`);
-  fs.writeFileSync(file, pageForCondition(k), 'utf8');
-  console.log('✓', file);
+// ---------- WRITE FILES ----------
+function writeConditionPage(outRoot, cond) {
+  const s = slug(cond.name);
+  const dir = path.resolve(outRoot, "conditions", s);
+  ensureDir(dir);
+  const file = path.join(dir, "index.html");
+  fs.writeFileSync(file, htmlForCondition(cond), "utf8");
+  return `${META.site.baseUrl}/conditions/${s}/`;
 }
-console.log('Done. Upload /conditions/<slug>/ to your site and link them.');
+
+// ---------- SITEMAP ----------
+function buildSitemap(urls) {
+  const now = new Date().toISOString();
+  const body = urls.map(u => `
+  <url>
+    <loc>${esc(u)}</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>`).join("");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${body}
+</urlset>`;
+}
+
+// ---------- MAIN ----------
+(async function main(){
+  if (!Array.isArray(KB) || !KB.length) {
+    console.error("⚠️  KB is empty. Ensure shared/ndn-data.mjs exports KB / EXPLAINERS / KB_TO_EX.");
+    process.exit(1);
+  }
+
+  const outRootAbs = path.resolve(__dirname, "..", OUT_ROOT);
+  ensureDir(outRootAbs);
+
+  const urls = [];
+  for (const cond of KB) {
+    const url = writeConditionPage(outRootAbs, cond);
+    urls.push(url);
+    console.log("✓", url);
+  }
+
+  if (MAKE_SITEMAP) {
+    const all = [...urls, ...CITY_PAGES];
+    const sm = buildSitemap(all);
+    const smPath = path.join(outRootAbs, "sitemap.xml");
+    fs.writeFileSync(smPath, sm, "utf8");
+    console.log("✓ sitemap:", smPath);
+  }
+
+  console.log(`Done. Files written to: ${outRootAbs}`);
+})();
