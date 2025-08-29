@@ -14,20 +14,13 @@ const META = {
 
 // Optional: list localized city landing pages to include in sitemap (edit or leave empty)
 const CITY_PAGES = [
-  // Example:
   // `${META.site.baseUrl}/en-in/chennai/`,
-  // `${META.site.baseUrl}/en-in/coimbatore/`,
-  // `${META.site.baseUrl}/en-in/madurai/`
+  // `${META.site.baseUrl}/en-in/coimbatore/`
 ];
 
 // ---------- DATA IMPORT (one source of truth) ----------
-/*
-  Create shared/ndn-data.mjs that exports:
-    export const KB = [ ... ];                  // array of conditions from your app
-    export const EXPLAINERS = { ... };          // explainers map from your app
-    export const KB_TO_EX = { ... };            // condition.id -> explainer.id
-*/
-import { KB, EXPLAINERS, KB_TO_EX } from "../shared/ndn-data.mjs";
+// Make sure shared/ndn-data.mjs exports: KB, EXPLAINERS, KB_TO_EX, TREATMENTS
+import { KB, EXPLAINERS, KB_TO_EX, TREATMENTS } from "../shared/ndn-data.mjs";
 
 // ---------- CLI ARGS ----------
 const argv = process.argv.slice(2);
@@ -88,6 +81,16 @@ function htmlForCondition(cond) {
 
   const canonical = `${META.site.baseUrl}/conditions/${slug(cond.name)}/`;
 
+  // Build recommended treatments list (title + desc from TREATMENTS)
+  const recTreatments = (cond.treatments || [])
+    .map(key => {
+      const t = TREATMENTS[key];
+      if (!t) return null;
+      return `<li><strong>${esc(t.title)}</strong> — ${esc(t.desc)}</li>`;
+    })
+    .filter(Boolean)
+    .join("");
+
   return `<!doctype html>
 <html lang="en-IN">
 <head>
@@ -125,6 +128,9 @@ function htmlForCondition(cond) {
       ...(cond.home || [])
     ])}
     ${section("Likely treatment outcomes", (cond.outcomes || []))}
+    ${sectionHTML("Recommended professional treatments",
+      recTreatments || "<li>Your dentist will advise the safest, evidence-based option after examination.</li>"
+    )}
   </div>
 </body>
 </html>`;
@@ -135,6 +141,13 @@ function section(title, items) {
   <section class="card">
     <h2>${esc(title)}</h2>
     <ul>${(items || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+  </section>`;
+}
+function sectionHTML(title, htmlListItems) {
+  return `
+  <section class="card">
+    <h2>${esc(title)}</h2>
+    <ul>${htmlListItems}</ul>
   </section>`;
 }
 
@@ -168,7 +181,7 @@ function buildSitemap(urls) {
 // ---------- MAIN ----------
 (async function main(){
   if (!Array.isArray(KB) || !KB.length) {
-    console.error("⚠️  KB is empty. Ensure shared/ndn-data.mjs exports KB / EXPLAINERS / KB_TO_EX.");
+    console.error("⚠️  KB is empty. Ensure shared/ndn-data.mjs exports KB / EXPLAINERS / KB_TO_EX / TREATMENTS.");
     process.exit(1);
   }
 
