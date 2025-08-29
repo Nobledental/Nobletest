@@ -1,11 +1,6 @@
 // shared/ndn-data.mjs
 
-/* ========= Knowledge Base (Conditions) =========
-   Condensed version of the KB we wired into your widget.
-   Each condition has: id, name, urgency, complaints, causes, investigations,
-   do/dont/home/outcomes, cite, and treatments (for treatment cards).
-*/
-
+/* ========= Knowledge Base (Conditions) ========= */
 export const KB = [
   {
     id:"gingivitis", name:"Gingivitis / Periodontitis", urgency:"soon",
@@ -108,73 +103,70 @@ export const KB = [
   }
 ];
 
-/* ========= Explainers =========
-   Short plain-English explanations for each condition, used both in widget and pre-render snapshots.
-   Keep in sync with KB ids.
-*/
+/* ========= Explainers ========= */
 export const EXPLAINERS = {
   gingivitis: {
     name:"Gingivitis / Periodontitis",
     summary:"Inflammation of gum and supporting tissues from plaque/calculus. Early treatment prevents bone loss.",
-    points:["Bleeding on brushing is a sign of inflammation","Plaque hardens to calculus","Scaling and home care reverses gingivitis"],
-    when:["Book scaling & evaluation within 24–72h if bleeding persists"],
+    points:["Bleeding on brushing","Plaque hardens to calculus","Scaling reverses gingivitis"],
+    when:["Book scaling & evaluation within 24–72h"],
     donts:["Don’t stop brushing due to bleeding"]
   },
   pulpitis: {
     name:"Irreversible Pulpitis",
     summary:"Deep decay or crack inflames the tooth nerve causing lingering hot/cold pain.",
-    points:["Pain lingers after stimulus","Often due to deep caries or cracks","Timely care can save tooth with RCT"],
+    points:["Pain lingers after stimulus","Deep caries or crack","RCT can save the tooth"],
     when:["Dental visit within 24–72h"],
     donts:["Don’t place aspirin on gums/teeth","Avoid heat packs on face"]
   },
   abscess: {
     name:"Acute Dental Abscess",
-    summary:"Infection spreads from the tooth to surrounding tissues causing swelling, pain and fever.",
-    points:["Facial/gum swelling with throbbing pain","Often from untreated decay","Needs drainage plus definitive treatment"],
-    when:["TODAY if swelling with fever or trismus","Hospital if breathing/swallowing difficulty"],
+    summary:"Infection spreads to surrounding tissues causing swelling, pain and fever.",
+    points:["Swelling + throbbing pain","Untreated decay common cause","Needs drainage + definitive treatment"],
+    when:["TODAY if swelling with fever/trismus","Hospital if breathing/swallowing difficulty"],
     donts:["Do not apply heat","Do not self-start antibiotics"]
   },
   cracked: {
     name:"Cracked Tooth / High Bite",
-    summary:"Crack lines or a high contact cause sharp pain on chewing or release.",
-    points:["Pain on biting indicates crack","X-ray + bite test help confirm","Crown often needed; RCT if pulp affected"],
+    summary:"Crack lines or high contact cause sharp pain on chewing or release.",
+    points:["Pain on biting","Bite test useful","Crown often needed"],
     when:["Dental visit within 24–72h"],
     donts:["Avoid chewing hard foods"]
   },
   pericoronitis: {
     name:"Pericoronitis (Wisdom Tooth)",
-    summary:"Inflamed gum flap over a partially erupted wisdom tooth; can recur or spread.",
-    points:["Irrigation/cleaning improves symptoms","Extraction if recurrent or impacted","OPG helps assess position"],
+    summary:"Inflamed gum flap over partially erupted wisdom tooth.",
+    points:["Cleaning improves symptoms","Extraction if recurrent","X-ray helps assess position"],
     when:["Assessment within 24–72h; urgent if swelling/fever"],
     donts:["No smoking; avoid food impaction"]
   },
   tmj: {
     name:"TMJ Disorder / Bruxism",
-    summary:"Jaw joint/muscle overload from bruxism or internal derangement causes pain/clicking.",
-    points:["Pain/click around joint; morning stiffness","Responds to night guard and habit change","Imaging only if red flags"],
-    when:["Routine review; sooner if locking or trauma"],
-    donts:["Avoid wide yawns and gum chewing"]
+    summary:"Jaw joint/muscle overload from bruxism or derangement causes pain/clicking.",
+    points:["Morning stiffness","Click/pain around joint","Night guard helps"],
+    when:["Routine review; sooner if locking/trauma"],
+    donts:["Avoid wide yawns","Avoid gum chewing"]
   },
   xerostomia: {
     name:"Dry Mouth (Xerostomia)",
-    summary:"Reduced saliva from medicines or dehydration increases decay and discomfort.",
-    points:["Sip water and sugar-free gum help","High-fluoride regimen may be prescribed","Review causative medications"],
-    when:["Routine dental/medical review; sooner if rampant decay"],
-    donts:["Avoid tobacco and alcohol mouthwashes"]
+    summary:"Reduced saliva from medicines or dehydration increases decay risk.",
+    points:["Sip water/gum helps","High-fluoride regimen","Review causative meds"],
+    when:["Routine review; sooner if rampant decay"],
+    donts:["Avoid tobacco, alcohol rinses"]
   },
   ulcer: {
     name:"Oral Ulcer (>2 weeks)",
-    summary:"Non-healing ulcer needs professional evaluation to rule out pathology.",
-    points:["Avoid spicy/acidic foods and trauma","Topical gels only if prescribed","Biopsy if persistent/suspicious"],
-    when:["Book review if >2 weeks or concerning features"],
-    donts:["Don’t repeatedly irritate the area"]
+    summary:"Non-healing ulcer needs evaluation to rule out pathology.",
+    points:["Avoid spicy foods","Topical gels may help","Biopsy if suspicious"],
+    when:["See dentist if >2 weeks"],
+    donts:["Avoid irritating ulcer repeatedly"]
   },
   avulsion: {
     name:"Avulsed Permanent Tooth",
-    summary:"A tooth knocked out of its socket can be saved if handled correctly and replanted quickly.",
-    points:["Handle by crown only","Reinsert if possible or store in milk/saliva","Seek dentist immediately"],
+    summary:"Knocked-out tooth can be saved if replanted quickly.",
+    points:["Handle by crown","Reinsert or store in milk","See dentist immediately"],
     when:["Immediate emergency care"],
-    donts:["Do not scrub the root","Do not let the tooth dry"]
+    donts:["Don’t scrub the root","Don’t let tooth dry"]
   }
 };
 
@@ -189,4 +181,25 @@ export const KB_TO_EX = {
   xerostomia:"xerostomia",
   ulcer:"ulcer",
   avulsion:"avulsion"
+};
+
+/* ========= Treatment Catalogue ========= */
+export const TREATMENTS = {
+  rct:        { title:"Root Canal Therapy", desc:"Removes inflamed/infected pulp and seals canals to save the tooth." },
+  crown:      { title:"Dental Crown", desc:"Covers and strengthens cracked or heavily restored teeth." },
+  filling:    { title:"Dental Filling", desc:"Repairs cavities or small fractures to restore form and function." },
+  sealant:    { title:"Sealant / Bonding", desc:"Seals exposed dentin or grooves; reduces sensitivity." },
+  drainage:   { title:"Drainage", desc:"Relieves pressure from abscess; paired with definitive treatment." },
+  extraction: { title:"Extraction", desc:"Removes a non-restorable or severely infected tooth." },
+  wisdomExtract:{ title:"Wisdom Tooth Extraction", desc:"Removes impacted or recurrently infected wisdom teeth." },
+  irrigation: { title:"Irrigation / Debridement", desc:"Cleans inflamed tissue around wisdom tooth." },
+  scaling:    { title:"Scaling & Root Planing", desc:"Removes plaque and calculus; cornerstone of gum treatment." },
+  splinting:  { title:"Splinting", desc:"Stabilizes loose teeth during periodontal healing." },
+  nightGuard: { title:"Night Guard", desc:"Protects teeth from bruxism; reduces TMJ strain." },
+  physio:     { title:"Physiotherapy", desc:"Exercises and habit therapy for TMJ disorders." },
+  salivaSub:  { title:"Saliva Substitutes", desc:"Lubricants and fluoride regimens for dry mouth." },
+  reimplant:  { title:"Reimplantation", desc:"Emergency repositioning of an avulsed tooth." },
+  splint:     { title:"Splint", desc:"Temporary stabilization after trauma." },
+  softTissueCare:{ title:"Soft Tissue Care", desc:"Medications and biopsy for non-healing oral ulcers." },
+  fluoride:   { title:"Fluoride Therapy", desc:"Topical fluoride treatments to strengthen enamel." }
 };
