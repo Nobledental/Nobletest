@@ -17,47 +17,66 @@
   </header>
 
   <main class="container">
+
     <section class="hero">
-      <h1>Check Your Dental Health <span class="highlight">Smarter</span></h1>
-      <p class="subtitle">Select the area, choose your complaints, and get clear, evidence-based guidance (ADA · WHO · NIDCR · Mayo Clinic).</p>
+      <h1>Your Dental Self-Check</h1>
+      <p class="subtitle">Choose the tooth/area and complaints. We’ll show <strong>Possible causes</strong>, <strong>Investigations</strong>, <strong>Do & Don’ts</strong>, and <strong>Recommended professional treatments</strong>.</p>
     </section>
 
-    <!-- Area selector -->
+    <!-- 01: Area -->
     <section class="card">
-      <h2>🗺️ Select Area on Jaw Map</h2>
-      <div id="svgWrapper" class="svg-wrapper">
-        <object type="image/svg+xml" data="assets/jaw-map.svg" id="jawSvg" aria-label="Jaw map"></object>
+      <h2>Tooth / Area</h2>
+      <div class="svg-wrapper">
+        <!-- We inline the SVG at runtime for reliable clicks -->
+        <div id="inlineSvgContainer" aria-label="Jaw map"></div>
         <div id="tooltip" class="tooltip hidden" role="tooltip"></div>
       </div>
-      <div id="jawLocationSection">
+
+      <div id="jawLocationSection" class="inputs-row">
         <label for="jawLocation">Selected Area:</label>
         <input type="text" id="jawLocation" readonly placeholder="Click a region on the map"/>
       </div>
     </section>
 
-    <!-- Complaints -->
+    <!-- 02: Complaints -->
     <section class="card">
-      <h2>🩺 Complaints (select all that apply)</h2>
+      <h2>Complaints (select all that apply)</h2>
       <div class="complaints">
-        <label><input type="checkbox" value="tooth_pain_sensitivity"> 🦷 Tooth pain & sensitivity</label>
-        <label><input type="checkbox" value="swelling_fever"> ⚠️ Swelling / fever / emergency</label>
-        <label><input type="checkbox" value="gum_periodontal"> 🪥 Gum & periodontal</label>
-        <label><input type="checkbox" value="tmj_muscle"> 🤐 TMJ / muscle / habits</label>
-        <label><input type="checkbox" value="mucosa_others"> 👄 Mucosa & others</label>
+        <label><input type="checkbox" value="tooth_pain_sensitivity"> Tooth pain & sensitivity</label>
+        <label><input type="checkbox" value="swelling_fever"> Swelling / fever / emergency flags</label>
+        <label><input type="checkbox" value="gum_periodontal"> Gum & periodontal</label>
+        <label><input type="checkbox" value="tmj_muscle"> TMJ / muscle / habits</label>
+        <label><input type="checkbox" value="mucosa_others"> Mucosa & others</label>
       </div>
 
       <div class="actions">
-        <button id="recommendBtn" class="primary-btn">🧠 Check recommendation</button>
+        <button id="recommendBtn" class="primary-btn">✅ Check recommendation</button>
         <button id="clearBtn" class="ghost-btn">🧹 Clear all</button>
       </div>
     </section>
 
-    <!-- Results -->
-    <section id="recommendation" class="card recommendation hidden"></section>
-
-    <!-- History + Export -->
+    <!-- 03: Your Inputs Summary -->
     <section class="card">
-      <h2>📂 Save & export</h2>
+      <h2>Your Inputs</h2>
+      <ul id="inputsSummary" class="inputs-summary">
+        <li><strong>Tooth / area:</strong> <span id="sumArea">—</span></li>
+        <li><strong>Complaints:</strong> <span id="sumComplaints">—</span></li>
+      </ul>
+    </section>
+
+    <!-- 04: Results -->
+    <section id="recommendation" class="card recommendation hidden">
+      <!-- We will render these sections with clear headings:
+           - Possible causes (not a diagnosis)
+           - Investigations
+           - Do & Don’ts
+           - Recommended professional treatments
+      -->
+    </section>
+
+    <!-- 05: History + Export -->
+    <section class="card">
+      <h2>Save & Export</h2>
       <div class="phase3-controls">
         <button id="saveHistory">💾 Save this check</button>
         <button id="viewHistory">📜 View history</button>
@@ -66,21 +85,19 @@
       <div id="historyBox" class="recommendation hidden" aria-live="polite"></div>
     </section>
 
-    <!-- Flashcards -->
+    <!-- 06: Flashcards -->
     <section class="flashcard" id="flashcardBox">Loading tips…</section>
 
     <p class="disclaimer">
-      <strong>Disclaimer:</strong> This tool is educational and not a diagnosis. If you have trouble breathing, spreading swelling, or high fever, seek urgent care.
+      <strong>Disclaimer:</strong> Educational only — not a diagnosis. If you have trouble breathing, spreading swelling, or high fever, seek urgent care.
     </p>
   </main>
 
   <footer class="app-footer">
-    <p>© 2025 Smart Dental Assistant · Sources: <a href="https://www.ada.org/" target="_blank" rel="noopener">ADA</a> · <a href="https://www.who.int/health-topics/oral-health" target="_blank" rel="noopener">WHO</a> · <a href="https://www.nidcr.nih.gov/health-info/tmd" target="_blank" rel="noopener">NIDCR</a> · <a href="https://www.mayoclinic.org/" target="_blank" rel="noopener">Mayo Clinic</a></p>
+    <p>© 2025 Smart Dental Assistant · Sources: ADA · WHO · NIDCR · Mayo Clinic</p>
   </footer>
 
-  <!-- libs -->
   <script src="libs/html2pdf.bundle.min.js"></script>
-  <!-- app (ESM) -->
   <script type="module" src="script.js"></script>
 </body>
 </html>
