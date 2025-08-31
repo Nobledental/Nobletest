@@ -1,175 +1,131 @@
-import { getRecommendation } from './logic.js';
+import { getDetailedRecommendation } from './logic.js';
 
-window.addEventListener('DOMContentLoaded', () => {
-  const tooltip = document.getElementById('tooltip');
-  const jawInput = document.getElementById('jawLocation');
-  const recommendBtn = document.getElementById('recommendBtn');
-  const recommendBox = document.getElementById('recommendation');
+const chat = document.getElementById('chatContainer');
 
-  // Load regions
-  fetch('assets/regions.json')
-    .then(res => res.json())
-    .then(regions => {
-      const svgObj = document.getElementById('jawSvg');
-      svgObj.addEventListener('load', () => {
-        const svgDoc = svgObj.contentDocument;
+function createMsg(text, type = 'bot', isHTML = false) {
+  const div = document.createElement('div');
+  div.className = `chat-msg ${type}`;
+  if (isHTML) {
+    div.innerHTML = text;
+  } else {
+    div.textContent = text;
+  }
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
 
+async function botMsg(text, delayMs = 800, isHTML = false) {
+  return new Promise(resolve => {
+    const typing = document.createElement('div');
+    typing.className = 'typing-dots bot';
+    typing.innerHTML = `<span></span><span></span><span></span>`;
+    chat.appendChild(typing);
+    chat.scrollTop = chat.scrollHeight;
+
+    setTimeout(() => {
+      typing.remove();
+      createMsg(text, 'bot', isHTML);
+      resolve();
+    }, delayMs);
+  });
+}
+
+function userMsg(text) {
+  createMsg(text, 'user');
+}
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function startChatFlow() {
+  await botMsg("👋 Hi! I'm your dental self-check assistant.");
+  await delay(1000);
+  await botMsg("Let's start with where you feel the issue. Please click on the jaw map:");
+
+  const svgWrapper = document.createElement('object');
+  svgWrapper.data = '../assets/jaw-map.svg';
+  svgWrapper.type = 'image/svg+xml';
+  svgWrapper.id = 'jawSvg';
+  chat.appendChild(svgWrapper);
+
+  svgWrapper.addEventListener('load', () => {
+    const svgDoc = svgWrapper.contentDocument;
+    fetch('../assets/regions.json')
+      .then(res => res.json())
+      .then(regions => {
         Object.keys(regions).forEach(id => {
           const el = svgDoc.getElementById(id);
           if (el) {
             el.style.cursor = 'pointer';
-
-            el.addEventListener('mouseenter', (e) => {
-              const r = regions[id];
-              tooltip.innerHTML = `<strong>${r.name}</strong><br>${r.hint}<br><small>Source: <a href="${r.link}" target="_blank">${r.source}</a></small>`;
-              tooltip.style.left = (e.pageX + 10) + 'px';
-              tooltip.style.top = (e.pageY + 10) + 'px';
-              tooltip.classList.remove('hidden');
-            });
-
-            el.addEventListener('mouseleave', () => tooltip.classList.add('hidden'));
-
             el.addEventListener('click', () => {
-              jawInput.value = regions[id].name;
-              jawInput.dataset.regionId = id;
+              const regionName = regions[id].name;
+              userMsg(regionName);
+              svgWrapper.remove();
+              runSymptomsStep(id);
             });
           }
         });
       });
-    });
-
-  // Flashcard Loader
-  fetch("flashcards.json")
-    .then(res => res.json())
-    .then(cards => {
-      let current = 0;
-      const div = document.getElementById('flashcardBox');
-
-      function showCard(i) {
-        const card = cards[i];
-        div.innerHTML = `<strong>💡 ${card.question}</strong><br>${card.answer}<br><small>Source: <a href="${card.link}" target="_blank">${card.source}</a></small>`;
-      }
-
-      showCard(current);
-      setInterval(() => {
-        current = (current + 1) % cards.length;
-        showCard(current);
-      }, 10000);
-    });
-
-  // Recommendation Handler
-  recommendBtn.addEventListener('click', () => {
-    const regionId = jawInput.dataset.regionId || '';
-    const symptoms = Array.from(document.querySelectorAll('.symptoms input:checked')).map(el => el.value);
-    if (!regionId || symptoms.length === 0) {
-      alert('Please select a region and at least one symptom.');
-      return;
-    }
-
-    const result = getRecommendation({ region: regionId, symptoms });
-    recommendBox.innerHTML = `<p>${result.text}</p><p><strong>${result.level}</strong><br>Source: <a href="${result.link}" target="_blank">${result.source}</a></p>`;
-    recommendBox.classList.remove('hidden');
   });
-});
+}
 
-// Save to History
-document.getElementById('saveHistory').addEventListener('click', () => {
-  const recHTML = document.getElementById('recommendation').innerHTML;
-  if (recHTML) {
-    const existing = JSON.parse(localStorage.getItem('dentalHistory') || '[]');
-    existing.push({ date: new Date().toLocaleString(), content: recHTML });
-    localStorage.setItem('dentalHistory', JSON.stringify(existing));
-    alert('Saved to history.');
-  }
-});
+async function runSymptomsStep(regionId) {
+  await botMsg("Now, please select the complaints you are experiencing:");
 
-// View History
-document.getElementById('viewHistory').addEventListener('click', () => {
-  const box = document.getElementById('historyBox');
-  const entries = JSON.parse(localStorage.getItem('dentalHistory') || '[]');
+  const complaintOptions = [
+    { value: 'tooth_pain_sensitivity', label: '🦷 Tooth pain & sensitivity' },
+    { value: 'swelling_fever', label: '⚠️ Swelling / Fever / Emergency' },
+    { value: 'gum_periodontal', label: '🪥 Gum & periodontal issues' },
+    { value: 'tmj_muscle', label: '🤐 TMJ / muscle / habits' },
+    { value: 'mucosa_others', label: '👄 Mucosa & other issues' }
+  ];
 
-  if (entries.length === 0) {
-    box.innerHTML = 'No saved history.';
-  } else {
-    box.innerHTML = entries.map(e => `<div><strong>${e.date}</strong><br>${e.content}</div><hr>`).join('');
-  }
-  box.classList.remove('hidden');
-});
+  const div = document.createElement('div');
+  div.className = 'chat-bubble-group';
 
-// Export to PDF
-document.getElementById('exportPDF').addEventListener('click', () => {
-  const element = document.getElementById('recommendation');
-  if (element.innerHTML.trim()) {
-    html2pdf().from(element).save('dental-check-result.pdf');
-  } else {
-    alert('Please get a recommendation first.');
-  }
-});
-
-
-import { getRecommendation, getDetailedRecommendation } from './logic.js';
-
-window.addEventListener('DOMContentLoaded', () => {
-  const tooltip = document.getElementById('tooltip');
-  const jawInput = document.getElementById('jawLocation');
-  const recommendBtn = document.getElementById('recommendBtn');
-  const recommendBox = document.getElementById('recommendation');
-
-  // Load regions.json into SVG
-  fetch('assets/regions.json')
-    .then(res => res.json())
-    .then(regions => {
-      const svgObj = document.getElementById('jawSvg');
-      svgObj.addEventListener('load', () => {
-        const svgDoc = svgObj.contentDocument;
-
-        Object.keys(regions).forEach(id => {
-          const el = svgDoc.getElementById(id);
-          if (el) {
-            el.style.cursor = 'pointer';
-
-            el.addEventListener('mouseenter', (e) => {
-              const r = regions[id];
-              tooltip.innerHTML = `<strong>${r.name}</strong><br>${r.hint}<br><small>Source: <a href="${r.link}" target="_blank">${r.source}</a></small>`;
-              tooltip.style.left = (e.pageX + 10) + 'px';
-              tooltip.style.top = (e.pageY + 10) + 'px';
-              tooltip.classList.remove('hidden');
-            });
-
-            el.addEventListener('mouseleave', () => tooltip.classList.add('hidden'));
-
-            el.addEventListener('click', () => {
-              jawInput.value = regions[id].name;
-              jawInput.dataset.regionId = id;
-            });
-          }
-        });
-      });
-    });
-
-  // Handle recommendation
-  recommendBtn.addEventListener('click', () => {
-    const regionId = jawInput.dataset.regionId || '';
-    const complaints = Array.from(document.querySelectorAll('.complaints input:checked')).map(el => el.value);
-
-    if (!regionId || complaints.length === 0) {
-      alert('Please select a region and at least one complaint.');
-      return;
-    }
-
-    // Fetch SEO-friendly content
-    const detailedSections = getDetailedRecommendation({ region: regionId, complaints });
-
-    let html = `<h2>🦷 Dental Self-Check Results</h2>`;
-    detailedSections.forEach(sec => {
-      html += `<div class="recommend-section">
-        <h3>${sec.title}</h3>
-        <div class="recommend-content">${sec.content}</div>
-      </div>`;
-    });
-
-    recommendBox.innerHTML = html;
-    recommendBox.classList.remove('hidden');
+  complaintOptions.forEach(opt => {
+    const label = document.createElement('label');
+    label.innerHTML = `<input type="checkbox" value="${opt.value}"> ${opt.label}`;
+    div.appendChild(label);
   });
-});
-          
+
+  const btn = document.createElement('button');
+  btn.textContent = "Continue";
+  btn.onclick = () => {
+    const selected = Array.from(div.querySelectorAll('input:checked')).map(el => el.value);
+    if (selected.length === 0) return alert("Please select at least one complaint.");
+    userMsg(`Selected: ${selected.join(', ')}`);
+    div.remove();
+    runRecommendation(regionId, selected);
+  };
+
+  div.appendChild(btn);
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+async function runRecommendation(region, complaints) {
+  await botMsg("Analyzing your inputs...");
+
+  const sections = getDetailedRecommendation({ region, complaints });
+
+  await botMsg("Here’s your personalized dental self-check result:");
+
+  for (const sec of sections) {
+    await botMsg(`<h4>${sec.title}</h4>${sec.content}`, 1200, true);
+  }
+
+  addExportButton();
+}
+
+function addExportButton() {
+  const btn = document.createElement('button');
+  btn.textContent = "📄 Download Results as PDF";
+  btn.onclick = () => {
+    html2pdf().from(chat).save('dental-chat-check.pdf');
+  };
+  chat.appendChild(btn);
+}
+
+startChatFlow();
