@@ -56,4 +56,3 @@ fetch("flashcards.json")
       showCard(current);
     }, 10000);
   });
-
