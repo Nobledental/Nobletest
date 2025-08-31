@@ -1,131 +1,65 @@
-import { getDetailedRecommendation } from './logic.js';
+import { getRecommendation, getDetailedRecommendation } from './logic.js';
 
-const chat = document.getElementById('chatContainer');
+window.addEventListener('DOMContentLoaded', () => {
+  const tooltip = document.getElementById('tooltip');
+  const jawInput = document.getElementById('jawLocation');
+  const recommendBtn = document.getElementById('recommendBtn');
+  const recommendBox = document.getElementById('recommendation');
 
-function createMsg(text, type = 'bot', isHTML = false) {
-  const div = document.createElement('div');
-  div.className = `chat-msg ${type}`;
-  if (isHTML) {
-    div.innerHTML = text;
-  } else {
-    div.textContent = text;
-  }
-  chat.appendChild(div);
-  chat.scrollTop = chat.scrollHeight;
-}
+  // Load regions.json into SVG
+  fetch('assets/regions.json')
+    .then(res => res.json())
+    .then(regions => {
+      const svgObj = document.getElementById('jawSvg');
+      svgObj.addEventListener('load', () => {
+        const svgDoc = svgObj.contentDocument;
 
-async function botMsg(text, delayMs = 800, isHTML = false) {
-  return new Promise(resolve => {
-    const typing = document.createElement('div');
-    typing.className = 'typing-dots bot';
-    typing.innerHTML = `<span></span><span></span><span></span>`;
-    chat.appendChild(typing);
-    chat.scrollTop = chat.scrollHeight;
-
-    setTimeout(() => {
-      typing.remove();
-      createMsg(text, 'bot', isHTML);
-      resolve();
-    }, delayMs);
-  });
-}
-
-function userMsg(text) {
-  createMsg(text, 'user');
-}
-
-function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function startChatFlow() {
-  await botMsg("👋 Hi! I'm your dental self-check assistant.");
-  await delay(1000);
-  await botMsg("Let's start with where you feel the issue. Please click on the jaw map:");
-
-  const svgWrapper = document.createElement('object');
-  svgWrapper.data = '../assets/jaw-map.svg';
-  svgWrapper.type = 'image/svg+xml';
-  svgWrapper.id = 'jawSvg';
-  chat.appendChild(svgWrapper);
-
-  svgWrapper.addEventListener('load', () => {
-    const svgDoc = svgWrapper.contentDocument;
-    fetch('../assets/regions.json')
-      .then(res => res.json())
-      .then(regions => {
         Object.keys(regions).forEach(id => {
           const el = svgDoc.getElementById(id);
           if (el) {
             el.style.cursor = 'pointer';
+
+            el.addEventListener('mouseenter', (e) => {
+              const r = regions[id];
+              tooltip.innerHTML = `<strong>${r.name}</strong><br>${r.hint}<br><small>Source: <a href="${r.link}" target="_blank">${r.source}</a></small>`;
+              tooltip.style.left = (e.pageX + 10) + 'px';
+              tooltip.style.top = (e.pageY + 10) + 'px';
+              tooltip.classList.remove('hidden');
+            });
+
+            el.addEventListener('mouseleave', () => tooltip.classList.add('hidden'));
+
             el.addEventListener('click', () => {
-              const regionName = regions[id].name;
-              userMsg(regionName);
-              svgWrapper.remove();
-              runSymptomsStep(id);
+              jawInput.value = regions[id].name;
+              jawInput.dataset.regionId = id;
             });
           }
         });
       });
+    });
+
+  // Handle recommendation
+  recommendBtn.addEventListener('click', () => {
+    const regionId = jawInput.dataset.regionId || '';
+    const complaints = Array.from(document.querySelectorAll('.complaints input:checked')).map(el => el.value);
+
+    if (!regionId || complaints.length === 0) {
+      alert('Please select a region and at least one complaint.');
+      return;
+    }
+
+    // Fetch SEO-friendly content
+    const detailedSections = getDetailedRecommendation({ region: regionId, complaints });
+
+    let html = `<h2>🦷 Dental Self-Check Results</h2>`;
+    detailedSections.forEach(sec => {
+      html += `<div class="recommend-section">
+        <h3>${sec.title}</h3>
+        <div class="recommend-content">${sec.content}</div>
+      </div>`;
+    });
+
+    recommendBox.innerHTML = html;
+    recommendBox.classList.remove('hidden');
   });
-}
-
-async function runSymptomsStep(regionId) {
-  await botMsg("Now, please select the complaints you are experiencing:");
-
-  const complaintOptions = [
-    { value: 'tooth_pain_sensitivity', label: '🦷 Tooth pain & sensitivity' },
-    { value: 'swelling_fever', label: '⚠️ Swelling / Fever / Emergency' },
-    { value: 'gum_periodontal', label: '🪥 Gum & periodontal issues' },
-    { value: 'tmj_muscle', label: '🤐 TMJ / muscle / habits' },
-    { value: 'mucosa_others', label: '👄 Mucosa & other issues' }
-  ];
-
-  const div = document.createElement('div');
-  div.className = 'chat-bubble-group';
-
-  complaintOptions.forEach(opt => {
-    const label = document.createElement('label');
-    label.innerHTML = `<input type="checkbox" value="${opt.value}"> ${opt.label}`;
-    div.appendChild(label);
-  });
-
-  const btn = document.createElement('button');
-  btn.textContent = "Continue";
-  btn.onclick = () => {
-    const selected = Array.from(div.querySelectorAll('input:checked')).map(el => el.value);
-    if (selected.length === 0) return alert("Please select at least one complaint.");
-    userMsg(`Selected: ${selected.join(', ')}`);
-    div.remove();
-    runRecommendation(regionId, selected);
-  };
-
-  div.appendChild(btn);
-  chat.appendChild(div);
-  chat.scrollTop = chat.scrollHeight;
-}
-
-async function runRecommendation(region, complaints) {
-  await botMsg("Analyzing your inputs...");
-
-  const sections = getDetailedRecommendation({ region, complaints });
-
-  await botMsg("Here’s your personalized dental self-check result:");
-
-  for (const sec of sections) {
-    await botMsg(`<h4>${sec.title}</h4>${sec.content}`, 1200, true);
-  }
-
-  addExportButton();
-}
-
-function addExportButton() {
-  const btn = document.createElement('button');
-  btn.textContent = "📄 Download Results as PDF";
-  btn.onclick = () => {
-    html2pdf().from(chat).save('dental-chat-check.pdf');
-  };
-  chat.appendChild(btn);
-}
-
-startChatFlow();
+});
