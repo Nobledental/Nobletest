@@ -1,1 +1,80 @@
+<!-- /dental-check/assets/jaw-map-advanced.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" aria-labelledby="title desc" role="img">
+  <title id="title">Clickable Jaw Map (FDI numbering)</title>
+  <desc id="desc">Upper and lower teeth with gum regions. Tap a tooth or gum area to select symptoms.</desc>
+
+  <defs>
+    <style>
+      .tooth { fill:#eef5ff; stroke:#98b6ff; stroke-width:1.5; cursor:pointer; }
+      .tooth:hover { filter: brightness(1.03); }
+      .gum { fill:#ffe7e7; stroke:#ffb3b3; cursor:pointer; }
+      .label { font: 12px Inter, Arial; fill:#333; pointer-events:none; }
+      .active { stroke:#ff7a59; stroke-width:3; }
+      .sextant { fill:none; stroke:#ddd; stroke-dasharray:4 6; }
+    </style>
+  </defs>
+
+  <!-- Sextant guides (optional) -->
+  <path class="sextant" d="M450 20V500"/>
+  <path class="sextant" d="M20 260H880"/>
+
+  <!-- Upper gums (left/right) -->
+  <path id="gum_upper_left"  class="gum" d="M60,120 C180,10 360,10 440,120 L440,170 C360,80 180,80 60,170Z"/>
+  <path id="gum_upper_right" class="gum" d="M460,120 C540,10 720,10 840,120 L840,170 C720,80 540,80 460,170Z"/>
+
+  <!-- Lower gums (left/right) -->
+  <path id="gum_lower_left"  class="gum" d="M60,400 C180,510 360,510 440,400 L440,350 C360,440 180,440 60,350Z"/>
+  <path id="gum_lower_right" class="gum" d="M460,400 C540,510 720,510 840,400 L840,350 C720,440 540,440 460,350Z"/>
+
+  <!-- Example teeth groups (duplicate pattern to complete arch) -->
+  <!-- Upper Right (FDI 18..11) example: 16 (UR first molar), 11 (UR central incisor) -->
+  <g id="tooth_16" class="tooth" transform="translate(690,180)">
+    <path d="M0,0 h60 v70 h-60 Z"/>
+    <text class="label" x="30" y="40" text-anchor="middle">16</text>
+  </g>
+
+  <g id="tooth_11" class="tooth" transform="translate(460,180)">
+    <path d="M0,0 h40 v60 h-40 Z"/>
+    <text class="label" x="20" y="35" text-anchor="middle">11</text>
+  </g>
+
+  <!-- Upper Left (FDI 21..28) example: 21 (UL central), 26 (UL first molar) -->
+  <g id="tooth_21" class="tooth" transform="translate(400,180)">
+    <path d="M0,0 h40 v60 h-40 Z"/>
+    <text class="label" x="20" y="35" text-anchor="middle">21</text>
+  </g>
+
+  <g id="tooth_26" class="tooth" transform="translate(150,180)">
+    <path d="M0,0 h60 v70 h-60 Z"/>
+    <text class="label" x="30" y="40" text-anchor="middle">26</text>
+  </g>
+
+  <!-- Lower Right (FDI 48..41) example: 46, 41 -->
+  <g id="tooth_46" class="tooth" transform="translate(690,280)">
+    <path d="M0,0 h60 v70 h-60 Z"/>
+    <text class="label" x="30" y="42" text-anchor="middle">46</text>
+  </g>
+
+  <g id="tooth_41" class="tooth" transform="translate(460,300)">
+    <path d="M0,0 h40 v60 h-40 Z"/>
+    <text class="label" x="20" y="35" text-anchor="middle">41</text>
+  </g>
+
+  <!-- Lower Left (FDI 31..38) example: 31, 36 -->
+  <g id="tooth_31" class="tooth" transform="translate(400,300)">
+    <path d="M0,0 h40 v60 h-40 Z"/>
+    <text class="label" x="20" y="35" text-anchor="middle">31</text>
+  </g>
+
+  <g id="tooth_36" class="tooth" transform="translate(150,280)">
+    <path d="M0,0 h60 v70 h-60 Z"/>
+    <text class="label" x="30" y="42" text-anchor="middle">36</text>
+  </g>
+
+  <!-- Labels -->
+  <text class="label" x="120" y="160">Upper Left</text>
+  <text class="label" x="780" y="160" text-anchor="end">Upper Right</text>
+  <text class="label" x="120" y="380">Lower Left</text>
+  <text class="label" x="780" y="380" text-anchor="end">Lower Right</text>
+</svg>
 
