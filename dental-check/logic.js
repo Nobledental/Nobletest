@@ -29,21 +29,26 @@ const SRC = {
 /* --- Utility: location families from region id (you can expand mapping to individual teeth later) --- */
 function mapRegionFamily(regionId = "") {
   const id = (regionId || "").toLowerCase();
-
-  // simple examples; adapt if your SVG has more granular ids
-  if (id.includes("upper") && (id.includes("left") || id.includes("right"))) {
-    return "upper_quadrant";
+  const m = id.match(/tooth_(\d{2})/);
+  if (m) {
+    const n = parseInt(m[1], 10);
+    const isPrimary = [51,52,53,54,55,61,62,63,64,65,71,72,73,74,75,81,82,83,84,85].includes(n);
+    const unit = n % 10;
+    if (!isPrimary) {
+      if ([11,12,13,21,22,23,31,32,33,41,42,43].includes(n)) return "front_teeth";
+      if ([18,28,38,48].includes(n)) return "wisdom_teeth";
+      return "back_teeth"; // premolars/molars except wisdoms
+    } else {
+      if ([51,52,53,61,62,63,71,72,73,81,82,83].includes(n)) return "front_teeth";
+      return "back_teeth"; // primary molars (no wisdoms in primary)
+    }
   }
-  if (id.includes("lower") && (id.includes("left") || id.includes("right"))) {
-    return "lower_quadrant";
-  }
-  // optional custom ids you might add in the SVG later:
-  if (id.includes("front") || id.includes("incisor") || id.includes("canine")) return "front_teeth";
-  if (id.includes("molar") || id.includes("premolar") || id.includes("back")) return "back_teeth";
-  if (id.includes("wisdom") || id.includes("third")) return "wisdom_teeth";
+  if (id.startsWith('gum_') || id.startsWith('gingiva_')) return "gum_teeth";
+  // fallback quadrants
+  if (id.includes("upper")) return "upper_quadrant";
+  if (id.includes("lower")) return "lower_quadrant";
   return "general";
 }
-
 /* --- Block builders --- */
 function section(title, html) {
   return { title, content: html };
