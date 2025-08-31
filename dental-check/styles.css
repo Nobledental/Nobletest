@@ -41,3 +41,37 @@
   padding: 10px;
   border-radius: 6px;
 }
+
+.recommend-section {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.recommend-section h3 {
+  margin: 0 0 10px;
+  color: #007bff;
+  font-size: 18px;
+}
+
+.recommend-content p,
+.recommend-content ul {
+  margin: 6px 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.recommend-content ul {
+  padding-left: 20px;
+}
+
+.recommend-content strong {
+  color: #333;
+}
+
+.recommend-content em {
+  font-size: 13px;
+  color: #555;
+}
