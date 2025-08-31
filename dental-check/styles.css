@@ -45,3 +45,12 @@ h1{font-size:32px;margin:0 0 8px}
 .disclaimer{font-size:13px;color:#666}
 
 .app-footer{text-align:center;background:#fff;border-top:1px solid #eee;padding:18px;margin-top:24px}
+
+
+/* gum band visual tweak */
+.gumband { fill:#ffe0e0; opacity:.8; }
+.table-wrapper { overflow:auto; }
+.diff-table { width:100%; border-collapse:collapse; font-size:14px; }
+.diff-table th, .diff-table td { border:1px solid #e6e6e6; padding:8px; vertical-align:top; text-align:left; }
+.diff-table thead th { background:#f1f7ff; color:#0b65d6; }
+
