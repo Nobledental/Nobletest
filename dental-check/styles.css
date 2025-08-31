@@ -1,77 +1,142 @@
-.recommendation {
-  background: #e9fbe9;
-  border-left: 5px solid green;
-  padding: 10px;
-  margin-top: 20px;
-  border-radius: 6px;
+/* Global */
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: linear-gradient(120deg, #f0f8ff, #fdfdfd);
+  color: #333;
+  line-height: 1.6;
 }
 
-.flashcard {
-  margin-top: 30px;
-  background: #fffbe6;
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-left: 6px solid #ffa500;
-  font-size: 15px;
+/* Header */
+.app-header {
+  background: white;
+  border-bottom: 1px solid #eee;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header .logo {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.app-header nav a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 500;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.hero .highlight {
+  color: #007bff;
+}
+
+.hero .subtitle {
   max-width: 600px;
   margin: auto;
-  border-radius: 6px;
+  font-size: 16px;
+  color: #555;
 }
 
-.phase3-controls {
-  margin-top: 20px;
+/* Container & Cards */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #222;
+  font-size: 20px;
+}
+
+/* SVG Map */
+.svg-wrapper {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  justify-content: center;
+  margin: 15px 0;
 }
 
-.phase3-controls button {
-  padding: 8px 14px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-#historyBox {
-  margin-top: 20px;
-  background: #f0f0f0;
-  border-left: 5px solid #888;
+#jawLocation {
+  width: 100%;
   padding: 10px;
-  border-radius: 6px;
-}
-
-.recommend-section {
-  margin-bottom: 20px;
-  padding: 15px;
-  background: #fdfdfd;
+  margin-top: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
 }
 
-.recommend-section h3 {
-  margin: 0 0 10px;
+/* Symptoms */
+.symptoms label {
+  display: block;
+  margin: 8px 0;
+}
+
+.primary-btn {
+  background: #007bff;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.primary-btn:hover {
+  background: #0056b3;
+}
+
+/* Recommendation Output */
+.recommendation {
+  background: #f9f9ff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.recommendation h3 {
   color: #007bff;
-  font-size: 18px;
+  margin-bottom: 8px;
 }
 
-.recommend-content p,
-.recommend-content ul {
-  margin: 6px 0;
-  font-size: 15px;
-  line-height: 1.6;
+/* Flashcard */
+.flashcard {
+  background: #fffbe6;
+  border-left: 5px solid orange;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px 0;
 }
 
-.recommend-content ul {
-  padding-left: 20px;
-}
-
-.recommend-content strong {
-  color: #333;
-}
-
-.recommend-content em {
-  font-size: 13px;
+/* Footer */
+.app-footer {
+  text-align: center;
+  padding: 20px;
+  background: white;
+  border-top: 1px solid #eee;
+  margin-top: 30px;
+  font-size: 14px;
   color: #555;
 }
