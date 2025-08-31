@@ -235,3 +235,8 @@ window.addEventListener('DOMContentLoaded', () => {
     setInterval(() => { i = (i + 1) % cards.length; render(); }, 10000);
   });
 });
+
+// in script.js, change the line:
+fetch('assets/jaw-map.svg')
+// to:
+fetch('assets/jaw-map-advanced.svg')
