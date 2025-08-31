@@ -1,0 +1,20 @@
+[
+  {
+    "question": "When is post-op swelling considered normal?",
+    "answer": "Mild swelling is normal for 1–3 days. If it lasts longer or is accompanied by fever, consult a dentist.",
+    "source": "ADA Clinical Guidelines",
+    "link": "https://www.ada.org/resources/research/science/clinical-practice-guidelines"
+  },
+  {
+    "question": "What does pain + swelling + fever indicate?",
+    "answer": "This may indicate a dental abscess or infection requiring urgent care.",
+    "source": "FDA Dental Safety Bulletin",
+    "link": "https://www.fda.gov/medical-devices"
+  },
+  {
+    "question": "Do all wisdom teeth need removal?",
+    "answer": "Not always. Removal is suggested if there is impaction, pain, or infection.",
+    "source": "WHO Oral Health",
+    "link": "https://www.who.int/news-room/fact-sheets/detail/oral-health"
+  }
+]
