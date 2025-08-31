@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Schematic, clickable dental map (FDI numbering) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" width="1000" height="620" aria-labelledby="title desc" role="img">
+<!-- Clickable dental map (FDI 2-digit permanent & primary) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="1000" height="640" aria-labelledby="title desc" role="img">
   <title id="title">Clickable Jaw Map (FDI 2-digit)</title>
-  <desc id="desc">Tap a tooth or gum area to select. Upper arch on top row, lower arch on bottom row. IDs match regions.json.</desc>
+  <desc id="desc">Tap a tooth or gum area to select. Contains permanent (adult) and primary (milk) dentitions.</desc>
 
   <defs>
     <style>
@@ -13,183 +13,104 @@
       .arch-label { font: 14px Inter, Arial, sans-serif; fill:#666; pointer-events:none; }
       .sextant { fill:none; stroke:#ddd; stroke-dasharray:6 8; }
       .active { stroke:#ff7a59 !important; stroke-width:3 !important; }
-      /* tooth size */
-      .T { width: 40px; height: 60px; }
-      .Tm { width: 52px; height: 68px; } /* molar/premolar slightly bigger */
     </style>
   </defs>
 
   <!-- Guidelines (optional) -->
-  <path class="sextant" d="M500 30V590"/>
-  <path class="sextant" d="M30 310H970"/>
+  <path class="sextant" d="M500 30V610"/>
+  <path class="sextant" d="M30 320H970"/>
 
-  <!-- ===== Upper Gums ===== -->
-  <!-- These are large background shapes behind upper teeth (left/right halves) -->
-  <path id="gum_upper_left" class="gum" d="M40,120 C230,10 420,10 490,120 L490,170 C420,90 230,90 40,170Z"/>
+  <!-- ===== Gum Quadrants (shared) ===== -->
+  <path id="gum_upper_left"  class="gum" d="M40,120 C230,10 420,10 490,120 L490,170 C420,90 230,90 40,170Z"/>
   <path id="gum_upper_right" class="gum" d="M510,120 C580,10 770,10 960,120 L960,170 C770,90 580,90 510,170Z"/>
+  <path id="gum_lower_left"  class="gum" d="M40,480 C230,600 420,600 490,480 L490,420 C420,520 230,520 40,420Z"/>
+  <path id="gum_lower_right" class="gum" d="M510,480 C580,600 770,600 960,480 L960,420 C770,520 580,520 510,420Z"/>
 
-  <!-- ===== Lower Gums ===== -->
-  <path id="gum_lower_left" class="gum" d="M40,460 C230,590 420,590 490,460 L490,400 C420,500 230,500 40,400Z"/>
-  <path id="gum_lower_right" class="gum" d="M510,460 C580,590 770,590 960,460 L960,400 C770,500 580,500 510,400Z"/>
+  <!-- =========================================================
+       PERMANENT DENTITION (ADULT) — 32 teeth, group toggled
+       ========================================================= -->
+  <g id="arch_permanent">
+    <!-- Upper Left (21–28): center-left -> far left -->
+    <g id="tooth_21" class="tooth" transform="translate(455,180)"><rect x="0" y="0" width="40" height="60" rx="6"/><text class="label" x="20" y="35" text-anchor="middle">21</text></g>
+    <g id="tooth_22" class="tooth" transform="translate(400,180)"><rect x="0" y="0" width="40" height="60" rx="6"/><text class="label" x="20" y="35" text-anchor="middle">22</text></g>
+    <g id="tooth_23" class="tooth" transform="translate(345,178)"><rect x="0" y="0" width="42" height="62" rx="6"/><text class="label" x="21" y="36" text-anchor="middle">23</text></g>
+    <g id="tooth_24" class="tooth" transform="translate(285,175)"><rect x="0" y="0" width="48" height="66" rx="7"/><text class="label" x="24" y="38" text-anchor="middle">24</text></g>
+    <g id="tooth_25" class="tooth" transform="translate(225,172)"><rect x="0" y="0" width="50" height="68" rx="7"/><text class="label" x="25" y="40" text-anchor="middle">25</text></g>
+    <g id="tooth_26" class="tooth" transform="translate(160,168)"><rect x="0" y="0" width="54" height="70" rx="8"/><text class="label" x="27" y="42" text-anchor="middle">26</text></g>
+    <g id="tooth_27" class="tooth" transform="translate(95,164)"><rect x="0" y="0" width="56" height="72" rx="8"/><text class="label" x="28" y="44" text-anchor="middle">27</text></g>
+    <g id="tooth_28" class="tooth" transform="translate(30,160)"><rect x="0" y="0" width="58" height="74" rx="8"/><text class="label" x="29" y="46" text-anchor="middle">28</text></g>
 
-  <!-- Helpers -->
-  <script type="application/ecmascript"><![CDATA[
-    // make <rect> width/height from CSS-like class .T/.Tm in static SVG
-  ]]></script>
+    <!-- Upper Right (18–11): far right -> center-right -->
+    <g id="tooth_18" class="tooth" transform="translate(912,160)"><rect x="0" y="0" width="58" height="74" rx="8"/><text class="label" x="29" y="46" text-anchor="middle">18</text></g>
+    <g id="tooth_17" class="tooth" transform="translate(847,164)"><rect x="0" y="0" width="56" height="72" rx="8"/><text class="label" x="28" y="44" text-anchor="middle">17</text></g>
+    <g id="tooth_16" class="tooth" transform="translate(782,168)"><rect x="0" y="0" width="54" height="70" rx="8"/><text class="label" x="27" y="42" text-anchor="middle">16</text></g>
+    <g id="tooth_15" class="tooth" transform="translate(722,172)"><rect x="0" y="0" width="50" height="68" rx="7"/><text class="label" x="25" y="40" text-anchor="middle">15</text></g>
+    <g id="tooth_14" class="tooth" transform="translate(662,175)"><rect x="0" y="0" width="48" height="66" rx="7"/><text class="label" x="24" y="38" text-anchor="middle">14</text></g>
+    <g id="tooth_13" class="tooth" transform="translate(607,178)"><rect x="0" y="0" width="42" height="62" rx="6"/><text class="label" x="21" y="36" text-anchor="middle">13</text></g>
+    <g id="tooth_12" class="tooth" transform="translate(552,180)"><rect x="0" y="0" width="40" height="60" rx="6"/><text class="label" x="20" y="35" text-anchor="middle">12</text></g>
+    <g id="tooth_11" class="tooth" transform="translate(497,180)"><rect x="0" y="0" width="40" height="60" rx="6"/><text class="label" x="20" y="35" text-anchor="middle">11</text></g>
 
-  <!-- ===== UPPER ARCH ===== -->
-  <!-- Layout: left half (UL: 21..28) runs from center to far left; right half (UR: 18..11) runs from far right to center.
-       Y baseline for upper teeth = 200. Spacing = 55 (incisors/canines), 60 (premolars), 65 (molars). -->
+    <!-- Lower Left (31–38): center-left -> far left -->
+    <g id="tooth_31" class="tooth" transform="translate(455,360)"><rect x="0" y="0" width="40" height="60" rx="6"/><text class="label" x="20" y="35" text-anchor="middle">31</text></g>
+    <g id="tooth_32" class="tooth" transform="translate(400,360)"><rect x="0" y="0" width="40" height="60" rx="6"/><text class="label" x="20" y="35" text-anchor="middle">32</text></g>
+    <g id="tooth_33" class="tooth" transform="translate(345,362)"><rect x="0" y="0" width="42" height="62" rx="6"/><text class="label" x="21" y="36" text-anchor="middle">33</text></g>
+    <g id="tooth_34" class="tooth" transform="translate(285,365)"><rect x="0" y="0" width="48" height="66" rx="7"/><text class="label" x="24" y="38" text-anchor="middle">34</text></g>
+    <g id="tooth_35" class="tooth" transform="translate(225,368)"><rect x="0" y="0" width="50" height="68" rx="7"/><text class="label" x="25" y="40" text-anchor="middle">35</text></g>
+    <g id="tooth_36" class="tooth" transform="translate(160,372)"><rect x="0" y="0" width="54" height="70" rx="8"/><text class="label" x="27" y="42" text-anchor="middle">36</text></g>
+    <g id="tooth_37" class="tooth" transform="translate(95,376)"><rect x="0" y="0" width="56" height="72" rx="8"/><text class="label" x="28" y="44" text-anchor="middle">37</text></g>
+    <g id="tooth_38" class="tooth" transform="translate(30,380)"><rect x="0" y="0" width="58" height="74" rx="8"/><text class="label" x="29" y="46" text-anchor="middle">38</text></g>
 
-  <!-- Upper Left (FDI 21..28): 21 at center-left → 28 far left -->
-  <!-- We position from center (x~500) moving leftwards -->
-  <!-- Incisors -->
-  <g id="tooth_21" class="tooth" transform="translate(455,180)">
-    <rect x="0" y="0" width="40" height="60" rx="6" />
-    <text class="label" x="20" y="35" text-anchor="middle">21</text>
-  </g>
-  <g id="tooth_22" class="tooth" transform="translate(400,180)">
-    <rect x="0" y="0" width="40" height="60" rx="6" />
-    <text class="label" x="20" y="35" text-anchor="middle">22</text>
-  </g>
-  <!-- Canine -->
-  <g id="tooth_23" class="tooth" transform="translate(345,178)">
-    <rect x="0" y="0" width="42" height="62" rx="6" />
-    <text class="label" x="21" y="36" text-anchor="middle">23</text>
-  </g>
-  <!-- Premolars -->
-  <g id="tooth_24" class="tooth" transform="translate(285,175)">
-    <rect x="0" y="0" width="48" height="66" rx="7" />
-    <text class="label" x="24" y="38" text-anchor="middle">24</text>
-  </g>
-  <g id="tooth_25" class="tooth" transform="translate(225,172)">
-    <rect x="0" y="0" width="50" height="68" rx="7" />
-    <text class="label" x="25" y="40" text-anchor="middle">25</text>
-  </g>
-  <!-- Molars -->
-  <g id="tooth_26" class="tooth" transform="translate(160,168)">
-    <rect x="0" y="0" width="54" height="70" rx="8" />
-    <text class="label" x="27" y="42" text-anchor="middle">26</text>
-  </g>
-  <g id="tooth_27" class="tooth" transform="translate(95,164)">
-    <rect x="0" y="0" width="56" height="72" rx="8" />
-    <text class="label" x="28" y="44" text-anchor="middle">27</text>
-  </g>
-  <g id="tooth_28" class="tooth" transform="translate(30,160)">
-    <rect x="0" y="0" width="58" height="74" rx="8" />
-    <text class="label" x="29" y="46" text-anchor="middle">28</text>
-  </g>
+    <!-- Lower Right (48–41): far right -> center-right -->
+    <g id="tooth_48" class="tooth" transform="translate(912,380)"><rect x="0" y="0" width="58" height="74" rx="8"/><text class="label" x="29" y="46" text-anchor="middle">48</text></g>
+    <g id="tooth_47" class="tooth" transform="translate(847,376)"><rect x="0" y="0" width="56" height="72" rx="8"/><text class="label" x="28" y="44" text-anchor="middle">47</text></g>
+    <g id="tooth_46" class="tooth" transform="translate(782,372)"><rect x="0" y="0" width="54" height="70" rx="8"/><text class="label" x="27" y="42" text-anchor="middle">46</text></g>
+    <g id="tooth_45" class="tooth" transform="translate(722,368)"><rect x="0" y="0" width="50" height="68" rx="7"/><text class="label" x="25" y="40" text-anchor="middle">45</text></g>
+    <g id="tooth_44" class="tooth" transform="translate(662,365)"><rect x="0" y="0" width="48" height="66" rx="7"/><text class="label" x="24" y="38" text-anchor="middle">44</text></g>
+    <g id="tooth_43" class="tooth" transform="translate(607,362)"><rect x="0" y="0" width="42" height="62" rx="6"/><text class="label" x="21" y="36" text-anchor="middle">43</text></g>
+    <g id="tooth_42" class="tooth" transform="translate(552,360)"><rect x="0" y="0" width="40" height="60" rx="6"/><text class="label" x="20" y="35" text-anchor="middle">42</text></g>
+    <g id="tooth_41" class="tooth" transform="translate(497,360)"><rect x="0" y="0" width="40" height="60" rx="6"/><text class="label" x="20" y="35" text-anchor="middle">41</text></g>
 
-  <!-- Upper Right (FDI 18..11): 18 far right → 11 center-right -->
-  <g id="tooth_18" class="tooth" transform="translate(912,160)">
-    <rect x="0" y="0" width="58" height="74" rx="8" />
-    <text class="label" x="29" y="46" text-anchor="middle">18</text>
-  </g>
-  <g id="tooth_17" class="tooth" transform="translate(847,164)">
-    <rect x="0" y="0" width="56" height="72" rx="8" />
-    <text class="label" x="28" y="44" text-anchor="middle">17</text>
-  </g>
-  <g id="tooth_16" class="tooth" transform="translate(782,168)">
-    <rect x="0" y="0" width="54" height="70" rx="8" />
-    <text class="label" x="27" y="42" text-anchor="middle">16</text>
-  </g>
-  <g id="tooth_15" class="tooth" transform="translate(722,172)">
-    <rect x="0" y="0" width="50" height="68" rx="7" />
-    <text class="label" x="25" y="40" text-anchor="middle">15</text>
-  </g>
-  <g id="tooth_14" class="tooth" transform="translate(662,175)">
-    <rect x="0" y="0" width="48" height="66" rx="7" />
-    <text class="label" x="24" y="38" text-anchor="middle">14</text>
-  </g>
-  <g id="tooth_13" class="tooth" transform="translate(607,178)">
-    <rect x="0" y="0" width="42" height="62" rx="6" />
-    <text class="label" x="21" y="36" text-anchor="middle">13</text>
-  </g>
-  <g id="tooth_12" class="tooth" transform="translate(552,180)">
-    <rect x="0" y="0" width="40" height="60" rx="6" />
-    <text class="label" x="20" y="35" text-anchor="middle">12</text>
-  </g>
-  <g id="tooth_11" class="tooth" transform="translate(497,180)">
-    <rect x="0" y="0" width="40" height="60" rx="6" />
-    <text class="label" x="20" y="35" text-anchor="middle">11</text>
+    <text class="arch-label" x="70" y="150">Upper Left (21–28)</text>
+    <text class="arch-label" x="930" y="150" text-anchor="end">Upper Right (18–11)</text>
+    <text class="arch-label" x="70"  y="430">Lower Left (31–38)</text>
+    <text class="arch-label" x="930" y="430" text-anchor="end">Lower Right (48–41)</text>
   </g>
 
-  <!-- Arch labels -->
-  <text class="arch-label" x="70" y="150">Upper Left (21–28)</text>
-  <text class="arch-label" x="930" y="150" text-anchor="end">Upper Right (18–11)</text>
+  <!-- =========================================================
+       PRIMARY (MILK) DENTITION — 20 teeth, group toggled
+       ========================================================= -->
+  <g id="arch_primary" style="display:none">
+    <!-- Upper Left (61–65) center-left -> far left -->
+    <g id="tooth_61" class="tooth" transform="translate(465,210)"><rect x="0" y="0" width="40" height="56" rx="6"/><text class="label" x="20" y="33" text-anchor="middle">61</text></g>
+    <g id="tooth_62" class="tooth" transform="translate(412,210)"><rect x="0" y="0" width="38" height="56" rx="6"/><text class="label" x="19" y="33" text-anchor="middle">62</text></g>
+    <g id="tooth_63" class="tooth" transform="translate(360,208)"><rect x="0" y="0" width="40" height="58" rx="6"/><text class="label" x="20" y="34" text-anchor="middle">63</text></g>
+    <g id="tooth_64" class="tooth" transform="translate(298,205)"><rect x="0" y="0" width="46" height="62" rx="7"/><text class="label" x="23" y="36" text-anchor="middle">64</text></g>
+    <g id="tooth_65" class="tooth" transform="translate(236,202)"><rect x="0" y="0" width="48" height="64" rx="7"/><text class="label" x="24" y="38" text-anchor="middle">65</text></g>
 
-  <!-- ===== LOWER ARCH ===== -->
-  <!-- Baseline for lower teeth = y ~ 380 (slightly lower). Mirror layout: LL (31..38) from center to left; LR (48..41) from right to center -->
+    <!-- Upper Right (55–51) far right -> center-right -->
+    <g id="tooth_55" class="tooth" transform="translate(910,202)"><rect x="0" y="0" width="48" height="64" rx="7"/><text class="label" x="24" y="38" text-anchor="middle">55</text></g>
+    <g id="tooth_54" class="tooth" transform="translate(848,205)"><rect x="0" y="0" width="46" height="62" rx="7"/><text class="label" x="23" y="36" text-anchor="middle">54</text></g>
+    <g id="tooth_53" class="tooth" transform="translate(786,208)"><rect x="0" y="0" width="40" height="58" rx="6"/><text class="label" x="20" y="34" text-anchor="middle">53</text></g>
+    <g id="tooth_52" class="tooth" transform="translate(734,210)"><rect x="0" y="0" width="38" height="56" rx="6"/><text class="label" x="19" y="33" text-anchor="middle">52</text></g>
+    <g id="tooth_51" class="tooth" transform="translate(681,210)"><rect x="0" y="0" width="40" height="56" rx="6"/><text class="label" x="20" y="33" text-anchor="middle">51</text></g>
 
-  <!-- Lower Left (FDI 31..38): 31 center-left → 38 far left -->
-  <g id="tooth_31" class="tooth" transform="translate(455,360)">
-    <rect x="0" y="0" width="40" height="60" rx="6" />
-    <text class="label" x="20" y="35" text-anchor="middle">31</text>
-  </g>
-  <g id="tooth_32" class="tooth" transform="translate(400,360)">
-    <rect x="0" y="0" width="40" height="60" rx="6" />
-    <text class="label" x="20" y="35" text-anchor="middle">32</text>
-  </g>
-  <g id="tooth_33" class="tooth" transform="translate(345,362)">
-    <rect x="0" y="0" width="42" height="62" rx="6" />
-    <text class="label" x="21" y="36" text-anchor="middle">33</text>
-  </g>
-  <g id="tooth_34" class="tooth" transform="translate(285,365)">
-    <rect x="0" y="0" width="48" height="66" rx="7" />
-    <text class="label" x="24" y="38" text-anchor="middle">34</text>
-  </g>
-  <g id="tooth_35" class="tooth" transform="translate(225,368)">
-    <rect x="0" y="0" width="50" height="68" rx="7" />
-    <text class="label" x="25" y="40" text-anchor="middle">35</text>
-  </g>
-  <g id="tooth_36" class="tooth" transform="translate(160,372)">
-    <rect x="0" y="0" width="54" height="70" rx="8" />
-    <text class="label" x="27" y="42" text-anchor="middle">36</text>
-  </g>
-  <g id="tooth_37" class="tooth" transform="translate(95,376)">
-    <rect x="0" y="0" width="56" height="72" rx="8" />
-    <text class="label" x="28" y="44" text-anchor="middle">37</text>
-  </g>
-  <g id="tooth_38" class="tooth" transform="translate(30,380)">
-    <rect x="0" y="0" width="58" height="74" rx="8" />
-    <text class="label" x="29" y="46" text-anchor="middle">38</text>
-  </g>
+    <!-- Lower Left (71–75) center-left -> far left -->
+    <g id="tooth_71" class="tooth" transform="translate(465,360)"><rect x="0" y="0" width="40" height="56" rx="6"/><text class="label" x="20" y="33" text-anchor="middle">71</text></g>
+    <g id="tooth_72" class="tooth" transform="translate(412,360)"><rect x="0" y="0" width="38" height="56" rx="6"/><text class="label" x="19" y="33" text-anchor="middle">72</text></g>
+    <g id="tooth_73" class="tooth" transform="translate(360,362)"><rect x="0" y="0" width="40" height="58" rx="6"/><text class="label" x="20" y="34" text-anchor="middle">73</text></g>
+    <g id="tooth_74" class="tooth" transform="translate(298,365)"><rect x="0" y="0" width="46" height="62" rx="7"/><text class="label" x="23" y="36" text-anchor="middle">74</text></g>
+    <g id="tooth_75" class="tooth" transform="translate(236,368)"><rect x="0" y="0" width="48" height="64" rx="7"/><text class="label" x="24" y="38" text-anchor="middle">75</text></g>
 
-  <!-- Lower Right (FDI 48..41): 48 far right → 41 center-right -->
-  <g id="tooth_48" class="tooth" transform="translate(912,380)">
-    <rect x="0" y="0" width="58" height="74" rx="8" />
-    <text class="label" x="29" y="46" text-anchor="middle">48</text>
-  </g>
-  <g id="tooth_47" class="tooth" transform="translate(847,376)">
-    <rect x="0" y="0" width="56" height="72" rx="8" />
-    <text class="label" x="28" y="44" text-anchor="middle">47</text>
-  </g>
-  <g id="tooth_46" class="tooth" transform="translate(782,372)">
-    <rect x="0" y="0" width="54" height="70" rx="8" />
-    <text class="label" x="27" y="42" text-anchor="middle">46</text>
-  </g>
-  <g id="tooth_45" class="tooth" transform="translate(722,368)">
-    <rect x="0" y="0" width="50" height="68" rx="7" />
-    <text class="label" x="25" y="40" text-anchor="middle">45</text>
-  </g>
-  <g id="tooth_44" class="tooth" transform="translate(662,365)">
-    <rect x="0" y="0" width="48" height="66" rx="7" />
-    <text class="label" x="24" y="38" text-anchor="middle">44</text>
-  </g>
-  <g id="tooth_43" class="tooth" transform="translate(607,362)">
-    <rect x="0" y="0" width="42" height="62" rx="6" />
-    <text class="label" x="21" y="36" text-anchor="middle">43</text>
-  </g>
-  <g id="tooth_42" class="tooth" transform="translate(552,360)">
-    <rect x="0" y="0" width="40" height="60" rx="6" />
-    <text class="label" x="20" y="35" text-anchor="middle">42</text>
-  </g>
-  <g id="tooth_41" class="tooth" transform="translate(497,360)">
-    <rect x="0" y="0" width="40" height="60" rx="6" />
-    <text class="label" x="20" y="35" text-anchor="middle">41</text>
-  </g>
+    <!-- Lower Right (85–81) far right -> center-right -->
+    <g id="tooth_85" class="tooth" transform="translate(910,368)"><rect x="0" y="0" width="48" height="64" rx="7"/><text class="label" x="24" y="38" text-anchor="middle">85</text></g>
+    <g id="tooth_84" class="tooth" transform="translate(848,365)"><rect x="0" y="0" width="46" height="62" rx="7"/><text class="label" x="23" y="36" text-anchor="middle">84</text></g>
+    <g id="tooth_83" class="tooth" transform="translate(786,362)"><rect x="0" y="0" width="40" height="58" rx="6"/><text class="label" x="20" y="34" text-anchor="middle">83</text></g>
+    <g id="tooth_82" class="tooth" transform="translate(734,360)"><rect x="0" y="0" width="38" height="56" rx="6"/><text class="label" x="19" y="33" text-anchor="middle">82</text></g>
+    <g id="tooth_81" class="tooth" transform="translate(681,360)"><rect x="0" y="0" width="40" height="56" rx="6"/><text class="label" x="20" y="33" text-anchor="middle">81</text></g>
 
-  <!-- Arch labels -->
-  <text class="arch-label" x="70" y="410">Lower Left (31–38)</text>
-  <text class="arch-label" x="930" y="410" text-anchor="end">Lower Right (48–41)</text>
+    <text class="arch-label" x="70" y="180">Upper Left (61–65)</text>
+    <text class="arch-label" x="930" y="180" text-anchor="end">Upper Right (55–51)</text>
+    <text class="arch-label" x="70"  y="430">Lower Left (71–75)</text>
+    <text class="arch-label" x="930" y="430" text-anchor="end">Lower Right (85–81)</text>
+  </g>
 </svg>
