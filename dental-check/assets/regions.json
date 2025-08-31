@@ -1,1 +1,26 @@
-
+{
+  "upper_left": {
+    "name": "Upper Left Quadrant",
+    "hint": "Pain or sensitivity here may relate to molars or sinus-related discomfort.",
+    "source": "ADA – MouthHealthy",
+    "link": "https://www.mouthhealthy.org/"
+  },
+  "upper_right": {
+    "name": "Upper Right Quadrant",
+    "hint": "Cold sensitivity often links to enamel wear or early decay.",
+    "source": "WHO – Oral Health",
+    "link": "https://www.who.int/health-topics/oral-health"
+  },
+  "lower_left": {
+    "name": "Lower Left Quadrant",
+    "hint": "Swelling + fever suggests possible infection — seek urgent care.",
+    "source": "ADA Clinical Guidelines",
+    "link": "https://www.ada.org/resources/research/science/clinical-practice-guidelines"
+  },
+  "lower_right": {
+    "name": "Lower Right Quadrant",
+    "hint": "Bleeding or tender gums may indicate early gum disease.",
+    "source": "ADA – Gum Disease",
+    "link": "https://www.ada.org/resources/research/science-and-research-institute/oral-health-topics/gum-disease"
+  }
+}
