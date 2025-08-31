@@ -1,26 +1,16 @@
 {
-  "upper_left": {
-    "name": "Upper Left Quadrant",
-    "hint": "Pain or sensitivity here may relate to molars or sinus-related discomfort.",
-    "source": "ADA – MouthHealthy",
-    "link": "https://www.mouthhealthy.org/"
-  },
-  "upper_right": {
-    "name": "Upper Right Quadrant",
-    "hint": "Cold sensitivity often links to enamel wear or early decay.",
-    "source": "WHO – Oral Health",
-    "link": "https://www.who.int/health-topics/oral-health"
-  },
-  "lower_left": {
-    "name": "Lower Left Quadrant",
-    "hint": "Swelling + fever suggests possible infection — seek urgent care.",
-    "source": "ADA Clinical Guidelines",
-    "link": "https://www.ada.org/resources/research/science/clinical-practice-guidelines"
-  },
-  "lower_right": {
-    "name": "Lower Right Quadrant",
-    "hint": "Bleeding or tender gums may indicate early gum disease.",
-    "source": "ADA – Gum Disease",
-    "link": "https://www.ada.org/resources/research/science-and-research-institute/oral-health-topics/gum-disease"
-  }
+  "gum_upper_left":  { "name": "Upper Left Gum",  "hint": "Bleeding/redness? Think gingivitis/periodontitis.", "source":"ADA – Gum Disease", "link":"https://www.ada.org/resources/research/science-and-research-institute/oral-health-topics/gum-disease" },
+  "gum_upper_right": { "name": "Upper Right Gum", "hint": "Tender/swollen gum? Gum infection or abscess.", "source":"WHO Oral Health", "link":"https://www.who.int/health-topics/oral-health" },
+  "gum_lower_left":  { "name": "Lower Left Gum",  "hint": "Recession/sensitivity? Brush softer.", "source":"WHO Oral Health", "link":"https://www.who.int/health-topics/oral-health" },
+  "gum_lower_right": { "name": "Lower Right Gum", "hint": "Localized swelling + pain → perio abscess.", "source":"ADA – Gum Disease", "link":"https://www.ada.org/resources/research/science-and-research-institute/oral-health-topics/gum-disease" },
+
+  "tooth_16": { "name": "Tooth 16 (UR 1st Molar)", "hint": "Common site for fissure caries & cracks.", "source":"Mayo Clinic – Cavities", "link":"https://www.mayoclinic.org/diseases-conditions/cavities/symptoms-causes/syc-20352892" },
+  "tooth_11": { "name": "Tooth 11 (UR Central Incisor)", "hint": "Chips/wear from trauma or acid erosion.", "source":"WHO Oral Health", "link":"https://www.who.int/health-topics/oral-health" },
+  "tooth_21": { "name": "Tooth 21 (UL Central Incisor)", "hint": "Smooth-surface caries possible with sugars.", "source":"Mayo Clinic – Cavities", "link":"https://www.mayoclinic.org/diseases-conditions/cavities/symptoms-causes/syc-20352892" },
+  "tooth_26": { "name": "Tooth 26 (UL 1st Molar)", "hint": "Lingering hot/cold → check for pulpitis.", "source":"Mayo Clinic – Toothache", "link":"https://www.mayoclinic.org/first-aid/first-aid-toothache/basics/art-20056628" },
+  "tooth_46": { "name": "Tooth 46 (LR 1st Molar)", "hint": "Pain on bite/release suggests crack.", "source":"Cracked Tooth – StatPearls", "link":"https://www.ncbi.nlm.nih.gov/books/NBK606115/" },
+  "tooth_41": { "name": "Tooth 41 (LR Central Incisor)", "hint": "Wear facets? Consider bruxism/night guard.", "source":"NIDCR – TMD", "link":"https://www.nidcr.nih.gov/health-info/tmd" },
+  "tooth_31": { "name": "Tooth 31 (LL Central Incisor)", "hint": "Sensitivity → check recession/abrasion.", "source":"WHO Oral Health", "link":"https://www.who.int/health-topics/oral-health" },
+  "tooth_36": { "name": "Tooth 36 (LL 1st Molar)", "hint": "Deep grooves trap plaque → fissure caries.", "source":"Mayo Clinic – Cavities", "link":"https://www.mayoclinic.org/diseases-conditions/cavities/symptoms-causes/syc-20352892" }
 }
+
