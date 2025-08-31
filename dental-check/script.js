@@ -72,3 +72,36 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Save to History
+document.getElementById('saveHistory').addEventListener('click', () => {
+  const recHTML = document.getElementById('recommendation').innerHTML;
+  if (recHTML) {
+    const existing = JSON.parse(localStorage.getItem('dentalHistory') || '[]');
+    existing.push({ date: new Date().toLocaleString(), content: recHTML });
+    localStorage.setItem('dentalHistory', JSON.stringify(existing));
+    alert('Saved to history.');
+  }
+});
+
+// View History
+document.getElementById('viewHistory').addEventListener('click', () => {
+  const box = document.getElementById('historyBox');
+  const entries = JSON.parse(localStorage.getItem('dentalHistory') || '[]');
+
+  if (entries.length === 0) {
+    box.innerHTML = 'No saved history.';
+  } else {
+    box.innerHTML = entries.map(e => `<div><strong>${e.date}</strong><br>${e.content}</div><hr>`).join('');
+  }
+  box.classList.remove('hidden');
+});
+
+// Export to PDF
+document.getElementById('exportPDF').addEventListener('click', () => {
+  const element = document.getElementById('recommendation');
+  if (element.innerHTML.trim()) {
+    html2pdf().from(element).save('dental-check-result.pdf');
+  } else {
+    alert('Please get a recommendation first.');
+  }
+});
