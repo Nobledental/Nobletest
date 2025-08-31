@@ -23,20 +23,29 @@
       <p class="subtitle">Choose the tooth/area and complaints. We’ll show <strong>Possible causes</strong>, <strong>Investigations</strong>, <strong>Do & Don’ts</strong>, and <strong>Recommended professional treatments</strong>.</p>
     </section>
 
-    <!-- 01: Area -->
-    <section class="card">
-      <h2>Tooth / Area</h2>
-      <div class="svg-wrapper">
-        <!-- We inline the SVG at runtime for reliable clicks -->
-        <div id="inlineSvgContainer" aria-label="Jaw map"></div>
-        <div id="tooltip" class="tooltip hidden" role="tooltip"></div>
-      </div>
+<!-- 01: Tooth / Area -->
+<section class="card">
+  <h2>Tooth / Area</h2>
 
-      <div id="jawLocationSection" class="inputs-row">
-        <label for="jawLocation">Selected Area:</label>
-        <input type="text" id="jawLocation" readonly placeholder="Click a region on the map"/>
-      </div>
-    </section>
+  <div class="map-toggle">
+    <button id="use2D" class="primary-btn">2D Map</button>
+    <button id="use3D" class="ghost-btn" disabled>3D View (coming soon)</button>
+  </div>
+
+  <div class="svg-wrapper">
+    <!-- Inline SVG container (preferred for 2D) -->
+    <div id="inlineSvgContainer" aria-label="Jaw map"></div>
+    <!-- Optional fallback object -->
+    <object type="image/svg+xml" data="assets/jaw-map-advanced.svg" id="jawSvg" class="hidden"></object>
+    <div id="tooltip" class="tooltip hidden"></div>
+  </div>
+
+  <div id="jawLocationSection" class="inputs-row">
+    <label for="jawLocation">Selected Area:</label>
+    <input type="text" id="jawLocation" readonly placeholder="Click a region on the map"/>
+  </div>
+</section>
+
 
     <!-- 02: Complaints -->
     <section class="card">
