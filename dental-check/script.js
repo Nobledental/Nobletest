@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const loadInlineSvg = async () => {
     try {
       const [svgText, regions] = await Promise.all([
-        fetch('assets/jaw-map.svg').then(r => r.text()),
+        fetch('assets/jaw-map-advanced.svg').then(r => r.text()),
         fetch('assets/regions.json').then(r => r.json())
       ]);
 
@@ -236,7 +236,3 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// in script.js, change the line:
-fetch('assets/jaw-map.svg')
-// to:
-fetch('assets/jaw-map-advanced.svg')
