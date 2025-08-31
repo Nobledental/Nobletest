@@ -16,5 +16,49 @@
     "answer": "Not always. Removal is suggested if there is impaction, pain, or infection.",
     "source": "WHO Oral Health",
     "link": "https://www.who.int/news-room/fact-sheets/detail/oral-health"
+  },
+    {
+    "question": "What should I do if I have a toothache that lasts more than 2 days?",
+    "answer": "Persistent tooth pain can be caused by decay or infection. Avoid self-medicating. See a dentist promptly to prevent complications.",
+    "source": "Mayo Clinic – Toothache Causes & Treatment",
+    "link": "https://www.mayoclinic.org/diseases-conditions/toothache/symptoms-causes/syc-20350901"
+  },
+  {
+    "question": "Why are bleeding gums a warning sign?",
+    "answer": "Bleeding gums, especially when brushing or flossing, are an early sign of gum disease (gingivitis). If ignored, it can progress to periodontitis and cause tooth loss.",
+    "source": "American Dental Association – Gum Disease",
+    "link": "https://www.ada.org/resources/research/science-and-research-institute/oral-health-topics/gum-disease"
+  },
+  {
+    "question": "Is swelling in the face or jaw dangerous?",
+    "answer": "Yes. Swelling with fever often means a dental abscess or spreading infection. This is an emergency — visit a dentist or ER immediately.",
+    "source": "WHO Oral Health Fact Sheet",
+    "link": "https://www.who.int/news-room/fact-sheets/detail/oral-health"
+  },
+  {
+    "question": "Can teeth grinding (bruxism) affect my health?",
+    "answer": "Yes. Habitual grinding or clenching can cause TMJ pain, headaches, and tooth wear. A dentist may recommend a night guard to protect your teeth.",
+    "source": "NIDCR – Temporomandibular Joint Disorders",
+    "link": "https://www.nidcr.nih.gov/health-info/tmd"
+  },
+  {
+    "question": "Are white or red patches in the mouth serious?",
+    "answer": "Sometimes. Non-healing ulcers or patches lasting more than 2 weeks should be checked by a dentist — they may require a biopsy to rule out oral cancer.",
+    "source": "Oxford Handbook of Clinical Dentistry",
+    "link": "https://global.oup.com/academic/product/oxford-handbook-of-clinical-dentistry-9780199679850"
+  },
+  {
+    "question": "How can I reduce tooth sensitivity at home?",
+    "answer": "Use toothpaste for sensitive teeth, avoid acidic drinks, and don’t brush too hard. If sensitivity continues, see a dentist to check for enamel wear or cavities.",
+    "source": "Cleveland Clinic – Tooth Sensitivity",
+    "link": "https://my.clevelandclinic.org/health/diseases/22240-tooth-sensitivity"
+  },
+  {
+    "question": "When should I worry about jaw pain?",
+    "answer": "Jaw pain with clicking or limited movement may be a TMJ disorder. Self-care like a soft diet helps, but ongoing pain requires professional care.",
+    "source": "Mayo Clinic – TMJ Disorders",
+    "link": "https://www.mayoclinic.org/diseases-conditions/tmj/symptoms-causes/syc-20350941"
   }
 ]
+
+
