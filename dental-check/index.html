@@ -1,1 +1,48 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dental Self-Check Visual Tool</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>🦷 Visual Dental Self-Check</h2>
+    <p>Click a region to understand more about potential dental issues.</p>
+
+    <div id="svgWrapper">
+      <object type="image/svg+xml" data="assets/jaw-map.svg" id="jawSvg"></object>
+      <div id="tooltip" class="tooltip hidden"></div>
+    </div>
+
+    <div id="jawLocationSection">
+      <label for="jawLocation">Selected Jaw Area:</label>
+      <input type="text" id="jawLocation" readonly />
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+<button id="downloadZip">Download Tool ZIP</button>
+
+<script>
+document.getElementById('downloadZip').addEventListener('click', async () => {
+  const zip = new JSZip();
+  zip.file("index.html", `...html content...`);
+  zip.file("styles.css", `...css content...`);
+  zip.file("script.js", `...js content...`);
+  zip.folder("assets").file("jaw-map.svg", `...svg content...`);
+  zip.folder("assets").file("regions.json", `...json content...`);
+
+  const content = await zip.generateAsync({ type: "blob" });
+  saveAs(content, "dental-check-module.zip");
+});
+</script>
+
+</body>
+</html>
