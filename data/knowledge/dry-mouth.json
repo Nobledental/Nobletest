@@ -1,0 +1,69 @@
+{
+  "id": "dry-mouth",
+  "condition": "Dry Mouth (Xerostomia)",
+  "synonyms": ["Xerostomia", "Low saliva"],
+  "category": "other",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Sticky, dry mouth",
+    "Need to sip water often",
+    "Cracked lips, mouth sores",
+    "Trouble swallowing dry foods",
+    "Bad breath"
+  ],
+  "differentials": [
+    { "name": "Medication-related", "clues": ["Antidepressants, antihistamines, BP meds"] },
+    { "name": "Systemic conditions", "clues": ["Sjogren’s, diabetes, thyroid, radiation history"] },
+    { "name": "Mouth breathing", "clues": ["Nasal blockage; worse at night"] }
+  ],
+  "probable_causes": [
+    "Medications that reduce saliva",
+    "Autoimmune diseases (Sjogren’s), diabetes",
+    "Dehydration, caffeine, alcohol, smoking",
+    "Head & neck radiation history"
+  ],
+  "investigations": [
+    "Medication and medical history review",
+    "Exam for fungal infection and caries risk",
+    "Salivary flow assessment where available"
+  ],
+  "do_now": [
+    "Sip water frequently; sugar-free gum/lozenges",
+    "Avoid alcohol-based mouthwashes",
+    "Humidifier at night; nasal care if congested"
+  ],
+  "donts": [
+    "Don’t rely on sweets to stimulate saliva",
+    "Don’t skip fluoride toothpaste"
+  ],
+  "professional_care": [
+    { "name": "Saliva substitutes/stimulants", "what_it_does": "Moisturizes mouth or boosts flow", "pros": ["Comfort"], "cons": ["Repeat use needed"] },
+    { "name": "High-fluoride regimen", "what_it_does": "Protects against cavities", "pros": ["Reduces decay risk"], "cons": ["Compliance needed"] },
+    { "name": "Manage fungal infections", "what_it_does": "Treats thrush if present", "pros": ["Comfort, taste improves"], "cons": ["May recur if dryness persists"] },
+    { "name": "Medical coordination", "what_it_does": "Reviews meds and systemic causes", "pros": ["Addresses root cause"], "cons": ["Case-dependent"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "history_any": ["diabetes", "thyroid"] }, "set_to": "yellow_routine", "why": "Systemic conditions increase decay risk—early prevention helpful" }
+  ],
+  "special_populations": {
+    "pediatric": ["Check for mouth breathing; ENT referral if persistent"],
+    "pregnancy_nursing": ["Hydration and gentle products; review safe options"],
+    "systemic_notes": ["Sjogren’s/diabetes: high caries risk—custom prevention plan"]
+  ],
+  "prevention": [
+    "Hydration and saliva stimulation",
+    "Fluoride toothpaste/varnish",
+    "Limit sugars and acids",
+    "Regular dental check-ups"
+  ],
+  "complications": [
+    "Rapid tooth decay",
+    "Gum disease and fungal infections",
+    "Difficulty wearing dentures"
+  ],
+  "references": [
+    { "label": "Burket’s Oral Medicine" },
+    { "label": "WHO Oral Health — xerostomia & prevention" }
+  ]
+}
