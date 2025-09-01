@@ -1,0 +1,69 @@
+{
+  "id": "mouth-ulcer",
+  "condition": "Mouth Ulcers / Sores",
+  "synonyms": ["Canker sore", "Aphthous ulcer"],
+  "category": "mucosa",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Small painful sore inside mouth",
+    "Stings with spicy/acidic foods",
+    "Takes 7–14 days to heal"
+  ],
+  "differentials": [
+    { "name": "Aphthous ulcer", "clues": ["Round/oval shallow sore", "No hard lump", "Heals in 1–2 weeks"] },
+    { "name": "Traumatic ulcer", "clues": ["Near sharp tooth/denture", "Improves after smoothing"] },
+    { "name": "Oral thrush", "clues": ["White patches that wipe off", "Burning"] },
+    { "name": "Suspicious/red/white patch", "clues": ["Does not heal >2 weeks", "Hard/raised edges", "Needs exam/biopsy"] }
+  ],
+  "probable_causes": [
+    "Minor trauma (bite, braces, sharp edges)",
+    "Stress, vitamin deficiency",
+    "Food triggers",
+    "Fungal infection (thrush) in some cases"
+  ],
+  "investigations": [
+    "Oral exam",
+    "Check for sharp teeth/denture edges",
+    "Biopsy if non-healing >2 weeks or suspicious"
+  ],
+  "do_now": [
+    "Avoid spicy/acidic foods",
+    "Use protective/soothing gels",
+    "Saltwater or mild antiseptic rinse"
+  ],
+  "donts": [
+    "Don’t ignore ulcers >2 weeks",
+    "Don’t self-medicate with unadvised steroids"
+  ],
+  "professional_care": [
+    { "name": "Smoothing sharp edges/adjust dentures", "what_it_does": "Removes cause of trauma", "pros": ["Prevents recurrence"], "cons": ["May need minor reshaping"] },
+    { "name": "Topical medications", "what_it_does": "Reduces pain/inflammation", "pros": ["Faster comfort"], "cons": ["Short courses only"] },
+    { "name": "Antifungals (if thrush)", "what_it_does": "Treats fungal infection", "pros": ["Resolves soreness"], "cons": ["Identify causes (dry mouth, meds)"] },
+    { "name": "Biopsy/referral", "what_it_does": "Rules out oral cancer", "pros": ["Early detection"], "cons": ["Minor procedure"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "duration": ">1w" }, "set_to": "yellow_routine", "why": "Persistent pain deserves review" },
+    { "when": { "history_any": ["immune"] }, "set_to": "yellow_routine", "why": "Immunocompromise needs earlier care" }
+  ],
+  "special_populations": {
+    "pediatric": ["Check for cheek/lip biting; soft brush; assess braces irritation"],
+    "pregnancy_nursing": ["Use safe topical options; avoid triggers"],
+    "systemic_notes": ["Check for nutritional deficiency, IBS/IBD, anemia if recurrent"]
+  },
+  "prevention": [
+    "Identify and avoid triggers",
+    "Protective wax on braces",
+    "Correct sharp edges on teeth/dentures",
+    "Balanced diet; manage stress"
+  ],
+  "complications": [
+    "Painful eating/drinking",
+    "Weight loss/dehydration in severe cases",
+    "Missed diagnosis of serious lesions if ignored"
+  ],
+  "references": [
+    { "label": "Burket’s Oral Medicine" },
+    { "label": "WHO Oral Health — mucosal conditions" }
+  ]
+}
