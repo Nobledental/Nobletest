@@ -1,0 +1,69 @@
+{
+  "id": "bruxism",
+  "condition": "Teeth Grinding (Bruxism)",
+  "synonyms": ["Grinding", "Clenching", "Night grinding"],
+  "category": "other",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Jaw pain or tightness on waking",
+    "Dull headaches at temples",
+    "Worn, flattened or chipped teeth",
+    "Tooth sensitivity without obvious cavity",
+    "Partner hears grinding at night"
+  ],
+  "differentials": [
+    { "name": "TMJ disorder (TMD)", "clues": ["Joint clicks/locking", "Pain in front of ear", "Limited opening"] },
+    { "name": "Acid erosion", "clues": ["Smooth cupped wear", "History of reflux or frequent acidic drinks"] },
+    { "name": "High bite (occlusal interference)", "clues": ["Started after new filling/crown", "One tooth feels 'high'"] }
+  ],
+  "probable_causes": [
+    "Stress/anxiety, sleep disturbances",
+    "Misaligned bite or high spots",
+    "Caffeine, alcohol, nicotine",
+    "Certain medications (some SSRIs)"
+  ],
+  "investigations": [
+    "Exam of tooth wear facets",
+    "Muscle and TMJ palpation",
+    "Bite/occlusion assessment",
+    "Check for reflux/medication links"
+  ],
+  "do_now": [
+    "Warm compress and gentle jaw stretches",
+    "Reduce caffeine and late-night screen time",
+    "Avoid chewing gum and hard foods",
+    "Track stress and sleep hygiene"
+  ],
+  "donts": [
+    "Don’t chew on ice/pens",
+    "Don’t ignore increasing tooth wear or cracks"
+  ],
+  "professional_care": [
+    { "name": "Custom night guard (occlusal splint)", "what_it_does": "Protects teeth and relaxes muscles", "pros": ["Reduces wear and pain"], "cons": ["Needs upkeep; not curative of cause"] },
+    { "name": "Bite adjustment (if high spots)", "what_it_does": "Balances contact points", "pros": ["Relieves triggers"], "cons": ["Careful planning needed"] },
+    { "name": "Behavioral/stress therapy", "what_it_does": "Targets root triggers", "pros": ["Addresses cause"], "cons": ["Requires consistency"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "region_family": "back_teeth" }, "set_to": "yellow_routine", "why": "Molars often show faster wear/cracks—early guard advised" }
+  ],
+  "special_populations": {
+    "pediatric": ["Often self-limited; monitor; check airway/allergies if severe"],
+    "pregnancy_nursing": ["Conservative measures and soft guards are safe"],
+    "systemic_notes": ["Reflux management helps; review meds that may increase clenching"]
+  ],
+  "prevention": [
+    "Stress management and good sleep habits",
+    "Limit stimulants (caffeine/nicotine) at night",
+    "Night guard if wear is progressing"
+  ],
+  "complications": [
+    "Tooth fractures/cracks",
+    "TMJ/muscle pain",
+    "Gum recession/sensitivity"
+  ],
+  "references": [
+    { "label": "Oxford Handbook of Clinical Dentistry (2022)" },
+    { "label": "ADA – Bruxism overview" }
+  ]
+  }
