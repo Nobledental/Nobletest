@@ -1,0 +1,63 @@
+{
+  "id": "bad-breath",
+  "condition": "Bad Breath (Halitosis)",
+  "synonyms": ["Halitosis"],
+  "category": "other",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Persistent bad smell from mouth",
+    "Metallic or sour taste",
+    "Worse in the morning"
+  ],
+  "differentials": [
+    { "name": "Gum disease", "clues": ["Bleeding gums", "Tartar build-up", "Loose teeth"] },
+    { "name": "Tongue coating", "clues": ["White/yellow coating on tongue"] },
+    { "name": "Dry mouth (xerostomia)", "clues": ["Sticky mouth", "On certain meds"] },
+    { "name": "ENT/GI causes", "clues": ["Sinus infection, reflux"] }
+  ],
+  "probable_causes": [
+    "Plaque/tartar and gum disease",
+    "Tongue coating (bacteria)",
+    "Dry mouth, smoking",
+    "Diet, reflux, sinus issues"
+  ],
+  "investigations": [
+    "Gum exam and X-rays if needed",
+    "Tongue exam",
+    "Medical review for dry mouth or reflux"
+  ],
+  "do_now": [
+    "Brush teeth and tongue twice daily",
+    "Floss/interdental clean daily",
+    "Hydrate well; sugar-free gum to stimulate saliva"
+  ],
+  "donts": [
+    "Don’t mask with mouthwash only",
+    "Don’t ignore if persistent despite good hygiene"
+  ],
+  "professional_care": [
+    { "name": "Professional cleaning", "what_it_does": "Removes plaque/tartar", "pros": ["Improves breath"], "cons": ["Needs maintenance"] },
+    { "name": "Treat gum disease", "what_it_does": "Deep cleaning/therapy", "pros": ["Targets main cause"], "cons": ["Multiple visits"] },
+    { "name": "Manage dry mouth", "what_it_does": "Saliva substitutes/med review", "pros": ["Comfort, reduces odor"], "cons": ["Ongoing care"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [],
+  "special_populations": {
+    "pediatric": ["Focus on brushing routine; check adenoids/sinus if persistent"],
+    "pregnancy_nursing": ["Morning sickness/reflux can worsen—gentle hygiene after episodes"],
+    "systemic_notes": ["Diabetes and dry mouth meds increase risk; review with physician if needed"]
+  },
+  "prevention": [
+    "Daily tongue cleaning",
+    "Regular dental cleanings",
+    "Quit smoking; manage reflux"
+  ],
+  "complications": [
+    "Social/psychological impact",
+    "Underlying gum disease progression"
+  ],
+  "references": [
+    { "label": "WHO Oral Health — hygiene basics" },
+    { "label": "ADA—Halitosis overview" }
+  ]
+}
