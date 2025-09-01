@@ -1,0 +1,38 @@
+{
+  "id": "knocked-out-tooth",
+  "condition": "Knocked-Out Tooth",
+  "synonyms": ["Avulsed tooth", "Tooth out of socket"],
+  "category": "other",
+  "applicable_regions": [],
+  "symptoms_patient_terms": ["Permanent tooth completely out of mouth", "Bleeding socket", "Shock after injury"],
+  "differentials": [
+    { "name": "Avulsion (permanent tooth)", "clues": ["Whole tooth out, root intact"] },
+    { "name": "Primary tooth loss", "clues": ["Baby tooth lost—do not reimplant"] }
+  ],
+  "probable_causes": ["Sports injury", "Fall/trauma", "Accident"],
+  "investigations": ["Urgent trauma exam", "X-rays to check socket", "Check for other injuries"],
+  "do_now": [
+    "Handle tooth by crown, not root",
+    "Rinse gently with saline/milk if dirty",
+    "Reinsert into socket if possible",
+    "If not, keep in milk/saliva until dentist"
+  ],
+  "donts": ["Do not scrub tooth", "Do not let it dry", "Do not reinsert baby teeth"],
+  "professional_care": [
+    { "name": "Reimplantation + splint", "what_it_does": "Replaces and stabilizes tooth", "pros": ["Can save tooth"], "cons": ["Long-term survival varies"] },
+    { "name": "Root Canal later", "what_it_does": "Prevents infection after reimplant", "pros": ["Maintains tooth"], "cons": ["Additional procedure"] }
+  ],
+  "urgency_default": "red_urgent",
+  "urgency_modifiers": [],
+  "special_populations": {
+    "pediatric": ["Do not reimplant baby teeth—risk to permanent tooth bud"],
+    "pregnancy_nursing": ["Urgent dental trauma care is safe"],
+    "systemic_notes": ["Bleeding disorders may complicate management—apply firm pressure and seek urgent care"]
+  },
+  "prevention": ["Wear sports mouthguard", "Child-proof home for toddlers"],
+  "complications": ["Tooth loss", "Bone damage", "Need for prosthetic replacement"],
+  "references": [
+    { "label": "IADT Guidelines – Dental Trauma (2020)" },
+    { "label": "Oxford Handbook of Clinical Dentistry" }
+  ]
+}
