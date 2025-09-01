@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dental Self-Check Tool | Visual Symptom Checker</title>
-  <meta name="description" content="Interactive dental self-check with jaw map. Choose symptoms and get evidence-based guidance for toothache, swelling, gum disease, TMJ and oral lesions. Backed by ADA, WHO, NIDCR, Mayo Clinic.">
+  <title>Dental Self-Check | Patient Triage + Visual Map</title>
+  <meta name="description" content="Plain-English dental triage with jaw map. Enter basic details, symptoms, and get safe guidance: urgency, do’s/don’ts, hygiene tips, and likely treatments.">
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
@@ -12,78 +12,199 @@
     <div class="logo">🦷 Dental Self-Check</div>
     <nav>
       <a href="/">Home</a>
-      <a href="/dental-check-chat/">Chat Tool</a>
+      <a href="#intake">Start</a>
+      <a href="#results">Results</a>
     </nav>
   </header>
 
   <main class="container">
-
     <section class="hero">
       <h1>Your Dental Self-Check</h1>
-      <p class="subtitle">Choose the tooth/area and complaints. We’ll show <strong>Possible causes</strong>, <strong>Investigations</strong>, <strong>Do & Don’ts</strong>, and <strong>Recommended professional treatments</strong>.</p>
+      <p class="subtitle">Tell us a bit about you, pick the tooth/area, select complaints, and we’ll guide you in simple language. <strong>Not a diagnosis.</strong></p>
     </section>
 
-<!-- 01: Tooth / Area -->
-<section class="card">
-  <h2>Tooth / Area</h2>
+    <!-- 0) INTAKE -->
+    <section id="intake" class="card">
+      <h2>Patient Intake</h2>
 
-  <div class="map-toggle">
-    <button id="use2D" class="primary-btn">2D Map</button>
-    <button id="use3D" class="ghost-btn" disabled>3D View (coming soon)</button>
-  </div>
+      <div class="grid-2">
+        <div>
+          <label>Full name</label>
+          <input type="text" id="pt_name" placeholder="Optional"/>
+        </div>
+        <div>
+          <label>Age</label>
+          <input type="number" id="pt_age" min="0" max="120" placeholder="e.g., 28"/>
+        </div>
+        <div>
+          <label>Gender</label>
+          <select id="pt_gender">
+            <option value="">Prefer not to say</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div id="pregnancyBlock" class="hidden">
+          <label>Pregnancy / Nursing (for females 18+)</label>
+          <select id="pt_pregnancy">
+            <option value="">Select status</option>
+            <option value="pregnant_confirmed">Pregnant (confirmed)</option>
+            <option value="pregnant_planning_unsure">Planning / Unsure</option>
+            <option value="not_pregnant">Not pregnant</option>
+          </select>
+          <label class="mt8"><input type="checkbox" id="pt_nursing"> Currently nursing</label>
+        </div>
+      </div>
 
-  <div class="svg-wrapper">
-    <!-- Inline SVG container (preferred for 2D) -->
-    <div id="inlineSvgContainer" aria-label="Jaw map"></div>
-    <!-- Optional fallback object -->
-    <object type="image/svg+xml" data="assets/jaw-map-advanced.svg" id="jawSvg" class="hidden"></object>
-    <div id="tooltip" class="tooltip hidden"></div>
-  </div>
+      <hr class="sep"/>
 
-  <div id="jawLocationSection" class="inputs-row">
-    <label for="jawLocation">Selected Area:</label>
-    <input type="text" id="jawLocation" readonly placeholder="Click a region on the map"/>
-  </div>
-</section>
+      <div class="grid-2">
+        <div>
+          <label>New patient or Post-Op?</label>
+          <label><input type="radio" name="pt_flow" value="new" checked> New patient</label>
+          <label><input type="radio" name="pt_flow" value="postop"> Post-Op (recent procedure)</label>
+        </div>
 
+        <div id="postopBlock" class="hidden">
+          <label>Procedure</label>
+          <select id="pt_postop_proc">
+            <option value="">Select</option>
+            <option value="extraction">Extraction</option>
+            <option value="root_canal">Root canal</option>
+            <option value="filling">Filling</option>
+            <option value="crown_bridge">Crown / Bridge</option>
+            <option value="scaling">Scaling / Deep cleaning</option>
+            <option value="implant">Implant</option>
+            <option value="orthodontics">Braces / Aligners</option>
+            <option value="surgery">Oral surgery</option>
+            <option value="whitening">Whitening</option>
+          </select>
+          <label class="mt8">Days since procedure</label>
+          <input type="number" id="pt_postop_days" min="0" max="365" placeholder="e.g., 2"/>
+          <label class="mt8"><input type="checkbox" id="pt_postop_fever"> Fever now</label>
+        </div>
+      </div>
 
-    <!-- 02: Complaints -->
+      <hr class="sep"/>
+
+      <div>
+        <label>Medical history (select all that apply)</label>
+        <div class="chips">
+          <label><input type="checkbox" value="diabetes" class="mh"> Diabetes</label>
+          <label><input type="checkbox" value="hypertension" class="mh"> High blood pressure</label>
+          <label><input type="checkbox" value="heart" class="mh"> Heart valve / heart disease</label>
+          <label><input type="checkbox" value="stroke" class="mh"> Stroke / TIA (CVA)</label>
+          <label><input type="checkbox" value="ckd" class="mh"> Kidney disease (CKD)</label>
+          <label><input type="checkbox" value="liver" class="mh"> Liver disease</label>
+          <label><input type="checkbox" value="bleeding" class="mh"> Bleeding disorder</label>
+          <label><input type="checkbox" value="immune" class="mh"> Immune compromise</label>
+          <label><input type="checkbox" value="asthma" class="mh"> Asthma / COPD</label>
+          <label><input type="checkbox" value="thyroid" class="mh"> Thyroid disorder</label>
+          <label><input type="checkbox" value="cancer_bisphos" class="mh"> Cancer therapy / Bisphosphonates</label>
+        </div>
+        <label class="mt8">Other medical issues</label>
+        <textarea id="mh_other" rows="2" placeholder="Optional"></textarea>
+      </div>
+
+      <div class="mt12">
+        <label>Medications (select all that apply)</label>
+        <div class="chips">
+          <label><input type="checkbox" value="anticoagulant" class="med"> Blood thinners (warfarin, DOACs)</label>
+          <label><input type="checkbox" value="antiplatelet" class="med"> Antiplatelets (aspirin, clopidogrel)</label>
+          <label><input type="checkbox" value="steroid" class="med"> Steroids</label>
+          <label><input type="checkbox" value="chemo_imm" class="med"> Chemo / Immunosuppressants</label>
+          <label><input type="checkbox" value="bisphosphonate" class="med"> Bisphosphonates / Denosumab</label>
+          <label><input type="checkbox" value="none" class="med"> None</label>
+        </div>
+        <label class="mt8">Medication details</label>
+        <textarea id="med_details" rows="2" placeholder="Optional"></textarea>
+      </div>
+
+      <div class="grid-3 mt12">
+        <div>
+          <label>How long have you had this problem?</label>
+          <select id="symp_duration">
+            <option value="">Select</option>
+            <option value="<24h">&lt; 24 hours</option>
+            <option value="1-2d">1–2 days</option>
+            <option value="3-7d">3–7 days</option>
+            <option value=">1w">&gt; 1 week</option>
+            <option value=">1m">&gt; 1 month</option>
+          </select>
+        </div>
+        <div>
+          <label><input type="checkbox" id="flag_fever"> Fever now</label><br/>
+          <label><input type="checkbox" id="flag_spread"> Swelling is spreading</label>
+        </div>
+        <div>
+          <label>Hygiene concerns</label>
+          <label class="block"><input type="checkbox" class="hyg" value="plaque"> Deposits/tartar</label>
+          <label class="block"><input type="checkbox" class="hyg" value="stains"> Yellow/brown stains</label>
+          <label class="block"><input type="checkbox" class="hyg" value="bad_breath"> Bad breath</label>
+        </div>
+      </div>
+
+      <div class="actions mt12">
+        <button id="toSymptoms" class="primary-btn">Next: Choose area & complaints</button>
+        <button id="clearIntake" class="ghost-btn">Clear intake</button>
+      </div>
+    </section>
+
+    <!-- 1) AREA: upgraded 2D map with permanent/primary & gum bands (already wired in script.js) -->
+    <section class="card">
+      <h2>Tooth / Area</h2>
+      <div class="map-toggle">
+        <button id="use2D" class="primary-btn">2D Map</button>
+        <button id="usePrimary" class="ghost-btn">Milk Teeth</button>
+      </div>
+      <div class="svg-wrapper">
+        <div id="inlineSvgContainer" aria-label="Jaw map"></div>
+        <object type="image/svg+xml" data="assets/jaw-map-advanced.svg" id="jawSvg" class="hidden"></object>
+        <div id="tooltip" class="tooltip hidden"></div>
+      </div>
+
+      <div id="jawLocationSection" class="inputs-row">
+        <label for="jawLocation">Selected Area:</label>
+        <input type="text" id="jawLocation" readonly placeholder="Tap a tooth or gum area"/>
+      </div>
+    </section>
+
+    <!-- 2) COMPLAINTS -->
     <section class="card">
       <h2>Complaints (select all that apply)</h2>
       <div class="complaints">
         <label><input type="checkbox" value="tooth_pain_sensitivity"> Tooth pain & sensitivity</label>
         <label><input type="checkbox" value="swelling_fever"> Swelling / fever / emergency flags</label>
         <label><input type="checkbox" value="gum_periodontal"> Gum & periodontal</label>
-        <label><input type="checkbox" value="tmj_muscle"> TMJ / muscle / habits</label>
-        <label><input type="checkbox" value="mucosa_others"> Mucosa & others</label>
+        <label><input type="checkbox" value="tmj_muscle"> Jaw joint / muscles / habits</label>
+        <label><input type="checkbox" value="mucosa_others"> Mouth sores / patches / other</label>
+        <label><input type="checkbox" value="missing_tooth"> Missing tooth</label>
+        <label><input type="checkbox" value="alignment_gap"> Teeth alignment / gaps</label>
       </div>
-
       <div class="actions">
         <button id="recommendBtn" class="primary-btn">✅ Check recommendation</button>
         <button id="clearBtn" class="ghost-btn">🧹 Clear all</button>
       </div>
     </section>
 
-    <!-- 03: Your Inputs Summary -->
+    <!-- 3) Your Inputs Summary -->
     <section class="card">
       <h2>Your Inputs</h2>
-      <ul id="inputsSummary" class="inputs-summary">
+      <ul class="inputs-summary">
+        <li><strong>Name:</strong> <span id="sumName">—</span></li>
+        <li><strong>Age:</strong> <span id="sumAge">—</span></li>
+        <li><strong>Gender:</strong> <span id="sumGender">—</span></li>
         <li><strong>Tooth / area:</strong> <span id="sumArea">—</span></li>
         <li><strong>Complaints:</strong> <span id="sumComplaints">—</span></li>
+        <li><strong>Duration:</strong> <span id="sumDuration">—</span></li>
       </ul>
     </section>
 
-    <!-- 04: Results -->
-    <section id="recommendation" class="card recommendation hidden">
-      <!-- We will render these sections with clear headings:
-           - Possible causes (not a diagnosis)
-           - Investigations
-           - Do & Don’ts
-           - Recommended professional treatments
-      -->
-    </section>
+    <!-- 4) TRIAGE (new) + RESULTS -->
+    <section id="results" class="card recommendation hidden"></section>
 
-    <!-- 05: History + Export -->
+    <!-- 5) Save & Export -->
     <section class="card">
       <h2>Save & Export</h2>
       <div class="phase3-controls">
@@ -94,16 +215,16 @@
       <div id="historyBox" class="recommendation hidden" aria-live="polite"></div>
     </section>
 
-    <!-- 06: Flashcards -->
+    <!-- 6) Flashcards -->
     <section class="flashcard" id="flashcardBox">Loading tips…</section>
 
     <p class="disclaimer">
-      <strong>Disclaimer:</strong> Educational only — not a diagnosis. If you have trouble breathing, spreading swelling, or high fever, seek urgent care.
+      <strong>Disclaimer:</strong> Educational guidance only — not a diagnosis. Seek urgent care for breathing/swallowing trouble, rapidly spreading swelling, high fever, or trauma.
     </p>
   </main>
 
   <footer class="app-footer">
-    <p>© 2025 Smart Dental Assistant · Sources: ADA · WHO · NIDCR · Mayo Clinic</p>
+    <p>© 2025 Smart Dental Assistant · Educational only</p>
   </footer>
 
   <script src="libs/html2pdf.bundle.min.js"></script>
