@@ -1,0 +1,65 @@
+{
+  "id": "denture-sore",
+  "condition": "Denture Sore Spots / Poor Fit",
+  "synonyms": ["Denture ulcer", "Denture irritation"],
+  "category": "other",
+  "applicable_regions": ["gum_upper_left", "gum_upper_right", "gum_lower_left", "gum_lower_right"],
+  "symptoms_patient_terms": [
+    "Sore areas under denture",
+    "Denture feels loose or rocks",
+    "Pain when chewing",
+    "Red spots or ulcers on gums"
+  ],
+  "differentials": [
+    { "name": "Pressure ulcer", "clues": ["Localized sore under denture base", "New denture or recent change"] },
+    { "name": "Fungal stomatitis", "clues": ["Redness under denture palate", "Often poor hygiene; sleeping with denture"] },
+    { "name": "Sharp bony ridge/undercut", "clues": ["Soreness at specific bony areas"] }
+  ],
+  "probable_causes": [
+    "High pressure points from new/warped denture",
+    "Poor hygiene and wearing denture overnight",
+    "Weight change or ridge resorption over time"
+  ],
+  "investigations": [
+    "Denture fit check with pressure indicator",
+    "Oral mucosa exam for ulcers/fungal signs",
+    "Bite analysis; check for rocking"
+  ],
+  "do_now": [
+    "Remove denture overnight; keep it clean and dry",
+    "Saltwater rinses to soothe gums",
+    "Use only dentist-advised adhesive"
+  ],
+  "donts": [
+    "Don’t self-adjust with files or hot water",
+    "Don’t sleep with dentures in (unless advised)"
+  ],
+  "professional_care": [
+    { "name": "Relining/adjustment", "what_it_does": "Reshapes inner surface for better fit", "pros": ["Comfort, stability"], "cons": ["May need periodic repeats"] },
+    { "name": "Treat fungal stomatitis", "what_it_does": "Antifungal + hygiene instructions", "pros": ["Heals mucosa"], "cons": ["Must clean denture thoroughly"] },
+    { "name": "New denture or implant support", "what_it_does": "Improves retention/stability", "pros": ["Better function"], "cons": ["Cost; surgery for implants"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "duration": ">1w" }, "set_to": "yellow_routine", "why": "Persistent soreness needs adjustment" }
+  ],
+  "special_populations": {
+    "pediatric": ["Not typical—consider orthodontic appliances instead"],
+    "pregnancy_nursing": ["Treat fungal infections promptly; maintain hygiene"],
+    "systemic_notes": ["Diabetes increases fungal risk; xerostomia reduces denture retention—manage saliva"]
+  ],
+  "prevention": [
+    "Remove dentures nightly and clean properly",
+    "Regular fit checks every 6–12 months",
+    "Avoid very hard/sticky foods with loose dentures"
+  ],
+  "complications": [
+    "Chronic ulcers and infections",
+    "Poor nutrition due to chewing pain",
+    "Bone resorption/looser fit over time"
+  ],
+  "references": [
+    { "label": "Contemporary Complete Dentures – clinical care" },
+    { "label": "ADA – Denture care guidance" }
+  ]
+  }
