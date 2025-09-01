@@ -1,0 +1,63 @@
+{
+  "id": "crooked-teeth",
+  "condition": "Crooked / Spaced Teeth (Orthodontic)",
+  "synonyms": ["Crowding", "Spacing", "Malocclusion"],
+  "category": "alignment",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Teeth are crowded or overlapping",
+    "Gaps between teeth",
+    "Upper and lower teeth don’t meet well",
+    "Hard to floss between teeth"
+  ],
+  "differentials": [
+    { "name": "Crowding", "clues": ["Teeth overlap/rotate", "Narrow arches"] },
+    { "name": "Spacing", "clues": ["Gaps from small teeth or missing teeth"] },
+    { "name": "Bite issues", "clues": ["Overbite, underbite, crossbite, open bite"] }
+  ],
+  "probable_causes": [
+    "Genetics and jaw size mismatch",
+    "Early loss of baby teeth",
+    "Habits (thumb sucking, tongue thrust)",
+    "Missing or extra teeth"
+  ],
+  "investigations": [
+    "Clinical exam and photos",
+    "X-rays/OPG and cephalometric analysis",
+    "3D scan or impressions for study models"
+  ],
+  "do_now": [
+    "Keep excellent hygiene (crowding traps plaque)",
+    "Consider an orthodontic evaluation"
+  ],
+  "donts": [
+    "Don’t delay evaluation if chewing/speech is affected",
+    "Don’t attempt DIY aligners or mail-order kits"
+  ],
+  "professional_care": [
+    { "name": "Braces", "what_it_does": "Moves teeth with brackets and wires", "pros": ["Precise control", "Works for complex cases"], "cons": ["Visible, requires visits"] },
+    { "name": "Clear aligners", "what_it_does": "Series of removable trays", "pros": ["Aesthetics, removable"], "cons": ["Discipline needed; not for all cases"] },
+    { "name": "Myofunctional therapy", "what_it_does": "Addresses tongue/posture habits", "pros": ["Complements orthodontics"], "cons": ["Requires practice"] }
+  ],
+  "urgency_default": "green_watch",
+  "urgency_modifiers": [],
+  "special_populations": {
+    "pediatric": ["First ortho check by age 7 helps plan growth guidance"],
+    "pregnancy_nursing": ["Ortho is elective; hygiene is key"],
+    "systemic_notes": ["Gum disease must be stable before ortho"]
+  ],
+  "prevention": [
+    "Break harmful habits early",
+    "Maintain baby teeth until natural shedding",
+    "Early ortho guidance when needed"
+  ],
+  "complications": [
+    "Plaque retention and gum problems",
+    "Tooth wear from bad bite",
+    "Aesthetic and speech concerns"
+  ],
+  "references": [
+    { "label": "Proffit – Contemporary Orthodontics" },
+    { "label": "ADA – Orthodontic treatment overview" }
+  ]
+  }
