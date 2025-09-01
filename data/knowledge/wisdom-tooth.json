@@ -1,0 +1,41 @@
+{
+  "id": "wisdom-tooth",
+  "condition": "Wisdom Tooth Pain",
+  "synonyms": ["Pericoronitis", "Third molar pain"],
+  "category": "swelling",
+  "applicable_regions": ["tooth_18", "tooth_28", "tooth_38", "tooth_48"],
+  "symptoms_patient_terms": [
+    "Pain at back of mouth",
+    "Swollen gum flap",
+    "Bad taste",
+    "Difficulty opening mouth"
+  ],
+  "differentials": [
+    { "name": "Pericoronitis", "clues": ["Swollen gum flap", "Food trap", "Pain radiates to ear/throat"] },
+    { "name": "Cavity in wisdom tooth", "clues": ["Pain on sweets/biting", "Visible hole"] },
+    { "name": "Impacted wisdom tooth", "clues": ["Persistent pain", "Tooth partly stuck under gum/bone"] }
+  ],
+  "probable_causes": ["Partially erupted wisdom tooth", "Food trap under gum flap", "Decay in wisdom tooth"],
+  "investigations": ["Dental exam", "X-ray (OPG) to check position"],
+  "do_now": ["Warm salt-water rinses", "Soft diet, gentle brushing", "Pain relief as advised"],
+  "donts": ["Do not ignore swelling with fever", "Do not try to cut gum flap yourself"],
+  "professional_care": [
+    { "name": "Cleaning + antibiotics (if infected)", "what_it_does": "Reduces infection and pain", "pros": ["Relieves acute pain"], "cons": ["Not definitive"] },
+    { "name": "Extraction", "what_it_does": "Removes wisdom tooth", "pros": ["Definitive solution"], "cons": ["Surgical risks"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "flags": ["fever"] }, "set_to": "red_urgent", "why": "Fever + wisdom pain suggests spreading infection" }
+  ],
+  "special_populations": {
+    "pediatric": ["Rare in children—usually >16 years"],
+    "pregnancy_nursing": ["Treat acute infection; extraction often postponed if possible"],
+    "systemic_notes": ["Diabetes: higher infection risk—earlier care advised"]
+  },
+  "prevention": ["Early evaluation at 17–20 years", "Regular X-rays to monitor wisdom teeth"],
+  "complications": ["Repeated infections", "Damage to nearby teeth", "Cyst formation"],
+  "references": [
+    { "label": "Oxford Handbook of Clinical Dentistry (2022)" },
+    { "label": "ADA – Wisdom Teeth guidance" }
+  ]
+}
