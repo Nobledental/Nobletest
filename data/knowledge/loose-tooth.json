@@ -1,0 +1,65 @@
+{
+  "id": "loose-tooth",
+  "condition": "Loose Tooth",
+  "synonyms": ["Tooth mobility"],
+  "category": "gum",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Tooth moves when touched",
+    "Bite feels different",
+    "Soreness when chewing"
+  ],
+  "differentials": [
+    { "name": "Periodontitis-related mobility", "clues": ["Gum pockets/bone loss", "History of bleeding gums"] },
+    { "name": "Trauma/occlusal overload", "clues": ["Recent blow or heavy grinding", "High spot on a filling/crown"] },
+    { "name": "Post-orthodontic mobility", "clues": ["Recent braces adjustment", "Usually settles"] }
+  ],
+  "probable_causes": [
+    "Advanced gum disease",
+    "Trauma or grinding/clenching",
+    "High bite on a restoration"
+  ],
+  "investigations": [
+    "Mobility grading",
+    "Periodontal charting and X-rays",
+    "Bite (occlusion) assessment"
+  ],
+  "do_now": [
+    "Avoid biting hard foods on that side",
+    "Keep area very clean (soft brush + interdental)",
+    "Wear night guard if you grind"
+  ],
+  "donts": [
+    "Don’t wiggle the tooth",
+    "Don’t delay if mobility is increasing"
+  ],
+  "professional_care": [
+    { "name": "Deep cleaning (if gum cause)", "what_it_does": "Removes infection below gum", "pros": ["Can reduce inflammation"], "cons": ["Needs maintenance"] },
+    { "name": "Splinting", "what_it_does": "Temporarily links teeth for stability", "pros": ["Comfort while healing"], "cons": ["Hygiene around splint needed"] },
+    { "name": "Bite adjustment", "what_it_does": "Removes high spots/imbalance", "pros": ["Relieves overload"], "cons": ["Follow-up checks required"] },
+    { "name": "Surgery/Regeneration (advanced)", "what_it_does": "Treats severe bone loss", "pros": ["Stabilization"], "cons": ["Case-dependent outcomes"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "flags": ["fever"] }, "set_to": "red_urgent", "why": "Fever suggests infection" }
+  ],
+  "special_populations": {
+    "pediatric": ["Loose baby teeth can be normal near shedding age—dentist will confirm"],
+    "pregnancy_nursing": ["Gum laxity may increase—keep hygiene strong"],
+    "systemic_notes": ["Uncontrolled diabetes worsens gum disease; grinding increases overload"]
+  ],
+  "prevention": [
+    "Treat gum disease early",
+    "Night guard for bruxism",
+    "Regular bite checks after new restorations"
+  ],
+  "complications": [
+    "Tooth migration",
+    "Tooth loss",
+    "Bite changes and jaw pain"
+  ],
+  "references": [
+    { "label": "Carranza Clinical Periodontology" },
+    { "label": "ADA—Gum Disease & Mobility" }
+  ]
+}
