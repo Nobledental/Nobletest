@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dental Self-Check Condition",
+  "type": "object",
+  "required": ["id", "condition", "category", "symptoms_patient_terms", "probable_causes", "investigations", "do_now", "donts", "professional_care", "urgency_default", "risk_factors", "complications", "prevention", "references"],
+  "properties": {
+    "id": { "type": "string", "description": "kebab-case unique id, e.g., toothache" },
+    "condition": { "type": "string", "description": "Human-readable condition title" },
+    "synonyms": { "type": "array", "items": { "type": "string" } },
+
+    "category": {
+      "type": "string",
+      "enum": ["tooth_pain", "swelling", "gum", "tmj", "mucosa", "missing_tooth", "alignment", "postop", "other"]
+    },
+
+    "applicable_regions": {
+      "type": "array",
+      "description": "FDI tooth ids, quadrant or gum tags; leave empty for 'any'",
+      "items": { "type": "string" }
+    },
+
+    "symptoms_patient_terms": {
+      "type": "array",
+      "description": "Plain-English phrases patients use",
+      "items": { "type": "string" }
+    },
+
+    "differentials": {
+      "type": "array",
+      "description": "How to tell close possibilities apart",
+      "items": {
+        "type": "object",
+        "required": ["name", "clues"],
+        "properties": {
+          "name": { "type": "string" },
+          "clues": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "probable_causes": { "type": "array", "items": { "type": "string" } },
+    "investigations": { "type": "array", "items": { "type": "string" } },
+    "do_now": { "type": "array", "items": { "type": "string" } },
+    "donts": { "type": "array", "items": { "type": "string" } },
+
+    "professional_care": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "what_it_does", "pros", "cons"],
+        "properties": {
+          "name": { "type": "string" },
+          "what_it_does": { "type": "string" },
+          "pros": { "type": "array", "items": { "type": "string" } },
+          "cons": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "urgency_default": {
+      "type": "string",
+      "enum": ["green_watch", "yellow_routine", "orange_medical_coord", "red_urgent"]
+    },
+
+    "urgency_modifiers": {
+      "type": "array",
+      "description": "Bumps urgency when matched",
+      "items": {
+        "type": "object",
+        "required": ["when", "set_to", "why"],
+        "properties": {
+          "when": {
+            "type": "object",
+            "description": "Simple rule predicates",
+            "properties": {
+              "flags": { "type": "array", "items": { "type": "string" } },
+              "duration": { "type": "string", "enum": ["<24h", "1-2d", "3-7d", ">1w", ">1m"] },
+              "age_lt": { "type": "integer" },
+              "age_gte": { "type": "integer" },
+              "gender": { "type": "string", "enum": ["female", "male", "other"] },
+              "history_any": { "type": "array", "items": { "type": "string" } },
+              "meds_any": { "type": "array", "items": { "type": "string" } },
+              "region_family": { "type": "string", "enum": ["front_teeth", "back_teeth", "wisdom_teeth", "gum_teeth", "upper_quadrant", "lower_quadrant", "general"] }
+            },
+            "additionalProperties": false
+          },
+          "set_to": { "type": "string", "enum": ["green_watch", "yellow_routine", "orange_medical_coord", "red_urgent"] },
+          "why": { "type": "string" }
+        }
+      }
+    },
+
+    "special_populations": {
+      "type": "object",
+      "properties": {
+        "pediatric": { "type": "array", "items": { "type": "string" } },
+        "pregnancy_nursing": { "type": "array", "items": { "type": "string" } },
+        "systemic_notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "prevention": { "type": "array", "items": { "type": "string" } },
+    "complications": { "type": "array", "items": { "type": "string" } },
+
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label"],
+        "properties": {
+          "label": { "type": "string" },
+          "url": { "type": "string" }
+        }
+      }
+    }
+  }
+}
