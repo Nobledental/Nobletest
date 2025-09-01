@@ -1,0 +1,70 @@
+{
+  "id": "abscess",
+  "condition": "Swelling / Abscess",
+  "synonyms": ["Dental infection", "Gum boil", "Facial swelling"],
+  "category": "swelling",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Swollen face or gum near a tooth",
+    "Throbbing pain, bad taste (pus)",
+    "Fever or feeling unwell",
+    "Swelling that is spreading"
+  ],
+  "differentials": [
+    { "name": "Tooth abscess", "clues": ["Localized to a tooth", "Severe pain; may be tender to bite", "History of deep decay/crack or failed root canal"] },
+    { "name": "Gum (periodontal) abscess", "clues": ["Swollen gum pocket", "Gum tenderness more than tooth", "Often with gum disease"] },
+    { "name": "Pericoronitis (wisdom tooth)", "clues": ["Swollen flap over partly-erupted wisdom tooth", "Bad taste, jaw stiffness"] }
+  ],
+  "probable_causes": [
+    "Infected tooth nerve (untreated cavity or crack)",
+    "Gum infection (periodontitis) with pocket",
+    "Partly-erupted wisdom tooth (food trap)"
+  ],
+  "investigations": [
+    "Urgent dental exam",
+    "X-rays (periapical) and periodontal probing",
+    "CBCT if deep space involvement suspected"
+  ],
+  "do_now": [
+    "Cold compress outside the cheek",
+    "Keep hydrated; soft diet",
+    "Seek urgent dental care (same day if fever or spread)"
+  ],
+  "donts": [
+    "Do not apply heat to swelling",
+    "Do not squeeze or puncture the swelling",
+    "Do not delay if fever or swelling is spreading"
+  ],
+  "professional_care": [
+    { "name": "Drainage + source control", "what_it_does": "Releases pressure and treats tooth/gum source", "pros": ["Relieves pain", "Stops spread"], "cons": ["Follow-up needed"] },
+    { "name": "Root Canal (if tooth source)", "what_it_does": "Removes infected nerve to save tooth", "pros": ["Preserves tooth"], "cons": ["Multiple visits sometimes"] },
+    { "name": "Extraction (if non-restorable)", "what_it_does": "Removes infection source", "pros": ["Definitive for hopeless tooth"], "cons": ["Missing tooth—may need replacement later"] },
+    { "name": "Antibiotics (with systemic signs)", "what_it_does": "Supports control when fever/spread is present", "pros": ["Helps when indicated"], "cons": ["Not a substitute for dental treatment"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "flags": ["fever"] }, "set_to": "red_urgent", "why": "Fever suggests infection is affecting the whole body" },
+    { "when": { "flags": ["spread"] }, "set_to": "red_urgent", "why": "Rapidly spreading swelling can threaten airway" },
+    { "when": { "age_lt": 14 }, "set_to": "red_urgent", "why": "Children can deteriorate faster—earlier care is safer" },
+    { "when": { "history_any": ["immune"] }, "set_to": "red_urgent", "why": "Reduced immunity increases risk of spread" }
+  ],
+  "special_populations": {
+    "pediatric": ["Fever or spreading swelling: same-day dental evaluation", "Avoid aspirin; use doctor-advised pain relief"],
+    "pregnancy_nursing": ["Emergencies are safe to treat", "X-rays minimized with shielding", "Dentist will choose medicines safely"],
+    "systemic_notes": ["On blood thinners: drainage may need planning—do not stop medicines yourself", "Poorly controlled diabetes: infections can spread faster—seek care early"]
+  ],
+  "prevention": [
+    "Treat cavities early",
+    "Maintain gum health (cleaning every 3–6 months if advised)",
+    "Good daily brushing and flossing"
+  ],
+  "complications": [
+    "Deep neck space infection",
+    "Airway compromise (rare emergency)",
+    "Tooth loss, bone loss"
+  ],
+  "references": [
+    { "label": "ADA Guideline – Antibiotics for Dental Pain and Swelling (2019)" },
+    { "label": "WHO Oral Health – infection and prevention basics" }
+  ]
+}
