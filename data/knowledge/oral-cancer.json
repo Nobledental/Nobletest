@@ -1,0 +1,68 @@
+{
+  "id": "oral-cancer",
+  "condition": "Oral Cancer Warning Signs",
+  "synonyms": ["Suspicious oral lesion", "Red/white patch", "Non-healing ulcer"],
+  "category": "mucosa",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Sore/ulcer that does not heal in 2 weeks",
+    "Red or white patch",
+    "Hard lump/thickening in cheek or tongue",
+    "Unexplained bleeding or numbness",
+    "Difficulty swallowing or persistent hoarseness"
+  ],
+  "differentials": [
+    { "name": "Aphthous ulcer", "clues": ["Shallow, round, heals in 1–2 weeks"] },
+    { "name": "Traumatic ulcer", "clues": ["Near sharp tooth/denture; heals after smoothing"] },
+    { "name": "Oral candidiasis", "clues": ["White patches wipe off; burning"] }
+  ],
+  "probable_causes": [
+    "Tobacco (smoked/chewed) and alcohol use",
+    "HPV-related lesions (some cases)",
+    "Chronic trauma/irritation",
+    "Nutritional deficiencies"
+  ],
+  "investigations": [
+    "Comprehensive oral exam",
+    "High-risk history assessment",
+    "Urgent referral for biopsy of suspicious lesions"
+  ],
+  "do_now": [
+    "Stop tobacco and reduce alcohol",
+    "Photograph and track duration",
+    "Seek prompt professional evaluation"
+  ],
+  "donts": [
+    "Don’t ignore a sore >2 weeks",
+    "Don’t self-treat with steroids without exam"
+  ],
+  "professional_care": [
+    { "name": "Biopsy & pathology", "what_it_does": "Confirms the diagnosis", "pros": ["Early detection saves lives"], "cons": ["Minor procedure"] },
+    { "name": "Oncology team referral", "what_it_does": "Coordinates surgery/radiation/chemo as needed", "pros": ["Comprehensive care"], "cons": ["Case-dependent"] },
+    { "name": "Eliminate irritants", "what_it_does": "Smooth sharp teeth/denture edges; treat infections", "pros": ["Improves healing environment"], "cons": ["Adjunctive"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "duration": ">1w" }, "set_to": "red_urgent", "why": "Non-healing lesions (>2 weeks) require urgent assessment/biopsy" }
+  ],
+  "special_populations": {
+    "pediatric": ["Cancer is rare; persistent lesions still need evaluation"],
+    "pregnancy_nursing": ["Evaluation/biopsy can proceed with precautions"],
+    "systemic_notes": ["Immunocompromise increases risk; urgent referral"]
+  ],
+  "prevention": [
+    "Avoid tobacco and limit alcohol",
+    "Regular oral cancer screenings at the dentist",
+    "HPV vaccination as advised",
+    "Fix sharp teeth/denture trauma"
+  ],
+  "complications": [
+    "Delayed diagnosis with worse outcomes",
+    "Pain, difficulty eating/speaking",
+    "Spread to lymph nodes"
+  ],
+  "references": [
+    { "label": "Burket’s Oral Medicine" },
+    { "label": "WHO – Oral cancer prevention & early detection" }
+  ]
+}
