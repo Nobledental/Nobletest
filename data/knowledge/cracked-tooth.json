@@ -1,0 +1,43 @@
+{
+  "id": "cracked-tooth",
+  "condition": "Broken / Cracked Tooth",
+  "synonyms": ["Tooth fracture", "Split tooth"],
+  "category": "tooth_pain",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Sharp pain when biting",
+    "Pain when releasing bite",
+    "Sharp edge hurting tongue",
+    "Piece of tooth missing"
+  ],
+  "differentials": [
+    { "name": "Craze lines", "clues": ["Superficial enamel cracks", "No pain"] },
+    { "name": "Cracked cusp", "clues": ["Piece of tooth broken off", "Localized pain"] },
+    { "name": "Split tooth", "clues": ["Crack runs deep", "Often unsalvageable"] }
+  ],
+  "probable_causes": ["Biting hard foods", "Trauma", "Old large fillings", "Bruxism"],
+  "investigations": ["Dental exam", "Bite tests", "X-rays (may not show cracks)"],
+  "do_now": ["Avoid chewing on that side", "Save broken piece if possible"],
+  "donts": ["Don’t ignore persistent pain", "Don’t use superglue or DIY fixes"],
+  "professional_care": [
+    { "name": "Bonding", "what_it_does": "Fills and seals crack", "pros": ["Quick, esthetic"], "cons": ["May fail if deep"] },
+    { "name": "Crown", "what_it_does": "Covers and supports cracked tooth", "pros": ["Protects tooth"], "cons": ["Higher cost"] },
+    { "name": "Root Canal", "what_it_does": "Treats deep nerve crack", "pros": ["Saves tooth"], "cons": ["Needs crown too"] },
+    { "name": "Extraction", "what_it_does": "Removes unsalvageable tooth", "pros": ["Stops pain"], "cons": ["Gap unless replaced"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "flags": ["fever"] }, "set_to": "red_urgent", "why": "Fever indicates infection spread" }
+  ],
+  "special_populations": {
+    "pediatric": ["Primary tooth cracks often monitored unless severe"],
+    "pregnancy_nursing": ["Care is safe, X-rays minimized"],
+    "systemic_notes": ["Brittle teeth common in some systemic conditions"]
+  },
+  "prevention": ["Avoid chewing hard foods", "Wear night guard if grinding", "Mouthguard in sports"],
+  "complications": ["Deeper crack → tooth loss", "Infection"],
+  "references": [
+    { "label": "Oxford Handbook of Clinical Dentistry (2022)" },
+    { "label": "ADA – Cracked Tooth Syndrome overview" }
+  ]
+}
