@@ -1,0 +1,69 @@
+{
+  "id": "cavity",
+  "condition": "Tooth Decay / Cavity",
+  "synonyms": ["Dental caries", "Hole in tooth"],
+  "category": "tooth_pain",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Black/brown spot on tooth",
+    "Food gets stuck in a hole",
+    "Sweet sensitivity",
+    "Pain when chewing"
+  ],
+  "differentials": [
+    { "name": "Early enamel decay", "clues": ["White chalky spot", "No pain yet"] },
+    { "name": "Dentin decay", "clues": ["Sweet/cold sensitivity", "Small brown spot"] },
+    { "name": "Deep decay (near nerve)", "clues": ["Lingering pain to hot/cold", "Night pain"] }
+  ],
+  "probable_causes": [
+    "Frequent sugar/acid snacks",
+    "Poor brushing/flossing",
+    "Dry mouth (low saliva)",
+    "Deep grooves on molars"
+  ],
+  "investigations": [
+    "Visual exam with explorer",
+    "Bitewing/periapical X-rays",
+    "Check contact areas for traps"
+  ],
+  "do_now": [
+    "Brush with fluoride toothpaste twice a day",
+    "Floss nightly to clear food traps",
+    "Cut down frequent sugars/acidic drinks"
+  ],
+  "donts": [
+    "Do not ignore food trapping",
+    "Do not rely on antibiotics (they don’t fix cavities)"
+  ],
+  "professional_care": [
+    { "name": "Filling", "what_it_does": "Removes decay and seals tooth", "pros": ["Stops decay", "Quick"], "cons": ["May need replacement years later"] },
+    { "name": "Fissure sealant", "what_it_does": "Shields grooves on back teeth", "pros": ["Prevents new decay"], "cons": ["Not for large cavities"] },
+    { "name": "Inlay/Onlay/Crown", "what_it_does": "Restores big defects", "pros": ["Strong, durable"], "cons": ["Higher cost"] },
+    { "name": "Root canal (if nerve affected)", "what_it_does": "Treats pain/infection, saves tooth", "pros": ["Relieves pain"], "cons": ["Needs crown often"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "duration": ">1w" }, "set_to": "yellow_routine", "why": "Persistent symptoms indicate progression" },
+    { "when": { "flags": ["fever"] }, "set_to": "red_urgent", "why": "Fever suggests infection spread" }
+  ],
+  "special_populations": {
+    "pediatric": ["Use pea-sized fluoride paste; consider sealants", "Limit sticky snacks/juices"],
+    "pregnancy_nursing": ["Routine fillings are safe; minimize X-rays with shielding"],
+    "systemic_notes": ["Dry mouth meds ↑ risk—ask about saliva substitutes and high-fluoride paste"]
+  },
+  "prevention": [
+    "Brush 2×/day with fluoride",
+    "Floss daily",
+    "Limit sugar frequency",
+    "Regular dental check-ups"
+  ],
+  "complications": [
+    "Pulpitis/abscess",
+    "Tooth fracture",
+    "Tooth loss"
+  ],
+  "references": [
+    { "label": "WHO Oral Health — caries prevention" },
+    { "label": "Oxford Handbook of Clinical Dentistry (2022)" }
+  ]
+}
