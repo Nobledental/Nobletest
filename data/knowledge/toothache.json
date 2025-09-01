@@ -1,0 +1,75 @@
+{
+  "id": "toothache",
+  "condition": "Toothache / Sensitivity",
+  "synonyms": ["Tooth pain", "Sensitive tooth", "Pulpitis", "Dentin hypersensitivity"],
+  "category": "tooth_pain",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Sharp pain with cold or sweets",
+    "Pain that lingers after hot/cold",
+    "Pain when biting or releasing bite",
+    "Zings on exposed root near gum line"
+  ],
+  "differentials": [
+    { "name": "Reversible pulpitis", "clues": ["Short, sharp pain to cold", "Goes away in seconds", "Often early cavity or exposed dentin"] },
+    { "name": "Irreversible pulpitis", "clues": ["Lingering pain >30s after cold/heat", "May wake you at night", "Deep decay/crack likely"] },
+    { "name": "Cracked tooth", "clues": ["Pain on biting then release", "Often molars", "History of grinding or chewing hard foods"] },
+    { "name": "Sinus-related pain (upper molars)", "clues": ["Multiple upper back teeth ache together", "Worse with head position", "Recent cold/sinus congestion"] }
+  ],
+  "probable_causes": [
+    "Tooth decay (cavities)",
+    "Nerve inflammation (pulpitis)",
+    "Cracked tooth",
+    "Worn enamel or gum recession (sensitivity)",
+    "High bite on a new filling/crown"
+  ],
+  "investigations": [
+    "Dental exam and bite tests",
+    "Cold test / Heat test",
+    "X-rays (periapical); CT/CBCT if needed",
+    "Check bite (occlusion) and cracks with special light"
+  ],
+  "do_now": [
+    "Avoid very hot/cold foods and sweets",
+    "Use a desensitizing toothpaste twice daily",
+    "Warm salt-water rinses",
+    "Take only doctor-advised pain relievers if needed"
+  ],
+  "donts": [
+    "Do not apply heat to the face",
+    "Do not start antibiotics on your own",
+    "Do not delay if pain is getting worse or keeps you up at night"
+  ],
+  "professional_care": [
+    { "name": "Filling", "what_it_does": "Removes decay and seals the tooth", "pros": ["Stops decay early", "Fast, cost-effective"], "cons": ["May need replacement over years"] },
+    { "name": "Root Canal (RCT)", "what_it_does": "Cleans infection in the nerve space and saves the tooth", "pros": ["Stops pain", "Preserves tooth"], "cons": ["Multiple visits sometimes", "Needs a crown in many cases"] },
+    { "name": "Crown / Onlay", "what_it_does": "Covers and strengthens cracked or heavily restored tooth", "pros": ["Protects from further fracture"], "cons": ["Higher cost", "Tooth preparation required"] },
+    { "name": "Fluoride/desensitizers", "what_it_does": "Seals exposed dentin to reduce sensitivity", "pros": ["Non-invasive"], "cons": ["May need repeat applications"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "duration": ">1w" }, "set_to": "yellow_routine", "why": "Lasting pain needs evaluation to prevent worsening" },
+    { "when": { "flags": ["fever"] }, "set_to": "red_urgent", "why": "Fever with tooth pain can indicate spreading infection" },
+    { "when": { "region_family": "upper_quadrant" }, "set_to": "yellow_routine", "why": "Check sinus vs tooth source in upper molars" }
+  ],
+  "special_populations": {
+    "pediatric": ["Use pea-sized fluoride toothpaste", "Sealants protect molars", "Consider behavior-friendly options"],
+    "pregnancy_nursing": ["Urgent dental care is safe", "Routine X-rays minimized with shielding", "Some medicines are avoided—inform your dentist"],
+    "systemic_notes": ["On blood thinners: do not stop them on your own", "CKD: confirm safe pain medicine with your physician"]
+  },
+  "prevention": [
+    "Brush twice daily with fluoride",
+    "Floss or use interdental brushes daily",
+    "Limit frequent sugars and acidic drinks",
+    "Regular dental check-ups"
+  ],
+  "complications": [
+    "Abscess and facial swelling",
+    "Tooth fracture or loss",
+    "Spread of infection"
+  ],
+  "references": [
+    { "label": "ADA – Toothache & Dental Pain (overview)" },
+    { "label": "WHO Oral Health — prevention basics" }
+  ]
+}
