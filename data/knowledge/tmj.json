@@ -1,0 +1,71 @@
+{
+  "id": "tmj",
+  "condition": "Jaw Pain / Clicking (TMJ Disorder)",
+  "synonyms": ["TMD", "TMJ pain", "Jaw dysfunction"],
+  "category": "tmj",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Pain in front of ear or along jaw",
+    "Clicking/popping when opening",
+    "Jaw gets stuck or limited opening",
+    "Headache around temple",
+    "Soreness when chewing tough foods"
+  ],
+  "differentials": [
+    { "name": "Muscle-related TMD", "clues": ["Diffuse aching, tender muscles, stress/clenching history"] },
+    { "name": "Joint disc displacement", "clues": ["Clicking, intermittent locking, deviation on opening"] },
+    { "name": "Arthritis (OA/RA/psoriatic)", "clues": ["Older age or systemic arthritis, crepitus, morning stiffness"] },
+    { "name": "Ear/Sinus causes", "clues": ["Ear fullness or recent cold; normal bite"] }
+  ],
+  "probable_causes": [
+    "Overuse/clenching and parafunction",
+    "Disc displacement within joint",
+    "Arthritic changes",
+    "Stress, poor posture"
+  ],
+  "investigations": [
+    "Jaw range of motion and muscle palpation",
+    "Joint loading tests",
+    "Bite assessment",
+    "Imaging (MRI/CBCT) only if indicated"
+  ],
+  "do_now": [
+    "Soft diet; cut food into small pieces",
+    "Warm compress 10–15 min, 2–3×/day",
+    "Gentle jaw exercises and posture care",
+    "Avoid wide yawns and big bites"
+  ],
+  "donts": [
+    "Don’t chew gum/ice",
+    "Don’t force the jaw open if it feels locked"
+  ],
+  "professional_care": [
+    { "name": "Stabilization splint", "what_it_does": "Reduces muscle overuse and protects teeth", "pros": ["Pain relief; conservative"], "cons": ["Needs compliance"] },
+    { "name": "Physiotherapy/exercises", "what_it_does": "Improves mobility and muscle balance", "pros": ["Addresses function"], "cons": ["Requires practice"] },
+    { "name": "Medication (short term)", "what_it_does": "Controls pain/inflammation", "pros": ["Comfort"], "cons": ["Short-term only; physician checks if systemic issues"] },
+    { "name": "Specialist referral", "what_it_does": "Advanced imaging/injection if refractory", "pros": ["Targeted care"], "cons": ["Case-dependent"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "flags": ["fever"] }, "set_to": "red_urgent", "why": "Fever with jaw pain warrants urgent assessment to exclude infection" }
+  ],
+  "special_populations": {
+    "pediatric": ["Jaw growth considerations; conservative first"],
+    "pregnancy_nursing": ["Conservative care preferred; med choices adjusted"],
+    "systemic_notes": ["Arthritis and autoimmune conditions need coordinated care with physician"]
+  ],
+  "prevention": [
+    "Avoid parafunction; manage stress",
+    "Ergonomic posture and screen height",
+    "Night guard if clenching"
+  ],
+  "complications": [
+    "Chronic pain",
+    "Disc degeneration",
+    "Functional limitation"
+  ],
+  "references": [
+    { "label": "Oxford Handbook of Clinical Dentistry (2022)" },
+    { "label": "ADA – TMD overview" }
+  ]
+  }
