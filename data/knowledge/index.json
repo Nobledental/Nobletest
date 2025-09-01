@@ -1,0 +1,22 @@
+[
+  { "id": "toothache", "name": "Toothache / Sensitivity", "category": "tooth_pain" },
+  { "id": "abscess", "name": "Swelling / Abscess", "category": "gum" },
+  { "id": "cracked-tooth", "name": "Broken / Cracked Tooth", "category": "tooth_pain" },
+  { "id": "knocked-out-tooth", "name": "Knocked-Out Tooth", "category": "tooth_pain" },
+  { "id": "wisdom-tooth", "name": "Wisdom Tooth Pain", "category": "tooth_pain" },
+  { "id": "cavity", "name": "Tooth Decay / Cavity", "category": "tooth_pain" },
+  { "id": "bleeding-gums", "name": "Bleeding Gums", "category": "gum" },
+  { "id": "loose-tooth", "name": "Loose Tooth", "category": "gum" },
+  { "id": "bad-breath", "name": "Bad Breath (Halitosis)", "category": "other" },
+  { "id": "mouth-ulcer", "name": "Mouth Ulcers", "category": "mucosa" },
+  { "id": "bruxism", "name": "Teeth Grinding (Bruxism)", "category": "other" },
+  { "id": "tmj", "name": "Jaw Pain / Clicking (TMJ)", "category": "tmj" },
+  { "id": "stained-teeth", "name": "Stained / Yellow Teeth", "category": "other" },
+  { "id": "crooked-teeth", "name": "Crooked / Spaced Teeth", "category": "alignment" },
+  { "id": "missing-tooth", "name": "Missing Tooth", "category": "missing_tooth" },
+  { "id": "gum-recession", "name": "Gum Recession", "category": "gum" },
+  { "id": "dry-socket", "name": "Dry Socket", "category": "postop" },
+  { "id": "denture-sore", "name": "Denture Sore Spots", "category": "other" },
+  { "id": "oral-cancer", "name": "Oral Cancer Warning Signs", "category": "mucosa" },
+  { "id": "dry-mouth", "name": "Dry Mouth (Xerostomia)", "category": "other" }
+]
