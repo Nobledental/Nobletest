@@ -1,0 +1,65 @@
+{
+  "id": "stained-teeth",
+  "condition": "Stained / Yellow Teeth",
+  "synonyms": ["Tooth discoloration", "Teeth whitening"],
+  "category": "other",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Yellow or brown stains",
+    "Dark lines near gums",
+    "Teeth look darker with age",
+    "White patches after braces come off"
+  ],
+  "differentials": [
+    { "name": "Extrinsic stains", "clues": ["Tea/coffee/tobacco/wine", "Polishes off during cleaning"] },
+    { "name": "Intrinsic discoloration", "clues": ["Deep color change", "From trauma/aging/tetracycline/fluorosis"] },
+    { "name": "Demineralization spots", "clues": ["White chalky patches after braces", "Early enamel change"] }
+  ],
+  "probable_causes": [
+    "Diet (coffee/tea/wine), tobacco",
+    "Aging dentin darkening",
+    "Medications/fluorosis/trauma",
+    "Plaque and tartar deposits"
+  ],
+  "investigations": [
+    "Shade assessment and photos",
+    "Check enamel quality and existing restorations",
+    "Identify staining habits"
+  ],
+  "do_now": [
+    "Rinse after staining drinks",
+    "Use a soft brush and non-abrasive paste",
+    "Consider a straw for dark beverages"
+  ],
+  "donts": [
+    "Don’t overuse abrasive whitening pastes",
+    "Don’t self-bleach without advice if you have fillings/crowns"
+  ],
+  "professional_care": [
+    { "name": "Professional cleaning/polishing", "what_it_does": "Removes external stains/tartar", "pros": ["Immediate refresh"], "cons": ["Maintenance needed"] },
+    { "name": "Whitening (in-office or trays)", "what_it_does": "Lightens tooth shade", "pros": ["Predictable for extrinsic/intrinsic"], "cons": ["Temporary sensitivity; not for all causes"] },
+    { "name": "Microabrasion/resin infiltration", "what_it_does": "Treats white spot lesions", "pros": ["Good for localized spots"], "cons": ["Case selection critical"] },
+    { "name": "Veneers/bonding", "what_it_does": "Covers deep discoloration and shape issues", "pros": ["Strong esthetic change"], "cons": ["Cost; enamel reduction in some cases"] }
+  ],
+  "urgency_default": "green_watch",
+  "urgency_modifiers": [],
+  "special_populations": {
+    "pediatric": ["Delay strong bleaching; focus on cleaning and diet habits"],
+    "pregnancy_nursing": ["Elective whitening often deferred; cleaning safe"],
+    "systemic_notes": ["Check for dry mouth medications increasing stain build-up"]
+  ],
+  "prevention": [
+    "Limit staining foods/drinks; rinse after",
+    "Quit tobacco",
+    "Regular professional cleanings"
+  ],
+  "complications": [
+    "Aesthetic concern",
+    "Sensitivity with aggressive whitening",
+    "Demineralization progression if hygiene poor"
+  ],
+  "references": [
+    { "label": "Oxford Handbook of Clinical Dentistry (2022)" },
+    { "label": "ADA – Tooth Whitening guidance" }
+  ]
+}
