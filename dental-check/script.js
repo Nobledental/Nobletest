@@ -1,74 +1,45 @@
-import { getDetailedRecommendation } from './logic.js';
-import { getTriageSummary } from './logic.js';
+const $ = (q, ctx=document) => ctx.querySelector(q);
+const $$ = (q, ctx=document) => Array.from(ctx.querySelectorAll(q));
 
-const $ = (q, ctx = document) => ctx.querySelector(q);
-const $$ = (q, ctx = document) => Array.from(ctx.querySelectorAll(q));
+window.addEventListener('DOMContentLoaded', async () => {
+  const recommendBox = $('#recommendation');
 
-/* ---------- intake helpers ---------- */
-function readIntake() {
-  const age = parseInt($('#pt_age')?.value || '0', 10) || 0;
-  const gender = $('#pt_gender')?.value || '';
-  const flow = (document.querySelector('input[name="pt_flow"]:checked')?.value) || 'new';
-  const isFemaleAdult = gender === 'female' && age >= 18;
+  // Load index.json
+  const conditionIndex = await fetch('/data/knowledge/index.json').then(r => r.json());
 
-  const intake = {
-    name: $('#pt_name')?.value?.trim() || '',
-    age, gender, flow,
-    pregnancy: isFemaleAdult ? ($('#pt_pregnancy')?.value || '') : '',
-    nursing: isFemaleAdult ? !!$('#pt_nursing')?.checked : false,
+  // Populate dropdown (or keep checkbox UI if you prefer)
+  const complaintSelect = $('#complaintSelect');
+  if (complaintSelect) {
+    complaintSelect.innerHTML = conditionIndex.map(c => 
+      `<option value="${c.id}">${c.name}</option>`
+    ).join('');
+  }
 
-    postop: {
-      procedure: flow === 'postop' ? ($('#pt_postop_proc')?.value || '') : '',
-      days: flow === 'postop' ? (parseInt($('#pt_postop_days')?.value || '0', 10) || 0) : 0,
-      fever: flow === 'postop' ? !!$('#pt_postop_fever')?.checked : false
-    },
+  // Handle recommendation
+  $('#recommendBtn').addEventListener('click', async () => {
+    const selectedId = complaintSelect?.value;
+    if (!selectedId) {
+      alert('Please select a complaint/condition.');
+      return;
+    }
 
-    history: $$('.mh:checked').map(x => x.value),
-    history_other: $('#mh_other')?.value?.trim() || '',
-    meds: $$('.med:checked').map(x => x.value),
-    meds_detail: $('#med_details')?.value?.trim() || '',
-    allergies: $('#allergies')?.value?.trim() || '',
+    // Fetch condition JSON
+    const data = await fetch(`/data/knowledge/${selectedId}.json`).then(r => r.json());
 
-    duration: $('#symp_duration')?.value || '',
-    flags: {
-      fever: !!$('#flag_fever')?.checked,
-      spread: !!$('#flag_spread')?.checked
-    },
-    hygiene: $$('.hyg:checked').map(x => x.value)
-  };
-  return intake;
-}
-
-function updateIntakeSummary() {
-  const i = readIntake();
-  $('#sumName').textContent = i.name || '—';
-  $('#sumAge').textContent = i.age ? `${i.age}` : '—';
-  $('#sumGender').textContent = i.gender || '—';
-  $('#sumDuration').textContent = i.duration || '—';
-}
-
-function showPregnancyBlock() {
-  const age = parseInt($('#pt_age')?.value || '0', 10) || 0;
-  const gender = $('#pt_gender')?.value || '';
-  const block = $('#pregnancyBlock');
-  if (gender === 'female' && age >= 18) block.classList.remove('hidden');
-  else block.classList.add('hidden');
-}
-
-function showPostOpBlock() {
-  const flow = (document.querySelector('input[name="pt_flow"]:checked')?.value) || 'new';
-  $('#postopBlock').classList.toggle('hidden', flow !== 'postop');
-}
-
-/* ---------- existing visual map + complaints code (enhanced) ---------- */
-
-// complaints summary
-function syncComplaintsSummary() {
-  const labels = $$('.complaints input:checked').map(el => el.parentElement.textContent.trim());
-  $('#sumComplaints').textContent = labels.length ? labels.join(', ') : '—';
-}
-
-// Load & inline advanced SVG + regions.json + gum bands + dentition toggle
+    // Render condition as cards
+    let html = `<h2>${data.condition}</h2>`;
+    html += `<div class="recommend-section"><h3>Possible Causes</h3><p>${data.probable_causes.join(', ')}</p></div>`;
+    html += `<div class="recommend-section"><h3>What You Can Do Now</h3><ul>${data.do_now.map(d => `<li>${d}</li>`).join('')}</ul></div>`;
+    html += `<div class="recommend-section"><h3>What to Avoid</h3><ul>${data.donts.map(d => `<li>${d}</li>`).join('')}</ul></div>`;
+    html += `<div class="recommend-section"><h3>Professional Treatments</h3><ul>${data.professional_care.map(p => `<li><strong>${p.name}:</strong> ${p.what_it_does}</li>`).join('')}</ul></div>`;
+    html += `<div class="recommend-section"><h3>Prevention</h3><ul>${data.prevention.map(p => `<li>${p}</li>`).join('')}</ul></div>`;
+    html += `<div class="recommend-section"><h3>Complications</h3><ul>${data.complications.map(c => `<li>${c}</li>`).join('')}</ul></div>`;
+    
+    recommendBox.innerHTML = html;
+    recommendBox.classList.remove('hidden');
+    recommendBox.scrollIntoView({ behavior: 'smooth' });
+  });
+});// Load & inline advanced SVG + regions.json + gum bands + dentition toggle
 window.addEventListener('DOMContentLoaded', () => {
   // intake UI wiring
   $('#pt_age')?.addEventListener('input', () => { showPregnancyBlock(); updateIntakeSummary(); });
