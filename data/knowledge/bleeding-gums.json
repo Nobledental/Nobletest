@@ -1,0 +1,67 @@
+{
+  "id": "bleeding-gums",
+  "condition": "Bleeding Gums",
+  "synonyms": ["Gingivitis", "Gum bleeding", "Red swollen gums"],
+  "category": "gum",
+  "applicable_regions": ["gum_upper_left", "gum_upper_right", "gum_lower_left", "gum_lower_right"],
+  "symptoms_patient_terms": [
+    "Gums bleed when brushing or flossing",
+    "Gums look red, puffy or tender",
+    "Bad breath",
+    "Teeth look longer (gum recession)"
+  ],
+  "differentials": [
+    { "name": "Gingivitis", "clues": ["Bleeding without tooth looseness", "Often improves with better cleaning"] },
+    { "name": "Periodontitis", "clues": ["Loose teeth, gum pockets, bone loss", "Bad breath persists", "Gums may recede"] },
+    { "name": "Gum abscess", "clues": ["Localized swelling and pain", "Pus point on gum", "Often around deep pocket"] }
+  ],
+  "probable_causes": [
+    "Plaque/tartar irritating gums",
+    "Hormonal changes (pregnancy)",
+    "Smoking, diabetes, dry mouth"
+  ],
+  "investigations": [
+    "Gum measurements (pocket depth), bleeding index",
+    "X-rays to check bone levels",
+    "Risk assessment (smoking, diabetes)"
+  ],
+  "do_now": [
+    "Brush gently with a soft brush twice daily (do not stop if gums bleed)",
+    "Clean between teeth daily (floss or interdental brushes)",
+    "Rinse after sugary or sticky snacks",
+    "If dentures: clean daily and remove overnight"
+  ],
+  "donts": [
+    "Do not brush aggressively",
+    "Do not ignore persistent bleeding (>2 weeks)"
+  ],
+  "professional_care": [
+    { "name": "Professional cleaning (scaling/polishing)", "what_it_does": "Removes plaque and tartar above gums", "pros": ["Improves bleeding fast"], "cons": ["Needs maintenance"] },
+    { "name": "Deep cleaning (root planing)", "what_it_does": "Cleans tartar below gums and smooths roots", "pros": ["Treats gum pockets"], "cons": ["May need multiple visits; anesthesia"] },
+    { "name": "Periodontal surgery (advanced cases)", "what_it_does": "Reduces pockets / regenerates bone where possible", "pros": ["Stabilizes severe disease"], "cons": ["Cost; strict hygiene needed"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "history_any": ["diabetes"] }, "set_to": "yellow_routine", "why": "Diabetes increases risk; early gum care improves control" },
+    { "when": { "age_gte": 18, "gender": "female" }, "set_to": "yellow_routine", "why": "Pregnancy can increase gum bleeding—safe to clean" }
+  ],
+  "special_populations": {
+    "pediatric": ["Gum bleeding often due to plaque—coach brushing; consider sealants in molars"],
+    "pregnancy_nursing": ["Pregnancy gingivitis is common; professional cleaning is safe", "Use soft brush and floss daily"],
+    "systemic_notes": ["On blood thinners: expect more bleeding but do not stop medication without doctor’s advice"]
+  ],
+  "prevention": [
+    "Daily plaque control (brush + interdental clean)",
+    "Quit smoking; manage diabetes",
+    "Cleanings every 3–6 months as advised"
+  ],
+  "complications": [
+    "Progression to periodontitis (bone loss)",
+    "Tooth mobility and loss",
+    "Persistent bad breath"
+  ],
+  "references": [
+    { "label": "ADA – Gum Disease (gingivitis/periodontitis)" },
+    { "label": "WHO Oral Health – prevention and hygiene" }
+  ]
+}
