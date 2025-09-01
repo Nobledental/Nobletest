@@ -1,0 +1,63 @@
+{
+  "id": "dry-socket",
+  "condition": "Dry Socket (After Tooth Removal)",
+  "synonyms": ["Alveolar osteitis", "Post-extraction pain day 2–3"],
+  "category": "postop",
+  "applicable_regions": [],
+  "symptoms_patient_terms": [
+    "Severe throbbing pain 2–3 days after extraction",
+    "Bad taste or odor",
+    "Empty-looking socket (clot lost)",
+    "Pain radiating to ear/temple"
+  ],
+  "differentials": [
+    { "name": "Normal healing pain", "clues": ["Improves daily after day 1", "No foul odor"] },
+    { "name": "Post-op infection/abscess", "clues": ["Swelling, fever, increasing redness"] }
+  ],
+  "probable_causes": [
+    "Dislodged clot due to smoking, spitting, straw use",
+    "Difficult extraction/trauma",
+    "Oral contraceptives (higher risk), poor hygiene"
+  ],
+  "investigations": [
+    "Clinical exam of socket",
+    "Rule out infection",
+    "Review post-op instructions followed"
+  ],
+  "do_now": [
+    "Avoid smoking, spitting, and straw use",
+    "Warm salt-water rinses after meals (as advised)",
+    "Over-the-counter pain relief if safe for you"
+  ],
+  "donts": [
+    "Don’t poke or suck the socket",
+    "Don’t apply home remedies or heat into the socket"
+  ],
+  "professional_care": [
+    { "name": "Medicated dressing", "what_it_does": "Soothes socket and relieves pain", "pros": ["Rapid relief"], "cons": ["May need repeat visits"] },
+    { "name": "Irrigation & hygiene review", "what_it_does": "Cleans socket and reinforces care", "pros": ["Improves healing"], "cons": ["Follow-up required"] },
+    { "name": "Pain control plan", "what_it_does": "Tailors safe analgesics", "pros": ["Comfort"], "cons": ["Depends on medical history"] }
+  ],
+  "urgency_default": "yellow_routine",
+  "urgency_modifiers": [
+    { "when": { "flags": ["fever"] }, "set_to": "red_urgent", "why": "Fever suggests infection, not just dry socket" }
+  ],
+  "special_populations": {
+    "pediatric": ["Less common; verify extraction site care with guardian"],
+    "pregnancy_nursing": ["Avoid smoking; dentist will choose safe pain medicines"],
+    "systemic_notes": ["CKD/liver disease: confirm safe pain medicines with physician; smokers have higher risk"]
+  ],
+  "prevention": [
+    "Follow post-extraction instructions strictly",
+    "No smoking or straws for several days",
+    "Gentle rinses as advised; keep area clean"
+  ],
+  "complications": [
+    "Prolonged pain and delayed healing",
+    "Secondary infection if neglected"
+  ],
+  "references": [
+    { "label": "Oxford Handbook of Clinical Dentistry (2022)" },
+    { "label": "ADA – Post-extraction care" }
+  ]
+  }
