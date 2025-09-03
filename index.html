@@ -44,6 +44,8 @@
   <!-- Styles & Scripts -->
   <link rel="stylesheet" href="/style.css" />
   <script src="/main.js" type="module" defer></script>
+  
+  
 
   <!-- Hreflang (keep updated if you localize) -->
   <link rel="alternate" href="https://example.com/en-in/" hreflang="en-IN" />
@@ -178,6 +180,18 @@
         <li><a href="#ndc-doctors-app">Team</a></li>
         <li><a href="#get-in-touch">Book</a></li>
         <li><a href="#noble-faq">FAQ</a></li>
+        
+        <style>
+  .ndc-selfcheck-hero{background:linear-gradient(135deg,#6B21A8,#7C3AED);color:#fff;padding:56px 0}
+  .ndc-selfcheck-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+  @media (max-width:1024px){.ndc-selfcheck-wrap{grid-template-columns:1fr;gap:24px}}
+  .ndc-title{font-size:clamp(28px,4.8vw,52px);line-height:1.05;margin:.2rem 0 .5rem}
+  .ndc-sub{opacity:.95;max-width:62ch}
+  .ndc-btn{display:inline-block;font-weight:800;text-decoration:none;border-radius:999px;padding:.8rem 1.05rem;border:2px solid transparent}
+  .ndc-btn--primary{background:#fff;color:#6B21A8}
+  .ndc-btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+</style>
+
 
         <!-- NEW: prominent CTA to Self-Check (deep-links to the persona step) -->
         <li>
@@ -234,6 +248,41 @@
 
     <div class="scroll-down" aria-hidden="true"></div>
   </section>
+  
+  <!-- Self-Check Banner — replace old tools section -->
+<section class="ndc-selfcheck-hero" aria-labelledby="sc-title">
+  <div class="ndc-selfcheck-wrap container">
+    <div class="ndc-selfcheck-copy">
+      <p class="ndc-eyebrow">Nallagandla • Hyderabad</p>
+      <h2 id="sc-title" class="ndc-title">Dentist-Reviewed Self-Check</h2>
+      <p class="ndc-sub">
+        Understand your symptoms in minutes. Pick who you are, select tooth region(s), choose symptoms, and get probable causes,
+        home care, urgency, and treatment options—reviewed by <strong>Dr. Dhivakaran R.</strong>
+      </p>
+
+      <div class="ndc-cta-row">
+        <a href="/self-check" class="ndc-btn ndc-btn--primary" data-nav="self-check">Open Self-Check</a>
+        <a href="/treatments" class="ndc-btn ndc-btn--ghost">Explore Treatments</a>
+      </div>
+
+      <ul class="ndc-bullets" aria-label="Highlights">
+        <li>Interactive tooth map</li>
+        <li>Pregnancy & kids modes</li>
+        <li>Download results as PDF</li>
+      </ul>
+    </div>
+
+    <div class="ndc-selfcheck-visual">
+      <!-- Decorative mock; replace src with your asset if you like -->
+      <img
+        src="/images/hero-selfcheck.png"
+        alt="Preview of the Self-Check tool with tooth map and results"
+        width="720" height="560" loading="lazy" decoding="async"
+        class="ndc-hero-art">
+    </div>
+  </div>
+</section>
+
 
   <!-- Reasons -->
   <main id="main" role="main">
