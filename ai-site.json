@@ -1,0 +1,95 @@
+{
+  "@context": "https://schema.org",
+  "@type": ["Dentist", "LocalBusiness", "MedicalBusiness"],
+  "name": "Noble Dental Care – Nallagandla",
+  "url": "https://nobledentalnallagandla.in/",
+  "logo": "https://nobledentalnallagandla.in/images/logo.png",
+  "image": "https://nobledentalnallagandla.in/images/og-image-noble-dental.jpg",
+  "telephone": "+918610425342",
+  "priceRange": "₹₹",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Nallagandla Main Road",
+    "addressLocality": "Hyderabad",
+    "addressRegion": "Telangana",
+    "postalCode": "500019",
+    "addressCountry": "IN"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 17.473963, "longitude": 78.308185 },
+  "hasMap": "https://g.co/kgs/Lebjyvw",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "11:00", "closes": "22:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "15:00", "closes": "22:00" }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/people/Noble-Dental-Careica/100087590145815/",
+    "https://x.com/NobleDenta67864",
+    "https://www.instagram.com/noble.dentalorg/",
+    "https://www.justdial.com/Hyderabad/Noble-Dental-Care-Multispeciality-Dental-Clinic/040PXX40-XX40-230311104127-B8Q4_BZDET"
+  ],
+  "medicalSpecialty": [
+    "Endodontics", "Implantology", "Orthodontics", "Oral and Maxillofacial Surgery",
+    "Periodontics", "Pediatric Dentistry", "Prosthodontics", "Cosmetic Dentistry"
+  ],
+  "availableService": [
+    { "@type": "Service", "name": "Root Canal Treatment", "url": "/specialities/root-canal.html" },
+    { "@type": "Service", "name": "Dental Implants", "url": "/specialities/implants.html" },
+    { "@type": "Service", "name": "Wisdom Tooth Extraction", "url": "/specialities/extraction.html" },
+    { "@type": "Service", "name": "Braces & Clear Aligners", "url": "/specialities/braces.html" },
+    { "@type": "Service", "name": "Teeth Whitening", "url": "/specialities/scaling-whitening.html#whitening" },
+    { "@type": "Service", "name": "Scaling & Polishing", "url": "/specialities/scaling-whitening.html#scaling" },
+    { "@type": "Service", "name": "Crowns & Bridges", "url": "/specialities/crowns-bridges.html" },
+    { "@type": "Service", "name": "Kids Dentistry", "url": "/specialities/kids-dentistry.html" },
+    { "@type": "Service", "name": "Gum Treatment", "url": "/specialities/gum-surgeries.html" }
+  ],
+  "knowsAbout": [
+    "Dentist in Nallagandla", "Best dentist Nallagandla", "Affordable dental clinic Nallagandla",
+    "Cosmetic dentist Nallagandla", "Root canal Nallagandla", "Wisdom tooth Nallagandla",
+    "Braces Nallagandla", "Tooth cleaning Nallagandla", "Cavities Nallagandla",
+    "Tooth removal Nallagandla"
+  ],
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "telephone": "+918610425342",
+    "areaServed": "IN-TG",
+    "availableLanguage": ["en", "hi", "te", "ta"]
+  }],
+  "founder": { "@type": "Person", "name": "Dr Dhivakaran", "jobTitle": "Chief Medical Director" },
+  "employee": [
+    { "@type": "Person", "name": "Dr Dhivakaran", "jobTitle": "Chief Medical Director", "url": "/#dhivakaran" },
+    { "@type": "Person", "name": "Dr Roger Ronaldo", "jobTitle": "Oral & Maxillofacial Surgeon", "url": "/#roger" },
+    { "@type": "Person", "name": "Dr Deepak", "jobTitle": "Orthodontist", "url": "/#deepak" },
+    { "@type": "Person", "name": "Dr Idhaya", "jobTitle": "Preventive & Tourism Dentistry", "url": "/#idhaya" }
+  ],
+  "faq": [
+    {
+      "q": "Is dental treatment safe during pregnancy?",
+      "a": "Yes—preventive cleanings and urgent care are generally safe with precautions; second trimester is preferred for non-urgent care."
+    },
+    {
+      "q": "Do I always need antibiotics for toothache?",
+      "a": "No—definitive dental treatment is primary; antibiotics only for spreading infection or systemic signs as per dentist’s judgment."
+    }
+  ],
+  "booking": {
+    "preferred": "WhatsApp",
+    "whatsapp": "https://wa.me/918610425342",
+    "telephone": "tel:+918610425342",
+    "onsite_anchor": "#get-in-touch"
+  },
+  "contentReview": {
+    "reviewedBy": "Dr. Dhivakaran R.",
+    "evidenceAligned": true,
+    "sources": [
+      "IDA/ICMR preventive guidance",
+      "ADA patient recommendations",
+      "WHO oral health basics",
+      "Carranza’s Clinical Periodontology",
+      "Cohen’s Pathways of the Pulp",
+      "Ingle’s Endodontics",
+      "Contemporary Orthodontics"
+    ],
+    "lastReviewed": "2025-01-01"
+  }
+}
