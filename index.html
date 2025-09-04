@@ -930,67 +930,99 @@
     </div>
   </footer>
 
-  <!-- ===== JSON-LD (clinic + website + FAQ basics) — keep your richer graph as you had it ===== -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":["Dentist","LocalBusiness","MedicalBusiness"],
-    "@id":"https://nobledentalnallagandla.in/#dentist",
-    "name":"Noble Dental Care - Nallagandla",
-    "url":"https://nobledentalnallagandla.in/",
-    "image":"https://nobledentalnallagandla.in/images/logo.png",
-    "logo":"https://nobledentalnallagandla.in/images/logo.png",
-    "telephone":"+918610425342",
-    "priceRange":"₹₹",
-    "address":{
-      "@type":"PostalAddress",
-      "streetAddress":"Nallagandla Main Road",
-      "addressLocality":"Hyderabad",
-      "addressRegion":"Telangana",
-      "postalCode":"500019",
-      "addressCountry":"IN"
+<!-- ===== JSON-LD: Noble Dental Care (enhanced for SEO / Local / E-E-A-T) ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["Dentist", "LocalBusiness", "MedicalBusiness"],
+  "@id": "https://nobledentalnallagandla.in/#dentist",
+  "name": "Noble Dental Care - Nallagandla",
+  "url": "https://nobledentalnallagandla.in/",
+  "image": "https://nobledentalnallagandla.in/images/logo.png",
+  "logo": "https://nobledentalnallagandla.in/images/logo.png",
+  "telephone": "+918610425342",
+  "priceRange": "₹₹",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Nallagandla Main Road",
+    "addressLocality": "Hyderabad",
+    "addressRegion": "Telangana",
+    "postalCode": "500019",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 17.473963,
+    "longitude": 78.308185
+  },
+  "hasMap": "https://g.co/kgs/Lebjyvw",
+  "areaServed": {
+    "@type": "Place",
+    "name": "Nallagandla, Hyderabad"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Dr. Dhivakaran R.",
+    "jobTitle": "Chief Medical Director"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+91-86104-25342",
+    "areaServed": "IN"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+      ],
+      "opens": "11:00",
+      "closes": "22:00"
     },
-    "geo":{"@type":"GeoCoordinates","latitude":17.473963,"longitude":78.308185},
-    "hasMap":"https://g.co/kgs/Lebjyvw",
-    "openingHoursSpecification":[
-      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"11:00","closes":"22:00"},
-      {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"15:00","closes":"22:00"}
-    ],
-    "availableService":[
-      {"@type":"Service","name":"Root Canal Treatment"},
-      {"@type":"Service","name":"Dental Implants"},
-      {"@type":"Service","name":"Teeth Whitening"},
-      {"@type":"Service","name":"Clear Aligners"},
-      {"@type":"Service","name":"Pediatric Dentistry"},
-      {"@type":"Service","name":"Wisdom Tooth Extraction"},
-      {"@type":"Service","name":"Gum Treatment"}
-    ],
-    "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"150"},
-    "sameAs":[
-      "https://www.facebook.com/people/Noble-Dental-Careica/100087590145815/",
-      "https://x.com/NobleDenta67864",
-      "https://www.instagram.com/noble.dentalorg/",
-      "https://www.justdial.com/Hyderabad/Noble-Dental-Care-Multispeciality-Dental-Clinic/040PXX40-XX40-230311104127-B8Q4_BZDET"
-    ]
-  }
-  </script>
-  
-  <div id="ariaStatus" class="visually-hidden" role="status" aria-live="polite"></div>
-
-<style>
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "15:00",
+      "closes": "22:00"
+    }
+  ],
+  "availableService": [
+    { "@type": "Service", "name": "Root Canal Treatment" },
+    { "@type": "Service", "name": "Dental Implants" },
+    { "@type": "Service", "name": "Teeth Whitening" },
+    { "@type": "Service", "name": "Clear Aligners" },
+    { "@type": "Service", "name": "Pediatric Dentistry" },
+    { "@type": "Service", "name": "Wisdom Tooth Extraction" },
+    { "@type": "Service", "name": "Gum Treatment" }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "150"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": "A. Sharma",
+      "reviewBody": "Exceptional dental care and patient-friendly team.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      }
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/people/Noble-Dental-Careica/100087590145815/",
+    "https://x.com/NobleDenta67864",
+    "https://www.instagram.com/noble.dentalorg/",
+    "https://www.justdial.com/Hyderabad/Noble-Dental-Care-Multispeciality-Dental-Clinic/040PXX40-XX40-230311104127-B8Q4_BZDET"
+  ]
 }
-</style>
+</script>
+
 
 </body>
 </html>
+
 
