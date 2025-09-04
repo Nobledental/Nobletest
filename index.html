@@ -15,18 +15,6 @@
   <meta name="author" content="Noble Dental Care — Nallagandla" />
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  <!-- Manifest & PWA Meta -->
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#0D6EFD">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" href="/icons/icon-192.png">
-
-<!-- Favicon (fallbacks) -->
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="/favicon.ico">
-
-
   <!-- Social -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Noble Dental Care" />
@@ -890,6 +878,7 @@
   </div>
 </section>
 
+  
   <!-- ================= FOOTER (advanced) ================= -->
   <footer class="site-footer" id="footer">
     <div class="container footer-grid">
@@ -910,12 +899,26 @@
         </ul>
       </div>
 
-      <div class="footer-contact">
-        <h4>Find Us</h4>
-        <p>Nallagandla Main Road,<br> Hyderabad, Telangana – 500019</p>
-        <p><a href="tel:+918610425342">+91 86104 25342</a></p>
-        <a href="https://g.co/kgs/Lebjyvw" target="_blank" rel="noopener">Open in Google Maps</a>
-      </div>
+ <div class="footer-contact">
+  <h4>Find Us</h4>
+  <p>Nallagandla Main Road,<br> Hyderabad, Telangana – 500019</p>
+  <p><a href="tel:+918610425342">+91 86104 25342</a></p>
+  <a href="https://g.co/kgs/Lebjyvw" target="_blank" rel="noopener">Open in Google Maps</a>
+
+  <!-- Embedded mini map -->
+  <div class="footer-map" style="margin-top:10px; border-radius:10px; overflow:hidden;">
+    <iframe
+      title="Clinic Location Map"
+      loading="lazy"
+      width="100%"
+      height="150"
+      style="border:0;"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.7647515788543!2d78.3059953759854!3d17.473963183366812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93e36f4d1a5d%3A0xd8c1f2a189d7f5cc!2sNoble%20Dental%20Care%20-%20Nallagandla!5e0!3m2!1sen!2sin!4v1699271020999!5m2!1sen!2sin">
+    </iframe>
+  </div>
+</div>
 
       <div class="footer-social">
         <h4>Connect</h4>
@@ -1021,8 +1024,22 @@
 }
 </script>
 
+  
+  <div id="ariaStatus" class="visually-hidden" role="status" aria-live="polite"></div>
+
+<style>
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
 
 </body>
 </html>
-
-
