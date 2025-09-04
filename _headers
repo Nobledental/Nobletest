@@ -1,0 +1,12 @@
+/* 
+  Link: </.well-known/ai.txt>; rel="ai-manifest"
+  Link: </.well-known/llms.txt>; rel="llms-manifest"
+
+# Optional: set good caching & content types for the manifests
+/.well-known/ai.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
+
+/.well-known/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
