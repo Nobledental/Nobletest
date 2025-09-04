@@ -1429,3 +1429,75 @@ if (subBtn && submenu) {
     }
   });
 }
+
+// Debounced Search
+let debounceTimer;
+searchEl.addEventListener('input', () => {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(applyFilter, 150); // Optimized delay
+});
+
+// ARIA + Tab Roles
+$$('.vk-tab').forEach((btn, i) => {
+  btn.setAttribute('role', 'tab');
+  btn.setAttribute('aria-controls', `vk${btn.dataset.t[0].toUpperCase()}${btn.dataset.t.slice(1)}`);
+  btn.id = `tab-${btn.dataset.t}`;
+  btn.setAttribute('tabindex', i === 0 ? '0' : '-1');
+  btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+
+  btn.addEventListener('click', () => {
+    $$('.vk-tab').forEach(b => {
+      b.classList.remove('is-active');
+      b.setAttribute('aria-selected', 'false');
+      b.setAttribute('tabindex', '-1');
+    });
+    btn.classList.add('is-active');
+    btn.setAttribute('aria-selected', 'true');
+    btn.setAttribute('tabindex', '0');
+
+    const key = btn.dataset.t;
+    const map = {
+      overview: '#vkOverview',
+      postop: '#vkPostop',
+      tips: '#vkTips',
+      proscons: '#vkProsCons',
+      sources: '#vkSources'
+    };
+
+    $$('.vk-panel').forEach(p => {
+      p.classList.remove('is-active');
+      p.setAttribute('aria-hidden', 'true');
+    });
+
+    const activePanel = document.querySelector(map[key]);
+    if (activePanel) {
+      activePanel.classList.add('is-active');
+      activePanel.setAttribute('aria-hidden', 'false');
+    }
+
+    sayStatus(`Switched to ${btn.textContent} tab`);
+  });
+
+  // Optional: keyboard arrow nav
+  btn.addEventListener('keydown', e => {
+    const tabs = $$('.vk-tab');
+    const index = Array.from(tabs).indexOf(btn);
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      tabs[(index + 1) % tabs.length].focus();
+    }
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      tabs[(index - 1 + tabs.length) % tabs.length].focus();
+    }
+  });
+});
+
+// Live Region Status Announcer
+function sayStatus(msg) {
+  const live = document.getElementById('ariaStatus');
+  if (live) {
+    live.textContent = msg;
+    setTimeout(() => { live.textContent = ''; }, 3000); // clear after 3s
+  }
+}
