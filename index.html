@@ -40,6 +40,10 @@
 
   <!-- Preload only the hero poster to protect LCP -->
   <link rel="preload" as="image" href="/images/hero-poster.jpg" fetchpriority="high">
+  <!-- Preload hero and featured blog images -->
+<link rel="preload" as="image" href="/images/blog/featured.jpg" imagesrcset="/images/blog/featured-480.jpg 480w, /images/blog/featured-800.jpg 800w" imagesizes="50vw">
+<link rel="preload" as="image" href="/images/doctors/dhivakaran-hero.webp">
+
 
   <!-- Styles & Scripts -->
   <link rel="stylesheet" href="/style.css" />
@@ -1517,3 +1521,4 @@ const NDC_DOCTORS = {
 
 </body>
 </html>
+
