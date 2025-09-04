@@ -101,7 +101,8 @@
             <li role="none"><a role="menuitem" href="/specialities/pregnancy-dental-care.html">Pregnancy Dental Care</a></li>
           </ul>
         </li>
-        <li><a href="#ndc-care-voka">Care Guide</a></li>
+        <li><a href="#ndc-care-voka">Care 
+          </a></li>
         <li><a href="#ndc-doctors-app">Our Team</a></li>
         <li><a href="#patient-reviews">Testimonials</a></li>
         <li><a href="#blog">Blog</a></li>
@@ -204,9 +205,9 @@
           <p class="voka__kicker">Prevention • Assistance • Ethical care</p>
           <h2 class="voka__title"><span>Dental Care Guide</span> — simple, evidence-aligned answers</h2>
           <p class="voka__sub">
-            Understand symptoms, what to do now, and typical treatments. Reviewed against IDA/ADA/ICMR/WHO guidance and standard dental texts.
-            <em>Plain language, no gimmicks — just best practices.</em>
+            Understand symptoms, what to do now, and typical treatments. Reviewed against IDA/ADA/ICMR/WHO guidance and other standard health panels.
           </p>
+          
 
           <!-- Filters -->
           <form class="voka__filters" role="search" onsubmit="return false" aria-label="Filter topics">
@@ -402,6 +403,7 @@
             </div>
 
             <p id="apptToast" class="appt-toast" role="status" aria-live="polite" hidden>
+              <div id="ariaStatus" class="visually-hidden" aria-live="polite" role="status"></div>
               ✅ Opening WhatsApp with your request…
             </p>
           </form>
@@ -960,5 +962,22 @@
     ]
   }
   </script>
+  
+  <div id="ariaStatus" class="visually-hidden" role="status" aria-live="polite"></div>
+
+<style>
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
+
 </body>
 </html>
