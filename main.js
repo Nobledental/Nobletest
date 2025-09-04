@@ -240,3 +240,15 @@ ${notes ? "• Notes: " + notes : ""}`;
   buildTimes(daySelect.value);
 })();
 
+function preloadImage(url) {
+  const img = new Image();
+  img.src = url;
+}
+Object.values(NDC_DOCTORS).forEach(d => preloadImage(d.hero));
+
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.surface, .ndc-card, .rev-card').forEach((el, i) => {
+    el.style.animationDelay = `${i * 0.15}s`;
+    el.classList.add('fade-in');
+  });
+});
