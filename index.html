@@ -9,11 +9,19 @@
 
   <title>Dentist in Nallagandla | Noble Dental Care — Near Tellapur, Lingampally</title>
   <meta name="description" content="Noble Dental Care in Nallagandla—implants, braces, painless RCT, cosmetic & pediatric dentistry. Easy parking, late hours, emergency care. Call +91 86104 25342." />
-  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://nobledentalnallagandla.in/" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Noble Dental Care — Nallagandla" />
   <meta name="referrer" content="strict-origin-when-cross-origin">
+  
+  <!-- PWA manifest + icons -->
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/x-icon" href="/icons/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" href="/icons/icon-192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/icons/icon-512.png" sizes="512x512">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180">
+<link rel="mask-icon" href="/icons/icon-512-maskable.png" color="#0d6efd">
+<meta name="theme-color" content="#0d6efd">
 
   <!-- Social -->
   <meta property="og:type" content="website" />
@@ -43,7 +51,6 @@
   <link rel="preload" as="image" href="/images/hero-poster.jpg" fetchpriority="high">
   <link rel="preload" as="video" href="/videos/blackhole.webm">
   <link rel="preload" as="video" href="/videos/blackhole.mp4">
-  <link rel="preload" as="image" href="/images/hero/clinic-front.jpg">
 
   
   
@@ -79,7 +86,7 @@
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
         <i class="bx bx-menu" aria-hidden="true"></i>
       </button>
-      <ul class="nav-pill" role="list" aria-hidden="true">
+      <ul class="nav-pill" aria-hidden="true">
         <li><a href="/">Home</a></li>
         <li class="has-submenu">
           <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sp-submenu">
@@ -114,10 +121,6 @@
   </header>
 
   <!-- ================= HERO (blackhole video) ================= -->
-  <img src="/images/hero/clinic-front.jpg" alt="Noble Dental Care clinic front view" fetchpriority="high" loading="eager" decoding="async">
-
-
-  
   <section class="hero-background band is-full" id="top" aria-labelledby="hero-title">
     <div class="blackhole-box" aria-label="Clinic highlight video">
       <video class="blackhole-video" poster="/images/hero-poster.jpg"
@@ -257,19 +260,21 @@
               <a id="vkDeepLink" class="voka__link" href="#" target="_self" rel="noopener">Details →</a>
             </div>
 
-            <nav class="voka__tabs" aria-label="Card sections">
-              <button class="vk-tab is-active" data-t="overview">ℹ️ Overview</button>
-              <button class="vk-tab" data-t="postop">🗓️ Post-op timeline</button>
-              <button class="vk-tab" data-t="tips">💡 Tips / FAQ</button>
-              <button class="vk-tab" data-t="proscons">⚖️ Pros & Cons</button>
-              <button class="vk-tab" data-t="sources">📚 Citations</button>
-            </nav>
+<nav class="voka__tabs" aria-label="Card sections" role="tablist">
+  <button class="vk-tab is-active" role="tab" id="tab-overview" data-t="overview" aria-selected="true" tabindex="0">ℹ️ Overview</button>
+  <button class="vk-tab" role="tab" id="tab-postop" data-t="postop" aria-selected="false" tabindex="-1">🗓️ Post-op timeline</button>
+  <button class="vk-tab" role="tab" id="tab-tips" data-t="tips" aria-selected="false" tabindex="-1">💡 Tips / FAQ</button>
+  <button class="vk-tab" role="tab" id="tab-proscons" data-t="proscons" aria-selected="false" tabindex="-1">⚖️ Pros & Cons</button>
+  <button class="vk-tab" role="tab" id="tab-sources" data-t="sources" aria-selected="false" tabindex="-1">📚 Citations</button>
+</nav>
 
-            <div class="vk-panel is-active" id="vkOverview"></div>
-            <div class="vk-panel" id="vkPostop"></div>
-            <div class="vk-panel" id="vkTips"></div>
-            <div class="vk-panel" id="vkProsCons"></div>
-            <div class="vk-panel" id="vkSources">
+<div class="vk-panel is-active" id="vkOverview" role="tabpanel" aria-labelledby="tab-overview"></div>
+<div class="vk-panel" id="vkPostop" role="tabpanel" aria-labelledby="tab-postop" hidden></div>
+<div class="vk-panel" id="vkTips" role="tabpanel" aria-labelledby="tab-tips" hidden></div>
+<div class="vk-panel" id="vkProsCons" role="tabpanel" aria-labelledby="tab-proscons" hidden></div>
+<div class="vk-panel" id="vkSources" role="tabpanel" aria-labelledby="tab-sources" hidden>
+  ...
+</div>
               <div class="callout">
                 <h4>Key references</h4>
                 <ul class="vk-refs">
@@ -402,18 +407,7 @@
               </div>
             </div>
 
-            <p id="apptToast" class="appt-toast" role="status" aria-live="polite" hidden>
-              <div id="ariaStatus" class="visually-hidden" aria-live="polite" role="status"></div>
-              ✅ Opening WhatsApp with your request…
-            </p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ================= MEET OUR SPECIALISTS (previous Android/Voka Light cards) ================= -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
   <section class="ndc-team-android" id="ndc-doctors-app" aria-label="Meet Our Doctors">
     <div class="ndc-screen container">
       <header class="ndc-appbar" role="toolbar" aria-label="Doctor directory">
@@ -1024,9 +1018,6 @@
 }
 </script>
 
-  
-  <div id="ariaStatus" class="visually-hidden" role="status" aria-live="polite"></div>
-
 <style>
 .visually-hidden {
   position: absolute;
@@ -1041,5 +1032,183 @@
 }
 </style>
 
+<script>
+(() => {
+  const subBtn = document.querySelector('.submenu-toggle');
+  const submenu = document.getElementById('sp-submenu');
+  if (!subBtn || !submenu) return;
+
+  const setOpen = (open) => {
+    subBtn.setAttribute('aria-expanded', String(open));
+    submenu.setAttribute('aria-hidden', String(!open));
+    submenu.style.display = open ? 'block' : 'none';
+  };
+
+  // init
+  setOpen(false);
+
+  subBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const open = submenu.getAttribute('aria-hidden') === 'true';
+    setOpen(open);
+  });
+
+  // close on outside click
+  document.addEventListener('click', (e) => {
+    if (!submenu.contains(e.target) && !subBtn.contains(e.target)) setOpen(false);
+  });
+
+  // Esc to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  // optional: open on hover (desktop only)
+  const mql = matchMedia('(hover: hover)');
+  if (mql.matches) {
+    subBtn.addEventListener('mouseenter', () => setOpen(true));
+    subBtn.addEventListener('mouseleave', (e) => {
+      // only close if not moving into the submenu
+      if (!submenu.contains(e.relatedTarget)) setOpen(false);
+    });
+    submenu.addEventListener('mouseleave', () => setOpen(false));
+  }
+})();
+</script>
+<script>
+(() => {
+  const subBtn = document.querySelector('.submenu-toggle');
+  const submenu = document.getElementById('sp-submenu');
+  if (!subBtn || !submenu) return;
+
+  const setOpen = (open) => {
+    subBtn.setAttribute('aria-expanded', String(open));
+    submenu.setAttribute('aria-hidden', String(!open));
+    submenu.style.display = open ? 'block' : 'none';
+  };
+
+  // init
+  setOpen(false);
+
+  subBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const open = submenu.getAttribute('aria-hidden') === 'true';
+    setOpen(open);
+  });
+
+  // close on outside click
+  document.addEventListener('click', (e) => {
+    if (!submenu.contains(e.target) && !subBtn.contains(e.target)) setOpen(false);
+  });
+
+  // Esc to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  // optional: open on hover (desktop only)
+  const mql = matchMedia('(hover: hover)');
+  if (mql.matches) {
+    subBtn.addEventListener('mouseenter', () => setOpen(true));
+    subBtn.addEventListener('mouseleave', (e) => {
+      // only close if not moving into the submenu
+      if (!submenu.contains(e.relatedTarget)) setOpen(false);
+    });
+    submenu.addEventListener('mouseleave', () => setOpen(false));
+  }
+})();
+</script>
+<script>
+(() => {
+  const subBtn = document.querySelector('.submenu-toggle');
+  const submenu = document.getElementById('sp-submenu');
+  if (!subBtn || !submenu) return;
+
+  const setOpen = (open) => {
+    subBtn.setAttribute('aria-expanded', String(open));
+    submenu.setAttribute('aria-hidden', String(!open));
+    submenu.style.display = open ? 'block' : 'none';
+  };
+
+  // init
+  setOpen(false);
+
+  subBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const open = submenu.getAttribute('aria-hidden') === 'true';
+    setOpen(open);
+  });
+
+  // close on outside click
+  document.addEventListener('click', (e) => {
+    if (!submenu.contains(e.target) && !subBtn.contains(e.target)) setOpen(false);
+  });
+
+  // Esc to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  // optional: open on hover (desktop only)
+  const mql = matchMedia('(hover: hover)');
+  if (mql.matches) {
+    subBtn.addEventListener('mouseenter', () => setOpen(true));
+    subBtn.addEventListener('mouseleave', (e) => {
+      // only close if not moving into the submenu
+      if (!submenu.contains(e.relatedTarget)) setOpen(false);
+    });
+    submenu.addEventListener('mouseleave', () => setOpen(false));
+  }
+})();
+</script>
+<script>
+(() => {
+  const vid = document.querySelector(".blackhole-video");
+  if (!vid) return;
+
+  const mq = matchMedia("(prefers-reduced-motion: reduce)");
+  const apply = () => {
+    if (mq.matches) {
+      vid.pause?.();
+      vid.removeAttribute('autoplay');
+    }
+  };
+  mq.addEventListener?.("change", apply);
+  apply();
+
+  // Optional: poster only on small screens (LCP boost)
+  const small = matchMedia("(max-width: 480px)");
+  const applySmall = () => {
+    if (small.matches) {
+      vid.pause?.();
+      vid.removeAttribute('autoplay');
+      vid.setAttribute('preload','none');
+    }
+  };
+  small.addEventListener?.('change', applySmall);
+  applySmall();
+})();
+</script>
+<script>
+(() => {
+  const sheet = document.getElementById('docSheet');
+  if (!sheet) return;
+  let lastOpener = null;
+
+  document.getElementById('docGrid')?.addEventListener('click', (e) => {
+    const card = e.target.closest('.ndc-card');
+    if (!card) return;
+    lastOpener = card.querySelector('.open, .block') || card;
+  });
+
+  sheet.addEventListener('close', () => {
+    lastOpener?.focus?.();
+  });
+
+  // also wire the close button
+  sheet.querySelector('.sheet-close')?.addEventListener('click', () => sheet.close());
+})();
+</script>
+            
 </body>
 </html>
