@@ -9,21 +9,12 @@
 
   <title>Dentist in Nallagandla | Noble Dental Care — Near Tellapur, Lingampally</title>
   <meta name="description" content="Noble Dental Care in Nallagandla—implants, braces, painless RCT, cosmetic & pediatric dentistry. Easy parking, late hours, emergency care. Call +91 86104 25342." />
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://nobledentalnallagandla.in/" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Noble Dental Care — Nallagandla" />
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  
-  <!-- PWA manifest + icons -->
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" type="image/x-icon" href="/icons/favicon.ico" sizes="32x32">
-<link rel="icon" type="image/png" href="/icons/icon-192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/icons/icon-512.png" sizes="512x512">
-<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180">
-<link rel="mask-icon" href="/icons/icon-512-maskable.png" color="#0d6efd">
-<meta name="theme-color" content="#0d6efd">
 
-  <!-- Social -->
+  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Noble Dental Care" />
   <meta property="og:locale" content="en_IN" />
@@ -42,33 +33,37 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-<link rel="preload" href="/fonts/Manrope-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" href="/fonts/Manrope-700.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
-
+  <!-- PWA manifest + icons -->
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" sizes="32x32">
+  <link rel="icon" type="image/png" href="/icons/icon-192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/icons/icon-512.png" sizes="512x512">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180">
+  <link rel="mask-icon" href="/icons/icon-512-maskable.png" color="#0d6efd">
+  <meta name="theme-color" content="#0d6efd">
 
   <!-- Preload media (LCP) -->
   <link rel="preload" as="image" href="/images/hero-poster.jpg" fetchpriority="high">
   <link rel="preload" as="video" href="/videos/blackhole.webm">
   <link rel="preload" as="video" href="/videos/blackhole.mp4">
+  <link rel="preload" as="image" href="/images/hero/clinic-front.jpg">
 
-  
-  
   <!-- AI guidance manifests -->
-<link rel="ai-manifest" href="/.well-known/ai.txt">
-<link rel="llms-manifest" href="/.well-known/llms.txt">
-
+  <link rel="ai-manifest" href="/.well-known/ai.txt">
+  <link rel="llms-manifest" href="/.well-known/llms.txt">
 
   <!-- CSS -->
-<link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="/style.css"></noscript>
-
+  <link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/style.css"></noscript>
 
   <!-- JS -->
   <script src="/scripts.js" type="module" defer></script>
-  <script type="module" src="/data/scripts-care-guide.js" defer></script>
+ <script type="module" src="/data/scripts-care-guide.js" defer></script>
+  <!-- Optional for high-quality PDFs -->
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js" defer></script>
 
-
+  
   <!-- Analytics (example) -->
   <script async defer data-domain="nobledentalnallagandla.in" src="https://plausible.io/js/plausible.js"></script>
 </head>
@@ -88,8 +83,9 @@
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
         <i class="bx bx-menu" aria-hidden="true"></i>
       </button>
+      <!-- removed role="list" (ul is already a list) -->
       <ul class="nav-pill" aria-hidden="true">
-        <li><a href="/">Home</a></li>
+        <li><a href="/" aria-current="page">Home</a></li>
         <li class="has-submenu">
           <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sp-submenu">
             Specialities <span class="caret" aria-hidden="true"></span>
@@ -110,8 +106,7 @@
             <li role="none"><a role="menuitem" href="/specialities/pregnancy-dental-care.html">Pregnancy Dental Care</a></li>
           </ul>
         </li>
-        <li><a href="#ndc-care-voka">Care 
-          </a></li>
+        <li><a href="#ndc-care-voka">Care</a></li>
         <li><a href="#ndc-doctors-app">Our Team</a></li>
         <li><a href="#patient-reviews">Testimonials</a></li>
         <li><a href="#blog">Blog</a></li>
@@ -123,6 +118,9 @@
   </header>
 
   <!-- ================= HERO (blackhole video) ================= -->
+  <img src="/images/hero/clinic-front.jpg"
+       fetchpriority="high" loading="eager" decoding="async">
+
   <section class="hero-background band is-full" id="top" aria-labelledby="hero-title">
     <div class="blackhole-box" aria-label="Clinic highlight video">
       <video class="blackhole-video" poster="/images/hero-poster.jpg"
@@ -212,7 +210,6 @@
           <p class="voka__sub">
             Understand symptoms, what to do now, and typical treatments. Reviewed against IDA/ADA/ICMR/WHO guidance and other standard health panels.
           </p>
-          
 
           <!-- Filters -->
           <form class="voka__filters" role="search" onsubmit="return false" aria-label="Filter topics">
@@ -244,7 +241,7 @@
           </form>
         </header>
 
-        <!-- Card UI (same IDs/hooks you used previously so your CSS/JS works) -->
+        <!-- Card UI -->
         <article class="voka__card" aria-live="polite">
           <figure class="voka__media" aria-label="Topic cover">
             <img id="vkImgA" class="voka__img is-show" src="/images/care/placeholder.jpg" alt="" width="1280" height="640" decoding="async" loading="lazy">
@@ -262,21 +259,20 @@
               <a id="vkDeepLink" class="voka__link" href="#" target="_self" rel="noopener">Details →</a>
             </div>
 
-<nav class="voka__tabs" aria-label="Card sections" role="tablist">
-  <button class="vk-tab is-active" role="tab" id="tab-overview" data-t="overview" aria-selected="true" tabindex="0">ℹ️ Overview</button>
-  <button class="vk-tab" role="tab" id="tab-postop" data-t="postop" aria-selected="false" tabindex="-1">🗓️ Post-op timeline</button>
-  <button class="vk-tab" role="tab" id="tab-tips" data-t="tips" aria-selected="false" tabindex="-1">💡 Tips / FAQ</button>
-  <button class="vk-tab" role="tab" id="tab-proscons" data-t="proscons" aria-selected="false" tabindex="-1">⚖️ Pros & Cons</button>
-  <button class="vk-tab" role="tab" id="tab-sources" data-t="sources" aria-selected="false" tabindex="-1">📚 Citations</button>
-</nav>
+            <!-- Tabs: ARIA-corrected -->
+            <nav class="voka__tabs" aria-label="Card sections" role="tablist">
+              <button class="vk-tab is-active" role="tab" id="tab-overview" data-t="overview" aria-selected="true" tabindex="0">ℹ️ Overview</button>
+              <button class="vk-tab" role="tab" id="tab-postop" data-t="postop" aria-selected="false" tabindex="-1">🗓️ Post-op timeline</button>
+              <button class="vk-tab" role="tab" id="tab-tips" data-t="tips" aria-selected="false" tabindex="-1">💡 Tips / FAQ</button>
+              <button class="vk-tab" role="tab" id="tab-proscons" data-t="proscons" aria-selected="false" tabindex="-1">⚖️ Pros & Cons</button>
+              <button class="vk-tab" role="tab" id="tab-sources" data-t="sources" aria-selected="false" tabindex="-1">📚 Citations</button>
+            </nav>
 
-<div class="vk-panel is-active" id="vkOverview" role="tabpanel" aria-labelledby="tab-overview"></div>
-<div class="vk-panel" id="vkPostop" role="tabpanel" aria-labelledby="tab-postop" hidden></div>
-<div class="vk-panel" id="vkTips" role="tabpanel" aria-labelledby="tab-tips" hidden></div>
-<div class="vk-panel" id="vkProsCons" role="tabpanel" aria-labelledby="tab-proscons" hidden></div>
-<div class="vk-panel" id="vkSources" role="tabpanel" aria-labelledby="tab-sources" hidden>
-  ...
-</div>
+            <div class="vk-panel is-active" id="vkOverview" role="tabpanel" aria-labelledby="tab-overview"></div>
+            <div class="vk-panel" id="vkPostop" role="tabpanel" aria-labelledby="tab-postop" hidden></div>
+            <div class="vk-panel" id="vkTips" role="tabpanel" aria-labelledby="tab-tips" hidden></div>
+            <div class="vk-panel" id="vkProsCons" role="tabpanel" aria-labelledby="tab-proscons" hidden></div>
+            <div class="vk-panel" id="vkSources" role="tabpanel" aria-labelledby="tab-sources" hidden>
               <div class="callout">
                 <h4>Key references</h4>
                 <ul class="vk-refs">
@@ -329,7 +325,7 @@
     </section>
   </main>
 
-  <!-- ================= APPOINTMENT (Book) — reuse previous code ================= -->
+  <!-- ================= APPOINTMENT (Book) ================= -->
   <section id="get-in-touch" class="band contact-band" aria-label="Get in touch & book">
     <div class="container">
       <div class="git-wrap">
@@ -409,7 +405,16 @@
               </div>
             </div>
 
-  <!-- ================= MEET OUR SPECIALISTS (previous Android/Voka Light cards) ================= -->
+            <p id="apptToast" class="appt-toast" role="status" aria-live="polite" hidden>
+              ✅ Opening WhatsApp with your request…
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MEET OUR SPECIALISTS ================= -->
   <section class="ndc-team-android" id="ndc-doctors-app" aria-label="Meet Our Doctors">
     <div class="ndc-screen container">
       <header class="ndc-appbar" role="toolbar" aria-label="Doctor directory">
@@ -574,309 +579,301 @@
     };
   </script>
 
-<!-- ================= TESTIMONIALS (expanded) ================= -->
-<section class="ndc-reviews band" id="patient-reviews" aria-label="Patient reviews">
-  <div class="container">
-    <header class="rev-head">
-      <p class="eyebrow">What patients say</p>
-      <h2 class="section-title">Real reviews. Real outcomes.</h2>
-      <p class="section-sub">Feedback from Google & Practo—authentic, transparent, trusted.</p>
-    </header>
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="ndc-reviews band" id="patient-reviews" aria-label="Patient reviews">
+    <div class="container">
+      <header class="rev-head">
+        <p class="eyebrow">What patients say</p>
+        <h2 class="section-title">Real reviews. Real outcomes.</h2>
+        <p class="section-sub">Feedback from Google & Practo—authentic, transparent, trusted.</p>
+      </header>
 
-    <div class="rev-rail-wrap">
-      <button class="rev-nav prev" aria-label="Previous review">‹</button>
+      <div class="rev-rail-wrap">
+        <button class="rev-nav prev" aria-label="Previous review">‹</button>
 
-      <!-- Rail -->
-      <div class="rev-rail" id="revRail" tabindex="0" aria-live="polite">
-        <!-- Review card 1 -->
-        <article class="rev-card" itemscope itemtype="https://schema.org/Review">
-          <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            <meta itemprop="ratingValue" content="5"/>
-            <span aria-hidden="true">★★★★★</span>
+        <!-- Rail -->
+        <div class="rev-rail" id="revRail" tabindex="0" aria-live="polite">
+          <!-- Review cards ... (unchanged) -->
+          <article class="rev-card" itemscope itemtype="https://schema.org/Review">
+            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+              <meta itemprop="ratingValue" content="5"/>
+              <span aria-hidden="true">★★★★★</span>
+            </div>
+            <blockquote class="rev-quote" itemprop="reviewBody">
+              Had a painless RCT the same evening. Doctor explained every step; recovery was smooth.
+            </blockquote>
+            <div class="rev-author">
+              <img src="/images/avatars/a1.webp" alt="" width="36" height="36" loading="lazy">
+              <div>
+                <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="name">Shruthi P</span>
+                </span>
+                <span class="s">Google Review</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="rev-card" itemscope itemtype="https://schema.org/Review">
+            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+              <meta itemprop="ratingValue" content="5"/>
+              <span aria-hidden="true">★★★★★</span>
+            </div>
+            <blockquote class="rev-quote" itemprop="reviewBody">
+              Friendly team, clear cost breakdown, and late-evening slot—perfect for my schedule.
+            </blockquote>
+            <div class="rev-author">
+              <img src="/images/avatars/a2.webp" alt="" width="36" height="36" loading="lazy">
+              <div>
+                <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="name">Rahul K</span>
+                </span>
+                <span class="s">Practo Review</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="rev-card" itemscope itemtype="https://schema.org/Review">
+            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+              <meta itemprop="ratingValue" content="5"/>
+              <span aria-hidden="true">★★★★★</span>
+            </div>
+            <blockquote class="rev-quote" itemprop="reviewBody">
+              Got my wisdom tooth out—quick, careful, and zero complications. Highly recommend.
+            </blockquote>
+            <div class="rev-author">
+              <img src="/images/avatars/a3.webp" alt="" width="36" height="36" loading="lazy">
+              <div>
+                <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="name">Mahesh V</span>
+                </span>
+                <span class="s">Google Review</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="rev-card" itemscope itemtype="https://schema.org/Review">
+            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+              <meta itemprop="ratingValue" content="5"/>
+              <span aria-hidden="true">★★★★★</span>
+            </div>
+            <blockquote class="rev-quote" itemprop="reviewBody">
+              My daughter’s braces journey went smoothly. Clear instructions and regular follow-ups.
+            </blockquote>
+            <div class="rev-author">
+              <img src="/images/avatars/a4.webp" alt="" width="36" height="36" loading="lazy">
+              <div>
+                <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="name">Priya S</span>
+                </span>
+                <span class="s">Practo Review</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="rev-card" itemscope itemtype="https://schema.org/Review">
+            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+              <meta itemprop="ratingValue" content="5"/>
+              <span aria-hidden="true">★★★★★</span>
+            </div>
+            <blockquote class="rev-quote" itemprop="reviewBody">
+              Clean clinic, transparent pricing, and Sunday hours saved me. Thanks, team!
+            </blockquote>
+            <div class="rev-author">
+              <img src="/images/avatars/a5.webp" alt="" width="36" height="36" loading="lazy">
+              <div>
+                <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="name">Aravind T</span>
+                </span>
+                <span class="s">Google Review</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="rev-card" itemscope itemtype="https://schema.org/Review">
+            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+              <meta itemprop="ratingValue" content="5"/>
+              <span aria-hidden="true">★★★★★</span>
+            </div>
+            <blockquote class="rev-quote" itemprop="reviewBody">
+              Whitening was safe and shade change is visible. Great post-care guidance.
+            </blockquote>
+            <div class="rev-author">
+              <img src="/images/avatars/a6.webp" alt="" width="36" height="36" loading="lazy">
+              <div>
+                <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="name">Nisha R</span>
+                </span>
+                <span class="s">Practo Review</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <button class="rev-nav next" aria-label="Next review">›</button>
+      </div>
+
+      <div class="rev-cta">
+        <a class="btn outline" target="_blank" rel="noopener" href="https://g.co/kgs/Lebjyvw">Read more on Google</a>
+        <a class="btn primary" href="#get-in-touch">Book an appointment</a>
+        <a class="btn outline" target="_blank" rel="noopener" href="https://search.google.com/local/writereview?placeid=ChIJnallagandlaPlaceId">Write a Review</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BLOG HIGHLIGHTS ================= -->
+  <section id="blog" class="band" aria-label="Blog highlights">
+    <div class="container">
+      <header>
+        <p class="eyebrow">News & tips</p>
+        <h2 class="section-title">From our clinic blog</h2>
+        <p class="section-sub">Short, practical reads aligned with ADA/IDA guidance.</p>
+      </header>
+
+      <div class="treatments-grid t-rail" id="blogRail">
+        <!-- Cards (unchanged) -->
+        <article class="t-card">
+          <div class="t-media">
+            <img src="/images/blog/featured.jpg" alt="How to manage tooth sensitivity" loading="lazy">
           </div>
-          <blockquote class="rev-quote" itemprop="reviewBody">
-            Had a painless RCT the same evening. Doctor explained every step; recovery was smooth.
-          </blockquote>
-          <div class="rev-author">
-            <img src="/images/avatars/a1.webp" alt="" width="36" height="36" loading="lazy">
-            <div>
-              <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <span itemprop="name">Shruthi P</span>
-              </span>
-              <span class="s">Google Review</span>
+          <div class="t-body">
+            <div class="t-title">Tooth Sensitivity—what really helps?</div>
+            <p class="t-desc">Quick guide to causes, fixes, and when to seek care.</p>
+            <div class="t-actions">
+              <a class="t-btn" href="/blog/tooth-sensitivity.html"><i class="bx bx-book-open"></i> Read</a>
+              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
             </div>
           </div>
         </article>
 
-        <!-- Review card 2 -->
-        <article class="rev-card" itemscope itemtype="https://schema.org/Review">
-          <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            <meta itemprop="ratingValue" content="5"/>
-            <span aria-hidden="true">★★★★★</span>
+        <article class="t-card">
+          <div class="t-media">
+            <img src="/images/blog/aligners.jpg" alt="Aligners vs braces" loading="lazy">
           </div>
-          <blockquote class="rev-quote" itemprop="reviewBody">
-            Friendly team, clear cost breakdown, and late-evening slot—perfect for my schedule.
-          </blockquote>
-          <div class="rev-author">
-            <img src="/images/avatars/a2.webp" alt="" width="36" height="36" loading="lazy">
-            <div>
-              <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <span itemprop="name">Rahul K</span>
-              </span>
-              <span class="s">Practo Review</span>
+          <div class="t-body">
+            <div class="t-title">Aligners vs Braces—what’s right for you?</div>
+            <p class="t-desc">Aesthetic, hygiene, and compliance differences in plain English.</p>
+            <div class="t-actions">
+              <a class="t-btn" href="/blog/aligners-vs-braces.html"><i class="bx bx-book-open"></i> Read</a>
+              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
             </div>
           </div>
         </article>
 
-        <!-- Review card 3 -->
-        <article class="rev-card" itemscope itemtype="https://schema.org/Review">
-          <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            <meta itemprop="ratingValue" content="5"/>
-            <span aria-hidden="true">★★★★★</span>
+        <article class="t-card">
+          <div class="t-media">
+            <img src="/images/blog/whitening.jpg" alt="Teeth whitening myths" loading="lazy">
           </div>
-          <blockquote class="rev-quote" itemprop="reviewBody">
-            Got my wisdom tooth out—quick, careful, and zero complications. Highly recommend.
-          </blockquote>
-          <div class="rev-author">
-            <img src="/images/avatars/a3.webp" alt="" width="36" height="36" loading="lazy">
-            <div>
-              <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <span itemprop="name">Mahesh V</span>
-              </span>
-              <span class="s">Google Review</span>
+          <div class="t-body">
+            <div class="t-title">Whitening myths—what to ignore</div>
+            <p class="t-desc">Safety, sensitivity control, and top-ups without regrets.</p>
+            <div class="t-actions">
+              <a class="t-btn" href="/blog/whitening-myths.html"><i class="bx bx-book-open"></i> Read</a>
+              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
             </div>
           </div>
         </article>
 
-        <!-- Review card 4 -->
-        <article class="rev-card" itemscope itemtype="https://schema.org/Review">
-          <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            <meta itemprop="ratingValue" content="5"/>
-            <span aria-hidden="true">★★★★★</span>
+        <article class="t-card">
+          <div class="t-media">
+            <img src="/images/blog/gums.jpg" alt="Bleeding gums: when to worry" loading="lazy">
           </div>
-          <blockquote class="rev-quote" itemprop="reviewBody">
-            My daughter’s braces journey went smoothly. Clear instructions and regular follow-ups.
-          </blockquote>
-          <div class="rev-author">
-            <img src="/images/avatars/a4.webp" alt="" width="36" height="36" loading="lazy">
-            <div>
-              <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <span itemprop="name">Priya S</span>
-              </span>
-              <span class="s">Practo Review</span>
+          <div class="t-body">
+            <div class="t-title">Bleeding gums—when to worry</div>
+            <p class="t-desc">Simple checks you can do today, and next best steps.</p>
+            <div class="t-actions">
+              <a class="t-btn" href="/blog/bleeding-gums.html"><i class="bx bx-book-open"></i> Read</a>
+              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
             </div>
           </div>
         </article>
 
-        <!-- Review card 5 -->
-        <article class="rev-card" itemscope itemtype="https://schema.org/Review">
-          <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            <meta itemprop="ratingValue" content="5"/>
-            <span aria-hidden="true">★★★★★</span>
+        <!-- Simple duplicate set for seamless loop -->
+        <article class="t-card">
+          <div class="t-media">
+            <img src="/images/blog/featured.jpg" alt="How to manage tooth sensitivity" loading="lazy">
           </div>
-          <blockquote class="rev-quote" itemprop="reviewBody">
-            Clean clinic, transparent pricing, and Sunday hours saved me. Thanks, team!
-          </blockquote>
-          <div class="rev-author">
-            <img src="/images/avatars/a5.webp" alt="" width="36" height="36" loading="lazy">
-            <div>
-              <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <span itemprop="name">Aravind T</span>
-              </span>
-              <span class="s">Google Review</span>
+          <div class="t-body">
+            <div class="t-title">Tooth Sensitivity—what really helps?</div>
+            <p class="t-desc">Quick guide to causes, fixes, and when to seek care.</p>
+            <div class="t-actions">
+              <a class="t-btn" href="/blog/tooth-sensitivity.html"><i class="bx bx-book-open"></i> Read</a>
+              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
             </div>
           </div>
         </article>
 
-        <!-- Review card 6 -->
-        <article class="rev-card" itemscope itemtype="https://schema.org/Review">
-          <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            <meta itemprop="ratingValue" content="5"/>
-            <span aria-hidden="true">★★★★★</span>
+        <article class="t-card">
+          <div class="t-media">
+            <img src="/images/blog/aligners.jpg" alt="Aligners vs braces" loading="lazy">
           </div>
-          <blockquote class="rev-quote" itemprop="reviewBody">
-            Whitening was safe and shade change is visible. Great post-care guidance.
-          </blockquote>
-          <div class="rev-author">
-            <img src="/images/avatars/a6.webp" alt="" width="36" height="36" loading="lazy">
-            <div>
-              <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <span itemprop="name">Nisha R</span>
-              </span>
-              <span class="s">Practo Review</span>
+          <div class="t-body">
+            <div class="t-title">Aligners vs Braces—what’s right for you?</div>
+            <p class="t-desc">Aesthetic, hygiene, and compliance differences in plain English.</p>
+            <div class="t-actions">
+              <a class="t-btn" href="/blog/aligners-vs-braces.html"><i class="bx bx-book-open"></i> Read</a>
+              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="t-card">
+          <div class="t-media">
+            <img src="/images/blog/whitening.jpg" alt="Teeth whitening myths" loading="lazy">
+          </div>
+          <div class="t-body">
+            <div class="t-title">Whitening myths—what to ignore</div>
+            <p class="t-desc">Safety, sensitivity control, and top-ups without regrets.</p>
+            <div class="t-actions">
+              <a class="t-btn" href="/blog/whitening-myths.html"><i class="bx bx-book-open"></i> Read</a>
+              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="t-card">
+          <div class="t-media">
+            <img src="/images/blog/gums.jpg" alt="Bleeding gums: when to worry" loading="lazy">
+          </div>
+          <div class="t-body">
+            <div class="t-title">Bleeding gums—when to worry</div>
+            <p class="t-desc">Simple checks you can do today, and next best steps.</p>
+            <div class="t-actions">
+              <a class="t-btn" href="/blog/bleeding-gums.html"><i class="bx bx-book-open"></i> Read</a>
+              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
             </div>
           </div>
         </article>
       </div>
-
-      <button class="rev-nav next" aria-label="Next review">›</button>
     </div>
+  </section>
 
-    <div class="rev-cta">
-      <a class="btn outline" target="_blank" rel="noopener" href="https://g.co/kgs/Lebjyvw">Read more on Google</a>
-      <a class="btn primary" href="#get-in-touch">Book an appointment</a>
-      <a class="btn outline" target="_blank" rel="noopener" href="https://search.google.com/local/writereview?placeid=ChIJnallagandlaPlaceId">Write a Review</a>
+  <!-- ================= CERTIFICATES TICKER ================= -->
+  <section class="band" id="certs-ticker" aria-label="Certificates ticker">
+    <div class="container">
+      <header class="ticker-head">
+        <p class="eyebrow">Credentials in motion</p>
+        <h2 class="section-title">Our certifications & registrations</h2>
+        <p class="section-sub">Hover to pause. Click to explore.</p>
+      </header>
+
+      <div class="ticker-viewport" role="group" aria-roledescription="carousel" aria-label="Certificate highlights">
+        <ul class="ticker-track" id="certsTrack" aria-live="off">
+          <li class="ticker-skeleton"></li>
+          <li class="ticker-skeleton"></li>
+          <li class="ticker-skeleton"></li>
+        </ul>
+        <button class="ticker-ctrl prev" aria-label="Scroll left"><i class="bx bx-left-arrow-alt"></i></button>
+        <button class="ticker-ctrl next" aria-label="Scroll right"><i class="bx bx-right-arrow-alt"></i></button>
+      </div>
+
+      <div class="rev-cta" style="margin-top:14px">
+        <a class="btn outline" href="/credentials.html"><i class="bx bx-collection"></i> View all credentials</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= BLOG HIGHLIGHTS (auto-slide) ================= -->
-<section id="blog" class="band" aria-label="Blog highlights">
-  <div class="container">
-    <header>
-      <p class="eyebrow">News & tips</p>
-      <h2 class="section-title">From our clinic blog</h2>
-      <p class="section-sub">Short, practical reads aligned with ADA/IDA guidance.</p>
-    </header>
-
-    <!-- Add t-rail to enable auto slide; we also duplicate a set in HTML for smoothness -->
-    <div class="treatments-grid t-rail" id="blogRail">
-      <!-- Set A -->
-      <article class="t-card">
-        <div class="t-media">
-          <img src="/images/blog/featured.jpg" alt="How to manage tooth sensitivity" loading="lazy">
-        </div>
-        <div class="t-body">
-          <div class="t-title">Tooth Sensitivity—what really helps?</div>
-          <p class="t-desc">Quick guide to causes, fixes, and when to seek care.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/blog/tooth-sensitivity.html"><i class="bx bx-book-open"></i> Read</a>
-            <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card">
-        <div class="t-media">
-          <img src="/images/blog/aligners.jpg" alt="Aligners vs braces" loading="lazy">
-        </div>
-        <div class="t-body">
-          <div class="t-title">Aligners vs Braces—what’s right for you?</div>
-          <p class="t-desc">Aesthetic, hygiene, and compliance differences in plain English.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/blog/aligners-vs-braces.html"><i class="bx bx-book-open"></i> Read</a>
-            <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card">
-        <div class="t-media">
-          <img src="/images/blog/whitening.jpg" alt="Teeth whitening myths" loading="lazy">
-        </div>
-        <div class="t-body">
-          <div class="t-title">Whitening myths—what to ignore</div>
-          <p class="t-desc">Safety, sensitivity control, and top-ups without regrets.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/blog/whitening-myths.html"><i class="bx bx-book-open"></i> Read</a>
-            <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card">
-        <div class="t-media">
-          <img src="/images/blog/gums.jpg" alt="Bleeding gums: when to worry" loading="lazy">
-        </div>
-        <div class="t-body">
-          <div class="t-title">Bleeding gums—when to worry</div>
-          <p class="t-desc">Simple checks you can do today, and next best steps.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/blog/bleeding-gums.html"><i class="bx bx-book-open"></i> Read</a>
-            <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Set B (duplicate once for seamless loop) -->
-      <article class="t-card">
-        <div class="t-media">
-          <img src="/images/blog/featured.jpg" alt="How to manage tooth sensitivity" loading="lazy">
-        </div>
-        <div class="t-body">
-          <div class="t-title">Tooth Sensitivity—what really helps?</div>
-          <p class="t-desc">Quick guide to causes, fixes, and when to seek care.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/blog/tooth-sensitivity.html"><i class="bx bx-book-open"></i> Read</a>
-            <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card">
-        <div class="t-media">
-          <img src="/images/blog/aligners.jpg" alt="Aligners vs braces" loading="lazy">
-        </div>
-        <div class="t-body">
-          <div class="t-title">Aligners vs Braces—what’s right for you?</div>
-          <p class="t-desc">Aesthetic, hygiene, and compliance differences in plain English.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/blog/aligners-vs-braces.html"><i class="bx bx-book-open"></i> Read</a>
-            <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card">
-        <div class="t-media">
-          <img src="/images/blog/whitening.jpg" alt="Teeth whitening myths" loading="lazy">
-        </div>
-        <div class="t-body">
-          <div class="t-title">Whitening myths—what to ignore</div>
-          <p class="t-desc">Safety, sensitivity control, and top-ups without regrets.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/blog/whitening-myths.html"><i class="bx bx-book-open"></i> Read</a>
-            <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="t-card">
-        <div class="t-media">
-          <img src="/images/blog/gums.jpg" alt="Bleeding gums: when to worry" loading="lazy">
-        </div>
-        <div class="t-body">
-          <div class="t-title">Bleeding gums—when to worry</div>
-          <p class="t-desc">Simple checks you can do today, and next best steps.</p>
-          <div class="t-actions">
-            <a class="t-btn" href="/blog/bleeding-gums.html"><i class="bx bx-book-open"></i> Read</a>
-            <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CERTIFICATES FLASH TICKER ================= -->
-<section class="band" id="certs-ticker" aria-label="Certificates ticker">
-  <div class="container">
-    <header class="ticker-head">
-      <p class="eyebrow">Credentials in motion</p>
-      <h2 class="section-title">Our certifications & registrations</h2>
-      <p class="section-sub">Hover to pause. Click to explore.</p>
-    </header>
-
-    <div class="ticker-viewport" role="group" aria-roledescription="carousel" aria-label="Certificate highlights">
-      <ul class="ticker-track" id="certsTrack" aria-live="off">
-        <!-- JS will render <li class="ticker-item">…</li> here (duplicated for seamless loop) -->
-        <li class="ticker-skeleton"></li>
-        <li class="ticker-skeleton"></li>
-        <li class="ticker-skeleton"></li>
-      </ul>
-      <button class="ticker-ctrl prev" aria-label="Scroll left"><i class="bx bx-left-arrow-alt"></i></button>
-      <button class="ticker-ctrl next" aria-label="Scroll right"><i class="bx bx-right-arrow-alt"></i></button>
-    </div>
-
-    <div class="rev-cta" style="margin-top:14px">
-      <a class="btn outline" href="/credentials.html"><i class="bx bx-collection"></i> View all credentials</a>
-    </div>
-  </div>
-</section>
-
-  
-  <!-- ================= FOOTER (advanced) ================= -->
-  <footer class="site-footer" id="footer">
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer" id="footer" role="contentinfo">
     <div class="container footer-grid">
       <div class="footer-brand">
         <img src="/images/logo-footer.webp" alt="Noble Dental Care logo" width="48" height="48" loading="lazy">
@@ -895,26 +892,26 @@
         </ul>
       </div>
 
- <div class="footer-contact">
-  <h4>Find Us</h4>
-  <p>Nallagandla Main Road,<br> Hyderabad, Telangana – 500019</p>
-  <p><a href="tel:+918610425342">+91 86104 25342</a></p>
-  <a href="https://g.co/kgs/Lebjyvw" target="_blank" rel="noopener">Open in Google Maps</a>
+      <div class="footer-contact">
+        <h4>Find Us</h4>
+        <p>Nallagandla Main Road,<br> Hyderabad, Telangana – 500019</p>
+        <p><a href="tel:+918610425342">+91 86104 25342</a></p>
+        <a href="https://g.co/kgs/Lebjyvw" target="_blank" rel="noopener">Open in Google Maps</a>
 
-  <!-- Embedded mini map -->
-  <div class="footer-map" style="margin-top:10px; border-radius:10px; overflow:hidden;">
-    <iframe
-      title="Clinic Location Map"
-      loading="lazy"
-      width="100%"
-      height="150"
-      style="border:0;"
-      allowfullscreen
-      referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.7647515788543!2d78.3059953759854!3d17.473963183366812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93e36f4d1a5d%3A0xd8c1f2a189d7f5cc!2sNoble%20Dental%20Care%20-%20Nallagandla!5e0!3m2!1sen!2sin!4v1699271020999!5m2!1sen!2sin">
-    </iframe>
-  </div>
-</div>
+        <!-- Embedded mini map -->
+        <div class="footer-map" style="margin-top:10px; border-radius:10px; overflow:hidden;">
+          <iframe
+            title="Clinic Location Map"
+            loading="lazy"
+            width="100%"
+            height="150"
+            style="border:0;"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.7647515788543!2d78.3059953759854!3d17.473963183366812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93e36f4d1a5d%3A0xd8c1f2a189d7f5cc!2sNoble%20Dental%20Care%20-%20Nallagandla!5e0!3m2!1sen!2sin!4v1699271020999!5m2!1sen!2sin">
+          </iframe>
+        </div>
+      </div>
 
       <div class="footer-social">
         <h4>Connect</h4>
@@ -929,289 +926,105 @@
     </div>
   </footer>
 
-<!-- ===== JSON-LD: Noble Dental Care (enhanced for SEO / Local / E-E-A-T) ===== -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["Dentist", "LocalBusiness", "MedicalBusiness"],
-  "@id": "https://nobledentalnallagandla.in/#dentist",
-  "name": "Noble Dental Care - Nallagandla",
-  "url": "https://nobledentalnallagandla.in/",
-  "image": "https://nobledentalnallagandla.in/images/logo.png",
-  "logo": "https://nobledentalnallagandla.in/images/logo.png",
-  "telephone": "+918610425342",
-  "priceRange": "₹₹",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Nallagandla Main Road",
-    "addressLocality": "Hyderabad",
-    "addressRegion": "Telangana",
-    "postalCode": "500019",
-    "addressCountry": "IN"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 17.473963,
-    "longitude": 78.308185
-  },
-  "hasMap": "https://g.co/kgs/Lebjyvw",
-  "areaServed": {
-    "@type": "Place",
-    "name": "Nallagandla, Hyderabad"
-  },
-  "founder": {
-    "@type": "Person",
-    "name": "Dr. Dhivakaran R.",
-    "jobTitle": "Chief Medical Director"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer service",
-    "telephone": "+91-86104-25342",
-    "areaServed": "IN"
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-      ],
-      "opens": "11:00",
-      "closes": "22:00"
+  <!-- ===== JSON-LD: Noble Dental Care ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["Dentist", "LocalBusiness", "MedicalBusiness"],
+    "@id": "https://nobledentalnallagandla.in/#dentist",
+    "name": "Noble Dental Care - Nallagandla",
+    "url": "https://nobledentalnallagandla.in/",
+    "image": "https://nobledentalnallagandla.in/images/logo.png",
+    "logo": "https://nobledentalnallagandla.in/images/logo.png",
+    "telephone": "+918610425342",
+    "priceRange": "₹₹",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nallagandla Main Road",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "Telangana",
+      "postalCode": "500019",
+      "addressCountry": "IN"
     },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Sunday",
-      "opens": "15:00",
-      "closes": "22:00"
-    }
-  ],
-  "availableService": [
-    { "@type": "Service", "name": "Root Canal Treatment" },
-    { "@type": "Service", "name": "Dental Implants" },
-    { "@type": "Service", "name": "Teeth Whitening" },
-    { "@type": "Service", "name": "Clear Aligners" },
-    { "@type": "Service", "name": "Pediatric Dentistry" },
-    { "@type": "Service", "name": "Wisdom Tooth Extraction" },
-    { "@type": "Service", "name": "Gum Treatment" }
-  ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "150"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": "A. Sharma",
-      "reviewBody": "Exceptional dental care and patient-friendly team.",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5"
-      }
-    }
-  ],
-  "sameAs": [
-    "https://www.facebook.com/people/Noble-Dental-Careica/100087590145815/",
-    "https://x.com/NobleDenta67864",
-    "https://www.instagram.com/noble.dentalorg/",
-    "https://www.justdial.com/Hyderabad/Noble-Dental-Care-Multispeciality-Dental-Clinic/040PXX40-XX40-230311104127-B8Q4_BZDET"
-  ]
-}
-</script>
-
-<style>
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-</style>
-
-<script>
-(() => {
-  const subBtn = document.querySelector('.submenu-toggle');
-  const submenu = document.getElementById('sp-submenu');
-  if (!subBtn || !submenu) return;
-
-  const setOpen = (open) => {
-    subBtn.setAttribute('aria-expanded', String(open));
-    submenu.setAttribute('aria-hidden', String(!open));
-    submenu.style.display = open ? 'block' : 'none';
-  };
-
-  // init
-  setOpen(false);
-
-  subBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const open = submenu.getAttribute('aria-hidden') === 'true';
-    setOpen(open);
-  });
-
-  // close on outside click
-  document.addEventListener('click', (e) => {
-    if (!submenu.contains(e.target) && !subBtn.contains(e.target)) setOpen(false);
-  });
-
-  // Esc to close
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') setOpen(false);
-  });
-
-  // optional: open on hover (desktop only)
-  const mql = matchMedia('(hover: hover)');
-  if (mql.matches) {
-    subBtn.addEventListener('mouseenter', () => setOpen(true));
-    subBtn.addEventListener('mouseleave', (e) => {
-      // only close if not moving into the submenu
-      if (!submenu.contains(e.relatedTarget)) setOpen(false);
-    });
-    submenu.addEventListener('mouseleave', () => setOpen(false));
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 17.473963,
+      "longitude": 78.308185
+    },
+    "hasMap": "https://g.co/kgs/Lebjyvw",
+    "areaServed": { "@type": "Place", "name": "Nallagandla, Hyderabad" },
+    "founder": { "@type": "Person", "name": "Dr. Dhivakaran R.", "jobTitle": "Chief Medical Director" },
+    "contactPoint": { "@type": "ContactPoint", "contactType": "customer service", "telephone": "+91-86104-25342", "areaServed": "IN" },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens":"11:00", "closes":"22:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens":"15:00", "closes":"22:00" }
+    ],
+    "availableService": [
+      { "@type": "Service", "name": "Root Canal Treatment" },
+      { "@type": "Service", "name": "Dental Implants" },
+      { "@type": "Service", "name": "Teeth Whitening" },
+      { "@type": "Service", "name": "Clear Aligners" },
+      { "@type": "Service", "name": "Pediatric Dentistry" },
+      { "@type": "Service", "name": "Wisdom Tooth Extraction" },
+      { "@type": "Service", "name": "Gum Treatment" }
+    ],
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "150" },
+    "review": [{ "@type": "Review", "author": "A. Sharma", "reviewBody": "Exceptional dental care and patient-friendly team.", "reviewRating": { "@type": "Rating", "ratingValue": "5" }}],
+    "sameAs": [
+      "https://www.facebook.com/people/Noble-Dental-Careica/100087590145815/",
+      "https://x.com/NobleDenta67864",
+      "https://www.instagram.com/noble.dentalorg/",
+      "https://www.justdial.com/Hyderabad/Noble-Dental-Care-Multispeciality-Dental-Clinic/040PXX40-XX40-230311104127-B8Q4_BZDET"
+    ]
   }
-})();
-</script>
-<script>
-(() => {
-  const subBtn = document.querySelector('.submenu-toggle');
-  const submenu = document.getElementById('sp-submenu');
-  if (!subBtn || !submenu) return;
+  </script>
 
-  const setOpen = (open) => {
-    subBtn.setAttribute('aria-expanded', String(open));
-    submenu.setAttribute('aria-hidden', String(!open));
-    submenu.style.display = open ? 'block' : 'none';
-  };
+  <!-- Single aria-live region (deduped) -->
+  <div id="ariaStatus" class="visually-hidden" role="status" aria-live="polite"></div>
 
-  // init
-  setOpen(false);
-
-  subBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const open = submenu.getAttribute('aria-hidden') === 'true';
-    setOpen(open);
-  });
-
-  // close on outside click
-  document.addEventListener('click', (e) => {
-    if (!submenu.contains(e.target) && !subBtn.contains(e.target)) setOpen(false);
-  });
-
-  // Esc to close
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') setOpen(false);
-  });
-
-  // optional: open on hover (desktop only)
-  const mql = matchMedia('(hover: hover)');
-  if (mql.matches) {
-    subBtn.addEventListener('mouseenter', () => setOpen(true));
-    subBtn.addEventListener('mouseleave', (e) => {
-      // only close if not moving into the submenu
-      if (!submenu.contains(e.relatedTarget)) setOpen(false);
-    });
-    submenu.addEventListener('mouseleave', () => setOpen(false));
-  }
-})();
-</script>
-<script>
-(() => {
-  const subBtn = document.querySelector('.submenu-toggle');
-  const submenu = document.getElementById('sp-submenu');
-  if (!subBtn || !submenu) return;
-
-  const setOpen = (open) => {
-    subBtn.setAttribute('aria-expanded', String(open));
-    submenu.setAttribute('aria-hidden', String(!open));
-    submenu.style.display = open ? 'block' : 'none';
-  };
-
-  // init
-  setOpen(false);
-
-  subBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const open = submenu.getAttribute('aria-hidden') === 'true';
-    setOpen(open);
-  });
-
-  // close on outside click
-  document.addEventListener('click', (e) => {
-    if (!submenu.contains(e.target) && !subBtn.contains(e.target)) setOpen(false);
-  });
-
-  // Esc to close
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') setOpen(false);
-  });
-
-  // optional: open on hover (desktop only)
-  const mql = matchMedia('(hover: hover)');
-  if (mql.matches) {
-    subBtn.addEventListener('mouseenter', () => setOpen(true));
-    subBtn.addEventListener('mouseleave', (e) => {
-      // only close if not moving into the submenu
-      if (!submenu.contains(e.relatedTarget)) setOpen(false);
-    });
-    submenu.addEventListener('mouseleave', () => setOpen(false));
-  }
-})();
-</script>
-<script>
-(() => {
-  const vid = document.querySelector(".blackhole-video");
-  if (!vid) return;
-
-  const mq = matchMedia("(prefers-reduced-motion: reduce)");
-  const apply = () => {
-    if (mq.matches) {
-      vid.pause?.();
-      vid.removeAttribute('autoplay');
+  <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px; height: 1px;
+      margin: -1px; padding: 0;
+      overflow: hidden; clip: rect(0,0,0,0);
+      white-space: nowrap; border: 0;
     }
-  };
-  mq.addEventListener?.("change", apply);
-  apply();
-
-  // Optional: poster only on small screens (LCP boost)
-  const small = matchMedia("(max-width: 480px)");
-  const applySmall = () => {
-    if (small.matches) {
-      vid.pause?.();
-      vid.removeAttribute('autoplay');
-      vid.setAttribute('preload','none');
-    }
-  };
-  small.addEventListener?.('change', applySmall);
-  applySmall();
-})();
+  </style>
+  <script type="module">
+  const loadCareGuide = () => import('/scripts-care-guide.js');
+  const target = document.querySelector('#ndc-care-voka');
+  if (!target) { /* no guide on this page */ } 
+  else if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+      if (entries.some(e => e.isIntersecting)) { loadCareGuide(); obs.disconnect(); }
+    }, { rootMargin: '600px' });
+    io.observe(target);
+  } else {
+    // basic fallback
+    loadCareGuide();
+  }
 </script>
-<script>
+  
+  <script>
 (() => {
-  const sheet = document.getElementById('docSheet');
-  if (!sheet) return;
-  let lastOpener = null;
-
-  document.getElementById('docGrid')?.addEventListener('click', (e) => {
-    const card = e.target.closest('.ndc-card');
-    if (!card) return;
-    lastOpener = card.querySelector('.open, .block') || card;
-  });
-
-  sheet.addEventListener('close', () => {
-    lastOpener?.focus?.();
-  });
-
-  // also wire the close button
-  sheet.querySelector('.sheet-close')?.addEventListener('click', () => sheet.close());
+  const header = document.querySelector('.site-header');
+  let last = 0, ticking = false;
+  function onScroll(){
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+    if (!ticking){
+      window.requestAnimationFrame(() => {
+        header.classList.toggle('shrink', y > 10);
+        ticking = false;
+      });
+      ticking = true;
+    }
+    last = y;
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
 })();
 </script>
-            
+
 </body>
 </html>
-
