@@ -9,10 +9,10 @@
 
   <title>Dentist in Nallagandla | Noble Dental Care — Near Tellapur, Lingampally</title>
   <meta name="description" content="Noble Dental Care in Nallagandla—implants, braces, painless RCT, cosmetic & pediatric dentistry. Easy parking, late hours, emergency care. Call +91 86104 25342." />
-  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://nobledentalnallagandla.in/" />
   <meta name="author" content="Noble Dental Care — Nallagandla" />
-  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index, follow" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
@@ -21,12 +21,12 @@
   <meta property="og:title" content="Dentist in Nallagandla | Noble Dental Care" />
   <meta property="og:description" content="Implants, braces, RCT, cosmetics & pediatric dentistry in Nallagandla near Tellapur. Book today." />
   <meta property="og:url" content="https://nobledentalnallagandla.in/" />
-  <meta property="og:image" content="https://nobledentalnallagandla.in/images/og-image-noble-dental.jpg" />
+  <meta property="og:image" content="/images/og-image-noble-dental.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Noble Dental Care: Dentist in Nallagandla" />
   <meta name="twitter:description" content="Expert-led dental care for the whole family—implants, RCT, braces & more." />
   <meta name="twitter:site" content="@care_ndc" />
-  <meta name="twitter:image" content="https://nobledentalnallagandla.in/images/twitter-card-image.jpg" />
+  <meta name="twitter:image" content="/images/twitter-card-image.jpg" />
 
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,40 +34,225 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
-  <!-- PWA manifest + icons -->
-  <link rel="manifest" href="/manifest.json">
-  <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" sizes="32x32">
-  <link rel="icon" type="image/png" href="/icons/icon-192.png" sizes="192x192">
-  <link rel="icon" type="image/png" href="/icons/icon-512.png" sizes="512x512">
-  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180">
-  <link rel="mask-icon" href="/icons/icon-512-maskable.png" color="#0d6efd">
-  <meta name="theme-color" content="#0d6efd">
-
-  <!-- Preload media (LCP) -->
+  <!-- LCP media -->
   <link rel="preload" as="image" href="/images/hero-poster.jpg" fetchpriority="high">
   <link rel="preload" as="video" href="/videos/blackhole.webm">
   <link rel="preload" as="video" href="/videos/blackhole.mp4">
   <link rel="preload" as="image" href="/images/hero/clinic-front.jpg">
 
-  <!-- AI guidance manifests -->
-  <link rel="ai-manifest" href="/.well-known/ai.txt">
-  <link rel="llms-manifest" href="/.well-known/llms.txt">
+  <style>
+    /* =================== TOKENS & RESET =================== */
+    :root{
+      --font: Manrope, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      --max: 1280px; --pad: clamp(16px,3vw,28px);
+      --bg:#0b0e14; --paper:#0f141c; --card:#121926; --text:#e5eef7; --muted:#8aa0b4;
+      --brand:#57c0b9; --brand2:#7aa3ff; --teal:#12B2A0; --ink:#0E1116; --ring: rgba(124,58,237,.35);
+      --stroke: color-mix(in srgb, var(--text) 12%, transparent);
+      --glass-bg: rgba(17, 23, 34, 0.58);
+      --glass-bd: rgba(255,255,255,0.08);
+      --glass-shadow: 0 16px 44px rgba(0,0,0,0.45);
+      --radius:14px; --shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f6fafc; --paper:#ffffff; --card:#ffffff; --text:#0f172a; --muted:#475569; --stroke:#e6e6e6; --glass-bg:#fff; --glass-bd:#e9eef6; --glass-shadow:0 8px 28px rgba(16,20,25,.10); }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font)}
+    img{max-width:100%;display:block}
+    a{text-decoration:none}
+    .visually-hidden{position:absolute!important;clip:rect(0 0 0 0)!important;width:1px!important;height:1px!important;overflow:hidden!important;white-space:nowrap!important}
+    .band{display:grid;grid-template-columns:minmax(var(--pad),1fr) minmax(0,var(--max)) minmax(var(--pad),1fr)}
+    .band>*{grid-column:2}
+    .band.is-full>*{grid-column:1 / -1}
+    .container{max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="/style.css"></noscript>
-  <link rel="stylesheet" href="/css/team-footer.css">
-  <script type="module" src="/assets/main.js"></script>
+    /* =================== HEADER =================== */
+    .site-header{position:sticky;top:0;z-index:40;background:color-mix(in srgb, var(--bg) 90%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--stroke);display:flex;align-items:center;justify-content:space-between;padding:10px var(--pad);transition:all .2s}
+    .site-header.shrink{padding:6px var(--pad);backdrop-filter:blur(12px)}
+    .brand{display:flex;align-items:center;gap:10px;color:inherit}
+    .brand-title{font-weight:800;letter-spacing:.2px}
+    .brand-title span{color:var(--brand)}
+    .main-nav{display:flex;align-items:center;gap:14px}
+    .menu-toggle{display:none;border:1px solid var(--stroke);background:var(--card);color:inherit;border-radius:10px;width:40px;height:40px;display:grid;place-content:center}
+    .nav-pill{display:flex;gap:14px;list-style:none;margin:0;padding:0;align-items:center}
+    .nav-pill a{color:inherit;padding:8px 10px;border-radius:10px;transition:background .2s}
+    .nav-pill a:hover{background:color-mix(in srgb, var(--brand) 16%, transparent)}
+    .has-submenu{position:relative}
+    .submenu-toggle{display:flex;align-items:center;gap:6px;background:transparent;border:0;color:inherit;cursor:pointer;padding:8px 10px;border-radius:10px}
+    .submenu{position:absolute;inset:auto auto auto 0;translate:0 42px;min-width:260px;background:var(--card);border:1px solid var(--stroke);border-radius:12px;padding:8px;display:none;box-shadow:var(--shadow)}
+    .submenu[aria-hidden="false"]{display:block}
+    .submenu a{display:block;padding:8px 10px;border-radius:8px}
+    .submenu a:hover{background:color-mix(in srgb, var(--brand) 14%, transparent)}
+    @media (max-width: 960px){
+      .menu-toggle{display:grid}
+      .nav-pill{position:fixed;inset:60px 10px auto 10px;padding:12px;border-radius:14px;background:var(--paper);flex-direction:column;align-items:stretch;display:none}
+      .nav-pill[aria-hidden="false"]{display:flex}
+      .has-submenu{width:100%}
+      .submenu{position:static;translate:0 0;margin-top:6px}
+    }
 
-  <!-- JS -->
-  <script src="/scripts.js" type="module" defer></script>
- <script type="module" src="/data/scripts-care-guide.js" defer></script>
-  <!-- Optional for high-quality PDFs -->
-<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js" defer></script>
+    /* =================== HERO =================== */
+    .hero-background{position:relative;min-height:70svh;display:grid;background:linear-gradient(to bottom right,#eaebec,#a19999);align-items:center}
+    .blackhole-box{position:absolute;inset:0;height:130%;overflow:hidden;z-index:0;pointer-events:none;mix-blend-mode:soft-light}
+    .blackhole-box video{width:100%;height:200%;object-fit:cover;transform:translateY(-51%);filter:brightness(1.1) contrast(1.2) saturate(1.6)}
+    .hero-info-title{position:absolute;top:14px;left:var(--pad);display:flex;align-items:center;gap:8px;background:color-mix(in srgb, var(--paper) 90%, transparent);border:1px solid var(--stroke);padding:6px 10px;border-radius:999px}
+    .hero-heading{font-size:clamp(2rem,2.6rem + 1.5vw,4rem);line-height:1.1;letter-spacing:-0.02em;margin:0 var(--pad)}
+    .container > .hero-sub{color:#ffffff;max-width:68ch;margin:10px 0 var(--pad)}
+    .hero-buttons{display:flex;gap:10px;flex-wrap:wrap}
+    .hero-button{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));transition:transform .2s, box-shadow .2s}
+    .hero-button:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.2)}
 
-  
-  <!-- Analytics (example) -->
-  <script async defer data-domain="nobledentalnallagandla.in" src="https://plausible.io/js/plausible.js"></script>
+    /* =================== CARE GUIDE (Voka) =================== */
+    .voka{padding:40px 0 10px}
+    .voka__head{text-align:left;max-width:980px;margin-inline:auto;padding-inline:var(--pad)}
+    .voka__kicker{color:var(--muted);margin:0 0 6px}
+    .voka__title{margin:.2rem 0 .4rem;font-size:clamp(1.4rem,1rem + 1.4vw,2rem)}
+    .voka__sub{color:var(--muted);max-width:72ch}
+    .voka__filters{display:grid;gap:10px;margin:14px 0 6px;grid-template-columns:1fr 220px;align-items:center}
+    .voka__search,.voka__select{display:flex;align-items:center;gap:8px;border:1px solid var(--stroke);background:#fff;color:#0b0e14;border-radius:12px;padding:8px 10px}
+    .voka__search input{border:0;outline:0;background:transparent;flex:1;font-size:1rem}
+    .voka__select select{border:0;outline:0;background:transparent;flex:1;font-size:1rem}
+    .voka__chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .voka__chips .vk-chip{border:1px solid var(--stroke);background:#fff;color:#0b0e14;border-radius:999px;padding:.4rem .7rem;font-weight:800;cursor:pointer}
+    .voka__card{display:grid;gap:14px;background:var(--glass-bg);border:1px solid var(--glass-bd);border-radius:18px;box-shadow:var(--glass-shadow);backdrop-filter:blur(12px) saturate(140%);padding:12px;margin-top:10px}
+    .voka__media{position:relative;margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--glass-bd)}
+    .voka__img{width:100%;height:auto;aspect-ratio:16/7;object-fit:cover;opacity:0;transition:opacity .2s}
+    .voka__img.is-show{opacity:1}
+    .voka__pill{position:absolute;top:10px;left:10px;background:#fff;color:#0b0e14;border-radius:999px;padding:6px 10px;border:1px solid var(--stroke);font-weight:700}
+    .voka__titlebar{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+    .badge{display:inline-block;background:#eef7ff;border:1px solid #d5e8ff;color:#0b3f7a;border-radius:999px;padding:.35rem .6rem;font-weight:800}
+    .voka__keywords{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+    .voka__tabs{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+    .vk-tab{border:1px solid var(--stroke);background:#fff;color:#0b0e14;border-radius:999px;padding:.4rem .7rem;font-weight:700;cursor:pointer}
+    .vk-tab.is-active{outline:3px solid var(--ring)}
+    .vk-panel{border:1px dashed var(--stroke);border-radius:12px;padding:12px;background:#fff;color:#0b0e14}
+    .voka__footer{display:grid;gap:10px;grid-template-columns:auto 1fr;align-items:center}
+    .voka__nav{display:flex;gap:8px;align-items:center}
+    .navbtn{width:38px;height:38px;border:1px solid var(--stroke);border-radius:10px;background:#fff;color:#0b0e14;cursor:pointer}
+    .voka__dots{display:flex;gap:6px;flex-wrap:wrap}
+    .voka__dots button{width:10px;height:10px;border-radius:999px;border:1px solid var(--stroke);background:#fff}
+    .voka__dots button.is-active{background:linear-gradient(135deg,var(--brand),var(--brand2));border-color:transparent}
+    .voka__actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px}
+    .btn--primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff}
+    .btn--outline{border:1px solid var(--stroke);background:#fff;color:#0b0e14}
+    .voka__chat{border:1px solid var(--glass-bd);border-radius:12px;padding:10px;background:var(--glass-bg);box-shadow:var(--glass-shadow);backdrop-filter:blur(10px);margin-top:12px}
+    .chat__title{font-weight:800;margin-bottom:6px}
+    .chat__log{display:grid;gap:6px;max-height:220px;overflow:auto;background:#fff;color:#0b0e14;border-radius:10px;padding:10px;border:1px solid var(--stroke)}
+    .msg{padding:8px 10px;border-radius:10px}
+    .msg--user{background:#ecf3ff}
+    .msg--bot{background:#f7fafc}
+    .chat__form{display:flex;gap:8px;margin-top:8px}
+    .chat__form input{flex:1;padding:10px;border-radius:10px;border:1px solid var(--stroke);background:#fff;color:#0b0e14}
+    .chat__form button,.chat__form .chat__cta{padding:10px 12px;border-radius:10px;border:1px solid var(--stroke);background:#fff;color:#0b0e14}
+
+    /* =================== CONTACT (Book) =================== */
+    .contact-band{background:linear-gradient(135deg, rgba(87,192,185,.08), rgba(128,160,255,.08));padding:4rem 0}
+    .git-wrap{display:grid;gap:24px;grid-template-columns:1fr 1fr;max-width:1200px;margin:auto}
+    .git-left{display:flex;flex-direction:column;gap:1.5rem}
+    .cta-pill{display:inline-flex;align-items:center;gap:.6rem;padding:.75rem 1.25rem;border-radius:999px;font-weight:600;transition:background .2s, transform .2s}
+    .cta-pill.call{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff}
+    .cta-pill.whats{background:#25d366;color:#fff}
+    .cta-pill:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.25)}
+    .git-points{list-style:none;padding:0;margin:0;color:var(--muted)}
+    .git-points li{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
+    .git-card{background:rgba(255,255,255,0.08);border-radius:16px;padding:24px;backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(255,255,255,0.18);box-shadow:0 8px 24px rgba(0,0,0,0.25)}
+    .git-form-grid{display:grid;gap:16px}
+    .f{display:flex;flex-direction:column;font-size:0.95rem}
+    .f span{margin-bottom:6px;font-weight:600}
+    .f input,.f select,.f textarea{padding:12px;border:1px solid rgba(255,255,255,0.2);border-radius:12px;background:rgba(255,255,255,0.06);color:var(--text)}
+    .git-summary{margin-top:20px;padding:14px;border-radius:12px;border:1px dashed rgba(255,255,255,0.2);background:rgba(255,255,255,0.04);color:var(--muted)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:none;border-radius:12px;padding:12px 20px;font-weight:600}
+    .t-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border-radius:10px;background:color-mix(in srgb, var(--brand) 12%, transparent);color:inherit;border:1px solid var(--stroke)}
+
+    /* =================== TEAM =================== */
+    .ndc-team-android{background:var(--paper);padding:56px 0}
+    .ndc-screen{background:linear-gradient(180deg,#FFF 0%, #FAFBFF 100%);border:1px solid var(--stroke);border-radius:20px;box-shadow:var(--glass-shadow);padding:14px}
+    .ndc-appbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 4px 12px;border-bottom:1px solid var(--stroke)}
+    .ndc-appbar .bx-heart{font-size:22px;color:var(--teal)}
+    .ndc-appbar .title{margin:0;font-size:clamp(20px,3vw,28px);line-height:1.15;background:linear-gradient(90deg,#0E1116 0%, #0D6EFD 45%, #12B2A0 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .chip--ghost{border:1px solid var(--stroke);background:#fff;color:#0E1116;padding:.46rem .8rem;border-radius:999px;font-weight:800;cursor:pointer}
+    .chip--ghost[aria-pressed="true"]{outline:3px solid var(--ring);border-color:#bcd6ff}
+    .ndc-search{display:flex;align-items:center;gap:8px;border:1px solid var(--stroke);background:#fff;border-radius:14px;padding:8px 10px;margin:12px 0 10px}
+    .ndc-search input{border:none;outline:none;background:transparent;flex:1;padding:6px 4px;font-size:1rem}
+    .ndc-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(244px,288px));justify-content:center;gap:14px;padding:8px 0}
+    .ndc-card{position:relative;display:grid;grid-template-rows:200px auto;max-width:288px;min-height:360px;background:var(--glass-bg);border:1px solid var(--glass-bd);border-radius:20px;overflow:hidden;box-shadow:var(--glass-shadow);backdrop-filter: blur(10px) saturate(140%);transition:transform .18s ease, box-shadow .18s ease}
+    .ndc-card:hover{transform:translateY(-3px);box-shadow:0 14px 26px rgba(16,20,25,.12)}
+    .ndc-card .block{display:grid;grid-template-rows:200px auto;color:inherit}
+    .ndc-card img{width:100%;height:100%;object-fit:cover}
+    .ndc-card .info{padding:12px 12px 52px}
+    .ndc-card .name{margin:0 0 2px 0;font-size:1.06rem;font-weight:800}
+    .ndc-card .role{margin:0 0 8px 0;color:var(--muted);font-size:.94rem}
+    .ndc-card .meta{display:flex;gap:10px;flex-wrap:wrap;padding:0;margin:0;list-style:none;color:#324257}
+    .ndc-card .open{position:absolute;right:10px;bottom:10px;width:44px;height:44px;border-radius:12px;border:1px solid var(--stroke);background:#fff;display:grid;place-content:center;color:#0D6EFD;cursor:pointer;box-shadow:0 6px 16px rgba(13,110,253,.12)}
+    .ndc-card .open:hover{background:#f5f9ff}
+    .ndc-sheet{width:min(900px,96vw);border:none;border-radius:20px;overflow:hidden;padding:0;background:#fff;box-shadow:0 28px 80px rgba(16,20,25,.25)}
+    .ndc-sheet::backdrop{background:rgba(16,20,25,.40)}
+    .sheet-close{position:absolute;right:12px;top:12px;border:1px solid var(--stroke);background:#fff;border-radius:12px;width:40px;height:40px;display:grid;place-content:center;cursor:pointer}
+    .sheet-hero img{width:100%;height:280px;object-fit:cover;display:block}
+    .sheet-body{padding:16px}
+    .sheet-body .muted{color:var(--muted);margin:.2rem 0 .6rem}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin:.2rem 0 .8rem}
+    .chips .chip{border:1px solid var(--stroke);border-radius:999px;padding:.4rem .7rem;background:#fff;font-weight:800}
+    .books{display:grid;gap:.75rem}
+    .books .book{display:flex;gap:.7rem}
+    .books img{width:60px;height:86px;border-radius:6px;object-fit:cover;border:1px solid var(--stroke)}
+    .books .t{font-weight:800}
+    .books .p{font-size:.86rem;color:var(--muted)}
+    .btn.outline{background:#fff;color:var(--ink)}
+    .sheet-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .sheet-footnote{margin-top:.75rem;font-size:.9rem;color:var(--muted);display:flex;align-items:center;gap:.35rem}
+
+    /* =================== REVIEWS =================== */
+    .ndc-reviews .rev-rail-wrap{position:relative}
+    .rev-rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc(100% - 20px);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px}
+    .rev-rail:focus-visible{outline:3px solid var(--ring)}
+    .rev-card{scroll-snap-align:center;border:1px solid var(--glass-bd);border-radius:14px;padding:12px;background:var(--glass-bg);box-shadow:var(--glass-shadow);backdrop-filter: blur(10px) saturate(140%)}
+    .rev-stars{color:#f5a524;font-weight:800}
+    .rev-author{display:flex;gap:8px;align-items:center;margin-top:10px}
+    .rev-nav{position:absolute;top:50%;transform:translateY(-50%);background:#fff;border:1px solid var(--stroke);border-radius:10px;width:36px;height:36px;display:grid;place-content:center;cursor:pointer}
+    .rev-nav.prev{left:-6px}
+    .rev-nav.next{right:-6px}
+    .rev-cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+
+    /* =================== BLOG =================== */
+    .treatments-grid{display:grid;gap:14px}
+    .t-card{border:1px solid var(--glass-bd);border-radius:14px;overflow:hidden;background:var(--glass-bg);box-shadow:var(--glass-shadow);backdrop-filter: blur(10px) saturate(140%)}
+    .t-media img{width:100%;aspect-ratio:16/9;object-fit:cover}
+    .t-body{padding:12px}
+    .t-title{font-weight:800;margin-bottom:6px}
+    .t-desc{color:var(--muted);margin:0 0 8px}
+    .t-actions{display:flex;gap:8px}
+    .t-btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--stroke);background:#fff;padding:.6rem .8rem;border-radius:10px}
+    @media(min-width:720px){.treatments-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1024px){.treatments-grid{grid-template-columns:repeat(4,1fr)}}
+
+    /* =================== CERTIFICATES =================== */
+    #certs-ticker .ticker-viewport{position:relative;overflow:hidden;border:1px solid var(--glass-bd);border-radius:14px;background:var(--glass-bg);padding:10px;box-shadow:var(--glass-shadow);backdrop-filter: blur(10px) saturate(140%)}
+    .ticker-track{display:flex;gap:12px;list-style:none;padding:0;margin:0;will-change:transform}
+    .ticker-ctrl{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border:1px solid var(--stroke);background:#fff;border-radius:10px;display:grid;place-content:center;cursor:pointer}
+    .ticker-ctrl.prev{left:6px}.ticker-ctrl.next{right:6px}
+
+    /* =================== FOOTER =================== */
+    .site-footer{background:linear-gradient(180deg,#0b0e14 0%, #0f1623 55%, #0a0e14 100%);color:#d7deea;margin-top:24px}
+    .footer-grid{display:grid;gap:18px;padding:22px 0}
+    .footer-brand img{background:#fff;border-radius:10px;border:1px solid #e5edf7}
+    .footer-nav h4,.footer-contact h4,.footer-social h4{margin:.3rem 0 .4rem;color:#fff}
+    .footer-nav ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+    .footer-nav a{color:#d7deea}
+    .footer-nav a:hover{text-decoration:underline}
+    .footer-contact a{color:#d7deea}
+    .footer-social a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid #233248;border-radius:10px;color:#c6d3e9;margin-right:6px}
+    .footer-social a:hover{background:#0f1623}
+    .footer-bottom{border-top:1px solid #192233;margin-top:12px;padding:10px 0;text-align:center;color:#9fb0c9}
+    @media(min-width:860px){.footer-grid{grid-template-columns:1.1fr .9fr .9fr .7fr}}
+
+    /* =================== A11Y / MISC =================== */
+    @media (prefers-reduced-motion: reduce){
+      *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+    }
+  </style>
 </head>
 
 <body class="theme-voka" data-mode="light">
@@ -85,7 +270,6 @@
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
         <i class="bx bx-menu" aria-hidden="true"></i>
       </button>
-      <!-- removed role="list" (ul is already a list) -->
       <ul class="nav-pill" aria-hidden="true">
         <li><a href="/" aria-current="page">Home</a></li>
         <li class="has-submenu">
@@ -119,107 +303,43 @@
     </nav>
   </header>
 
-  <!-- ================= HERO (blackhole video) ================= -->
-  <img src="/images/hero/clinic-front.jpg"
-       fetchpriority="high" loading="eager" decoding="async">
-
+  <!-- ================= HERO ================= -->
+  <img src="/images/hero/clinic-front.jpg" fetchpriority="high" loading="eager" decoding="async" alt="Noble Dental Care exterior">
   <section class="hero-background band is-full" id="top" aria-labelledby="hero-title">
     <div class="blackhole-box" aria-label="Clinic highlight video">
-      <video class="blackhole-video" poster="/images/hero-poster.jpg"
-             preload="none" autoplay muted loop playsinline
-             aria-label="Dental care hero video">
+      <video class="blackhole-video" poster="/images/hero-poster.jpg" preload="none" autoplay muted loop playsinline aria-label="Dental care hero video">
         <source src="/videos/blackhole.webm" type="video/webm">
         <source src="/videos/blackhole.mp4" type="video/mp4">
       </video>
     </div>
-
-    <div class="hero-info-title">
-      <i class="bx bxl-sketch" aria-hidden="true"></i>
-      Noble Dental Care
-    </div>
-
+    <div class="hero-info-title"><i class="bx bxl-sketch" aria-hidden="true"></i> Noble Dental Care</div>
     <div class="container">
-      <h1 id="hero-title" class="hero-heading">
-        Your Trusted <span class="gradient">Dentist</span> in Nallagandla<span class="gradient">, Hyderabad</span>
-      </h1>
-      <p class="hero-sub">
-        Expert-led care in dental implants, painless root canal treatment, orthodontics, cosmetic and pediatric dentistry —
-        late hours, easy parking, and emergency support.
-      </p>
-
+      <h1 id="hero-title" class="hero-heading">Your Trusted <span class="gradient">Dentist</span> in Nallagandla<span class="gradient">, Hyderabad</span></h1>
+      <p class="hero-sub">Expert-led care in dental implants, painless root canal treatment, orthodontics, cosmetic and pediatric dentistry — late hours, easy parking, and emergency support.</p>
       <div class="hero-buttons" role="group" aria-label="Primary actions">
-        <a href="/self-check#paths" class="hero-button secondary" aria-label="Start a quick dental self-check">
-          <i class="bx bx-bulb" aria-hidden="true"></i> Start Self-Check
-        </a>
-        <a href="https://wa.me/918610425342" target="_blank" rel="noopener" class="hero-button whatsapp">
-          <i class="bx bxl-whatsapp" aria-hidden="true"></i> WhatsApp
-        </a>
-        <a href="tel:+918610425342" class="hero-button call">
-          <i class="bx bxs-phone" aria-hidden="true"></i> Call
-        </a>
-        <a href="mailto:nobledental.org@gmail.com" class="hero-button mail">
-          <i class="bx bx-envelope" aria-hidden="true"></i> Mail
-        </a>
-        <a href="https://g.co/kgs/Lebjyvw" target="_blank" rel="noopener" class="hero-button location">
-          <i class="bx bx-map" aria-hidden="true"></i> Location
-        </a>
+        <a href="/self-check#paths" class="hero-button secondary"><i class="bx bx-bulb" aria-hidden="true"></i> Start Self-Check</a>
+        <a href="https://wa.me/918610425342" target="_blank" rel="noopener" class="hero-button whatsapp"><i class="bx bxl-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+        <a href="tel:+918610425342" class="hero-button call"><i class="bx bxs-phone" aria-hidden="true"></i> Call</a>
+        <a href="mailto:nobledental.org@gmail.com" class="hero-button mail"><i class="bx bx-envelope" aria-hidden="true"></i> Mail</a>
+        <a href="https://g.co/kgs/Lebjyvw" target="_blank" rel="noopener" class="hero-button location"><i class="bx bx-map" aria-hidden="true"></i> Location</a>
       </div>
     </div>
-
     <div class="scroll-down" aria-hidden="true"></div>
-  </section>
-
-  <!-- ================= SELF-CHECK (banner) ================= -->
-  <section class="ndc-selfcheck-hero" aria-labelledby="sc-title">
-    <div class="ndc-selfcheck-wrap container">
-      <div class="ndc-selfcheck-copy">
-        <p class="ndc-eyebrow">Nallagandla • Hyderabad</p>
-        <h2 id="sc-title" class="ndc-title">Dentist-Reviewed Self-Check</h2>
-        <p class="ndc-sub">
-          Understand your symptoms in minutes. Pick who you are, select tooth region(s), choose symptoms, and get probable causes,
-          home care, urgency, and treatment options—reviewed by <strong>Dr. Dhivakaran R.</strong>
-        </p>
-
-        <div class="ndc-cta-row">
-          <a href="/self-check" class="ndc-btn ndc-btn--primary" data-nav="self-check">Open Self-Check</a>
-          <a href="/treatments" class="ndc-btn ndc-btn--ghost">Explore Treatments</a>
-        </div>
-
-        <ul class="ndc-bullets" aria-label="Highlights">
-          <li>Interactive tooth map</li>
-          <li>Pregnancy & kids modes</li>
-          <li>Download results as PDF</li>
-        </ul>
-      </div>
-
-      <div class="ndc-selfcheck-visual">
-        <img
-          src="/images/hero-selfcheck.png"
-          alt="Preview of the Self-Check tool with tooth map and results"
-          width="720" height="560" loading="lazy" decoding="async"
-          class="ndc-hero-art">
-      </div>
-    </div>
   </section>
 
   <!-- ================= CARE GUIDE (Voka) ================= -->
   <main id="main" role="main">
-    <section id="ndc-care-voka" class="voka">
-      <div class="voka__container">
+    <section id="ndc-care-voka" class="voka band" aria-label="Dental Care Guide">
+      <div class="voka__container container">
         <header class="voka__head">
           <p class="voka__kicker">Prevention • Assistance • Ethical care</p>
           <h2 class="voka__title"><span>Dental Care Guide</span> — simple, evidence-aligned answers</h2>
-          <p class="voka__sub">
-            Understand symptoms, what to do now, and typical treatments. Reviewed against IDA/ADA/ICMR/WHO guidance and other standard health panels.
-          </p>
+          <p class="voka__sub">Understand symptoms, what to do now, and typical treatments. Reviewed against IDA/ADA/ICMR/WHO guidance and other standard health panels.</p>
 
-          <!-- Filters -->
           <form class="voka__filters" role="search" onsubmit="return false" aria-label="Filter topics">
             <label class="voka__search">
               <i class="bx bx-search" aria-hidden="true"></i>
-              <input id="vkSearch" type="search"
-                     placeholder="Search (e.g., tooth cleaning, braces, crown, pain, kids, wisdom tooth)…"
-                     autocomplete="off" list="vk-datalist" />
+              <input id="vkSearch" type="search" placeholder="Search (e.g., tooth cleaning, braces, crown, pain, kids, wisdom tooth)…" autocomplete="off" list="vk-datalist" />
               <datalist id="vk-datalist"></datalist>
             </label>
 
@@ -261,11 +381,11 @@
               <a id="vkDeepLink" class="voka__link" href="#" target="_self" rel="noopener">Details →</a>
             </div>
 
-            <!-- Tabs: ARIA-corrected -->
+            <!-- Tabs -->
             <nav class="voka__tabs" aria-label="Card sections" role="tablist">
               <button class="vk-tab is-active" role="tab" id="tab-overview" data-t="overview" aria-selected="true" tabindex="0">ℹ️ Overview</button>
-              <button class="vk-tab" role="tab" id="tab-postop" data-t="postop" aria-selected="false" tabindex="-1">🗓️ Post-op timeline</button>
-              <button class="vk-tab" role="tab" id="tab-tips" data-t="tips" aria-selected="false" tabindex="-1">💡 Tips / FAQ</button>
+              <button class="vk-tab" role="tab" id="tab-postop" data-t="postop" aria-selected="false" tabindex="-1">🗓️ Post-op</button>
+              <button class="vk-tab" role="tab" id="tab-tips" data-t="tips" aria-selected="false" tabindex="-1">💡 Tips</button>
               <button class="vk-tab" role="tab" id="tab-proscons" data-t="proscons" aria-selected="false" tabindex="-1">⚖️ Pros & Cons</button>
               <button class="vk-tab" role="tab" id="tab-sources" data-t="sources" aria-selected="false" tabindex="-1">📚 Citations</button>
             </nav>
@@ -321,8 +441,6 @@
           Content reflects standard clinical texts & public guidance (IDA/ADA/ICMR/WHO). It’s educational, not diagnostic. Severe pain, fever, trauma or swelling?
           <a href="tel:+918610425342">Call the clinic</a>.
         </p>
-
-        <div id="vk-pdf-src" hidden></div>
       </div>
     </section>
   </main>
@@ -331,19 +449,16 @@
   <section id="get-in-touch" class="band contact-band" aria-label="Get in touch & book">
     <div class="container">
       <div class="git-wrap">
-        <!-- Left -->
         <aside class="git-left">
           <header class="git-head">
             <p class="eyebrow">Get in touch</p>
             <h2 class="section-title">Let’s fix your smile — today or this week</h2>
             <p class="section-sub">Pick a day & time. Prefer a call or WhatsApp? Use the quick actions.</p>
           </header>
-
           <div class="git-actions">
             <a class="cta-pill call" href="tel:+918610425342"><i class="bx bxs-phone"></i> Call now</a>
             <a class="cta-pill whats" id="waQuick" target="_blank" rel="noopener" href="https://wa.me/918610425342"><i class="bx bxl-whatsapp"></i> WhatsApp</a>
           </div>
-
           <ul class="git-points" role="list">
             <li><i class="bx bx-time-five"></i> Mon–Sat 11:00–22:00, Sun 15:00–22:00</li>
             <li><i class="bx bx-map"></i> Nallagandla, Hyderabad (easy parking)</li>
@@ -351,26 +466,16 @@
           </ul>
         </aside>
 
-        <!-- Right -->
         <div class="git-card">
           <form id="apptForm" autocomplete="on">
             <div class="git-form-grid">
-              <label class="f"><span>Name</span>
-                <input type="text" name="name" required>
-              </label>
-              <label class="f"><span>Phone</span>
-                <input type="tel" name="phone" required>
-              </label>
+              <label class="f"><span>Name</span><input type="text" name="name" required></label>
+              <label class="f"><span>Phone</span><input type="tel" name="phone" required></label>
               <label class="f"><span>Service</span>
                 <select name="service">
-                  <option>Root Canal</option>
-                  <option>Implants</option>
-                  <option>Braces/Aligners</option>
-                  <option>Whitening</option>
-                  <option>Extraction</option>
-                  <option>Kids Dentistry</option>
-                  <option>Gum Treatment</option>
-                  <option>Checkup & Cleaning</option>
+                  <option>Root Canal</option><option>Implants</option><option>Braces/Aligners</option>
+                  <option>Whitening</option><option>Extraction</option><option>Kids Dentistry</option>
+                  <option>Gum Treatment</option><option>Checkup & Cleaning</option>
                 </select>
               </label>
               <label class="f"><span>Doctor</span>
@@ -379,6 +484,7 @@
                   <option>Dr Roger Ronaldo</option>
                   <option>Dr Deepak</option>
                   <option>Dr Idhaya</option>
+                  <option>Dr Thikvijay</option>
                 </select>
               </label>
               <label class="f full"><span>Notes (optional)</span>
@@ -386,30 +492,19 @@
               </label>
             </div>
 
-            <label class="f"><span>Select Day</span>
-              <select id="daySelect" name="day" required></select>
-            </label>
-
-            <label class="f"><span>Select Time</span>
-              <select id="timeSelect" name="time" required><option value="">Select a time</option></select>
-            </label>
+            <label class="f"><span>Select Day</span><select id="daySelect" name="day" required></select></label>
+            <label class="f"><span>Select Time</span><select id="timeSelect" name="time" required><option value="">Select a time</option></select></label>
 
             <div class="git-summary">
-              <div class="summary-line"><i class="bx bx-info-circle"></i>
-                <span id="summaryText">Choose a day & time to continue.</span>
-              </div>
+              <div class="summary-line"><i class="bx bx-info-circle"></i> <span id="summaryText">Choose a day & time to continue.</span></div>
               <div class="git-submit">
-                <button class="btn primary" type="submit" id="bookBtn" disabled>
-                  <i class="bx bx-calendar-check"></i> Submit & WhatsApp
-                </button>
+                <button class="btn primary" type="submit" id="bookBtn" disabled><i class="bx bx-calendar-check"></i> Submit & WhatsApp</button>
                 <a class="t-btn" href="tel:+918610425342"><i class="bx bxs-phone"></i> Call</a>
                 <a class="t-btn" id="waFill" target="_blank" rel="noopener" href="https://wa.me/918610425342"><i class="bx bxl-whatsapp"></i> WhatsApp</a>
               </div>
             </div>
 
-            <p id="apptToast" class="appt-toast" role="status" aria-live="polite" hidden>
-              ✅ Opening WhatsApp with your request…
-            </p>
+            <p id="apptToast" class="appt-toast" role="status" aria-live="polite" hidden>✅ Opening WhatsApp with your request…</p>
           </form>
         </div>
       </div>
@@ -427,10 +522,11 @@
             <h2 class="title">Our Specialists</h2>
           </div>
         </div>
-        <div class="right" role="group" aria-label="Filter by specialty">
+        <div class="right" role="group" aria-label="Filter by specialty" id="docFilters">
           <button class="chip--ghost" type="button" data-filter="all" aria-pressed="true">All</button>
           <button class="chip--ghost" type="button" data-filter="surgery">Surgery</button>
           <button class="chip--ghost" type="button" data-filter="ortho">Ortho</button>
+          <button class="chip--ghost" type="button" data-filter="aesthetic">Aesthetic</button>
           <button class="chip--ghost" type="button" data-filter="preventive">Preventive</button>
         </div>
       </header>
@@ -456,7 +552,7 @@
               </ul>
             </div>
           </a>
-          <button class="open" aria-label="Open profile"><i class="bx bx-chevron-right" aria-hidden="true"></i></button>
+          <button class="open" type="button" aria-label="Open profile"><i class="bx bx-chevron-right" aria-hidden="true"></i></button>
           <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
         </article>
 
@@ -474,7 +570,25 @@
               </ul>
             </div>
           </a>
-          <button class="open" aria-label="Open profile"><i class="bx bx-chevron-right"></i></button>
+          <button class="open" type="button" aria-label="Open profile"><i class="bx bx-chevron-right" aria-hidden="true"></i></button>
+          <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
+        </article>
+
+        <!-- Thikvijay -->
+        <article class="ndc-card" data-id="thikvijay" data-tags="aesthetic cosmetology trichology english" itemscope itemtype="https://schema.org/Person">
+          <a class="block" href="#thikvijay" aria-label="Open profile: Dr Thikvijay">
+            <img src="/images/doctors/thikvijay.webp" width="320" height="420" loading="lazy" decoding="async" alt="Dr Thikvijay — Aesthetic & Medical Cosmetologist" itemprop="image">
+            <div class="info">
+              <h3 class="name" itemprop="name">Dr Thikvijay</h3>
+              <p class="role" itemprop="jobTitle">Aesthetic & Medical Cosmetologist</p>
+              <ul class="meta">
+                <li><i class="bx bx-time-five"></i> 10+ yrs</li>
+                <li><i class="bx bx-star"></i> 4.8</li>
+                <li><i class="bx bx-chat"></i> EN</li>
+              </ul>
+            </div>
+          </a>
+          <button class="open" type="button" aria-label="Open profile"><i class="bx bx-chevron-right" aria-hidden="true"></i></button>
           <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
         </article>
 
@@ -492,7 +606,7 @@
               </ul>
             </div>
           </a>
-          <button class="open" aria-label="Open profile"><i class="bx bx-chevron-right"></i></button>
+          <button class="open" type="button" aria-label="Open profile"><i class="bx bx-chevron-right" aria-hidden="true"></i></button>
           <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
         </article>
 
@@ -510,76 +624,30 @@
               </ul>
             </div>
           </a>
-          <button class="open" aria-label="Open profile"><i class="bx bx-chevron-right"></i></button>
+          <button class="open" type="button" aria-label="Open profile"><i class="bx bx-chevron-right" aria-hidden="true"></i></button>
           <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
         </article>
       </div>
     </div>
   </section>
 
-  <!-- Bottom sheet dialog for doctors -->
+  <!-- Bottom sheet dialog -->
   <dialog id="docSheet" class="ndc-sheet" aria-labelledby="sheetTitle">
-    <button class="sheet-close" aria-label="Close"><i class="bx bx-x"></i></button>
-    <div class="sheet-hero"><img id="sheetHero" src="" alt=""></div>
+    <button class="sheet-close" type="button" aria-label="Close"><i class="bx bx-x"></i></button>
+    <div class="sheet-hero"><img id="sheetHero" src="" alt="" width="900" height="280" decoding="async"></div>
     <div class="sheet-body">
       <h3 id="sheetTitle"></h3>
       <p id="sheetRole" class="muted"></p>
       <p id="sheetBio"></p>
-
       <div id="sheetExpertise" class="chips" aria-label="Expertise"></div>
       <div id="sheetBooks" class="books" aria-label="Publications"></div>
-
       <div class="sheet-actions">
-        <a id="sheetBook" class="btn primary" href="#get-in-touch">
-          <i class="bx bx-calendar"></i> Book with this doctor
-        </a>
-        <a href="tel:+918610425342" class="btn outline"><i class="bx bxs-phone"></i> Call Clinic</a>
+        <a id="sheetBook" class="btn primary" href="#get-in-touch" data-doc=""><i class="bx bx-calendar"></i> Book with this doctor</a>
+        <a id="sheetCall" href="tel:+918610425342" class="btn outline"><i class="bx bxs-phone"></i> Call Clinic</a>
       </div>
-
-      <div class="sheet-footnote">
-        <i class="bx bx-shield-alt-2" aria-hidden="true"></i>
-        Evidence-based care aligned with IDA/ADA/WHO & ICMR recommendations; individualized after a clinical exam & X-rays when indicated.
-      </div>
+      <div class="sheet-footnote"><i class="bx bx-shield-alt-2" aria-hidden="true"></i> Evidence-based care aligned with IDA/ADA/WHO & ICMR recommendations; individualized after a clinical exam & X-rays when indicated.</div>
     </div>
   </dialog>
-
-  <!-- NDC_DOCTORS dataset (for popup) -->
-  <script>
-    window.NDC_DOCTORS = {
-      dhivakaran: {
-        name:"Dr Dhivakaran",
-        role:"Chief Medical Director",
-        hero:"/images/doctors/dhivakaran-hero.webp",
-        bio:"Chief Medical Director at Noble Dental Care. Director, Healthflo (557 hospitals). Contributor to Triumph’s Complete Review of Dentistry.",
-        expertise:["Painless RCT","Dental Implants","Preventive Dentistry"],
-        books:[{t:"Triumph’s Complete Review of Dentistry",p:"Wolters Kluwer • 2018",img:"/images/books/triumph.webp",href:"https://play.google.com/store/books/details?id=ZTjvDwAAQBAJ"}]
-      },
-      roger: {
-        name:"Dr Roger Ronaldo",
-        role:"Oral & Maxillofacial Surgeon",
-        hero:"/images/doctors/roger-hero.webp",
-        bio:"Surgeon focusing on implants, orthognathic & reconstruction, and facial trauma.",
-        expertise:["Implantology","Orthognathic & Reconstruction","Trauma Surgery"],
-        books:[]
-      },
-      deepak: {
-        name:"Dr Deepak",
-        role:"Orthodontist",
-        hero:"/images/doctors/deepak-hero.webp",
-        bio:"Assistant Professor. Smile design, clear aligners, complex malocclusion.",
-        expertise:["Smile Design","Clear Aligners","Complex Malocclusion"],
-        books:[]
-      },
-      idhaya: {
-        name:"Dr Idhaya",
-        role:"Preventive & Tourism Dentistry",
-        hero:"/images/doctors/idhaya-hero.webp",
-        bio:"Preventive programs, insurance advisory and medical tourism coordination.",
-        expertise:["Preventive Dentistry","Insurance Advisory","Medical Tourism"],
-        books:[]
-      }
-    };
-  </script>
 
   <!-- ================= TESTIMONIALS ================= -->
   <section class="ndc-reviews band" id="patient-reviews" aria-label="Patient reviews">
@@ -591,127 +659,30 @@
       </header>
 
       <div class="rev-rail-wrap">
-        <button class="rev-nav prev" aria-label="Previous review">‹</button>
-
-        <!-- Rail -->
+        <button class="rev-nav prev" type="button" aria-label="Previous review">‹</button>
         <div class="rev-rail" id="revRail" tabindex="0" aria-live="polite">
-          <!-- Review cards ... (unchanged) -->
           <article class="rev-card" itemscope itemtype="https://schema.org/Review">
-            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-              <meta itemprop="ratingValue" content="5"/>
-              <span aria-hidden="true">★★★★★</span>
-            </div>
-            <blockquote class="rev-quote" itemprop="reviewBody">
-              Had a painless RCT the same evening. Doctor explained every step; recovery was smooth.
-            </blockquote>
-            <div class="rev-author">
-              <img src="/images/avatars/a1.webp" alt="" width="36" height="36" loading="lazy">
-              <div>
-                <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                  <span itemprop="name">Shruthi P</span>
-                </span>
-                <span class="s">Google Review</span>
-              </div>
-            </div>
+            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating"><meta itemprop="ratingValue" content="5"/><span aria-hidden="true">★★★★★</span></div>
+            <blockquote class="rev-quote" itemprop="reviewBody">Had a painless RCT the same evening. Doctor explained every step; recovery was smooth.</blockquote>
+            <div class="rev-author"><img src="/images/avatars/a1.webp" alt="" width="36" height="36" loading="lazy"><div><span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Shruthi P</span></span><span class="s">Google Review</span></div></div>
           </article>
-
           <article class="rev-card" itemscope itemtype="https://schema.org/Review">
-            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-              <meta itemprop="ratingValue" content="5"/>
-              <span aria-hidden="true">★★★★★</span>
-            </div>
-            <blockquote class="rev-quote" itemprop="reviewBody">
-              Friendly team, clear cost breakdown, and late-evening slot—perfect for my schedule.
-            </blockquote>
-            <div class="rev-author">
-              <img src="/images/avatars/a2.webp" alt="" width="36" height="36" loading="lazy">
-              <div>
-                <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                  <span itemprop="name">Rahul K</span>
-                </span>
-                <span class="s">Practo Review</span>
-              </div>
-            </div>
+            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating"><meta itemprop="ratingValue" content="5"/><span aria-hidden="true">★★★★★</span></div>
+            <blockquote class="rev-quote" itemprop="reviewBody">Friendly team, clear cost breakdown, and late-evening slot—perfect for my schedule.</blockquote>
+            <div class="rev-author"><img src="/images/avatars/a2.webp" alt="" width="36" height="36" loading="lazy"><div><span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Rahul K</span></span><span class="s">Practo Review</span></div></div>
           </article>
-
           <article class="rev-card" itemscope itemtype="https://schema.org/Review">
-            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-              <meta itemprop="ratingValue" content="5"/>
-              <span aria-hidden="true">★★★★★</span>
-            </div>
-            <blockquote class="rev-quote" itemprop="reviewBody">
-              Got my wisdom tooth out—quick, careful, and zero complications. Highly recommend.
-            </blockquote>
-            <div class="rev-author">
-              <img src="/images/avatars/a3.webp" alt="" width="36" height="36" loading="lazy">
-              <div>
-                <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                  <span itemprop="name">Mahesh V</span>
-                </span>
-                <span class="s">Google Review</span>
-              </div>
-            </div>
+            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating"><meta itemprop="ratingValue" content="5"/><span aria-hidden="true">★★★★★</span></div>
+            <blockquote class="rev-quote" itemprop="reviewBody">Got my wisdom tooth out—quick, careful, and zero complications. Highly recommend.</blockquote>
+            <div class="rev-author"><img src="/images/avatars/a3.webp" alt="" width="36" height="36" loading="lazy"><div><span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Mahesh V</span></span><span class="s">Google Review</span></div></div>
           </article>
-
           <article class="rev-card" itemscope itemtype="https://schema.org/Review">
-            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-              <meta itemprop="ratingValue" content="5"/>
-              <span aria-hidden="true">★★★★★</span>
-            </div>
-            <blockquote class="rev-quote" itemprop="reviewBody">
-              My daughter’s braces journey went smoothly. Clear instructions and regular follow-ups.
-            </blockquote>
-            <div class="rev-author">
-              <img src="/images/avatars/a4.webp" alt="" width="36" height="36" loading="lazy">
-              <div>
-                <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                  <span itemprop="name">Priya S</span>
-                </span>
-                <span class="s">Practo Review</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="rev-card" itemscope itemtype="https://schema.org/Review">
-            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-              <meta itemprop="ratingValue" content="5"/>
-              <span aria-hidden="true">★★★★★</span>
-            </div>
-            <blockquote class="rev-quote" itemprop="reviewBody">
-              Clean clinic, transparent pricing, and Sunday hours saved me. Thanks, team!
-            </blockquote>
-            <div class="rev-author">
-              <img src="/images/avatars/a5.webp" alt="" width="36" height="36" loading="lazy">
-              <div>
-                <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                  <span itemprop="name">Aravind T</span>
-                </span>
-                <span class="s">Google Review</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="rev-card" itemscope itemtype="https://schema.org/Review">
-            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-              <meta itemprop="ratingValue" content="5"/>
-              <span aria-hidden="true">★★★★★</span>
-            </div>
-            <blockquote class="rev-quote" itemprop="reviewBody">
-              Whitening was safe and shade change is visible. Great post-care guidance.
-            </blockquote>
-            <div class="rev-author">
-              <img src="/images/avatars/a6.webp" alt="" width="36" height="36" loading="lazy">
-              <div>
-                <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                  <span itemprop="name">Nisha R</span>
-                </span>
-                <span class="s">Practo Review</span>
-              </div>
-            </div>
+            <div class="rev-stars" aria-label="5 out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating"><meta itemprop="ratingValue" content="5"/><span aria-hidden="true">★★★★★</span></div>
+            <blockquote class="rev-quote" itemprop="reviewBody">My daughter’s braces journey went smoothly. Clear instructions and regular follow-ups.</blockquote>
+            <div class="rev-author"><img src="/images/avatars/a4.webp" alt="" width="36" height="36" loading="lazy"><div><span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Priya S</span></span><span class="s">Practo Review</span></div></div>
           </article>
         </div>
-
-        <button class="rev-nav next" aria-label="Next review">›</button>
+        <button class="rev-nav next" type="button" aria-label="Next review">›</button>
       </div>
 
       <div class="rev-cta">
@@ -732,118 +703,21 @@
       </header>
 
       <div class="treatments-grid t-rail" id="blogRail">
-        <!-- Cards (unchanged) -->
         <article class="t-card">
-          <div class="t-media">
-            <img src="/images/blog/featured.jpg" alt="How to manage tooth sensitivity" loading="lazy">
-          </div>
-          <div class="t-body">
-            <div class="t-title">Tooth Sensitivity—what really helps?</div>
-            <p class="t-desc">Quick guide to causes, fixes, and when to seek care.</p>
-            <div class="t-actions">
-              <a class="t-btn" href="/blog/tooth-sensitivity.html"><i class="bx bx-book-open"></i> Read</a>
-              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-            </div>
-          </div>
+          <div class="t-media"><img src="/images/blog/featured.jpg" alt="How to manage tooth sensitivity" loading="lazy"></div>
+          <div class="t-body"><div class="t-title">Tooth Sensitivity—what really helps?</div><p class="t-desc">Quick guide to causes, fixes, and when to seek care.</p><div class="t-actions"><a class="t-btn" href="/blog/tooth-sensitivity.html"><i class="bx bx-book-open"></i> Read</a><a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a></div></div>
         </article>
-
         <article class="t-card">
-          <div class="t-media">
-            <img src="/images/blog/aligners.jpg" alt="Aligners vs braces" loading="lazy">
-          </div>
-          <div class="t-body">
-            <div class="t-title">Aligners vs Braces—what’s right for you?</div>
-            <p class="t-desc">Aesthetic, hygiene, and compliance differences in plain English.</p>
-            <div class="t-actions">
-              <a class="t-btn" href="/blog/aligners-vs-braces.html"><i class="bx bx-book-open"></i> Read</a>
-              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-            </div>
-          </div>
+          <div class="t-media"><img src="/images/blog/aligners.jpg" alt="Aligners vs braces" loading="lazy"></div>
+          <div class="t-body"><div class="t-title">Aligners vs Braces—what’s right for you?</div><p class="t-desc">Aesthetic, hygiene, and compliance differences in plain English.</p><div class="t-actions"><a class="t-btn" href="/blog/aligners-vs-braces.html"><i class="bx bx-book-open"></i> Read</a><a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a></div></div>
         </article>
-
         <article class="t-card">
-          <div class="t-media">
-            <img src="/images/blog/whitening.jpg" alt="Teeth whitening myths" loading="lazy">
-          </div>
-          <div class="t-body">
-            <div class="t-title">Whitening myths—what to ignore</div>
-            <p class="t-desc">Safety, sensitivity control, and top-ups without regrets.</p>
-            <div class="t-actions">
-              <a class="t-btn" href="/blog/whitening-myths.html"><i class="bx bx-book-open"></i> Read</a>
-              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-            </div>
-          </div>
+          <div class="t-media"><img src="/images/blog/whitening.jpg" alt="Teeth whitening myths" loading="lazy"></div>
+          <div class="t-body"><div class="t-title">Whitening myths—what to ignore</div><p class="t-desc">Safety, sensitivity control, and top-ups without regrets.</p><div class="t-actions"><a class="t-btn" href="/blog/whitening-myths.html"><i class="bx bx-book-open"></i> Read</a><a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a></div></div>
         </article>
-
         <article class="t-card">
-          <div class="t-media">
-            <img src="/images/blog/gums.jpg" alt="Bleeding gums: when to worry" loading="lazy">
-          </div>
-          <div class="t-body">
-            <div class="t-title">Bleeding gums—when to worry</div>
-            <p class="t-desc">Simple checks you can do today, and next best steps.</p>
-            <div class="t-actions">
-              <a class="t-btn" href="/blog/bleeding-gums.html"><i class="bx bx-book-open"></i> Read</a>
-              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Simple duplicate set for seamless loop -->
-        <article class="t-card">
-          <div class="t-media">
-            <img src="/images/blog/featured.jpg" alt="How to manage tooth sensitivity" loading="lazy">
-          </div>
-          <div class="t-body">
-            <div class="t-title">Tooth Sensitivity—what really helps?</div>
-            <p class="t-desc">Quick guide to causes, fixes, and when to seek care.</p>
-            <div class="t-actions">
-              <a class="t-btn" href="/blog/tooth-sensitivity.html"><i class="bx bx-book-open"></i> Read</a>
-              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="t-card">
-          <div class="t-media">
-            <img src="/images/blog/aligners.jpg" alt="Aligners vs braces" loading="lazy">
-          </div>
-          <div class="t-body">
-            <div class="t-title">Aligners vs Braces—what’s right for you?</div>
-            <p class="t-desc">Aesthetic, hygiene, and compliance differences in plain English.</p>
-            <div class="t-actions">
-              <a class="t-btn" href="/blog/aligners-vs-braces.html"><i class="bx bx-book-open"></i> Read</a>
-              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="t-card">
-          <div class="t-media">
-            <img src="/images/blog/whitening.jpg" alt="Teeth whitening myths" loading="lazy">
-          </div>
-          <div class="t-body">
-            <div class="t-title">Whitening myths—what to ignore</div>
-            <p class="t-desc">Safety, sensitivity control, and top-ups without regrets.</p>
-            <div class="t-actions">
-              <a class="t-btn" href="/blog/whitening-myths.html"><i class="bx bx-book-open"></i> Read</a>
-              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="t-card">
-          <div class="t-media">
-            <img src="/images/blog/gums.jpg" alt="Bleeding gums: when to worry" loading="lazy">
-          </div>
-          <div class="t-body">
-            <div class="t-title">Bleeding gums—when to worry</div>
-            <p class="t-desc">Simple checks you can do today, and next best steps.</p>
-            <div class="t-actions">
-              <a class="t-btn" href="/blog/bleeding-gums.html"><i class="bx bx-book-open"></i> Read</a>
-              <a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a>
-            </div>
-          </div>
+          <div class="t-media"><img src="/images/blog/gums.jpg" alt="Bleeding gums: when to worry" loading="lazy"></div>
+          <div class="t-body"><div class="t-title">Bleeding gums—when to worry</div><p class="t-desc">Simple checks you can do today, and next best steps.</p><div class="t-actions"><a class="t-btn" href="/blog/bleeding-gums.html"><i class="bx bx-book-open"></i> Read</a><a class="t-btn" href="#get-in-touch"><i class="bx bx-calendar"></i> Book</a></div></div>
         </article>
       </div>
     </div>
@@ -859,13 +733,9 @@
       </header>
 
       <div class="ticker-viewport" role="group" aria-roledescription="carousel" aria-label="Certificate highlights">
-        <ul class="ticker-track" id="certsTrack" aria-live="off">
-          <li class="ticker-skeleton"></li>
-          <li class="ticker-skeleton"></li>
-          <li class="ticker-skeleton"></li>
-        </ul>
-        <button class="ticker-ctrl prev" aria-label="Scroll left"><i class="bx bx-left-arrow-alt"></i></button>
-        <button class="ticker-ctrl next" aria-label="Scroll right"><i class="bx bx-right-arrow-alt"></i></button>
+        <ul class="ticker-track" id="certsTrack" aria-live="off"></ul>
+        <button class="ticker-ctrl prev" type="button" aria-label="Scroll left"><i class="bx bx-left-arrow-alt"></i></button>
+        <button class="ticker-ctrl next" type="button" aria-label="Scroll right"><i class="bx bx-right-arrow-alt"></i></button>
       </div>
 
       <div class="rev-cta" style="margin-top:14px">
@@ -878,12 +748,11 @@
   <footer class="site-footer" id="footer" role="contentinfo">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <img src="/images/logo-footer.webp" alt="Noble Dental Care logo" width="48" height="48" loading="lazy">
-        <p><strong>Noble Dental Care – Nallagandla</strong><br>
-          Ethical, patient-first dentistry in Hyderabad.</p>
+        <img src="/images/logo-footer.webp" alt="Noble Dental Care logo" width="48" height="48" loading="lazy" decoding="async">
+        <p><strong>Noble Dental Care – Nallagandla</strong><br> Ethical, patient-first dentistry in Hyderabad.</p>
       </div>
 
-      <div class="footer-nav">
+      <nav class="footer-nav" aria-label="Footer">
         <h4>Quick Links</h4>
         <ul>
           <li><a href="/">Home</a></li>
@@ -892,7 +761,7 @@
           <li><a href="#ndc-doctors-app">Our Team</a></li>
           <li><a href="#get-in-touch">Book Appointment</a></li>
         </ul>
-      </div>
+      </nav>
 
       <div class="footer-contact">
         <h4>Find Us</h4>
@@ -900,35 +769,25 @@
         <p><a href="tel:+918610425342">+91 86104 25342</a></p>
         <a href="https://g.co/kgs/Lebjyvw" target="_blank" rel="noopener">Open in Google Maps</a>
 
-        <!-- Embedded mini map -->
         <div class="footer-map" style="margin-top:10px; border-radius:10px; overflow:hidden;">
-          <iframe
-            title="Clinic Location Map"
-            loading="lazy"
-            width="100%"
-            height="150"
-            style="border:0;"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.7647515788543!2d78.3059953759854!3d17.473963183366812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93e36f4d1a5d%3A0xd8c1f2a189d7f5cc!2sNoble%20Dental%20Care%20-%20Nallagandla!5e0!3m2!1sen!2sin!4v1699271020999!5m2!1sen!2sin">
-          </iframe>
+          <iframe title="Clinic Location Map" loading="lazy" width="100%" height="150" style="border:0;" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.7647515788543!2d78.3059953759854!3d17.473963183366812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93e36f4d1a5d%3A0xd8c1f2a189d7f5cc!2sNoble%20Dental%20Care%20-%20Nallagandla!5e0!3m2!1sen!2sin!4v1699271020999!5m2!1sen!2sin"></iframe>
         </div>
       </div>
 
       <div class="footer-social">
         <h4>Connect</h4>
-        <a href="https://www.facebook.com/..." aria-label="Facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="https://www.instagram.com/..." aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="https://x.com/..." aria-label="Twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/" aria-label="Facebook" rel="noopener"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/" aria-label="Instagram" rel="noopener"><i class="bx bxl-instagram"></i></a>
+        <a href="https://x.com/" aria-label="X (Twitter)" rel="noopener"><i class="bx bxl-twitter"></i></a>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2025 Noble Dental Care, Nallagandla. Reviewed by Dr. Dhivakaran R. | All Rights Reserved.</p>
+      <p>&copy; <span id="year"></span> Noble Dental Care, Nallagandla. Reviewed by Dr. Dhivakaran R. | All Rights Reserved.</p>
     </div>
   </footer>
 
-  <!-- ===== JSON-LD: Noble Dental Care ===== -->
+  <!-- ===== JSON-LD ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -936,98 +795,849 @@
     "@id": "https://nobledentalnallagandla.in/#dentist",
     "name": "Noble Dental Care - Nallagandla",
     "url": "https://nobledentalnallagandla.in/",
-    "image": "https://nobledentalnallagandla.in/images/logo.png",
-    "logo": "https://nobledentalnallagandla.in/images/logo.png",
+    "image": "/images/logo.png",
+    "logo": "/images/logo.png",
     "telephone": "+918610425342",
     "priceRange": "₹₹",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Nallagandla Main Road",
-      "addressLocality": "Hyderabad",
-      "addressRegion": "Telangana",
-      "postalCode": "500019",
-      "addressCountry": "IN"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 17.473963,
-      "longitude": 78.308185
-    },
+    "address": { "@type": "PostalAddress", "streetAddress": "Nallagandla Main Road", "addressLocality": "Hyderabad", "addressRegion": "Telangana", "postalCode": "500019", "addressCountry": "IN" },
+    "geo": { "@type": "GeoCoordinates", "latitude": 17.473963, "longitude": 78.308185 },
     "hasMap": "https://g.co/kgs/Lebjyvw",
-    "areaServed": { "@type": "Place", "name": "Nallagandla, Hyderabad" },
-    "founder": { "@type": "Person", "name": "Dr. Dhivakaran R.", "jobTitle": "Chief Medical Director" },
-    "contactPoint": { "@type": "ContactPoint", "contactType": "customer service", "telephone": "+91-86104-25342", "areaServed": "IN" },
     "openingHoursSpecification": [
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens":"11:00", "closes":"22:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens":"15:00", "closes":"22:00" }
     ],
     "availableService": [
-      { "@type": "Service", "name": "Root Canal Treatment" },
-      { "@type": "Service", "name": "Dental Implants" },
-      { "@type": "Service", "name": "Teeth Whitening" },
-      { "@type": "Service", "name": "Clear Aligners" },
-      { "@type": "Service", "name": "Pediatric Dentistry" },
-      { "@type": "Service", "name": "Wisdom Tooth Extraction" },
+      { "@type": "Service", "name": "Root Canal Treatment" },{ "@type": "Service", "name": "Dental Implants" },
+      { "@type": "Service", "name": "Teeth Whitening" },{ "@type": "Service", "name": "Clear Aligners" },
+      { "@type": "Service", "name": "Pediatric Dentistry" },{ "@type": "Service", "name": "Wisdom Tooth Extraction" },
       { "@type": "Service", "name": "Gum Treatment" }
     ],
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "150" },
-    "review": [{ "@type": "Review", "author": "A. Sharma", "reviewBody": "Exceptional dental care and patient-friendly team.", "reviewRating": { "@type": "Rating", "ratingValue": "5" }}],
-    "sameAs": [
-      "https://www.facebook.com/people/Noble-Dental-Careica/100087590145815/",
-      "https://x.com/NobleDenta67864",
-      "https://www.instagram.com/noble.dentalorg/",
-      "https://www.justdial.com/Hyderabad/Noble-Dental-Care-Multispeciality-Dental-Clinic/040PXX40-XX40-230311104127-B8Q4_BZDET"
-    ]
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "150" }
   }
   </script>
 
-  <!-- Single aria-live region (deduped) -->
-  <div id="ariaStatus" class="visually-hidden" role="status" aria-live="polite"></div>
+  <!-- =================== BOOTSTRAP SCRIPTS =================== -->
+  <script>
+  /* tiny helpers */
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+  const on = (el, ev, fn, o) => el && el.addEventListener(ev, fn, o);
 
-  <style>
-    .visually-hidden {
-      position: absolute;
-      width: 1px; height: 1px;
-      margin: -1px; padding: 0;
-      overflow: hidden; clip: rect(0,0,0,0);
-      white-space: nowrap; border: 0;
+  /* Header shrink + mobile menu + submenu */
+  (() => {
+    const header = $('.site-header');
+    const menuBtn = $('.menu-toggle');
+    const navList = $('.nav-pill');
+    const subBtn = $('.has-submenu > .submenu-toggle');
+    const subMenu = $('#sp-submenu');
+
+    const setShrink = () => header.classList.toggle('shrink', (window.scrollY||0) > 10);
+    setShrink(); on(window,'scroll', setShrink, {passive:true});
+
+    // mobile nav
+    on(menuBtn, 'click', () => {
+      const open = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!open));
+      navList.setAttribute('aria-hidden', String(open));
+    });
+    on(document, 'click', (e) => {
+      if (!header.contains(e.target)) { menuBtn.setAttribute('aria-expanded','false'); navList.setAttribute('aria-hidden','true'); }
+    });
+    on(document, 'keydown', (e) => { if (e.key === 'Escape'){ menuBtn.setAttribute('aria-expanded','false'); navList.setAttribute('aria-hidden','true'); }});
+
+    // submenu
+    if (subBtn && subMenu){
+      const closeMenu = ()=>{ subBtn.setAttribute('aria-expanded','false'); subMenu.setAttribute('aria-hidden','true'); };
+      const openMenu  = ()=>{ subBtn.setAttribute('aria-expanded','true');  subMenu.setAttribute('aria-hidden','false'); };
+      on(subBtn,'click',(e)=>{ const isOpen=subBtn.getAttribute('aria-expanded')==='true'; isOpen?closeMenu():openMenu(); e.stopPropagation(); });
+      on(document,'click',(e)=>{ if (!subMenu.contains(e.target) && e.target !== subBtn) closeMenu(); });
+      on(document,'keydown',(e)=>{ if (e.key==='Escape') closeMenu(); });
     }
-  </style>
-  <script type="module">
-  const loadCareGuide = () => import('/scripts-care-guide.js');
+  })();
+
+  /* Reduced motion for hero video */
+  (() => {
+    const vid = document.querySelector(".blackhole-video");
+    if (!vid) return;
+    const mq = matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = () => { if (mq.matches){ vid.pause?.(); vid.removeAttribute?.("autoplay"); } };
+    mq.addEventListener?.("change", apply) ?? mq.addListener?.(apply);
+    apply();
+  })();
+
+  /* Booking (days, times, WA handoff) */
+  (() => {
+    const tz = "Asia/Kolkata";
+    const form = $("#apptForm");
+    if (!form) return;
+
+    const daySelect = $("#daySelect");
+    const timeSelect = $("#timeSelect");
+    const summary = $("#summaryText");
+    const bookBtn = $("#bookBtn");
+    const toast = $("#apptToast");
+    const waFill = $("#waFill");
+    const waQuick = $("#waQuick");
+
+    const hours = { 0: [15,22], 1:[11,22], 2:[11,22], 3:[11,22], 4:[11,22], 5:[11,22], 6:[11,22] };
+
+    const fmtDay = (d) => d.toLocaleDateString("en-IN",{ timeZone: tz, weekday:"short", day:"2-digit", month:"short" });
+    const fmtTime = (d) => d.toLocaleTimeString("en-IN",{ timeZone: tz, hour:"2-digit", minute:"2-digit" });
+
+    function buildDays(){
+      daySelect.innerHTML = "";
+      const today = new Date();
+      for (let i=0;i<14;i++){
+        const d = new Date(today); d.setDate(d.getDate()+i);
+        const opt = document.createElement("option");
+        opt.value = d.toISOString();
+        opt.textContent = fmtDay(d);
+        daySelect.appendChild(opt);
+      }
+    }
+
+    function buildTimes(dayIso){
+      timeSelect.innerHTML = '<option value="">Select time</option>';
+      if (!dayIso) return;
+      const d = new Date(dayIso);
+      const [open, close] = hours[d.getDay()] || [0,0];
+      const start = new Date(d); start.setHours(open,0,0,0);
+      const end = new Date(d); end.setHours(close,0,0,0);
+      const now = new Date();
+      for (let t = new Date(start); t < end; t.setMinutes(t.getMinutes()+30)){
+        if (t < now) continue;
+        const iso = t.toISOString();
+        const opt = document.createElement("option");
+        opt.value = iso;
+        opt.textContent = fmtTime(new Date(iso));
+        timeSelect.appendChild(opt);
+      }
+    }
+
+    function updateSummary(){
+      const d = daySelect.value ? new Date(daySelect.value) : null;
+      const t = timeSelect.value ? new Date(timeSelect.value) : null;
+      if (d && t){ summary.textContent = `${fmtDay(d)} • ${fmtTime(t)} (IST)`; bookBtn.disabled = false; }
+      else { summary.textContent = "Choose a day & time to continue."; bookBtn.disabled = true; }
+      updateWA();
+    }
+
+    function updateWA(){
+      const fd = new FormData(form);
+      const d = daySelect.value ? new Date(daySelect.value) : null;
+      const t = timeSelect.value ? new Date(timeSelect.value) : null;
+      const msg = `Hi Noble Dental Care,
+I'd like to book:
+• Name: ${fd.get("name")||""}
+• Phone: ${fd.get("phone")||""}
+• Service: ${fd.get("service")||""}
+• Doctor: ${fd.get("doctor")||""}
+• Time: ${d?fmtDay(d):"-"} • ${t?fmtTime(t):"-"} (IST)
+${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`;
+      const url = `https://wa.me/918610425342?text=${encodeURIComponent(msg)}`;
+      if (waFill) waFill.href = url;
+      if (waQuick) waQuick.href = url;
+    }
+
+    on(daySelect,'change', ()=>{ buildTimes(daySelect.value); updateSummary(); });
+    on(timeSelect,'change', updateSummary);
+    on(form,'input', updateWA);
+
+    on(form,'submit',(e)=>{
+      e.preventDefault();
+      if (bookBtn.disabled) return;
+      updateWA();
+      toast.hidden = false; setTimeout(()=> toast.hidden = true, 2000);
+      window.open(waFill.href, "_blank", "noopener");
+    });
+
+    buildDays(); buildTimes(daySelect.value); updateSummary();
+  })();
+
+  /* Doctors search/filter + dialog + deep link + preselect in form */
+  (() => {
+    const grid = $('#docGrid');
+    const dlg = $('#docSheet');
+    const closeBtn = $('.sheet-close', dlg);
+    const search = $('#docSearch');
+    const filters = $$('#docFilters .chip--ghost');
+    if (!grid || !dlg) return;
+
+    const DATA = {
+      dhivakaran:{ name:"Dr Dhivakaran", role:"Chief Medical Director", hero:"/images/doctors/dhivakaran-hero.webp", bio:"Chief Medical Director at Noble Dental Care. Director, Healthflo (557 hospitals). Contributor to Triumph’s Complete Review of Dentistry.", expertise:["Painless RCT","Dental Implants","Preventive Dentistry"], books:[{t:"Triumph’s Complete Review of Dentistry",p:"Wolters Kluwer • 2018",img:"/images/books/triumph.webp",href:"https://play.google.com/store/books/details?id=ZTjvDwAAQBAJ"}] },
+      roger:{ name:"Dr Roger Ronaldo", role:"Oral & Maxillofacial Surgeon", hero:"/images/doctors/roger-hero.webp", bio:"Surgeon focusing on implants, orthognathic & reconstruction, and facial trauma.", expertise:["Implantology","Orthognathic & Reconstruction","Trauma Surgery"], books:[] },
+      thikvijay:{ name:"Dr Thikvijay", role:"Aesthetic & Medical Cosmetologist", hero:"/images/doctors/thikvijay-hero.webp", bio:"FMC (Germany), ISHR. Trichology, Aesthetic & Medical Cosmetology, Hair & Scalp Restoration.", expertise:["Trichology","Aesthetic Medicine","Hair & Scalp Restoration"], books:[] },
+      deepak:{ name:"Dr Deepak", role:"Orthodontist", hero:"/images/doctors/deepak-hero.webp", bio:"Assistant Professor. Smile design, clear aligners, complex malocclusion.", expertise:["Smile Design","Clear Aligners","Complex Malocclusion"], books:[] },
+      idhaya:{ name:"Dr Idhaya", role:"Preventive & Tourism Dentistry", hero:"/images/doctors/idhaya-hero.webp", bio:"Preventive programs, insurance advisory and medical tourism coordination.", expertise:["Preventive Dentistry","Insurance Advisory","Medical Tourism"], books:[] }
+    };
+
+    function fillDialog(id){
+      const d = DATA[id]; if (!d) return;
+      $('#sheetHero').src = d.hero || '';
+      $('#sheetHero').alt = d.name || '';
+      $('#sheetTitle').textContent = d.name || '';
+      $('#sheetRole').textContent = d.role || '';
+      $('#sheetBio').textContent = d.bio || '';
+      $('#sheetExpertise').innerHTML = (d.expertise||[]).map(x=>`<span class="chip">${x}</span>`).join('');
+      $('#sheetBooks').innerHTML = (d.books||[]).map(b=>`
+        <div class="book">
+          <img src="${b.img||''}" alt="">
+          <div><div class="t">${b.t||''}</div><div class="p">${b.p||''}</div>${b.href?`<a class="t-btn" href="${b.href}" target="_blank" rel="noopener">View</a>`:''}</div>
+        </div>`).join('');
+      $('#sheetBook').dataset.doc = d.name || '';
+    }
+    function openDialog(id){
+      fillDialog(id);
+      if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open','');
+      history.replaceState(null, "", `#${id}`);
+    }
+    function closeDialog(){
+      if (typeof dlg.close === 'function') dlg.close(); else dlg.removeAttribute('open');
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+
+    on(grid,'click',(e)=>{
+      const card = e.target.closest('.ndc-card'); if (!card) return;
+      if (e.target.closest('.open') || e.target.closest('.block')) openDialog(card.dataset.id);
+    });
+    on(closeBtn,'click', closeDialog);
+    on(dlg,'keydown',(e)=>{ if (e.key==='Escape') closeDialog(); });
+    on(dlg,'click',(e)=>{ const r=dlg.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) closeDialog(); });
+
+    on($('#sheetBook'),'click',(e)=>{
+      const name = e.currentTarget?.dataset?.doc || '';
+      const sel = $('#doctorSelect'); if (sel && name){
+        sel.value = name;
+        document.querySelector('#get-in-touch')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    function checkHash(){ const id = location.hash.replace('#',''); if (id && DATA[id]) openDialog(id); }
+    window.addEventListener('hashchange', checkHash); checkHash();
+
+    function applyFilter(){
+      const q = ($('#docSearch').value||'').toLowerCase().trim();
+      const pressed = $$('#docFilters .chip--ghost').find(b=>b.getAttribute('aria-pressed')==='true');
+      const f = pressed ? pressed.dataset.filter : 'all';
+      $$('.ndc-card', grid).forEach(card=>{
+        const tags = (card.getAttribute('data-tags')||'').toLowerCase();
+        const text = (card.textContent||'').toLowerCase();
+        const matchQ = !q || tags.includes(q) || text.includes(q);
+        const matchF = (f==='all') || tags.includes(f);
+        card.style.display = (matchQ && matchF) ? '' : 'none';
+      });
+    }
+    on($('#docSearch'),'input', applyFilter);
+    on($('.ndc-search .clear'),'click', ()=>{ $('#docSearch').value=''; applyFilter(); });
+    $$('#docFilters .chip--ghost').forEach(btn=>{
+      on(btn,'click', ()=>{
+        $$('#docFilters .chip--ghost').forEach(b=>b.setAttribute('aria-pressed','false'));
+        btn.setAttribute('aria-pressed','true');
+        applyFilter();
+      });
+    });
+  })();
+
+  /* Testimonials rail controls */
+  (() => {
+    const rail = $('#revRail');
+    const prev = $('.rev-nav.prev');
+    const next = $('.rev-nav.next');
+    if (!rail || !prev || !next) return;
+    const step = ()=> rail.clientWidth * 0.9;
+    on(prev,'click', ()=> rail.scrollBy({left:-step(), behavior:'smooth'}));
+    on(next,'click', ()=> rail.scrollBy({left: step(), behavior:'smooth'}));
+  })();
+
+  /* Certificates ticker (render simple cards) */
+  (() => {
+    const track = $('#certsTrack');
+    const prev = $('.ticker-ctrl.prev');
+    const next = $('.ticker-ctrl.next');
+    if (!track) return;
+    const CERTS = [
+      { t:'IDA Membership', img:'/images/certs/ida.webp', href:'/credentials.html#ida' },
+      { t:'DCI Registration', img:'/images/certs/dci.webp', href:'/credentials.html#dci' },
+      { t:'Implantology Course', img:'/images/certs/implant.webp', href:'/credentials.html#implant' },
+      { t:'Infection Control', img:'/images/certs/sterile.webp', href:'/credentials.html#infection' },
+      { t:'Radiology Safety', img:'/images/certs/radiology.webp', href:'/credentials.html#radiology' },
+      { t:'Pediatric Dentistry', img:'/images/certs/pedo.webp', href:'/credentials.html#pedo' }
+    ];
+    const item = (c)=>`
+      <li class="ticker-item" style="min-width:260px">
+        <a class="t-card" href="${c.href||'#'}">
+          <div class="t-media"><img src="${c.img||''}" alt="${c.t||''}" loading="lazy"></div>
+          <div class="t-body">
+            <div class="t-title">${c.t||''}</div>
+            <div class="t-desc">Click to view details</div>
+            <div class="t-actions"><span class="t-btn">Open</span></div>
+          </div>
+        </a>
+      </li>`;
+    track.innerHTML = CERTS.map(item).join('') + CERTS.map(item).join('');
+    const vw = () => track.parentElement.clientWidth || 800;
+    on(prev,'click', ()=> track.parentElement.scrollBy({left:-vw()*0.8, behavior:'smooth'}));
+    on(next,'click', ()=> track.parentElement.scrollBy({left: vw()*0.8, behavior:'smooth'}));
+  })();
+
+  /* Footer year */
+  (()=>{ const y = $('#year'); if (y) y.textContent = new Date().getFullYear(); })();
+  </script>
+
+  <!-- PDF library (used by the Care Guide's Download PDF button) -->
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js" defer></script>
+
+  
+  <!-- =================== Care Guide MODULE (lazy) =================== -->
+ <script type="text/ndc-module" id="care-module">
+// This code is compiled into a Blob and imported dynamically.
+export function initCareGuide(){
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+  const on = (el, ev, fn, o) => el && el.addEventListener(ev, fn, o);
+
+  const el = {
+    imgA: $('#vkImgA'), imgB: $('#vkImgB'),
+    title: $('#vkTitle'), badge: $('#vkBadge'), words: $('#vkKeywords'),
+    link: $('#vkDeepLink'),
+    overview: $('#vkOverview'), postop: $('#vkPostop'), tips: $('#vkTips'),
+    proscons: $('#vkProsCons'), sources: $('#vkSources'),
+    prev: $('#vkPrev'), next: $('#vkNext'), dots: $('#vkDots'),
+    search: $('#vkSearch'), category: $('#vkCategory'), chips: $('#vkChips'),
+    datalist: $('#vk-datalist'), chatLog: $('#vkChatLog'),
+    chatInput: $('#vkChatInput'), chatSend: $('#vkChatSend'),
+    pdfBtn: $('#vkPDF'),
+    tabs: $$('.vk-tab'),
+    panels: [$('#vkOverview'), $('#vkPostop'), $('#vkTips'), $('#vkProsCons'), $('#vkSources')]
+  };
+  if (!el.title) return;
+
+  /* ========= DATASET (VK_TOPICS) ========= */
+  const VK_TOPICS = [
+    {id:'rct', title:'Root Canal Treatment (RCT)', cat:'Tooth saving', img:'/images/care/rct.jpg', badge:'Tooth saving',
+      keywords:['pain','deep decay','abscess','rct'],
+      overview:`When decay/infection reaches the pulp, RCT removes infected tissue and seals canals to save the tooth.`,
+      postop:`Day 0–2: mild soreness, meds.\nDay 3–7: avoid hard chewing.\n1–2 wks: crown recommended.`,
+      tips:`Keep temporary dry 1h. Return for crown to prevent fracture.`,
+      proscons:`Pros: Pain relief, saves tooth.\nCons: Needs crown, multiple visits.`,
+      sources:`Cohen; Ingle; ADA.`,
+      deeplink:'/specialities/root-canal.html' },
+    {id:'rct-retreat', title:'Retreatment of RCT', cat:'Tooth saving', img:'/images/care/rct-retreat.jpg', badge:'Tooth saving',
+      keywords:['failed rct','persistent pain','apical lesion'],
+      overview:`Redo of previous RCT when symptoms persist or new decay causes leakage.`,
+      postop:`Soreness 2–3d; follow-up X-ray in 6–12m.`,
+      tips:`Crown replacement often needed; manage bite high spots.`,
+      proscons:`Pros: Keeps tooth.\nCons: Complex, may need surgery.`,
+      sources:`Cohen; AAEP.`,
+      deeplink:'/specialities/root-canal.html#retreat' },
+    {id:'apicoectomy', title:'Apicoectomy (Endodontic surgery)', cat:'Microsurgery', img:'/images/care/apico.jpg', badge:'Microsurgery',
+      keywords:['apical surgery','persistent lesion'],
+      overview:`Removes root tip and seals canal surgically when retreatment isn’t enough.`,
+      postop:`Swelling 48h, sutures 1wk.`,
+      tips:`Cold compress first day; soft diet.`,
+      proscons:`Pros: Saves tooth.\nCons: Minor surgical risks.`,
+      sources:`Kim & Kratchman; ADA.`,
+      deeplink:'/specialities/root-canal.html#apico' },
+    {id:'checkup', title:'Routine Checkup & Cleaning', cat:'Prevention', img:'/images/care/cleaning.jpg', badge:'Hygiene',
+      keywords:['scaling','polishing','tartar'],
+      overview:`Professional scaling removes plaque/tartar; polishing smoothens surfaces to reduce buildup.`,
+      postop:`Mild gum soreness 24h.`,
+      tips:`Brush 2×, floss daily; revisit 6 months.`,
+      proscons:`Pros: Fresher breath, healthier gums.\nCons: Temporary sensitivity.`,
+      sources:`IDA; ADA Prevention.`,
+      deeplink:'/specialities/scaling-whitening.html' },
+    {id:'whitening', title:'Teeth Whitening (Bleaching)', cat:'Prevention', img:'/images/care/whitening.jpg', badge:'Cosmetic',
+      keywords:['stains','shade'],
+      overview:`Peroxide gels safely lift stains under protection of gums and soft tissues.`,
+      postop:`Sensitivity 24–48h possible.`,
+      tips:`Avoid tea/coffee/red wine 48h.`,
+      proscons:`Pros: Quick shade gain.\nCons: Not for some restorations.`,
+      sources:`ADA statements.`,
+      deeplink:'/specialities/scaling-whitening.html#whitening' },
+    {id:'fluoride', title:'Fluoride Varnish / Gel', cat:'Prevention', img:'/images/care/fluoride.jpg', badge:'Preventive',
+      keywords:['demineralization','sensitivity'],
+      overview:`Topical fluoride hardens enamel and reduces sensitivity and decay risk.`,
+      postop:`Avoid hard foods 1h.`,
+      tips:`Use pea-sized fluoride paste twice daily.`,
+      proscons:`Pros: Safe, effective.\nCons: Periodic reapplication.`,
+      sources:`WHO; ADA; ICMR.`,
+      deeplink:'/treatments#fluoride' },
+    {id:'sealants', title:'Pit & Fissure Sealants', cat:'Prevention', img:'/images/care/sealants.jpg', badge:'Kids/Adults',
+      keywords:['molars','grooves','decay prevention'],
+      overview:`Resin coating seals grooves on molars to block decay in high-risk patients.`,
+      postop:`No restrictions after set.`,
+      tips:`Regular checks—repair/refresh if worn.`,
+      proscons:`Pros: Painless prevention.\nCons: Needs maintenance.`,
+      sources:`AAPD; ADA.`,
+      deeplink:'/treatments#sealants' },
+    {id:'mouthguard', title:'Night Guard / Sports Guard', cat:'Prevention', img:'/images/care/mouthguard.jpg', badge:'Protection',
+      keywords:['bruxism','grinding','TMJ'],
+      overview:`Custom guards protect teeth from grinding or sports impacts.`,
+      postop:`Adaptation 1–2 wks.`,
+      tips:`Clean daily; bring to reviews.`,
+      proscons:`Pros: Protects enamel/joints.\nCons: Wear compliance needed.`,
+      sources:`AAOP; ADA.`,
+      deeplink:'/treatments#guards' },
+    {id:'fillings', title:'Tooth-Coloured Fillings', cat:'Restorative', img:'/images/care/fillings.jpg', badge:'Restorative',
+      keywords:['cavity','composite','tooth coloured'],
+      overview:`Resin composites restore cavities with a natural look and strong bonding.`,
+      postop:`Avoid very hard bite until fully set.`,
+      tips:`Sensitivity settles in days; revisit if persists.`,
+      proscons:`Pros: Aesthetic, conservative.\nCons: Technique sensitive.`,
+      sources:`Sturdevant.`,
+      deeplink:'/specialities/fillings.html' },
+    {id:'inlay', title:'Inlays & Onlays', cat:'Restorative', img:'/images/care/inlay.jpg', badge:'Conservative',
+      keywords:['partial crown','ceramic','onlay'],
+      overview:`Lab-made restorations when damage is too big for a filling but not a full crown.`,
+      postop:`Temp in place 1–2 wks before cementation.`,
+      tips:`Avoid sticky foods with temporary.`,
+      proscons:`Pros: Strength, precision.\nCons: Two visits, cost.`,
+      sources:`Shillingburg.`,
+      deeplink:'/treatments#inlay-onlay' },
+    {id:'crown', title:'Dental Crowns', cat:'Crowns & bridges', img:'/images/care/crowns.jpg', badge:'Protection',
+      keywords:['fracture','post rct'],
+      overview:`Covers and protects weak or RCT teeth; materials include zirconia, porcelain, metal-ceramic.`,
+      postop:`Temp crown phase; bite check at final.`,
+      tips:`Avoid sticky foods with temporary.`,
+      proscons:`Pros: Strength, esthetics.\nCons: Tooth prep required.`,
+      sources:`Shillingburg.`,
+      deeplink:'/specialities/crowns-bridges.html' },
+    {id:'bridge', title:'Dental Bridge', cat:'Crowns & bridges', img:'/images/care/bridge.jpg', badge:'Replacement',
+      keywords:['missing tooth','fixed'],
+      overview:`Replaces missing tooth by anchoring crowns to neighbours; fixed and aesthetic.`,
+      postop:`Try-in and bite adjustments.`,
+      tips:`Floss threader under pontic daily.`,
+      proscons:`Pros: Fixed, quick.\nCons: Preps adjacent teeth.`,
+      sources:`Shillingburg; ADA.`,
+      deeplink:'/specialities/crowns-bridges.html#bridge' },
+    {id:'post-core', title:'Post & Core (Post RCT)', cat:'Crowns & bridges', img:'/images/care/postcore.jpg', badge:'Build-up',
+      keywords:['weak tooth','core build'],
+      overview:`Fiber/metal post with core rebuilding provides support before crown on severely damaged RCT teeth.`,
+      postop:`Soreness 1–2d possible.`,
+      tips:`Crown soon to prevent fracture.`,
+      proscons:`Pros: Salvages tooth.\nCons: Complex; rare root risk.`,
+      sources:`Cohen; Shillingburg.`,
+      deeplink:'/treatments#post-core' },
+    {id:'implants', title:'Dental Implants', cat:'Implants & replacement', img:'/images/care/implants.jpg', badge:'Replacement',
+      keywords:['titanium','crown','missing tooth'],
+      overview:`Titanium fixture integrates with bone; then abutment + crown for a natural replacement.`,
+      postop:`Swelling/bruising 2–3d; stitches 1–2wks.`,
+      tips:`No smoking; meticulous hygiene.`,
+      proscons:`Pros: Preserves bone, fixed.\nCons: Time & cost; needs bone.`,
+      sources:`ITI; Carranza; ADA.`,
+      deeplink:'/specialities/implants.html' },
+    {id:'sinus-lift', title:'Sinus Lift / Bone Graft', cat:'Implants & replacement', img:'/images/care/sinus.jpg', badge:'Grafting',
+      keywords:['posterior maxilla','augmentation'],
+      overview:`Raises sinus floor with graft when upper back jaw lacks height for implants.`,
+      postop:`Avoid nose blowing 2wks; decongestants as advised.`,
+      tips:`Sleep elevated first nights.`,
+      proscons:`Pros: Enables implants.\nCons: Swelling; sinus care needed.`,
+      sources:`ITI Consensus.`,
+      deeplink:'/treatments#sinus-lift' },
+    {id:'overdenture', title:'Implant Overdentures', cat:'Implants & replacement', img:'/images/care/overdenture.jpg', badge:'Stability',
+      keywords:['loose denture','locator'],
+      overview:`Two–four implants snap-retent dentures for better stability and chewing.`,
+      postop:`Sore spots early; adjust liners.`,
+      tips:`Remove nightly; clean components.`,
+      proscons:`Pros: Stable, affordable vs full-arch.\nCons: Maintenance of attachments.`,
+      sources:`McCracken; ITI.`,
+      deeplink:'/specialities/dentures.html#implant-overdenture' },
+    {id:'wisdom', title:'Wisdom Tooth Extraction', cat:'Oral surgery', img:'/images/care/wisdom.jpg', badge:'Surgery',
+      keywords:['impaction','swelling','pericoronitis'],
+      overview:`Removal of impacted or problem wisdom teeth to prevent pain/infection and crowding.`,
+      postop:`Gauze pressure; cold compress 24h; soft diet 3d.`,
+      tips:`No smoking/straws 72h; gentle rinses.`,
+      proscons:`Pros: Pain relief, hygiene ease.\nCons: Temporary swelling; rare nerve risk.`,
+      sources:`AAOMS; ADA.`,
+      deeplink:'/specialities/extraction.html' },
+    {id:'frenectomy', title:'Frenectomy (Tongue/Lip Tie)', cat:'Oral surgery', img:'/images/care/frenectomy.jpg', badge:'Soft tissue',
+      keywords:['tongue tie','speech','feeding'],
+      overview:`Releases restrictive frenum for improved speech, feeding or hygiene access.`,
+      postop:`Stretching exercises few weeks.`,
+      tips:`Gentle saltwater rinses after 24h.`,
+      proscons:`Pros: Functional gains.\nCons: Minor bleeding/discomfort.`,
+      sources:`AAPD; AAOMS.`,
+      deeplink:'/treatments#frenectomy' },
+    {id:'biopsy', title:'Oral Biopsy & Lesion Care', cat:'Oral surgery', img:'/images/care/biopsy.jpg', badge:'Diagnosis',
+      keywords:['white patch','ulcer','growth'],
+      overview:`Tissue sampling of suspicious lesions for definitive diagnosis and plan.`,
+      postop:`Avoid spicy/hot 24h; review histology.`,
+      tips:`Report non-healing ulcers >2wks promptly.`,
+      proscons:`Pros: Early detection.\nCons: Minor surgical risks.`,
+      sources:`Neville Oral Path.`,
+      deeplink:'/treatments#biopsy' },
+    {id:'aligners', title:'Clear Aligners', cat:'Orthodontics', img:'/images/care/aligners.jpg', badge:'Alignment',
+      keywords:['invisible','attachments'],
+      overview:`Series of removable trays gradually move teeth; discreet and hygienic.`,
+      postop:`Tenderness 2–3d after new trays.`,
+      tips:`Wear 22h/day; change as scheduled.`,
+      proscons:`Pros: Aesthetic, removable.\nCons: Discipline needed.`,
+      sources:`Proffit; ADA.`,
+      deeplink:'/specialities/invisalign.html' },
+    {id:'braces', title:'Fixed Braces (Metal/Ceramic)', cat:'Orthodontics', img:'/images/care/braces.jpg', badge:'Alignment',
+      keywords:['crowding','bite correction'],
+      overview:`Brackets and wires provide precise control for simple to complex tooth movements.`,
+      postop:`Soreness 2–4d post activation.`,
+      tips:`Interdental brushes; avoid sticky foods.`,
+      proscons:`Pros: Versatile, effective.\nCons: Plaque control crucial.`,
+      sources:`Proffit.`,
+      deeplink:'/specialities/braces.html' },
+    {id:'retainers', title:'Retainers (Post Ortho)', cat:'Orthodontics', img:'/images/care/retainers.jpg', badge:'Retention',
+      keywords:['relapse','fixed retainer'],
+      overview:`Keeps teeth in new position after braces/aligners to prevent relapse.`,
+      postop:`Attach checks every 6–12m.`,
+      tips:`Follow wear schedule strictly.`,
+      proscons:`Pros: Maintains results.\nCons: Compliance/maintenance.`,
+      sources:`Proffit; BOS.`,
+      deeplink:'/treatments#retainers' },
+    {id:'kids', title:'Pediatric Checkup & Sealants', cat:'Pediatric', img:'/images/care/kids.jpg', badge:'Kids',
+      keywords:['kids','sealants','varnish'],
+      overview:`Regular checkups, fluoride and sealants cut decay risk and build oral habits.`,
+      postop:`Normal diet; avoid very sticky 1d.`,
+      tips:`Brush 2×; supervise <6y; age-based paste.`,
+      proscons:`Pros: Prevention first.\nCons: Periodic maintenance.`,
+      sources:`AAPD; WHO.`,
+      deeplink:'/specialities/kids-dentistry.html' },
+    {id:'pulpotomy', title:'Pulpotomy (Milk Tooth)', cat:'Pediatric', img:'/images/care/pulpotomy.jpg', badge:'Kids',
+      keywords:['deep cavity','primary molar pain'],
+      overview:`Removes infected crown pulp in milk tooth; medicament placed, tooth restored/crowned.`,
+      postop:`Soreness 1–2d.`,
+      tips:`Stainless steel crown often advised.`,
+      proscons:`Pros: Pain relief, preserves space.\nCons: Needs crown; follow-ups.`,
+      sources:`AAPD pulp therapy.`,
+      deeplink:'/treatments#pulpotomy' },
+    {id:'space-maintainer', title:'Space Maintainers', cat:'Pediatric', img:'/images/care/space.jpg', badge:'Kids',
+      keywords:['early loss','crowding prevention'],
+      overview:`Holds space if a milk tooth is lost early so adult tooth erupts correctly.`,
+      postop:`Checks every 3–6 months.`,
+      tips:`Avoid very sticky foods.`,
+      proscons:`Pros: Prevents crowding.\nCons: Breakage risk; reviews needed.`,
+      sources:`AAPD space mgmt.`,
+      deeplink:'/treatments#space-maintainer' },
+    {id:'srp', title:'Deep Cleaning (SRP)', cat:'Prevention', img:'/images/care/srp.jpg', badge:'Gum care',
+      keywords:['pockets','bleeding gums','periodontitis'],
+      overview:`Scaling and root planing cleans below gums to reduce pocket depth and inflammation.`,
+      postop:`Tenderness 24–48h; chlorhexidine as advised.`,
+      tips:`Floss/brush 2×; re-evaluate pockets.`,
+      proscons:`Pros: Controls disease.\nCons: Multiple visits.`,
+      sources:`Carranza; AAP.`,
+      deeplink:'/specialities/gum-surgeries.html#srp' },
+    {id:'flap', title:'Flap Surgery / Regeneration', cat:'Prevention', img:'/images/care/flap.jpg', badge:'Periodontal',
+      keywords:['advanced gum disease','bone loss'],
+      overview:`Opens gums to clean roots and, when indicated, rebuild bone with grafts/membranes.`,
+      postop:`Swelling 2–3d; sutures 1–2wks.`,
+      tips:`Ice first 24h; soft diet; avoid brushing surgical area initially.`,
+      proscons:`Pros: Pocket reduction.\nCons: Surgery, cost.`,
+      sources:`Carranza; AAP.`,
+      deeplink:'/specialities/gum-surgeries.html#flap' },
+    {id:'gingivectomy', title:'Gingivectomy / Crown Lengthening', cat:'Prevention', img:'/images/care/gingivectomy.jpg', badge:'Gum reshaping',
+      keywords:['gummy smile','restorative access'],
+      overview:`Reshapes gum for esthetics or to expose more tooth for restoration.`,
+      postop:`Tenderness 2–3d.`,
+      tips:`Gentle rinses; desensitizing gel if needed.`,
+      proscons:`Pros: Esthetics/restorability.\nCons: Temporary sensitivity.`,
+      sources:`AAP; Carranza.`,
+      deeplink:'/treatments#gingivectomy' },
+    {id:'tmj', title:'TMJ Pain & Splint Therapy', cat:'Prevention', img:'/images/care/tmj.jpg', badge:'Jaw joint',
+      keywords:['clicking','locking','myalgia'],
+      overview:`Jaw joint/muscle pain often benefits from bite splints, exercises and habit modifications.`,
+      postop:`Review in 4–6 wks.`,
+      tips:`Limit wide yawns; heat/physio as guided.`,
+      proscons:`Pros: Pain reduction.\nCons: Compliance needed.`,
+      sources:`AAOP guidelines.`,
+      deeplink:'/treatments#tmj' },
+    {id:'veneers', title:'Porcelain Veneers', cat:'Restorative', img:'/images/care/veneers.jpg', badge:'Smile',
+      keywords:['discoloration','shape','gap'],
+      overview:`Thin ceramic shells bonded to front teeth to improve colour/shape/spacing.`,
+      postop:`Try-in; final bonding; bite adjust.`,
+      tips:`Night guard if bruxism; avoid nail-biting.`,
+      proscons:`Pros: Natural esthetics.\nCons: Irreversible prep; cost.`,
+      sources:`Nash; ADA.`,
+      deeplink:'/treatments#veneers' },
+    {id:'bonding', title:'Composite Bonding', cat:'Restorative', img:'/images/care/bonding.jpg', badge:'Smile',
+      keywords:['chips','gaps','edge wear'],
+      overview:`Tooth-coloured resin to repair chips, close small gaps or lengthen worn edges.`,
+      postop:`Polish/finish same visit.`,
+      tips:`Avoid staining foods first 24h.`,
+      proscons:`Pros: One visit, conservative.\nCons: Stains/wear faster than ceramics.`,
+      sources:`Sturdevant.`,
+      deeplink:'/treatments#bonding' },
+    {id:'complete-denture', title:'Complete Dentures', cat:'Implants & replacement', img:'/images/care/complete-denture.jpg', badge:'Removable',
+      keywords:['full denture','edentulous'],
+      overview:`Conventional removable prosthesis to replace all teeth; requires adaptation period.`,
+      postop:`Sore spot adjustments initial weeks.`,
+      tips:`Remove at night; clean daily; store in water.`,
+      proscons:`Pros: Restores function/looks.\nCons: Lower denture may feel loose; adaptation time.`,
+      sources:`McCracken.`,
+      deeplink:'/specialities/dentures.html' },
+    {id:'partial-denture', title:'Cast Partial Denture', cat:'Implants & replacement', img:'/images/care/partial-denture.jpg', badge:'Removable',
+      keywords:['missing teeth','metal framework'],
+      overview:`Metal-framework partials offer durability and better fit for multiple missing teeth.`,
+      postop:`Adjustment of clasps/occlusion.`,
+      tips:`Remove nightly; hygiene under rests/clasps.`,
+      proscons:`Pros: Cost-effective.\nCons: Visible clasps sometimes.`,
+      sources:`McCracken.`,
+      deeplink:'/specialities/dentures.html#partial' },
+    {id:'trauma', title:'Dental Trauma (Knocked Tooth)', cat:'Tooth saving', img:'/images/care/trauma.jpg', badge:'Emergency',
+      keywords:['avulsion','injury'],
+      overview:`If a permanent tooth is knocked out, reimplant immediately or store in milk/saline; seek urgent care.`,
+      postop:`Splinting; vitality checks over months.`,
+      tips:`Tetanus update if needed.`,
+      proscons:`Pros: Saves tooth if quick.\nCons: Resorption risk.`,
+      sources:`IADT guidelines.`,
+      deeplink:'/treatments#trauma' },
+    {id:'ulcer', title:'Mouth Ulcers / Aphthae', cat:'Prevention', img:'/images/care/ulcer.jpg', badge:'Relief',
+      keywords:['canker sore','stomatitis'],
+      overview:`Self-limiting; topical anaesthetics and steroid gels help; rule out trauma or deficiency.`,
+      postop:`Avoid spicy/acidic foods till healed.`,
+      tips:`Check sharp teeth/plates; B12/iron if recurrent.`,
+      proscons:`Pros: Quick relief.\nCons: Recurrence for some.`,
+      sources:`BNF; ADA.`,
+      deeplink:'/treatments#ulcer' },
+    {id:'halitosis', title:'Bad Breath (Halitosis) Care', cat:'Prevention', img:'/images/care/halitosis.jpg', badge:'Fresh breath',
+      keywords:['coated tongue','gum disease'],
+      overview:`Manage causes: tongue cleaning, gum therapy, caries control; rule out ENT/GI causes if persistent.`,
+      postop:`Follow-up if symptoms persist 2–4wks.`,
+      tips:`Hydration; clean tongue daily.`,
+      proscons:`Pros: Improves confidence.\nCons: Habits must continue.`,
+      sources:`ADA.`,
+      deeplink:'/treatments#halitosis' },
+    {id:'pregnancy', title:'Pregnancy Dental Care', cat:'Prevention', img:'/images/care/pregnancy.jpg', badge:'Special care',
+      keywords:['safe trimester','x-ray shield','gingivitis'],
+      overview:`Second trimester ideal for routine care; emergencies anytime with shielding and consent.`,
+      postop:`Short appointments; left-tilt position late trimester.`,
+      tips:`Soft brush; manage morning-sickness erosion.`,
+      proscons:`Pros: Safer outcomes for mom/baby.\nCons: Some procedures deferred.`,
+      sources:`ACOG; ADA.`,
+      deeplink:'/specialities/pregnancy-dental-care.html' }
+  ];
+
+  let index = 0;
+  let filtered = [...VK_TOPICS];
+
+  const escapeHtml = (s)=> (s||'').replace(/[&<>\"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+  const nlToBlocks = (s)=> (s||'').split(/\n+/).map(p=>`<p>${escapeHtml(p)}</p>`).join('');
+  const initialSourcesHTML = el.sources ? el.sources.innerHTML : '';
+  VK_TOPICS.forEach(t => { t.lcTitle = t.title.toLowerCase(); t.lcKeys = (t.keywords||[]).join(' ').toLowerCase(); });
+
+  let showA = true;
+
+  function swapImage(src){
+    if (!el.imgA || !el.imgB) return;
+    const active = showA ? el.imgB : el.imgA;
+    const hidden = showA ? el.imgA : el.imgB;
+    active.src = src || '/images/care/placeholder.jpg';
+    active.classList.add('is-show');
+    hidden.classList.remove('is-show');
+    showA = !showA;
+  }
+
+  function render(){
+    const t = filtered[index];
+    if (!t) return;
+    el.badge.textContent = t.badge || t.cat || 'Topic';
+    el.title.textContent = t.title || '—';
+    el.words.innerHTML = (t.keywords||[]).map(k=>`<span class="vk-chip">${escapeHtml(k)}</span>`).join('');
+    el.link.href = t.deeplink || '#';
+    swapImage(t.img);
+
+    el.overview.innerHTML = nlToBlocks(t.overview);
+    el.postop.innerHTML   = nlToBlocks(t.postop);
+    el.tips.innerHTML     = nlToBlocks(t.tips);
+    el.proscons.innerHTML = nlToBlocks(t.proscons);
+    el.sources.innerHTML  = `<p class="muted">Sources: ${escapeHtml(t.sources||'Standard texts & public guidance')}</p>` + initialSourcesHTML;
+
+    // tabs: default to Overview
+    setActiveTab('overview');
+
+    // dots
+    el.dots.innerHTML = filtered.map((_,i)=>`<button type="button" aria-label="Topic ${i+1}" data-i="${i}" class="${i===index?'is-active':''}"></button>`).join('');
+    el.dots.querySelectorAll('button').forEach(btn=>{
+      on(btn,'click',()=>{ index = Number(btn.dataset.i||0); render(); });
+    });
+  }
+
+  function setActiveTab(key){
+    el.tabs.forEach(btn=>{
+      const is = btn.dataset.t === key;
+      btn.classList.toggle('is-active', is);
+      btn.setAttribute('aria-selected', String(is));
+      btn.tabIndex = is ? 0 : -1;
+    });
+    el.panels.forEach(p=> p && (p.hidden = true, p.classList.remove('is-active')));
+    const panelId = {
+      overview: 'vkOverview', postop:'vkPostop', tips:'vkTips', proscons:'vkProsCons', sources:'vkSources'
+    }[key];
+    const active = panelId && $('#'+panelId);
+    if (active){ active.hidden = false; active.classList.add('is-active'); }
+  }
+
+  // tabs events
+  el.tabs.forEach(btn=>{
+    on(btn,'click', ()=> setActiveTab(btn.dataset.t));
+    on(btn,'keydown', (e)=> {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
+        const list = el.tabs; const i = list.indexOf(btn);
+        const n = e.key === 'ArrowRight' ? (i+1)%list.length : (i-1+list.length)%list.length;
+        list[n].focus();
+      }
+    });
+  });
+
+  function applyFilter(){
+    const q = (el.search.value||'').toLowerCase().trim();
+    const cat = el.category.value || 'all';
+    filtered = VK_TOPICS.filter(t=>{
+      const okCat = (cat==='all') || t.cat === cat;
+      const okQ = !q || t.lcTitle.includes(q) || t.lcKeys.includes(q);
+      return okCat && okQ;
+    });
+    if (filtered.length === 0){
+      filtered = [{ title:'No match found', img:'/images/care/placeholder.jpg', badge:'—', keywords:[], overview:'Try a simpler term (e.g., “pain”, “cleaning”, “braces”, “wisdom”).' }];
+      index = 0;
+    } else {
+      index = 0;
+    }
+    buildDatalist();
+    render();
+  }
+
+  function buildChips(){
+    const PICK = ['rct','implants','wisdom','aligners','checkup','crown'];
+    const chosen = PICK.map(id => VK_TOPICS.find(t=>t.id===id)).filter(Boolean);
+    el.chips.innerHTML = chosen.map(t=>`<button class="vk-chip" type="button" data-jump="${t.id}">${escapeHtml(t.title)}</button>`).join('');
+    el.chips.querySelectorAll('button').forEach(btn=>{
+      on(btn,'click', ()=>{
+        const id = btn.dataset.jump;
+        const i = VK_TOPICS.findIndex(t=>t.id===id);
+        if (i>=0){
+          el.search.value = '';
+          el.category.value = 'all';
+          filtered = [...VK_TOPICS]; index = i; render();
+          $('#ndc-care-voka')?.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+  }
+
+  function buildDatalist(){
+    const options = filtered.slice(0, 30)
+      .map(t=>`<option value="${escapeHtml(t.title)}">`)
+      .join('') +
+      [...new Set(filtered.flatMap(t=>t.keywords||[]))].slice(0, 30)
+      .map(k=>`<option value="${escapeHtml(k)}">`).join('');
+    el.datalist.innerHTML = options;
+  }
+
+  // nav
+  on(el.prev,'click', ()=>{ index = (index-1+filtered.length)%filtered.length; render(); });
+  on(el.next,'click', ()=>{ index = (index+1)%filtered.length; render(); });
+  on(document,'keydown', (e)=> {
+    const within = $('#ndc-care-voka');
+    if (!within) return;
+    if (!within.contains(document.activeElement) && window.scrollY > within.offsetTop - 1000){
+      if (e.key==='ArrowLeft'){ el.prev.click(); }
+      if (e.key==='ArrowRight'){ el.next.click(); }
+    }
+  });
+
+  // search + category
+  on(el.search,'input', applyFilter);
+  on(el.category,'change', applyFilter);
+
+  // chat
+  function chatPush(text, who='bot'){
+    const div = document.createElement('div');
+    div.className = `msg msg--${who}`;
+    div.textContent = text;
+    el.chatLog.appendChild(div);
+    el.chatLog.scrollTop = el.chatLog.scrollHeight;
+  }
+  function score(q, t){
+    q = q.toLowerCase();
+    let s = 0;
+    if (t.lcTitle.includes(q)) s += 4;
+    if (t.lcKeys.includes(q)) s += 2;
+    if (q.split(/\s+/).some(w=>t.lcTitle.includes(w) || t.lcKeys.includes(w))) s += 1;
+    return s;
+  }
+  function chatJump(){
+    const q = (el.chatInput.value||'').trim();
+    if (!q) return;
+    chatPush(q, 'user');
+    const best = VK_TOPICS
+      .map((t,i)=>({i,t, s:score(q,t)}))
+      .sort((a,b)=>b.s-a.s)[0];
+    if (best && best.s>0){
+      filtered = [...VK_TOPICS]; index = best.i; render();
+      chatPush(`Showing: ${best.t.title}`);
+      $('#ndc-care-voka')?.scrollIntoView({behavior:'smooth', block:'start'});
+    } else {
+      chatPush('Hmm, I could not find a close match. Try: "pain", "cleaning", "braces", "wisdom".');
+    }
+    el.chatInput.value = '';
+  }
+  on(el.chatSend,'click', chatJump);
+  on(el.chatInput,'keydown', (e)=>{ if (e.key==='Enter'){ e.preventDefault(); chatJump(); } });
+
+  // PDF
+  on(el.pdfBtn,'click', async ()=>{
+    const t = filtered[index]; if (!t) return;
+    const html = `
+      <div style="font-family:Manrope,Arial,sans-serif;max-width:820px;margin:auto;padding:20px">
+        <h1 style="margin:0 0 6px">${escapeHtml(t.title)}</h1>
+        <div style="color:#555;margin-bottom:10px">${escapeHtml(t.badge||t.cat||'')}</div>
+        <img src="${t.img||''}" alt="" style="width:100%;height:auto;border-radius:10px;border:1px solid #eee;margin:6px 0 12px">
+        <h2>Overview</h2>${nlToBlocks(t.overview)}
+        <h2>Post-op</h2>${nlToBlocks(t.postop)}
+        <h2>Tips</h2>${nlToBlocks(t.tips)}
+        <h2>Pros & Cons</h2>${nlToBlocks(t.proscons)}
+        <p style="color:#666"><strong>Sources:</strong> ${escapeHtml(t.sources||'')}</p>
+        <hr><p style="font-size:12px;color:#777">Noble Dental Care – Nallagandla • Educational, not diagnostic.</p>
+      </div>`;
+    if (window.html2pdf){
+      window.html2pdf().set({
+        margin:10, filename: `${t.id||'care'}.pdf`,
+        image:{type:'jpeg',quality:0.98}, html2canvas:{scale:2},
+        jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
+      }).from(html).save();
+    } else {
+      // fallback: open print window
+      const w = window.open('', '_blank', 'noopener');
+      w.document.write(`<!doctype html><meta charset="utf-8"><title>${escapeHtml(t.title)}</title>${html}`);
+      w.document.close(); w.focus(); w.print();
+    }
+  });
+
+  // init
+  buildChips();
+  buildDatalist();
+  render();
+}
+</script>
+
+  <script>
+(() => {
+  const src = document.getElementById('care-module')?.textContent;
+  if (!src) return;
+  const blob = new Blob([src], { type: 'text/javascript' });
+  const url = URL.createObjectURL(blob);
+
+  async function boot(){
+    try{
+      const mod = await import(url);
+      mod.initCareGuide();
+    }catch(err){ console.error('Care Guide init failed:', err); }
+  }
+
   const target = document.querySelector('#ndc-care-voka');
-  if (!target) { /* no guide on this page */ } 
-  else if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries, obs) => {
-      if (entries.some(e => e.isIntersecting)) { loadCareGuide(); obs.disconnect(); }
+  if ('IntersectionObserver' in window && target){
+    const io = new IntersectionObserver((entries, obs)=>{
+      if (entries.some(e=>e.isIntersecting)){ boot(); obs.disconnect(); }
     }, { rootMargin: '600px' });
     io.observe(target);
   } else {
-    // basic fallback
-    loadCareGuide();
+    boot();
   }
-</script>
-  
-  <script>
-(() => {
-  const header = document.querySelector('.site-header');
-  let last = 0, ticking = false;
-  function onScroll(){
-    const y = window.scrollY || document.documentElement.scrollTop || 0;
-    if (!ticking){
-      window.requestAnimationFrame(() => {
-        header.classList.toggle('shrink', y > 10);
-        ticking = false;
-      });
-      ticking = true;
-    }
-    last = y;
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
 })();
 </script>
-
-</body>
-</html>
-
