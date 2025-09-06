@@ -46,6 +46,12 @@
   }
 }
 
+:root {
+  --nav-bg: linear-gradient(135deg, rgba(122, 163, 255, 0.3), rgba(87, 192, 185, 0.3));
+  --nav-hover-bg: rgba(255, 255, 255, 0.15);
+}
+
+
 /* -------------------- RESET & BASICS -------------------- */
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -81,49 +87,180 @@ a:hover{text-decoration:underline;text-underline-offset:2px}
 }
 
 /* -------------------- HEADER -------------------- */
-.site-header{
-  position:sticky;top:0;z-index:40;
-  background:color-mix(in srgb, var(--bg) 90%, transparent);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--stroke);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:10px var(--pad);transition:all .2s
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 20px var(--pad);
 }
-.site-header.shrink{padding:6px var(--pad);backdrop-filter:blur(12px)}
-.brand{display:flex;align-items:center;gap:10px;color:inherit}
-.brand-title{font-weight:800;letter-spacing:.2px;margin:0}
-.brand-title span{color:var(--brand)}
-.main-nav{display:flex;align-items:center;gap:14px}
-.menu-toggle{
-  display:grid;place-content:center;
-  border:1px solid var(--stroke);background:var(--card);
-  color:inherit;border-radius:10px;width:40px;height:40px
+.site-header.shrink {
+  padding: 10px var(--pad);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
-.nav-pill{display:flex;gap:14px;list-style:none;margin:0;padding:0;align-items:center}
-.nav-pill a{color:inherit;padding:8px 10px;border-radius:10px;transition:background .2s}
-.nav-pill a:hover{background:color-mix(in srgb, var(--brand) 16%, transparent)}
-.nav-pill .nav-cta{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border-radius:999px}
-.has-submenu{position:relative}
-.submenu-toggle{
-  display:flex;align-items:center;gap:6px;background:transparent;border:0;color:inherit;
-  cursor:pointer;padding:8px 10px;border-radius:10px
-}
-.submenu{
-  position:absolute;left:0;top:100%;translate:0 8px;min-width:260px;
-  background:var(--card);border:1px solid var(--stroke);border-radius:12px;padding:8px;
-  display:none;box-shadow:var(--shadow)
-}
-.submenu[aria-hidden="false"]{display:block}
-.submenu a{display:block;padding:8px 10px;border-radius:8px}
-.submenu a:hover{background:color-mix(in srgb, var(--brand) 14%, transparent)}
 
-@media (max-width: 960px){
-  .nav-pill{
-    position:fixed;inset:60px 10px auto 10px;padding:12px;border-radius:14px;
-    background:var(--paper);flex-direction:column;align-items:stretch;display:none
-  }
-  .nav-pill[aria-hidden="false"]{display:flex}
-  .submenu{position:static;translate:0 0;margin-top:6px}
+/* Global removal of underline from all links/buttons */
+a, a:link, a:visited, a:hover, a:active {
+  text-decoration: none !important;
+}
+
+/* Centered nav bar with teal hover effect */
+.nav-pill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #0f172a, #1e3a8a);
+  padding: 10px 20px;
+  border-radius: 12px;
+}
+.nav-pill a {
+  padding: 10px 16px;
+  color: #f0f0f0;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+.nav-pill a:hover,
+.nav-pill a:focus {
+  background-color: teal;
+  color: #ffffff;
+}
+
+/* Submenu */
+.submenu {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  position: absolute;
+  top: 100%;
+  background: white;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+  border-radius: 8px;
+}
+.has-submenu:hover .submenu,
+.has-submenu:focus-within .submenu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Scroll indicator bar */
+#scrollIndicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background: linear-gradient(to right, teal, #0f172a);
+  z-index: 9999;
+  transition: width 0.2s;
+}
+
+/* Mobile menu button on top right */
+.menu-toggle {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #1e3a8a;
+}
+
+/* ==== NAV CONSISTENCY PATCH (Specialities) ==== */
+
+/* 1) Make all header nav items share one visual style */
+.site-header .nav-pill a.nav-link,
+.site-header .nav-pill button.nav-link {
+  /* shared look */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1;
+  color: #e0eaff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease, box-shadow .25s ease, transform .06s ease;
+  text-decoration: none; /* no underline ever */
+}
+
+/* 2) Kill any external button styles leaking in (e.g., .btn, .btn--ghost) */
+.site-header .nav-pill .btn,
+.site-header .nav-pill .btn--ghost {
+  all: unset;              /* wipe conflicting styles */
+  display: inline-flex;    /* restore essentials */
+  align-items: center;
+}
+
+/* keep the nav-link token after resetting .btn */
+.site-header .nav-pill .submenu-toggle.nav-link {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* 3) Hover/active states — identical for anchors & buttons */
+.site-header .nav-pill a.nav-link:hover,
+.site-header .nav-pill button.nav-link:hover,
+.site-header .nav-pill a.nav-link:focus-visible,
+.site-header .nav-pill button.nav-link:focus-visible {
+  background-color: var(--teal);
+  color: #fff;
+  outline: none;
+  text-decoration: none; /* no underline */
+}
+
+/* 4) Remove underline globally in header nav (belt & suspenders) */
+.site-header .nav-pill a.nav-link:link,
+.site-header .nav-pill a.nav-link:visited,
+.site-header .nav-pill a.nav-link:hover,
+.site-header .nav-pill a.nav-link:active {
+  text-decoration: none;
+}
+
+/* 5) Chevron icon alignment in “Specialities” */
+.site-header .submenu-toggle.nav-link i {
+  font-size: 1.1em;
+  line-height: 1;
+  translate: 0 1px; /* tiny optical nudge */
+  pointer-events: none;
+}
+
+/* 6) Submenu panel styling (unchanged look, just for completeness) */
+.site-header .submenu {
+  background: rgba(18, 38, 73, 0.95);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  min-width: 260px;
+  padding: 8px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.2);
+}
+
+/* submenu link consistency too */
+.site-header .submenu a {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #e0eaff;
+  text-decoration: none;
+}
+.site-header .submenu a:hover,
+.site-header .submenu a:focus-visible {
+  background: var(--teal);
+  color: #fff;
+  outline: none;
 }
 
 /* -------------------- HERO -------------------- */
