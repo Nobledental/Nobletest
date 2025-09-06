@@ -3,6 +3,52 @@
    (header, hero motion, booking, doctors app, reviews,
     certificates, footer year, Care Guide with full dataset)
    ========================================================= */
+.brand-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 0;
+  color: #0f172a;
+  letter-spacing: 0.02em;
+}
+
+.brand-title span {
+  color: var(--brand);
+}
+
+(() => {
+  const header = document.querySelector('.site-header');
+  const menuBtn = document.querySelector('.menu-toggle');
+  const navList = document.querySelector('.nav-pill');
+
+  const shrinkOnScroll = () => {
+    header.classList.toggle('shrink', window.scrollY > 10);
+  };
+
+  shrinkOnScroll();
+  window.addEventListener('scroll', shrinkOnScroll, { passive: true });
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    navList.setAttribute('aria-hidden', String(isOpen));
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!header.contains(e.target)) {
+      menuBtn.setAttribute('aria-expanded', 'false');
+      navList.setAttribute('aria-hidden', 'true');
+    }
+  });
+})();
+
+const scrollBar = document.getElementById('scrollIndicator');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+  scrollBar.style.width = `${scrollPercent}%`;
+});
 
 /* ------------- tiny helpers ------------- */
 const $  = (s, r=document) => r.querySelector(s);
