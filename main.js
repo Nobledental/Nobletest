@@ -238,18 +238,11 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
   });
 })();
 
+
+
 /* =========================================================
    Testimonials rail controls
    ========================================================= */
-(() => {
-  const rail = $('#revRail');
-  const prev = $('.rev-nav.prev');
-  const next = $('.rev-nav.next');
-  if (!rail || !prev || !next) return;
-  const step = ()=> rail.clientWidth * 0.9;
-  on(prev,'click', ()=> rail.scrollBy({left:-step(), behavior:'smooth'}));
-  on(next,'click', ()=> rail.scrollBy({left: step(), behavior:'smooth'}));
-})();
 
 /* =========================================================
    Certificates ticker (simple cards)
